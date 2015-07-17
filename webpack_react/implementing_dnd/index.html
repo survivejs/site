@@ -1,0 +1,315 @@
+<html><head><title>SurviveJS - Webpack and React - Implementing Drag and Drop</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><span class="docs-nav__link docs-nav__link--current">Implementing Drag and Drop</span><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/dnd.jpg);"></div><h1 class="post__heading">Implementing Drag and Drop</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_styling_react/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/09_implementing_dnd/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/09_implementing_dnd" target="_blank">Demo</a></div></div><div><p>Our Kanban application is almost usable now. It doesn&apos;t look that bad and there&apos;s some basic functionality in place. In this chapter I&apos;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up <a href="https://gaearon.github.io/react-dnd/">React DnD</a>. After this chapter you should be able to sort notes within a lane, drag them from a lane to another and sort lanes.</p>
+<a class="header-anchor" href="#setting-up-react-dnd" id="setting-up-react-dnd"></a><h2>Setting Up React DnD<a class="header-anchor-select" href="#setting-up-react-dnd">#</a></h2>
+<p>Before going further hit <code>npm i react-dnd --save</code> to add React DnD to the project. Next we&apos;ll need to patch our application to use it.</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> { DragDropContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
+<span class="hljs-keyword">import</span> HTML5Backend <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd/modules/backends/HTML5&apos;</span>;
+
+...
+
+@DragDropContext(HTML5Backend)
+@persist(storage, storageName, () =&gt; <span class="hljs-built_in">JSON</span>.parse(alt.takeSnapshot()))
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+...
+}
+</code></pre>
+<p>This will tell our application that it&apos;s going to have some DnD goodies in it. We&apos;ll use <code>HTML5Backend</code>. In the future there might be other backends to support specific targets (i.e. touch and such).</p>
+<p>In order to silence that <code>new-cap</code> error ESlint gives, switch it off as follows. We won&apos;t be needing that.</p>
+<p><strong>.eslintrc</strong></p>
+<pre><code class="undefinedjson"><span class="hljs-string">&quot;rules&quot;</span>: {
+  <span class="hljs-string">&quot;new-cap&quot;</span>: <span class="hljs-number">0</span>,
+  ...
+}
+</code></pre>
+<p>The application looks exactly the same as before. We are now ready to add some sweet functionality to it, though.</p>
+<a class="header-anchor" href="#preparing-notes-to-be-sorted" id="preparing-notes-to-be-sorted"></a><h2>Preparing Notes to Be Sorted<a class="header-anchor-select" href="#preparing-notes-to-be-sorted">#</a></h2>
+<p>Next we will need to tell React DnD what can be dragged and where. Since we want to move notes, we&apos;ll want to annotate them accordingly. In addition we&apos;ll need some logic to tell what happens during this process.</p>
+<p>Earlier we extracted some of the editing functionality from <code>Note</code> and ended up dropping it. Since we need to decorate the component and don&apos;t want to end up with a mess, it seems like we&apos;ll want to add that concept back if only for decoration purposes.</p>
+<p><strong>app/components/Notes.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+import Note from &apos;./Note&apos;;
+
+...
+
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note&apos;</span> + <span class="hljs-attribute">i</span>}&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+      <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+      <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
+)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<p><strong>app/components/Note.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> {<span class="hljs-attribute">...this.props</span>}&gt;</span>{this.props.children}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    )</span>;
+  }
+}
+</code></pre>
+<p>Now we have a little <code>Note</code> wrapper which we can decorate. The design could have been different. <code>Note</code> could contain <code>Editable</code> itself but then we would have to maintain a constructor since we need to pass the data there. Now <code>Note</code> is more about encapsulating DnD logic and showing whatever we pass to it. Next we need to connect that logic to it.</p>
+<a class="header-anchor" href="#allowing-notes-to-be-dragged" id="allowing-notes-to-be-dragged"></a><h2>Allowing Notes to Be Dragged<a class="header-anchor-select" href="#allowing-notes-to-be-dragged">#</a></h2>
+<p>React DnD uses constants to tell different draggables apart. Set up a file for tracking <code>Note</code> as follows:</p>
+<p><strong>app/components/ItemTypes.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-tag">export</span> <span class="hljs-tag">default</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">NOTE</span>:<span class="hljs-value"> <span class="hljs-string">&apos;note&apos;</span>
+}</span></span>;
+</span></code></pre>
+<p>We&apos;ll expand this later as we add new types to the system but this is enough for now. Next we need to tell our <code>Note</code> that it&apos;s possible to drag and drop it.</p>
+<p><strong>app/components/Note.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> { DragSource, DropTarget } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
+
+<span class="hljs-keyword">import</span> ItemTypes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./ItemTypes&apos;</span>;
+
+<span class="hljs-keyword">const</span> noteSource = {
+  beginDrag(props) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;begin dragging note&apos;</span>, props);
+
+    <span class="hljs-keyword">return</span> {};
+  }
+};
+
+<span class="hljs-keyword">const</span> noteTarget = {
+  hover(props, monitor) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;dragging note&apos;</span>, props, monitor);
+  }
+};
+
+@DropTarget(ItemTypes.NOTE, noteTarget, connect =&gt; ({
+  connectDropTarget: connect.dropTarget()
+}))
+@DragSource(ItemTypes.NOTE, noteSource, (connect, monitor) =&gt; ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging()
+}))
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">const</span> { isDragging, connectDragSource, connectDropTarget,
+      onMove, data, ...props } = <span class="hljs-keyword">this</span>.props;
+
+    <span class="hljs-keyword">return</span> connectDragSource(connectDropTarget(
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> {<span class="hljs-attribute">...props</span>}&gt;</span>{props.children}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    )</span>);
+  }
+}
+</code></pre>
+<p>If you drag a <code>Note</code> now, you should see some debug prints at console. We still need to figure out logic. Both <code>noteSource</code> and <code>noteTarget</code> give us access to <code>Note</code> props. In addition at <code>noteTarget</code> we can access the source <code>Note</code> through <code>monitor.getItem()</code> while <code>props</code> map to target. For DnD operations to make sense we&apos;ll to be able to tell individual notes apart. We&apos;ll need to model the concept of identity before we can move further.</p>
+<blockquote class="warning">Note that React DnD isn&apos;t hot loading compatible so you may need to refresh browser manually while testing these changes.</blockquote><a class="header-anchor" href="#developing-onmove-api-for-notes" id="developing-onmove-api-for-notes"></a><h2>Developing <code>onMove</code> API for Notes<a class="header-anchor-select" href="#developing-onmove-api-for-notes">#</a></h2>
+<p>In order to make <code>Note</code> operate based on id, we&apos;ll need to tweak it a little.</p>
+<p><strong>app/components/Note.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">const</span> noteSource = {
+  beginDrag(props) {
+    <span class="hljs-keyword">return</span> {
+      data: props.data
+    };
+  }
+};
+
+<span class="hljs-keyword">const</span> noteTarget = {
+  hover(props, monitor) {
+  <span class="hljs-keyword">const</span> targetData = props.data || {};
+  <span class="hljs-keyword">const</span> sourceProps = monitor.getItem();
+  <span class="hljs-keyword">const</span> sourceData = sourceProps.data || {};
+
+  <span class="hljs-keyword">if</span>(sourceData.id !== targetData.id) {
+    props.onMove({
+      source: sourceProps.data,
+      target: props.data
+    });
+  }
+  }
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props: {
+    data: <span class="hljs-built_in">Object</span>;
+    onMove: <span class="hljs-built_in">Function</span>;
+  }) {
+    <span class="hljs-keyword">super</span>(props);
+  }
+  ...
+}
+</code></pre>
+<p>Now <code>Note</code> will trigger the <code>onMove</code> callback whenever something is dragged on top of a <code>Note</code>. Next we need to make <code>Notes</code> aware of that.</p>
+<p><strong>app/components/Notes.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-built_in">export</span> default class Notes extends React.Component {
+  ...
+  <span class="hljs-function"><span class="hljs-title">render</span></span>() {
+    var notes = this.props.items;
+
+    <span class="hljs-built_in">return</span> (
+      &lt;ul className=<span class="hljs-string">&apos;notes&apos;</span>&gt;{notes.map((note, i) =&gt;
+        &lt;Note onMove={() =&gt; this.onMoveNote()} className=<span class="hljs-string">&apos;note&apos;</span>
+          key={<span class="hljs-string">&apos;note-&apos;</span> + i} data={note}&gt;
+          &lt;Editable
+            value={note.task}
+            onEdit={this.props.onEdit.bind(null, i)} /&gt;
+        &lt;/Note&gt;
+      )}&lt;/ul&gt;
+    );
+  }
+  onMoveNote(<span class="hljs-built_in">source</span>, target) {
+    console.log(<span class="hljs-string">&apos;source&apos;</span>, <span class="hljs-built_in">source</span>, <span class="hljs-string">&apos;target&apos;</span>, target);
+  }
+}
+</code></pre>
+<p>If you drag a <code>Note</code> around now, you should see prints like <code>source [Object] target [Object]</code> at console. It doesn&apos;t take long to see we have a little flaw in our system. The way we are deriving <code>Note</code> ids doesn&apos;t scale to this purpose as they aren&apos;t unique enough. They are unique per lane but not globally. This will be an issue when moving notes between lanes. Normally dealing with ids would be the backend&apos;s problem but since we don&apos;t have a backend we can generate some ourselves.</p>
+<a class="header-anchor" href="#generating-unique-ids-for-notes" id="generating-unique-ids-for-notes"></a><h2>Generating Unique Ids for Notes<a class="header-anchor-select" href="#generating-unique-ids-for-notes">#</a></h2>
+<p>One of the simplest ways to generate unique ids is simply to use an UUID generator. Hit <code>npm i node-uuid --save</code> to add one to our project. There are more possible approaches listed at <a href="https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript">a Stackoverflow question about the topic</a> but this will do fine for our purposes.</p>
+<p>Next we&apos;ll need to tweak our <code>Notes</code> to contain these ids. This is logic that should go to <code>NoteStore</code> as follows.</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  ...
+  create(task) {
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
+
+    <span class="hljs-keyword">this</span>.setState({
+      notes: notes.concat({task, id: uuid.v4()})
+    });
+  }
+  ...
+}
+</code></pre>
+<p>Now newly created <code>Notes</code> should contain unique ids. Possible older data won&apos;t. We could simply nuke our <code>localStorage</code> by doing something like <code>localStorage.clear()</code> and <code>localStorage.debug = true</code> at console, then refreshing the page and setting <code>debug</code> flag back to false. That&apos;s not a solution that works well in production environment. Instead we can perform a little migration trick.</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  ...
+  init(data) {
+    <span class="hljs-keyword">this</span>.setState(<span class="hljs-built_in">Array</span>.isArray(data &amp;&amp; data.notes) ? migrate(data) : {
+      notes: []
+    });
+  }
+  ...
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">migrate</span>(<span class="hljs-params">data</span>) </span>{
+  <span class="hljs-comment">// patch data with ids in case they are missing</span>
+  <span class="hljs-keyword">if</span>(data) {
+    data.notes = data.notes.map((note) =&gt; {
+      <span class="hljs-keyword">if</span>(!note.id) {
+        note.id = uuid.v4();
+      }
+
+      <span class="hljs-keyword">return</span> note;
+    });
+  }
+
+  <span class="hljs-keyword">return</span> data;
+}
+</code></pre>
+<p>Now in case some of the notes is missing an id, we will generate one for them. The approach could be improved. You could for instance attach version information to store data. Then you would check against version and perform only migrations that are needed to bring it to current. You can get inspiration from various backend libraries.</p>
+<a class="header-anchor" href="#implementing-note-drag-and-drop-logic" id="implementing-note-drag-and-drop-logic"></a><h2>Implementing Note Drag and Drop Logic<a class="header-anchor-select" href="#implementing-note-drag-and-drop-logic">#</a></h2>
+<p>The logic of drag and drop is quite simple. Let&apos;s say we have a list A, B, C. In case we move A below C we should end up with B, C, A. In case we have another list, say D, E, F, and move A to the beginning of it, we should end up with B, C and A, D, E, F.</p>
+<p>In our case we&apos;ll get some extra complexity due to lane to lane dragging. Note that when we move a <code>Note</code> we know its original position and the intended target position. While dragging around, however, we&apos;ll want to make sure the store data gets updated as well. The problem is how to communicate this to our <code>NoteStores</code> so that they know to update their state?</p>
+<p>This can be solved by setting up a custom action for this particular purpose. We&apos;ll model <code>move</code> method there and make <code>NoteStores</code> react to that. After that it&apos;s up to each <code>NoteStore</code> to deal with it. In order to achieve this we&apos;ll need to do some wiring.</p>
+<p><strong>app/components/Notes.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+import NoteDndActions from &apos;../actions/NoteDndActions&apos;;
+
+export default class Notes extends React.Component {
+  ...
+  render() {
+    var notes = this.props.items;
+
+    return (
+      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{NoteDndActions.move}</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span>
+          <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note-&apos;</span> + <span class="hljs-attribute">note.id</span>} <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
+      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+    );
+  }
+}
+</code></pre>
+<p><strong>app/actions/NoteDndActions.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(<span class="hljs-string">&apos;move&apos;</span>);
+</code></pre>
+<p><strong>app/stores/NoteStore.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">import</span> NoteDndActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteDndActions&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  constructor(actions: <span class="hljs-built_in">Object</span>) {
+    <span class="hljs-keyword">this</span>.bindActions(actions);
+    <span class="hljs-keyword">this</span>.bindActions(NoteDndActions);
+  }
+  move({source, target}) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, source, <span class="hljs-string">&apos;target&apos;</span>, target);
+  }
+}
+</code></pre>
+<p>If you drag and drop a <code>Note</code> now, you should see each <code>NoteStore</code> trigger. Next we&apos;ll need to add some logic to make this work.</p>
+<p><strong>app/stores/NoteStore.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> update <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react/lib/update&apos;</span>;
+
+...
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  move({source, target}) {
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
+    <span class="hljs-keyword">const</span> sourceIndex = findIndex(notes, {
+      id: source.id
+    });
+    <span class="hljs-keyword">const</span> targetIndex = findIndex(notes, {
+      id: target.id
+    });
+
+    <span class="hljs-keyword">if</span>(sourceIndex &gt;= <span class="hljs-number">0</span> &amp;&amp; targetIndex &gt;= <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">this</span>.setState({
+        notes: update(notes, {
+          $splice: [
+            [sourceIndex, <span class="hljs-number">1</span>],
+            [targetIndex, <span class="hljs-number">0</span>, source]
+          ]
+        })
+      });
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(targetIndex &gt;= <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">this</span>.setState({
+        notes: update(notes, {
+          $splice: [
+            [targetIndex, <span class="hljs-number">0</span>, source]
+          ]
+        })
+      });
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sourceIndex &gt;= <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">this</span>.remove(sourceIndex);
+    }
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findIndex</span>(<span class="hljs-params">arr, prop, value</span>) </span>{
+  <span class="hljs-keyword">var</span> o = arr.filter(c =&gt; c[prop] === value)[<span class="hljs-number">0</span>];
+
+  <span class="hljs-keyword">return</span> o &amp;&amp; arr.indexOf(o);
+}
+</code></pre>
+<p>There is actually quite a bit going on here. I modeled the solution based on React DnD draggable example and then expanded on it. Primarily there are three cases to worry about. In the first case we&apos;re dragging within the lane itself. We can use <code>$splice</code> there from <a href="https://facebook.github.io/react/docs/update.html">React immutability helpers</a>.</p>
+<p>In this case we splice an item out of source index and move source to target as you might expect. In the second case we are dragging into a new lane so it&apos;s enough just to add to target position. The final case gets rid of possible data remaining at a previous lane.</p>
+<blockquote class="tip">This probably isn&apos;t the most effective solution as we&apos;ll be performing the check for each lane. But given we&apos;ll have likely only a couple of lanes in our system it seems like an acceptable compromise. A more optimized solution would operate using minimal amount of lanes (maximum of two) per operation but that would get more complex to handle.</blockquote><a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>In this chapter you saw how to implement drag and drop for our little application. You can model sorting for lanes using the same technique. First you mark the lanes to be draggable and droppable, then you sort out their ids and finally you&apos;ll add some logic to make it all work together.</p>
+<p>The solution presented here isn&apos;t the only possible one. In our case we have some complexity at store level as we decided to model a store per <code>Notes</code>. An alternative solution for that would have been simply to have a single store for all notes and deal with the complexity there.</p>
+<p>In that case it wouldn&apos;t be necessary to set up a shared <code>move</code> action. Instead you could deal with the move logic in a single method. On the other hand some other operations might become more complex to implement as you need to deal with collections yourself. Now they are implicit in the structure.</p>
+</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/taxi.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/styling_react">Styling React</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/lint.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/linting_in_webpack">Linting in webpack</a></div></div><a class="next-page" href="/webpack_react/linting_in_webpack">Linting in webpack</a><a class="previous-page" href="/webpack_react/styling_react">Styling React</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/15146367@N00/4083260446">Emma Story (CC BY-NC)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>

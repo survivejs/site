@@ -1,0 +1,353 @@
+<html><head><title>SurviveJS - Webpack and React - From Notes to Kanban</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><span class="docs-nav__link docs-nav__link--current">From Notes to Kanban</span><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/kanban_photo.jpg);"></div><h1 class="post__heading">From Notes to Kanban</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_react_and_flux/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_from_notes_to_kanban/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/07_from_notes_to_kanban" target="_blank">Demo</a></div></div><div><p><img src="/images/kanban.png" alt="Kanban board"></p>
+<p>So far we have managed to set up a nice little development environment and develop an application for keeping track of notes in <code>localStorage</code>. We still have work to do in order to turn this into a real Kanban as pictured above.</p>
+<p>Most importantly our system is missing the concept of Lane. A Lane is something that should be able to contain multiple Notes within itself. In the current system that is implicit. We&apos;ll need to extract that into a component of its own.</p>
+<a class="header-anchor" href="#extracting-lanes-" id="extracting-lanes-"></a><h2>Extracting <code>Lanes</code><a class="header-anchor-select" href="#extracting-lanes-">#</a></h2>
+<p>As earlier we can use the same idea of two components here. There will be a component for higher level (i.e. <code>Lanes</code>) and for lower level (i.e. <code>Lane</code>). The higher level component will deal with aspects such as persistency and lane ordering. An individual <code>Lane</code> will just render its contents (i.e. name and <code>Notes</code>) and provide basic manipulation operations as needed.</p>
+<p>As a first step we will need to make some room for <code>Lanes</code> at our <code>App</code> level. Consider the example below:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+<span class="hljs-keyword">import</span> Lanes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Lanes&apos;</span>;
+<span class="hljs-keyword">import</span> LaneActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/LaneActions&apos;</span>;
+<span class="hljs-keyword">import</span> LaneStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/LaneStore&apos;</span>;
+<span class="hljs-keyword">import</span> persist <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../decorators/persist&apos;</span>;
+<span class="hljs-keyword">import</span> {storage, storageName, getInitialData} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/storage&apos;</span>;
+
+@persist(storage, storageName, () =&gt; <span class="hljs-built_in">JSON</span>.parse(alt.takeSnapshot()))
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor() {
+    <span class="hljs-keyword">super</span>();
+
+    LaneActions.init(getInitialData(<span class="hljs-string">&apos;LaneStore&apos;</span>));
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addLane}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
+          <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[LaneStore]}</span>
+          <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
+            <span class="hljs-attribute">items:</span> () =&gt;</span> LaneStore.getState().lanes || []
+          } }
+        &gt;
+          <span class="hljs-tag">&lt;<span class="hljs-title">Lanes</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">AltContainer</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+  addLane() {
+    LaneActions.create(<span class="hljs-string">&apos;New lane&apos;</span>);
+  }
+}
+</code></pre>
+<p>Note that the implementation of <code>../libs/storage</code> has been changed to make it easier to operate on it through a more complex hierarchy. We&apos;ll need this later when we attach more stores to the system.</p>
+<p><strong>app/libs/storage.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> storageName = <span class="hljs-string">&apos;kanban_storage&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> storage = {
+  get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(k));
+    }
+    <span class="hljs-keyword">catch</span>(e) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+  },
+  set: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k, v</span>) </span>{
+    localStorage.setItem(k, <span class="hljs-built_in">JSON</span>.stringify(v));
+  }
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInitialData</span>(<span class="hljs-params">storeName</span>) </span>{
+  <span class="hljs-keyword">var</span> data = storage.get(storageName);
+
+  <span class="hljs-keyword">return</span> data &amp;&amp; data[storeName];
+}
+</code></pre>
+<p>Just to get the code to compile here are the initial implementations for some new actions and a store.</p>
+<p><strong>app/actions/LaneActions.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>);
+</code></pre>
+<p><strong>app/stores/LaneStore.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+<span class="hljs-keyword">import</span> LaneActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/LaneActions&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
+  constructor() {
+    <span class="hljs-keyword">this</span>.bindActions(LaneActions);
+  }
+  init(data) {
+    <span class="hljs-keyword">this</span>.setState(data || {lanes: []});
+  }
+  create(name) {
+    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
+
+    <span class="hljs-keyword">this</span>.setState({
+      lanes: lanes.concat({
+        name: name
+      })
+    });
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(LaneStore, <span class="hljs-string">&apos;LaneStore&apos;</span>);
+</code></pre>
+<p>The second parameter in <code>createStore</code> is a string that is used as a unique identifier for serializing/deserializing your store. The name of the store comes from the class name but on production due to heavy minification it is a good idea to provide your own name to avoid collisions.</p>
+<p>The idea is the same as before with notes. We are also going to need that <code>Lanes</code> container.</p>
+<p><strong>app/components/Lanes.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lanes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props: {
+    items: <span class="hljs-built_in">Array</span>;
+  }) {
+    <span class="hljs-keyword">super</span>(props);
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lanes&apos;</span>&gt;</span>
+        lanes should go here
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+}
+</code></pre>
+<p>The current implementation doesn&apos;t do much. We still need to model <code>Lane</code> and attach <code>Notes</code> to that.</p>
+<a class="header-anchor" href="#modeling-lane-" id="modeling-lane-"></a><h2>Modeling <code>Lane</code><a class="header-anchor-select" href="#modeling-lane-">#</a></h2>
+<p>To start with a <code>Lane</code> is pretty much what our <code>App</code> was earlier. This time around we&apos;ll want to render a header that contains name and a control for adding new notes within it.</p>
+<p>First of all let&apos;s extend the <code>render</code> method of <code>Lanes</code> to make some room for individual lanes:</p>
+<p><strong>app/components/Lanes.jsx</strong></p>
+<pre><code class="undefinedjavascript">import React from <span class="hljs-string">&apos;react&apos;</span>;
+
+import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
+
+<span class="hljs-built_in">export</span> default class Lanes extends React.Component {
+  constructor(props: {
+    items: Array;
+  }) {
+    super(props);
+  }
+  <span class="hljs-function"><span class="hljs-title">render</span></span>() {
+    <span class="hljs-built_in">return</span> (
+      &lt;div className=<span class="hljs-string">&apos;lanes&apos;</span>&gt;{this.props.items.map((lane, i) =&gt;
+          &lt;Lane className=<span class="hljs-string">&apos;lane&apos;</span> key={<span class="hljs-string">&apos;lane-&apos;</span> + i} i={i} {...lane} /&gt;
+      )}&lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Next we can model <code>Lane</code> based on our earlier work with <code>App</code>.</p>
+<p><strong>app/components/Lane.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes&apos;</span>;
+<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+<span class="hljs-keyword">import</span> NoteStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/NoteStore&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props: {
+    name: string;
+    i: number;
+  }) {
+    <span class="hljs-keyword">super</span>(props);
+
+    NoteActions.init();
+  }
+  render() {
+    <span class="hljs-keyword">const</span> {i, name, ...props} = <span class="hljs-keyword">this</span>.props;
+
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> {<span class="hljs-attribute">...props</span>}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane-header&apos;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane-name&apos;</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane-add-note&apos;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addNote()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
+          <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[NoteStore]}</span>
+          <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
+            <span class="hljs-attribute">items:</span> () =&gt;</span> NoteStore.getState().notes || []
+          } }
+        &gt;
+          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.noteEdited.bind(this)}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">AltContainer</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+  addNote() {
+    NoteActions.create(<span class="hljs-string">&apos;New note&apos;</span>);
+  }
+  noteEdited(id, task) {
+    <span class="hljs-keyword">if</span>(task) {
+      NoteActions.update({id, task});
+    }
+    <span class="hljs-keyword">else</span> {
+      NoteActions.remove(id);
+    }
+  }
+}
+</code></pre>
+<p>Now we have something that sort of works. You can see there&apos;s something seriously wrong, though. If you add new Notes to a Lane, the Note appears to each Lane. Also if you modify a Note, also other Lanes update. In addition created Notes aren&apos;t persisted correctly. Just Lane data appears to get saved.</p>
+<p>The reason why this happens is quite simple. Currently out <code>NoteStore</code> is a singleton. Even though this behavior is often convenient, it&apos;s definitely not the right choice for our application. We&apos;ll need to convert those singletons into separate instances.</p>
+<a class="header-anchor" href="#going-from-note-singletons-to-instances" id="going-from-note-singletons-to-instances"></a><h2>Going from Note Singletons to Instances<a class="header-anchor-select" href="#going-from-note-singletons-to-instances">#</a></h2>
+<p>A good first step towards getting rid of our Note singletons is to make our <code>NoteStore</code> more generic. We simply need to remove its direct dependency on Alt. Consider the code below:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  constructor(actions: <span class="hljs-built_in">Object</span>) {
+    <span class="hljs-keyword">this</span>.bindActions(actions);
+  }
+  ...
+}
+</code></pre>
+<p><strong>app/actions/NoteActions.js</strong></p>
+<p><code>NoteActions</code> require similar treatment as well. Otherwise we&apos;ll end up transmitting the same signal to all of our stores, and we are back to square one.</p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (alt) =&gt; alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
+</code></pre>
+<p>To make it all work together we need to tweak <code>Lane</code> to maintain actions and a store.</p>
+<p><strong>app/components/Lane.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+<span class="hljs-keyword">import</span> {getInitialData} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/storage&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes&apos;</span>;
+<span class="hljs-keyword">import</span> createNoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+<span class="hljs-keyword">import</span> NoteStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/NoteStore&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props: {
+    name: string;
+    i: number;
+  }) {
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.actions = createNoteActions(alt);
+
+    <span class="hljs-keyword">const</span> storeName = <span class="hljs-string">&apos;NoteStore-&apos;</span> + <span class="hljs-keyword">this</span>.props.i;
+    <span class="hljs-keyword">this</span>.store = alt.createStore(NoteStore, storeName, <span class="hljs-keyword">this</span>.actions);
+    <span class="hljs-keyword">this</span>.actions.init(getInitialData(storeName));
+  }
+  render() {
+    <span class="hljs-keyword">const</span> {i, name, ...props} = <span class="hljs-keyword">this</span>.props;
+
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> {<span class="hljs-attribute">...props</span>}&gt;</span>
+      ...
+        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span> <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[this.store]}</span> <span class="hljs-attribute">...</span> /&gt;</span>
+      ...
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+  addNote() {
+    <span class="hljs-keyword">this</span>.actions.create(<span class="hljs-string">&apos;New note&apos;</span>);
+  }
+  noteEdited(id, note) {
+    <span class="hljs-keyword">if</span>(note) {
+      <span class="hljs-keyword">this</span>.actions.update({id, note});
+    }
+    <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>.actions.remove(id);
+    }
+  }
+</code></pre>
+<p>Now we have something that mostly works. We have separate lanes, you can add new notes to them and modify/remote them. There are still a few bits we&apos;re missing. Namely lane name editing and lane removal. Let&apos;s get those done next.</p>
+<a class="header-anchor" href="#implementing-edit-remove-for-lane-" id="implementing-edit-remove-for-lane-"></a><h2>Implementing Edit/Remove for <code>Lane</code><a class="header-anchor-select" href="#implementing-edit-remove-for-lane-">#</a></h2>
+<p>We can follow the same idea as for <code>Note</code> here. I.e. if you click <code>Lane</code> name, it should become editable. In case the new name is empty, we&apos;ll simply remove it. Given it&apos;s the same behavior we can extract it from <code>Note</code> and then reuse at <code>Lane</code>.</p>
+<p>Given <code>Note</code> already contains some of the logic we need, we can generalize the component. Simply rename <code>Note.jsx</code> as <code>Editable.jsx</code>. Make <code>Notes.jsx</code> point at <code>Editable</code> instead of <code>Note</code>.</p>
+<p>Next we should replace <code>Lane</code> name to be rendered through <code>Editable</code>:</p>
+<p><strong>app/components/Lane.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">import</span> Editable <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Editable&apos;</span>;
+
+...
+
+&lt;Editable className=<span class="hljs-string">&apos;lane-name&apos;</span> value={name}
+  onEdit={<span class="hljs-keyword">this</span>.nameEdited.bind(<span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>.props.i)} /&gt;
+
+...
+
+nameEdited(id, name) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;edited lane name&apos;</span>, id, name);
+}
+</code></pre>
+<p>If you try to edit a lane name now, you should see a console print. We still need some logic (i.e. actions and store tweaks) to make this work. A good starting point is to sketch out the component level logic:</p>
+<p><strong>app/components/Lane.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> LaneActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/LaneActions&apos;</span>;
+
+...
+
+nameEdited(id, name) {
+  <span class="hljs-keyword">if</span>(name) {
+    LaneActions.update({id, name});
+  }
+  <span class="hljs-keyword">else</span> {
+    LaneActions.remove(id);
+  }
+}
+</code></pre>
+<p>This is exactly the same logic as for notes. In fact it is be possible to factor the behavior into a method of its own. This can be done by extracting actions into a parameter. As duplication is the root of all evil, let&apos;s change it to this form:</p>
+<p><strong>app/components/Lane.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+&lt;Editable className=<span class="hljs-string">&apos;lane-name&apos;</span> value={name}
+  onEdit={<span class="hljs-keyword">this</span>.edited.bind(<span class="hljs-literal">null</span>, LaneActions, <span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-keyword">this</span>.props.i)} /&gt;
+
+...
+
+&lt;Notes onEdit={<span class="hljs-keyword">this</span>.edited.bind(<span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>.actions, <span class="hljs-string">&apos;task&apos;</span>)} /&gt;
+
+...
+
+edited(actions, field, id, value) {
+  <span class="hljs-keyword">if</span>(value) {
+    actions.update({id, [field]: value});
+  }
+  <span class="hljs-keyword">else</span> {
+    actions.remove(id);
+  }
+}
+</code></pre>
+<p>Now our editing logic is in a single place. We could have done this modification later but this felt like a good place to do that. Sometimes it can be justified to get rid of duplicates and push them to methods, components or decorators. We are still missing some of the logic to make <code>Lane</code> edit/remove work, though. To achieve that we need to extend <code>Lane</code> actions and store.</p>
+<p><strong>app/actions/LaneActions.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
+</code></pre>
+<p>It&apos;s the same idea as for <code>NoteActions</code> apart from the way we instantiate the stores. It would be possible to extract the instantiation logic from here as well. That could be a good idea especially if you want to have multiple boards in your application.</p>
+<p>One radical option would be to use the same base class for both <code>LaneActions</code> and <code>NoteActions</code> but that feels like a premature optimization as it is difficult to say how these APIs might evolve. Some amount of duplication can be acceptable.</p>
+<p>We still need those <code>LaneStore</code> methods. Not surprisingly it&apos;s going to be very similar to the <code>NoteStore</code> implementation. Again, a possible place to clean up later.</p>
+<p><strong>app/stores/LaneStore.js</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
+  ...
+  update({id, name}) {
+    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
+
+    lanes[id].name = name;
+
+    <span class="hljs-keyword">this</span>.setState({lanes});
+  }
+  remove(id) {
+    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
+
+    <span class="hljs-keyword">this</span>.setState({
+      lanes: lanes.slice(<span class="hljs-number">0</span>, id).concat(lanes.slice(id + <span class="hljs-number">1</span>))
+    });
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(LaneStore);
+</code></pre>
+<p>After these changes you should be able to modify lane names and remove lanes. Even persistency should just work without requiring any further tweaking. The implementation could be trimmed and some code could be removed but for now it&apos;s nice to have some room to maneuver. Who knows what sort of requirements might come up after all.</p>
+<a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>In this chapter we managed to generalize our application somehow. We actually have something you can sort of use! It&apos;s not pretty and the user experience is quite horrible. Still, it&apos;s better than before. Before focusing on advanced functionality let&apos;s try to make the application look a little better and study some styling approaches.</p>
+</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/delorean.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/react_and_flux">React and Flux</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/taxi.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/styling_react">Styling React</a></div></div><a class="next-page" href="/webpack_react/styling_react">Styling React</a><a class="previous-page" href="/webpack_react/react_and_flux">React and Flux</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/61745819@N00/10588140955">Radek Orszewski (CC BY-NC-ND)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>

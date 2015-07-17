@@ -1,0 +1,200 @@
+<html><head><title>SurviveJS - Webpack and React - Authoring Libraries</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><span class="docs-nav__link docs-nav__link--current">Authoring Libraries</span><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/library.jpg);"></div><h1 class="post__heading">Authoring Libraries</h1><div class="post__content"><div class="post__meta"></div><div><p><a href="https://www.npmjs.com/">npm</a> is one of the reasons behind the popularity of Node.js. It has become the package manager for JavaScript. Although initially it was used mostly for managing backend packages, it has become increasingly popular in frontend development. As you have seen so far it is easy to consume npm packages using webpack.</p>
+<p>Eventually you might want to publish your own packages. You can consider our demo application a package of its own, sort of. We could even design applications to be pluggable so that you could glue them into a bigger whole. This would take some careful thought but in theory you could split everything up in smaller sections which you then knit together.</p>
+<a class="header-anchor" href="#anatomy-of-a-npm-package" id="anatomy-of-a-npm-package"></a><h2>Anatomy of a npm Package<a class="header-anchor-select" href="#anatomy-of-a-npm-package">#</a></h2>
+<p>Most of npm packages are small and include just a select few files such as:</p>
+<ul>
+<li><code>index.js</code> - On small projects it&apos;s enough to have the code at the root. On larger ones you may want to start splitting it up further.</li>
+<li><code>package.json</code> - npm metadata in JSON format</li>
+<li><code>README.md</code> - README is the most important document of your project. It is written in Markdown format and provides an overview. On simple projects the whole documentation can fit there. It will be shown at the package page at <code>npmjs.com</code>.</li>
+<li><code>LICENSE</code> - You should include licensing information within your project. You can refer to it from <code>package.json</code>.</li>
+</ul>
+<p>In bigger projects you may find the following:</p>
+<ul>
+<li><code>CONTRIBUTING.md</code> - A guide for potential contributors. How should the code be developed and so on.</li>
+<li><code>CHANGELOG.md</code> - This document describes major changes per version. If you do major API changes, it can be a good idea to cover them here. It is possible to generate the file based on Git commit history provided you write nice enough commits.</li>
+<li><code>.travis.yml</code> - <a href="https://travis-ci.org/">Travis CI</a> is a popular continuous integration platform that is free for open source projects. You can run the tests of your package over multiple systems using it. There are other alternatives of course but Travis is very popular.</li>
+<li><code>bower.json</code> - <a href="http://bower.io/">Bower</a> specific metadata. Bower is a popular package manager for frontend. That said, just providing npm support is often enough.</li>
+<li><code>.gitignore</code> - Ignore patterns for Git. I.e. which file shouldn&apos;t go to version control.</li>
+<li><code>.eslintignore</code> - Ignore patterns for ESLint. Again, tool specific.</li>
+<li><code>.npmignore</code> - Ignore patterns for npm. This describes which files shouldn&apos;t go to your distribution version.</li>
+<li><code>.eslintrc</code> - Linting rules. You can use <code>.jshintrc</code> etc. based on your preferences.</li>
+<li><code>webpack.config.js</code> - If you are using a simple setup, you might as well have the configuration at project root.</li>
+</ul>
+<p>In addition you&apos;ll likely have various directories for source, tests, demos, documentation and so on.</p>
+<a class="header-anchor" href="#understanding-package-json-" id="understanding-package-json-"></a><h2>Understanding <code>package.json</code><a class="header-anchor-select" href="#understanding-package-json-">#</a></h2>
+<p>All packages come with a <code>package.json</code> that describes metadata related to them. This includes information about the author, various links, dependencies and so on. The <a href="https://docs.npmjs.com/files/package.json">official documentation</a> covers them in detail.</p>
+<p>I&apos;ve annotated <code>package.json</code> of my <a href="https://github.com/survivejs/react-component-boilerplate">React component boilerplate</a> below.</p>
+<pre><code class="undefinedjson">{
+  <span class="hljs-comment">/* Name of the project */</span>
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;react-component-boilerplate&quot;</span>,
+  <span class="hljs-comment">/* Brief description */</span>
+  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Boilerplate for React.js components&quot;</span>,
+  <span class="hljs-comment">/* Who is the author + optional email */</span>
+  <span class="hljs-string">&quot;author&quot;</span>: <span class="hljs-string">&quot;Juho Vepsalainen &lt;email goes here&gt;&quot;</span>,
+  <span class="hljs-comment">/* This is boilerplate specific (not used by npm) */</span>
+  <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;bebraw&quot;</span>,
+  <span class="hljs-comment">/* Version of the package */</span>
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.0&quot;</span>,
+  <span class="hljs-comment">/* `npm run &lt;name&gt;` */</span>
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev node dev-server/server.js&quot;</span>,
+    <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;jest &amp;&amp; npm run check-style &amp;&amp; npm run lint&quot;</span>,
+    <span class="hljs-string">&quot;gh-pages&quot;</span>: <span class="hljs-string">&quot;TARGET=gh-pages webpack --config ./config&quot;</span>,
+    <span class="hljs-string">&quot;deploy-gh-pages&quot;</span>: <span class="hljs-string">&quot;TARGET=gh-pages node ./config/deploy-gh-pages.js&quot;</span>,
+    <span class="hljs-string">&quot;dist&quot;</span>: <span class="hljs-string">&quot;TARGET=dist webpack &amp;&amp; TARGET=dist-min webpack&quot;</span>,
+    <span class="hljs-string">&quot;dist-modules&quot;</span>: <span class="hljs-string">&quot;babel ./src --out-dir ./dist-modules&quot;</span>,
+    <span class="hljs-string">&quot;lint&quot;</span>: <span class="hljs-string">&quot;eslint . --ext .js --ext .jsx&quot;</span>,
+    <span class="hljs-string">&quot;check-style&quot;</span>: <span class="hljs-string">&quot;jscs .&quot;</span>,
+    <span class="hljs-string">&quot;replace-meta&quot;</span>: <span class="hljs-string">&quot;node scripts/replace_meta.js&quot;</span>,
+    <span class="hljs-string">&quot;preversion&quot;</span>: <span class="hljs-string">&quot;npm run test &amp;&amp; npm run dist &amp;&amp; npm run dist-modules &amp;&amp; git commit -am \&quot;Update dist\&quot;&quot;</span>,
+    <span class="hljs-string">&quot;postpublish&quot;</span>: <span class="hljs-string">&quot;npm run gh-pages &amp;&amp; npm run deploy-gh-pages&quot;</span>
+  },
+  <span class="hljs-comment">/* Entry point for terminal (i.e. &lt;package name&gt;) */</span>
+  <span class="hljs-comment">/* Don&apos;t set this unless you intend to allow cli usage */</span>
+  <span class="hljs-string">&quot;bin&quot;</span>: <span class="hljs-string">&quot;./index.js&quot;</span>,
+  <span class="hljs-comment">/* Entry point (defaults to index.js) */</span>
+  <span class="hljs-string">&quot;main&quot;</span>: <span class="hljs-string">&quot;dist-modules/index.js&quot;</span>,
+  <span class="hljs-comment">/* Package dependencies (small if possible) */</span>
+  <span class="hljs-string">&quot;dependencies&quot;</span>: {},
+  <span class="hljs-comment">/* Package development dependencies */</span>
+  <span class="hljs-string">&quot;devDependencies&quot;</span>: {
+    <span class="hljs-string">&quot;babel&quot;</span>: <span class="hljs-string">&quot;^5.1.10&quot;</span>,
+    <span class="hljs-string">&quot;babel-eslint&quot;</span>: <span class="hljs-string">&quot;^3.0.1&quot;</span>,
+    <span class="hljs-string">&quot;babel-loader&quot;</span>: <span class="hljs-string">&quot;^5.0.0&quot;</span>,
+    ...
+    <span class="hljs-string">&quot;webpack&quot;</span>: <span class="hljs-string">&quot;^1.8.4&quot;</span>,
+    <span class="hljs-string">&quot;webpack-dev-server&quot;</span>: <span class="hljs-string">&quot;^1.8.0&quot;</span>
+  },
+  <span class="hljs-comment">/* You may want to give a rough dependency hint for things
+   * like React components. The idea is to avoid depending
+   * directly and let user deal with it instead.
+   *
+   * If the rule is too strict, that will cause problems for
+   * the user. */</span>
+  <span class="hljs-string">&quot;peerDependencies&quot;</span>: {
+    <span class="hljs-string">&quot;react&quot;</span>: <span class="hljs-string">&quot;&gt;=0.11.2 &lt;1.0.0&quot;</span>
+  },
+  <span class="hljs-comment">/* Links to repository, homepage and so on */</span>
+  <span class="hljs-string">&quot;repository&quot;</span>: {
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;git&quot;</span>,
+    <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://github.com/bebraw/react-component-boilerplate.git&quot;</span>
+  },
+  <span class="hljs-string">&quot;homepage&quot;</span>: <span class="hljs-string">&quot;https://bebraw.github.io/react-component-boilerplate/&quot;</span>,
+  <span class="hljs-string">&quot;bugs&quot;</span>: {
+    <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://github.com/bebraw/react-component-boilerplate/issues&quot;</span>
+  },
+  <span class="hljs-comment">/* Keywords related to package,
+   * fill this well to make the package findable */</span>
+  <span class="hljs-string">&quot;keywords&quot;</span>: [
+    <span class="hljs-string">&quot;react&quot;</span>,
+    <span class="hljs-string">&quot;reactjs&quot;</span>,
+    <span class="hljs-string">&quot;boilerplate&quot;</span>
+  ],
+  <span class="hljs-comment">/* Which license to use */</span>
+  <span class="hljs-string">&quot;license&quot;</span>: <span class="hljs-string">&quot;MIT&quot;</span>,
+  <span class="hljs-comment">/* Jest specific metadata */</span>
+  <span class="hljs-string">&quot;jest&quot;</span>: {
+    <span class="hljs-string">&quot;scriptPreprocessor&quot;</span>: <span class="hljs-string">&quot;./config/preprocessor.js&quot;</span>,
+    <span class="hljs-string">&quot;unmockedModulePathPatterns&quot;</span>: [
+      <span class="hljs-string">&quot;./node_modules/react&quot;</span>
+    ]
+  }
+}
+</code></pre>
+<p>As you can see <code>package.json</code> can contain a lot of information. You can attach non-npm specific metadata there that can be used by tooling.</p>
+<a class="header-anchor" href="#npm-workflow" id="npm-workflow"></a><h2>npm Workflow<a class="header-anchor-select" href="#npm-workflow">#</a></h2>
+<p>Working with npm is surprisingly simple. Provided you have created an account on the service and logged in once using <a href="https://docs.npmjs.com/cli/adduser">npm adduser</a>, all you need to do is to hit <code>npm publish</code>. Given that the package name is still available, you should have something out there!</p>
+<blockquote class="tip">Before starting to develop it can be a good idea to spend a little bit of time on that naming issue. It&apos;s not very fun to write an awesome package just to notice the name has been taken. Save some time and nerves by doing a little bit of research. With some luck you could find something fitting your purposes and avoid the chore of writing a library.</blockquote><blockquote class="tip">As of npm 2.7.0 it is possible to create <a href="https://docs.npmjs.com/getting-started/scoped-packages">scoped packages</a>. They follow format <code>@username/project-name</code>. Simply follow that format when naming your project.</blockquote><p>Bumping a version is simple too. You&apos;ll just need to invoke <code>npm version &lt;x.y.z&gt;</code>. That will update <code>package.json</code> and create a version commit automatically. If you hit <code>npm publish</code>, you should have something new out there.</p>
+<p>Note that in the example above I&apos;ve set up <code>version</code> related hooks to make sure a version will contain a fresh version of a distribution build and it will get tested just in case.</p>
+<blockquote class="tip">It can be useful to use <code>npm link</code> during development. That will allow you to use a development version of your library from some other context. Node will resolve to the linked version unless local <code>node_modules</code> happens to contain a version.</blockquote><p>Sometimes you might want to publish something preliminary for other people to test. In that case you can hit <code>npm publish --tag beta</code>. After that your users can install the tagged version using <code>npm i &lt;your package name&gt;@beta</code>.</p>
+<p>An alternative way to consume a library is to point at it directly at <code>package.json</code>. In that case you can do <code>&quot;depName&quot;: &quot;&lt;github user&gt;/&lt;project&gt;#&lt;reference&gt;&quot;</code> where <code>&lt;reference&gt;</code> can be either commit hash, tag or branch. This can be useful especially if you need to hack around something and cannot wait for a fix.</p>
+<a class="header-anchor" href="#respect-the-semver" id="respect-the-semver"></a><h2>Respect the SemVer<a class="header-anchor-select" href="#respect-the-semver">#</a></h2>
+<p>Even though it is simple to publish new versions out there, it is important to respect the SemVer. Roughly it states that you should not break backwards compatibility given certain rules are met. E.g. if your current version is <code>0.1.4</code> and you do a breaking change, you should bump to <code>0.2.0</code> and document the changes. You can understand SemVer much better by studying <a href="http://semver.npmjs.com/">the online tool</a> and how it behaves.</p>
+<a class="header-anchor" href="#library-formats" id="library-formats"></a><h2>Library Formats<a class="header-anchor-select" href="#library-formats">#</a></h2>
+<p>I output my React component in various formats at my boilerplate. I generate a version that&apos;s convenient to consume from Node by processing my component code through Babel. That will convert ES6 etc. goodies to a format which is possible to consume from vanilla Node. This allows the user to refer to some specific module within the whole if needed.</p>
+<p>In addition I generate so called <em>distribution bundles</em>: <code>.js</code> and <code>.min.js</code>. In addition there&apos;s a sourcemap (<code>.map</code>) for both. That is useful for debugging. It is possible to consume these bundles standalone. They come with an <a href="https://github.com/umdjs/umd">UMD</a> wrapper.</p>
+<p>UMD makes it possible to consume them from various environments including global, AMD and CommonJS (Node format). You can refresh your memory with these by checking the Getting Started chapter for examples.</p>
+<p>It is surprisingly easy to generate the aforementioned bundles using webpack. In case of my boilerplate the configuration is as follows:</p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">var</span> mergeDist = merge.bind(<span class="hljs-literal">null</span>, {
+    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
+    output: {
+        path: config.paths.dist,
+        libraryTarget: <span class="hljs-string">&apos;umd&apos;</span>,
+        library: config.library
+    },
+    entry: config.paths.lib,
+    externals: {
+        react: <span class="hljs-string">&apos;react&apos;</span>,
+        <span class="hljs-string">&apos;react/addons&apos;</span>: <span class="hljs-string">&apos;react/addons&apos;</span>
+    },
+    <span class="hljs-built_in">module</span>: {
+        loaders: [
+            {
+                test: <span class="hljs-regexp">/\.jsx?$/</span>,
+                loaders: [<span class="hljs-string">&apos;babel&apos;</span>],
+                include: config.paths.lib
+            }
+        ]
+    }
+});
+
+exports.dist = mergeDist({
+    output: {
+        filename: config.filename + <span class="hljs-string">&apos;.js&apos;</span>
+    },
+});
+
+exports.distMin = mergeDist({
+    output: {
+        filename: config.filename + <span class="hljs-string">&apos;.min.js&apos;</span>
+    },
+    plugins: [
+        <span class="hljs-keyword">new</span> webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: <span class="hljs-literal">false</span>
+            }
+        })
+    ]
+});
+</code></pre>
+<blockquote class="tip">The example uses the same <code>merge</code> utility we defined earlier on. You should check <a href="https://github.com/bebraw/react-component-boilerplate">the boilerplate</a> itself for exact configuration.</blockquote><p>Most of the magic happens thanks to <code>devtool</code> and <code>output</code> declarations. In addition I have set up <code>externals</code> as I want to avoid bundling React into my library. Instead if will be loaded as an external dependency using the naming defined in the mapping.</p>
+<a class="header-anchor" href="#npm-lifecycle-hooks" id="npm-lifecycle-hooks"></a><h2>npm Lifecycle Hooks<a class="header-anchor-select" href="#npm-lifecycle-hooks">#</a></h2>
+<p>npm provides various lifecycle hook that can be useful. Let&apos;s say you are authoring a React component using Babel and some of its goodies. Even though you could let <code>package.json</code> <em>main</em> field point at the UMD version as generated above, this won&apos;t be ideal for those who consume it through npm.</p>
+<p>It is better to generate a ES5 compatible version of the package for npm consumers. This can be achieved using <strong>babel</strong> cli tool:</p>
+<pre><code class="undefinedbash">babel ./lib --out-dir ./dist-modules
+</code></pre>
+<p>This will walk through <code>./lib</code> directory and output a processed file for each it encounters to <code>./dist-modules</code>.</p>
+<p>Since we want to avoid having to run the command directly whenever we publish a new version, we can connect it to <code>prepublish</code> hook like this:</p>
+<pre><code class="undefinedjson"><span class="hljs-string">&quot;scripts&quot;</span>: {
+  ...
+  <span class="hljs-string">&quot;prepublish&quot;</span>: <span class="hljs-string">&quot;babel ./lib --out-dir ./dist-modules&quot;</span>
+}
+</code></pre>
+<p>Make sure you hit <code>npm i babel --save-dev</code> to include the tool into your project.</p>
+<p>As you probably don&apos;t want the directory content to end up to your Git repository accidentally and prefer to keep your <code>git status</code> clean, you should modify your <code>.gitignore</code> like this:</p>
+<pre><code class="undefinedbash">dist-modules/
+...
+</code></pre>
+<blockquote class="tip">Dealing with regular <code>dist</code> that gets versioned is trickier. Ideally the contents of it would get updated when you hit <code>npm version</code> and get into the version commit npm performs. I&apos;ve set up a custom <code>npm run</code> script for this in the example above. It will run tests, generate a distribution build and hit <code>npm version</code> internally. Basic idea: <code>&quot;version&quot;: &quot;npm run test &amp;&amp; npm run dist &amp;&amp; npm version \&quot;$@\&quot; &amp;&amp; npm run gh-pages &amp;&amp; npm run deploy-gh-pages&quot;</code>.</blockquote><p>Besides <code>prepublish</code> npm provides a set of other hooks. The naming is always the same and follows pattern <code>pre&lt;hook&gt;</code>, <code>&lt;hook&gt;</code>, <code>post&lt;hook&gt;</code> where <code>&lt;hook&gt;</code> can be <code>publish</code>, <code>install</code>, <code>test</code>, <code>stop</code>, <code>start</code>, <code>restart</code>.</p>
+<p>Even though npm will trigger scripts bound to these automatically, you can trigger them explicitly through <code>npm run</code> for testing (i.e. <code>npm run prepublish</code>). Regardless of the usage, the idea here is that we want to make our package as easy to consume and let our users get away with the least possible amount of work on their part.</p>
+<p>There are plenty of smaller tricks to learn for advanced usage but those are better covered by <a href="https://docs.npmjs.com/misc/scripts">the official documentation</a>. Often all you need is just a <code>prepublish</code> script for build automation.</p>
+<a class="header-anchor" href="#keeping-dependencies-up-to-date" id="keeping-dependencies-up-to-date"></a><h2>Keeping Dependencies Up to Date<a class="header-anchor-select" href="#keeping-dependencies-up-to-date">#</a></h2>
+<p>An important part of maintaining npm packages is keeping their dependencies up to date. How to do this depends a lot on the maturity of your package. Ideally you have a nice set of tests covering the functionality. If not, things can get a little hairier.</p>
+<p>There are a few ways to approach dependency updates:</p>
+<ul>
+<li>You can update all dependencies at once and hope for the best. Tools such as <a href="https://www.npmjs.com/package/npm-check-updates">npm-check-updates</a> or <a href="https://www.npmjs.com/package/mankees-update_deps">mankees-update_deps</a> can do this for you. Remember to invoke <code>npm i</code> after to make sure you have the right dependencies installed for testing the changes.</li>
+<li>Install newest version of some specific dependency. I.e. <code>npm install lodash@* --save</code>. This is more controlled way to approach the problem.</li>
+<li>Patch version information by hand by modifying <code>package.json</code> directly.</li>
+</ul>
+<p>It is important to remember that your dependencies may introduce backwards incompatible changes. Therefore it can be useful to remember how SemVer works and study dependency release notes, if they exist, carefully. You should at least walk through version history to see what changes have been made and how they might affect you.</p>
+<p>As keeping track of important changes can be a chore, there are a few services that can help you with that: <a href="https://david-dm.org/">David</a>, <a href="https://www.versioneye.com/">versioneye</a>, <a href="https://gemnasium.com">Gemnasium</a>. These services provide badges you can integrate into your project <code>README.md</code>. In addition they may email you about important changes and even point out possible security issues that have been fixed.</p>
+<p>For testing your projects you can consider solutions such as <a href="https://travis-ci.org/">Travis CI</a> or <a href="https://saucelabs.com/">SauceLabs</a>. Many others exist. The advantage of these is that they allow you to test your updates against a variety of platforms quickly. Something that might work on your system might not work in some specific configuration. You&apos;ll want to know about that as fast as possible to avoid introducing problems for your package consumers.</p>
+<a class="header-anchor" href="#sharing-authorship" id="sharing-authorship"></a><h2>Sharing Authorship<a class="header-anchor-select" href="#sharing-authorship">#</a></h2>
+<p>As packages evolve you may want to start developing with others. You could become the new maintainer of some project or pass the torch to someone other. These things happen as packages evolve.</p>
+<p>npm provides a few commands for these purposes. It&apos;s all behind <code>npm owner</code> namespace. More specifically you&apos;ll find <code>ls &lt;package name&gt;</code>, <code>add &lt;user&gt; &lt;package name&gt;</code> and <code>rm &lt;user&gt; &lt;package name&gt;</code> there (i.e. <code>npm owner ls</code>). That&apos;s about it.</p>
+<p>See <a href="https://docs.npmjs.com/cli/owner">npm documentation</a> for most up to date information about the topic.</p>
+<a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>You should have a basic idea on how to author npm libraries with the help of webpack now. It takes a lot of effort out of the process. Just keep the basic rules in mind when developing and remember to respect the SemVer.</p>
+</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/boots.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/deploying_applications">Deploying Applications</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/scream.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/troubleshooting">Troubleshooting</a></div></div><a class="next-page" href="/webpack_react/troubleshooting">Troubleshooting</a><a class="previous-page" href="/webpack_react/deploying_applications">Deploying Applications</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/19219926@N04/3707001321">Duke University Archives (CC BY-NC-SA)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>

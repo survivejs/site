@@ -1,0 +1,425 @@
+<html><head><title>SurviveJS - Webpack and React - React and Flux</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><span class="docs-nav__link docs-nav__link--current">React and Flux</span><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/delorean.jpg);"></div><h1 class="post__heading">React and Flux</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/05_implementing_notes/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_react_and_flux/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/06_react_and_flux" target="_blank">Demo</a></div></div><div><p><a href="https://facebook.github.io/flux/docs/overview.html">Flux application architecture</a> helps to bring clarity to our React applications. You can get quite far by keeping everything in components but eventually that will become painful. Flux provides one way out of this.</p>
+<p>In this chapter we will be using <a href="http://alt.js.org/">Alt</a>, a light Flux implementation. It gets rid of a lot of baggage provided with Flux and allows you to focus on the essential. It was chosen because it&apos;s versatile enough and has a strong community behind it. At the time of writing it was the most popular implementation based on npm download statistics.</p>
+<p>There are dozens of other Flux implementations out there. <a href="https://github.com/voronianski/flux-comparison">voronianski/flux-comparison</a> is a good starting point if you are interested in alternatives.</p>
+<blockquote class="tip">For debugging purposes you might want to pick up <a href="https://github.com/goatslacker/alt-devtool">alt-devtool</a>, a Chrome plugin. It won&apos;t be absolutely necessary but it might come in handy.</blockquote><a class="header-anchor" href="#introduction-to-flux" id="introduction-to-flux"></a><h2>Introduction to Flux<a class="header-anchor-select" href="#introduction-to-flux">#</a></h2>
+<p>So far we have all of state within our components. It will become complicated to manage as we grow our application. Flux allows us to push some of it outside into <strong>Stores</strong>. After that we don&apos;t need to care <em>how</em> the state is derived. It could be fetched from a backend or it could come from <em>localStorage</em>. On component <strong>View</strong> level we don&apos;t need to care.</p>
+<p>Stores may be modified through <strong>Actions</strong>. In our Notes application we could define a set of basic operations such as <code>create</code>, <code>update</code> and <code>remove</code>. We would then trigger these Actions at our View. This in turn would cause Store to change which in turn would cause our components to update.</p>
+<p>As you can see it&apos;s a cyclic system. This makes Flux easy to reason about and to visualize. The original architecture contains one extra component, <strong>Dispatcher</strong>, but we will skip it in this case as in practice you can get far by keeping it implicit. It is a part that would sit between Actions and Stores. Dispatchers would allow more fine-grained control over which Stores an Action would trigger.</p>
+<a class="header-anchor" href="#relay-an-alternative-" id="relay-an-alternative-"></a><h2>Relay - an Alternative?<a class="header-anchor-select" href="#relay-an-alternative-">#</a></h2>
+<p>Flux isn&apos;t without its problems. Facebook&apos;s <a href="https://gist.github.com/wincent/598fa75e22bdfa44cf47">Relay architecture</a> aims to solve some of those. Most importantly Relay allows you to push component data requirements to component level. It then composes queries based on this information.</p>
+<p>This means Relay would fit particularly well cases where you need to deal with asynchronous data fetching from server. In case you are using Flux this can become quite complicated. Relay uses a specific query language known as <strong>GraphQL</strong> to abstract this. You will need a backend compatible with it. It will likely be possible to build adapters on top of RESTful APIs to provide support for GraphQL.</p>
+<p>At least in the time of writing no open source Relay/GraphQL implementation exists. For now it&apos;s a good idea to learn Flux as it will greatly simplify React development.</p>
+<a class="header-anchor" href="#porting-notes-application-to-alt" id="porting-notes-application-to-alt"></a><h2>Porting Notes Application to Alt<a class="header-anchor-select" href="#porting-notes-application-to-alt">#</a></h2>
+<p><img src="/images/alt.png" alt="Alt"></p>
+<p>Alt is an implementation of Flux that doesn&apos;t get into your way. The implementation supports isomorphic rendering out of the box and supports interesting features such as snapshots. We can take a snapshot of our application and restore its state back to where it was. To get started <code>npm i alt --save</code> to add the dependency we need to our project.</p>
+<a class="header-anchor" href="#defining-actions" id="defining-actions"></a><h3>Defining Actions<a class="header-anchor-select" href="#defining-actions">#</a></h3>
+<p>As discussed earlier, we&apos;ll need a set of actions to operate on our data. In terms of Alt it would look like this:</p>
+<p><strong>app/actions/NoteActions.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(<span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
+</code></pre>
+<a class="header-anchor" href="#defining-store" id="defining-store"></a><h3>Defining Store<a class="header-anchor-select" href="#defining-store">#</a></h3>
+<p>Next we will need to define a Store that maintains the data based on these actions:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  constructor() {
+    <span class="hljs-keyword">this</span>.bindActions(NoteActions);
+
+    <span class="hljs-keyword">this</span>.notes = [];
+  }
+  create(task) {
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
+
+    <span class="hljs-keyword">this</span>.setState({
+      notes: notes.concat({task})
+    });
+  }
+  update({id, task}) {
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
+
+    notes[id].task = task;
+
+    <span class="hljs-keyword">this</span>.setState({notes});
+  }
+  remove(id) {
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
+
+    <span class="hljs-keyword">this</span>.setState({
+      notes: notes.slice(<span class="hljs-number">0</span>, id).concat(notes.slice(id + <span class="hljs-number">1</span>))
+    });
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore);
+</code></pre>
+<p><code>bindActions</code> is a shortcut that allows us to map Action handlers automatically based on name. We need to use a factory in order to pass Actions to Store.</p>
+<p>The Store listens to our actions and then updates its state accordingly. The functions have been adapted based on our earlier implementation of <code>App</code>.</p>
+<blockquote class="tip">It would be possible to operate directly on data. E.g. a oneliner such as <code>this.notes.splice(id, 1)</code> would work for <code>remove</code>. Even though this works it is recommended that you use <code>setState</code> with Alt to keep things clear.</blockquote><a class="header-anchor" href="#maintaining-an-instance-of-alt" id="maintaining-an-instance-of-alt"></a><h3>Maintaining an Instance of Alt<a class="header-anchor-select" href="#maintaining-an-instance-of-alt">#</a></h3>
+<p>We will also need a module to maintain an instance of Alt. It will deal with coordination of our Actions and Stores.</p>
+<blockquote class="tip">There is a Chrome plugin known as <a href="https://github.com/goatslacker/alt-devtool">alt-devtool</a>. After installed you can connect Alt with it by uncommenting the lines below. You can use it to debug the state of your stores, search and travel in time.</blockquote><p><strong>app/libs/alt.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> Alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt&apos;</span>;
+<span class="hljs-comment">//import chromeDebug from &apos;alt/utils/chromeDebug&apos;;</span>
+
+<span class="hljs-keyword">const</span> alt = <span class="hljs-keyword">new</span> Alt();
+<span class="hljs-comment">//chromeDebug(alt);</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt;
+</code></pre>
+<a class="header-anchor" href="#gluing-it-all-together" id="gluing-it-all-together"></a><h3>Gluing It All Together<a class="header-anchor-select" href="#gluing-it-all-together">#</a></h3>
+<p>Finally we&apos;ll need to tweak our <code>App</code> to operate based on <code>NoteStore</code> and <code>NoteActions</code>:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes&apos;</span>;
+<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+<span class="hljs-keyword">import</span> NoteStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/NoteStore&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.state = NoteStore.getState();
+  }
+  componentDidMount() {
+    NoteStore.listen(<span class="hljs-keyword">this</span>.storeChanged);
+  }
+  componentWillUnmount() {
+    NoteStore.unlisten(<span class="hljs-keyword">this</span>.storeChanged);
+  }
+  storeChanged(state) {
+    <span class="hljs-keyword">this</span>.setState(state);
+  }
+  render() {
+    <span class="hljs-keyword">var</span> notes = <span class="hljs-keyword">this</span>.state.notes;
+
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addItem()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.itemEdited.bind(this)}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+  addItem() {
+    NoteActions.create(<span class="hljs-string">&apos;New task&apos;</span>);
+  }
+  itemEdited(id, task) {
+    <span class="hljs-keyword">if</span>(task) {
+      NoteActions.update({id, task});
+    }
+    <span class="hljs-keyword">else</span> {
+      NoteActions.remove(id);
+    }
+  }
+}
+</code></pre>
+<p>As you can see, we pushed the logic out of our application. We actually have more code now than before. On the plus side we managed to tidy up our <code>App</code> a little bit.</p>
+<a class="header-anchor" href="#on-component-design" id="on-component-design"></a><h2>On Component Design<a class="header-anchor-select" href="#on-component-design">#</a></h2>
+<p>Note that given we are using Flux now and have concepts of Actions and Stores, we can push logic lower in the hierarchy if we want to; i.e. in case of <code>Notes</code> we could trigger the actions we want there. This depends on what sort of coupling we want to create between components.</p>
+<p>One alternative would be to factor <code>Notes</code> like this:</p>
+<pre><code class="undefinedjavascript"><span class="hljs-tag">&lt;<span class="hljs-title">Notes</span>
+  <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span>
+  <span class="hljs-attribute">item</span>=<span class="hljs-value">{(note,</span> <span class="hljs-attribute">i</span>) =&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{...}</span>&gt;</span>{item.task}<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>} /&gt;
+</code></pre>
+<p>Now we give the consumer absolute control over how list items are rendered. This approach is more generic than our <code>onEdit</code> property and allows you to customize components significantly more.</p>
+<p>More specific components can be developed on top of generic ones. You could have a set of generic components you use from project to project and share as libraries. These would be then wrapped by more specific ones based on need.</p>
+<a class="header-anchor" href="#what-s-the-point-" id="what-s-the-point-"></a><h2>What&apos;s the Point?<a class="header-anchor-select" href="#what-s-the-point-">#</a></h2>
+<p>Fortunately the effort was not all in vain. Consider the following questions:</p>
+<ol>
+<li>Let&apos;s say we wanted to persist the Notes within <code>localStorage</code>, where would you implement that? It would be natural to plug that into our <code>NoteStore</code>.</li>
+<li>What if we had multiple components relying on the data? We would just consume <code>NoteStore</code> and display it however we want.</li>
+<li>What if we had multiple, separate Note lists for different type of tasks? We would set up multiple instances of <code>NoteStore</code>. If we wanted to move items between lists, we would already have ready-made Actions for that purpose.</li>
+</ol>
+<p>This is what makes Flux a strong architecture when used with React. It isn&apos;t hard to find answers to questions like these. Even though there is more code it is easier to reason about. Given we are dealing with unidirectional flow we have something that is simple to debug and test.</p>
+<a class="header-anchor" href="#implementing-persistency-over-localstorage-" id="implementing-persistency-over-localstorage-"></a><h2>Implementing Persistency over <code>localStorage</code><a class="header-anchor-select" href="#implementing-persistency-over-localstorage-">#</a></h2>
+<p>Given it&apos;s not nice to lose your Notes during a refresh, we can tweak our implementation of <code>NoteStore</code> to persist the data on change. Most of the work is related to <code>localStorage</code>. In order to deal with it, here&apos;s a little wrapper:</p>
+<p><strong>app/libs/storage.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(k));
+    }
+    <span class="hljs-keyword">catch</span>(e) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+  },
+  set: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k, v</span>) </span>{
+    localStorage.setItem(k, <span class="hljs-built_in">JSON</span>.stringify(v));
+  }
+};
+</code></pre>
+<p>As <code>localStorage</code> deals with strings by default we&apos;ll need to serialize and deserialize data. That brings some overhead to the implementation. A smarter implementation would abstract storage and provide some form of caching to avoid <code>JSON.parse</code> always.</p>
+<p>In addition it would take <code>localStorage</code> size limits in count. Most browsers raise an exception if you try to write even though there is no space left. Internet Explorer can fail silently and you will have to treat that case separately by inspecting a property containing remaining space.</p>
+<p>Besides this little utility we&apos;ll need to adapt our application to use it.</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> storage <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/storage&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
+
+    NoteActions.init(storage.get(<span class="hljs-string">&apos;notes&apos;</span>));
+    <span class="hljs-keyword">this</span>.state = NoteStore.getState();
+  }
+  ...
+  storeChanged(state) {
+    storage.set(<span class="hljs-string">&apos;notes&apos;</span>, state);
+
+    <span class="hljs-keyword">this</span>.setState(NoteStore.getState());
+  }
+  ...
+}
+</code></pre>
+<p>The idea is that when the application is initialized, we&apos;ll read <code>localStorage</code> and initialize Store state using it. If the Store gets changed, we&apos;ll write the changes to <code>localStorage</code>. For this to work we&apos;ll need to tweak Actions and Store slightly.</p>
+<p><strong>app/actions/NoteActions.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
+</code></pre>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
+  constructor() {
+    <span class="hljs-keyword">this</span>.bindActions(NoteActions);
+
+    <span class="hljs-keyword">this</span>.notes = [];
+  }
+  init(data) {
+    <span class="hljs-keyword">this</span>.setState(<span class="hljs-built_in">Array</span>.isArray(data &amp;&amp; data.notes) ? data : {
+      notes: []
+    });
+  }
+  ...
+}
+</code></pre>
+<p>Now we have an application that can restore its state based on <code>localStorage</code>. It would be fairly simple to replace the backend with something else. We would just need to implement the storage interface again.</p>
+<p>In the current solution persistency logic is coupled with <code>App</code>. Given it would be nice to reuse it elsewhere, we can extract it to a higher order component. Let&apos;s do that next.</p>
+<a class="header-anchor" href="#extracting-higher-order-components" id="extracting-higher-order-components"></a><h2>Extracting Higher Order Components<a class="header-anchor-select" href="#extracting-higher-order-components">#</a></h2>
+<p>There are a couple of places in <code>App</code> we would like to clean up. The code is simply getting confusing. We can separate some of that into higher order components (HOCs).</p>
+<p>A higher order component is a React component which can be used to wrap another component and apply some behavior to it. It is easier to understand how they work through a couple of examples.</p>
+<a class="header-anchor" href="#pushing-persistency-to-a-hoc" id="pushing-persistency-to-a-hoc"></a><h3>Pushing Persistency to a HOC<a class="header-anchor-select" href="#pushing-persistency-to-a-hoc">#</a></h3>
+<p>Persistency can be pushed to a HOC like this:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> persist <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../decorators/persist&apos;</span>;
+<span class="hljs-keyword">import</span> storage <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/storage&apos;</span>;
+
+<span class="hljs-keyword">const</span> noteStorageName = <span class="hljs-string">&apos;notes&apos;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    NoteActions.init(storage.get(noteStorageName));
+
+    <span class="hljs-keyword">this</span>.state = NoteStore.getState();
+  }
+  ...
+  storeChanged() {
+    <span class="hljs-keyword">this</span>.setState(NoteStore.getState());
+  }
+  ...
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> persist(App, storage, noteStorageName, () =&gt; NoteStore.getState());
+</code></pre>
+<p><strong>app/decorators/persist.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (Component, storage, storageName, getData) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Persist</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    constructor(props) {
+      <span class="hljs-keyword">super</span>(props);
+
+      <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">&apos;beforeunload&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// escape hatch for debugging</span>
+        <span class="hljs-keyword">if</span>(!storage.get(<span class="hljs-string">&apos;debug&apos;</span>)) {
+          storage.set(storageName, getData());
+        }
+      }, <span class="hljs-literal">false</span>);
+    }
+    render() {
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Component</span> {<span class="hljs-attribute">...this.props</span>} {<span class="hljs-attribute">...this.state</span>} /&gt;</span>;</span>
+    }
+  };
+};
+</code></pre>
+<p>As you can see it is a component that triggers the decorator and renders the component we pass to it. We have more code than earlier but we have factored it better. If you want to persist some other component, it is simple now.</p>
+<p>Given it can be useful to be able to disable the behavior temporarily, I built an escape hatch. In case you hit <code>localStorage.setItem(&apos;debug&apos;, true)</code> at browser console, the behavior gets disabled. Set it back to <code>false</code> in order to enable it again. If you want to clear whole <code>localStorage</code> for some reason, you can just hit <code>localStorage.clear()</code>.</p>
+<blockquote class="tip">The implementation of <code>persist</code> could be pushed further using <code>alt.takeSnapshot</code> and <code>alt.bootstrap</code> functions. That would allow us to implement a generic version for the whole application should we want to.</blockquote><blockquote class="warning">Our <code>persist</code> implementation isn&apos;t without its flaws. It is easy to end up in a situation where <code>localStorage</code> contains invalid data due to changes made to the data model. This brings you to the world of database schemas and migrations. There are no easy solutions. Regardless this is something to keep in mind when developing something more sophisticated. The lesson here is that the more you inject state to your application, the more complicated it gets.</blockquote><blockquote class="warning">Another to keep in mind is that <code>beforeunload</code> doesn&apos;t get triggered in case something catastrophic happens (e.g. browser crashes). Therefore it could be justified to trigger <code>storage.set</code> on each change.</blockquote><a class="header-anchor" href="#pushing-connection-to-a-hoc" id="pushing-connection-to-a-hoc"></a><h3>Pushing Connection to a HOC<a class="header-anchor-select" href="#pushing-connection-to-a-hoc">#</a></h3>
+<p>We can implement a decorator for connecting a component to a Store as well. Here&apos;s an example:</p>
+<p><strong>app/decorators/connect.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (Component, store) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Connect</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    constructor(props) {
+      <span class="hljs-keyword">super</span>(props);
+
+      <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
+      <span class="hljs-keyword">this</span>.state = store.getState();
+
+      store.listen(<span class="hljs-keyword">this</span>.storeChanged);
+    }
+    componentWillUnmount() {
+      store.unlisten(<span class="hljs-keyword">this</span>.storeChanged);
+    }
+    storeChanged() {
+      <span class="hljs-keyword">this</span>.setState(store.getState());
+    }
+    render() {
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Component</span> {<span class="hljs-attribute">...this.props</span>} {<span class="hljs-attribute">...this.state</span>} /&gt;</span>;</span>
+    }
+  };
+};
+</code></pre>
+<p>You can connect it with <code>App</code> like this:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">import</span> connect <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../decorators/connect&apos;</span>;
+
+...
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props: {
+    notes: <span class="hljs-built_in">Array</span>;
+  }) {
+    <span class="hljs-keyword">super</span>(props);
+
+    NoteActions.init(storage.get(noteStorageName));
+  }
+  <span class="hljs-comment">/*
+  These lines can be eliminated now!
+
+  componentDidMount() {
+    NoteStore.listen(this.storeChanged);
+  }
+  componentWillUnmount() {
+    NoteStore.unlisten(this.storeChanged);
+  }
+  storeChanged() {
+    this.setState(NoteStore.getState());
+  }
+  */</span>
+  render() {
+    <span class="hljs-keyword">var</span> notes = <span class="hljs-keyword">this</span>.props.notes;
+
+    ...
+  }
+  ...
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> persist(
+  connect(App, NoteStore),
+  storage,
+  noteStorageName,
+  () =&gt; NoteStore.getState()
+);
+</code></pre>
+<p>Now the implementation of our <code>App</code> is quite clean. We have managed to separate various concerns into separate aspects. We can take the approach further by converting our HOCs into decorators.</p>
+<a class="header-anchor" href="#converting-hocs-to-decorators" id="converting-hocs-to-decorators"></a><h2>Converting HOCs to Decorators<a class="header-anchor-select" href="#converting-hocs-to-decorators">#</a></h2>
+<p>If you have used languages such as Java or Python before you might be familiar with the concept of decorators. They are syntactical sugar that allow us to wrap classes and functions. They just provide a nicer syntax for HOCs essentially.</p>
+<p>There is a <a href="https://github.com/wycats/javascript-decorators">Stage 1 decorator proposal</a> for JavaScript. We&apos;ll be using that. There are a couple of tooling related gotchas we should patch before moving further.</p>
+<p>By definition a decorator is simply a function that returns a function. For instance invocation of our <code>persist</code> decorator could look like <code>persist(storage, noteStorageName, () =&gt; NoteStore.getState())(App)</code> without using the decorator syntax (<code>@persist(storage, ...)</code>).</p>
+<a class="header-anchor" href="#patching-tools-to-work-with-decorators" id="patching-tools-to-work-with-decorators"></a><h3>Patching Tools to Work with Decorators<a class="header-anchor-select" href="#patching-tools-to-work-with-decorators">#</a></h3>
+<p><img src="/images/flowcheck.png" alt="Flowcheck"></p>
+<p>As we&apos;ll be relying on decorators and still like to use Flowcheck, we&apos;ll need to tweak configuration a little bit:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
+  <span class="hljs-built_in">module</span>.exports = merge(common, {
+    <span class="hljs-built_in">module</span>: {
+      loaders: [
+        {
+          test: <span class="hljs-regexp">/\.jsx?$/</span>,
+          loaders: [<span class="hljs-string">&apos;react-hot&apos;</span>, <span class="hljs-string">&apos;babel&apos;</span>, <span class="hljs-string">&apos;flowcheck&apos;</span>, <span class="hljs-string">&apos;babel?stage=1&amp;blacklist=flow&apos;</span>],
+          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
+        }
+      ]
+    }
+  });
+}
+</code></pre>
+<p>In effect we&apos;re letting Babel process everything except Flow parts before passing the output to Flowcheck. After the check has completed, we&apos;ll deal with the rest. This is bit of a hack that will hopefully go away sometime in the future as technology becomes more robust.</p>
+<a class="header-anchor" href="#adding-decorator-wrappers" id="adding-decorator-wrappers"></a><h3>Adding Decorator Wrappers<a class="header-anchor-select" href="#adding-decorator-wrappers">#</a></h3>
+<p>In order to port our HOCs to be able to use decorator syntax, we&apos;ll need to tweak our current implementation a little bit.</p>
+<p><strong>app/decorators/connect.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">const</span> connect = (Component, store) =&gt; {
+  ...
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (store) =&gt; {
+  <span class="hljs-keyword">return</span> (target) =&gt; connect(target, store);
+};
+</code></pre>
+<p><strong>app/decorators/persist.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">const</span> persist = (Component, storage, storageName, getData) =&gt; {
+  ...
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (storage, storageName, getData) =&gt; {
+  <span class="hljs-keyword">return</span> (target) =&gt; persist(target, storage, storageName, getData);
+};
+</code></pre>
+<p>As you can see the HOCs have been wrapped within functions that return functions. That&apos;s how decorators work by definition.</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+@persist(storage, noteStorageName, () =&gt; NoteStore.getState())
+@connect(NoteStore)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  ...
+}
+</code></pre>
+<p>Note how much neater our <code>App</code> is now. You can clearly see that we want to persist this component and connect it to a certain store.</p>
+<p>We can build new decorators for various functionalities, such as undo, in this manner. By slicing our logic into higher order components we get an application that is easier to develop. Best of all decorators such as the one we implemented can be easily reused in some other project.</p>
+<a class="header-anchor" href="#using-altcontainer-instead-of-a-decorator" id="using-altcontainer-instead-of-a-decorator"></a><h2>Using <code>AltContainer</code> Instead of a Decorator<a class="header-anchor-select" href="#using-altcontainer-instead-of-a-decorator">#</a></h2>
+<p>Even though our <code>@connect</code> is kind of cool, we can use something special Alt provides just for this purpose. It provides <code>AltContainer</code> that does the same thing and a bit more. Consider the example below:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes&apos;</span>;
+<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+<span class="hljs-keyword">import</span> NoteStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/NoteStore&apos;</span>;
+<span class="hljs-keyword">import</span> persist <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../decorators/persist&apos;</span>;
+<span class="hljs-keyword">import</span> storage <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/storage&apos;</span>;
+
+<span class="hljs-keyword">const</span> noteStorageName = <span class="hljs-string">&apos;notes&apos;</span>;
+
+@persist(storage, noteStorageName, () =&gt; NoteStore.getState())
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    NoteActions.init(storage.get(noteStorageName));
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addItem()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
+          <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[NoteStore]}</span>
+          <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
+            <span class="hljs-attribute">items:</span> () =&gt;</span> NoteStore.getState().notes || []
+          } }
+        &gt;
+          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{(id,</span> <span class="hljs-attribute">task</span>) =&gt;</span> this.itemEdited(id, task)} /&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-title">AltContainer</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+  ...
+}
+</code></pre>
+<p>As you can see an <code>AltContainer</code> provides us even more control. It can connect multiple stores at once. We also have control over how their contents are mapped to the props of the components the wrapper contains.</p>
+<a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>In this chapter you saw how to port our simple application to use Flux architecture. Initially it might seem like a lot of extra code. Flux isn&apos;t about minimizing the amount of code written. It is about making it understandable. Now that we have a clear separation between Actions, Stores and Views, it is much easier to navigate around and see what triggers what behavior.</p>
+</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/notes.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/implementing_notes">Implementing a Basic Note App</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/kanban_photo.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a></div></div><a class="next-page" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="previous-page" href="/webpack_react/implementing_notes">Implementing a Basic Note App</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/126433814@N04/16298563416">jeremyg3030 (CC BY)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
