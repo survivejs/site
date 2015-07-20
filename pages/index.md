@@ -1,7 +1,7 @@
 ## What will I learn by reading this book?
 
 <p>
-<img src="images/react.png" alt="React" class="react-image" width="200" height="200" />
+<img src="assets/img/react.png" alt="React" class="react-image" width="200" height="200" />
 Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly. Combined with [webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands.
 </p>
 
@@ -20,7 +20,7 @@ The book is freely available under [CC BY-NC-ND](https://creativecommons.org/lic
 ## What are the prerequisites?
 
 <div style="margin-bottom: 1em">
-  <img src="images/kanban_small.jpg" alt="Kanban board" class="kanban-image" width="646" height="232" />
+  <img src="assets/img/kanban_small.jpg" alt="Kanban board" class="kanban-image" width="646" height="232" />
   <span class="legend" style="font-size: small;">[Dennis Hamilton](https://www.flickr.com/photos/91555706@N00/3879384912/) - Kanban (CC BY)</span>
 </div>
 

@@ -12,7 +12,7 @@ var Index = React.createClass({
             <div className='frontpage'>
                 <div className='front__heading' style={{
                     backgroundSize: 'cover',
-                    backgroundImage: 'url(/images/front.jpg)',
+                    backgroundImage: 'url(/assets/img/front.jpg)',
                     backgroundPosition: '0px 42%',
                     width: '100%',
                     flexDirection: 'row',
