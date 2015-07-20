@@ -98,7 +98,7 @@ index.html  204 bytes          [emitted]
 </code></pre>
 <p>As you can see, the output is quite chunky!</p>
 <a class="header-anchor" href="#optimizing-build-size" id="optimizing-build-size"></a><h2>Optimizing Build Size<a class="header-anchor-select" href="#optimizing-build-size">#</a></h2>
-<p>We can resolve this issue by minifying our build. As easy way to do this is to pass <code>-p</code> parameter to <code>webpack</code>. It will give a bunch of warnings especially in React environment by default, however, so we&apos;ll enable minification using other way. Add the following section to your webpack configuration:</p>
+<p>We can resolve this issue by minifying our build. An easy way to do this is to pass <code>-p</code> parameter to <code>webpack</code>. It will give a bunch of warnings especially in React environment by default, however, so we&apos;ll enable minification using other way. Add the following section to your webpack configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
 
@@ -198,15 +198,19 @@ index.html  <span class="hljs-number">204</span> bytes          [emitted]
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
+    entry: [
+      <span class="hljs-string">&apos;webpack-dev-server/client?http://0.0.0.0:8080&apos;</span>,
+      <span class="hljs-string">&apos;webpack/hot/dev-server&apos;</span>
+    ],
     <span class="hljs-built_in">module</span>: {
       loaders: [
         {
           test: <span class="hljs-regexp">/\.jsx?$/</span>,
           loaders: [<span class="hljs-string">&apos;react-hot&apos;</span>, <span class="hljs-string">&apos;babel?stage=1&apos;</span>],
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        }
-      ]
-    }
+          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
+        },
+      ],
+    },
   });
 }
 </code></pre>
