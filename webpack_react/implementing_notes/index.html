@@ -161,18 +161,18 @@ export default class Notes extends React.Component {
     };
   }
   render() {
-  <span class="hljs-keyword">const</span> {value, onEdit, ...props} = <span class="hljs-keyword">this</span>.props;
-  <span class="hljs-keyword">var</span> edited = <span class="hljs-keyword">this</span>.state.edited;
+    <span class="hljs-keyword">const</span> {value, onEdit, ...props} = <span class="hljs-keyword">this</span>.props;
+    <span class="hljs-keyword">var</span> edited = <span class="hljs-keyword">this</span>.state.edited;
 
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> {<span class="hljs-attribute">...props</span>}&gt;</span>{
-        edited
-        ? <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&apos;text&apos;</span>
-          <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{value}</span>
-          <span class="hljs-attribute">onBlur</span>=<span class="hljs-value">{(e)</span> =&gt;</span> this.finishEdit(e)}
-          onKeyPress={(e) =&gt; this.checkEnter(e)}/&gt;
-        : <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.edit()}&gt;{value}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-      }<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> {<span class="hljs-attribute">...props</span>}&gt;</span>{
+          edited
+          ? <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&apos;text&apos;</span>
+            <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{value}</span>
+            <span class="hljs-attribute">onBlur</span>=<span class="hljs-value">{(e)</span> =&gt;</span> this.finishEdit(e)}
+            onKeyPress={(e) =&gt; this.checkEnter(e)}/&gt;
+          : <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.edit()}&gt;{value}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        }<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
   }
   edit() {

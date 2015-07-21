@@ -114,16 +114,16 @@ import Note from &apos;./Note&apos;;
 
 <span class="hljs-keyword">const</span> noteTarget = {
   hover(props, monitor) {
-  <span class="hljs-keyword">const</span> targetData = props.data || {};
-  <span class="hljs-keyword">const</span> sourceProps = monitor.getItem();
-  <span class="hljs-keyword">const</span> sourceData = sourceProps.data || {};
+    <span class="hljs-keyword">const</span> targetData = props.data || {};
+    <span class="hljs-keyword">const</span> sourceProps = monitor.getItem();
+    <span class="hljs-keyword">const</span> sourceData = sourceProps.data || {};
 
-  <span class="hljs-keyword">if</span>(sourceData.id !== targetData.id) {
-    props.onMove({
-      source: sourceProps.data,
-      target: props.data
-    });
-  }
+    <span class="hljs-keyword">if</span>(sourceData.id !== targetData.id) {
+      props.onMove({
+        source: sourceProps.data,
+        target: props.data
+      });
+    }
   }
 };
 
@@ -268,12 +268,8 @@ export default class Notes extends React.Component {
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
   move({source, target}) {
     <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
-    <span class="hljs-keyword">const</span> sourceIndex = findIndex(notes, {
-      id: source.id
-    });
-    <span class="hljs-keyword">const</span> targetIndex = findIndex(notes, {
-      id: target.id
-    });
+    <span class="hljs-keyword">const</span> sourceIndex = findIndex(notes, <span class="hljs-string">&apos;id&apos;</span>, source.id);
+    <span class="hljs-keyword">const</span> targetIndex = findIndex(notes, <span class="hljs-string">&apos;id&apos;</span>, target.id);
 
     <span class="hljs-keyword">if</span>(sourceIndex &gt;= <span class="hljs-number">0</span> &amp;&amp; targetIndex &gt;= <span class="hljs-number">0</span>) {
       <span class="hljs-keyword">this</span>.setState({
