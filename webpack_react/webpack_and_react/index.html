@@ -87,12 +87,13 @@ main();
 <blockquote class="warning">Avoid rendering directly to <code>document.body</code>. This can cause strange problems with relying on it. Instead give React a little sandbox of its own.</blockquote><p>If you hit <code>npm run build</code> now, you should get some output after a while. Here&apos;s a sample:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: e528fefc32654263da5f
-Version: webpack 1.9.6
-Time: 2008ms
-     Asset       Size  Chunks             Chunk Names
- bundle.js     650 kB       0  [emitted]  main
-index.html  204 bytes          [emitted]
+Hash: a235591f70fee65ac6c6
+Version: webpack 1.10.1
+Time: 3718ms
+        Asset       Size  Chunks             Chunk Names
+    bundle.js     653 kB       0  [emitted]  main
+bundle.js.map     769 kB       0  [emitted]  main
+   index.html  184 bytes          [emitted]
    [0] multi main 28 bytes {0} [built]
     + 163 hidden modules
 </code></pre>
@@ -106,6 +107,7 @@ index.html  204 bytes          [emitted]
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
+    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
     plugins: [
       <span class="hljs-keyword">new</span> webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -119,12 +121,13 @@ index.html  204 bytes          [emitted]
 <p>If you hit <code>npm run build</code> now, you should see better results:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: d2df9c8478b9894d8d5e
-Version: webpack 1.9.6
-Time: 5517ms
-     Asset       Size  Chunks             Chunk Names
- bundle.js     172 kB       0  [emitted]  main
-index.html  204 bytes          [emitted]
+Hash: 98a618ef4d32c8627010
+Version: webpack 1.10.1
+Time: 6726ms
+        Asset       Size  Chunks             Chunk Names
+    bundle.js     172 kB       0  [emitted]  main
+bundle.js.map    1.57 MB       0  [emitted]  main
+   index.html  184 bytes          [emitted]
    [0] multi main 28 bytes {0} [built]
     + 163 hidden modules
 </code></pre>
@@ -134,6 +137,7 @@ index.html  204 bytes          [emitted]
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
+    ...
     plugins: [
       <span class="hljs-keyword">new</span> webpack.DefinePlugin({
         <span class="hljs-string">&apos;process.env&apos;</span>: {
@@ -149,16 +153,17 @@ index.html  204 bytes          [emitted]
 <blockquote class="tip">That <code>JSON.stringify</code> is needed as webpack will perform string replace &quot;as is&quot;. In this case we&apos;ll want to end up with strings as that&apos;s what various comparisons expect, not just <code>production</code>. Latter would just cause an error.</blockquote><p>Hit <code>npm run build</code> again and you should see improved results:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: <span class="hljs-number">6</span><span class="hljs-built_in">fc</span>5ea486a0560f13c59
-Version: webpack <span class="hljs-number">1.9</span>.<span class="hljs-number">6</span>
-Time: <span class="hljs-number">4709</span>ms
-     Asset       Size  Chunks             Chunk Names
- bundle.js     <span class="hljs-number">123</span> kB       <span class="hljs-number">0</span>  [emitted]  main
-index.html  <span class="hljs-number">204</span> bytes          [emitted]
-   [<span class="hljs-number">0</span>] multi main <span class="hljs-number">28</span> bytes {<span class="hljs-number">0</span>} [built]
-    + <span class="hljs-number">158</span> hidden modules
+Hash: aa14e0e6b73e3a30ad04
+Version: webpack 1.10.1
+Time: 6092ms
+        Asset       Size  Chunks             Chunk Names
+    bundle.js     123 kB       0  [emitted]  main
+bundle.js.map    1.48 MB       0  [emitted]  main
+   index.html  184 bytes          [emitted]
+   [0] multi main 28 bytes {0} [built]
+    + 158 hidden modules
 </code></pre>
-<p>So we went from 650k to 172k and finally to 123k. The final build is a little faster than the previous one. As that 123k can be served gzipped, it is very reasonable. As we add dependencies to the project the size will grow. Then we will have to apply some other strategies and be smarter about loading. Fortunately we can do all that with webpack when the time comes.</p>
+<p>So we went from 653k to 172k and finally to 123k. The final build is a little faster than the previous one. As that 123k can be served gzipped, it is very reasonable. As we add dependencies to the project the size will grow. Then we will have to apply some other strategies and be smarter about loading. Fortunately we can do all that with webpack when the time comes.</p>
 <a class="header-anchor" href="#activating-hot-loading-for-development" id="activating-hot-loading-for-development"></a><h2>Activating Hot Loading for Development<a class="header-anchor-select" href="#activating-hot-loading-for-development">#</a></h2>
 <p>If you hit <code>npm start</code>, hit <em>localhost:8080</em> and try to modify our component (make it output <code>Learn React</code> or something), you&apos;ll see it actually works. After a flash. That&apos;s a little unfortunate especially if our application is more complex and has state. It is annoying to manipulate the user interface back to the state in which it was in order to test something.</p>
 <p>We can work around this problem using hot loading. This is enabled by <a href="https://gaearon.github.io/react-hot-loader/">react-hot-loader</a>. It will swap React components one by one as they change without forcing a full refresh. There will be times when that will be necessary but it will help a lot. Once you get used to hot loading, it is hard to live without.</p>
@@ -181,6 +186,7 @@ index.html  <span class="hljs-number">204</span> bytes          [emitted]
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
+    ...
     <span class="hljs-built_in">module</span>: {
       loaders: [
         {
@@ -198,6 +204,7 @@ index.html  <span class="hljs-number">204</span> bytes          [emitted]
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
+    ...
     entry: [
       <span class="hljs-string">&apos;webpack-dev-server/client?http://0.0.0.0:8080&apos;</span>,
       <span class="hljs-string">&apos;webpack/hot/dev-server&apos;</span>
