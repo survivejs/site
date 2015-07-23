@@ -89,12 +89,17 @@ export default class Notes extends React.Component {
 <pre><code class="undefinedjavascript">...
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+  }
   render() {
     ...
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addItem()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addItem}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
@@ -105,7 +110,7 @@ export default class Notes extends React.Component {
 }
 </code></pre>
 <p>Now when you click the button, you should see something at your browser console.</p>
-<blockquote class="tip">Note that <code>() =&gt; ...</code> kind of syntax binds method context to parent. If we used <code>this</code> at <code>addItem</code> instead of being <code>undefined</code> it would point to the class itself.</blockquote><a class="header-anchor" href="#connecting-additem-with-data-model" id="connecting-additem-with-data-model"></a><h2>Connecting <code>addItem</code> with Data Model<a class="header-anchor-select" href="#connecting-additem-with-data-model">#</a></h2>
+<blockquote class="tip">Note that we&apos;re binding <code>addItem</code> context at constructor. It would be possible to do the same at <code>render</code>. Unfortunately that will hurt performance given it would <code>bind</code> each time <code>render</code> gets triggered. Therefore it makes most sense to deal with bindings at constructor level.</blockquote><a class="header-anchor" href="#connecting-additem-with-data-model" id="connecting-additem-with-data-model"></a><h2>Connecting <code>addItem</code> with Data Model<a class="header-anchor-select" href="#connecting-additem-with-data-model">#</a></h2>
 <p>Next we will need to connect this with our data model somehow. It is problematic that data is stored within our <code>render</code> method. React provides a concept known as state for this purpose. We can move our data there like this:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
@@ -156,6 +161,11 @@ export default class Notes extends React.Component {
   constructor(props) {
     <span class="hljs-keyword">super</span>(props);
 
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.finishEdit = <span class="hljs-keyword">this</span>.finishEdit.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.checkEnter = <span class="hljs-keyword">this</span>.checkEnter.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.edit = <span class="hljs-keyword">this</span>.edit.bind(<span class="hljs-keyword">this</span>);
+
     <span class="hljs-keyword">this</span>.state = {
       edited: <span class="hljs-literal">false</span>
     };
@@ -169,9 +179,9 @@ export default class Notes extends React.Component {
           edited
           ? <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&apos;text&apos;</span>
             <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{value}</span>
-            <span class="hljs-attribute">onBlur</span>=<span class="hljs-value">{(e)</span> =&gt;</span> this.finishEdit(e)}
-            onKeyPress={(e) =&gt; this.checkEnter(e)}/&gt;
-          : <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.edit()}&gt;{value}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-attribute">onBlur</span>=<span class="hljs-value">{this.finishEdit}</span>
+            <span class="hljs-attribute">onKeyPress</span>=<span class="hljs-value">{this.checkEnter}</span>/&gt;</span>
+          : <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.edit}</span>&gt;</span>{value}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         }<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
   }
@@ -201,11 +211,21 @@ export default class Notes extends React.Component {
 <pre><code class="undefinedjavascript">...
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
+
+    <span class="hljs-keyword">this</span>.state = {
+      edited: <span class="hljs-literal">false</span>
+    };
+  }
   render() {
     ...
     &lt;Notes
       items={notes}
-      onEdit={(i, task) =&gt; <span class="hljs-keyword">this</span>.itemEdited(i, task)} /&gt;
+      onEdit={<span class="hljs-keyword">this</span>.itemEdited} /&gt;
     ...
   }
   itemEdited(i, task) {
@@ -224,23 +244,23 @@ export default class Notes extends React.Component {
 <pre><code class="undefinedjavascript">...
 
 export default class Notes extends React.Component {
-render() {
-  var notes = this.props.items;
+  render() {
+    var notes = this.props.items;
 
-  return (
-    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
-      <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note&apos;</span> + <span class="hljs-attribute">i</span>}&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Note</span>
-          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-    )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-  );
-}
+    return (
+      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note&apos;</span> + <span class="hljs-attribute">i</span>}&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Note</span>
+            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+    );
+  }
 }
 </code></pre>
 <p>After these changes you should be able to edit notes.</p>
-<a class="header-anchor" href="#removing-notes" id="removing-notes"></a><h2>Removing Notes<a class="header-anchor-select" href="#removing-notes">#</a></h2>
+<blockquote class="tip">We could listen to <code>componentWillReceiveProps</code> hook and build the binds based on that. To keep this example simple I&apos;ll skip that.</blockquote><a class="header-anchor" href="#removing-notes" id="removing-notes"></a><h2>Removing Notes<a class="header-anchor-select" href="#removing-notes">#</a></h2>
 <p>We are still missing one vital functionality. It would be nice to be able to remove notes. We can achieve this easily by extending edit.</p>
 <p>In case we empty a task, it would make sense to remove it. You can give it a go yourself or follow the example below. It is just a matter of modifying state.</p>
 <p><strong>app/components/App.jsx</strong></p>

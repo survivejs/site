@@ -141,24 +141,31 @@ import Note from &apos;./Note&apos;;
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 
-<span class="hljs-built_in">export</span> default class Notes extends React.Component {
-  ...
-  <span class="hljs-function"><span class="hljs-title">render</span></span>() {
+export default class Notes extends React.Component {
+  constructor(props: {
+    items: Array;
+    onEdit: Function;
+  }) {
+    super(props);
+
+    this.onMoveNote = this.onMoveNote.bind(this);
+  }
+  render() {
     var notes = this.props.items;
 
-    <span class="hljs-built_in">return</span> (
-      &lt;ul className=<span class="hljs-string">&apos;notes&apos;</span>&gt;{notes.map((note, i) =&gt;
-        &lt;Note onMove={() =&gt; this.onMoveNote()} className=<span class="hljs-string">&apos;note&apos;</span>
-          key={<span class="hljs-string">&apos;note-&apos;</span> + i} data={note}&gt;
-          &lt;Editable
-            value={note.task}
-            onEdit={this.props.onEdit.bind(null, i)} /&gt;
-        &lt;/Note&gt;
-      )}&lt;/ul&gt;
+    return (
+      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{this.onMoveNote}</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span>
+          <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note-&apos;</span> + <span class="hljs-attribute">i</span>} <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
+      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
     );
   }
-  onMoveNote(<span class="hljs-built_in">source</span>, target) {
-    console.log(<span class="hljs-string">&apos;source&apos;</span>, <span class="hljs-built_in">source</span>, <span class="hljs-string">&apos;target&apos;</span>, target);
+  onMoveNote(source, target) {
+    console.log(&apos;source&apos;, source, &apos;target&apos;, target);
   }
 }
 </code></pre>
@@ -221,7 +228,12 @@ import Note from &apos;./Note&apos;;
 import NoteDndActions from &apos;../actions/NoteDndActions&apos;;
 
 export default class Notes extends React.Component {
-  ...
+  constructor(props: {
+    items: Array;
+    onEdit: Function;
+  }) {
+    super(props);
+  }
   render() {
     var notes = this.props.items;
 

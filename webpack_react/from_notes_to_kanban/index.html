@@ -43,7 +43,7 @@
 }
 </code></pre>
 <p>Note that the implementation of <code>../libs/storage</code> has been changed to make it easier to operate on it through a more complex hierarchy. We&apos;ll need this later when we attach more stores to the system.</p>
-<p><strong>app/libs/storage.js</strong></p>
+<blockquote class="tip">Given we don&apos;t depend on <code>this</code> here, we don&apos;t need to bind <code>addLane</code> explicitly. Therefore I&apos;m skipping it.</blockquote><p><strong>app/libs/storage.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> storageName = <span class="hljs-string">&apos;kanban_storage&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> storage = {
@@ -195,7 +195,7 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 </code></pre>
 <p>Now we have something that sort of works. You can see there&apos;s something seriously wrong, though. If you add new Notes to a Lane, the Note appears to each Lane. Also if you modify a Note, also other Lanes update. In addition created Notes aren&apos;t persisted correctly. Just Lane data appears to get saved.</p>
 <p>The reason why this happens is quite simple. Currently out <code>NoteStore</code> is a singleton. Even though this behavior is often convenient, it&apos;s definitely not the right choice for our application. We&apos;ll need to convert those singletons into separate instances.</p>
-<a class="header-anchor" href="#going-from-note-singletons-to-instances" id="going-from-note-singletons-to-instances"></a><h2>Going from Note Singletons to Instances<a class="header-anchor-select" href="#going-from-note-singletons-to-instances">#</a></h2>
+<blockquote class="tip">The <code>bind</code> at <code>render</code> could be refactored out but I won&apos;t go into that as it would grow the example with little benefit.</blockquote><a class="header-anchor" href="#going-from-note-singletons-to-instances" id="going-from-note-singletons-to-instances"></a><h2>Going from Note Singletons to Instances<a class="header-anchor-select" href="#going-from-note-singletons-to-instances">#</a></h2>
 <p>A good first step towards getting rid of our Note singletons is to make our <code>NoteStore</code> more generic. We simply need to remove its direct dependency on Alt. Consider the code below:</p>
 <p><strong>app/stores/NoteStore.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{

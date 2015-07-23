@@ -81,6 +81,9 @@
   constructor(props) {
     <span class="hljs-keyword">super</span>(props);
 
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
+
     <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
     <span class="hljs-keyword">this</span>.state = NoteStore.getState();
   }
@@ -98,8 +101,8 @@
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addItem()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.itemEdited.bind(this)}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addItem}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.itemEdited}</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
   }
@@ -162,6 +165,9 @@
   constructor(props) {
     <span class="hljs-keyword">super</span>(props);
 
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
+
     <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
 
     NoteActions.init(storage.get(<span class="hljs-string">&apos;notes&apos;</span>));
@@ -214,6 +220,9 @@
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props) {
     <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
 
     NoteActions.init(storage.get(noteStorageName));
 
@@ -290,6 +299,9 @@
     notes: <span class="hljs-built_in">Array</span>;
   }) {
     <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
 
     NoteActions.init(storage.get(noteStorageName));
   }
@@ -400,19 +412,22 @@
   constructor(props) {
     <span class="hljs-keyword">super</span>(props);
 
+    <span class="hljs-keyword">this</span>.addItem = <span class="hljs-keyword">this</span>.addItem.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
+
     NoteActions.init(storage.get(noteStorageName));
   }
   render() {
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addItem()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addItem}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
           <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[NoteStore]}</span>
           <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
             <span class="hljs-attribute">items:</span> () =&gt;</span> NoteStore.getState().notes || []
           } }
         &gt;
-          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{(id,</span> <span class="hljs-attribute">task</span>) =&gt;</span> this.itemEdited(id, task)} /&gt;
+          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.itemEdited}</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">AltContainer</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
