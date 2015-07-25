@@ -122,7 +122,7 @@
 <p>As you can see, we pushed the logic out of our application. We actually have more code now than before. On the plus side we managed to tidy up our <code>App</code> a little bit.</p>
 <a class="header-anchor" href="#on-component-design" id="on-component-design"></a><h2>On Component Design<a class="header-anchor-select" href="#on-component-design">#</a></h2>
 <p>Note that given we are using Flux now and have concepts of Actions and Stores, we can push logic lower in the hierarchy if we want to; i.e. in case of <code>Notes</code> we could trigger the actions we want there. This depends on what sort of coupling we want to create between components.</p>
-<p>One alternative would be to factor <code>Notes</code> like this:</p>
+<p>One alternative would be to refactor <code>Notes</code> like this:</p>
 <pre><code class="undefinedjavascript"><span class="hljs-tag">&lt;<span class="hljs-title">Notes</span>
   <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span>
   <span class="hljs-attribute">item</span>=<span class="hljs-value">{(note,</span> <span class="hljs-attribute">i</span>) =&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{...}</span>&gt;</span>{item.task}<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>} /&gt;

@@ -43,7 +43,7 @@
 }
 </code></pre>
 <p>Note that the implementation of <code>../libs/storage</code> has been changed to make it easier to operate on it through a more complex hierarchy. We&apos;ll need this later when we attach more stores to the system.</p>
-<blockquote class="tip">Given we don&apos;t depend on <code>this</code> here, we don&apos;t need to bind <code>addLane</code> explicitly. Therefore I&apos;m skipping it.</blockquote><p><strong>app/libs/storage.js</strong></p>
+<p><strong>app/libs/storage.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> storageName = <span class="hljs-string">&apos;kanban_storage&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> storage = {
@@ -156,6 +156,9 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
   }) {
     <span class="hljs-keyword">super</span>(props);
 
+    <span class="hljs-keyword">this</span>.addNote = <span class="hljs-keyword">this</span>.addNote.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.noteEdited = <span class="hljs-keyword">this</span>.noteEdited.bind(<span class="hljs-keyword">this</span>);
+
     NoteActions.init();
   }
   render() {
@@ -166,7 +169,7 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
         <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane-header&apos;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane-name&apos;</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane-add-note&apos;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> this.addNote()}&gt;+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
@@ -175,7 +178,7 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
             <span class="hljs-attribute">items:</span> () =&gt;</span> NoteStore.getState().notes || []
           } }
         &gt;
-          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.noteEdited.bind(this)}</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.noteEdited}</span> /&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-title">AltContainer</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
@@ -195,8 +198,8 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 </code></pre>
 <p>Now we have something that sort of works. You can see there&apos;s something seriously wrong, though. If you add new Notes to a Lane, the Note appears to each Lane. Also if you modify a Note, also other Lanes update. In addition created Notes aren&apos;t persisted correctly. Just Lane data appears to get saved.</p>
 <p>The reason why this happens is quite simple. Currently out <code>NoteStore</code> is a singleton. Even though this behavior is often convenient, it&apos;s definitely not the right choice for our application. We&apos;ll need to convert those singletons into separate instances.</p>
-<blockquote class="tip">The <code>bind</code> at <code>render</code> could be refactored out but I won&apos;t go into that as it would grow the example with little benefit.</blockquote><a class="header-anchor" href="#going-from-note-singletons-to-instances" id="going-from-note-singletons-to-instances"></a><h2>Going from Note Singletons to Instances<a class="header-anchor-select" href="#going-from-note-singletons-to-instances">#</a></h2>
-<p>A good first step towards getting rid of our Note singletons is to make our <code>NoteStore</code> more generic. We simply need to remove its direct dependency on Alt. Consider the code below:</p>
+<a class="header-anchor" href="#going-from-note-singletons-to-instances" id="going-from-note-singletons-to-instances"></a><h2>Going from Note Singletons to Instances<a class="header-anchor-select" href="#going-from-note-singletons-to-instances">#</a></h2>
+<p>A good first step towards getting rid of our Note singletons is to make our <code>NoteStore</code> more generic. We simply need to remove its direct dependency on Alt as below:</p>
 <p><strong>app/stores/NoteStore.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
   constructor(actions: <span class="hljs-built_in">Object</span>) {
@@ -205,8 +208,8 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
   ...
 }
 </code></pre>
-<p><strong>app/actions/NoteActions.js</strong></p>
 <p><code>NoteActions</code> require similar treatment as well. Otherwise we&apos;ll end up transmitting the same signal to all of our stores, and we are back to square one.</p>
+<p><strong>app/actions/NoteActions.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (alt) =&gt; alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
 </code></pre>
 <p>To make it all work together we need to tweak <code>Lane</code> to maintain actions and a store.</p>
@@ -232,6 +235,9 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
     <span class="hljs-keyword">const</span> storeName = <span class="hljs-string">&apos;NoteStore-&apos;</span> + <span class="hljs-keyword">this</span>.props.i;
     <span class="hljs-keyword">this</span>.store = alt.createStore(NoteStore, storeName, <span class="hljs-keyword">this</span>.actions);
     <span class="hljs-keyword">this</span>.actions.init(getInitialData(storeName));
+
+    <span class="hljs-keyword">this</span>.addNote = <span class="hljs-keyword">this</span>.addNote.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.noteEdited = <span class="hljs-keyword">this</span>.noteEdited.bind(<span class="hljs-keyword">this</span>);
   }
   render() {
     <span class="hljs-keyword">const</span> {i, name, ...props} = <span class="hljs-keyword">this</span>.props;
@@ -268,8 +274,7 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 
 ...
 
-&lt;Editable className=<span class="hljs-string">&apos;lane-name&apos;</span> value={name}
-  onEdit={<span class="hljs-keyword">this</span>.nameEdited.bind(<span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>.props.i)} /&gt;
+&lt;Editable className=<span class="hljs-string">&apos;lane-name&apos;</span> value={name} onEdit={<span class="hljs-keyword">this</span>.nameEdited} /&gt;
 
 ...
 
@@ -293,25 +298,41 @@ nameEdited(id, name) {
   }
 }
 </code></pre>
-<p>This is exactly the same logic as for notes. In fact it is be possible to factor the behavior into a method of its own. This can be done by extracting actions into a parameter. As duplication is the root of all evil, let&apos;s change it to this form:</p>
+<p>This is exactly the same logic as for notes. In fact it is be possible to refactor the behavior into a method of its own. This can be done by extracting actions into a parameter. As duplication is the root of all evil, let&apos;s change it to this form:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  constructor(props: {
+    name: string;
+    i: number;
+  }) {
+    <span class="hljs-keyword">super</span>(props);
 
-&lt;Editable className=<span class="hljs-string">&apos;lane-name&apos;</span> value={name}
-  onEdit={<span class="hljs-keyword">this</span>.edited.bind(<span class="hljs-literal">null</span>, LaneActions, <span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-keyword">this</span>.props.i)} /&gt;
+    ...
 
-...
-
-&lt;Notes onEdit={<span class="hljs-keyword">this</span>.edited.bind(<span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>.actions, <span class="hljs-string">&apos;task&apos;</span>)} /&gt;
-
-...
-
-edited(actions, field, id, value) {
-  <span class="hljs-keyword">if</span>(value) {
-    actions.update({id, [field]: value});
+    <span class="hljs-keyword">this</span>.addNote = <span class="hljs-keyword">this</span>.addNote.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.nameEdited = <span class="hljs-keyword">this</span>.edited.bind(<span class="hljs-keyword">this</span>, LaneActions, <span class="hljs-string">&apos;name&apos;</span>, props.i);
+    <span class="hljs-keyword">this</span>.taskEdited = <span class="hljs-keyword">this</span>.edited.bind(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">this</span>.actions, <span class="hljs-string">&apos;task&apos;</span>);
   }
-  <span class="hljs-keyword">else</span> {
-    actions.remove(id);
+
+  render() {
+    ...
+
+    &lt;Editable className=<span class="hljs-string">&apos;lane-name&apos;</span> value={name}
+      onEdit={<span class="hljs-keyword">this</span>.nameEdited} /&gt;
+
+    ...
+
+    &lt;Notes onEdit={<span class="hljs-keyword">this</span>.taskEdited} /&gt;
+
+    ...
+  }
+  edited(actions, field, id, value) {
+    <span class="hljs-keyword">if</span>(value) {
+      actions.update({id, [field]: value});
+    }
+    <span class="hljs-keyword">else</span> {
+      actions.remove(id);
+    }
   }
 }
 </code></pre>
