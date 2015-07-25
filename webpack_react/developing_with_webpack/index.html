@@ -6,7 +6,7 @@
 <pre><code class="undefinedjson">...
 <span class="hljs-string">&quot;scripts&quot;</span>: {
   <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;webpack&quot;</span>,
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --config webpack.development.js --devtool eval-source-map --progress --colors --hot --inline --history-api-fallback --content-base build&quot;</span>
+  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --config webpack.development.js --devtool eval --progress --colors --hot --inline --history-api-fallback --content-base build&quot;</span>
 },
 ...
 </code></pre>
@@ -29,7 +29,7 @@
 <ol>
 <li><code>webpack-dev-server</code> - Starts a web service on <code>localhost:8080</code></li>
 <li><code>--config webpack.development.js</code> - Points at custom development configuration we&apos;ll set up later</li>
-<li><code>--devtool eval-source-map</code> - Creates source urls for your code. Making you able to pinpoint by filename and line number where any errors are thrown</li>
+<li><code>--devtool eval</code> - Executes code through <code>eval</code> and attached <code>//@ sourceURL</code> annotations to it. After this you will see filename and line number where any errors are thrown. Use this for development only!</li>
 <li><code>--progress</code> - Will show progress of bundling your application</li>
 <li><code>--colors</code> - Colors in the terminal!</li>
 <li><code>--hot</code> - Enable hot module loading</li>
@@ -59,7 +59,6 @@
     path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
     filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
   },
-  devtool: <span class="hljs-string">&apos;eval-source-map&apos;</span>,
   <span class="hljs-built_in">module</span>: {
     loaders: [
       {
@@ -122,7 +121,7 @@
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;eval-source-map&apos;</span>
+    devtool: <span class="hljs-string">&apos;eval&apos;</span>
   });
 }
 </code></pre>
@@ -131,7 +130,7 @@
 <pre><code class="undefinedjson">...
 <span class="hljs-string">&quot;scripts&quot;</span>: {
   <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;TARGET=build webpack&quot;</span>,
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --devtool eval --progress --colors --hot --inline --history-api-fallback --content-base build&quot;</span>
+  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --progress --colors --hot --inline --history-api-fallback --content-base build&quot;</span>
 },
 ...
 </code></pre>
@@ -164,7 +163,7 @@
 <pre><code class="undefinedjson">...
 <span class="hljs-string">&quot;scripts&quot;</span>: {
   <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;TARGET=build webpack&quot;</span>,
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --history-api-fallback&quot;</span>
+  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --progress --colors --hot --inline --history-api-fallback&quot;</span>
 },
 ...
 </code></pre>
