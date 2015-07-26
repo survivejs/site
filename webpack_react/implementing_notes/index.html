@@ -1,7 +1,20 @@
-<html><head><title>SurviveJS - Webpack and React - Implementing a Basic Note App</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><span class="docs-nav__link docs-nav__link--current">Implementing a Basic Note App</span><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/notes.jpg);"></div><h1 class="post__heading">Implementing a Basic Note App</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/04_webpack_and_react/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/05_implementing_notes/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/05_implementing_notes" target="_blank">Demo</a></div></div><div><p>Given we have a nice development setup now, we can actually get some work done. Our goal here is to end up with a crude Note List with basic manipulation operations. We will start by doing things the hard way. We will grow our application from scratch and get into some trouble. After that you should understand better why architecture models such as Flux are needed.</p>
-<a class="header-anchor" href="#extending-note" id="extending-note"></a><h2>Extending Note<a class="header-anchor-select" href="#extending-note">#</a></h2>
-<p>A good first step would be to extend <code>Note</code> interface. We would probably want to render a list of these. Ideally we should be able to perform basic editing operations over the list and create new items as needed. We&apos;ll probably also want to mark items as done.</p>
-<p>This means <code>App</code> will have to coordinate the state. Let&apos;s start by rendering a list and then expand from there. Here&apos;s sample code for an enhanced <code>render</code> method:</p>
+<html><head><title>SurviveJS - Webpack and React - Implementing a Basic Note App</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><span class="docs-nav__link docs-nav__link--current">Implementing a Basic Note App</span><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/notes.jpg);"></div><h1 class="post__heading">Implementing a Basic Note App</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/04_webpack_and_react/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/05_implementing_notes/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/05_implementing_notes" target="_blank">Demo</a></div></div><div><p>Given we have a nice development setup now, we can actually get some work done. Our goal here is to end up with a crude note taking application with basic manipulation operations. We will start by doing things the hard way. We will grow our application from scratch and get into some trouble. After that you should understand better why architecture models such as Flux are needed.</p>
+<a class="header-anchor" href="#setting-up-initial-data" id="setting-up-initial-data"></a><h2>Setting Up Initial Data<a class="header-anchor-select" href="#setting-up-initial-data">#</a></h2>
+<p>Often a good way to begin designing application is to start with the data. In this case we can start with a list of notes. Each note can contain some specific task. More attributes can be added later if needed. This gives us the following kind of data model:</p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">const</span> notes = [
+  {
+    task: <span class="hljs-string">&apos;Learn webpack&apos;</span>
+  },
+  {
+    task: <span class="hljs-string">&apos;Learn React&apos;</span>
+  },
+  {
+    task: <span class="hljs-string">&apos;Do laundry&apos;</span>
+  }
+];
+</code></pre>
+<p>The next step is connecting this data model with our <code>App</code>. As it will be quite a bit of code I&apos;ve included whole solution below. We&apos;ll improve the solution later on. The current solution is the simplest way to render a list of notes.</p>
+<p>We will use a special feature of JSX in form of <code>{}</code>. Within these braces we can mix JavaScript with JSX. In this case we will render a bunch of <code>li</code> elements. Each contains a <code>Note</code>. In order to tell React in which order to render the elements, we&apos;ll set <code>key</code> property for each. It is important that this is unique or otherwise it won&apos;t be able to figure out the correct order in which to render and it will give a warning about this.</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 
@@ -12,13 +25,17 @@
     <span class="hljs-keyword">this</span>.renderNote = <span class="hljs-keyword">this</span>.renderNote.bind(<span class="hljs-keyword">this</span>);
   }
   render() {
-    <span class="hljs-keyword">const</span> notes = [{
-      task: <span class="hljs-string">&apos;Learn webpack&apos;</span>
-    }, {
-      task: <span class="hljs-string">&apos;Learn React&apos;</span>
-    }, {
-      task: <span class="hljs-string">&apos;Do laundry&apos;</span>
-    }];
+    <span class="hljs-keyword">const</span> notes = [
+      {
+        task: <span class="hljs-string">&apos;Learn webpack&apos;</span>
+      },
+      {
+        task: <span class="hljs-string">&apos;Learn React&apos;</span>
+      },
+      {
+        task: <span class="hljs-string">&apos;Do laundry&apos;</span>
+      }
+    ];
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
@@ -35,8 +52,9 @@
   }
 }
 </code></pre>
-<p>We will use a special feature of JSX in form of <code>{}</code>. Within these braces we can mix JavaScript with JSX. In this case we will render a bunch of <code>li</code> elements. Each contains a <code>Note</code>. In order to tell React in which order to render the elements, we&apos;ll set <code>key</code> property for each. It is important that this is unique or otherwise it won&apos;t be able to figure out the correct order.</p>
-<blockquote class="tip">If you want to attach comments to your JSX, just use <code>{/* no comments */}</code>.</blockquote><p>If everything went correctly, you should see a list with three <code>Learn webpack</code> items on it. That&apos;s almost nice. The problem is that we haven&apos;t taken <code>value</code> property in count at <code>Note</code>. We&apos;ll need to tweak its implementation like this:</p>
+<p>If you run the application now, you can see it almost works. There&apos;s only one problem. Each <code>Note</code> shows the same text. Fortunately this is easy to fix.</p>
+<blockquote class="tip">If you want to attach comments to your JSX, just use <code>{/* no comments */}</code>.</blockquote><a class="header-anchor" href="#fixing-note" id="fixing-note"></a><h2>Fixing Note<a class="header-anchor-select" href="#fixing-note">#</a></h2>
+<p>The problem is that we haven&apos;t taken <code>value</code> prop in count at <code>Note</code>. In React terms props are something that&apos;s passed to a component from outside. A component that takes only props and doesn&apos;t have any state, is known as a pure component. Pure components in particular are easy to test and work with. In the code below I extract the value of prop and render it.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 
@@ -46,11 +64,29 @@
   }
 }
 </code></pre>
-<p>As you can see the property we passed to our component gets mapped to <code>this.props</code>. After that it is just a matter of showing it wherever we like.</p>
-<p>We haven&apos;t achieved much yet but we&apos;re getting there. In order to get somewhere, we&apos;ll need to expand and refine our component hierarchy.</p>
-<a class="header-anchor" href="#refining-component-hierarchy" id="refining-component-hierarchy"></a><h2>Refining Component Hierarchy<a class="header-anchor-select" href="#refining-component-hierarchy">#</a></h2>
-<p>It is nice to keep the implementation of <code>App</code> on a high level. Currently there are concerns that might not belong there. We can improve the situation by splitting <code>Notes</code> into a component of its own. It will be just a component that takes <em>items</em> as an input and renders them as above.</p>
-<p>We&apos;ll want to end up a hierarchy such as this: App -&gt; Notes -&gt; Note. Each of these components will map to a file within <code>components</code>. Our <code>Note</code> is fine as is. <code>Notes</code> needs to be extracted out of <code>App</code>. Here&apos;s a sample implementation:</p>
+<p>If you check out the application now, you should see we&apos;re seeing results that are more like it. This is only start, though. Our <code>App</code> is getting cramped. It feels like there&apos;s a component waiting to be extracted.</p>
+<a class="header-anchor" href="#extracting-notes" id="extracting-notes"></a><h2>Extracting Notes<a class="header-anchor-select" href="#extracting-notes">#</a></h2>
+<p>If we keep on growing <code>App</code> like this we&apos;ll end up in trouble soon. When working with React it is important for you to learn to recognize possible components. We can extract <code>Notes</code> component from <code>App</code>. It will deal with rendering <code>Notes</code> and simplify our <code>App</code> somewhat. Here&apos;s what a tidier version of <code>App</code> looks like. Adapt the rendering code like this:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes&apos;</span>;
+
+...
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">const</span> notes = [
+      ...
+    ];
+
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+}
+</code></pre>
+<p>Next we&apos;ll need to define <code>Notes</code>. It will accept <code>items</code> as a prop and render each just like our <code>App</code> did earlier. It&apos;s pretty much the same code as earlier but wrapped into a separate component. I attached some classes there so it&apos;s easier to style the component later.</p>
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 <span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note&apos;</span>;
@@ -75,27 +111,7 @@
   }
 }
 </code></pre>
-<p>I attached some classes there so it&apos;s easier to style the component later.</p>
-<p>Remember to replace the old list with <code>&lt;Notes items={notes} /&gt;</code> at <em>App.jsx</em>:</p>
-<p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes&apos;</span>;
-
-...
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    ...
-
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    )</span>;
-  }
-  ...
-}
-</code></pre>
-<p>Not only this change keeps <code>App</code> cleaner but it also gives us flexibility. If you wanted to have multiple <code>Notes</code> lists, it would be simple now. This is one of the key things to understand about React. You will need to learn to think in terms of components.</p>
+<p>Not only this change keeps <code>App</code> cleaner but it also gives us flexibility. If you wanted to have multiple <code>Notes</code> lists, it would be simple now.</p>
 <a class="header-anchor" href="#adding-new-items-to-notes-list" id="adding-new-items-to-notes-list"></a><h2>Adding New Items to Notes list<a class="header-anchor-select" href="#adding-new-items-to-notes-list">#</a></h2>
 <p>It would be useful if we could add new items to our Notes list. Let&apos;s just do a plus button that adds a new dummy item to our list.</p>
 <p>To implement the button, change <code>render</code> method like this:</p>
@@ -124,7 +140,7 @@
 }
 </code></pre>
 <p>Now when you click the button, you should see something at your browser console.</p>
-<blockquote class="tip">Note that we&apos;re binding <code>addItem</code> context at constructor. It would be possible to do the same at <code>render</code>. Unfortunately that will hurt performance given it would <code>bind</code> each time <code>render</code> gets triggered. Therefore it makes most sense to deal with bindings at constructor level.</blockquote><a class="header-anchor" href="#connecting-additem-with-data-model" id="connecting-additem-with-data-model"></a><h2>Connecting <code>addItem</code> with Data Model<a class="header-anchor-select" href="#connecting-additem-with-data-model">#</a></h2>
+<blockquote class="tip">Note that we&apos;re binding <code>addItem</code> context at constructor. It would be possible to do the same at <code>render</code>. Unfortunately that will hurt performance given it would <code>bind</code> each time <code>render</code> gets triggered. Therefore it makes most sense to deal with bindings at constructor level. This is the convention I&apos;ll be using in this book. It is possible we&apos;ll see a neater, <a href="https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es7-property-initializers">property initializer</a> based solution in the future.</blockquote><a class="header-anchor" href="#connecting-additem-with-data-model" id="connecting-additem-with-data-model"></a><h2>Connecting <code>addItem</code> with Data Model<a class="header-anchor-select" href="#connecting-additem-with-data-model">#</a></h2>
 <p>Next we will need to connect this with our data model somehow. It is problematic that data is stored within our <code>render</code> method. React provides a concept known as state for this purpose. We can move our data there like this:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
@@ -134,13 +150,17 @@
     <span class="hljs-keyword">super</span>(props);
 
     <span class="hljs-keyword">this</span>.state = {
-      notes: [{
-        task: <span class="hljs-string">&apos;Learn webpack&apos;</span>
-      }, {
-        task: <span class="hljs-string">&apos;Learn React&apos;</span>
-      }, {
-        task: <span class="hljs-string">&apos;Do laundry&apos;</span>
-      }]
+      notes: [
+        {
+          task: <span class="hljs-string">&apos;Learn webpack&apos;</span>
+        },
+        {
+          task: <span class="hljs-string">&apos;Learn React&apos;</span>
+        },
+        {
+          task: <span class="hljs-string">&apos;Do laundry&apos;</span>
+        }
+      ]
     };
   }
   render() {
@@ -224,7 +244,7 @@
 </code></pre>
 <p><code>Note</code> keeps track of <em>edited</em> state. We will manipulate that to change the way it is rendered. If we hit <strong>edit</strong>, we&apos;ll trigger edit mode. Once input receives either <em>blur</em> event or Enter key, we&apos;ll finish editing and reset the value. When finishing we also trigger a callback so the app knows to react.</p>
 <p>We are using <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">ES7 rest spread operator</a> here to keep our props generic. In other words that <code>&lt;div {...props}&gt;</code> sets props as element attributes. This gives an additional extension point with little effort. You could for instance attach custom event handlers there or set some standard HTML attributes (e.g. <code>&lt;Note title=&apos;Demo title&apos; value={note.task} /&gt;</code>). I extract <code>value</code> and <code>onEdit</code> out of <code>props</code> as I <strong>don&apos;t</strong> want to set these at <code>div</code>.</p>
-<blockquote class="tip">It can be a good idea to name your callbacks using <code>on</code> prefix. This will allow you to distinguish them quickly from other props and keep your code a little tidier.</blockquote><p>In order to make that happen we&apos;ll need to define that callback for <code>App</code> like this:</p>
+<blockquote class="tip">It can be a good idea to name your callbacks using <code>on</code> prefix. This will allow you to distinguish them quickly from other props and keep your code a little tidier.</blockquote><p>In order to make our edit work we&apos;ll need to define a callback for <code>App</code> like this:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 
@@ -236,7 +256,17 @@
     <span class="hljs-keyword">this</span>.itemEdited = <span class="hljs-keyword">this</span>.itemEdited.bind(<span class="hljs-keyword">this</span>);
 
     <span class="hljs-keyword">this</span>.state = {
-      edited: <span class="hljs-literal">false</span>
+      notes: [
+        {
+          task: <span class="hljs-string">&apos;Learn Webpack&apos;</span>,
+        },
+        {
+          task: <span class="hljs-string">&apos;Learn React&apos;</span>,
+        },
+        {
+          task: <span class="hljs-string">&apos;Do laundry&apos;</span>
+        }
+      ]
     };
   }
   render() {
@@ -376,5 +406,5 @@ Note.willTransitionTo = () =&gt; {...};
 <p>In the end you will have to find conventions you like and that work the best for you. I go more detail in this topic at the linting chapter as I introduce various code quality related tools. It is possible to enforce coding style to some extent for instance.</p>
 <p>This can be useful in a team environment as it decreases the amount of friction when working on code written by others. Even on personal projects having some tools to check out things for you can be useful and lessen the amount and severity of mistakes.</p>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
-<p>The approach we discussed works up to a point. It is a little ugly but it works. In the next chapter we will clean things up as we introduce Flux architecture and port our application to use it.</p>
+<p>You can get quite far just with vanilla React. Unfortunately our little application is already bursting at seams and we have a lot of features to implement. In the next chapter we will clean things up as we introduce Flux architecture and port our application to use it.</p>
 </div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/mainframe.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/webpack_and_react">Webpack and React</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/delorean.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/react_and_flux">React and Flux</a></div></div><a class="next-page" href="/webpack_react/react_and_flux">React and Flux</a><a class="previous-page" href="/webpack_react/webpack_and_react">Webpack and React</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/73635318@N00/2663422833">Angela (CC BY-NC-SA)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
