@@ -1,4 +1,4 @@
-<html><head><title>SurviveJS - Webpack and React - From Notes to Kanban</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><span class="docs-nav__link docs-nav__link--current">From Notes to Kanban</span><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/kanban_photo.jpg);"></div><h1 class="post__heading">From Notes to Kanban</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_react_and_flux/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_from_notes_to_kanban/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/07_from_notes_to_kanban" target="_blank">Demo</a></div></div><div><p><img src="/images/kanban.png" alt="Kanban board"></p>
+<html><head><title>SurviveJS - Webpack and React - From Notes to Kanban</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><span class="docs-nav__link docs-nav__link--current">From Notes to Kanban</span><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/kanban_photo.jpg);"></div><h1 class="post__heading">From Notes to Kanban</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_react_and_flux/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_from_notes_to_kanban/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/07_from_notes_to_kanban" target="_blank">Demo</a></div></div><div><p><img src="/images/kanban.png" alt="Kanban board"></p>
 <p>So far we have managed to set up a nice little development environment and develop an application for keeping track of notes in <code>localStorage</code>. We still have work to do in order to turn this into a real Kanban as pictured above.</p>
 <p>Most importantly our system is missing the concept of Lane. A Lane is something that should be able to contain multiple Notes within itself. In the current system that is implicit. We&apos;ll need to extract that into a component of its own.</p>
 <a class="header-anchor" href="#extracting-lanes-" id="extracting-lanes-"></a><h2>Extracting <code>Lanes</code><a class="header-anchor-select" href="#extracting-lanes-">#</a></h2>
@@ -61,7 +61,7 @@
 };
 
 <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInitialData</span>(<span class="hljs-params">storeName</span>) </span>{
-  <span class="hljs-keyword">var</span> data = storage.get(storageName);
+  <span class="hljs-keyword">const</span> data = storage.get(storageName);
 
   <span class="hljs-keyword">return</span> data &amp;&amp; data[storeName];
 }
@@ -123,22 +123,25 @@
 <p>To start with a <code>Lane</code> is pretty much what our <code>App</code> was earlier. This time around we&apos;ll want to render a header that contains name and a control for adding new notes within it.</p>
 <p>First of all let&apos;s extend the <code>render</code> method of <code>Lanes</code> to make some room for individual lanes:</p>
 <p><strong>app/components/Lanes.jsx</strong></p>
-<pre><code class="undefinedjavascript">import React from <span class="hljs-string">&apos;react&apos;</span>;
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 
-import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
+<span class="hljs-keyword">import</span> Lane <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Lane&apos;</span>;
 
-<span class="hljs-built_in">export</span> default class Lanes extends React.Component {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lanes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props: {
-    items: Array;
+    items: <span class="hljs-built_in">Array</span>;
   }) {
-    super(props);
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.renderLane = <span class="hljs-keyword">this</span>.renderLane.bind(<span class="hljs-keyword">this</span>);
   }
-  <span class="hljs-function"><span class="hljs-title">render</span></span>() {
-    <span class="hljs-built_in">return</span> (
-      &lt;div className=<span class="hljs-string">&apos;lanes&apos;</span>&gt;{this.props.items.map((lane, i) =&gt;
-          &lt;Lane className=<span class="hljs-string">&apos;lane&apos;</span> key={<span class="hljs-string">&apos;lane-&apos;</span> + i} i={i} {...lane} /&gt;
-      )}&lt;/div&gt;
-    );
+  render() {
+    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.props.items;
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lanes&apos;</span>&gt;</span>{lanes.map(this.renderLane)}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>;</span>
+  }
+  renderLane(lane, i) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Lane</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;lane&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`lane${i}`}</span> <span class="hljs-attribute">i</span>=<span class="hljs-value">{i}</span> {<span class="hljs-attribute">...lane</span>} /&gt;</span>;</span>
   }
 }
 </code></pre>
@@ -199,9 +202,15 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 }
 </code></pre>
 <p>Now we have something that sort of works. You can see there&apos;s something seriously wrong, though. If you add new Notes to a Lane, the Note appears to each Lane. Also if you modify a Note, also other Lanes update. In addition created Notes aren&apos;t persisted correctly. Just Lane data appears to get saved.</p>
-<p>The reason why this happens is quite simple. Currently out <code>NoteStore</code> is a singleton. Even though this behavior is often convenient, it&apos;s definitely not the right choice for our application. We&apos;ll need to convert those singletons into separate instances.</p>
+<p>The reason why this happens is quite simple. Currently our <code>NoteStore</code> is a singleton. Even though this behavior is often convenient, it&apos;s not working in our favor. One way to resolve this issue is to convert the singleton to individual instances.</p>
 <a class="header-anchor" href="#going-from-note-singletons-to-instances" id="going-from-note-singletons-to-instances"></a><h2>Going from Note Singletons to Instances<a class="header-anchor-select" href="#going-from-note-singletons-to-instances">#</a></h2>
-<p>A good first step towards getting rid of our Note singletons is to make our <code>NoteStore</code> more generic. We simply need to remove its direct dependency on Alt as below:</p>
+<p>There are a few changes we need to make in order to convert the current singleton based solution to instances. Most importantly our current <code>NoteStore</code> and <code>NoteActions</code> have to drop their direct dependency on <code>alt</code>. We&apos;ll want to be able to manage that ourselves at <code>Lane</code>. This way we can create an instance per <code>Lane</code> and the problem we encountered will disappear.</p>
+<p>Removing direct dependency to <code>alt</code> from <code>NoteActions</code> can be achieved by wrapping it within a function. After this we can create instances of actions whenever we need them.</p>
+<p><strong>app/actions/NoteActions.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (alt) =&gt; alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
+</code></pre>
+<p>To break <code>NoteStore</code>&apos;s dependency on <code>alt</code> we&apos;ll want to take control of <code>alt.createStore</code>. This means we&apos;ll need to remove the current invocation from the store. In addition we&apos;ll want to glue actions and store together. Depending on a single set of actions like earlier wouldn&apos;t work as then the same actions would trigger multiple stores. We&apos;ll want this to be one-to-one relation.</p>
+<p>We can achieve this by passing actions as a parameter to our store. We can then use Alt&apos;s <code>bindActions</code> method to connect the store with the actions.</p>
 <p><strong>app/stores/NoteStore.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
   constructor(actions: <span class="hljs-built_in">Object</span>) {
@@ -210,11 +219,7 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
   ...
 }
 </code></pre>
-<p><code>NoteActions</code> require similar treatment as well. Otherwise we&apos;ll end up transmitting the same signal to all of our stores, and we are back to square one.</p>
-<p><strong>app/actions/NoteActions.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (alt) =&gt; alt.generateActions(<span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;remove&apos;</span>);
-</code></pre>
-<p>To make it all work together we need to tweak <code>Lane</code> to maintain actions and a store.</p>
+<p>Finally we need to alter <code>Lane</code>. It has to be able to maintain a <code>NoteStore</code> and associated actions. The code below shows how to wire it up:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
@@ -234,7 +239,7 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 
     <span class="hljs-keyword">this</span>.actions = createNoteActions(alt);
 
-    <span class="hljs-keyword">const</span> storeName = <span class="hljs-string">&apos;NoteStore-&apos;</span> + <span class="hljs-keyword">this</span>.props.i;
+    <span class="hljs-keyword">const</span> storeName = <span class="hljs-string">`NoteStore-<span class="hljs-subst">${this.props.i}</span>`</span>;
     <span class="hljs-keyword">this</span>.store = alt.createStore(NoteStore, storeName, <span class="hljs-keyword">this</span>.actions);
     <span class="hljs-keyword">this</span>.actions.init(getInitialData(storeName));
 
@@ -282,23 +287,19 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 </code></pre>
 <p>Make <code>Notes.jsx</code> point at <code>Editable</code> instead of <code>Note</code> like this:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="undefinedjavascript">import React from &apos;react&apos;;
-import Editable from &apos;./Editable&apos;;
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Editable <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Editable&apos;</span>;
 
-export default class Notes extends React.Component {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   ...
-  render() {
-    var notes = this.props.items;
-
-    return (
-      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
-        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note&apos;</span> + <span class="hljs-attribute">i</span>}&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-    );
+  renderNote(note, i) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${i}`}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    )</span>;
   }
 }
 </code></pre>

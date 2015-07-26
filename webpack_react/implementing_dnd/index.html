@@ -1,4 +1,4 @@
-<html><head><title>SurviveJS - Webpack and React - Implementing Drag and Drop</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><span class="docs-nav__link docs-nav__link--current">Implementing Drag and Drop</span><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/dnd.jpg);"></div><h1 class="post__heading">Implementing Drag and Drop</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_styling_react/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/09_implementing_dnd/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/09_implementing_dnd" target="_blank">Demo</a></div></div><div><p>Our Kanban application is almost usable now. It doesn&apos;t look that bad and there&apos;s some basic functionality in place. In this chapter I&apos;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up <a href="https://gaearon.github.io/react-dnd/">React DnD</a>. After this chapter you should be able to sort notes within a lane, drag them from a lane to another and sort lanes.</p>
+<html><head><title>SurviveJS - Webpack and React - Implementing Drag and Drop</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><span class="docs-nav__link docs-nav__link--current">Implementing Drag and Drop</span><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/dnd.jpg);"></div><h1 class="post__heading">Implementing Drag and Drop</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_styling_react/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/09_implementing_dnd/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/09_implementing_dnd" target="_blank">Demo</a></div></div><div><p>Our Kanban application is almost usable now. It doesn&apos;t look that bad and there&apos;s some basic functionality in place. In this chapter I&apos;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up <a href="https://gaearon.github.io/react-dnd/">React DnD</a>. After this chapter you should be able to sort notes within a lane, drag them from a lane to another and sort lanes.</p>
 <a class="header-anchor" href="#setting-up-react-dnd" id="setting-up-react-dnd"></a><h2>Setting Up React DnD<a class="header-anchor-select" href="#setting-up-react-dnd">#</a></h2>
 <p>Before going further hit <code>npm i react-dnd --save</code> to add React DnD to the project. Next we&apos;ll need to patch our application to use it.</p>
 <p><strong>app/components/App.jsx</strong></p>
@@ -28,18 +28,22 @@
 <p>Earlier we extracted some of the editing functionality from <code>Note</code> and ended up dropping it. Since we need to decorate the component and don&apos;t want to end up with a mess, it seems like we&apos;ll want to add that concept back if only for decoration purposes.</p>
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
-
-import Note from &apos;./Note&apos;;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note&apos;</span>;
 
 ...
 
-<span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
-  <span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note&apos;</span> + <span class="hljs-attribute">i</span>}&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-      <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-      <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
-)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  ...
+  renderNote(note, i) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${i}`}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
+    )</span>;
+  }
+}
 </code></pre>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
@@ -141,31 +145,33 @@ import Note from &apos;./Note&apos;;
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 
-export default class Notes extends React.Component {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props: {
-    items: Array;
-    onEdit: Function;
+    items: <span class="hljs-built_in">Array</span>;
+    onEdit: <span class="hljs-built_in">Function</span>;
   }) {
-    super(props);
+    <span class="hljs-keyword">super</span>(props);
 
-    this.onMoveNote = this.onMoveNote.bind(this);
+    <span class="hljs-keyword">this</span>.renderNote = <span class="hljs-keyword">this</span>.renderNote.bind(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.onMoveNote = <span class="hljs-keyword">this</span>.onMoveNote.bind(<span class="hljs-keyword">this</span>);
   }
   render() {
-    var notes = this.props.items;
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.props.items;
 
-    return (
-      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
-        <span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{this.onMoveNote}</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span>
-          <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note-&apos;</span> + <span class="hljs-attribute">i</span>} <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
-      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-    );
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map(this.renderNote)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>;</span>
+  }
+  renderNote(note, i) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{this.onMoveNote}</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span>
+        <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${i}`}</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
+    )</span>;
   }
   onMoveNote(source, target) {
-    console.log(&apos;source&apos;, source, &apos;target&apos;, target);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, source, <span class="hljs-string">&apos;target&apos;</span>, target);
   }
 }
 </code></pre>
@@ -225,28 +231,31 @@ export default class Notes extends React.Component {
 <p>This can be solved by setting up a custom action for this particular purpose. We&apos;ll model <code>move</code> method there and make <code>NoteStores</code> react to that. After that it&apos;s up to each <code>NoteStore</code> to deal with it. In order to achieve this we&apos;ll need to do some wiring.</p>
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
-import NoteDndActions from &apos;../actions/NoteDndActions&apos;;
+<span class="hljs-keyword">import</span> NoteDndActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteDndActions&apos;</span>;
 
-export default class Notes extends React.Component {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props: {
-    items: Array;
-    onEdit: Function;
+    items: <span class="hljs-built_in">Array</span>;
+    onEdit: <span class="hljs-built_in">Function</span>;
   }) {
-    super(props);
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.renderNote = <span class="hljs-keyword">this</span>.renderNote.bind(<span class="hljs-keyword">this</span>);
   }
   render() {
-    var notes = this.props.items;
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.props.items;
 
-    return (
-      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
-        <span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{NoteDndActions.move}</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span>
-          <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note-&apos;</span> + <span class="hljs-attribute">note.id</span>} <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
-      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-    );
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map(this.renderNote)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>;</span>
+  }
+  renderNote(note, i) {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{NoteDndActions.move}</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span>
+        <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${note.id}`}</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
+    )</span>;
   }
 }
 </code></pre>
@@ -309,7 +318,7 @@ export default class Notes extends React.Component {
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findIndex</span>(<span class="hljs-params">arr, prop, value</span>) </span>{
-  <span class="hljs-keyword">var</span> o = arr.filter(c =&gt; c[prop] === value)[<span class="hljs-number">0</span>];
+  <span class="hljs-keyword">const</span> o = arr.filter(c =&gt; c[prop] === value)[<span class="hljs-number">0</span>];
 
   <span class="hljs-keyword">return</span> o &amp;&amp; arr.indexOf(o);
 }

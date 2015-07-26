@@ -1,4 +1,4 @@
-<html><head><title>SurviveJS - Webpack and React - Styling React</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><span class="docs-nav__link docs-nav__link--current">Styling React</span><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/taxi.jpg);"></div><h1 class="post__heading">Styling React</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_from_notes_to_kanban/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_styling_react/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/08_styling_react" target="_blank">Demo</a></div></div><div><p>Traditionally web pages have been split up in markup (e.g. HTML), styling (e.g. CSS) and logic (e.g. JavaScript). Even though this sounds simple in practice there are overlaps. You might trigger CSS animations through JavaScript. As seen earlier React provides a component oriented way of development. This in turn allows us to question some of our earlier beliefs.</p>
+<html><head><title>SurviveJS - Webpack and React - Styling React</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="github-fork-ribbon-wrapper right"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><span class="docs-nav__link docs-nav__link--current">Styling React</span><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/taxi.jpg);"></div><h1 class="post__heading">Styling React</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_from_notes_to_kanban/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_styling_react/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/08_styling_react" target="_blank">Demo</a></div></div><div><p>Traditionally web pages have been split up in markup (e.g. HTML), styling (e.g. CSS) and logic (e.g. JavaScript). Even though this sounds simple in practice there are overlaps. You might trigger CSS animations through JavaScript. As seen earlier React provides a component oriented way of development. This in turn allows us to question some of our earlier beliefs.</p>
 <p>I will show you how to style our application the traditional way and then discuss some more advanced alternatives you might want to consider. With React things are still in bit of a flux and we&apos;re still figuring out the best ways to deal with styling. Some patterns have begun to emerge, however. Perhaps some of the ideas will stick.</p>
 <a class="header-anchor" href="#old-school-styling" id="old-school-styling"></a><h2>Old School Styling<a class="header-anchor-select" href="#old-school-styling">#</a></h2>
 <p>The old school approach to styling was just to sprinkle some ids and classes around, set up some rules and hope for the best. Although this can work up to an extent it gets more complicated as development goes on. By default everything is global in CSS. Furthermore nesting definitions (e.g. <code>.main .sidebar .button</code>) creates implicit logic to your styling.</p>
@@ -207,29 +207,21 @@
 <p>Ironically the way solutions based on React solve this is through inline styles. Getting rid of inline styles was one of the main reasons for using separate CSS files in the first place. Now we are back there.</p>
 <p>This means that instead of something like</p>
 <pre><code class="undefinedjavascript">render(props, context) {
-  <span class="hljs-keyword">var</span> notes = <span class="hljs-keyword">this</span>.props.notes;
+  <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.props.notes;
 
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
-      ...
-    )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-  )</span>;
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map(this.renderNote)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>;</span>
 }
 </code></pre>
 <p>and accompanying CSS, we&apos;ll do something like this:</p>
 <pre><code class="undefinedjavascript">render(props, context) {
-  <span class="hljs-keyword">var</span> notes = <span class="hljs-keyword">this</span>.props.notes;
-  <span class="hljs-keyword">var</span> style = {
+  <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.props.notes;
+  <span class="hljs-keyword">const</span> style = {
     margin: <span class="hljs-string">&apos;0.5em&apos;</span>,
     paddingLeft: <span class="hljs-number">0</span>,
     listStyle: <span class="hljs-string">&apos;none&apos;</span>
   };
 
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{style}</span>&gt;</span>{notes.map((note, i) =&gt;
-      ...
-    )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-  )</span>;
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{style}</span>&gt;</span>{notes.map(this.renderNote)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>;</span>
 }
 </code></pre>
 <p>Just like with HTML attribute names, we are using the same camelcase convention for CSS properties.</p>
@@ -249,7 +241,7 @@
 <a class="header-anchor" href="#radium" id="radium"></a><h3>Radium<a class="header-anchor-select" href="#radium">#</a></h3>
 <p><a href="http://projects.formidablelabs.com/radium/">Radium</a> has certain valuable ideas that are worth highlighting. Most importantly it provides abstractions required to deal with media queries and pseudo classes (e.g. <code>:hover</code>).</p>
 <p>It expands the basic syntax as follows:</p>
-<pre><code class="undefinedjavascript">var styles = {
+<pre><code class="undefinedjavascript">const styles = {
   button: {
     padding: <span class="hljs-string">&apos;1em&apos;</span>,
 
@@ -280,9 +272,9 @@
 <p>For <code>style</code> prop to work, you&apos;ll need to annotate your classes using <code>@Radium</code> decorator.</p>
 <a class="header-anchor" href="#react-style" id="react-style"></a><h3>React Style<a class="header-anchor-select" href="#react-style">#</a></h3>
 <p><a href="https://github.com/js-next/react-style">React Style</a> uses the same syntax as React Native <a href="https://facebook.github.io/react-native/docs/stylesheet.html#content">StyleSheet</a>. It expands the basic definition by introducing additional keys for fragments.</p>
-<pre><code class="undefinedjavascript">var StyleSheet = import <span class="hljs-string">&apos;react-style&apos;</span>;
+<pre><code class="undefinedjavascript">import StyleSheet from <span class="hljs-string">&apos;react-style&apos;</span>;
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   primary: {
     background: <span class="hljs-string">&apos;green&apos;</span>
   },
@@ -308,8 +300,8 @@ var styles = StyleSheet.create({
 <p>Interestingly there is a <a href="https://github.com/js-next/react-style-webpack-plugin">React Style plugin for webpack</a>. It can extract CSS declarations into a separate bundle. Now we are closer to the world we&apos;re used to but without cascades. We also have our style declarations on component level.</p>
 <a class="header-anchor" href="#smart-css" id="smart-css"></a><h3>smart-css<a class="header-anchor-select" href="#smart-css">#</a></h3>
 <p><a href="https://github.com/hackhat/smart-css">smart-css</a> takes a similar approach except this time we are operating based on classes. To give you a better idea, consider the example below:</p>
-<pre><code class="undefinedjavascript">var SmartCSS = require(<span class="hljs-string">&apos;smart-css&apos;</span>);
-var css = new SmartCSS();
+<pre><code class="undefinedjavascript">import SmartCSS from <span class="hljs-string">&apos;smart-css&apos;</span>;
+const css = new SmartCSS();
 
 css.setClass(<span class="hljs-string">&apos;.button&apos;</span>, {
     padding: <span class="hljs-string">&apos;1em&apos;</span>
