@@ -81,7 +81,9 @@
     <span class="hljs-keyword">this</span>.bindActions(LaneActions);
   }
   init(data) {
-    <span class="hljs-keyword">this</span>.setState(data || {lanes: []});
+    <span class="hljs-keyword">this</span>.setState(<span class="hljs-built_in">Array</span>.isArray(data &amp;&amp; data.lanes) ? data : {
+      lanes: []
+    });
   }
   create(name) {
     <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
@@ -245,7 +247,12 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> {<span class="hljs-attribute">...props</span>}&gt;</span>
       ...
-        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span> <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[this.store]}</span> <span class="hljs-attribute">...</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
+          <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[this.store]}</span>
+          <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
+            <span class="hljs-attribute">items:</span> () =&gt;</span> this.store.getState().notes || []
+          } }
+        /&gt;
       ...
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
@@ -265,8 +272,37 @@ import Lane from <span class="hljs-string">&apos;./Lane&apos;</span>;
 <p>Now we have something that mostly works. We have separate lanes, you can add new notes to them and modify/remote them. There are still a few bits we&apos;re missing. Namely lane name editing and lane removal. Let&apos;s get those done next.</p>
 <a class="header-anchor" href="#implementing-edit-remove-for-lane-" id="implementing-edit-remove-for-lane-"></a><h2>Implementing Edit/Remove for <code>Lane</code><a class="header-anchor-select" href="#implementing-edit-remove-for-lane-">#</a></h2>
 <p>We can follow the same idea as for <code>Note</code> here. I.e. if you click <code>Lane</code> name, it should become editable. In case the new name is empty, we&apos;ll simply remove it. Given it&apos;s the same behavior we can extract it from <code>Note</code> and then reuse at <code>Lane</code>.</p>
-<p>Given <code>Note</code> already contains some of the logic we need, we can generalize the component. Simply rename <code>Note.jsx</code> as <code>Editable.jsx</code>. Make <code>Notes.jsx</code> point at <code>Editable</code> instead of <code>Note</code>.</p>
-<p>Next we should replace <code>Lane</code> name to be rendered through <code>Editable</code>:</p>
+<p>Given <code>Note</code> already contains some of the logic we need, we can generalize the component. Rename <code>Note.jsx</code> as <code>Editable.jsx</code> and change its class name to avoid confusion:</p>
+<p><strong>app/components/Editable.jsx</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Editable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  ...
+}
+</code></pre>
+<p>Make <code>Notes.jsx</code> point at <code>Editable</code> instead of <code>Note</code> like this:</p>
+<p><strong>app/components/Notes.jsx</strong></p>
+<pre><code class="undefinedjavascript">import React from &apos;react&apos;;
+import Editable from &apos;./Editable&apos;;
+
+export default class Notes extends React.Component {
+  ...
+  render() {
+    var notes = this.props.items;
+
+    return (
+      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;notes&apos;</span>&gt;</span>{notes.map((note, i) =&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{&apos;note&apos;</span> + <span class="hljs-attribute">i</span>}&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
+            <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
+            <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">i</span>)} /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+      )}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+    );
+  }
+}
+</code></pre>
+<p>We should replace <code>Lane</code> name to be rendered through <code>Editable</code>:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 
