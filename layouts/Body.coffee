@@ -24,8 +24,10 @@ module.exports = React.createClass
     render: ->
         sectionName = @getSectionName()
 
+        itemTitle = @getItem().title;
+
         div { },
             if sectionName and sectionName != '/'
                 Nav()
-                Fork { className: 'right', project: 'survivejs/webpack_react/issues/new', text: 'Submit feedback', style: {backgroundColor: 'black'}}
+                Fork { className: 'right', project: "survivejs/webpack_react/issues/new?title=#{itemTitle} - ", text: 'Submit feedback', style: {backgroundColor: 'black'}}
             main { role: 'main' }, @props.children
