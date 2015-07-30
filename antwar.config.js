@@ -188,6 +188,13 @@ module.exports = {
         var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
         var ret = [];
 
+        // filter out Leanpub meta
+        order = order.filter(function(name) {
+          var firstCharacter = name[0];
+
+          return firstCharacter === firstCharacter.toLowerCase();
+        });
+
         order.forEach(function(name, i) {
           var result = _.findWhere(files, {
             name: name,
