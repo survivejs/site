@@ -29,5 +29,6 @@ module.exports = React.createClass
         div { },
             if sectionName and sectionName != '/'
                 Nav()
+            if sectionName and sectionName != '/'
                 Fork { className: 'right ribbon', project: "survivejs/webpack_react/issues/new?title=#{itemTitle} - ", text: 'Submit feedback', style: {backgroundColor: 'black'}, target: '_blank'}
             main { role: 'main' }, @props.children
