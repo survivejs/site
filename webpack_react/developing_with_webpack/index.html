@@ -1,45 +1,111 @@
-<html><head><title>SurviveJS - Webpack and React - Developing with webpack</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Developing with webpack - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><span class="docs-nav__link docs-nav__link--current">Developing with webpack</span><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/oscillo.jpg);"></div><h1 class="post__heading">Developing with webpack</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/02_getting_started/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/03_developing_with_webpack/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/03_developing_with_webpack" target="_blank">Demo</a></div></div><div><p>In <code>Getting Started</code> we set up a minimal webpack based build. As hitting <code>npm run build</code> and refreshing browser is really boring we should do something about it. In this chapter we&apos;ll get rid of these problems and learn more about webpack. You&apos;ll start to understand better how useful it is.</p>
-<a class="header-anchor" href="#setting-up-webpack-dev-server-" id="setting-up-webpack-dev-server-"></a><h2>Setting Up <code>webpack-dev-server</code><a class="header-anchor-select" href="#setting-up-webpack-dev-server-">#</a></h2>
-<p>We will be developing some custom configuration for our development setup. As a first step copy <strong>webpack.config.js</strong> as <strong>webpack.development.js</strong>. Hit <code>cp webpack.config.js webpack.development.js</code> to achieve this.</p>
-<p>Invoke <code>npm i webpack-dev-server --save-dev</code> at project root. This will add webpack development server to the project we&apos;ll be relying upon. Most importantly it will deal with refreshing browser!</p>
-<p>We&apos;ll need to tweak <code>package.json</code> <em>scripts</em> section to set it up:</p>
+<html><head><title>SurviveJS - Webpack and React - Developing with webpack</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Developing with webpack - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><span class="docs-nav__link docs-nav__link--current">Developing with webpack</span><a href="/webpack_react/webpack_and_react" class="docs-nav__link">Webpack and React</a><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/building_kanban" class="docs-nav__link">Building Kanban</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/oscillo.jpg);"></div><h1 class="post__heading">Developing with webpack</h1><div class="post__content"><div class="post__meta"><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/02_developing_with_webpack/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/02_developing_with_webpack" target="_blank">Demo</a></div></div><div><p>If you are not one of those guys that likes to skip introductions, you might have some clue what webpack is. In its simplicity it is a module bundler. It takes a bunch of assets in and outputs assets you can give to your client.</p>
+<p>This sounds very simple but in practice it can be a very complicated and messy process. You definitely don&apos;t want to deal with all the details yourself. This is where webpack fits in. Next we&apos;ll get webpack set up and your first project running in development mode.</p>
+<a class="header-anchor" href="#setting-up-the-project" id="setting-up-the-project"></a><h2>Setting Up the Project<a class="header-anchor-select" href="#setting-up-the-project">#</a></h2>
+<p>Webpack is one of those tools that depends on <a href="http://nodejs.org/">Node.js</a>. Make sure you have it installed and you can have <code>npm</code> available at your terminal. Next you should set a directory for your project, navigate there, hit <code>npm init</code> and fill in some details. You can just hit <code>return</code> for each and it will work. Here are the commands in detail:</p>
+<pre><code class="undefinedbash">mkdir kanban_app
+<span class="hljs-built_in">cd</span> kanban_app
+npm init
+<span class="hljs-comment"># hit return a few times till you have gone through the questions</span>
+</code></pre>
+<p>As a result you should have <code>package.json</code>. If you are into version control, as you should, this would be a good time to set up your repository. You can create commits as you progress with the project.</p>
+<a class="header-anchor" href="#installing-webpack" id="installing-webpack"></a><h2>Installing webpack<a class="header-anchor-select" href="#installing-webpack">#</a></h2>
+<p>Next you should get webpack installed. We&apos;ll do a local install and save it as a project dependency. This will allow us to maintain webpack&apos;s version per project. Hit <code>npm i webpack node-libs-browser --save-dev</code>.</p>
+<blockquote class="tip"><code>node-libs-browser</code> is installed as it is a peer dependency of webpack. Starting from npm 3 it won&apos;t get installed automatically so it&apos;s a good idea to have it installed in order to be future-proof.</blockquote><p>This is a good change to try to run webpack for the first time. Hit <code>node_modules/.bin/webpack</code>. You should see a version print, link to cli guide and a long list of options. We won&apos;t be using most of those but it&apos;s good to know that this tool is packed with functionality if nothing else.</p>
+<p>Webpack works using a global install as well (<code>-g</code> or <code>--global</code> flag during installation) but it is preferred to keep it as a project dependency like this. The arrangement helps to keep your life simpler as you have direct control over the version you are running.</p>
+<blockquote class="tip">We are using <code>--save-dev</code> here instead of <code>--save</code> as we want to use webpack as a development dependency. Use <code>--save-dev</code> for parts you need to generate your distribution version. Otherwise <code>--save</code> is a good choice. This will give us more semantic <code>package.json</code> and makes our lives easier as we need to get back to the project later.</blockquote><a class="header-anchor" href="#directory-structure" id="directory-structure"></a><h2>Directory Structure<a class="header-anchor-select" href="#directory-structure">#</a></h2>
+<p>As projects with just <code>package.json</code> are very boring, we should set up something more concrete. Let&apos;s do a little web site that loads some JavaScript which we build using webpack. Set up a structure like this:</p>
+<ul>
+<li>/app<ul>
+<li>main.js</li>
+<li>component.js</li>
+</ul>
+</li>
+<li>/build (automatically generated, no need to create this)<ul>
+<li>bundle.js</li>
+<li>index.html</li>
+</ul>
+</li>
+<li>package.json</li>
+<li>webpack.config.js</li>
+</ul>
+<p>In this case we&apos;ll generate <code>bundle.js</code> using webpack based on our <code>/app</code>. To make this possible, let&apos;s set up some assets and <code>webpack.config.js</code>.</p>
+<a class="header-anchor" href="#setting-up-assets" id="setting-up-assets"></a><h2>Setting Up Assets<a class="header-anchor-select" href="#setting-up-assets">#</a></h2>
+<p>As you never get tired of <code>Hello world</code>, we might as well model a variant of that. Set up a component like this.</p>
+<p><strong>app/component.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> element = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;h1&apos;</span>);
+
+  element.innerHTML = <span class="hljs-string">&apos;Hello world&apos;</span>;
+
+  <span class="hljs-keyword">return</span> element;
+};
+</code></pre>
+<p>Next we are going to need an entry point for our application. It will simply <code>require</code> our component and render it through DOM.</p>
+<p><strong>app/main.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> component = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./component&apos;</span>);
+<span class="hljs-keyword">var</span> app = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;div&apos;</span>);
+
+<span class="hljs-built_in">document</span>.body.appendChild(app);
+
+app.appendChild(component());
+</code></pre>
+<a class="header-anchor" href="#setting-up-webpack-configuration" id="setting-up-webpack-configuration"></a><h2>Setting Up webpack Configuration<a class="header-anchor-select" href="#setting-up-webpack-configuration">#</a></h2>
+<p>We&apos;ll need to tell webpack how to deal with the assets we just set up. For this purpose we&apos;ll build <code>webpack.config.js</code>. Webpack and its development server will be able to discover this file automatically through convention.</p>
+<p>To keep things nice and simple, we&apos;ll be generating an entry point to our application using <code>html-webpack-plugin</code>. It will generate links to possible assets automatically and keep our life simple. Hit <code>npm i html-webpack-plugin --save-dev</code> to install it to the project.</p>
+<p>In order to map our application to <em>build/bundle.js</em> and generate <em>build/index.html</em> we are going to need configuration like this:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
+
+<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+
+<span class="hljs-built_in">module</span>.exports = {
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
+  output: {
+    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
+    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
+  },
+  plugins: [
+    <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
+      title: <span class="hljs-string">&apos;Kanban app&apos;</span>
+    })
+  ]
+};
+</code></pre>
+<p>We use <code>path.resolve</code> here as it is preferred to use absolute paths with webpack. If you move your configuration below some directory, you&apos;ll need to take this into account. Alternatively you could use <code>path.join(__dirname, &apos;app&apos;, &apos;main&apos;)</code> and such but I like to use <code>path.resolve</code> for these.</p>
+<p>If you hit <code>node_modules/.bin/webpack</code> now you can get a webpack build done. But we are not interested in builds. We want a proper development server to develop against.</p>
+<blockquote class="tip">Note that you can pass a custom template to <code>html-webpack-plugin</code>. In our case the default template it uses is just fine for our purposes.</blockquote><a class="header-anchor" href="#setting-up-webpack-dev-server-" id="setting-up-webpack-dev-server-"></a><h2>Setting Up <code>webpack-dev-server</code><a class="header-anchor-select" href="#setting-up-webpack-dev-server-">#</a></h2>
+<p>Now that we have basic building blocks together we can set up a development server. <code>webpack-dev-server</code> is a development server designed particularly development in mind. It will deal with refreshing browser as you develop. This makes it roughly equal to tools such as <a href="http://livereload.com/">LiveReload</a> or <a href="http://www.browsersync.io/">Browsersync</a>. The greatest advantage webpack has over these tools is Hot Module Reloading (HMR) which we&apos;ll discuss when we go through React.</p>
+<p>Hit <code>npm i webpack-dev-server --save-dev</code> at project root to get the server installed. We will be invoking our development server through npm. It allows us to set up <code>scripts</code> at <code>package.json</code>. In this case the following configuration is enough:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="undefinedjson">...
 <span class="hljs-string">&quot;scripts&quot;</span>: {
-  <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;webpack&quot;</span>,
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --config webpack.development.js --devtool eval --progress --colors --hot --inline --history-api-fallback --content-base build&quot;</span>
+  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --progress --colors --hot --inline --history-api-fallback&quot;</span>
 },
 ...
 </code></pre>
-<p>When you run <code>npm start</code> from your terminal it will execute the command mapping to <code>start</code> script of the <code>scripts</code> section. This is what it does:</p>
+<p>Hit <code>npm start</code> and surf to <strong>localhost:8080</strong>. You should see something familiar there. Try modifying <code>app/component.js</code> while the server is running and see what happens. Quite neat, huh?</p>
+<blockquote class="tip">If you want to use some other port than <code>8080</code>, you can pass <code>--port</code> parameter (e.g. <code>--port 4000</code>) to <em>webpack-dev-server</em>.</blockquote><p>When you run <code>npm start</code> from your terminal it will execute the command mapping to <code>start</code> script of the <code>scripts</code> section. This is what it does:</p>
 <ol>
 <li><code>webpack-dev-server</code> - Starts a web service on <code>localhost:8080</code></li>
-<li><code>--config webpack.development.js</code> - Points at custom development configuration we&apos;ll set up later</li>
-<li><code>--devtool eval</code> - Executes code through <code>eval</code> and attached <code>//@ sourceURL</code> annotations to it. After this you will see filename and line number where any errors are thrown. Use this for development only!</li>
 <li><code>--progress</code> - Will show progress of bundling your application</li>
 <li><code>--colors</code> - Colors in the terminal!</li>
 <li><code>--hot</code> - Enable hot module loading</li>
 <li><code>--inline</code> - Embeds the webpack-dev-server runtime into the bundle</li>
 <li><code>--history-api-fallback</code> - Allows HTML5 History API routes to work</li>
-<li><code>--content-base build</code> - Points to <code>build</code> so we can reuse <code>index.html</code> from there. We&apos;ll eliminate this later in this chapter</li>
 </ol>
-<p>To recap, when you run <code>npm start</code> this will fire up the server, watch for file changes and automatically rebundle your application when any file changes occur.</p>
-<p>Go to <strong>http://localhost:8080</strong> and you should see something. If you want to use some other port than 8080, you can pass <code>--port</code> parameter (e.g. <code>--port 4000</code>) to <em>webpack-dev-server</em>.</p>
-<p>Alternatively we can run the application from <strong>http://localhost:8080/webpack-dev-server/bundle</strong> instead of root. It provides an iframe showing a status bar that indicates the status of the rebundling process.</p>
-<blockquote class="tip">Note that scripts such as <code>start</code> or <code>test</code> are special cases. You can run them directly through <code>npm</code>. Normally you run these scripts through <code>npm run</code> (ie <code>npm run start</code> or <code>npm run build</code>).</blockquote><a class="header-anchor" href="#automatic-browser-refresh" id="automatic-browser-refresh"></a><h2>Automatic Browser Refresh<a class="header-anchor-select" href="#automatic-browser-refresh">#</a></h2>
-<p>When <strong>webpack-dev-server</strong> is running it will watch your files for changes. When that happens it rebundles your project and notifies browsers listening to refresh. If you try modifying <strong>app/component.js</strong> you should see the changes propagate to your browser now.</p>
+<p>Alternatively we can run the application from <strong>localhost:8080/webpack-dev-server/bundle</strong> instead of root. It provides an iframe showing a status bar that indicates the status of the rebundling process.</p>
+<a class="header-anchor" href="#refreshing-css" id="refreshing-css"></a><h2>Refreshing CSS<a class="header-anchor-select" href="#refreshing-css">#</a></h2>
 <p>We can easily extend the approach to work with CSS. webpack allows us to modify CSS without forcing a full refresh. Let&apos;s see how to achieve that next.</p>
-<a class="header-anchor" href="#loading-css" id="loading-css"></a><h2>Loading CSS<a class="header-anchor-select" href="#loading-css">#</a></h2>
-<p>In order to load CSS to project, we&apos;ll need to use a couple of loaders. To get started, invoke <code>npm i css-loader style-loader --save-dev</code>. Now that we have the loaders we need, we&apos;ll need to make sure webpack is aware of them. It&apos;s time to configure.</p>
-<p><strong>webpack.development.js</strong></p>
+<p>In order to load CSS to project, we&apos;ll need to use a couple of loaders. To get started, invoke <code>npm i css-loader style-loader --save-dev</code>. Now that we have the loaders we need, we&apos;ll need to make sure webpack is aware of them. Configure as follows.</p>
+<p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
+<span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
 
 <span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
 
 <span class="hljs-built_in">module</span>.exports = {
-  entry: [
-    path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>)
-  ],
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
   output: {
     path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
     filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
@@ -48,81 +114,50 @@
     loaders: [
       {
         test: <span class="hljs-regexp">/\.css$/</span>,
-        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>]
+        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>],
+        include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
       }
     ]
-  }
+  },
+  ...
 };
 </code></pre>
 <p>The configuration we added tells webpack that whenever it meets some file ending with <code>css</code> it should invoke the power of loaders in this specific order. This is done by matching against <code>test</code> regular expression.</p>
-<p>Loaders are evaluated from right to left. In this case it will pass a possible CSS file to <em>css-loader</em> first and to <em>style-loader</em> after that. <em>css-loader</em> will resolve <code>@import</code> and <code>url</code> statements of our CSS files. <em>style-loader</em> deals with <code>require</code> statements in our JavaScript. Similar approach works with CSS preprocessors.</p>
-<blockquote class="warning">Although <code>[&apos;style&apos;, &apos;css&apos;]</code> type loader configuration can be convenient, it can lead to issues due to the way the lookup works. If you happened to have <code>css</code> named module installed at <code>node_modules</code>, it would try to use that instead of <code>css-loader</code> which we might expect!</blockquote><p>We are missing just one bit, the actual CSS itself:</p>
-<p><strong>app/stylesheets/main.css</strong></p>
+<p>Note that loaders are evaluated from right to left. In this case it will pass a possible CSS file to <em>css-loader</em> first and to <em>style-loader</em> after that. <em>css-loader</em> will resolve <code>@import</code> and <code>url</code> statements of our CSS files. <em>style-loader</em> deals with <code>require</code> statements in our JavaScript. Similar approach works with CSS preprocessors.</p>
+<blockquote class="warning">Although <code>[&apos;style&apos;, &apos;css&apos;]</code> type loader configuration can be convenient, it can lead to issues due to the way the lookup works. If you happened to have <code>css</code> named module installed at <code>node_modules</code>, it would try to use that instead of <code>css-loader</code> which we might expect!</blockquote><blockquote class="warning">If <code>include</code> isn&apos;t set, webpack will traverse all files within the base directory. This can hurt performance!</blockquote><p>We are missing just one bit, the actual CSS itself:</p>
+<p><strong>app/main.css</strong></p>
 <pre><code class="undefinedcss"><span class="hljs-tag">body</span> <span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> cornsilk</span></span>;
 }</span>
 </code></pre>
 <p>In addition we&apos;ll need to make webpack aware of this file:</p>
 <p><strong>app/main.js</strong></p>
-<pre><code><span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./stylesheets/main.css&apos;</span>);
+<pre><code class="undefinedjavascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./main.css&apos;</span>);
 
 ...
-</code></pre><p>Hit <code>npm start</code> now and point your browser to <em>localhost:8080</em> provided you are using the default port.</p>
-<p>To see the magic in action, you should open up <em>main.css</em> and change the background color to something nice like <code>lime</code> (<code>background: lime</code>). Develop styles as needed. Experiment.</p>
-<p>In order to make our normal build (<code>npm run build</code>) work with CSS, you could attach that <em>module</em> bit to <code>webpack.config.js</code> too. Given it can be cumbersome to maintain configuration like this, I&apos;ll show you a nicer way.</p>
-<a class="header-anchor" href="#sharing-common-configuration" id="sharing-common-configuration"></a><h2>Sharing Common Configuration<a class="header-anchor-select" href="#sharing-common-configuration">#</a></h2>
-<p>If we don&apos;t structure our configuration in a smart way, it will become easy to make mistakes. We&apos;ll want to avoid unnecessary duplication. Given webpack configuration is just JavaScript, there are many ways to approach the problem. As long as we generate the structure webpack expects, we should be fine.</p>
-<p>One way to do this is to keep all configuration in <code>webpack.config.js</code> and control what it returns using an environment variable. The advantage of this approach is that you can see all the bits and pieces and how they relate to each other from single place. We can adapt this approach to our project quite easily.</p>
-<p>In order to make it easier to deal with this arrangement I&apos;ve developed a little custom merge utility known as <code>webpack-merge</code>. Install it using <code>npm i webpack-merge --save-dev</code> to your project. Compared to <code>merge</code> you might be used to this variant that concatenates arrays instead of replacing them. This is particularly useful with loader configuration. Set up <strong>webpack.config.js</strong> as below:</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">var</span> merge = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack-merge&apos;</span>);
-
-<span class="hljs-keyword">var</span> TARGET = process.env.TARGET;
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
-
-<span class="hljs-keyword">var</span> common = {
-  entry: [path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>)],
-  output: {
-    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
+</code></pre>
+<p>Hit <code>npm start</code> now and point your browser to <strong>localhost:8080</strong> provided you are using the default port.</p>
+<p>To see the magic in action, you should open up <em>main.css</em> and change the background color to something nice like <code>lime</code> (<code>background: lime</code>). Develop styles as needed to make it look a little nicer.</p>
+<a class="header-anchor" href="#making-the-configuration-extensible" id="making-the-configuration-extensible"></a><h2>Making the Configuration Extensible<a class="header-anchor-select" href="#making-the-configuration-extensible">#</a></h2>
+<p>In order to make room for later production configuration we can prepare our current one for it. There are multiple ways to approach the problem. Some people prefer to write a separate configuration file per target. In order to share configuration they write a factory function. You can see this approach in action at <a href="https://github.com/webpack/react-starter">webpack/react-starter</a>.</p>
+<p>This approach can be taken even further. <a href="https://github.com/HenrikJoreteg/hjs-webpack">HenrikJoreteg/hjs-webpack</a> is an example of a webpack based library that wraps common scenarios within an easier to use format. When using a library like this you don&apos;t have to worry about specific configuration as much. You will lose some power in the process but sometimes that can be acceptable.</p>
+<blockquote class="tip">Webpack works well as a basis for more advanced tools. I&apos;ve helped to develop a static site generator known as <a href="https://antwarjs.github.io/">Antwar</a>. It builds upon webpack and React and hides a lot of the complexity of webpack from the user. webpack is a good fit for tools like this as it solves so many difficult problems well.</blockquote><p>I have settled with a single configuration file based approach. The idea is that there&apos;s a smart <code>merge</code> function that overrides objects and concatenates arrays. This works well with webpack configuration given that&apos;s what you want to do most of the time. In this approach the configuration block to use is determined based on an environment variable.</p>
+<p>The biggest advantage of this approach is that it allows you to see all relevant configuration at one glance. The problem is that for now there&apos;s no nice way to set environment variables through <code>package.json</code> in a cross-platform way. It is possible this problem will go away with webpack 2 as it make it possible to pass the context data through the command itself.</p>
+<a class="header-anchor" href="#passing-build-target-to-configuration" id="passing-build-target-to-configuration"></a><h3>Passing Build Target to Configuration<a class="header-anchor-select" href="#passing-build-target-to-configuration">#</a></h3>
+<p>For this setup to work we need to pass <code>TARGET</code> through <code>package.json</code>. You could use standard <code>NODE_ENV</code> here but it&apos;s up to you. I don&apos;t like to mix these up. Here&apos;s what <code>package.json</code> should look like after attaching build target to environment.</p>
+<p><strong>package.json</strong></p>
+<pre><code class="undefinedjson">{
+  ...
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --progress --colors --hot --inline --history-api-fallback&quot;</span>
   },
-  <span class="hljs-built_in">module</span>: {
-    loaders: [
-      {
-        test: <span class="hljs-regexp">/\.css$/</span>,
-        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>]
-      }
-    ]
-  }
-};
-
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>
-  });
-}
-
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;eval&apos;</span>
-  });
+  ...
 }
 </code></pre>
-<p>The common configuration has been separated to a section of its own. We use a different <code>devtool</code> depending on the branch. Those <code>devtool</code> bits in the configuration define how webpack deals with sourcemaps. Setting this up gives you better debug information in browser. There are a variety of options as discussed in the <a href="https://webpack.github.io/docs/configuration.html#devtool">official documentation</a>. The current ones are good starting points.</p>
-<p>To make everything work again, we&apos;ll need to tweak our <code>package.json</code> <strong>scripts</strong> section like this:</p>
-<pre><code class="undefinedjson">...
-<span class="hljs-string">&quot;scripts&quot;</span>: {
-  <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;TARGET=build webpack&quot;</span>,
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --progress --colors --hot --inline --history-api-fallback --content-base build&quot;</span>
-},
-...
-</code></pre>
-<blockquote class="warning">In <code>&quot;scripts&quot;</code>, <code>TARGET=build</code> type of declarations won&apos;t work on Windows! You should instead use <code>SET TARGET=build&amp;&amp; webpack</code> and <code>SET TARGET=dev&amp;&amp; webpack-dev-server...</code> there. It is important it&apos;s <code>build&amp;&amp;</code> as <code>build &amp;&amp;</code> will fail. Later on webpack will allow env to be passed to it directly making this cross-platform. For now this will work.</blockquote><p>You can also eliminate those old configuration files at the project root while at it.</p>
-<p>If everything went fine, the old commands should work still. Now we have something a little tidier together that&apos;s possible to grow even further with minimal work.</p>
-<a class="header-anchor" href="#-html-webpack-plugin-" id="-html-webpack-plugin-"></a><h2><code>html-webpack-plugin</code><a class="header-anchor-select" href="#-html-webpack-plugin-">#</a></h2>
-<p>In our current solution both build and development rely on the same <code>index.html</code>. That will cause problems as the project expands. Instead it&apos;s preferable to use <code>html-webpack-plugin</code> for this purpose. It can generate all the references we need without us having to tweak them manually.</p>
-<p>As a first step hit <code>npm i html-webpack-plugin --save-dev</code>. Get rid of <code>build/index.html</code>. We&apos;ll generate that dynamically next with some configuration.</p>
+<p>After this change we can access <code>TARGET</code> at <code>webpack.config.js</code> through <code>process.env.TARGET</code>. This will give us branching we need.</p>
+<blockquote class="tip">Note that scripts such as <code>start</code> or <code>test</code> are special cases. You can run them directly through <code>npm</code>. Normally you run these scripts through <code>npm run</code> (ie <code>npm run start</code> or <code>npm run build</code>).</blockquote><blockquote class="warning"><code>TARGET=dev</code> type of declarations won&apos;t work on Windows! You should instead use <code>SET TARGET=dev&amp;&amp; webpack</code> and <code>SET TARGET=dev&amp;&amp; webpack-dev-server...</code> there. It is important it&apos;s <code>dev&amp;&amp;</code> as <code>build &amp;&amp;</code> will fail. Later on webpack will allow env to be passed to it directly making this cross-platform. For now this will work.</blockquote><a class="header-anchor" href="#setting-up-configuration-target-for-npm-start-" id="setting-up-configuration-target-for-npm-start-"></a><h3>Setting Up Configuration Target for <code>npm start</code><a class="header-anchor-select" href="#setting-up-configuration-target-for-npm-start-">#</a></h3>
+<p>As discussed we&apos;ll be using a custom <code>merge</code> function for sharing configuration between targets. Hit <code>npm i webpack-merge --save-dev</code> to add it to the project. Add <code>merge</code> stub as below. We&apos;ll expand these in the coming chapters.</p>
+<p>In order to improve debuggability of the application we can set up sourcemaps while at it. These allow you to get proper debug information at browser. You&apos;ll see exactly where an error was raised for instance. In webpack this is controlled through <code>devtool</code> setting. We can use decent defaults as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
 <span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
@@ -132,32 +167,33 @@
 <span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
 
 <span class="hljs-keyword">var</span> common = {
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
+  output: {
+    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
+    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
+  },
+  <span class="hljs-built_in">module</span>: {
+    loaders: [
+      {
+        test: <span class="hljs-regexp">/\.css$/</span>,
+        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>],
+        include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
+      }
+    ]
+  }
   ...
-  plugins: [
-    <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
-      title: <span class="hljs-string">&apos;Kanban app&apos;</span>
-    })
-  ]
 };
 
-...
+<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
+  <span class="hljs-built_in">module</span>.exports = merge(common, {
+    devtool: <span class="hljs-string">&apos;eval&apos;</span>
+  });
+}
 </code></pre>
-<p>We can also drop <code>--content-base</code> from the <code>start</code> script since the entry point will get generated dynamically.</p>
-<p><strong>package.json</strong></p>
-<pre><code class="undefinedjson">...
-<span class="hljs-string">&quot;scripts&quot;</span>: {
-  <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;TARGET=build webpack&quot;</span>,
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --progress --colors --hot --inline --history-api-fallback&quot;</span>
-},
-...
-</code></pre>
-<p>If you hit <code>npm run build</code> now, you should get output that&apos;s roughly equal to what we had earlier. We still need to make our development server work to get back where we started.</p>
-<blockquote class="tip">Note that you can pass a custom template to <code>html-webpack-plugin</code>. In our case the default template it uses is just fine for our purposes.</blockquote><a class="header-anchor" href="#other-configuration-approaches" id="other-configuration-approaches"></a><h2>Other Configuration Approaches<a class="header-anchor-select" href="#other-configuration-approaches">#</a></h2>
-<p>There is no single clear convention on how to deal with webpack configuration. Given webpack expects an object structure the way you generate it doesn&apos;t matter that much. The way you saw above is the one I find the most convenient as it allows you to share configuration easily while understanding what&apos;s going on.</p>
-<p>Some people prefer to write a separate configuration file per target. In order to share configuration they write a factory function. You can see this approach in action at <a href="https://github.com/webpack/react-starter">webpack/react-starter</a>.</p>
-<p>This approach can be taken even further. <a href="https://github.com/HenrikJoreteg/hjs-webpack">HenrikJoreteg/hjs-webpack</a> is an example of a webpack based library that wraps common scenarios within an easier to use format. When using a library like this you don&apos;t have to worry about specific configuration as much. You will lose some power in the process but sometimes that can be acceptable.</p>
-<p>In fact webpack works well as a basis for more advanced tools. I&apos;ve helped to develop a static site generator known as <a href="https://antwarjs.github.io/">Antwar</a>. It builds upon webpack and React and hides a lot of the complexity of webpack from the user. webpack is a good fit for tools like this as it solves so many difficult problems well.</p>
+<p>If you run the development build now using <code>npm start</code>, webpack will generate sourcemaps. The browser will be able to pick it up through naming convention. The <a href="https://webpack.github.io/docs/configuration.html#devtool">official documentation</a> goes into further detail about possible options available.</p>
+<p>Configuration could contain more sections such as these based on your needs. Later on we&apos;ll develop another section to generate a production build.</p>
+<a class="header-anchor" href="#linting-the-project" id="linting-the-project"></a><h2>Linting the Project<a class="header-anchor-select" href="#linting-the-project">#</a></h2>
+<p>I discuss linting in detail at <em>Linting in webpack</em> chapter. Given setting up a linter is the most beneficial at the beginning of a project, not at the end, it may be worth your while to check out the chapter and expand the project configuration as you see fit.</p>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
-<p>Now we have a nice degree of separation between production and development builds. Initially webpack tends to take some configuration work but after that working with it becomes faster as you start to think in terms of loaders and plugins and how those fit into your workflow. Webpack deals with the heavy lifting while you get to focus on development.</p>
-<p>In this chapter you learned how to go beyond a basic webpack configuration. Webpack&apos;s development server is a powerful feature that has even more in store. We also learned how to organize our configuration more effectively. Next we&apos;ll see how to configure webpack to work well with React.</p>
-</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/training.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/getting_started">Getting Started</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/mainframe.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/webpack_and_react">Webpack and React</a></div></div><a class="next-page" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="previous-page" href="/webpack_react/getting_started">Getting Started</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/35237097961@N01/3561706030">Fumi Yamazaki (CC BY-NC-SA)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
+<p>In this chapter you learned to build an effective development configuration using webpack. Webpack deals with the heavy lifting for you now. The current setup can be expanded easily to support more scenarios. Next we can see how to expand it to work with React well.</p>
+</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/apples_oranges.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/webpack_compared">Webpack Compared</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/mainframe.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/webpack_and_react">Webpack and React</a></div></div><a class="next-page" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="previous-page" href="/webpack_react/webpack_compared">Webpack Compared</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/35237097961@N01/3561706030">Fumi Yamazaki (CC BY-NC-SA)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>

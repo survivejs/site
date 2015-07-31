@@ -1,44 +1,68 @@
-<html><head><title>SurviveJS - Webpack and React - Webpack and React</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Webpack and React - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/getting_started" class="docs-nav__link">Getting Started</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><span class="docs-nav__link docs-nav__link--current">Webpack and React</span><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note App</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/mainframe.jpg);"></div><h1 class="post__heading">Webpack and React</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/03_developing_with_webpack/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/04_webpack_and_react/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/04_webpack_and_react" target="_blank">Demo</a></div></div><div><p><img src="/images/react_header.png" alt="React"></p>
-<p>Facebook&apos;s <a href="https://facebook.github.io/react/">React</a> is one of those projects that has changed the way we think about frontend development. Thanks to <a href="https://facebook.github.io/react-native/">React Native</a> the approach isn&apos;t limited just to web. Although simple to learn, React provides plenty of power.</p>
-<p>Webpack provides a good starting point for serious React development. React itself &quot;solves&quot; just the view portion of web development. It will take some getting used to but conceptually it is quite simple once you get your mind around it. Some practices, such as styling, are still under debate as we will see in later chapters.</p>
-<a class="header-anchor" href="#what-is-react-" id="what-is-react-"></a><h2>What is React?<a class="header-anchor-select" href="#what-is-react-">#</a></h2>
+<html><head><title>SurviveJS - Webpack and React - Webpack and React</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Webpack and React - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="post"><div class="docs-nav__wrapper docs-nav__wrapper--push-down"><h4 class="docs-nav--header">Table of Contents</h4><div class="docs-nav"><a href="/webpack_react/introduction" class="docs-nav__link">Introduction</a><a href="/webpack_react/webpack_compared" class="docs-nav__link">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="docs-nav__link">Developing with webpack</a><span class="docs-nav__link docs-nav__link--current">Webpack and React</span><a href="/webpack_react/implementing_notes" class="docs-nav__link">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="docs-nav__link">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="docs-nav__link">From Notes to Kanban</a><a href="/webpack_react/implementing_dnd" class="docs-nav__link">Implementing Drag and Drop</a><a href="/webpack_react/building_kanban" class="docs-nav__link">Building Kanban</a><a href="/webpack_react/linting_in_webpack" class="docs-nav__link">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="docs-nav__link">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="docs-nav__link">Authoring Libraries</a><a href="/webpack_react/styling_react" class="docs-nav__link">Styling React</a><a href="/webpack_react/troubleshooting" class="docs-nav__link">Troubleshooting</a></div></div><div class="header-image" style="background-image:url(/images/mainframe.jpg);"></div><h1 class="post__heading">Webpack and React</h1><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/02_developing_with_webpack/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/03_webpack_and_react/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/03_webpack_and_react" target="_blank">Demo</a></div></div><div><p>Combined with webpack React becomes a joy to work with. Even though you can use React with other build tools, webpack is a good fit and quite straightforward to set up. In this chapter we&apos;ll expand our configuration so that we have a good starting point for developing our application further.</p>
+<blockquote class="tip">Common editors (Sublime Text, vim, emacs, Atom etc.) have good support for React. Even IDEs such as <a href="https://www.jetbrains.com/webstorm/">WebStorm</a> support it up to an extent. <a href="http://nuclide.io/">Nuclide</a>, an Atom based IDE, has been developed with React in mind. Tooling might not support the newest language features always but overall the situation is good.</blockquote><a class="header-anchor" href="#what-is-react-" id="what-is-react-"></a><h2>What is React?<a class="header-anchor-select" href="#what-is-react-">#</a></h2>
+<p><img src="/images/react_header.png" alt="React"></p>
+<p>Facebook&apos;s <a href="https://facebook.github.io/react/">React</a> is one of those projects that has changed the way we think about frontend development. Also, thanks to <a href="https://facebook.github.io/react-native/">React Native</a> the approach isn&apos;t limited just to web. Although simple to learn, React provides plenty of power.</p>
 <p>React isn&apos;t a framework like Angular.js or Ember. Instead it&apos;s just a library focusing on the view layer. It introduced a concept known as virtual DOM to web developers. This means that instead of manipulating DOM directly just like all the libraries and frameworks before it, React maintains a DOM of its own. As changes are made to virtual DOM, React will batch the changes to actual DOM as it sees best.</p>
-<p>This has meant that the developers of React have decoupled themselves from the limitations of DOM. As a result React is highly performant. This comes with a cost. The library isn&apos;t as small as you might expect. You can expect bundle sizes for small applications to be around 150-200k, React included. That is considerably less when gzipped over wire but it&apos;s still something.</p>
-<blockquote class="tip">The interesting side benefit of this approach is that React doesn&apos;t depend on DOM. In fact React can use other targets, such as mobile or canvas. DOM just happens to be the most relevant one for web developers.</blockquote><p>Even if React isn&apos;t the smallest library out there it does manage to solve serious problems. It is a pleasure to develop with thanks to its relative simplicity and powerful API. You will need to complement with a set of tools but you can pick these based on actual need. It&apos;s far from a &quot;one size fits all&quot; type of solution which frameworks tend to be.</p>
+<a class="header-anchor" href="#jsx-and-virtual-dom" id="jsx-and-virtual-dom"></a><h3>JSX and Virtual DOM<a class="header-anchor-select" href="#jsx-and-virtual-dom">#</a></h3>
+<p>React provides a <a href="https://facebook.github.io/react/docs/top-level-api.html">high level API</a> for generating this virtual DOM. As generating complex structures using the API becomes cumbersome fast, people usually don&apos;t write it by hand. Instead they use some intermediate format that is converted into it. <a href="https://facebook.github.io/jsx/">JSX</a> is one popular format.</p>
+<p>JSX is a JavaScript superset that allows you to mix  XMLish syntax with JavaScript as shown in the example below:</p>
+<pre><code class="undefinedjavascript">function render() {
+  const names = [&apos;John&apos;, &apos;Jill&apos;, &apos;Jack&apos;];
+
+  return (
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Names<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;names&apos;</span>&gt;</span>{
+      names.map((name) =&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;name&apos;</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+      )
+    }<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+  );
+}
+</code></pre>
+<p>If you haven&apos;t seen JSX before it will likely look strange. We are mixing something that looks a bit like HTML with JavaScript. Note how we treat attributes. Instead of using <code>class</code> as we would in vanilla HTML, we use <code>className</code>, the DOM equivalent. Even though JSX will feel a little weird to use at first it will become a second nature over time.</p>
+<p>Because of virtual DOM the developers of React have decoupled themselves from the limitations of DOM. As a result React is highly performant. This comes with a cost, though. The library isn&apos;t as small as you might expect. You can expect bundle sizes for small applications to be around 150-200k, React included. That is considerably less when gzipped over wire but it&apos;s still something.</p>
+<blockquote class="tip">The interesting side benefit of this approach is that React doesn&apos;t depend on DOM. In fact React can use other targets, such as mobile or canvas. DOM just happens to be the most relevant one for web developers.</blockquote><a class="header-anchor" href="#better-with-friends" id="better-with-friends"></a><h3>Better with Friends<a class="header-anchor-select" href="#better-with-friends">#</a></h3>
+<p>Even if React isn&apos;t the smallest library out there it does manage to solve fundamental problems. It is a pleasure to develop with thanks to its relative simplicity and powerful API. You will need to complement it with a set of tools but you can pick these based on actual need. It&apos;s far from a &quot;one size fits all&quot; type of solution which frameworks tend to be.</p>
 <p>The approach used by React allowed Facebook to develop React Native on top of the same ideas. This time instead of DOM, we are operating on mobile platform rendering. React Native provides abstraction over components and layout system while providing you the setup you already know from the web. It can be seen as a gateway for web developers wanting to develop performant mobile applications.</p>
-<p>Webpack and React work well together. By now we understand how to set up a simple project. We can extend it to work with React easily. Before we get to implement anything serious, it&apos;s a good idea to make sure we have a decent development environment. That will make everything so much easier.</p>
 <a class="header-anchor" href="#babel" id="babel"></a><h2>Babel<a class="header-anchor-select" href="#babel">#</a></h2>
 <p><img src="/images/babel.png" alt="Babel"></p>
 <p><a href="https://babeljs.io/">Babel</a> is one of those projects that has made a big impact on the community. It allows us to use features from the future of JavaScript. It will transform your futuristic code to a format browsers understand. You can even use it to develop your own language features. Babel&apos;s built-in JSX support will come in handy here.</p>
-<p>In addition to the standardized ES6 features Babel provides support for certain <a href="https://babeljs.io/docs/usage/experimental/">experimental features</a> from ES7. Some of these might make it to the core language while some might be dropped altogether. The language proposals have been categorized within stages. Stage 0 is a strawman, stage 1 a proposal, stage 2 draft and so on.</p>
-<p>I would be especially careful with stage 0 as if a stage 0 feature you are depending upon goes away you&apos;ll have to rewrite some of your code. But in smaller projects that may be worth the risk. Babel has stage 2 and higher features enabled by default. In our project we&apos;ll enable stage 1 to use decorators and property spreading as they will make our code a little tidier. You can find more information at <a href="https://babeljs.io/docs/usage/experimental/">Babel documentation</a>.</p>
+<p>In addition to the standardized ES6 features Babel provides support for certain <a href="https://babeljs.io/docs/usage/experimental/">experimental features</a> from ES7. Some of these might make it to the core language while some might be dropped altogether. The language proposals have been categorized within stages. <strong>Stage 0</strong> is a strawman, <strong>stage 1</strong> a proposal, <strong>stage 2</strong> draft and so on.</p>
+<p>I would be especially careful with <strong>stage 0</strong> as if a <strong>stage 0</strong> feature you are depending upon goes away you&apos;ll have to rewrite some of your code. But in smaller projects that may be worth the risk. Babel has <strong>stage 2</strong> and higher features enabled by default. In our project we&apos;ll enable <strong>stage 1</strong> to use decorators and property spreading as they will make our code a little tidier. You can find more information at <a href="https://babeljs.io/docs/usage/experimental/">Babel documentation</a>.</p>
 <blockquote class="tip">You can <a href="https://babeljs.io/repl/">try out Babel online</a> to see what kind of code it generates.</blockquote><a class="header-anchor" href="#configuring-babel-loader" id="configuring-babel-loader"></a><h3>Configuring babel-loader<a class="header-anchor-select" href="#configuring-babel-loader">#</a></h3>
-<p>In order to set up Babel for our project we can use <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. Install it using <code>npm i babel-core babel-loader --save-dev</code>. <code>babel-core</code> is a peer dependency of <code>babel-loader</code> so that needs to be installed explicitly to make the project work with npm 3.</p>
-<p>In addition add the following loader declaration to the <em>loaders</em> section of your configuration. It will tell webpack to match against <code>.js</code> and <code>.jsx</code> (<code>/\.jsx?$/</code>) using a regular expression. In addition we pass <code>stage</code> argument for Babel so it knows we want to enable stage 1 features.</p>
+<p>In order to set up Babel for our project we can use <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. Install it using <code>npm i babel-core babel-loader --save-dev</code>.</p>
+<p>In addition we need to add loader declaration to the <em>loaders</em> section of configuration. It will tell webpack to match against <code>.js</code> and <code>.jsx</code> (<code>/\.jsx?$/</code>) using a regular expression. In addition we pass <code>stage</code> argument for Babel so it knows we want to enable <strong>stage 1</strong> features.</p>
 <p>To keep everything performant we restrict the loader to operate within <code>./app</code> directory. This way it won&apos;t traverse <code>node_modules</code>. An alternatively would be to set up an <code>exclude</code> rule against <code>node_modules</code> explicitly but I find it more useful to <code>include</code> instead as that&apos;s more explicit. You never know what files might be in the structure after all.</p>
 <p>Webpack traverses <code>[&apos;&apos;, &apos;.webpack.js&apos;, &apos;.web.js&apos;, &apos;.js&apos;]</code> files by default. This will get problematic with our <code>import Note from &apos;./Note&apos;;</code> statement. In order to make it find JSX, we&apos;ll need to tweak webpack&apos;s <code>resolve.extensions</code> to include JSX.</p>
 <p>Here&apos;s the relevant configuration we need to make Babel work:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> common = {
-  entry: [path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>)],
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">var</span> common = {
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
   resolve: {
-    extensions: [<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>],
-  },
-  ...
-  <span class="hljs-built_in">module</span>: {
-    loaders: [
-      {
-        test: <span class="hljs-regexp">/\.jsx?$/</span>,
-        loader: <span class="hljs-string">&apos;babel?stage=1&apos;</span>,
-        include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-      },
-      ...
-    ]
+    extensions: [<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>]
   },
   ...
 };
+
+<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
+  <span class="hljs-built_in">module</span>.exports = merge(common, {
+    devtool: <span class="hljs-string">&apos;eval&apos;</span>,
+    <span class="hljs-built_in">module</span>: {
+      loaders: [
+        {
+          test: <span class="hljs-regexp">/\.jsx?$/</span>,
+          loaders: [<span class="hljs-string">&apos;babel?stage=1&apos;</span>],
+          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
+        }
+      ]
+    }
+  });
+}
 </code></pre>
-<blockquote class="tip">Another way to deal with Babel configuration would be to define a <a href="https://babeljs.io/docs/usage/babelrc/">.babelrc</a> file in the project root. It would contain default settings used by Babel. It&apos;s the same idea as for ESLint and many other tools discussed later.</blockquote><a class="header-anchor" href="#installing-react" id="installing-react"></a><h2>Installing React<a class="header-anchor-select" href="#installing-react">#</a></h2>
+<blockquote class="tip">Another way to deal with Babel configuration would be to define a <a href="https://babeljs.io/docs/usage/babelrc/">.babelrc</a> file in the project root. It would contain default settings used by Babel. It&apos;s the same idea as for ESLint and many other tools discussed later.</blockquote><a class="header-anchor" href="#developing-first-react-view" id="developing-first-react-view"></a><h2>Developing First React View<a class="header-anchor-select" href="#developing-first-react-view">#</a></h2>
 <p>Hit <code>npm i react --save</code> at the project root to add React to our project. As a next step we can start developing our Kanban application. First we should define <code>App</code>. This will be the core of our application. It represents the high level view of it and works as an entry point. Later on it will orchestrate it all.</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
@@ -50,7 +74,8 @@
   }
 }
 </code></pre>
-<blockquote class="warning">If you are used to <code>React.createClass()</code>, it is important to note that ES6 based class approach <strong>doesn&apos;t</strong> support autobinding behavior. Apart from that you may find ES6 classes neater. See the end of this chapter for more information.</blockquote><p>We also need to define <code>Note</code> component. In this case we will just want to show some text like <code>Learn webpack</code>. <code>Hello world</code> would work if you are into clich&#xE9;s.</p>
+<blockquote class="warning">If you are used to <code>React.createClass()</code>, it is important to note that ES6 based class approach <strong>doesn&apos;t</strong> support autobinding behavior. Apart from that you may find ES6 classes neater. See the end of this chapter for more information.</blockquote><a class="header-anchor" href="#setting-up-note-" id="setting-up-note-"></a><h3>Setting Up <code>Note</code><a class="header-anchor-select" href="#setting-up-note-">#</a></h3>
+<p>We also need to define <code>Note</code> component. In this case we will just want to show some text like <code>Learn webpack</code>. <code>Hello world</code> would work if you are into clich&#xE9;s.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 
@@ -60,9 +85,10 @@
   }
 }
 </code></pre>
-<blockquote class="tip">Note that we&apos;re using <em>jsx</em> extension here to tell modules using JSX syntax apart from regular ones. It is not absolutely necessary but it is a good convention to have.</blockquote><p>In addition we&apos;ll need to adjust our <code>main.js</code> to render the component correctly. Note that I&apos;ve renamed it as <code>main.jsx</code> given we have JSX content there. First the rendering logic creates a DOM element where to render and then it renders our application through React.</p>
+<blockquote class="tip">Note that we&apos;re using <em>jsx</em> extension here to tell modules using JSX syntax apart from regular ones. It is not absolutely necessary but it is a good convention to have.</blockquote><a class="header-anchor" href="#rendering-through-main-jsx-" id="rendering-through-main-jsx-"></a><h3>Rendering Through <code>main.jsx</code><a class="header-anchor-select" href="#rendering-through-main-jsx-">#</a></h3>
+<p>In addition we&apos;ll need to adjust our <code>main.js</code> to render the component correctly. Note that I&apos;ve renamed it as <code>main.jsx</code> given we have JSX content there. First the rendering logic creates a DOM element where to render and then it renders our application through React.</p>
 <p><strong>app/main.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./stylesheets/main.css&apos;</span>;
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./main.css&apos;</span>;
 
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 <span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./components/App&apos;</span>;
@@ -70,157 +96,36 @@
 main();
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">const</span> app = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;div&apos;</span>);
+  <span class="hljs-keyword">const</span> app = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;div&apos;</span>);
 
-    <span class="hljs-built_in">document</span>.body.appendChild(app);
+  <span class="hljs-built_in">document</span>.body.appendChild(app);
 
-    React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>, app);
+  React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>, app);
 }
 </span></code></pre>
 <p>I&apos;ll be using <code>const</code> whenever possible. It will give me a guarantee that the reference to the object won&apos;t get changed inadvertently. It does allow you to modify the object contents, though. I.e. you can still push new items to an array and so on.</p>
 <p>If I want something mutable, I&apos;ll use <code>let</code> instead. <code>let</code> is scoped to the code block and is another new feature introduced with ES6. These both are good safety measures.</p>
-<blockquote class="warning">Avoid rendering directly to <code>document.body</code>. This can cause strange problems with relying on it. Instead give React a little sandbox of its own. That way everyone, including React, will stay happy.</blockquote><p>If you hit <code>npm run build</code> now, you should get some output after a while. Here&apos;s a sample:</p>
-<pre><code class="undefinedbash">&gt; TARGET=build webpack
-
-Hash: a235591f70fee65ac6c6
-Version: webpack 1.10.1
-Time: 3718ms
-        Asset       Size  Chunks             Chunk Names
-    bundle.js     653 kB       0  [emitted]  main
-bundle.js.map     769 kB       0  [emitted]  main
-   index.html  184 bytes          [emitted]
-   [0] multi main 28 bytes {0} [built]
-    + 163 hidden modules
-</code></pre>
-<p>As you can see, the output is quite chunky! Fortunately there are a few tricks we can do about that.</p>
-<a class="header-anchor" href="#optimizing-build-size" id="optimizing-build-size"></a><h2>Optimizing Build Size<a class="header-anchor-select" href="#optimizing-build-size">#</a></h2>
-<p>There are two simple things we can perform to make our build slimmer. We can apply some minification to it. We can also tell React to optimize itself. Doing both will result in significant size savings. Provided we apply gzip compression on the content when serving it, further gains may be made.</p>
-<a class="header-anchor" href="#minification" id="minification"></a><h3>Minification<a class="header-anchor-select" href="#minification">#</a></h3>
-<p>Minification will convert our code into a smaller format without losing any meaning. Usually this means some amount of rewriting code through predefined transformations. Fortunately we don&apos;t have to care about exact technical details.</p>
-<p>At minimum we need to just pass <code>-p</code> parameter to <code>webpack</code>. It will give a bunch of warnings especially in React environment by default, however, so we&apos;ll enable minification using other way. Add the following section to your webpack configuration:</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
-
-...
-
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    plugins: [
-      <span class="hljs-keyword">new</span> webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: <span class="hljs-literal">false</span>
-        }
-      })
-    ]
-  });
-}
-</code></pre>
-<p>If you hit <code>npm run build</code> now, you should see better results:</p>
-<pre><code class="undefinedbash">&gt; TARGET=build webpack
-
-Hash: 98a618ef4d32c8627010
-Version: webpack 1.10.1
-Time: 6726ms
-        Asset       Size  Chunks             Chunk Names
-    bundle.js     172 kB       0  [emitted]  main
-bundle.js.map    1.57 MB       0  [emitted]  main
-   index.html  184 bytes          [emitted]
-   [0] multi main 28 bytes {0} [built]
-    + 163 hidden modules
-</code></pre>
-<p>Given it needs to do more work, it took longer. But on the plus side the build is much smaller now.</p>
-<blockquote class="tip">It is possible to push minification further by enabling variable name mangling. It comes with some extra complexity to worry about but may be worth it when you are pushing for minimal size. See <a href="https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin">the official documentation</a> for details.</blockquote><a class="header-anchor" href="#-process-env-node_env-" id="-process-env-node_env-"></a><h3><code>process.env.NODE_ENV</code><a class="header-anchor-select" href="#-process-env-node_env-">#</a></h3>
-<p>We can perform one more step to decrease build size further. React relies on <code>process.env.NODE_ENV</code> based optimizations. If we force it to <code>production</code>, React will get in an optimized manner. This will disable some checks (i.e. property type checks) but it will give you a smaller build and improved performance.</p>
-<p>In webpack terms you can add the following snippet to the <code>plugins</code> section of your configuration like this:</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    plugins: [
-      <span class="hljs-keyword">new</span> webpack.DefinePlugin({
-        <span class="hljs-string">&apos;process.env&apos;</span>: {
-          <span class="hljs-comment">// This has effect on the react lib size</span>
-          <span class="hljs-string">&apos;NODE_ENV&apos;</span>: <span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-string">&apos;production&apos;</span>)
-        }
-      }),
-      ...
-    ]
-  });
-}
-</code></pre>
-<p>This is a useful technique for your own code. If you have a section of code that evaluates as <code>false</code> after this process, the minifier will remove it from build completely. You can attach debugging specific utilities and such to your code easily this way. For instance you could build a powerful logging system just for development. Here&apos;s a small example of what that could look like:</p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>) {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;developing like an ace&apos;</span>);
-}
-</code></pre>
-<blockquote class="tip">That <code>JSON.stringify</code> is needed as webpack will perform string replace &quot;as is&quot;. In this case we&apos;ll want to end up with strings as that&apos;s what various comparisons expect, not just <code>production</code>. Latter would just cause an error. An alternative would be to use a string such as <code>&apos;&quot;production&quot;&apos;</code>. Note the &quot;&apos;s.</blockquote><p>Hit <code>npm run build</code> again and you should see improved results:</p>
-<pre><code class="undefinedbash">&gt; TARGET=build webpack
-
-Hash: aa14e0e6b73e3a30ad04
-Version: webpack 1.10.1
-Time: 6092ms
-        Asset       Size  Chunks             Chunk Names
-    bundle.js     123 kB       0  [emitted]  main
-bundle.js.map    1.48 MB       0  [emitted]  main
-   index.html  184 bytes          [emitted]
-   [0] multi main 28 bytes {0} [built]
-    + 158 hidden modules
-</code></pre>
-<p>So we went from 653k to 172k and finally to 123k. The final build is a little faster than the previous one. As that 123k can be served gzipped, it is very reasonable. As we add dependencies to the project the size will grow. Then we will have to apply some other strategies and be smarter about loading. Fortunately we can do all that with webpack when the time comes.</p>
+<blockquote class="warning">Avoid rendering directly to <code>document.body</code>. This can cause strange problems with relying on it. Instead give React a little sandbox of its own. That way everyone, including React, will stay happy.</blockquote><p>If you hit <code>npm start</code> now, you should see something familiar at <strong>localhost:8080</strong>.</p>
+<p>Before moving on this is a good chance to get rid of the old <code>component.js</code> file that might be hanging around at <code>app</code> root.</p>
 <a class="header-anchor" href="#activating-hot-loading-for-development" id="activating-hot-loading-for-development"></a><h2>Activating Hot Loading for Development<a class="header-anchor-select" href="#activating-hot-loading-for-development">#</a></h2>
-<p>If you hit <code>npm start</code>, hit <em>localhost:8080</em> and try to modify our component (make it output <code>Learn React</code> or something), you&apos;ll see it actually works. After a flash. That&apos;s a little unfortunate especially if our application is more complex and has state. It is annoying to manipulate the user interface back to the state in which it was in order to test something.</p>
+<p>Note that every time you perform a modification, the browser updates with a flash. That&apos;s unfortunate because this means our application loses state. It doesn&apos;t matter yet but as we keep on expanding the application this will become painful. It is annoying to manipulate the user interface back to the state in which it was in order to test something.</p>
 <p>We can work around this problem using hot loading. This is enabled by <a href="https://gaearon.github.io/react-hot-loader/">react-hot-loader</a>. It will swap React components one by one as they change without forcing a full refresh. There will be times when that will be necessary but it will help a lot. Once you get used to hot loading, it is hard to live without.</p>
-<p>To enable hot loading for React, you should perform <code>npm i react-hot-loader --save-dev</code>. Besides this we&apos;ll need to split our JSX configuration. Our old configuration is good enough for production build. We&apos;ll need to enable hot loading for development explicitly. I&apos;ve split this up in the configuration below so you can see how this works.</p>
+<p>To enable hot loading for React, you should first install the package using <code>npm i react-hot-loader --save-dev</code>. We also need to make our configuration aware of it so it can inject hooks webpack requires for the system to work.</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> common = {
-  ...
-  <span class="hljs-built_in">module</span>: {
-    loaders: [
-      {
-        test: <span class="hljs-regexp">/\.css$/</span>,
-        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>]
-      }
-    ]
-  },
-  ...
-};
-
-...
-
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    <span class="hljs-built_in">module</span>: {
-      loaders: [
-        {
-          test: <span class="hljs-regexp">/\.jsx?$/</span>,
-          loader: <span class="hljs-string">&apos;babel?stage=1&apos;</span>,
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        }
-      ]
-    },
-    plugins: [
-      ...
-    ]
-  });
-}
+<pre><code class="undefinedjavascript">...
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    entry: [
-      <span class="hljs-string">&apos;webpack/hot/dev-server&apos;</span>
-    ],
+    devtool: <span class="hljs-string">&apos;eval&apos;</span>,
     <span class="hljs-built_in">module</span>: {
       loaders: [
         {
           test: <span class="hljs-regexp">/\.jsx?$/</span>,
           loaders: [<span class="hljs-string">&apos;react-hot&apos;</span>, <span class="hljs-string">&apos;babel?stage=1&apos;</span>],
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-        },
-      ],
-    },
+          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
+        }
+      ]
+    }
   });
 }
 </code></pre>
@@ -230,8 +135,7 @@ bundle.js.map    1.48 MB       0  [emitted]  main
 <p>When you are using <code>React.createClass</code> it is possible to inject functionality to a component using mixins. This isn&apos;t possible in ES6 by default unless you are using a helper such as <a href="https://github.com/brigand/react-mixin">react-mixin</a>. In later chapters we will go through various alternative approaches that allow you to reach roughly equivalent results as you can achieve with mixins. Often a decorator is all you need.</p>
 <p>In addition ES6 class based components won&apos;t bind their methods to <code>this</code> context by default. This is the reason why it&apos;s a good practice to bind the context at component constructor. We will use this convention in this book. It leads to some extra code but later on it is likely possible to refactor it out.</p>
 <p>The biggest benefit of the class based approach is that it decreases the amount of concepts you have to worry about. Particularly <code>constructor</code> helps to keep things simpler than in <code>React.createClass</code> based approach where you need to define separate methods to achieve the same result.</p>
-<p>In the future property initializers (likely <code>tick = () =&gt; { ... }</code>) will solve this neatly. In fact the proposed feature is available through Babel&apos;s stage 0 but enabling that may lead to other problems later on in case the features change.</p>
+<p>In the future property initializers (likely <code>tick = () =&gt; { ... }</code>) will solve this neatly. In fact the proposed feature is available through Babel&apos;s <strong>stage 0</strong> but enabling that may lead to other problems later on in case the features change.</p>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
-<p>You should understand how to set up React with webpack now. In the process we saw how to develop webpack configuration and learned a few new concepts. This is the way you work with webpack. You&apos;ll find loaders as you require them and integrate them to your project.</p>
-<p>Now that we have a good development environment, we can focus on React development. In the next chapter you will see how to implement a little Note taking application. That will be improved in the subsequent chapters into a full blown Kanban table.</p>
-</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/oscillo.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/developing_with_webpack">Developing with webpack</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/notes.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/implementing_notes">Implementing a Basic Note App</a></div></div><a class="next-page" href="/webpack_react/implementing_notes">Implementing a Basic Note App</a><a class="previous-page" href="/webpack_react/developing_with_webpack">Developing with webpack</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/10282509@N00/4674249352">Jairus Khan (CC BY-NC-SA)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
+<p>You should understand how to set up React with webpack now. Especially hot loading is one of those features that sets webpack apart. Now that we have a good development environment, we can focus on React development. In the next chapter you will see how to implement a little Note taking application. That will be improved in the subsequent chapters into a full blown Kanban table.</p>
+</div><div class="social-links"><blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/oscillo.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/developing_with_webpack">Developing with webpack</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/notes.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a></div></div><a class="next-page" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="previous-page" href="/webpack_react/developing_with_webpack">Developing with webpack</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/10282509@N00/4674249352">Jairus Khan (CC BY-NC-SA)</a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
