@@ -15,8 +15,7 @@ Then, you need to build each `webpack_react` project (it is a needed requisite t
 
 ```
 $ cd webpack_react/project_source
-$ sh build_all.sh
-$ sh copy_builds.sh
+$ ./build_all.js
 ```
 
 Now going back to the `site` project, you need to install the dependencies:
