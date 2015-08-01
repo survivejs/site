@@ -79,7 +79,7 @@ I probably don't need to repeat myself here. Expect to learn basics of React and
 
 ### Master React
 
-[Master React](http://ludovf.net/reactbook/) by [Ludovico Fischer] doesn't have a lot of information available yet. Digital version of the book is due Autumn and there is some early content at the site.
+[Master React](http://ludovf.net/reactbook/) by Ludovico Fischer doesn't have a lot of information available yet. Digital version of the book is due Autumn and there is some early content at the site.
 
 By the looks of the book will go through a wide range of React related concepts. These include development tools, third party libraries, JSX and server-side React as with so many other books.
 
