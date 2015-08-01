@@ -161,7 +161,14 @@ module.exports = {
           return require('./layouts/Chapter.coffee');
         },
         title: function(o) {
-          return removeMd(o.file.__content.split('\n')[0]);
+          var ret = removeMd(o.file.__content.split('\n')[0]);
+
+          // part
+          if(ret.indexOf('-#') === 0) {
+            ret = ret.slice(2).trim();
+          }
+
+          return ret;
         },
         content: function(o) {
           var content = o.file.__content.split('\n').slice(1).join('\n');
@@ -185,7 +192,13 @@ module.exports = {
         url: function(o) {
           var fileName = o.fileName.split('.')[0].toLowerCase();
 
-          return o.sectionName + '/' + fileName.split('_').slice(1).join('_');
+          // normal chapter
+          if(parseInt(fileName.split('_')[0], 10) >= 0) {
+            return o.sectionName + '/' + fileName.split('_').slice(1).join('_');
+          }
+
+          // part
+          return o.sectionName + '/' + fileName;
         },
       },
       sort: function(files) {
@@ -195,11 +208,8 @@ module.exports = {
         var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
         var ret = [];
 
-        // filter out Leanpub meta
         order = order.filter(function(name) {
-          var firstCharacter = name[0];
-
-          return firstCharacter === firstCharacter.toLowerCase();
+          return path.extname(name) === '.md';
         });
 
         order.forEach(function(name, i) {
@@ -207,6 +217,10 @@ module.exports = {
             name: name,
           });
           var header = headers[i];
+
+          if(!result) {
+            return console.error('failed to find', name);
+          }
 
           result.file.headerExtra = '<a href="' + header.source + '">' +
             header.author + ' ('+ header.license + ')</a>';
