@@ -3,7 +3,8 @@ Nav = React.createFactory require 'antwar-default-theme/Nav'
 Paths = require('antwar-core/PathsMixin')
 require 'antwar-default-theme/scss/main.scss'
 
-require 'react-ghfork/gh-fork-ribbon.ie.css' # ie support
+# XXX: this can get compiled before latter... figure out how to force order
+#require 'react-ghfork/gh-fork-ribbon.ie.css' # ie support
 require 'react-ghfork/gh-fork-ribbon.css'
 Fork = React.createFactory(require 'react-ghfork')
 Config = require 'config'
