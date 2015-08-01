@@ -42,7 +42,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createActions(NoteActions);
 </code></pre>
-<p>The verbose form would come in handy if we wanted to do communicate with a backend for instance. We would trigger our queries here and then <code>dispatch</code> based on the result. We could even define a Store for dealing with possible errors and related logging. As you can see this is a good extension point for ideas like these.</p>
+<p>The verbose form would come in handy if we wanted to communicate with a backend for instance. We would trigger our queries here and then <code>dispatch</code> based on the result. We could even define a Store for dealing with possible errors and related logging. As you can see this is a good extension point for ideas like these.</p>
 <p>Having a nice set of Actions doesn&apos;t take us far. We&apos;ll trigger them from our View. We&apos;re missing one crucial bit, though. We are going to need a Store which will contain our Note state. We also need to connect this Store with our View so that the cycle is complete.</p>
 <a class="header-anchor" href="#defining-store-for-notes" id="defining-store-for-notes"></a><h3>Defining Store for Notes<a class="header-anchor-select" href="#defining-store-for-notes">#</a></h3>
 <p>The main purpose of a Store is to deal with data related concerns. In this case it will maintain the state of Notes and alter it based on operations we apply on it. We will connect it with the actions we defined above using <code>bindActions</code> shortcut.</p>

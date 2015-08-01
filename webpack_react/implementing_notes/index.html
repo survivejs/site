@@ -304,7 +304,7 @@
 }
 </code></pre>
 <p>We are going to need a little helper to find array objects. If it finds something, it will return the index of the first match. This keeps our manipulations simple.</p>
-<p><strong>libs/find_index.js</strong></p>
+<p><strong>app/libs/find_index.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findIndex</span>(<span class="hljs-params">arr, prop, value</span>) </span>{
   <span class="hljs-keyword">const</span> o = arr.filter(c =&gt; c[prop] === value)[<span class="hljs-number">0</span>];
   <span class="hljs-keyword">const</span> ret = o &amp;&amp; arr.indexOf(o);
