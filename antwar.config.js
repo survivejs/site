@@ -47,7 +47,11 @@ module.exports = {
     {
       from: './favicon.ico',
       to: './',
-    }
+    },
+    {
+      from: './google6292307d9ca2fc8d.html',
+      to: './',
+    },
   ],
   output: 'build',
   name: 'SurviveJS - Webpack and React',
