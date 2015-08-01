@@ -6,8 +6,9 @@
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "scripts": {
     "start": "antwar -d",
-    "build": "antwar -b",
-    "deploy": "antwar -D"
+    "build": "antwar -b && npm run sitemap",
+    "deploy": "antwar -D",
+    "sitemap": "cd build && sitemap-static --prefix=http://survivejs.com/ > sitemap.xml"
   },
   "dependencies": {
     "react-ghfork": "^0.3.0"
@@ -21,7 +22,8 @@
     "lodash": "^3.9.1",
     "marked": "^0.3.3",
     "raw-loader": "^0.5.1",
-    "remove-markdown": "0.0.2"
+    "remove-markdown": "0.0.2",
+    "sitemap-static": "^0.2.0"
   },
   "repository": {
     "type": "git",
