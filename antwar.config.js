@@ -80,28 +80,30 @@ module.exports = {
   theme: {
     customStyles: 'custom.scss',
     name: 'antwar-default-theme',
-    navigation: [
-      {
-        title: 'Home',
-        url: '/',
-      },
-      {
-        title: 'Read the blog',
-        url: '/blog',
-      },
-      {
-        title: 'Buy the ebook',
-        url: 'https://leanpub.com/survivejs_webpack',
-      },
-      {
-        title: '',
-        url: '',
-      },
-      {
-        title: '@survivejs',
-        url: 'https://twitter.com/survivejs',
-      },
-    ],
+    navigation: function(sectionName) {
+      return [
+        {
+          title: 'Home',
+          url: '/',
+        },
+        {
+          title: sectionName === 'blog' ? 'Read the book' : 'Read the blog',
+          url: sectionName === 'blog' ? '/webpack_react/introduction/' : '/blog',
+        },
+        {
+          title: 'Buy the ebook',
+          url: 'https://leanpub.com/survivejs_webpack',
+        },
+        {
+          title: '',
+          url: '',
+        },
+        {
+          title: '@survivejs',
+          url: 'https://twitter.com/survivejs',
+        },
+      ];
+    },
   },
   handlers: {
     body: function() {
