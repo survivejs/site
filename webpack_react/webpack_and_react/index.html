@@ -31,7 +31,10 @@
 <p>In addition to the standardized ES6 features Babel provides support for certain <a href="https://babeljs.io/docs/usage/experimental/">experimental features</a> from ES7. Some of these might make it to the core language while some might be dropped altogether. The language proposals have been categorized within stages. <strong>Stage 0</strong> is a strawman, <strong>stage 1</strong> a proposal, <strong>stage 2</strong> draft and so on.</p>
 <p>I would be especially careful with <strong>stage 0</strong> as if a <strong>stage 0</strong> feature you are depending upon goes away you&apos;ll have to rewrite some of your code. But in smaller projects that may be worth the risk. Babel has <strong>stage 2</strong> and higher features enabled by default. In our project we&apos;ll enable <strong>stage 1</strong> to use decorators and property spreading as they will make our code a little tidier. You can find more information at <a href="https://babeljs.io/docs/usage/experimental/">Babel documentation</a>.</p>
 <blockquote class="tip">You can <a href="https://babeljs.io/repl/">try out Babel online</a> to see what kind of code it generates.</blockquote><a class="header-anchor" href="#configuring-babel-loader" id="configuring-babel-loader"></a><h3>Configuring babel-loader<a class="header-anchor-select" href="#configuring-babel-loader">#</a></h3>
-<p>In order to set up Babel for our project we can use <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. Install it using <code>npm i babel-core babel-loader --save-dev</code>.</p>
+<p>In order to set up Babel for our project we can use <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. Install it with</p>
+<blockquote>
+<p>npm i babel-core babel-loader --save-dev</p>
+</blockquote>
 <p>In addition we need to add loader declaration to the <em>loaders</em> section of configuration. It will tell webpack to match against <code>.js</code> and <code>.jsx</code> (<code>/\.jsx?$/</code>) using a regular expression. In addition we pass <code>stage</code> argument for Babel so it knows we want to enable <strong>stage 1</strong> features.</p>
 <p>To keep everything performant we restrict the loader to operate within <code>./app</code> directory. This way it won&apos;t traverse <code>node_modules</code>. An alternatively would be to set up an <code>exclude</code> rule against <code>node_modules</code> explicitly but I find it more useful to <code>include</code> instead as that&apos;s more explicit. You never know what files might be in the structure after all.</p>
 <p>Webpack traverses <code>[&apos;&apos;, &apos;.webpack.js&apos;, &apos;.web.js&apos;, &apos;.js&apos;]</code> files by default. This will get problematic with our <code>import Note from &apos;./Note&apos;;</code> statement. In order to make it find JSX, we&apos;ll need to tweak webpack&apos;s <code>resolve.extensions</code> to include JSX.</p>
@@ -63,7 +66,12 @@
 }
 </code></pre>
 <blockquote class="tip">Another way to deal with Babel configuration would be to define a <a href="https://babeljs.io/docs/usage/babelrc/">.babelrc</a> file in the project root. It would contain default settings used by Babel. It&apos;s the same idea as for ESLint and many other tools discussed later.</blockquote><a class="header-anchor" href="#developing-first-react-view" id="developing-first-react-view"></a><h2>Developing First React View<a class="header-anchor-select" href="#developing-first-react-view">#</a></h2>
-<p>Hit <code>npm i react --save</code> at the project root to add React to our project. As a next step we can start developing our Kanban application. First we should define <code>App</code>. This will be the core of our application. It represents the high level view of it and works as an entry point. Later on it will orchestrate it all.</p>
+<p>It is time to add a first application level dependency to our project. Hit</p>
+<blockquote>
+<p>npm i react --save</p>
+</blockquote>
+<p>to get React installed. This will save React to <code>dependencies</code> section of <code>package.json</code>. Later on we&apos;ll be using this information to generate a vendor build for the production version. I find it to be a good practice to separate application and development level dependencies this way.</p>
+<p>Now that we got that out of the way we can start to develop our Kanban application. First we should define <code>App</code>. This will be the core of our application. It represents the high level view of it and works as an entry point. Later on it will orchestrate it all.</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 <span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note&apos;</span>;
@@ -110,7 +118,11 @@ main();
 <a class="header-anchor" href="#activating-hot-loading-for-development" id="activating-hot-loading-for-development"></a><h2>Activating Hot Loading for Development<a class="header-anchor-select" href="#activating-hot-loading-for-development">#</a></h2>
 <p>Note that every time you perform a modification, the browser updates with a flash. That&apos;s unfortunate because this means our application loses state. It doesn&apos;t matter yet but as we keep on expanding the application this will become painful. It is annoying to manipulate the user interface back to the state in which it was in order to test something.</p>
 <p>We can work around this problem using hot loading. This is enabled by <a href="https://gaearon.github.io/react-hot-loader/">react-hot-loader</a>. It will swap React components one by one as they change without forcing a full refresh. There will be times when that will be necessary but it will help a lot. Once you get used to hot loading, it is hard to live without.</p>
-<p>To enable hot loading for React, you should first install the package using <code>npm i react-hot-loader --save-dev</code>. We also need to make our configuration aware of it so it can inject hooks webpack requires for the system to work.</p>
+<p>To enable hot loading for React, you should first install the package using</p>
+<blockquote>
+<p>npm i react-hot-loader --save-dev</p>
+</blockquote>
+<p>We also need to make our configuration aware of it so it can inject hooks webpack requires for the system to work.</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">...
 

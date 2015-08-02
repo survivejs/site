@@ -182,7 +182,11 @@ vendor.a953e98e7c480f870363.js.map    2.12 MB       1  [emitted]  vendor
 <p>Note how small <code>app</code> bundle is in comparison. If we update the application now and deploy it, the users that have used it before will have to reload only 54 kB. Not bad.</p>
 <p>One more way to push the build further would be to load popular dependencies, such as React, through a CDN. That would decrease the size of the vendor bundle even further while adding an external dependency on the project. The idea is that if the user has hit the CDN earlier, caching can kick in just like here.</p>
 <a class="header-anchor" href="#cleaning-build" id="cleaning-build"></a><h2>Cleaning Build<a class="header-anchor-select" href="#cleaning-build">#</a></h2>
-<p>Our current setup doesn&apos;t clean <code>build</code> directory between builds. As this is annoying especially when hashes are used, we can set up a plugin to clean the directory for us. Invoke <code>npm i clean-webpack-plugin --save-dev</code> to add a suitable plugin to our project. Integrating this is simple. Change the build configuration as below.</p>
+<p>Our current setup doesn&apos;t clean <code>build</code> directory between builds. As this is annoying especially when hashes are used, we can set up a plugin to clean the directory for us. Execute</p>
+<blockquote>
+<p>npm i clean-webpack-plugin --save-dev`</p>
+</blockquote>
+<p>to install the plugin. Change the build configuration as below to integrate it.</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">var</span> Clean = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;clean-webpack-plugin&apos;</span>);
@@ -200,10 +204,15 @@ vendor.a953e98e7c480f870363.js.map    2.12 MB       1  [emitted]  vendor
 }
 </code></pre>
 <p>After this change our <code>build</code> directory should remain nice and tidy while building.</p>
+<p>Note that you can provide <code>context</code> parameter to <code>Clean</code>. That allows you to execute the process in some other directory. Example <code>new Clean([&apos;build&apos;], &apos;&lt;context path&gt;&apos;)</code>.</p>
 <blockquote class="tip">An alternatively would be to use your terminal fu (<code>rm -rf build/</code>) and set that up at the <code>scripts</code> of <code>package.json</code>.</blockquote><a class="header-anchor" href="#separating-css" id="separating-css"></a><h2>Separating CSS<a class="header-anchor-select" href="#separating-css">#</a></h2>
 <p>Even though we have a nice build set up now, where did all the CSS go? As per our configuration it has been inlined to JavaScript! Even though this can be convenient during development it doesn&apos;t sound ideal. The current solution doesn&apos;t allow us to cache CSS and in some cases we might suffer from flash of unstyled content (FOUC).</p>
 <p>As it happens webpack provides means to generate a separate CSS bundle. We can achieve this using <code>ExtractTextPlugin</code>. It comes with some overhead during complication phase and won&apos;t work with Hot Module Replacement (HMR) by design. Given we are using it only for production usage that won&apos;t be a problem.</p>
-<p>It will take some configuration to make it work. Hit <code>npm i extract-text-webpack-plugin --save-dev</code> to get started. Next we need to get rid of our current css related declaration at <code>common</code> configuration and split it up between <code>build</code> and <code>dev</code> configuration sections as below.</p>
+<p>It will take some configuration to make it work. Hit</p>
+<blockquote>
+<p>npm i extract-text-webpack-plugin --save-dev</p>
+</blockquote>
+<p>to get started. Next we need to get rid of our current css related declaration at <code>common</code> configuration and split it up between <code>build</code> and <code>dev</code> configuration sections as below.</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">var</span> ExtractTextPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;extract-text-webpack-plugin&apos;</span>);

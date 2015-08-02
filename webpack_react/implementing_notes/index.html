@@ -20,7 +20,11 @@
 <a class="header-anchor" href="#on-ids" id="on-ids"></a><h2>On Ids<a class="header-anchor-select" href="#on-ids">#</a></h2>
 <p>You probably noticed those ids at the definition above. Ids will become valuable as we grow the project. A naive way to deal with them is to rely on array indexing. That becomes troublesome quite soon, though. For instance if you are referring to data based on array indices and the data changes, each reference has to change too. That is somewhat undesirable.</p>
 <p>Instead it can be valuable to use a proper indexing scheme here. Normally this is solved by a backend. As we don&apos;t have one yet, we&apos;ll need to improvise something. A standard known as <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC4122</a> describes a good way to do this. We&apos;ll be using Node.js implementation of it.</p>
-<p>Invoke <code>npm i node-uuid --save</code> at project root to get it installed. If you open up Node.js cli (<code>node</code>) and try the following, you can see what kind of ids it outputs.</p>
+<p>Invoke</p>
+<blockquote>
+<p>npm i node-uuid --save</p>
+</blockquote>
+<p>at the project root to get it installed. If you open up Node.js cli (<code>node</code>) and try the following, you can see what kind of ids it outputs.</p>
 <pre><code class="undefinedjavascript">&gt; uuid = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;node-uuid&apos;</span>)
 { [<span class="hljs-built_in">Function</span>: v4]
   v1: [<span class="hljs-built_in">Function</span>: v1],
@@ -208,7 +212,19 @@
 }
 </code></pre>
 <p>If you hit the button now, you should see new items. It might not be pretty yet but it works.</p>
-<blockquote class="tip">Note that we&apos;re binding <code>addItem</code> context at constructor. It would be possible to do the same at <code>render</code>. Unfortunately that will hurt performance given it would <code>bind</code> each time <code>render</code> gets triggered. Therefore it makes most sense to deal with bindings at constructor level. This is the convention I&apos;ll be using in this book. It is possible we&apos;ll see a neater, <a href="https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es7-property-initializers">property initializer</a> based solution in the future.</blockquote><a class="header-anchor" href="#editing-notes" id="editing-notes"></a><h2>Editing Notes<a class="header-anchor-select" href="#editing-notes">#</a></h2>
+<a class="header-anchor" href="#how-does-bind-work-" id="how-does-bind-work-"></a><h3>How Does <code>bind</code> Work?<a class="header-anchor-select" href="#how-does-bind-work-">#</a></h3>
+<p>We are using <code>bind</code> with <code>addItem</code> because we want to apply the right context to it. It will be <code>undefined</code> by default. As a result <code>this.setState</code> would fail. Through <code>this.addItem.bind(this)</code> we make sure it is bound to the current instance.</p>
+<p><code>bind</code> is useful beyond this usage. You can consider it the equivalent of inheritance but for functions. To give you a trivial example see below:</p>
+<pre><code class="undefinedjavascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-keyword">const</span> addTwo = add.bind(<span class="hljs-literal">null</span>, <span class="hljs-number">2</span>);
+
+<span class="hljs-built_in">console</span>.log(addTwo(<span class="hljs-number">6</span>)); <span class="hljs-comment">// 8</span>
+</code></pre>
+<p>We are using <code>bind</code> at <code>constructor</code> to get a small performance benefit. If we applied it on <code>render</code>, it would have to be applied per <code>render</code>. I&apos;ll be using this convention unless it would additional effort through lifecycle hooks. In the future <a href="https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es7-property-initializers">property initializers</a> may solve this issue with neat syntax.</p>
+<a class="header-anchor" href="#editing-notes" id="editing-notes"></a><h2>Editing Notes<a class="header-anchor-select" href="#editing-notes">#</a></h2>
 <p>Our Notes list is almost useful now. It is a little unfortunate that even though we can add new items to the list, we cannot modify them. It is time to implement edit.</p>
 <p>A natural way to do this would be to allow the user to click an item. When an item is clicked, it would be replaced with an input control that would allow you to edit. After confirmed, the modification should remain there.</p>
 <p>This means we&apos;ll need to extend <code>Note</code> somehow and communicate possible changes to <code>App</code> so that it knows to update the data model. In addition <code>Note</code> needs to keep track of its edit state and show the correct element (div or input) based on that.</p>
