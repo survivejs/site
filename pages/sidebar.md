@@ -3,7 +3,7 @@
 </div>
 
 * 45 day money back guarantee
-* 137+ pages (pdf/epub/mobi)
+* 150+ pages (pdf/epub/mobi)
 * Future updates for free
 * Minimum $15 + VAT. Suggested $20 + VAT.
 
