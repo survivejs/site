@@ -43,7 +43,7 @@ If you want a quick read that's straight to the point, this could be it. It's no
 
 [Rails Meets React.js](http://blog.arkency.com/rails-react/) by Marcin Grzywaczewski and [Robert Pankowecki](http://robert.pankowecki.pl/) explains how to get started with React in Ruby on Rails environment. The book is available through Arkency for $49 and has over 150 pages.
 
-Based on table of contents the book shows you how to get started from scratch, how to set up an effective asset pipeline and of course how to integrate with Rails. The book covers also concepts such as testing, forms and i18n.
+Based on table of contents the book shows you how to get started from scratch, how to set up an effective asset pipeline and of course how to integrate with Rails. The book covers also concepts such as testing, forms and i18n. Note that React portions have been written in CoffeeScript.
 
 ### Easy React
 
