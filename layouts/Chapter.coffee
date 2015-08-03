@@ -17,7 +17,7 @@ module.exports = React.createClass
     item = @getItem()
     author = item.author or config.author.name
     sectionItems = @getSectionItems()
-    div className: 'post',
+    div className: 'post chapter',
       div className: "docs-nav__wrapper#{if item.headerImage? then ' docs-nav__wrapper--push-down' else ''}",
         h4 className: 'docs-nav--header', 'Table of Contents'
         div className: 'docs-nav',
@@ -38,7 +38,7 @@ module.exports = React.createClass
           if item.demo then div className: 'post__demo', a href: item.demo, target: '_blank', 'Demo'
 
         div dangerouslySetInnerHTML: __html: item.content
-        div className: 'social-links', dangerouslySetInnerHTML: __html: '<blockquote>If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote>'
+        div className: 'social-links', dangerouslySetInnerHTML: __html: '<blockquote class="tip">If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote>'
 
         div id: 'disqus_thread'
 
