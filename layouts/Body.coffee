@@ -41,5 +41,5 @@ module.exports = React.createClass
 
             # show footer only for index
             if not sectionName
-                footer { className: 'footer' },
+                footer { },
                     Footer()
