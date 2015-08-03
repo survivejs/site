@@ -50,6 +50,7 @@ var Index = React.createClass({
         );
     }
 });
+Index.description = 'Want to learn Webpack or React? Get started for free and build a Kanban board by following the example project.';
 
 module.exports = Index;
 

@@ -56,6 +56,7 @@ module.exports = {
   output: 'build',
   name: 'SurviveJS - Webpack and React',
   author: 'Juho Vepsäläinen',
+  keywords: ['webpack', 'react', 'javascript', 'programming', 'web development'],
   deploy: {
     branch: 'gh-pages',
   },
