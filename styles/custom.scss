@@ -257,39 +257,32 @@ footer .footer-wrapper{
     padding-top: 5vh;
 }
 
-/* chapter docs navigation */
-.docs-nav {
-    flex-direction: column;
+/* chapters */
+.chapter__wrapper {
+    flex-direction: row;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
 
-    .chapter {
-        margin-left: 1em;
-    }
-
-    .chapter:first-child {
-        margin-left: inherit;
-    }
-}
-.docs-nav__wrapper--push-down {
     margin-top: 78vh;
 
-    /* show all of toc on short pages */
-    z-index: 10000;
-    background-color: white;
+    .toc-nav__wrapper {
+        margin: 1em;
 
-    .docs-nav--header {
-        margin: 0;
+        .part {
+            margin-top: 0.5em;
+        }
+
+        .chapter {
+            margin-left: 1em;
+        }
+
+        .chapter:first-child {
+            margin-left: inherit;
+        }
     }
 }
 
 @media screen and (min-width: 1150px) {
-    .docs-nav__link {
-        margin-right: auto;
-    }
-
-    .docs-nav__wrapper--push-down + .header-image + .post__heading + .post__content {
-        margin-top: 75vh;
-    }
-
     .post__heading {
         font-size: 54px;
     }
