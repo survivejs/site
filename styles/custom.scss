@@ -172,6 +172,10 @@ footer .footer-wrapper{
         margin-bottom: 1em;
     }
 
+    .post--front {
+        width: auto;
+    }
+
     @media screen and (min-width: 1150px) {
         .front-cover {
             margin-top: 1em;
@@ -179,13 +183,14 @@ footer .footer-wrapper{
 
         .post--front {
             flex-direction: row;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
         .post__content {
             margin-right: 2em;
         }
         .post__sidebar {
-            min-width: 250px;
+            max-width: 250px;
+            flex: 1 0 250px;
             font-size: 80%;
 
             ul > li:before {
