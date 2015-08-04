@@ -15,6 +15,7 @@ Then, you need to build each `webpack_react` project (it is a needed requisite t
 
 ```
 $ cd webpack_react/project_source
+$ npm install
 $ ./build_all.js
 ```
 
