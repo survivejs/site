@@ -170,6 +170,19 @@ module.exports = {
 
           return ret;
         },
+        extra: function(o) {
+          var fileName = o.fileName;
+
+          if(parseInt(fileName.split('_')[0], 10) >= 0) {
+            return {
+              type: 'chapter'
+            };
+          }
+
+          return {
+            type: 'part'
+          };
+        },
         content: function(o) {
           var content = o.file.__content.split('\n').slice(1).join('\n');
           var tokens = parseQuotes(content);

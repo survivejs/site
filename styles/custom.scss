@@ -256,12 +256,27 @@ footer .footer-wrapper{
     margin-top: 75vh;
     padding-top: 5vh;
 }
+
+/* chapter docs navigation */
 .docs-nav {
     flex-direction: column;
+
+    .chapter {
+        margin-left: 1em;
+    }
+
+    .chapter:first-child {
+        margin-left: inherit;
+    }
 }
 .docs-nav__wrapper--push-down {
-    margin-top: 75vh;
+    margin-top: 78vh;
+
+    /* show all of toc on short pages */
+    z-index: 10000;
+    background-color: white;
 }
+
 @media screen and (min-width: 1150px) {
     .docs-nav__link {
         margin-right: auto;

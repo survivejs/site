@@ -23,9 +23,9 @@ module.exports = React.createClass
         div className: 'docs-nav',
           _.map sectionItems, (navItem, i) ->
             if navItem.title is item.title
-              span key: 'navItem' + i, className: "docs-nav__link docs-nav__link--current", navItem.title
+              span key: 'navItem' + i, className: "docs-nav__link docs-nav__link--current #{navItem.type}", navItem.title
             else
-              a key: 'navItem' + i, href: "/#{navItem.url}", className: "docs-nav__link", navItem.title
+              a key: 'navItem' + i, href: "/#{navItem.url}", className: "docs-nav__link #{navItem.type}", navItem.title
 
       if item.headerImage? then div className: 'header-image', style: backgroundImage: "url(#{item.headerImage})"
       h1 className: 'post__heading',
@@ -38,7 +38,7 @@ module.exports = React.createClass
           if item.demo then div className: 'post__demo', a href: item.demo, target: '_blank', 'Demo'
 
         div dangerouslySetInnerHTML: __html: item.content
-        div className: 'social-links', dangerouslySetInnerHTML: __html: '<blockquote class="tip">If you enjoyed this chapter, consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote>'
+        div className: 'social-links', dangerouslySetInnerHTML: __html: '<blockquote class="tip">If you enjoyed this ' +  item.type + ' consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote>'
 
         div id: 'disqus_thread'
 
