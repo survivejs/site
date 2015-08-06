@@ -18,7 +18,7 @@ npm init
 </blockquote>
 <blockquote class="tip"><code>node-libs-browser</code> is installed as it is a peer dependency of webpack. Starting from npm 3 it won&apos;t get installed automatically so it&apos;s a good idea to have it installed in order to be future-proof.</blockquote><p>This is a good opportunity to try to run webpack for the first time. Hit <code>node_modules/.bin/webpack</code>. You should see a version print, link to cli guide and a long list of options. We won&apos;t be using most of those but it&apos;s good to know that this tool is packed with functionality if nothing else.</p>
 <p>Webpack works using a global install as well (<code>-g</code> or <code>--global</code> flag during installation) but it is preferred to keep it as a project dependency like this. The arrangement helps to keep your life simpler as you have direct control over the version you are running.</p>
-<p>We will be using <code>--save</code> and <code>--save-dev</code> to get a separation between application and development dependencies. The separation keeps project dependencies more understandable. In addition this will come in handy when we generate a vendor bundle later on.</p>
+<p>We will be using <code>--save</code> and <code>--save-dev</code> to get a separation between application and development dependencies. The separation keeps project dependencies more understandable. This will come in handy when we generate a vendor bundle later on.</p>
 <blockquote class="tip">There are handy shortcuts for <code>--save</code> and <code>--save-dev</code>. <code>-S</code> maps to <code>--save</code> and <code>-D</code> to <code>--save-dev</code>. So if you want to optimize for characters written, consider using these.</blockquote><a class="header-anchor" href="#directory-structure" id="directory-structure"></a><h2>Directory Structure<a class="header-anchor-select" href="#directory-structure">#</a></h2>
 <p>As projects with just <code>package.json</code> are very boring, we should set up something more concrete. Let&apos;s do a little web site that loads some JavaScript which we build using webpack. Set up a structure like this:</p>
 <ul>
@@ -149,7 +149,7 @@ app.appendChild(component());
   <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> cornsilk</span></span>;
 }</span>
 </code></pre>
-<p>In addition we&apos;ll need to make webpack aware of this file:</p>
+<p>In addition, we&apos;ll need to make webpack aware of this file:</p>
 <p><strong>app/main.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./main.css&apos;</span>);
 

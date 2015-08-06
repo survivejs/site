@@ -2,19 +2,19 @@
 Now that we have a nice Kanban application up and running we can worry about showing it the public. If you hit TARGET=dev node_modules/.bin/webpack at the project root, you can get a standalone bundle like this:
 
 `bash
-Hash: df2d3b2f428017d5412d
+Hash: 882eb94aec377c93dbc0
 Version: webpack 1.10.1
-Time: 4428ms
+Time: 3800ms
      Asset      …"><meta name="keywords" content="webpack,react,javascript,programming,web development"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Building Kanban - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/training.jpg);"></div><h1 class="post__heading">Building Kanban</h1><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a href="/webpack_react/introduction" class="toc-nav__link chapter">Introduction</a><a href="/webpack_react/webpack" class="toc-nav__link part">Setting Up Webpack</a><a href="/webpack_react/webpack_compared" class="toc-nav__link chapter">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="toc-nav__link chapter">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="toc-nav__link chapter">Webpack and React</a><a href="/webpack_react/react" class="toc-nav__link part">Developing Kanban Application</a><a href="/webpack_react/implementing_notes" class="toc-nav__link chapter">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="toc-nav__link chapter">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="toc-nav__link chapter">From Notes to Kanban</a><a href="/webpack_react/implementing_dnd" class="toc-nav__link chapter">Implementing Drag and Drop</a><span class="toc-nav__link toc-nav__link--current chapter">Building Kanban</span><a href="/webpack_react/advanced" class="toc-nav__link part">Advanced Techniques</a><a href="/webpack_react/linting_in_webpack" class="toc-nav__link chapter">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="toc-nav__link chapter">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="toc-nav__link chapter">Authoring Libraries</a><a href="/webpack_react/styling_react" class="toc-nav__link chapter">Styling React</a><a href="/webpack_react/troubleshooting" class="toc-nav__link chapter">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_building_kanban/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/08_building_kanban" target="_blank">Demo</a></div></div><div><p>Now that we have a nice Kanban application up and running we can worry about showing it the public. If you hit <code>TARGET=dev node_modules/.bin/webpack</code> at the project root, you can get a standalone bundle like this:</p>
-<pre><code class="undefinedbash"><span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> df2d3b2f428017d5412d
+<pre><code class="undefinedbash"><span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> <span class="hljs-number">882</span>eb94aec377c93dbc0
 Version: webpack <span class="hljs-number">1.10</span>.<span class="hljs-number">1</span>
-Time: <span class="hljs-number">4428ms</span>
+Time: <span class="hljs-number">3800ms</span>
      Asset       Size  Chunks             Chunk Names
- bundle.js    <span class="hljs-number">1.18</span> MB       <span class="hljs-number">0</span>  [emitted]  main
+ bundle.js    <span class="hljs-number">1.19</span> MB       <span class="hljs-number">0</span>  [emitted]  main
 index.html  <span class="hljs-number">184</span> bytes          [emitted]
-    + <span class="hljs-number">322</span> hidden modules
+    + <span class="hljs-number">345</span> hidden modules
 </span></span></code></pre>
-<p>The problem is that 1.18 MB is a lot! In addition our build contains bits and pieces we don&apos;t want it to contain.</p>
+<p>The problem is that 1.19 MB is a lot! In addition, our build contains bits and pieces we don&apos;t want it to contain.</p>
 <p>The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.</p>
 <a class="header-anchor" href="#setting-up-build-target" id="setting-up-build-target"></a><h2>Setting Up Build Target<a class="header-anchor-select" href="#setting-up-build-target">#</a></h2>
 <p>Since hitting <code>TARGET=dev node_modules/.bin/webpack</code> gets boring after a while we can set up a shortcut for that. Ideally we could just hit <code>npm run build</code> and that&apos;s it. The following snippet shows how to set this up.</p>
@@ -50,14 +50,14 @@ index.html  <span class="hljs-number">184</span> bytes          [emitted]
 <p>After these changes <code>npm run build</code> should yield the following:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: b29c96842ae323c096e7
+Hash: bd3b549c6c712233167f
 Version: webpack 1.10.1
-Time: 5040ms
+Time: 4903ms
         Asset       Size  Chunks             Chunk Names
-    bundle.js    1.08 MB       0  [emitted]  main
-bundle.js.map    1.27 MB       0  [emitted]  main
+    bundle.js    1.09 MB       0  [emitted]  main
+bundle.js.map    1.28 MB       0  [emitted]  main
    index.html  184 bytes          [emitted]
-    + 322 hidden modules
+    + 345 hidden modules
 </code></pre>
 <p>We actually shaved a little out of our bundle. We still have a long way to go, though.</p>
 <a class="header-anchor" href="#optimizing-build-size" id="optimizing-build-size"></a><h2>Optimizing Build Size<a class="header-anchor-select" href="#optimizing-build-size">#</a></h2>
@@ -86,14 +86,14 @@ bundle.js.map    1.27 MB       0  [emitted]  main
 <p>If you hit <code>npm run build</code> now, you should see better results:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: 8cee85087249dc0588b0
+Hash: d3508663532b5b3565cc
 Version: webpack 1.10.1
-Time: 11729ms
+Time: 12221ms
         Asset       Size  Chunks             Chunk Names
-    bundle.js     320 kB       0  [emitted]  main
-bundle.js.map    2.63 MB       0  [emitted]  main
+    bundle.js     324 kB       0  [emitted]  main
+bundle.js.map    2.66 MB       0  [emitted]  main
    index.html  184 bytes          [emitted]
-    + 322 hidden modules
+    + 345 hidden modules
 </code></pre>
 <p>Given it needs to do more work, it took longer. But on the plus side the build is much smaller now.</p>
 <blockquote class="tip">It is possible to push minification further by enabling variable name mangling. It comes with some extra complexity to worry about but may be worth it when you are pushing for minimal size. See <a href="https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin">the official documentation</a> for details.</blockquote><a class="header-anchor" href="#-process-env-node_env-" id="-process-env-node_env-"></a><h3><code>process.env.NODE_ENV</code><a class="header-anchor-select" href="#-process-env-node_env-">#</a></h3>
@@ -123,16 +123,16 @@ bundle.js.map    2.63 MB       0  [emitted]  main
 <blockquote class="tip">That <code>JSON.stringify</code> is needed as webpack will perform string replace &quot;as is&quot;. In this case we&apos;ll want to end up with strings as that&apos;s what various comparisons expect, not just <code>production</code>. Latter would just cause an error. An alternative would be to use a string such as <code>&apos;&quot;production&quot;&apos;</code>. Note the &quot;&apos;s.</blockquote><p>Hit <code>npm run build</code> again and you should see improved results:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: 91e74e2912c5d1643d5d
+Hash: 37ebe639517bfeb72ff6
 Version: webpack 1.10.1
-Time: 11593ms
+Time: 10930ms
         Asset       Size  Chunks             Chunk Names
-    bundle.js     261 kB       0  [emitted]  main
-bundle.js.map     2.5 MB       0  [emitted]  main
+    bundle.js     264 kB       0  [emitted]  main
+bundle.js.map    2.53 MB       0  [emitted]  main
    index.html  184 bytes          [emitted]
-    + 316 hidden modules
+    + 339 hidden modules
 </code></pre>
-<p>So we went from 1.18 MB to 1.08 MB to 320 kB and finally to 261 kB. The final build is a little faster than the previous one. As that 261k can be served gzipped, it is quite reasonable. gzipping will drop around another 40% is well supported by browsers.</p>
+<p>So we went from 1.19 MB to 1.09 MB to 324 kB and finally to 264 kB. The final build is a little faster than the previous one. As that 264k can be served gzipped, it is quite reasonable. gzipping will drop around another 40% is well supported by browsers.</p>
 <p>We can do a little better, though. We can split <code>app</code> and <code>vendor</code> bundles and add hashes to their filenames.</p>
 <a class="header-anchor" href="#splitting-app-and-vendor-bundles" id="splitting-app-and-vendor-bundles"></a><h3>Splitting <code>app</code> and <code>vendor</code> Bundles<a class="header-anchor-select" href="#splitting-app-and-vendor-bundles">#</a></h3>
 <p>The main advantage of splitting the application into two separate bundles is that it allows us to benefit from client caching. We might for instance make most of our changes to the small <code>app</code> bundle. In this case the client would have to fetch only it provided <code>vendor</code> bundle has been loaded already. This scheme won&apos;t load as fast as a single bundle initially due to the extra request but caching more than makes up for this disadvantage.</p>
@@ -174,19 +174,19 @@ bundle.js.map     2.5 MB       0  [emitted]  main
 <p>If you run <code>npm run build</code> now, you should see output like this:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: 3822f63a6706739444d2
+Hash: 1671be044a8a34b58fa8
 Version: webpack 1.10.1
-Time: 11715ms
+Time: 11983ms
                              Asset       Size  Chunks             Chunk Names
-       app.7779066c5f00c5fd488c.js    53.9 kB       0  [emitted]  app
-    vendor.a953e98e7c480f870363.js     208 kB       1  [emitted]  vendor
-   app.7779066c5f00c5fd488c.js.map     385 kB       0  [emitted]  app
-vendor.a953e98e7c480f870363.js.map    2.12 MB       1  [emitted]  vendor
+       app.cfd412c37a844a41daf8.js    57.8 kB       0  [emitted]  app
+    vendor.edaf1006b1f4b71898f9.js     208 kB       1  [emitted]  vendor
+   app.cfd412c37a844a41daf8.js.map     415 kB       0  [emitted]  app
+vendor.edaf1006b1f4b71898f9.js.map    2.12 MB       1  [emitted]  vendor
                         index.html  266 bytes          [emitted]
    [0] multi vendor 64 bytes {1} [built]
-    + 316 hidden modules
+    + 339 hidden modules
 </code></pre>
-<p>Note how small <code>app</code> bundle is in comparison. If we update the application now and deploy it, the users that have used it before will have to reload only 54 kB. Not bad.</p>
+<p>Note how small <code>app</code> bundle is in comparison. If we update the application now and deploy it, the users that have used it before will have to reload only 57.8 kB. Not bad.</p>
 <p>One more way to push the build further would be to load popular dependencies, such as React, through a CDN. That would decrease the size of the vendor bundle even further while adding an external dependency on the project. The idea is that if the user has hit the CDN earlier, caching can kick in just like here.</p>
 <a class="header-anchor" href="#cleaning-build" id="cleaning-build"></a><h2>Cleaning Build<a class="header-anchor-select" href="#cleaning-build">#</a></h2>
 <p>Our current setup doesn&apos;t clean <code>build</code> directory between builds. As this is annoying especially when hashes are used, we can set up a plugin to clean the directory for us. Execute</p>
@@ -286,23 +286,23 @@ vendor.a953e98e7c480f870363.js.map    2.12 MB       1  [emitted]  vendor
 <p>After running <code>npm run build</code> you should see the following output:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
-Hash: 5ac4141a6a1a107c9fd2
-Version: webpack 1.10.1
-Time: 11538ms
+Hash: 27584124a5659a941eea
+Version: webpack 1.10.5
+Time: 10589ms
                              Asset       Size  Chunks             Chunk Names
-       app.49e4dc76e551e4333cb3.js    50.1 kB       0  [emitted]  app
-    vendor.a953e98e7c480f870363.js     208 kB       1  [emitted]  vendor
+       app.4a3890cdb2f12f6bd4d5.js    54.3 kB       0  [emitted]  app
+    vendor.876083b45225c03d8a74.js     208 kB       1  [emitted]  vendor
                         styles.css  557 bytes       0  [emitted]  app
-   app.49e4dc76e551e4333cb3.js.map     358 kB       0  [emitted]  app
+   app.4a3890cdb2f12f6bd4d5.js.map     389 kB       0  [emitted]  app
                     styles.css.map   87 bytes       0  [emitted]  app
-vendor.a953e98e7c480f870363.js.map    2.12 MB       1  [emitted]  vendor
+vendor.876083b45225c03d8a74.js.map    2.12 MB       1  [emitted]  vendor
                         index.html  317 bytes          [emitted]
    [0] multi vendor 64 bytes {1} [built]
-    + 316 hidden modules
+    + 339 hidden modules
 Child extract-text-webpack-plugin:
         + 2 hidden modules
 </code></pre>
-<p>This means we have separate app and vendor bundles. In addition styles have been pushed to a separate file. And top this we have sourcemaps and an automatically generated <em>index.html</em>. Not bad.</p>
+<p>This means we have separate app and vendor bundles. In addition, styles have been pushed to a separate file. And top this we have sourcemaps and an automatically generated <em>index.html</em>. Not bad.</p>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Our Kanban application is now ready to be served. We went from a chunky build to a slim one. Even better the production version can benefit from caching and it is able to invalidate it. When it comes to webpack this is just a small part of what you can do with it. I discuss more approaches at <strong>Deploying applications</strong> chapter.</p>
 </div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/skydiving.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/advanced">Advanced Techniques</a></div></div><a class="next-page" href="/webpack_react/advanced">Advanced Techniques</a><a class="previous-page" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div><div class="header-extra"><a href="https://www.flickr.com/photos/48282484@N00/135720337">Mugu Marculescu (CC BY-NC-SA)</a></div></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>

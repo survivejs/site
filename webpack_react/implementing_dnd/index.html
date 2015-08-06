@@ -21,7 +21,7 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
 </code></pre>
 <p>After this change the application should look exactly the same as before. We are now ready to add some sweet functionality to it.</p>
 <a class="header-anchor" href="#preparing-notes-to-be-sorted" id="preparing-notes-to-be-sorted"></a><h2>Preparing Notes to Be Sorted<a class="header-anchor-select" href="#preparing-notes-to-be-sorted">#</a></h2>
-<p>Next we will need to tell React DnD what can be dragged and where. Since we want to move notes, we&apos;ll want to annotate them accordingly. In addition we&apos;ll need some logic to tell what happens during this process.</p>
+<p>Next we will need to tell React DnD what can be dragged and where. Since we want to move notes, we&apos;ll want to annotate them accordingly. In addition, we&apos;ll need some logic to tell what happens during this process.</p>
 <p>Earlier we extracted some of the editing functionality from <code>Note</code> and ended up dropping it. Since we need to decorate the component and don&apos;t want to end up with a mess, it seems like we&apos;ll want to add that concept back if only for decoration purposes.</p>
 <p>We can use a handy little technique here that allows us to avoid code duplication. We can implement <code>Note</code> as a wrapper component. It will accept <code>Editable</code> and render it. This will allow us to keep DnD related logic at <code>Note</code> without having to duplicate any logic related to <code>Editable</code>. The magic lies in a single property known as <code>children</code> as seen in the implementation below. React will render possible child components at <code>{this.props.children}</code>slot.</p>
 <p><strong>app/components/Note.jsx</strong></p>
@@ -62,7 +62,7 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
 }</span></span>;
 </span></code></pre>
 <p>We&apos;ll expand this definition later as we add new types to the system. Next we need to tell our <code>Note</code> that it&apos;s possible to drag and drop it.</p>
-<p>We will be relying on <code>DragSource</code> and <code>DropTarget</code> decorators. In our case <code>Note</code> is both. After all we&apos;ll want to be able to sort them. Both decorators give us access to <code>Note</code> props. In addition we can access the source <code>Note</code> through <code>monitor.getItem()</code> at <code>noteTarget</code> while <code>props</code> map to target.</p>
+<p>We will be relying on <code>DragSource</code> and <code>DropTarget</code> decorators. In our case <code>Note</code> is both. After all we&apos;ll want to be able to sort them. Both decorators give us access to <code>Note</code> props. In addition, we can access the source <code>Note</code> through <code>monitor.getItem()</code> at <code>noteTarget</code> while <code>props</code> map to target.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">import</span> { DragSource, DropTarget } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
@@ -84,16 +84,15 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
   }
 };
 
-@DragSource(ItemTypes.NOTE, noteSource, (connect, monitor) =&gt; ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+@DragSource(ItemTypes.NOTE, noteSource, (connect) =&gt; ({
+  connectDragSource: connect.dragSource()
 }))
 @DropTarget(ItemTypes.NOTE, noteTarget, connect =&gt; ({
   connectDropTarget: connect.dropTarget()
 }))
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
-    <span class="hljs-keyword">const</span> { isDragging, connectDragSource, connectDropTarget,
+    <span class="hljs-keyword">const</span> { connectDragSource, connectDropTarget,
       onMove, data, ...props } = <span class="hljs-keyword">this</span>.props;
 
     <span class="hljs-keyword">return</span> connectDragSource(connectDropTarget(
@@ -271,8 +270,7 @@ const noteTarget = {
 }))
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
-    <span class="hljs-keyword">const</span> { isDragging, connectDropTarget,
-      id, name, notes, ...props } = <span class="hljs-keyword">this</span>.props;
+    <span class="hljs-keyword">const</span> { connectDropTarget, id, name, notes, ...props } = <span class="hljs-keyword">this</span>.props;
 
     <span class="hljs-keyword">return</span> connectDropTarget(
       ...
@@ -326,7 +324,7 @@ const noteTarget = {
   ...
   attachToLane({laneId, noteId}) {
     <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
-    <span class="hljs-keyword">const</span> targetId = findIndex(lanes, <span class="hljs-string">&apos;id&apos;</span>, laneId);
+    <span class="hljs-keyword">const</span> targetId = lanes.findIndex((lane) =&gt; lane.id === laneId);
 
     <span class="hljs-keyword">this</span>.removeNote(noteId);
 
@@ -350,7 +348,7 @@ const noteTarget = {
   ...
 }
 </code></pre>
-<p>After these changes we have a Kanban table that is actually useful! We can create new lanes and notes, edit and remove them. In addition we can move notes around. Mission accomplished!</p>
+<p>After these changes we have a Kanban table that is actually useful! We can create new lanes and notes, edit and remove them. In addition, we can move notes around. Mission accomplished!</p>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>In this chapter you saw how to implement drag and drop for our little application. You can model sorting for lanes using the same technique. First you mark the lanes to be draggable and droppable, then you sort out their ids and finally you&apos;ll add some logic to make it all work together. It should be considerably simpler than what we did with notes.</p>
 <p>I encourage you to expand the application. The current implementation should work just as a starting point for something greater. Besides extending DnD implementation you can try adding more data to the system.</p>

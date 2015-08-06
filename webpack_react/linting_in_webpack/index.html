@@ -9,7 +9,7 @@ Perhaps the most known linter that started it all for JavaScript is Douglas Croc
 <p>In this chapter I&apos;ll go through these tools briefly. We&apos;ll integrate just ESLint into our project. Of course if you want, you can give the other tools a go. Just don&apos;t be surprised that they aren&apos;t included in the demonstration code.</p>
 <a class="header-anchor" href="#webpack-and-jshint" id="webpack-and-jshint"></a><h2>Webpack and JSHint<a class="header-anchor-select" href="#webpack-and-jshint">#</a></h2>
 <p>Interestingly no JSLint loader seems to exist for webpack yet. Fortunately there&apos;s one for JSHint. On a legacy project setting it up with webpack is easy. We won&apos;t be using it for our application but it&apos;s a good thing to know. At least you&apos;ll see some familiar patterns.</p>
-<p>You will need to install <a href="https://www.npmjs.com/package/jshint-loader">jshint-loader</a> to your project (<code>npm i jshint-loader --save-dev</code>). In addition you will need a little bit of configuration.</p>
+<p>You will need to install <a href="https://www.npmjs.com/package/jshint-loader">jshint-loader</a> to your project (<code>npm i jshint-loader --save-dev</code>). In addition, you will need a little bit of configuration.</p>
 <pre><code class="undefinedjavascript"><span class="hljs-built_in">module</span>: {
   preLoaders: [
     {
@@ -65,7 +65,7 @@ Perhaps the most known linter that started it all for JavaScript is Douglas Croc
 <p><strong>.eslintignore</strong></p>
 <pre><code class="undefinedbash">build/
 </code></pre>
-<p>Next we&apos;ll need to activate <a href="https://www.npmjs.com/package/babel-eslint">babel-eslint</a> so that ESLint works with our Babel code. In addition we need to activate React specific rules and set up a couple of our own. You can adjust these to your liking. You&apos;ll find more information about the rules at <a href="http://eslint.org/docs/rules/">the official rule documentation</a>.</p>
+<p>Next we&apos;ll need to activate <a href="https://www.npmjs.com/package/babel-eslint">babel-eslint</a> so that ESLint works with our Babel code. In addition, we need to activate React specific rules and set up a couple of our own. You can adjust these to your liking. You&apos;ll find more information about the rules at <a href="http://eslint.org/docs/rules/">the official rule documentation</a>.</p>
 <p><strong>.eslintrc</strong></p>
 <pre><code class="undefinedjson">{
   &quot;<span class="hljs-attribute">parser</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;babel-eslint&quot;</span></span>,
@@ -265,7 +265,7 @@ alert(<span class="hljs-string">&apos;foo&apos;</span>); <span class="hljs-comme
 }
 </code></pre>
 <p>If you hit <code>npm run lint-css</code> now, you should see some output, hopefully without errors. That <code>--quiet</code> flag is there to keep the tool silent unless there are errors.</p>
-<p>Thanks to the webpack configuration we did, you should get output during <code>npm start</code> process as well. In addition you should consider setting up csslint with your editor. That way you get more integrated development experience.</p>
+<p>Thanks to the webpack configuration we did, you should get output during <code>npm start</code> process as well. In addition, you should consider setting up csslint with your editor. That way you get more integrated development experience.</p>
 <a class="header-anchor" href="#checking-javascript-style-with-jscs" id="checking-javascript-style-with-jscs"></a><h2>Checking JavaScript Style with JSCS<a class="header-anchor-select" href="#checking-javascript-style-with-jscs">#</a></h2>
 <p><img src="/images/jscs.png" alt="JSCS"></p>
 <p>Especially in a team environment it can be annoying if one guy uses tabs and other spaces. There can also be discrepancies between space usage. Some like to use two, some like four for indentation. In short it can get pretty messy without any discipline. Fortunately there is a tool known as JSCS. It will allow you to define a style guide for your project. We won&apos;t use the tool in this project but it&apos;s good to be aware of it.</p>
