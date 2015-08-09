@@ -66,10 +66,7 @@ bundle.js.map    1.28 MB       0  [emitted]  main
 <p>Minification will convert our code into a smaller format without losing any meaning. Usually this means some amount of rewriting code through predefined transformations. Sometimes this can break code as it can rewrite pieces of code you inadvertently depend upon. This is the reason why we gave explicit ids to our stores for instance.</p>
 <p>At minimum we need to just pass <code>-p</code> parameter to <code>webpack</code>. It will give a bunch of warnings especially in React environment by default, however, so we&apos;ll enable minification using other way. Add the following section to your webpack configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
-
-...
-
+<pre><code class="undefinedjavascript">
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
     ...
@@ -257,7 +254,8 @@ vendor.edaf1006b1f4b71898f9.js.map    2.12 MB       1  [emitted]  vendor
         },
         ...
       ]
-    }
+    },
+    ...
   });
 }
 

@@ -83,7 +83,7 @@ app.appendChild(component());
   ]
 };
 </code></pre>
-<p>We use <code>path.resolve</code> here as it is preferred to use absolute paths with webpack. If you move your configuration below some directory, you&apos;ll need to take this into account. Alternatively you could use <code>path.join(__dirname, &apos;app&apos;, &apos;main&apos;)</code> and such but I like to use <code>path.resolve</code> for these.</p>
+<p>Given webpack expects absolute paths we have some good options here. I like to use <code>path.resolve</code> but <code>path.join</code> would be a good alternative. See <a href="https://nodejs.org/api/path.html">Node.js path API</a> for exact details.</p>
 <p>If you hit <code>node_modules/.bin/webpack</code> now you can get a webpack build done. But we are not interested in builds. We want a proper development server to develop against.</p>
 <blockquote class="tip">Note that you can pass a custom template to <code>html-webpack-plugin</code>. In our case the default template it uses is just fine for our purposes.</blockquote><a class="header-anchor" href="#setting-up-webpack-dev-server-" id="setting-up-webpack-dev-server-"></a><h2>Setting Up <code>webpack-dev-server</code><a class="header-anchor-select" href="#setting-up-webpack-dev-server-">#</a></h2>
 <p>Now that we have basic building blocks together we can set up a development server. <code>webpack-dev-server</code> is a development server designed particularly development in mind. It will deal with refreshing browser as you develop. This makes it roughly equal to tools such as <a href="http://livereload.com/">LiveReload</a> or <a href="http://www.browsersync.io/">Browsersync</a>. The greatest advantage webpack has over these tools is Hot Module Reloading (HMR) which we&apos;ll discuss when we go through React.</p>
@@ -95,23 +95,38 @@ app.appendChild(component());
 <p><strong>package.json</strong></p>
 <pre><code class="undefinedjson">...
 <span class="hljs-string">&quot;scripts&quot;</span>: {
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --progress --colors --hot --inline --history-api-fallback&quot;</span>
+  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server&quot;</span>
 },
 ...
 </code></pre>
+<p>We also need to do some configuration work.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="undefinedjavascript">...
+<span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
+
+<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+
+<span class="hljs-built_in">module</span>.exports = {
+  ...
+  devServer: {
+    colors: <span class="hljs-literal">true</span>,
+    historyApiFallback: <span class="hljs-literal">true</span>,
+    hot: <span class="hljs-literal">true</span>,
+    inline: <span class="hljs-literal">true</span>,
+    progress: <span class="hljs-literal">true</span>
+  },
+  plugins: [
+    <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin(),
+    ...
+  ]
+};
+</code></pre>
 <p>Hit <code>npm start</code> and surf to <strong>localhost:8080</strong>. You should see something familiar there. Try modifying <code>app/component.js</code> while the server is running and see what happens. Quite neat, huh?</p>
-<blockquote class="tip">If you want to use some other port than <code>8080</code>, you can pass <code>--port</code> parameter (e.g. <code>--port 4000</code>) to <em>webpack-dev-server</em>.</blockquote><p>When you run <code>npm start</code> from your terminal it will execute the command mapping to <code>start</code> script of the <code>scripts</code> section. This is what it does:</p>
-<ol>
-<li><code>webpack-dev-server</code> - Starts a web service on <code>localhost:8080</code></li>
-<li><code>--progress</code> - Will show progress of bundling your application</li>
-<li><code>--colors</code> - Colors in the terminal!</li>
-<li><code>--hot</code> - Enable hot module loading</li>
-<li><code>--inline</code> - Embeds the webpack-dev-server runtime into the bundle</li>
-<li><code>--history-api-fallback</code> - Allows HTML5 History API routes to work</li>
-</ol>
 <p>Alternatively we can run the application from <strong>localhost:8080/webpack-dev-server/bundle</strong> instead of root. It provides an iframe showing a status bar that indicates the status of the rebundling process.</p>
+<blockquote class="tip">If you want to use some other port than <code>8080</code>, you can pass <code>port</code> parameter (e.g. <code>port: 4000</code>) to <em>devServer</em>.</blockquote><p>In addition to <strong>webpack.config.js</strong> it is possible to set <em>webpack-dev-server</em> configuration through cli. There is also an entire <a href="https://webpack.github.io/docs/webpack-dev-server.html#api">Node.js API</a> available in case you want maximum control over it.</p>
+<p>We are using a somewhat basic setup here. Beyond defaults we&apos;ve enabled a couple of useful features, namely hot module loading (HMR) and HTML5 History API fallback. Former will come in handy when we discuss React in detail. Latter allows HTML5 History API routes to work. <em>inline</em> setting embeds the <em>webpack-dev-server</em> runtime into the bundle allowing HMR to work easily.</p>
 <a class="header-anchor" href="#refreshing-css" id="refreshing-css"></a><h2>Refreshing CSS<a class="header-anchor-select" href="#refreshing-css">#</a></h2>
-<p>We can easily extend the approach to work with CSS. webpack allows us to modify CSS without forcing a full refresh. Let&apos;s see how to achieve that next.</p>
+<p>We can easily extend the approach to work with CSS. Webpack allows us to modify CSS without forcing a full refresh. Let&apos;s see how to achieve that next.</p>
 <p>In order to load CSS to project, we&apos;ll need to use a couple of loaders. To get started, invoke</p>
 <blockquote>
 <p>npm i css-loader style-loader --save-dev</p>
@@ -168,7 +183,7 @@ app.appendChild(component());
 <pre><code class="undefinedjson">{
   ...
   <span class="hljs-string">&quot;scripts&quot;</span>: {
-    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server --progress --colors --hot --inline --history-api-fallback&quot;</span>
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;TARGET=dev webpack-dev-server&quot;</span>
   },
   ...
 }
@@ -184,6 +199,7 @@ app.appendChild(component());
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
 <span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
+<span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
 <span class="hljs-keyword">var</span> merge = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack-merge&apos;</span>);
 
 <span class="hljs-keyword">var</span> TARGET = process.env.TARGET;
@@ -209,7 +225,17 @@ app.appendChild(component());
 
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;eval&apos;</span>
+    devtool: <span class="hljs-string">&apos;eval&apos;</span>,
+    devServer: {
+      colors: <span class="hljs-literal">true</span>,
+      historyApiFallback: <span class="hljs-literal">true</span>,
+      hot: <span class="hljs-literal">true</span>,
+      inline: <span class="hljs-literal">true</span>,
+      progress: <span class="hljs-literal">true</span>
+    },
+    plugins: [
+      <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin()
+    ]
   });
 }
 </code></pre>
