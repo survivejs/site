@@ -39,6 +39,12 @@ As I haven't bought the book it is hard for me to evaluate how up to date it is.
 
 If you want a quick read that's straight to the point, this could be it. It's nowhere broad as **Developing a React Edge** for instance but if you just want to visualize data, this might work.
 
+### Descubre React
+
+[Descubre React](https://leanpub.com/descubre-react) by [Javi Jiménez](http://soyjavi.com/) is a Spanish introduction to React. It has 83 pages and its minimum price is $12.49 VAT excluded.
+
+If you want a Spanish introduction to React, here's your only option at the moment.
+
 ### Rails Meets React.js
 
 [Rails Meets React.js](http://blog.arkency.com/rails-react/) by Marcin Grzywaczewski and [Robert Pankowecki](http://robert.pankowecki.pl/) explains how to get started with React in Ruby on Rails environment. The book is available through Arkency for $49 and has over 150 pages.
