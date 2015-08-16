@@ -1,12 +1,12 @@
 <html><head><title>SurviveJS - Webpack and React - Implementing Drag and Drop</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><meta name="description" content="
-Our Kanban application is almost usable now. It doesn&#x27;t look that bad and there&#x27;s some basic functionality in place. In this chapter I&#x27;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up React DnD. After this chapter you should be able to so…"><meta name="keywords" content="webpack,react,javascript,programming,web development"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Implementing Drag and Drop - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/dnd.jpg);"></div><h1 class="post__heading">Implementing Drag and Drop</h1><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a href="/webpack_react/introduction" class="toc-nav__link chapter">Introduction</a><a href="/webpack_react/webpack" class="toc-nav__link part">Setting Up Webpack</a><a href="/webpack_react/webpack_compared" class="toc-nav__link chapter">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="toc-nav__link chapter">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="toc-nav__link chapter">Webpack and React</a><a href="/webpack_react/react" class="toc-nav__link part">Developing Kanban Application</a><a href="/webpack_react/implementing_notes" class="toc-nav__link chapter">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="toc-nav__link chapter">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="toc-nav__link chapter">From Notes to Kanban</a><span class="toc-nav__link toc-nav__link--current chapter">Implementing Drag and Drop</span><a href="/webpack_react/building_kanban" class="toc-nav__link chapter">Building Kanban</a><a href="/webpack_react/advanced" class="toc-nav__link part">Advanced Techniques</a><a href="/webpack_react/linting_in_webpack" class="toc-nav__link chapter">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="toc-nav__link chapter">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="toc-nav__link chapter">Authoring Libraries</a><a href="/webpack_react/styling_react" class="toc-nav__link chapter">Styling React</a><a href="/webpack_react/troubleshooting" class="toc-nav__link chapter">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_from_notes_to_kanban/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/07_implementing_dnd" target="_blank">Demo</a></div></div><div><p>Our Kanban application is almost usable now. It doesn&apos;t look that bad and there&apos;s some basic functionality in place. In this chapter I&apos;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up <a href="https://gaearon.github.io/react-dnd/">React DnD</a>. After this chapter you should be able to sort notes within a lane and drag them from a lane to another.</p>
+Our Kanban application is almost usable now. It doesn&#x27;t look that bad and there&#x27;s some basic functionality in place. In this chapter I&#x27;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up React DnD. After this chapter you should be able to so…"><meta name="keywords" content="webpack,react,javascript,programming,web development"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Implementing Drag and Drop - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/dnd.jpg);"></div><h1 class="post__heading">Implementing Drag and Drop</h1><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a href="/webpack_react/introduction" class="toc-nav__link chapter">Introduction</a><a href="/webpack_react/webpack" class="toc-nav__link part">Setting Up Webpack</a><a href="/webpack_react/webpack_compared" class="toc-nav__link chapter">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="toc-nav__link chapter">Developing with Webpack</a><a href="/webpack_react/webpack_and_react" class="toc-nav__link chapter">Webpack and React</a><a href="/webpack_react/react" class="toc-nav__link part">Developing Kanban Application</a><a href="/webpack_react/implementing_notes" class="toc-nav__link chapter">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="toc-nav__link chapter">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="toc-nav__link chapter">From Notes to Kanban</a><span class="toc-nav__link toc-nav__link--current chapter">Implementing Drag and Drop</span><a href="/webpack_react/building_kanban" class="toc-nav__link chapter">Building Kanban</a><a href="/webpack_react/advanced" class="toc-nav__link part">Advanced Techniques</a><a href="/webpack_react/linting_in_webpack" class="toc-nav__link chapter">Linting in Webpack</a><a href="/webpack_react/authoring_libraries" class="toc-nav__link chapter">Authoring Libraries</a><a href="/webpack_react/styling_react" class="toc-nav__link chapter">Styling React</a><a href="/webpack_react/troubleshooting" class="toc-nav__link chapter">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_from_notes_to_kanban/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/07_implementing_dnd" target="_blank">Demo</a></div></div><div><p>Our Kanban application is almost usable now. It doesn&apos;t look that bad and there&apos;s some basic functionality in place. In this chapter I&apos;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up <a href="https://gaearon.github.io/react-dnd/">React DnD</a>. After this chapter you should be able to sort notes within a lane and drag them from a lane to another.</p>
 <a class="header-anchor" href="#setting-up-react-dnd" id="setting-up-react-dnd"></a><h2>Setting Up React DnD<a class="header-anchor-select" href="#setting-up-react-dnd">#</a></h2>
 <p>Before going further hit</p>
 <blockquote>
-<p>npm i react-dnd --save`</p>
+<p>npm i react-dnd --save</p>
 </blockquote>
-<p>to add React DnD to the project. Next we&apos;ll need to patch our application to use it. React DnD supports the idea of backends. This means it is possible to adapt it to work on different platforms. Even a testing backend is feasible. As of writing it supports only HTML5 Drag and Drop API based backend. As a result the application won&apos;t work on touch yet.</p>
-<p>To get started we&apos;ll need to hook up React DnD&apos;s HTML5Backend with our <code>App</code>. After this has been done we can start worrying about actual functionality.</p>
+<p>to add React DnD to the project. Next, we&apos;ll need to patch our application to use it. React DnD supports the idea of back-ends. This means it is possible to adapt it to work on different platforms. Even a testing back-end is feasible. As of writing it supports only HTML5 Drag and Drop API based back-end. As a result, the application won&apos;t work on touch yet.</p>
+<p>To get started, we&apos;ll need to hook up React DnD&apos;s HTML5Backend with our <code>App</code>. After this has been done we can start worrying about actual functionality.</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">import</span> { DragDropContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
@@ -21,9 +21,9 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
 </code></pre>
 <p>After this change the application should look exactly the same as before. We are now ready to add some sweet functionality to it.</p>
 <a class="header-anchor" href="#preparing-notes-to-be-sorted" id="preparing-notes-to-be-sorted"></a><h2>Preparing Notes to Be Sorted<a class="header-anchor-select" href="#preparing-notes-to-be-sorted">#</a></h2>
-<p>Next we will need to tell React DnD what can be dragged and where. Since we want to move notes, we&apos;ll want to annotate them accordingly. In addition, we&apos;ll need some logic to tell what happens during this process.</p>
-<p>Earlier we extracted some of the editing functionality from <code>Note</code> and ended up dropping it. Since we need to decorate the component and don&apos;t want to end up with a mess, it seems like we&apos;ll want to add that concept back if only for decoration purposes.</p>
-<p>We can use a handy little technique here that allows us to avoid code duplication. We can implement <code>Note</code> as a wrapper component. It will accept <code>Editable</code> and render it. This will allow us to keep DnD related logic at <code>Note</code> without having to duplicate any logic related to <code>Editable</code>. The magic lies in a single property known as <code>children</code> as seen in the implementation below. React will render possible child components at <code>{this.props.children}</code>slot.</p>
+<p>Next, we will need to tell React DnD what can be dragged and where. Since we want to move notes, we&apos;ll want to annotate them accordingly. In addition, we&apos;ll need some logic to tell what happens during this process.</p>
+<p>Earlier we extracted editing functionality from <code>Note</code> and ended up dropping <code>Note</code>. It seems like we&apos;ll want to add that concept back if only for decoration purposes.</p>
+<p>We can use a handy little technique here that allows us to avoid code duplication. We can implement <code>Note</code> as a wrapper component. It will accept <code>Editable</code> and render it. This will allow us to keep DnD related logic at <code>Note</code>. This avoids having to duplicate any logic related to <code>Editable</code>. The magic lies in a single property known as <code>children</code> as seen in the implementation below. React will render possible child components at <code>{this.props.children}</code>slot.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 
@@ -38,7 +38,7 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
 <p>We also need to tweak <code>Notes</code> to use our wrapper component. We will simply wrap <code>Editable</code> using <code>Note</code> and we are good to go. We will pass <code>note</code> data to the wrapper as we&apos;ll need that later when dealing with logic.</p>
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   ...
@@ -47,13 +47,14 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${note.id}`}</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
           <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
+          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)}
+          <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.props.onDelete.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
     )</span>;
   }
 }
 </code></pre>
-<p>After this change the application should look exactly same as before. We have achieved nothing yet. Fortunately we can start adding functionality now that we have foundation in place.</p>
+<p>After this change the application should look exactly same as before. We have achieved nothing yet. Fortunately, we can start adding functionality now that we have foundation in place.</p>
 <a class="header-anchor" href="#allowing-notes-to-be-dragged" id="allowing-notes-to-be-dragged"></a><h2>Allowing Notes to Be Dragged<a class="header-anchor-select" href="#allowing-notes-to-be-dragged">#</a></h2>
 <p>React DnD uses constants to tell different draggables apart. Set up a file for tracking <code>Note</code> as follows:</p>
 <p><strong>app/components/ItemTypes.js</strong></p>
@@ -61,8 +62,8 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
   <span class="hljs-rule"><span class="hljs-attribute">NOTE</span>:<span class="hljs-value"> <span class="hljs-string">&apos;note&apos;</span>
 }</span></span>;
 </span></code></pre>
-<p>We&apos;ll expand this definition later as we add new types to the system. Next we need to tell our <code>Note</code> that it&apos;s possible to drag and drop it.</p>
-<p>We will be relying on <code>DragSource</code> and <code>DropTarget</code> decorators. In our case <code>Note</code> is both. After all we&apos;ll want to be able to sort them. Both decorators give us access to <code>Note</code> props. In addition, we can access the source <code>Note</code> through <code>monitor.getItem()</code> at <code>noteTarget</code> while <code>props</code> map to target.</p>
+<p>We&apos;ll expand this definition later as we add new types to the system. Next, we need to tell our <code>Note</code> that it&apos;s possible to drag and drop it.</p>
+<p>We will be relying on <code>DragSource</code> and <code>DropTarget</code> decorators. In our case, <code>Note</code> is both. After all we&apos;ll want to be able to sort them. Both decorators give us access to <code>Note</code> props. In addition, we can access the source <code>Note</code> through <code>monitor.getItem()</code> at <code>noteTarget</code> while <code>props</code> map to target.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">import</span> { DragSource, DropTarget } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
@@ -102,7 +103,7 @@ Our Kanban application is almost usable now. It doesn&#x27;t look that bad and t
 }
 </code></pre>
 <p>If you drag a <code>Note</code> now, you should see some debug prints at console. We are still missing some vital logic to make this all work.</p>
-<blockquote class="warning">Note that React DnD doesn&apos;t support hot loading perfectly so you may need to refresh browser to see prints you expect!</blockquote><a class="header-anchor" href="#developing-onmove-api-for-notes" id="developing-onmove-api-for-notes"></a><h2>Developing <code>onMove</code> API for Notes<a class="header-anchor-select" href="#developing-onmove-api-for-notes">#</a></h2>
+<blockquote class="warning">Note that React DnD doesn&apos;t support hot loading perfectly. You may need to refresh browser to see prints you expect!</blockquote><a class="header-anchor" href="#developing-onmove-api-for-notes" id="developing-onmove-api-for-notes"></a><h2>Developing <code>onMove</code> API for Notes<a class="header-anchor-select" href="#developing-onmove-api-for-notes">#</a></h2>
 <p>In order to make <code>Note</code> operate based on id, we&apos;ll need to do a few things:</p>
 <ul>
 <li>Capture <code>Note</code> data on <code>beginDrag</code></li>
@@ -123,12 +124,12 @@ const noteSource = {
 
 const noteTarget = {
   hover(targetProps, monitor) {
-    const targetData = targetProps.data || {};
+    const targetNote = targetProps.data || {};
     const <span class="hljs-built_in">source</span>Props = monitor.getItem();
-    const <span class="hljs-built_in">source</span>Data = <span class="hljs-built_in">source</span>Props.data || {};
+    const <span class="hljs-built_in">source</span>Note = <span class="hljs-built_in">source</span>Props.data || {};
 
-    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">source</span>Data.id !== targetData.id) {
-      targetProps.onMove({<span class="hljs-built_in">source</span>Data, targetData});
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">source</span>Note.id !== targetNote.id) {
+      targetProps.onMove({<span class="hljs-built_in">source</span>Note, targetNote});
     }
   }
 };
@@ -147,19 +148,20 @@ const noteTarget = {
         <span class="hljs-attribute">data</span>=<span class="hljs-value">{note}</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${note.id}`}</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
           <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
+          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)}
+          <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.props.onDelete.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
     )</span>;
   }
-  onMoveNote({sourceData, targetData}) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceData, <span class="hljs-string">&apos;target&apos;</span>, targetData);
+  onMoveNote({sourceNote, targetNote}) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceNote, <span class="hljs-string">&apos;target&apos;</span>, targetNote);
   }
 }
 </code></pre>
 <p>If you drag a <code>Note</code> around now, you should see prints like <code>source [Object] target [Object]</code> at console. We are getting close. We still need to figure out what to do with this data, though.</p>
 <a class="header-anchor" href="#adding-action-and-store-method-for-moving" id="adding-action-and-store-method-for-moving"></a><h2>Adding Action and Store Method for Moving<a class="header-anchor-select" href="#adding-action-and-store-method-for-moving">#</a></h2>
 <p>The logic of drag and drop is quite simple. Let&apos;s say we have a list A, B, C. In case we move A below C we should end up with B, C, A. In case we have another list, say D, E, F, and move A to the beginning of it, we should end up with B, C and A, D, E, F.</p>
-<p>In our case we&apos;ll get some extra complexity due to lane to lane dragging. Note that when we move a <code>Note</code> we know its original position and the intended target position. <code>Lane</code> knows what <code>Notes</code> belong to it by id. We are going to need some way to tell <code>LaneStore</code> that it should perform the logic over given notes. A good starting point is to define <code>LaneActions.move</code>.</p>
+<p>In our case, we&apos;ll get some extra complexity due to lane to lane dragging. Note that when we move a <code>Note</code> we know its original position and the intended target position. <code>Lane</code> knows what <code>Notes</code> belong to it by id. We are going to need some way to tell <code>LaneStore</code> that it should perform the logic over given notes. A good starting point is to define <code>LaneActions.move</code>.</p>
 <p><strong>app/actions/LaneActions.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
 
@@ -194,17 +196,17 @@ const noteTarget = {
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
   ...
-  move({sourceData, targetData}) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceData, <span class="hljs-string">&apos;target&apos;</span>, targetData);
+  move({sourceNote, targetNote}) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceNote, <span class="hljs-string">&apos;target&apos;</span>, targetNote);
   }
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(LaneStore, <span class="hljs-string">&apos;LaneStore&apos;</span>);
 </code></pre>
-<p>You should see the same prints as earlier. Next we&apos;ll need to add some logic to make this work. We can use the logic outlined above here. We have two cases to worry about. Moving within a lane itself and moving from lane to another.</p>
+<p>You should see the same prints as earlier. Next, we&apos;ll need to add some logic to make this work. We can use the logic outlined above here. We have two cases to worry about. Moving within a lane itself and moving from lane to another.</p>
 <a class="header-anchor" href="#implementing-note-drag-and-drop-logic" id="implementing-note-drag-and-drop-logic"></a><h2>Implementing Note Drag and Drop Logic<a class="header-anchor-select" href="#implementing-note-drag-and-drop-logic">#</a></h2>
-<p>Moving within a lane itself is more complicated because given you are operating based on ids and perform operations one at a time, you&apos;ll need to take possible index alterations in count. Therefore I&apos;m using <code>update</code> <a href="https://facebook.github.io/react/docs/update.html">immutability helper</a> from React as that solves the problem in one pass.</p>
-<p>It is possible to solve the lane to lane case using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">splice</a>. First we <code>splice</code> out the source note and then we <code>splice</code> it to the target lane. Again, <code>update</code> could work here but I didn&apos;t see much point in that given <code>splice</code> is nice and simple.</p>
+<p>Moving within a lane itself is more complicated. When you are operating based on ids and perform operations one at a time, you&apos;ll need to take possible index alterations in count. As a result, I&apos;m using <code>update</code> <a href="https://facebook.github.io/react/docs/update.html">immutability helper</a> from React as that solves the problem in one pass.</p>
+<p>It is possible to solve the lane to lane case using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">splice</a>. First we <code>splice</code> out the source note and then we <code>splice</code> it to the target lane. Again, <code>update</code> could work here, but I didn&apos;t see much point in that given <code>splice</code> is nice and simple.</p>
 <p>Note that these operations will mutate our <code>lanes</code> structure. At least we have the mutation contained now and it won&apos;t leak out of the store. It is possible to implement the same algorithm without mutation.</p>
 <p>The code below illustrates mutation based solution.</p>
 <p><strong>app/stores/LaneStore.jsx</strong></p>
@@ -213,43 +215,43 @@ const noteTarget = {
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
   ...
-  move({sourceData, targetData}) {
+  move({sourceNote, targetNote}) {
     <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
-    <span class="hljs-keyword">const</span> sourceId = sourceData.id;
-    <span class="hljs-keyword">const</span> targetId = targetData.id;
+    <span class="hljs-keyword">const</span> sourceId = sourceNote.id;
+    <span class="hljs-keyword">const</span> targetId = targetNote.id;
     <span class="hljs-keyword">const</span> sourceLane = lanes.filter((lane) =&gt; {
       <span class="hljs-keyword">return</span> lane.notes.indexOf(sourceId) &gt;= <span class="hljs-number">0</span>;
     })[<span class="hljs-number">0</span>];
     <span class="hljs-keyword">const</span> targetLane = lanes.filter((lane) =&gt; {
       <span class="hljs-keyword">return</span> lane.notes.indexOf(targetId) &gt;= <span class="hljs-number">0</span>;
     })[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">const</span> sourceNoteId = sourceLane.notes.indexOf(sourceId);
-    <span class="hljs-keyword">const</span> targetNoteId = targetLane.notes.indexOf(targetId);
+    <span class="hljs-keyword">const</span> sourceNoteIndex = sourceLane.notes.indexOf(sourceId);
+    <span class="hljs-keyword">const</span> targetNoteIndex = targetLane.notes.indexOf(targetId);
 
     <span class="hljs-keyword">if</span>(sourceLane === targetLane) {
       <span class="hljs-comment">// move at once to avoid complications</span>
       sourceLane.notes = update(sourceLane.notes, {
         $splice: [
-          [sourceNoteId, <span class="hljs-number">1</span>],
-          [targetNoteId, <span class="hljs-number">0</span>, sourceId]
+          [sourceNoteIndex, <span class="hljs-number">1</span>],
+          [targetNoteIndex, <span class="hljs-number">0</span>, sourceId]
         ]
       });
     }
     <span class="hljs-keyword">else</span> {
       <span class="hljs-comment">// get rid of the source</span>
-      sourceLane.notes.splice(sourceNoteId, <span class="hljs-number">1</span>);
+      sourceLane.notes.splice(sourceNoteIndex, <span class="hljs-number">1</span>);
 
       <span class="hljs-comment">// and move it to target</span>
-      targetLane.notes.splice(targetNoteId, <span class="hljs-number">0</span>, sourceId);
+      targetLane.notes.splice(targetNoteIndex, <span class="hljs-number">0</span>, sourceId);
     }
 
     <span class="hljs-keyword">this</span>.setState({lanes});
   }
 }
 </code></pre>
-<p>If you try out the application now, you can actually drag notes around and it should behave as you expect. You cannot, however, drag notes to an empty lane.</p>
+<p>If you try out the application now, you can actually drag notes around and it should behave as you expect. You cannot drag notes to an empty lane yet, though.</p>
 <a class="header-anchor" href="#dragging-notes-to-an-empty-lanes" id="dragging-notes-to-an-empty-lanes"></a><h2>Dragging Notes to an Empty Lanes<a class="header-anchor-select" href="#dragging-notes-to-an-empty-lanes">#</a></h2>
-<p>In order to drag notes to an empty lane we should allow lanes to receive notes. Just as above we can set up <code>DropTarget</code> based logic for this. First we need to capture the drag on <code>Lane</code>. It&apos;s the same idea as earlier.</p>
+<p>To drag notes to an empty lane we should allow lanes to receive notes. Just as above we can set up <code>DropTarget</code> based logic for this. First we need to capture the drag on <code>Lane</code>. It&apos;s the same idea as earlier.</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">import</span> { DropTarget } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
@@ -257,9 +259,9 @@ const noteTarget = {
 
 <span class="hljs-keyword">const</span> noteTarget = {
   hover(targetProps, monitor) {
-    <span class="hljs-keyword">const</span> targetData = targetProps.data || {};
+    <span class="hljs-keyword">const</span> targetNote = targetProps.data || {};
     <span class="hljs-keyword">const</span> sourceProps = monitor.getItem();
-    <span class="hljs-keyword">const</span> sourceData = sourceProps.data || {};
+    <span class="hljs-keyword">const</span> sourceNote = sourceProps.data || {};
 
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceProps, <span class="hljs-string">&apos;target&apos;</span>, targetProps);
   }
@@ -284,7 +286,7 @@ const noteTarget = {
 <pre><code class="undefinedjavascript">const noteTarget = {
   hover(targetProps, monitor) {
     const <span class="hljs-built_in">source</span>Props = monitor.getItem();
-    const <span class="hljs-built_in">source</span>Data = <span class="hljs-built_in">source</span>Props.data || {};
+    const <span class="hljs-built_in">source</span>Note = <span class="hljs-built_in">source</span>Props.data || {};
 
     <span class="hljs-keyword">if</span>(!targetProps.notes.length) {
       console.log(<span class="hljs-string">&apos;source&apos;</span>, <span class="hljs-built_in">source</span>Props, <span class="hljs-string">&apos;target&apos;</span>, targetProps);
@@ -293,24 +295,24 @@ const noteTarget = {
 };
 </code></pre>
 <p>If you refresh your browser and drag around now, the print should appear only when you drag a note to a lane that doesn&apos;t have any notes attached to it yet.</p>
-<p>Next we&apos;ll need to trigger logic that can perform the move operation. We have some actions we can apply for this purpose. Remember those attach/detach actions we implemented earlier? To remind you of their signatures they look like this:</p>
+<p>Next, we&apos;ll need to trigger logic that can perform the move operation. We have some actions we can apply for this purpose. Remember those attach/detach actions we implemented earlier? To remind you of their signatures they look like this:</p>
 <ul>
 <li><code>LaneStore.attachToLane({laneId, noteId})</code></li>
 <li><code>LaneStore.detachFromLane({laneId, noteId})</code></li>
 </ul>
 <p>By the looks of it we have enough data to perform <code>attachToLane</code>. <code>detachFromLane</code> is more problematic as we would need to know where to detach the note from. There are a couple of ways to solve this problem. We could pass lane id to <code>Note</code> through the hierarchy. This doesn&apos;t feel particularly nice, though.</p>
-<p>Instead it feels more reasonable to solve this on store level. We can have the nasty logic there. Given a note can belong to only a single lane in our system we can enforce this rule at <code>attachToLane</code>. We simply remove the note before attaching it should it exist somewhere within the system.</p>
+<p>Instead, it feels more reasonable to solve this on store level. We can have the nasty logic there. Given a note can belong to only a single lane in our system we can enforce this rule at <code>attachToLane</code>. We simply remove the note before attaching it should it exist somewhere within the system.</p>
 <p>The <code>noteTarget</code> part of this is simple. We need to trigger <code>LaneActions.attachToLane</code> using the ids we know based on the data we have available.</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="undefinedjavascript">const noteTarget = {
   hover(targetProps, monitor) {
     const <span class="hljs-built_in">source</span>Props = monitor.getItem();
-    const <span class="hljs-built_in">source</span>Data = <span class="hljs-built_in">source</span>Props.data || {};
+    const <span class="hljs-built_in">source</span>Note = <span class="hljs-built_in">source</span>Props.data || {};
 
     <span class="hljs-keyword">if</span>(!targetProps.notes.length) {
       LaneActions.attachToLane({
         laneId: targetProps.id,
-        noteId: <span class="hljs-built_in">source</span>Data.id
+        noteId: <span class="hljs-built_in">source</span>Note.id
       });
     }
   }
@@ -324,7 +326,11 @@ const noteTarget = {
   ...
   attachToLane({laneId, noteId}) {
     <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
-    <span class="hljs-keyword">const</span> targetId = lanes.findIndex((lane) =&gt; lane.id === laneId);
+    <span class="hljs-keyword">const</span> targetId = <span class="hljs-keyword">this</span>.findLane(laneId);
+
+    <span class="hljs-keyword">if</span>(targetId &lt; <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">return</span>;
+    }
 
     <span class="hljs-keyword">this</span>.removeNote(noteId);
 
@@ -340,10 +346,10 @@ const noteTarget = {
       <span class="hljs-keyword">return</span>;
     }
 
-    <span class="hljs-keyword">const</span> removeNoteId = removeLane.notes.indexOf(noteId);
+    <span class="hljs-keyword">const</span> removeNoteIndex = removeLane.notes.indexOf(noteId);
 
-    removeLane.notes = removeLane.notes.slice(<span class="hljs-number">0</span>, removeNoteId).
-      concat(removeLane.notes.slice(removeNoteId + <span class="hljs-number">1</span>));
+    removeLane.notes = removeLane.notes.slice(<span class="hljs-number">0</span>, removeNoteIndex).
+      concat(removeLane.notes.slice(removeNoteIndex + <span class="hljs-number">1</span>));
   }
   ...
 }
@@ -352,5 +358,5 @@ const noteTarget = {
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>In this chapter you saw how to implement drag and drop for our little application. You can model sorting for lanes using the same technique. First you mark the lanes to be draggable and droppable, then you sort out their ids and finally you&apos;ll add some logic to make it all work together. It should be considerably simpler than what we did with notes.</p>
 <p>I encourage you to expand the application. The current implementation should work just as a starting point for something greater. Besides extending DnD implementation you can try adding more data to the system.</p>
-<p>The next chapters go into advanced topics we have so far glanced over. They are more theoretical in nature and should give you further ideas to integrate into your development workflow.</p>
-</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/kanban_photo.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/training.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/building_kanban">Building Kanban</a></div></div><a class="next-page" href="/webpack_react/building_kanban">Building Kanban</a><a class="previous-page" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><div class="header-extra"><a href="https://www.flickr.com/photos/15146367@N00/4083260446">Emma Story (CC BY-NC)</a></div></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
+<p>In the next chapter we&apos;ll set up a production level build for our application. You can use the same techniques in your own projects.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/kanban_photo.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/boots.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/building_kanban">Building Kanban</a></div></div><a class="next-page" href="/webpack_react/building_kanban">Building Kanban</a><a class="previous-page" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><div class="header-extra"><a href="https://www.flickr.com/photos/15146367@N00/4083260446">Emma Story (CC BY-NC)</a></div></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>

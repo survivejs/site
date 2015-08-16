@@ -1,34 +1,20 @@
 <html><head><title>SurviveJS - Webpack and React - Building Kanban</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"><meta name="description" content="
-Now that we have a nice Kanban application up and running we can worry about showing it the public. If you hit TARGET=dev node_modules/.bin/webpack at the project root, you can get a standalone bundle like this:
+Now that we have a nice Kanban application up and running we can worry about showing it the public. The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.
 
-`bash
-Hash: 882eb94aec377c93dbc0
-Version: webpack 1.10.1
-Time: 3800ms
-     Asset      …"><meta name="keywords" content="webpack,react,javascript,programming,web development"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Building Kanban - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/training.jpg);"></div><h1 class="post__heading">Building Kanban</h1><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a href="/webpack_react/introduction" class="toc-nav__link chapter">Introduction</a><a href="/webpack_react/webpack" class="toc-nav__link part">Setting Up Webpack</a><a href="/webpack_react/webpack_compared" class="toc-nav__link chapter">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="toc-nav__link chapter">Developing with webpack</a><a href="/webpack_react/webpack_and_react" class="toc-nav__link chapter">Webpack and React</a><a href="/webpack_react/react" class="toc-nav__link part">Developing Kanban Application</a><a href="/webpack_react/implementing_notes" class="toc-nav__link chapter">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="toc-nav__link chapter">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="toc-nav__link chapter">From Notes to Kanban</a><a href="/webpack_react/implementing_dnd" class="toc-nav__link chapter">Implementing Drag and Drop</a><span class="toc-nav__link toc-nav__link--current chapter">Building Kanban</span><a href="/webpack_react/advanced" class="toc-nav__link part">Advanced Techniques</a><a href="/webpack_react/linting_in_webpack" class="toc-nav__link chapter">Linting in webpack</a><a href="/webpack_react/deploying_applications" class="toc-nav__link chapter">Deploying Applications</a><a href="/webpack_react/authoring_libraries" class="toc-nav__link chapter">Authoring Libraries</a><a href="/webpack_react/styling_react" class="toc-nav__link chapter">Styling React</a><a href="/webpack_react/troubleshooting" class="toc-nav__link chapter">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_building_kanban/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/08_building_kanban" target="_blank">Demo</a></div></div><div><p>Now that we have a nice Kanban application up and running we can worry about showing it the public. If you hit <code>TARGET=dev node_modules/.bin/webpack</code> at the project root, you can get a standalone bundle like this:</p>
-<pre><code class="undefinedbash"><span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> <span class="hljs-number">882</span>eb94aec377c93dbc0
-Version: webpack <span class="hljs-number">1.10</span>.<span class="hljs-number">1</span>
-Time: <span class="hljs-number">3800ms</span>
-     Asset       Size  Chunks             Chunk Names
- bundle.js    <span class="hljs-number">1.19</span> MB       <span class="hljs-number">0</span>  [emitted]  main
-index.html  <span class="hljs-number">184</span> bytes          [emitted]
-    + <span class="hljs-number">345</span> hidden modules
-</span></span></code></pre>
-<p>The problem is that 1.19 MB is a lot! In addition, our build contains bits and pieces we don&apos;t want it to contain.</p>
-<p>The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.</p>
-<a class="header-anchor" href="#setting-up-build-target" id="setting-up-build-target"></a><h2>Setting Up Build Target<a class="header-anchor-select" href="#setting-up-build-target">#</a></h2>
-<p>Since hitting <code>TARGET=dev node_modules/.bin/webpack</code> gets boring after a while we can set up a shortcut for that. Ideally we could just hit <code>npm run build</code> and that&apos;s it. The following snippet shows how to set this up.</p>
+"><meta name="keywords" content="webpack,react,javascript,programming,web development"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Building Kanban - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/boots.jpg);"></div><h1 class="post__heading">Building Kanban</h1><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a href="/webpack_react/introduction" class="toc-nav__link chapter">Introduction</a><a href="/webpack_react/webpack" class="toc-nav__link part">Setting Up Webpack</a><a href="/webpack_react/webpack_compared" class="toc-nav__link chapter">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="toc-nav__link chapter">Developing with Webpack</a><a href="/webpack_react/webpack_and_react" class="toc-nav__link chapter">Webpack and React</a><a href="/webpack_react/react" class="toc-nav__link part">Developing Kanban Application</a><a href="/webpack_react/implementing_notes" class="toc-nav__link chapter">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="toc-nav__link chapter">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="toc-nav__link chapter">From Notes to Kanban</a><a href="/webpack_react/implementing_dnd" class="toc-nav__link chapter">Implementing Drag and Drop</a><span class="toc-nav__link toc-nav__link--current chapter">Building Kanban</span><a href="/webpack_react/advanced" class="toc-nav__link part">Advanced Techniques</a><a href="/webpack_react/linting_in_webpack" class="toc-nav__link chapter">Linting in Webpack</a><a href="/webpack_react/authoring_libraries" class="toc-nav__link chapter">Authoring Libraries</a><a href="/webpack_react/styling_react" class="toc-nav__link chapter">Styling React</a><a href="/webpack_react/troubleshooting" class="toc-nav__link chapter">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><div class="post__meta"></div><div><p>Now that we have a nice Kanban application up and running we can worry about showing it the public. The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.</p>
+<a class="header-anchor" href="#setting-up-a-build-target" id="setting-up-a-build-target"></a><h2>Setting Up a Build Target<a class="header-anchor-select" href="#setting-up-a-build-target">#</a></h2>
+<p>In our current setup we serve the application through <code>webpack-dev-server</code> always. To get a build done, we&apos;ll need to extend <em>package.json</em> <code>scripts</code> section.</p>
 <p><strong>package.json</strong></p>
 <pre><code class="undefinedjson">{
   ...
   <span class="hljs-string">&quot;scripts&quot;</span>: {
-    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;TARGET=build webpack&quot;</span>,
+    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;webpack&quot;</span>,
     ...
   },
   ...
 }
 </code></pre>
-<p>We&apos;ll also need some build specific configuration to make webpack pick up our JSX. We can set up sourcemaps while at it. I&apos;ll be using <code>source-map</code> option here as that&apos;s a good pick for production.</p>
+<p>We&apos;ll also need some build specific configuration to make Webpack pick up our JSX. We can set up sourcemaps while at it. I&apos;ll be using <code>source-map</code> option here as that&apos;s a good pick for production.</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">...
 
@@ -39,7 +25,7 @@ index.html  <span class="hljs-number">184</span> bytes          [emitted]
       loaders: [
         {
           test: <span class="hljs-regexp">/\.jsx?$/</span>,
-          loaders: [<span class="hljs-string">&apos;babel?stage=1&apos;</span>],
+          loaders: [<span class="hljs-string">&apos;babel&apos;</span>],
           include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
         }
       ]
@@ -59,12 +45,12 @@ bundle.js.map    1.28 MB       0  [emitted]  main
    index.html  184 bytes          [emitted]
     + 345 hidden modules
 </code></pre>
-<p>We actually shaved a little out of our bundle. We still have a long way to go, though.</p>
+<p>1.09 MB is quite a lot. We should do something about that.</p>
 <a class="header-anchor" href="#optimizing-build-size" id="optimizing-build-size"></a><h2>Optimizing Build Size<a class="header-anchor-select" href="#optimizing-build-size">#</a></h2>
 <p>There are a couple of basic things we can do to slim down our build. We can apply some minification to it. We can also tell React to optimize itself. Doing both will result in significant size savings. Provided we apply gzip compression on the content when serving it, further gains may be made.</p>
 <a class="header-anchor" href="#minification" id="minification"></a><h3>Minification<a class="header-anchor-select" href="#minification">#</a></h3>
 <p>Minification will convert our code into a smaller format without losing any meaning. Usually this means some amount of rewriting code through predefined transformations. Sometimes this can break code as it can rewrite pieces of code you inadvertently depend upon. This is the reason why we gave explicit ids to our stores for instance.</p>
-<p>At minimum we need to just pass <code>-p</code> parameter to <code>webpack</code>. It will give a bunch of warnings especially in React environment by default, however, so we&apos;ll enable minification using other way. Add the following section to your webpack configuration:</p>
+<p>At minimum we need to just pass <code>-p</code> parameter to <code>webpack</code>. It will give a bunch of warnings, especially in a React environment by default. As a result we&apos;ll disable them. Add the following section to your Webpack configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
@@ -94,8 +80,8 @@ bundle.js.map    2.66 MB       0  [emitted]  main
 </code></pre>
 <p>Given it needs to do more work, it took longer. But on the plus side the build is much smaller now.</p>
 <blockquote class="tip">It is possible to push minification further by enabling variable name mangling. It comes with some extra complexity to worry about but may be worth it when you are pushing for minimal size. See <a href="https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin">the official documentation</a> for details.</blockquote><a class="header-anchor" href="#-process-env-node_env-" id="-process-env-node_env-"></a><h3><code>process.env.NODE_ENV</code><a class="header-anchor-select" href="#-process-env-node_env-">#</a></h3>
-<p>We can perform one more step to decrease build size further. React relies on <code>process.env.NODE_ENV</code> based optimizations. If we force it to <code>production</code>, React will get built in an optimized manner. This will disable some checks (i.e. property type checks) but it will give you a smaller build and improved performance.</p>
-<p>In webpack terms you can add the following snippet to the <code>plugins</code> section of your configuration like this:</p>
+<p>We can perform one more step to decrease build size further. React relies on <code>process.env.NODE_ENV</code> based optimizations. If we force it to <code>production</code>, React will get built in an optimized manner. This will disable some checks (i.e. property type checks). Most importantly it will give you a smaller build and improved performance.</p>
+<p>In Webpack terms you can add the following snippet to the <code>plugins</code> section of your configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
@@ -112,12 +98,12 @@ bundle.js.map    2.66 MB       0  [emitted]  main
   });
 }
 </code></pre>
-<p>This is a useful technique for your own code. If you have a section of code that evaluates as <code>false</code> after this process, the minifier will remove it from build completely. You can attach debugging specific utilities and such to your code easily this way. For instance you could build a powerful logging system just for development. Here&apos;s a small example of what that could look like:</p>
+<p>This is a useful technique for your own code. If you have a section of code that evaluates as <code>false</code> after this process, the minifier will remove it from build completely. You can attach debugging specific utilities and such to your code easily this way. For instance, you could build a powerful logging system just for development. Here&apos;s a small example of what that could look like:</p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>) {
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;developing like an ace&apos;</span>);
 }
 </code></pre>
-<blockquote class="tip">That <code>JSON.stringify</code> is needed as webpack will perform string replace &quot;as is&quot;. In this case we&apos;ll want to end up with strings as that&apos;s what various comparisons expect, not just <code>production</code>. Latter would just cause an error. An alternative would be to use a string such as <code>&apos;&quot;production&quot;&apos;</code>. Note the &quot;&apos;s.</blockquote><p>Hit <code>npm run build</code> again and you should see improved results:</p>
+<blockquote class="tip">That <code>JSON.stringify</code> is needed as Webpack will perform string replace &quot;as is&quot;. In this case, we&apos;ll want to end up with strings as that&apos;s what various comparisons expect, not just <code>production</code>. Latter would just cause an error. An alternative would be to use a string such as <code>&apos;&quot;production&quot;&apos;</code>. Note the &quot;&apos;s.</blockquote><p>Hit <code>npm run build</code> again and you should see improved results:</p>
 <pre><code class="undefinedbash">&gt; TARGET=build webpack
 
 Hash: 37ebe639517bfeb72ff6
@@ -129,11 +115,11 @@ bundle.js.map    2.53 MB       0  [emitted]  main
    index.html  184 bytes          [emitted]
     + 339 hidden modules
 </code></pre>
-<p>So we went from 1.19 MB to 1.09 MB to 324 kB and finally to 264 kB. The final build is a little faster than the previous one. As that 264k can be served gzipped, it is quite reasonable. gzipping will drop around another 40% is well supported by browsers.</p>
+<p>So we went from 1.09 MB to 324 kB and finally to 264 kB. The final build is a little faster than the previous one. As that 264k can be served gzipped, it is quite reasonable. gzipping will drop around another 40% is well supported by browsers.</p>
 <p>We can do a little better, though. We can split <code>app</code> and <code>vendor</code> bundles and add hashes to their filenames.</p>
 <a class="header-anchor" href="#splitting-app-and-vendor-bundles" id="splitting-app-and-vendor-bundles"></a><h3>Splitting <code>app</code> and <code>vendor</code> Bundles<a class="header-anchor-select" href="#splitting-app-and-vendor-bundles">#</a></h3>
-<p>The main advantage of splitting the application into two separate bundles is that it allows us to benefit from client caching. We might for instance make most of our changes to the small <code>app</code> bundle. In this case the client would have to fetch only it provided <code>vendor</code> bundle has been loaded already. This scheme won&apos;t load as fast as a single bundle initially due to the extra request but caching more than makes up for this disadvantage.</p>
-<p>In webpack terms we will expand <code>entry</code> configuration and then use <code>CommonsChunkPlugin</code> to extract the vendor bundle. The configuration below shows how this will work out in our case.</p>
+<p>The main advantage of splitting the application into two separate bundles is that it allows us to benefit from client caching. We might, for instance, make most of our changes to the small <code>app</code> bundle. In this case, the client would have to fetch only it provided <code>vendor</code> bundle has been loaded already. This scheme won&apos;t load as fast as a single bundle initially due to the extra request. Caching more than makes up for this disadvantage.</p>
+<p>In Webpack terms we will expand <code>entry</code> configuration. After that we use <code>CommonsChunkPlugin</code> to extract the vendor bundle. The configuration below shows how this will work out in our case.</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">...
 
@@ -147,7 +133,7 @@ bundle.js.map    2.53 MB       0  [emitted]  main
 <span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
     entry: {
-      app: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
+      app: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main.jsx&apos;</span>),
       vendor: <span class="hljs-built_in">Object</span>.keys(pkg.dependencies)
     },
     output: {
@@ -186,9 +172,9 @@ vendor.edaf1006b1f4b71898f9.js.map    2.12 MB       1  [emitted]  vendor
 <p>Note how small <code>app</code> bundle is in comparison. If we update the application now and deploy it, the users that have used it before will have to reload only 57.8 kB. Not bad.</p>
 <p>One more way to push the build further would be to load popular dependencies, such as React, through a CDN. That would decrease the size of the vendor bundle even further while adding an external dependency on the project. The idea is that if the user has hit the CDN earlier, caching can kick in just like here.</p>
 <a class="header-anchor" href="#cleaning-build" id="cleaning-build"></a><h2>Cleaning Build<a class="header-anchor-select" href="#cleaning-build">#</a></h2>
-<p>Our current setup doesn&apos;t clean <code>build</code> directory between builds. As this is annoying especially when hashes are used, we can set up a plugin to clean the directory for us. Execute</p>
+<p>Our current setup doesn&apos;t clean <code>build</code> directory between builds. As this is annoying, especially when hashes are used, we can set up a plugin to clean the directory for us. Execute</p>
 <blockquote>
-<p>npm i clean-webpack-plugin --save-dev`</p>
+<p>npm i clean-webpack-plugin --save-dev</p>
 </blockquote>
 <p>to install the plugin. Change the build configuration as below to integrate it.</p>
 <p><strong>webpack.config.js</strong></p>
@@ -209,14 +195,14 @@ vendor.edaf1006b1f4b71898f9.js.map    2.12 MB       1  [emitted]  vendor
 </code></pre>
 <p>After this change our <code>build</code> directory should remain nice and tidy while building.</p>
 <p>Note that you can provide <code>context</code> parameter to <code>Clean</code>. That allows you to execute the process in some other directory. Example <code>new Clean([&apos;build&apos;], &apos;&lt;context path&gt;&apos;)</code>.</p>
-<blockquote class="tip">An alternatively would be to use your terminal fu (<code>rm -rf build/</code>) and set that up at the <code>scripts</code> of <code>package.json</code>.</blockquote><a class="header-anchor" href="#separating-css" id="separating-css"></a><h2>Separating CSS<a class="header-anchor-select" href="#separating-css">#</a></h2>
-<p>Even though we have a nice build set up now, where did all the CSS go? As per our configuration it has been inlined to JavaScript! Even though this can be convenient during development it doesn&apos;t sound ideal. The current solution doesn&apos;t allow us to cache CSS and in some cases we might suffer from flash of unstyled content (FOUC).</p>
-<p>As it happens webpack provides means to generate a separate CSS bundle. We can achieve this using <code>ExtractTextPlugin</code>. It comes with some overhead during complication phase and won&apos;t work with Hot Module Replacement (HMR) by design. Given we are using it only for production usage that won&apos;t be a problem.</p>
+<blockquote class="tip">An alternative would be to use your terminal fu (<code>rm -rf build/</code>) and set that up at the <code>scripts</code> of <code>package.json</code>.</blockquote><a class="header-anchor" href="#separating-css" id="separating-css"></a><h2>Separating CSS<a class="header-anchor-select" href="#separating-css">#</a></h2>
+<p>Even though we have a nice build set up now, where did all the CSS go? As per our configuration it has been inlined to JavaScript! Even though this can be convenient during development it doesn&apos;t sound ideal. The current solution doesn&apos;t allow us to cache CSS. In some cases we might suffer from flash of unstyled content (FOUC).</p>
+<p>As it happens Webpack provides means to generate a separate CSS bundle. We can achieve this using <code>ExtractTextPlugin</code>. It comes with some overhead during complication phase. It won&apos;t work with Hot Module Replacement (HMR) by design. Given we are using it only for production usage that won&apos;t be a problem.</p>
 <p>It will take some configuration to make it work. Hit</p>
 <blockquote>
 <p>npm i extract-text-webpack-plugin --save-dev</p>
 </blockquote>
-<p>to get started. Next we need to get rid of our current css related declaration at <code>common</code> configuration and split it up between <code>build</code> and <code>dev</code> configuration sections as below.</p>
+<p>to get started. Next, we need to get rid of our current css related declaration at <code>common</code> configuration. After that we need to split it up between <code>build</code> and <code>dev</code> configuration sections as below:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">var</span> ExtractTextPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;extract-text-webpack-plugin&apos;</span>);
@@ -227,10 +213,7 @@ vendor.edaf1006b1f4b71898f9.js.map    2.12 MB       1  [emitted]  vendor
 <span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
 
 <span class="hljs-keyword">var</span> common = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
-  resolve: {
-    extensions: [<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>]
-  },
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main.jsx&apos;</span>),
   output: {
     path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
     filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
@@ -242,7 +225,7 @@ vendor.edaf1006b1f4b71898f9.js.map    2.12 MB       1  [emitted]  vendor
   ]
 };
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;dev&apos;</span>) {
+<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
   <span class="hljs-built_in">module</span>.exports = merge(common, {
     ...
     <span class="hljs-built_in">module</span>: {
@@ -301,6 +284,122 @@ Child extract-text-webpack-plugin:
         + 2 hidden modules
 </code></pre>
 <p>This means we have separate app and vendor bundles. In addition, styles have been pushed to a separate file. And top this we have sourcemaps and an automatically generated <em>index.html</em>. Not bad.</p>
+<a class="header-anchor" href="#isomorphic-rendering" id="isomorphic-rendering"></a><h2>Isomorphic Rendering<a class="header-anchor-select" href="#isomorphic-rendering">#</a></h2>
+<p>One of the interesting aspects of React is the fact that it allows so called isomorphic rendering. This means you can render static HTML through it. Once the JavaScript code gets run, it will pick up the markup. Even though this sounds trivial there are some nice advantages to this approach:</p>
+<ul>
+<li>Web crawlers will be able to access the content easier (potentially better SEO)</li>
+<li>You can avoid requests to fetch initial data. Especially on slow connections this can make a big difference.</li>
+<li>The browser doesn&apos;t have to wait for JavaScript to get evaluated. Instead, it gets to render HTML straight away.</li>
+<li>Even users without JavaScript enabled see something. In this case, it doesn&apos;t matter a lot, but otherwise it could be a big factor.</li>
+</ul>
+<p>Even though we don&apos;t have a proper back-end in our project this is a powerful approach you should be aware of. The same idea can be applied for other scenarios such as rendering a JSX template to a PDF invoice for example. React isn&apos;t limited to the web.</p>
+<p>We will need to perform a couple of tweaks to our project in order to enable isomorphic rendering. Thankfully <em>HtmlWebpackPlugin</em> can do most of the work for us. We just need to implement a custom template and render our initial JSX to it. Set up <em>index.tpl</em> as follows.</p>
+<p><strong>templates/index.tpl</strong></p>
+<pre><code class="undefinedhtml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html{%</span> <span class="hljs-attribute">if</span>(<span class="hljs-attribute">o.htmlWebpackPlugin.files.manifest</span>) { %}
+  <span class="hljs-attribute">manifest</span>=<span class="hljs-value">&quot;{%= o.htmlWebpackPlugin.files.manifest %}&quot;</span><span class="hljs-value">{%</span> } %}&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>{%=o.htmlWebpackPlugin.options.title%}<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+    {% if (o.htmlWebpackPlugin.files.favicon) { %}
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;shortcut icon&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;{%=o.htmlWebpackPlugin.files.favicon%}&quot;</span>&gt;</span>
+    {% } %}
+    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;{%=o.htmlWebpackPlugin.files.css[css] %}&quot;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet&quot;</span>&gt;</span>
+    {% } %}
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;app&quot;</span>&gt;</span>%app%<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    {% } %}
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>This template is based on the default one used by <em>HtmlWebpackPlugin</em>. It relies on a templating library known as <a href="https://www.npmjs.com/package/blueimp-tmpl">blueimp-tpl</a>. That&apos;s why you see all those <code>{% ... %}</code> entries there. We will inject some syntax of our own at <code>&lt;div id=&quot;app&quot;&gt;%app%&lt;/div&gt;</code> next and let <em>HtmlWebpackPlugin</em> deal with the rest.</p>
+<p>As we&apos;ll be relying on JSX when rendering, we need to rename <em>webpack.config.js</em> as <em>webpack.config.babel.js</em> first. That way Webpack knows to process it through Babel and everything will work as we expect. Besides this we need to make <em>HtmlWebpackPlugin</em> aware of our template and add our custom rendering logic there.</p>
+<p><strong>webpack.config.babel.js</strong></p>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;fs&apos;</span>);
+<span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;react&apos;</span>);
+...
+
+<span class="hljs-keyword">var</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./app/components/App.jsx&apos;</span>);
+<span class="hljs-keyword">var</span> pkg = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./package.json&apos;</span>);
+
+<span class="hljs-keyword">var</span> TARGET = process.env.npm_lifecycle_event;
+<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+
+<span class="hljs-keyword">var</span> common = {
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main.jsx&apos;</span>),
+  output: {
+    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
+    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
+  }
+};
+
+<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
+  <span class="hljs-built_in">module</span>.exports = merge(common, {
+    ...
+    plugins: [
+      <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin(),
+      <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
+        title: <span class="hljs-string">&apos;Kanban app&apos;</span>
+      })
+    ]
+  });
+}
+
+<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
+  <span class="hljs-built_in">module</span>.exports = merge(common, {
+    ...
+    plugins: [
+      ...
+      <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
+        title: <span class="hljs-string">&apos;Kanban app&apos;</span>,
+        templateContent: renderTemplate(
+          fs.readFileSync(path.join(__dirname, <span class="hljs-string">&apos;templates/index.tpl&apos;</span>), <span class="hljs-string">&apos;utf8&apos;</span>),
+          {
+            app: React.renderToString(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>)</span>
+          })
+      })
+    ]
+  });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderTemplate</span>(<span class="hljs-params">template, replacements</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> template.replace(<span class="hljs-regexp">/%(\w*)%/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">match</span>) </span>{
+      <span class="hljs-keyword">var</span> key = match.slice(<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>);
+
+      <span class="hljs-keyword">return</span> replacements[key] ? replacements[key] : match;
+    });
+  };
+}
+</code></pre>
+<p>As it doesn&apos;t make sense to use isomorphic rendering for development, I set it up only for production. It performs a regular expression based replacement to render our React code to <code>%app%</code>. <code>React.renderToString</code> returns the markup we need.</p>
+<blockquote class="tip">If you want output that doesn&apos;t have React keys, use <code>React.renderToStaticMarkup</code> instead. This is useful especially if you are writing static site generators.</blockquote><p>In addition, we need to tweak the entry point of our application to take these changes in count. When in production it should use the existing markup instead of injecting its own.</p>
+<p><strong>app/main.jsx</strong></p>
+<pre><code class="undefinedjavascript">...
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">main</span></span>() {
+  persist(alt, storage, <span class="hljs-string">&apos;app&apos;</span>);
+
+  <span class="hljs-keyword">if</span>(process.env.NODE_ENV === <span class="hljs-string">&apos;production&apos;</span>) {
+    React.render(&lt;App /&gt;, document.getElementById(<span class="hljs-string">&apos;app&apos;</span>));
+  }
+  <span class="hljs-keyword">if</span>(process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>) {
+    const app = document.createElement(<span class="hljs-string">&apos;div&apos;</span>);
+
+    document.body.appendChild(app);
+
+    React.render(&lt;App /&gt;, app);
+  }
+}
+</code></pre>
+<p>If you hit <code>npm run build</code> now and wait for a while, you should end up with <code>build/index.html</code> that contains something familiar. <code>npm start</code> should work the same way as earlier.</p>
+<p>In this case, isomorphic rendering doesn&apos;t yield us much. If we had a back-end the situation would be different. We could serve the user markup that has the initial data and enjoy the benefits. Even though it&apos;s now more of a gimmick, it&apos;s a useful technique to be aware of.</p>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
-<p>Our Kanban application is now ready to be served. We went from a chunky build to a slim one. Even better the production version can benefit from caching and it is able to invalidate it. When it comes to webpack this is just a small part of what you can do with it. I discuss more approaches at <strong>Deploying applications</strong> chapter.</p>
-</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/skydiving.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/advanced">Advanced Techniques</a></div></div><a class="next-page" href="/webpack_react/advanced">Advanced Techniques</a><a class="previous-page" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><div class="header-extra"><a href="https://www.flickr.com/photos/48282484@N00/135720337">Mugu Marculescu (CC BY-NC-SA)</a></div></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
+<p>Beyond the features discussed Webpack allows you to <a href="https://webpack.github.io/docs/code-splitting.html">lazy load</a> content through <code>require.ensure</code>. This is handy if you happen to have a specific dependency on some view and want to load it when you need it.</p>
+<p>Our Kanban application is now ready to be served. We went from a chunky build to a slim one. Even better the production version can benefit from caching and it is able to invalidate it. When it comes to Webpack this is just a small part of what you can do with it. I discuss more approaches at <strong>Deploying applications</strong> chapter.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote></div><div id="disqus_thread"></div></div><div class="prevnext"><div class="prevnext__prev"><div class="prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="prevnext__info">Previous chapter</span><a class="prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div><div class="prevnext__next"><div class="prevnext__bg" style="background-image:url(/images/skydiving.jpg);"></div><span class="prevnext__info">Next chapter</span><a class="prevnext__link" href="/webpack_react/advanced">Advanced Techniques</a></div></div><a class="next-page" href="/webpack_react/advanced">Advanced Techniques</a><a class="previous-page" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><div class="header-extra"><a href="https://www.flickr.com/photos/7870246@N03/481256246">Acid Pix (CC BY)</a></div></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><noscript></noscript></main></div></body></html>
