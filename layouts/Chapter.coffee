@@ -43,24 +43,24 @@ module.exports = React.createClass
 
           div id: 'disqus_thread'
 
-          if item.next or item.prev
-            div className: 'prevnext',
-              if item.prev
-                  div {className: 'prevnext__prev'},
-                    div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.prev.headerImage})"}
-                    span className: 'prevnext__info', "Previous chapter"
-                    a className: 'prevnext__link', href: "/#{item.prev.url}", item.prev.title
-              if item.next
-                  div {className: 'prevnext__next'},
-                    div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.next.headerImage})"}
-                    span className: 'prevnext__info', "Next chapter"
-                    a className: 'prevnext__link', href: "/#{item.next.url}", item.next.title
+        if item.next or item.prev
+          div className: 'prevnext',
+            if item.prev
+                div {className: 'prevnext__prev'},
+                  div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.prev.headerImage})"}
+                  span className: 'prevnext__info', "Previous chapter"
+                  a className: 'prevnext__link', href: "/#{item.prev.url}", item.prev.title
+            if item.next
+                div {className: 'prevnext__next'},
+                  div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.next.headerImage})"}
+                  span className: 'prevnext__info', "Next chapter"
+                  a className: 'prevnext__link', href: "/#{item.next.url}", item.next.title
 
-          if item.next
-            a className: 'next-page', href: '/' + item.next.url, item.next.title
+        if item.next
+          a className: 'next-page', href: '/' + item.next.url, item.next.title
 
-          if item.prev
-            a className: 'previous-page', href: '/' + item.prev.url, item.prev.title
+        if item.prev
+          a className: 'previous-page', href: '/' + item.prev.url, item.prev.title
 
         if item.headerExtra? then div className: 'header-extra', dangerouslySetInnerHTML: __html: item.headerExtra
 
