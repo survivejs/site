@@ -59,13 +59,13 @@ Based on table of contents the book shows you how to get started from scratch, h
 
 ### ReactJS Cookbook
 
-[ReactJS Cookbook](https://www.packtpub.com/web-development/reactjs-cookbook) by Johannes Stein is available through Packt exclusively at the moment. It is on preorder for $12.40 and is due November.
+[ReactJS Cookbook](https://www.packtpub.com/web-development/reactjs-cookbook) by Johannes Stein is available through Packt exclusively at the moment. It is on preorder for $39.68 and is due November.
 
-As many books discussed by now, **ReactJS Cookbook** shows you how React components work and goes into topics such as animation, isomorphism, ES6 and testing. It is expected to have 301 pages so you could say cost per page ratio is very competitive here compared to other offerings.
+As many books discussed by now, **ReactJS Cookbook** shows you how React components work and goes into topics such as animation, isomorphism, ES6 and testing. It is expected to have 301 pages.
 
 ### React.js Essentials
 
-[React.js Essentials](https://www.packtpub.com/web-development/reactjs-essentials) by [Artemij Fedosejev](http://artemij.com/) is available through Packt and Amazon. At Packt preorder price of the digital version is $12.40 while at [Amazon](http://www.amazon.com/React-js-Essentials-Artemij-Fedosejev-ebook/dp/B00YSILZRW) Kindle version is available for $29.75. According to Packt site the book should been available in July but Amazon has expected date at January 2016.
+[React.js Essentials](https://www.packtpub.com/web-development/reactjs-essentials) by [Artemij Fedosejev](http://artemij.com/) is available through Packt and Amazon. At Packt preorder price of the digital version is $23.80 while at [Amazon](http://www.amazon.com/React-js-Essentials-Artemij-Fedosejev-ebook/dp/B00YSILZRW) Kindle version is available for $29.75. According to Packt site the book should been available in July but Amazon has expected date at January 2016.
 
 The book is expected to have 194 pages. It covers basics of React and goes into architecture (Flux). There is also information about testing (Jest). No official table of contents is available as of yet.
 
