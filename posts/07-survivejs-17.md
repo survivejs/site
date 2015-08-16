@@ -27,7 +27,7 @@ In total 63 commits went to `v1.6`.
 
 You can see GitHub for [all changes](https://github.com/survivejs/webpack_react/compare/v1.5.0...v1.6.0).
 
-## Book Improvements - v1.7
+## Book Improvements - `v1.7`
 
 108 commits went to `v1.7`. So based on numbers it was busier. Especially the early part of the week was good. After that it was all berries and mushrooms for me. It's the season after all and Winter is coming.
 
