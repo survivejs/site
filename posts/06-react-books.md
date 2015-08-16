@@ -51,6 +51,12 @@ If you want a Spanish introduction to React, here's your only option at the mome
 
 Based on table of contents the book shows you how to get started from scratch, how to set up an effective asset pipeline and of course how to integrate with Rails. The book covers also concepts such as testing, forms and i18n. Note that React portions have been written in CoffeeScript.
 
+### React by Example
+
+[React by Example](http://reactkungfu.com/react-by-example/) by Arkency explains React through numerous examples. The book shows how to build a password strength meter, credit card input and Twitter posting box for instance. The book is available for $49 and has over 130 pages.
+
+If you want to learn React through a series of specific examples this might be the way to go. Even though the book is in early access it has sold already over 200 copies.
+
 ### Easy React
 
 [Easy React](http://easyreactbook.com/) by [W. Jason Gilmore](http://www.wjgilmore.com/) is available through [Leanpub](https://leanpub.com/easyreact). The book is currently in beta and the price starts from $14.99 without VAT. At the time of writing it has 83 pages.
