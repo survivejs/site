@@ -16,7 +16,7 @@ module.exports = React.createClass
 
   render: ->
     item = @getItem()
-    author = item.author or config.author
+    author = item.author or config.blog?.author
 
     if(_.isFunction(author)) then author = author()
 

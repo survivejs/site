@@ -56,18 +56,21 @@ module.exports = {
   ],
   output: 'build',
   name: 'SurviveJS - Webpack and React',
-  author: function() {
-    return React.createElement(
-      "span",
-      null,
-      "Written by Juho ",
-      React.createElement(
-        "a",
-        { href: "https://twitter.com/bebraw", className: "twitter" },
-        "@bebraw"
-      ),
-      " Vepsäläinen"
-    );
+  author: 'Juho Vepsäläinen',
+  blog: {
+    author: function() {
+      return React.createElement(
+        "span",
+        null,
+        "Written by Juho ",
+        React.createElement(
+          "a",
+          { href: "https://twitter.com/bebraw", className: "twitter" },
+          "@bebraw"
+        ),
+        " Vepsäläinen"
+      );
+    }
   },
   keywords: ['webpack', 'react', 'javascript', 'programming', 'web development'],
   deploy: {
