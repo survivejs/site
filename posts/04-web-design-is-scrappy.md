@@ -1,7 +1,6 @@
 ---
 title: 'Web Design is Scrappy'
 date: 2015-07-17
-author: 'Juho Vepsäläinen'
 headerImage: '/assets/img/scrappy.jpg'
 ---
 If you had to describe my approach to web design in one word the word would be scrappy. I rather get something to work fast than agonize on details. It is going to take a fair amount of iteration no matter what. This site is a good example of scrappy design.

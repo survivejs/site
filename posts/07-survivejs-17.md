@@ -1,7 +1,6 @@
 ---
 title: 'SurviveJS - Webpack and React v1.7'
 date: 2015-08-16
-author: 'Juho Vepsäläinen'
 headerImage: '/assets/img/pineapple.jpg'
 ---
 

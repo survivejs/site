@@ -1,7 +1,6 @@
 ---
 title: 'SurviveJS - Webpack and React v1.5'
 date: 2015-07-31
-author: 'Juho Vepsäläinen'
 headerImage: '/assets/img/mushrooms.jpg'
 ---
 

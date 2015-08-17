@@ -1,7 +1,6 @@
 ---
 title: 'A Quick Look at React Books'
 date: 2015-08-01
-author: 'Juho Vepsäläinen'
 headerImage: '/assets/img/books.jpg'
 ---
 

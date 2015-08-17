@@ -1,6 +1,7 @@
 'use strict';
 var path = require('path');
 
+var React = require('react');
 var _ = require('lodash');
 var removeMd = require('remove-markdown');
 var marked = require('marked');
@@ -55,7 +56,9 @@ module.exports = {
   ],
   output: 'build',
   name: 'SurviveJS - Webpack and React',
-  author: 'Juho Vepsäläinen',
+  author: function() {
+    return <span>Written by Juho <a href="https://twitter.com/bebraw" className="twitter">@bebraw</a> Vepsäläinen</span>;
+  },
   keywords: ['webpack', 'react', 'javascript', 'programming', 'web development'],
   deploy: {
     branch: 'gh-pages',
