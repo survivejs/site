@@ -146,6 +146,14 @@ module.exports = {
           var page = o.fileName.split('.')[0].split('-').slice(1).join('-');
 
           return o.sectionName + '/' + page;
+        },
+        content: function(o) {
+          var content = o.file.__content.split('\n').slice(1).join('\n');
+          var tokens = parseQuotes(content);
+
+          return marked.parser(tokens, {
+            renderer: renderer,
+          });
         }
       },
       layout: 'blog',
