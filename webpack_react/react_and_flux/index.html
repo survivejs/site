@@ -22,7 +22,7 @@ Flux will allow us to separate data and application state from our Views. This h
 <p>In this chapter we&apos;ll be using a library known as <a href="http://alt.js.org/">Alt</a>. It is a flexible, full-featured implementation that has been designed isomorphic rendering in mind.</p>
 <p>In Alt you&apos;ll deal with Actions and Stores. Dispatcher is hidden, but you will still have access to it if needed. Compared to other implementations Alt hides a lot of boilerplate. There are special features to allow you to save and restore the application state. This is handy for implementing persistency and isomorphic rendering.</p>
 <a class="header-anchor" href="#setting-up-alt-instance" id="setting-up-alt-instance"></a><h3>Setting Up Alt Instance<a class="header-anchor-select" href="#setting-up-alt-instance">#</a></h3>
-<p>Everything in Alt begins from Alt instance. It keeps track of Actions and Stores and keeps communication going on. To get started, let&#x2019;s add Alt to our project:</p>
+<p>Everything in Alt begins from Alt instance. It keeps track of Actions and Stores and keeps communication going on. To get started, let&apos;s add Alt to our project:</p>
 <blockquote>
 <p>npm i alt --save</p>
 </blockquote>
@@ -73,7 +73,7 @@ Flux will allow us to separate data and application state from our Views. This h
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
 </code></pre>
-<p>We call <code>bindActions</code> to map each action to a method by name. We trigger the appropriate logic at each method method based on that. Finally, we connect the Store with Alt using <code>alt.createStore</code>.</p>
+<p>We call <code>bindActions</code> to map each action to a method by name. We trigger the appropriate logic at each method based on that. Finally, we connect the Store with Alt using <code>alt.createStore</code>.</p>
 <p>Note that assigning a label to a store (<code>NoteStore</code> in this case) isn&apos;t required. It is a good practice as it protects the code against minification and possible collisions. These labels become important when we persist the data.</p>
 <a class="header-anchor" href="#implementing-create-" id="implementing-create-"></a><h3>Implementing <code>create</code><a class="header-anchor-select" href="#implementing-create-">#</a></h3>
 <p>Compared to the earlier logic <code>create</code> will generate an id for a <code>Note</code> automatically. This is a detail that can be hidden within the store.</p>
@@ -164,10 +164,10 @@ Flux will allow us to separate data and application state from our Views. This h
 <p>It would be possible to operate directly on data. E.g. a oneliner such as <code>this.notes.splice(targetId, 1)</code> would work for <code>delete</code>. It is recommended that you use <code>setState</code> with Alt to keep things clean and easy to understand.</p>
 <p>We have almost integrated Flux to our application now. We have a set of Actions that provide an API for manipulating <code>Notes</code> data. We also have a Store for actual data manipulation. We are missing one final bit - integration with our View. It will have to listen to the Store and be able to trigger Actions to complete the cycle.</p>
 <blockquote class="tip">The current implementation is naive in that it doesn&apos;t validate parameters in any way. It would be a very good idea to validate the object shape to avoid incidents during development. <a href="http://flowtype.org/">Flow</a> based gradual typing provides one way to do this. Alternatively, you could write nice tests. That&apos;s a good idea regardless.</blockquote><a class="header-anchor" href="#gluing-it-all-together" id="gluing-it-all-together"></a><h2>Gluing It All Together<a class="header-anchor-select" href="#gluing-it-all-together">#</a></h2>
-<p>Gluing this all together is a little complicated as there are multiple concerns to take care of. Dealing with Actions is going to be easy. For instance, to create a Note, we would need to trigger <code>NoteActions.create({task: &apos;New task&apos;})</code>. This would cause the associated Store to change according to the logic. Because Store changes so do all the components listening to it.</p>
-<p>There are multiple ways to connect the Store to our View. Our <code>NoteStore</code> provides two methods in particular that are going to be useful. These are <code>NoteStore.listen</code> and <code>NoteStore.unlisten</code>. They will allow us to keep track of the state and synchronize it with our components.</p>
-<p>As you might remember from the earlier chapters React provides a set of lifecycle hooks. We can connect <code>NoteStore</code> with our View using <code>listen/unlisten</code> at <code>componentDidMount</code> and <code>componentWillUnmount</code>. This way we don&apos;t have weird references hanging around if/when components get created and removed.</p>
-<p>Performing the needed changes piecewise wouldn&apos;t be nice so I have included whole <code>App</code> below. Notice how we use <code>NoteActions</code> and <code>NoteStore</code> in particular. As we alter <code>NoteStore</code>, this leads to a cascade that causes our <code>App</code> state update through <code>setState</code>. This in turn will trigger component <code>render</code>.</p>
+<p>Gluing this all together is a little complicated as there are multiple concerns to take care of. Dealing with Actions is going to be easy. For instance, to create a Note, we would need to trigger <code>NoteActions.create({task: &apos;New task&apos;})</code>. That would cause the associated Store to change and, as a result, all the components listening to it.</p>
+<p>Our <code>NoteStore</code> provides two methods in particular that are going to be useful. These are <code>NoteStore.listen</code> and <code>NoteStore.unlisten</code>. They will allow Views to subscribe to the state changes.</p>
+<p>As you might remember from the earlier chapters, React provides a set of lifecycle hooks. We can subscribe to <code>NoteStore</code> within our View at <code>componentDidMount</code> and <code>componentWillUnmount</code>. By unsubscribing, we avoid possible memory leaks.</p>
+<p>Based on these ideas we can connect <code>App</code> with <code>NoteStore</code> and <code>NoteActions</code>:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 <span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
@@ -212,7 +212,8 @@ Flux will allow us to separate data and application state from our Views. This h
   }
 }
 </code></pre>
-<p>As you can see, we have pushed the logic out of <code>App</code>. We actually have more code now than before, but that&apos;s okay. <code>App</code> is a little neater now and it&apos;s going to be easier to develop as we&apos;ll soon see. Most importantly we have managed to implement the Flux architecture for our application. Things can only get better.</p>
+<p>As we alter <code>NoteStore</code> through actions, this leads to a cascade that causes our <code>App</code> state update through <code>setState</code>. This in turn will cause the component to <code>render</code>. That&apos;s Flux unidirectional flow in practice.</p>
+<p>We actually have more code now than before, but that&apos;s okay. <code>App</code> is a little neater and it&apos;s going to be easier to develop as we&apos;ll soon see. Most importantly we have managed to implement the Flux architecture for our application.</p>
 <a class="header-anchor" href="#dispatching-in-alt" id="dispatching-in-alt"></a><h3>Dispatching in Alt<a class="header-anchor-select" href="#dispatching-in-alt">#</a></h3>
 <p>Even though you can get far without ever using Flux dispatcher, it can be useful to know something about it. Alt provides two ways to use it. If you want to log everything that goes through your <code>alt</code> instance, you can use a snippet such as <code>alt.dispatcher.register(console.log.bind(console))</code>.</p>
 <p>You can use the same mechanism on the Store level. In that case you would trigger <code>this.dispatcher.register(...)</code> at the constructor. These mechanisms allow you to implement effective logging to your system.</p>
