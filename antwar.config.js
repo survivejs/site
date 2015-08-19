@@ -62,7 +62,7 @@ module.exports = {
       return React.createElement(
         "span",
         null,
-        "Written by Juho ",
+        "Published by Juho ",
         React.createElement(
           "a",
           { href: "https://twitter.com/bebraw", className: "twitter" },
