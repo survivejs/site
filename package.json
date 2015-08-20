@@ -7,8 +7,9 @@
   "scripts": {
     "start": "antwar -d",
     "build": "antwar -b && npm run sitemap",
-    "deploy": "antwar -D",
-    "sitemap": "cd build && sitemap-static --prefix=http://survivejs.com/ > sitemap.xml"
+    "deploy": "antwar -D && npm run purge_cf",
+    "sitemap": "cd build && sitemap-static --prefix=http://survivejs.com/ > sitemap.xml",
+    "purge_cf": "node ./utils/purge_cf.js"
   },
   "dependencies": {
     "react-ghfork": "^0.3.0"
@@ -23,6 +24,7 @@
     "marked": "^0.3.3",
     "raw-loader": "^0.5.1",
     "remove-markdown": "0.0.2",
+    "request": "^2.61.0",
     "sitemap-static": "^0.2.0"
   },
   "repository": {
