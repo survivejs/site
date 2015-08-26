@@ -7,7 +7,7 @@ Facebook's [React](https://facebook.github.io/react/) powers an increasing amoun
 
 *SurviveJS - Webpack and React* shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29) application based on these technologies. During the process you will learn to:
 
-0. Set up a webpack based development and production environment. You will learn to get most out of [react-hot-loader](https://github.com/gaearon/react-hot-loader) and [Babel](https://babeljs.io/) for development.
+0. Set up a Webpack based development and production environment. You will learn to get most out of [react-hot-loader](https://github.com/gaearon/react-hot-loader) and [Babel](https://babeljs.io/) for development.
 0. Improve the quality of your code by using [ESLint](http://eslint.org/) and friends to spot possible mistakes earlier.
 0. Get into the React mindset while learning the basics of [Alt](http://alt.js.org/), an implementation of [Flux Application Architecture](https://facebook.github.io/flux/docs/overview.html).
 0. Style your React application in various emerging ways.
