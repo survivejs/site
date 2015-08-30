@@ -21,9 +21,8 @@ Given we have a nice development setup now, we can actually get some work done. 
 <a class="header-anchor" href="#on-ids" id="on-ids"></a><h2>On Ids<a class="header-anchor-select" href="#on-ids">#</a></h2>
 <p>We could have skipped ids in our definition. This would become problematic as we grow our application, though. If you are referring to data based on array indices and the data changes, each reference has to change too. We can avoid that.</p>
 <p>Normally the problem is solved by a back-end. As we don&apos;t have one yet, we&apos;ll need to improvise something. A standard known as <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC4122</a> allows us to generate unique ids. We&apos;ll be using a Node.js implementation known as <em>node-uuid</em>. Invoke</p>
-<blockquote>
-<p>npm i node-uuid --save</p>
-</blockquote>
+<pre><code class="undefinedbash">npm i node-uuid --save
+</code></pre>
 <p>at the project root to get it installed.</p>
 <p>If you open up the Node.js cli (<code>node</code>) and try following, you can see what kind of ids it outputs.</p>
 <pre><code class="undefinedjavascript">&gt; uuid = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;node-uuid&apos;</span>)
@@ -38,28 +37,29 @@ Given we have a nice development setup now, we can actually get some work done. 
 </code></pre>
 <p><code>uuid.v4()</code> will help us to generate the ids we need for the purposes of this project. It is guaranteed return a unique id with a high probability. If you are interested in the math behind this, check out <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier#Random_UUID_probability_of_duplicates">the calculations at Wikipedia</a> for details. You&apos;ll see that the possibility for collisions is somewhat miniscule.</p>
 <blockquote class="tip">You can exit Node.js cli by hitting <strong>CTRL-D</strong> once.</blockquote><a class="header-anchor" href="#connecting-data-with-app-" id="connecting-data-with-app-"></a><h2>Connecting Data with <code>App</code><a class="header-anchor-select" href="#connecting-data-with-app-">#</a></h2>
-<p>Next, we need to connect our data model with <code>App</code>. The simplest way to achieve that is to push the data directly to <code>render()</code> for now. This won&apos;t be efficient, but it will allow us to get started. The implementation below shows how this works out in React terms.</p>
+<p>Next, we need to connect our data model with <code>App</code>. The simplest way to achieve that is to push the data directly to <code>render()</code> for now. This won&apos;t be efficient, but it will allow us to get started. The implementation below shows how this works out in React terms:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
-...
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+
+<span class="hljs-keyword">const</span> notes = [
+  {
+    id: uuid.v4(),
+    task: <span class="hljs-string">&apos;Learn Webpack&apos;</span>
+  },
+  {
+    id: uuid.v4(),
+    task: <span class="hljs-string">&apos;Learn React&apos;</span>
+  },
+  {
+    id: uuid.v4(),
+    task: <span class="hljs-string">&apos;Do laundry&apos;</span>
+  }
+];
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
-    <span class="hljs-keyword">const</span> notes = [
-      {
-        id: uuid.v4(),
-        task: <span class="hljs-string">&apos;Learn Webpack&apos;</span>
-      },
-      {
-        id: uuid.v4(),
-        task: <span class="hljs-string">&apos;Learn React&apos;</span>
-      },
-      {
-        id: uuid.v4(),
-        task: <span class="hljs-string">&apos;Do laundry&apos;</span>
-      }
-    ];
-
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>{notes.map(this.renderNote)}<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
@@ -81,8 +81,9 @@ Given we have a nice development setup now, we can actually get some work done. 
 <li><code>&lt;li key={`note${note.id}`}&gt;</code> - In order to tell React in which order to render the elements, we use the <code>key</code> property. It is important that this is unique or otherwise React won&apos;t be able to figure out the correct order in which to render. If not set, React will give a warning. See <a href="https://facebook.github.io/react/docs/multiple-components.html">Multiple Components</a> for more information.</li>
 </ul>
 <p>If you run the application now, you can see it almost works. There&apos;s a small glitch, but we&apos;ll fix that next.</p>
+<p><img src="/images/react_02.png" alt="Almost done"></p>
 <blockquote class="tip">If you want to attach comments to your JSX, just use <code>{/* no comments */}</code>.</blockquote><a class="header-anchor" href="#fixing-note-" id="fixing-note-"></a><h2>Fixing <code>Note</code><a class="header-anchor-select" href="#fixing-note-">#</a></h2>
-<p>The problem is that we haven&apos;t taken <code>task</code> prop in count at <code>Note</code>. In React terms <em>props</em> is a data structure that&apos;s passed to a component from outside. It is up to the component how it uses this data. In the code below I extract the value of a prop and render it.</p>
+<p>The problem is that we haven&apos;t taken <code>task</code> prop into account at <code>Note</code>. In React terms <em>props</em> is a data structure that&apos;s passed to a component from outside. It is up to the component how it uses this data. In the code below I extract the value of a prop and render it.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 
@@ -93,6 +94,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 }
 </code></pre>
 <p>If you check out the application now, you should see we&apos;re seeing results that are more like it. This is only the start, though. Our <code>App</code> is getting cramped. It feels like there&apos;s a component waiting to be extracted.</p>
+<p><img src="/images/react_03.png" alt="Notes render now"></p>
 <a class="header-anchor" href="#extracting-notes-" id="extracting-notes-"></a><h2>Extracting <code>Notes</code><a class="header-anchor-select" href="#extracting-notes-">#</a></h2>
 <p>If we keep on growing <code>App</code> like this we&apos;ll end up in trouble soon. Currently <code>App</code> deals with too many concerns. It shouldn&apos;t have to know what <code>Notes</code> look like. That&apos;s a perfect candidate for a component. As earlier, we&apos;ll want something that will accept a prop, say <code>items</code>, and is able to render them in a list. We already have logic for that in <code>App</code>. It needs to moved out.</p>
 <blockquote class="tip">Recognizing components is an important skill when working with React. There&apos;s small overhead to creating them and it allows you to model your problems in exact terms. At high level you will just worry about layout and connecting data. As you go lower in the architecture you start to see more concrete structures.</blockquote><p>A good first step towards a neater <code>App</code> is to define <code>Notes</code>. It will rely on the rendering logic we already set up. We are just moving it to a component of its own. Specifically we&apos;ll want to perform <code>&lt;Notes items={notes} /&gt;</code> at <code>render()</code> method of <code>App</code>. That&apos;s just nice.</p>
@@ -117,18 +119,30 @@ Given we have a nice development setup now, we can actually get some work done. 
 }
 </code></pre>
 <p>It is a good idea to attach some CSS classes to components to make it easier to style them. React provides other styling approaches beyond this. I&apos;ve discussed them later in this book. There&apos;s no single right way to style and you&apos;ll have to adapt based on your preferences. In this case, we&apos;ll just focus on keeping it simple.</p>
-<p>We also need to replace the old <code>App</code> logic to use our new component. You should remove the old rendering logic, import <code>Note</code> and update <code>render()</code> to use it. Remember to pass <code>notes</code> through <code>items</code> prop and you might see something familiar. I have included the full solution below for completeness.</p>
+<p>We also need to replace the old <code>App</code> logic to use our new component. You should remove the old rendering logic, import <code>Note</code> and update <code>render()</code> to use it. Remember to pass <code>notes</code> through <code>items</code> prop and you might see something familiar. I have included the full solution below for completeness:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
 <span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
+
+<span class="hljs-keyword">const</span> notes = [
+  {
+    id: uuid.v4(),
+    task: <span class="hljs-string">&apos;Learn Webpack&apos;</span>
+  },
+  {
+    id: uuid.v4(),
+    task: <span class="hljs-string">&apos;Learn React&apos;</span>
+  },
+  {
+    id: uuid.v4(),
+    task: <span class="hljs-string">&apos;Do laundry&apos;</span>
+  }
+];
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
-    <span class="hljs-keyword">const</span> notes = [
-      ...
-    ];
-
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> /&gt;</span>
@@ -143,7 +157,10 @@ Given we have a nice development setup now, we can actually get some work done. 
 <p>As seen earlier React components can accept props. In addition, they may have a state of their own. This is something that exists within the component itself and can be modified. You can think of these two in terms of immutability. As you should not modify props you can treat them as immutable. The state, however, is mutable and you are free to alter it. In our case, pushing <code>notes</code> to the state makes sense. We&apos;ll want to tweak them through user interface.</p>
 <p>In ES6&apos;s class syntax the initial state can be defined at the constructor. We&apos;ll assign the state we want to <code>this.state</code>. After that we can refer to it. The example below illustrates how to convert our notes into state.</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props) {
@@ -174,7 +191,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 }
 </code></pre>
 <p>After this change our application works the same way as before. We have gained something in return, though. We can begin to alter the state.</p>
-<blockquote class="tip">In earlier versions of React you achieved the same with <code>getInitialState</code>. We&apos;re passing <code>props</code> to <code>super</code> by convention. It will work without, but it&apos;s a good standard to have.</blockquote><a class="header-anchor" href="#adding-new-items-to-notes-list" id="adding-new-items-to-notes-list"></a><h2>Adding New Items to <code>Notes</code> list<a class="header-anchor-select" href="#adding-new-items-to-notes-list">#</a></h2>
+<blockquote class="tip">In earlier versions of React you achieved the same with <code>getInitialState</code>. We&apos;re passing <code>props</code> to <code>super</code> by convention. It will work without, but it&apos;s a good standard to have. Calling <code>super</code> invokes the same method of the parent class and you see this kind of usage in object oriented programming often.</blockquote><a class="header-anchor" href="#adding-new-items-to-notes-list" id="adding-new-items-to-notes-list"></a><h2>Adding New Items to <code>Notes</code> list<a class="header-anchor-select" href="#adding-new-items-to-notes-list">#</a></h2>
 <p>Adding new items to the notes list is a good starting point. To get started, we could render a button element and attach a dummy <code>onClick</code> handler to it. We will grow the actual logic into that.</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
@@ -186,7 +203,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
@@ -197,6 +214,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 }
 </code></pre>
 <p>If you click the plus button now, you should see something in your browser console. The next step is to connect this stub with our data model.</p>
+<p><img src="/images/react_04.png" alt="Notes with plus"></p>
 <a class="header-anchor" href="#connecting-addnote-with-data-model" id="connecting-addnote-with-data-model"></a><h3>Connecting <code>addNote</code> with Data Model<a class="header-anchor-select" href="#connecting-addnote-with-data-model">#</a></h3>
 <p>React provides one simple way to change the state, namely <code>this.setState(data, cb)</code>. It is an asynchronous method that updates <code>this.state</code> and triggers <code>render()</code> eventually. It accepts data and an optional callback. The callback is triggered after the process has completed.</p>
 <p>It is best to think of state as immutable and alter it always through <code>setState</code>. In our case, adding a new note can be done through a <code>concat</code> operation as below.</p>
@@ -224,6 +242,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 </code></pre>
 <p>In case we were be operating with a back-end we would trigger a query here and capture id from response. Now it&apos;s enough to just generate an entry and a custom id.</p>
 <p>If you hit the button a few times now, you should see new items. It might not be pretty yet, but it works.</p>
+<p><img src="/images/react_05.png" alt="Notes with a new item"></p>
 <p>In addition, to <code>this.setState</code> we had to set up a binding. Without it <code>this</code> of <code>addNote()</code> would point at the wrong context and wouldn&apos;t work. It is a little annoying, but necessary to bind therefore.</p>
 <p>Using <code>bind</code> at <code>constructor</code> gives us a small performance benefit as opposed to binding at <code>render()</code>. I&apos;ll be using this convention unless it would take additional effort through lifecycle hooks. In the future <a href="https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es7-property-initializers">property initializers</a> may solve this issue with a neat syntax.</p>
 <blockquote class="tip">Besides allowing you to set context <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a> makes it possible to fix parameters to certain values. You will see an example of this shortly.</blockquote><a class="header-anchor" href="#editing-notes" id="editing-notes"></a><h2>Editing Notes<a class="header-anchor-select" href="#editing-notes">#</a></h2>
@@ -292,7 +311,12 @@ Given we have a nice development setup now, we can actually get some work done. 
 <p><img src="/images/bind.png" alt="`onEdit` flow"></p>
 <p>A good first step towards this behavior is to create a stub. As <code>onEdit</code> is defined on <code>Note</code> level, we&apos;ll need to pass <code>onEdit</code> handler through <code>Notes</code>. So for the stub to work changes in two files are needed. Here&apos;s what it should look like for <code>App</code>.</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props) {
     <span class="hljs-keyword">super</span>(props);
 
@@ -306,7 +330,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.editNote}</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     )</span>;
@@ -320,7 +344,8 @@ Given we have a nice development setup now, we can actually get some work done. 
 <p>The idea is that <code>Notes</code> will return our callback the id of the note being modified and the new state of the task. We&apos;ll need to use this data soon in order to patch the state.</p>
 <p>We also need to make <code>Notes</code> work according to this idea. It will <code>bind</code> the id of the note in question. When the callback is triggered the remaining parameter receives a value and the callback gets called.</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props) {
@@ -349,9 +374,8 @@ Given we have a nice development setup now, we can actually get some work done. 
 <a class="header-anchor" href="#understanding-findindex-" id="understanding-findindex-"></a><h3>Understanding <code>findIndex</code><a class="header-anchor-select" href="#understanding-findindex-">#</a></h3>
 <p>We&apos;ll be using an ES6 function known as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">findIndex</a>. It accepts an array and a callback. The function will return either -1 (no match) or index (match) depending on the result.</p>
 <p>Babel provides an easy way to polyfill this feature using <code>import &apos;babel-core/polyfill&apos;;</code>. The problem is that it bloats our final bundle somewhat as it enables all <a href="https://github.com/zloirock/core-js">core-js</a> features. As we need just one shim, we&apos;ll be using a specific shim for this instead. Hit</p>
-<blockquote>
-<p>npm i array.prototype.findindex --save</p>
-</blockquote>
+<pre><code class="undefinedbash"><span class="hljs-tag">npm</span> <span class="hljs-tag">i</span> <span class="hljs-tag">array</span><span class="hljs-class">.prototype</span><span class="hljs-class">.findindex</span> <span class="hljs-tag">--save</span>
+</code></pre>
 <p>You can see how it behaves through Node.js cli. Here&apos;s a sample session:</p>
 <pre><code class="undefinedjavascript">&gt; <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;array.prototype.findindex&apos;</span>)
 {}
@@ -370,7 +394,10 @@ Given we have a nice development setup now, we can actually get some work done. 
 <a class="header-anchor" href="#implementing-onedit-logic" id="implementing-onedit-logic"></a><h3>Implementing <code>onEdit</code> Logic<a class="header-anchor-select" href="#implementing-onedit-logic">#</a></h3>
 <p>The only thing that remains is gluing this all together. We&apos;ll need to take the data and find index based on which to alter. Finally, we need to modify and commit it to the component state through <code>setState</code>.</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props) {
@@ -393,7 +420,7 @@ Given we have a nice development setup now, we can actually get some work done. 
     <span class="hljs-keyword">this</span>.setState({notes});
   }
   findNote(id) {
-    <span class="hljs-keyword">let</span> notes = <span class="hljs-keyword">this</span>.state.notes;
+    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.state.notes;
     <span class="hljs-keyword">const</span> noteIndex = notes.findIndex((note) =&gt; note.id === id);
 
     <span class="hljs-keyword">if</span>(noteIndex &lt; <span class="hljs-number">0</span>) {
@@ -405,11 +432,15 @@ Given we have a nice development setup now, we can actually get some work done. 
 }
 </code></pre>
 <p>If you try to edit a <code>Note</code> now, the modification should stick. The same idea can be used to implement a lot of functionality and this is a pattern you will see a lot.</p>
+<p><img src="/images/react_06.png" alt="Edited a note"></p>
 <a class="header-anchor" href="#removing-notes-" id="removing-notes-"></a><h2>Removing <code>Notes</code><a class="header-anchor-select" href="#removing-notes-">#</a></h2>
 <p>We are still missing one vital functionality. It would be nice to be able to delete notes. We could implement a button per <code>Note</code> and trigger the logic using that. It will look a little rough initially, but we will style it later.</p>
 <p>As before we&apos;ll need to define some logic on <code>App</code> level. Deleting a note can be achieved by first looking for a <code>Note</code> to remove based on id. After we know which <code>Note</code> to remove we can construct a new state without it.</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   constructor(props) {
@@ -422,7 +453,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span>
           <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.editNote}</span> <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.deleteNote}</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -441,16 +472,6 @@ Given we have a nice development setup now, we can actually get some work done. 
     });
   }
   ...
-  findNote(id) {
-    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.state.notes;
-    <span class="hljs-keyword">const</span> noteIndex = notes.findIndex((note) =&gt; note.id === id);
-
-    <span class="hljs-keyword">if</span>(noteIndex &lt; <span class="hljs-number">0</span>) {
-      <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">&apos;Failed to find note&apos;</span>, notes, id);
-    }
-
-    <span class="hljs-keyword">return</span> noteIndex;
-  }
 }
 </code></pre>
 <p>In addition to logic we&apos;ll need to trigger <code>onDelete</code> logic at <code>Note</code> level. The idea is the same as before. We&apos;ll bind the id of the <code>Note</code> at <code>Notes</code>. A <code>Note</code> will simply trigger the callback when the user triggers the behavior.</p>
@@ -469,7 +490,7 @@ Given we have a nice development setup now, we can actually get some work done. 
   }
 }
 </code></pre>
-<p>Triggering <code>onDelete</code> is even simpler than the same operation for input. We capture <code>onClick</code> and trigger our callback then. It makes sense to render a delete button only if the callback exists. An alternative way to solve this would be to push it to a component of its own and compose.</p>
+<p>In order to invoke the previous <code>onDelete</code> callback we need to connect it with <code>onClick</code> of <code>Note</code>. If the callback doesn&apos;t exist, it makes sense to avoid rendering the delete button. An alternative way to solve this would be to push it to a component of its own.</p>
 <p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 
@@ -490,57 +511,67 @@ Given we have a nice development setup now, we can actually get some work done. 
   }
   ...
 </code></pre>
+<p>After these changes you should be able to delete notes as like.</p>
+<p><img src="/images/react_07.png" alt="Deleted a note"></p>
 <p>We have a fairly well working little application now. We can create, update and delete <code>Notes</code> now. During this process we learned something about props and state. There&apos;s more than that to React, though.</p>
 <blockquote class="tip">Now deletion is sort of blunt. One interesting way to develop this further would be to add confirmation. One simple way to achieve this would be to show yes/no buttons before performing the action. The logic would be more or less the same as for editing. This behavior could be extracted into a component of its own.</blockquote><a class="header-anchor" href="#styling-notes" id="styling-notes"></a><h2>Styling Notes<a class="header-anchor-select" href="#styling-notes">#</a></h2>
 <p>Aesthetically our current application is very barebones. As pretty applications are more fun to use we can do a little something about that. The first step is to get rid of that horrible <em>serif</em> font.</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="undefinedcss"><span class="hljs-tag">body</span> <span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> cornsilk</span></span>;
-
   <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> sans-serif</span></span>;
 }</span>
 </code></pre>
+<p>Looking a little nicer now:</p>
+<p><img src="/images/react_08.png" alt="Sans serif"></p>
 <p>A good next step would be to constrain <code>Notes</code> container a little and get rid of those list bullets.</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="undefinedcss">...
 
+<span class="hljs-class">.add-note</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fdfdfd</span></span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1px</span> solid <span class="hljs-hexcolor">#ccc</span></span></span>;
+}</span>
+
 <span class="hljs-class">.notes</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">max-width</span>:<span class="hljs-value"> <span class="hljs-number">10em</span></span></span>;
-
   <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">0.5em</span></span></span>;
-
   <span class="hljs-rule"><span class="hljs-attribute">padding-left</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
 
+  <span class="hljs-rule"><span class="hljs-attribute">max-width</span>:<span class="hljs-value"> <span class="hljs-number">10em</span></span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">list-style</span>:<span class="hljs-value"> none</span></span>;
 }</span>
 </code></pre>
+<p>Removing bullets helps:</p>
+<p><img src="/images/react_09.png" alt="No bullets"></p>
 <p>To make individual <code>Notes</code> stand out we can apply a couple of rules.</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="undefinedcss">...
 
 <span class="hljs-class">.note</span> <span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">margin-bottom</span>:<span class="hljs-value"> <span class="hljs-number">0.5em</span></span></span>;
-
   <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">0.5em</span></span></span>;
 
   <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fdfdfd</span></span></span>;
-
-  <span class="hljs-rule"><span class="hljs-attribute">box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3em</span> .<span class="hljs-number">03em</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">3</span>)</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3em</span> <span class="hljs-number">0.03em</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.3</span>)</span></span>;
 }</span>
 <span class="hljs-rule"><span class="hljs-attribute">.note</span>:<span class="hljs-value">hover {
-  box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3em</span> .<span class="hljs-number">03em</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">7</span>)</span></span>;
+  box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3em</span> <span class="hljs-number">0.03em</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.7</span>)</span></span>;
 
-  <span class="hljs-rule"><span class="hljs-attribute">transition</span>:<span class="hljs-value"> .<span class="hljs-number">6s</span></span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">transition</span>:<span class="hljs-value"> <span class="hljs-number">0.6s</span></span></span>;
 }
+
+<span class="hljs-class">.note</span> <span class="hljs-class">.task</span> <span class="hljs-rules">{
+  <span class="hljs-comment">/* force to use inline-block so that it gets minimum height */</span>
+  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> inline-block</span></span>;
+}</span>
 </code></pre>
-<p>Note that I animated <code>Note</code> shadow. This way the user gets a better indication of what <code>Note</code> is being hovered upon. This won&apos;t work on touch based interfaces, but it&apos;s a nice touch for the desktop.</p>
+<p>Now notes stand out a bit:</p>
+<p><img src="/images/react_10.png" alt="Styling notes"></p>
+<p>I animated <code>Note</code> shadow in the process. This way the user gets a better indication of what <code>Note</code> is being hovered upon. This won&apos;t work on touch based interfaces, but it&apos;s a nice touch for the desktop.</p>
 <p>Finally, we should make those delete buttons stand out less. One way to achieve this is to hide them by default and show them on hover. The gotcha is that deletion won&apos;t work on touch, but we can live with that.</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="undefinedcss">...
 
-<span class="hljs-rule"><span class="hljs-attribute">.note</span>:<span class="hljs-value">hover .delete {
-  visibility: visible</span></span>;
-}
 <span class="hljs-class">.note</span> <span class="hljs-class">.delete</span> <span class="hljs-rules">{
   <span class="hljs-rule"><span class="hljs-attribute">float</span>:<span class="hljs-value"> right</span></span>;
 
@@ -548,13 +579,17 @@ Given we have a nice development setup now, we can actually get some work done. 
 
   <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fdfdfd</span></span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> none</span></span>;
-
   <span class="hljs-rule"><span class="hljs-attribute">cursor</span>:<span class="hljs-value"> pointer</span></span>;
   <span class="hljs-rule"><span class="hljs-attribute">cursor</span>:<span class="hljs-value"> hand</span></span>;
 
   <span class="hljs-rule"><span class="hljs-attribute">visibility</span>:<span class="hljs-value"> hidden</span></span>;
 }</span>
+<span class="hljs-rule"><span class="hljs-attribute">.note</span>:<span class="hljs-value">hover .delete {
+  visibility: visible</span></span>;
+}
 </code></pre>
+<p>No more those pesky deletion buttons:</p>
+<p><img src="/images/react_11.png" alt="Delete on hover"></p>
 <p>After these few steps we have an application that doesn&apos;t look that bad. We&apos;ll be improving its outlook as we add functionality, but at least it&apos;s something.</p>
 <a class="header-anchor" href="#understanding-react-components" id="understanding-react-components"></a><h2>Understanding React Components<a class="header-anchor-select" href="#understanding-react-components">#</a></h2>
 <p>Understanding how props and state work it is important. Component lifecycle is the third bigger concept you&apos;ll want to understand well. We already touched it above, but it&apos;s a good idea to understand it in more detail. You can achieve most tasks in React by applying these concepts throughout your application.</p>
@@ -581,12 +616,12 @@ Note.willTransitionTo = () =&gt; {...};
 <p>In addition, React provides the following lifecycle hooks:</p>
 <ul>
 <li><code>componentWillMount()</code> gets triggered once before any rendering. One way to use it would be to load data asynchronously there and force rendering through <code>setState</code>.</li>
-<li><code>componentDidMount()</code> gets triggered after initial rendering. You have access to DOM here. You could use this hook to wrap a jQuery plugin within a component for instance.</li>
+<li><code>componentDidMount()</code> gets triggered after initial rendering. You have access to the DOM here. You could use this hook to wrap a jQuery plugin within a component for instance.</li>
 <li><code>componentWillReceiveProps(object nextProps)</code> triggers when the component receives new props. You could, for instance, modify your component state based on the received props.</li>
 <li><code>shouldComponentUpdate(object nextProps, object nextState)</code> allows you to optimize the rendering. If you check the props and state and see that there&apos;s no need to update, return <code>false</code>.</li>
 <li><code>componentWillUpdate(object nextProps, object nextState)</code> gets triggered after <code>shouldComponentUpdate</code> and before <code>render()</code>. It is not possible to use <code>setState</code> here, but you can set class properties for instance.</li>
 <li><code>componentDidUpdate</code> is triggered after rendering. You can modify the DOM here. This can be useful for adapting other code to work with React.</li>
-<li><code>componentWillUnmount</code> is triggered just before a component is unmounted from the DOM. This is the ideal place to perform cleanup (e.g. remove running timers, custom DOM elements and so on).</li>
+<li><code>componentWillUnmount</code> is triggered just before a component is unmounted from the DOM. This is the ideal place to perform cleanup (e.g., remove running timers, custom DOM elements and so on).</li>
 </ul>
 <a class="header-anchor" href="#react-component-conventions" id="react-component-conventions"></a><h2>React Component Conventions<a class="header-anchor-select" href="#react-component-conventions">#</a></h2>
 <p>I prefer to have the <code>constructor</code> first, followed by lifecycle hooks, <code>render()</code> and finally methods used by <code>render()</code>. I like this top-down approach as it makes it straightforward to follow code. Some prefer to put the methods used by <code>render()</code> before it. There are also various naming conventions. It is possible to use <code>_</code> prefix for event handlers for instance.</p>

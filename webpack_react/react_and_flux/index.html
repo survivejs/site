@@ -21,11 +21,10 @@ Flux will allow us to separate data and application state from our Views. This h
 <p><img src="/images/alt.png" alt="Alt"></p>
 <p>In this chapter we&apos;ll be using a library known as <a href="http://alt.js.org/">Alt</a>. It is a flexible, full-featured implementation that has been designed isomorphic rendering in mind.</p>
 <p>In Alt you&apos;ll deal with Actions and Stores. Dispatcher is hidden, but you will still have access to it if needed. Compared to other implementations Alt hides a lot of boilerplate. There are special features to allow you to save and restore the application state. This is handy for implementing persistency and isomorphic rendering.</p>
-<a class="header-anchor" href="#setting-up-alt-instance" id="setting-up-alt-instance"></a><h3>Setting Up Alt Instance<a class="header-anchor-select" href="#setting-up-alt-instance">#</a></h3>
-<p>Everything in Alt begins from Alt instance. It keeps track of Actions and Stores and keeps communication going on. To get started, let&apos;s add Alt to our project:</p>
-<blockquote>
-<p>npm i alt --save</p>
-</blockquote>
+<a class="header-anchor" href="#setting-up-an-alt-instance" id="setting-up-an-alt-instance"></a><h3>Setting Up an Alt Instance<a class="header-anchor-select" href="#setting-up-an-alt-instance">#</a></h3>
+<p>Everything in Alt begins from an Alt instance. It keeps track of Actions and Stores and keeps communication going on. To get started, let&apos;s add Alt to our project:</p>
+<pre><code class="undefinedbash">npm i alt --save
+</code></pre>
 <p>To keep things simple, we&apos;ll be treating all Alt components as a <a href="https://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>. Using the pattern we reuse the same instance within the whole application. To achieve this we can push it to a module of its own and then refer to that from everywhere. Set it up as follows:</p>
 <p><strong>app/libs/alt.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> Alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt&apos;</span>;
@@ -119,7 +118,7 @@ Flux will allow us to separate data and application state from our Views. This h
     <span class="hljs-keyword">this</span>.setState({notes});
   }
   <span class="hljs-keyword">delete</span>(id) {
-    ...
+
   }
   findNote(id) {
     <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
@@ -161,7 +160,7 @@ Flux will allow us to separate data and application state from our Views. This h
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
 </code></pre>
-<p>It would be possible to operate directly on data. E.g. a oneliner such as <code>this.notes.splice(targetId, 1)</code> would work for <code>delete</code>. It is recommended that you use <code>setState</code> with Alt to keep things clean and easy to understand.</p>
+<p>It would be possible to operate directly on data. For example a oneliner such as <code>this.notes.splice(targetId, 1)</code> would work for <code>delete</code>. It is recommended that you use <code>setState</code> with Alt to keep things clean and easy to understand.</p>
 <p>We have almost integrated Flux to our application now. We have a set of Actions that provide an API for manipulating <code>Notes</code> data. We also have a Store for actual data manipulation. We are missing one final bit - integration with our View. It will have to listen to the Store and be able to trigger Actions to complete the cycle.</p>
 <blockquote class="tip">The current implementation is naive in that it doesn&apos;t validate parameters in any way. It would be a very good idea to validate the object shape to avoid incidents during development. <a href="http://flowtype.org/">Flow</a> based gradual typing provides one way to do this. Alternatively, you could write nice tests. That&apos;s a good idea regardless.</blockquote><a class="header-anchor" href="#gluing-it-all-together" id="gluing-it-all-together"></a><h2>Gluing It All Together<a class="header-anchor-select" href="#gluing-it-all-together">#</a></h2>
 <p>Gluing this all together is a little complicated as there are multiple concerns to take care of. Dealing with Actions is going to be easy. For instance, to create a Note, we would need to trigger <code>NoteActions.create({task: &apos;New task&apos;})</code>. That would cause the associated Store to change and, as a result, all the components listening to it.</p>
@@ -195,7 +194,7 @@ Flux will allow us to separate data and application state from our Views. This h
 
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span>
           <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.editNote}</span> <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.deleteNote}</span> /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -214,9 +213,6 @@ Flux will allow us to separate data and application state from our Views. This h
 </code></pre>
 <p>As we alter <code>NoteStore</code> through actions, this leads to a cascade that causes our <code>App</code> state update through <code>setState</code>. This in turn will cause the component to <code>render</code>. That&apos;s Flux unidirectional flow in practice.</p>
 <p>We actually have more code now than before, but that&apos;s okay. <code>App</code> is a little neater and it&apos;s going to be easier to develop as we&apos;ll soon see. Most importantly we have managed to implement the Flux architecture for our application.</p>
-<a class="header-anchor" href="#dispatching-in-alt" id="dispatching-in-alt"></a><h3>Dispatching in Alt<a class="header-anchor-select" href="#dispatching-in-alt">#</a></h3>
-<p>Even though you can get far without ever using Flux dispatcher, it can be useful to know something about it. Alt provides two ways to use it. If you want to log everything that goes through your <code>alt</code> instance, you can use a snippet such as <code>alt.dispatcher.register(console.log.bind(console))</code>.</p>
-<p>You can use the same mechanism on the Store level. In that case you would trigger <code>this.dispatcher.register(...)</code> at the constructor. These mechanisms allow you to implement effective logging to your system.</p>
 <a class="header-anchor" href="#what-s-the-point-" id="what-s-the-point-"></a><h3>What&apos;s the Point?<a class="header-anchor-select" href="#what-s-the-point-">#</a></h3>
 <p>Even though integrating Alt took a lot of effort, it was not all in vain. Consider the following questions:</p>
 <ol>
@@ -226,7 +222,7 @@ Flux will allow us to separate data and application state from our Views. This h
 </ol>
 <p>This is what makes Flux a strong architecture when used with React. It isn&apos;t hard to find answers to questions like these. Even though there is more code, it is easier to reason about. Given we are dealing with a unidirectional flow we have something that is simple to debug and test.</p>
 <a class="header-anchor" href="#implementing-persistency-over-localstorage-" id="implementing-persistency-over-localstorage-"></a><h2>Implementing Persistency over <code>localStorage</code><a class="header-anchor-select" href="#implementing-persistency-over-localstorage-">#</a></h2>
-<p>We can tweak our implementation of <code>NoteStore</code> to persist the data on change. This way we don&apos;t lose our data after a refresh. One way to achieve this is to use <a href="https://developer.mozilla.org/en/docs/Web/API/Window/localStorage">localStorage</a>. It is a well supported feature that allows you to persist data to the browser.</p>
+<p>We will modify our implementation of <code>NoteStore</code> to persist the data on change. This way we don&apos;t lose our data after a refresh. One way to achieve this is to use <a href="https://developer.mozilla.org/en/docs/Web/API/Window/localStorage">localStorage</a>. It is a well supported feature that allows you to persist data to the browser.</p>
 <a class="header-anchor" href="#understanding-localstorage-" id="understanding-localstorage-"></a><h3>Understanding <code>localStorage</code><a class="header-anchor-select" href="#understanding-localstorage-">#</a></h3>
 <p><code>localStorage</code> has a sibling known as <code>sessionStorage</code>. <code>sessionStorage</code> loses its data when browser is closed, <code>localStorage</code> doesn&apos;t. They both share <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">the same API</a> as discussed below:</p>
 <ul>
@@ -238,8 +234,8 @@ Flux will allow us to separate data and application state from our Views. This h
 <p>Note that it is convenient to operate on the API using your browser developer tools. For instance, in Chrome you can see the state of the storages through the <em>Resources</em> tab. <em>Console</em> tab allows you to perform direct operations on the data. You can even use <code>storage.key</code> and <code>storage.key = &apos;value&apos;</code> shorthands for quick modifications.</p>
 <p><code>localStorage</code> and <code>sessionStorage</code> can use up to 10 MB of data combined. Even though they are well supported, there are certain corner cases with interesting failures. These include running out of memory at Internet Explorer (fails silently) and failing altogether at Safari private mode. It is possible to work around these glitches, though.</p>
 <blockquote class="tip">You can support Safari private mode by trying to write into <code>localStorage</code> first. If that fails, you can use in-memory store instead or just let the user know about the situation. See <a href="https://stackoverflow.com/questions/14555347/html5-localstorage-error-with-safari-quota-exceeded-err-dom-exception-22-an">Stack Overflow</a> for details.</blockquote><a class="header-anchor" href="#implementing-a-wrapper-for-localstorage-" id="implementing-a-wrapper-for-localstorage-"></a><h3>Implementing a Wrapper for <code>localStorage</code><a class="header-anchor-select" href="#implementing-a-wrapper-for-localstorage-">#</a></h3>
-<p>To keep things simple and manageable, we can implement a little wrapper for <code>storage</code>. It will wrap all of these complexities. The API expects strings. As objects are convenient, we&apos;ll use <code>JSON.parse</code> and <code>JSON.stringify</code> for serialization.</p>
-<p>It could be a good idea to use a library such as <a href="https://github.com/mozilla/localForage">localForage</a> to hide all the complexity. You could even integrate it behind this little interface of ours. We need just <code>storage.get(k)</code> and <code>storage.set(k, v)</code> as seen in the implementation below:</p>
+<p>To keep things simple and manageable, we can implement a little wrapper for <code>storage</code>. It will wrap all of these complexities. The API expects strings.</p>
+<p>As objects are convenient, we&apos;ll use <code>JSON.parse</code> and <code>JSON.stringify</code> for serialization. We need just <code>storage.get(k)</code> and <code>storage.set(k, v)</code> as seen in the implementation below:</p>
 <p><strong>app/libs/storage.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
   get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k</span>) </span>{
@@ -256,11 +252,11 @@ Flux will allow us to separate data and application state from our Views. This h
 };
 </code></pre>
 <p>The implementation could be generalized further. You could convert it into a factory (<code>(storage) =&gt; {...}</code>) and make it possible to swap the storage. Now we are stuck with <code>localStorage</code> unless we change the code.</p>
-<a class="header-anchor" href="#persisting-application-using-finalstore-" id="persisting-application-using-finalstore-"></a><h3>Persisting Application Using <code>FinalStore</code><a class="header-anchor-select" href="#persisting-application-using-finalstore-">#</a></h3>
-<p>Besides this little utility we&apos;ll need to adapt our application to use it. Alt provides handy functionality just for this purpose. We can persist the entire state of our application using <code>FinalStore</code>, bootstrapping and snapshotting. <code>FinalStore</code> is a store that listens to all existing stores. Every time some store changes, <code>FinalStore</code> will know about it. This makes it ideal for persistency.</p>
+<blockquote class="tip">We&apos;re operating with <code>localStorage</code> directly to keep the implementation simple. An alternative would be to use <a href="https://github.com/mozilla/localForage">localForage</a> to hide all the complexity. You could even integrate it behind our interface.</blockquote><a class="header-anchor" href="#persisting-application-using-finalstore-" id="persisting-application-using-finalstore-"></a><h3>Persisting Application Using <code>FinalStore</code><a class="header-anchor-select" href="#persisting-application-using-finalstore-">#</a></h3>
+<p>Besides this little utility we&apos;ll need to adapt our application to use it. Alt provides a built-in store called <code>FinalStore</code> which is perfect for this purpose. We can persist the entire state of our application using <code>FinalStore</code>, bootstrapping and snapshotting. <code>FinalStore</code> is a store that listens to all existing stores. Every time some store changes, <code>FinalStore</code> will know about it. This makes it ideal for persistency.</p>
 <p>We can take a snapshot of the entire app state and push it to <code>localStorage</code> every time <code>FinalStore</code> changes. That solves one part of the problem. Bootstrapping solves the remaining part as <code>alt.bootstrap</code> allows us to set state of the all stores. In our case, we&apos;ll fetch the data from <code>localStorage</code> and invoke it to populate our stores. This is handy for other cases as well. The data can come from elsewhere, through a WebSocket for instance.</p>
-<blockquote class="tip">An alternative way would be to take a snapshot only when the window gets closed. There&apos;s a Window level <code>beforeunload</code> hook that could be used. The problem with this approach is that it is brittle. What if something unexpected happens and the hook doesn&apos;t get triggered for some reason? You&apos;ll lose data.</blockquote><p>In order to integrate this idea to our application we will need to implement a little module to manage it. There we take possible initial data in count and trigger the new logic.</p>
-<p><em>app/libs/persist.js</em>  does the hard part. It will set up a <code>FinalStore</code>, deal with bootstrapping (restore data) and snapshotting (save data). I have included an escape hatch in form of <code>debug</code> flag. If it is set, the data won&apos;t get saved to <code>localStorage</code>. The reasoning is that doing this you can set the flag (<code>localStorage.setItem(&apos;debug&apos;, &apos;true&apos;)</code>), hit <code>localStorage.clear()</code> and refresh the browser to get a clean slate. The implementation below illustrates these ideas:</p>
+<blockquote class="tip">An alternative way would be to take a snapshot only when the window gets closed. There&apos;s a Window level <code>beforeunload</code> hook that could be used. The problem with this approach is that it is brittle. What if something unexpected happens and the hook doesn&apos;t get triggered for some reason? You&apos;ll lose data.</blockquote><p>In order to integrate this idea to our application we will need to implement a little module to manage it. We take the possible initial data into account there and trigger the new logic.</p>
+<p><em>app/libs/persist.js</em>  does the hard part. It will set up a <code>FinalStore</code>, deal with bootstrapping (restore data) and snapshotting (save data). I have included an escape hatch in form of <code>debug</code> flag. If it is set, the data won&apos;t get saved to <code>localStorage</code>. The reasoning is that by doing this you can set the flag (<code>localStorage.setItem(&apos;debug&apos;, &apos;true&apos;)</code>), hit <code>localStorage.clear()</code> and refresh the browser to get a clean slate. The implementation below illustrates these ideas:</p>
 <p><strong>app/libs/persist.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> makeFinalStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/utils/makeFinalStore&apos;</span>;
 
@@ -276,22 +272,7 @@ Flux will allow us to separate data and application state from our Views. This h
   });
 }
 </code></pre>
-<p>To make our <code>NoteStore</code> aware of possibly existing data, we&apos;ll need to tweak our constructor to take it in count. The data might not exist already, though, so we&apos;ll still need a default.</p>
-<p><strong>app/stores/NoteStore.js</strong></p>
-<pre><code class="undefinedjavascript">...
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
-  constructor() {
-    <span class="hljs-keyword">this</span>.bindActions(NoteActions);
-
-    <span class="hljs-keyword">this</span>.notes = <span class="hljs-keyword">this</span>.notes || [];
-  }
-  ...
-}
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
-</code></pre>
-<p>Finally, we need to trigger persistency logic at initialization. We will need to pass relevant data to it (Alt instance, storage, storage name) and off we go.</p>
+<p>Finally, we need to trigger the persistency logic at initialization. We will need to pass the relevant data to it (Alt instance, storage, storage name) and off we go.</p>
 <p><strong>app/main.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./libs/alt&apos;</span>;
@@ -306,17 +287,57 @@ main();
   ...
 }
 </code></pre>
-<p>If you try refreshing the browser now, the application should retain its state. The solution should scale with minimal effort if we add more stores to the system. Integrating a real back-end wouldn&apos;t be a problem. There are hooks in place for that now.</p>
+<p>If you try refreshing the browser now, the application should retain its state. The solution should scale with a minimal effort if we add more stores to the system. Integrating a real back-end wouldn&apos;t be a problem. There are hooks in place for that now.</p>
 <p>You could, for instance, pass the initial payload as a part of your HTML (isomorphic rendering), load it up and then persist the data to the back-end. You have a great deal of control over how to do this and you can use <code>localStorage</code> as a backup if you want.</p>
-<blockquote class="warning">Our <code>persist</code> implementation isn&apos;t without its flaws. It is easy to end up in a situation where <code>localStorage</code> contains invalid data due to changes made to the data model. This brings you to the world of database schemas and migrations. There are no easy solutions. Regardless this is something to keep in mind when developing something more sophisticated. The lesson here is that the more you inject state to your application, the more complicated it gets.</blockquote><a class="header-anchor" href="#extracting-connection-decorator" id="extracting-connection-decorator"></a><h2>Extracting Connection Decorator<a class="header-anchor-select" href="#extracting-connection-decorator">#</a></h2>
+<blockquote class="warning">Our <code>persist</code> implementation isn&apos;t without its flaws. It is easy to end up in a situation where <code>localStorage</code> contains invalid data due to changes made to the data model. This brings you to the world of database schemas and migrations. There are no easy solutions. Regardless, this is something to keep in mind when developing something more sophisticated. The lesson here is that the more you inject state to your application, the more complicated it gets.</blockquote><a class="header-anchor" href="#extracting-connection-decorator" id="extracting-connection-decorator"></a><h2>Extracting Connection Decorator<a class="header-anchor-select" href="#extracting-connection-decorator">#</a></h2>
 <p><img src="/images/matryoshka.jpg" alt="Decorators are like matryoshkas"></p>
 <p>Even though the application is starting to look a little better now, there&apos;s still work to be done. For instance, <code>App</code> contains plenty of store connection related logic. This isn&apos;t nice. We should extract that so it&apos;s easier to manage.</p>
 <p>One way to achieve this is to push the logic to a decorator. Decorators are a bit like matryoshkas. These Russian dolls can contain dolls inside them. We can achieve the same with decorators.</p>
 <a class="header-anchor" href="#what-are-decorators-" id="what-are-decorators-"></a><h3>What Are Decorators?<a class="header-anchor-select" href="#what-are-decorators-">#</a></h3>
-<p>If you have used languages such as Java or Python before, you might be familiar with the concept. They are syntactical sugar that allow us to wrap classes and functions. In short, they provide us a way to annotate and push logic elsewhere. This allows us to keep our components simple to read. There is a <a href="https://github.com/wycats/javascript-decorators">stage 1 decorator proposal</a> for JavaScript.</p>
-<p>By definition a decorator is a function that returns a function. In the case of our connection decorator we could end up with <code>connect(NoteStore)(App)</code>. In decorator syntax the same would be <code>@connect(NoteStore)</code> right before <code>App</code> class declaration.</p>
+<p>If you have used languages such as Java or Python before, you might be familiar with the idea. Decorators are syntactic sugar that allow us to wrap and annotate classes and functions. In their <a href="https://github.com/wycats/javascript-decorators">current proposal</a> (stage 1) only class and method level wrapping is supported. Functions may become supported later on.</p>
+<a class="header-anchor" href="#implementing-logging-decorator" id="implementing-logging-decorator"></a><h3>Implementing Logging Decorator<a class="header-anchor-select" href="#implementing-logging-decorator">#</a></h3>
+<p>Sometimes it is useful to know how methods are being called. You could of course attach <code>console.log</code> there but it&apos;s more fun to implement <code>@log</code>. That&apos;s a more controllable way to deal with it. Consider the example below:</p>
+<pre><code class="undefinedjavascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Math</span> </span>{
+  @log
+  add(a, b) {
+    <span class="hljs-keyword">return</span> a + b;
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params">target, name, descriptor</span>) </span>{
+  <span class="hljs-keyword">var</span> oldValue = descriptor.value;
+
+  descriptor.value = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Calling &quot;<span class="hljs-subst">${name}</span>&quot; with`</span>, <span class="hljs-built_in">arguments</span>);
+
+    <span class="hljs-keyword">return</span> oldValue.apply(<span class="hljs-literal">null</span>, <span class="hljs-built_in">arguments</span>);
+  };
+
+  <span class="hljs-keyword">return</span> descriptor;
+}
+
+<span class="hljs-keyword">const</span> math = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Math</span>();
+
+<span class="hljs-comment">// passed parameters should get logged now</span>
+math.add(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+</code></pre>
+<p>This logger could be pushed to a separate module. After that we could use it across our application whenever we want to log some methods. Once implemented decorators become powerful building blocks.</p>
+<p>The decorator receives three parameters:</p>
+<ul>
+<li><code>target</code> maps to the instance of the class</li>
+<li><code>name</code> contains the name of the method being decorated</li>
+<li><code>descriptor</code> is the most interesting piece as it allows us to annotate the method and manipulate its behavior. It could look like this for instance:</li>
+</ul>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">const</span> descriptor = {
+  value: () =&gt; {...},
+  enumerable: <span class="hljs-literal">false</span>,
+  configurable: <span class="hljs-literal">true</span>,
+  writable: <span class="hljs-literal">true</span>
+};
+</code></pre>
+<p>As you saw above <code>value</code> makes it possible to shape the behavior. The rest allow you to modify behavior on method level. For instance <code>@readonly</code> decorator could limit access. <code>@memoize</code> is another interesting example as that allows you to implement easy caching for methods.</p>
 <a class="header-anchor" href="#implementing-connect-" id="implementing-connect-"></a><h3>Implementing <code>@connect</code><a class="header-anchor-select" href="#implementing-connect-">#</a></h3>
-<p><code>@connect</code> will wrap our component in another component. That in turn will deal with the connection logic (<code>listen/unlisten/setState</code>). It will maintain the store state internally and then pass it to the child component we are wrapping. During this process it will pass the state through props. The implementation below illustrates the idea:</p>
+<p><code>@connect</code> will wrap our component in another component. That in turn will deal with the connection logic (<code>listen/unlisten/setState</code>). It will maintain the store state internally and then pass it to the child component that we are wrapping. During this process it will pass the state through props. The implementation below illustrates the idea:</p>
 <p><strong>app/decorators/connect.js</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 
@@ -346,7 +367,7 @@ main();
   <span class="hljs-keyword">return</span> (target) =&gt; connect(target, store);
 };
 </code></pre>
-<p>I have separated the higher order portion and decorator wrapping for clarity. It would be possible to perform both steps in the same function, but I find it more readable this way. Can you see the wrapping idea? Our decorator tracks store state. After that it passes the state to the component contained through props.</p>
+<p>Can you see the wrapping idea? Our decorator tracks store state. After that it passes the state to the component contained through props.</p>
 <blockquote class="tip"><code>...</code> is known as <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">ES7 rest spread operator</a>. It expands the given object to separate key-value pairs, or props, as in this case.</blockquote><p>You can connect our new decorator with <code>App</code> like this:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript">...
@@ -356,6 +377,24 @@ main();
 
 @connect(NoteStore)
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-comment">/*
+  these lines can be removed now
+  constructor(props) {
+    super(props);
+
+    this.storeChanged = this.storeChanged.bind(this);
+    this.state = NoteStore.getState();
+  }
+  componentDidMount() {
+    NoteStore.listen(this.storeChanged);
+  }
+  componentWillUnmount() {
+    NoteStore.unlisten(this.storeChanged);
+  }
+  storeChanged(state) {
+    this.setState(state);
+  }
+   */</span>
   render() {
     <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.props.notes;
 
@@ -368,7 +407,7 @@ main();
 <a class="header-anchor" href="#decorator-ideas" id="decorator-ideas"></a><h3>Decorator Ideas<a class="header-anchor-select" href="#decorator-ideas">#</a></h3>
 <p>We can build new decorators for various functionalities, such as undo, in this manner. They allow us to keep our components tidy and push common logic elsewhere out of sight. Well designed decorators can be used across projects.</p>
 <a class="header-anchor" href="#alt-s-connecttostores-" id="alt-s-connecttostores-"></a><h3>Alt&apos;s <code>@connectToStores</code><a class="header-anchor-select" href="#alt-s-connecttostores-">#</a></h3>
-<p>Alt provides a similar decorator known as <code>@connectToStores</code>. It relies on static methods. This a ES6 feature and you might be familiar with it from other languages. Rather than normal methods that are bound to a specific instance, these are bound on class level. This means you can call them through the class itself (i.e. <code>App.getStores()</code>). The example below shows how we might integrate <code>@connectToStores</code> into our application.</p>
+<p>Alt provides a similar decorator known as <code>@connectToStores</code>. It relies on static methods.  Rather than normal methods that are bound to a specific instance, these are bound on class level. This means you can call them through the class itself (i.e. <code>App.getStores()</code>). The example below shows how we might integrate <code>@connectToStores</code> into our application.</p>
 <pre><code class="undefinedjavascript">...
 <span class="hljs-keyword">import</span> connectToStores <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/utils/connectToStores&apos;</span>;
 
@@ -384,11 +423,10 @@ main();
 }
 </code></pre>
 <p>This more verbose approach is roughly equivalent to our implementation. It actually does more as it allows you to connect to multiple stores at once. It also provides more control over the way you can shape store state to props.</p>
-<p>To get familiar with more approaches we&apos;ll be using <code>AltContainer</code> in this project. Using the decorator is completely acceptable. It comes down to your personal preferences.</p>
-<a class="header-anchor" href="#using-altcontainer-instead-of-a-decorator" id="using-altcontainer-instead-of-a-decorator"></a><h2>Using <code>AltContainer</code> Instead of a Decorator<a class="header-anchor-select" href="#using-altcontainer-instead-of-a-decorator">#</a></h2>
-<p><a href="http://alt.js.org/docs/components/altContainer/">AltContainer</a> wrapper that does the same thing and a bit more. It provides a greater degree of customizability than our own solution. It&apos;s officially supported by Alt protecting us from possible API changes.</p>
-<p>You will see the wrapper pattern later again in this book and you will learn to implement it yourself. In this case, the pattern will allow us to set up arbitrary connections to multiple stores. Besides, we have control over how to inject them to the contained components. Particularly this fact will become important as we grow the application.</p>
-<p>The implementation below illustrates how to bind it all together. We&apos;ll drop <code>@connect</code> from the project altogether and expand <code>render()</code> to use <code>AltContainer</code>. After these changes we are good to go.</p>
+<p>To get familiar with more approaches we&apos;ll be using the <code>AltContainer</code> in this project. Using the decorator is completely acceptable. It comes down to your personal preferences.</p>
+<a class="header-anchor" href="#using-the-altcontainer-instead-of-a-decorator" id="using-the-altcontainer-instead-of-a-decorator"></a><h2>Using the <code>AltContainer</code> Instead of a Decorator<a class="header-anchor-select" href="#using-the-altcontainer-instead-of-a-decorator">#</a></h2>
+<p>The <a href="http://alt.js.org/docs/components/altContainer/">AltContainer</a> wrapper does the same thing and more. It provides a greater degree of customizability than our own solution. It&apos;s officially supported by Alt protecting us from possible API changes.</p>
+<p>The implementation below illustrates how to bind it all together. We&apos;ll drop <code>@connect</code> from the project altogether and expand <code>render()</code> to use the <code>AltContainer</code>. After these changes we are good to go.</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
 <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
@@ -400,7 +438,7 @@ main();
   render() {
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
           <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[NoteStore]}</span>
           <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
@@ -415,7 +453,11 @@ main();
   ...
 }
 </code></pre>
-<p>Integrating <code>AltContainer</code> actually grew our component a little bit. It also tied this component to Alt. If you wanted something forward-looking, you could push it into a component of your own. That facade would hide Alt and allow you to replace it with something else later on.</p>
+<p>The <code>AltContainer</code> allows us to bind data to its immediate children. In this case it injects <code>items</code> property to <code>Notes</code>. It is the same idea as for decorators earlier but now it&apos;s closer to the code. The pattern allows us to set up arbitrary connections to multiple stores and manage them.</p>
+<p>Integrating the <code>AltContainer</code> actually grew our component a little bit. It also tied this component to Alt. If you wanted something forward-looking, you could push it into a component of your own. That facade would hide Alt and allow you to replace it with something else later on.</p>
+<a class="header-anchor" href="#dispatching-in-alt" id="dispatching-in-alt"></a><h2>Dispatching in Alt<a class="header-anchor-select" href="#dispatching-in-alt">#</a></h2>
+<p>Even though you can get far without ever using Flux dispatcher, it can be useful to know something about it. Alt provides two ways to use it. If you want to log everything that goes through your <code>alt</code> instance, you can use a snippet such as <code>alt.dispatcher.register(console.log.bind(console))</code>.</p>
+<p>You can use the same mechanism on the Store level. In that case you would trigger <code>this.dispatcher.register(...)</code> at the constructor. These mechanisms allow you to implement effective logging to your system.</p>
 <a class="header-anchor" href="#relay-" id="relay-"></a><h2>Relay?<a class="header-anchor-select" href="#relay-">#</a></h2>
 <p>Facebook&apos;s <a href="https://facebook.github.io/react/blog/2015/02/20/introducing-relay-and-graphql.html">Relay</a> is an interesting alternative to Flux. It improves on the data fetching department. It allows you to push data requirements to the View level.</p>
 <p>Given it&apos;s still untested technology we won&apos;t be covering it in this book yet. Relay comes with its special requirements of its own (GraphQL compatible API). Only time will tell how it gets adopted.</p>
