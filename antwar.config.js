@@ -94,7 +94,7 @@ module.exports = {
       style: function() {
         require('highlight.js/styles/github.css');
       },
-      languages: ['bash', 'css', 'javascript', 'json', 'html'],
+      languages: ['bash', 'css', 'javascript', 'json', 'html', 'yaml'],
     }),
     prevnextPlugin(),
   ],
