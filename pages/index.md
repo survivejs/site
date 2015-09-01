@@ -30,17 +30,26 @@ I expect you know the basics of JavaScript and Node.js. Patience is a virtue. Yo
 
 ### [Nick Ostrovsky](http://firedev.com/)
 
+<p>
+<img src='assets/img/testimonials/nick.jpg' alt='Nick Ostrovsky' class='testimonial-photo' width='100' height='100' />
 This is the most useful book I’ve read this year. Apart from React itself it gives you a headstart into Webpack which is gaining traction as the weapon of choice for deploying Javascript apps and Flux architecture pattern. Well-written, full of annotated code, what’s not to like? Yes, I would recommend it to a friend.
+</p>
 
 ### [Steve Piercy](http://www.StevePiercy.com)
 
+<p>
+<img src='assets/img/testimonials/steve.jpg' alt='Steve Piercy' class='testimonial-photo' width='100' height='100' />
 SurviveJS connects the dots and fills the gaps left by the latest JavaScript tools and their documentation.  With its detailed step-by-step tutorial approach, SurviveJS gives practical examples of code and configuration while providing context for choosing one method over another.  As the state of JavaScript tools, frameworks, and libraries rapidly evolves, SurviveJS does exactly what its title implies: helps the developer survive JavaScript.
+</p>
 
 The author of SurviveJS, Juho Vepsäläinen, is a seasoned professional web application developer.  He has built a growing ecosystem around the book, including an open source repository on GitHub, an online chat room, and frequent updates to the book.
 
 ### Neeraj Singh (Founder of [BigBinary](http://bigbinary.com/))
 
+<p>
+<img src='assets/img/testimonials/raj.jpg' alt='Neeraj Singh' class='testimonial-photo' width='100' height='100' />
 Webpack is powerful but configuring it can be painful. Same goes with React. There are so many ways of configuring React with asset compilation, minification etc that it is easy to get lost. This book provides practical tips on how to get configure Webpack to make it work with React and other modern JavaScript tools like Babel.
+</p>
 
 ### Kevin Duffey
 
