@@ -38,6 +38,10 @@ SurviveJS connects the dots and fills the gaps left by the latest JavaScript too
 
 The author of SurviveJS, Juho Vepsäläinen, is a seasoned professional web application developer.  He has built a growing ecosystem around the book, including an open source repository on GitHub, an online chat room, and frequent updates to the book.
 
+### Neeraj Singh (Founder of [BigBinary](http://bigbinary.com/))
+
+Webpack is powerful but configuring it can be painful. Same goes with React. There are so many ways of configuring React with asset compilation, minification etc that it is easy to get lost. This book provides practical tips on how to get configure Webpack to make it work with React and other modern JavaScript tools like Babel.
+
 ### Kevin Duffey
 
 I came across SurviveJS while chatting in a gitter channel that the author, Juho, frequents. I had dabbled in ReactJS over a year earlier and since then a lot has changed, including the Flux (and it's derivatives) framework, and React's own Webpack build tool.
