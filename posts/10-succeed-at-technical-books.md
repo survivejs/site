@@ -6,7 +6,7 @@ headerImage: '/assets/img/writing.jpg'
 
 I've [written about book publishing earlier](http://www.nixtu.info/2015/07/on-economics-of-ebook-publishing.html) at my personal blog. It is an interesting yet difficult business. I sort of stumbled into the world by chance. In this post I want to share some of my learnings.
 
-Long story short I wrote a little [Webpack cookbook](https://christianalfoni.github.io/react-webpack-cookbook/) with [Christian Alfoni](http://www.christianalfoni.com/). That lead to an idea of a bigger book. Initially we pitched that to a real publisher. After long negotiations we got a no. That didn't stop me. You can see the result here.
+Long story short I wrote a little [Webpack cookbook](https://christianalfoni.github.io/react-webpack-cookbook/) with [Christian Alfoni](http://www.christianalfoni.com/). That led to an idea of a bigger book. Initially we pitched that to a real publisher. After long negotiations we got a no. That didn't stop me. You can see the result here.
 
 ## Growing Pains
 
