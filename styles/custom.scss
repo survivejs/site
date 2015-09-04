@@ -176,6 +176,10 @@ footer .footer-wrapper{
         width: auto;
     }
 
+    .post__sidebar {
+        margin: 1em;
+    }
+
     @media screen and (min-width: 1150px) {
         .front-cover {
             margin-top: 1em;
@@ -306,6 +310,21 @@ footer .footer-wrapper{
             /* XXX: force min height to avoid cropping with the footer. not ideal */
             min-height: 120%;
         }
+    }
+}
+
+/* XXX: fix in base theme */
+.post__content, .post__content h1,.post__content h2, .post__content h3, .post__content h4,
+.post__content h5, .post__content h6, .post__content p, .post__content ol,
+.post__content ul, .post__content div, .post__content pre {
+    max-width: 100%;
+}
+@media screen and (max-width: 1150px) {
+    .post__content, .post__content h1,.post__content h2, .post__content h3, .post__content h4,
+    .post__content h5, .post__content h6, .post__content p, .post__content ol,
+    .post__content ul, .post__content div, .post__content pre {
+        margin: 0.5em;
+        width: inherit;
     }
 }
 
