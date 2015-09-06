@@ -94,6 +94,10 @@ I probably don't need to repeat myself here. Expect to learn basics of React and
 
 By the looks of the book will go through a wide range of React related concepts. These include development tools, third party libraries, JSX and server-side React as with so many other books.
 
+### Mastering React
+
+[Mastering React](https://pragprog.com/book/lfreact/mastering-react) by The Pragmatic Programmers doesn't have a lot of information available. So far we know that it will have 250 pages and is due 10th of January, 2016.
+
 ## React Native Books
 
 There's also an emerging category of React Native books and the first book has already been released and more are on their way.
