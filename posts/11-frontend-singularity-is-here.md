@@ -52,4 +52,4 @@ This is one of the reasons why I wrote my book. I wanted to go through a slice o
 
 An important part of front-end development is knowing what you don't know. You don't have to be an absolute master at everything. There simply isn't enough time for that. Instead, build around your strengths and stay curious.
 
-Big thanks to [Daniel Lemire](http://lemire.me/blog/archives/2015/09/04/revisiting-vernor-vinges-predictions-for-2025/) for inspiration. I also appreciate the feedback from [Martin Brochhaus](https://twitter.com/mbrochh) and [Gerald Yeao](https://twitter.com/geraldyeo) that pushed me to write this post.
+Big thanks to [Daniel Lemire](http://lemire.me/blog/archives/2015/09/04/revisiting-vernor-vinges-predictions-for-2025/) for inspiration. I also appreciate the feedback from [Martin Brochhaus](https://twitter.com/mbrochh) and [Gerald Yeo](https://twitter.com/geraldyeo) that pushed me to write this post.
