@@ -10,7 +10,7 @@ Long story short I wrote a little [Webpack cookbook](https://christianalfoni.git
 
 ## Growing Pains
 
-Even though the book hasn't been a great financial success, it has proven its benefits. There are multiple reasons for this. For instance having all your content might not be the best idea for a beginner author unless you have some way to upsell. This is something I'm going to experiment with to see if having at least some of the content closed makes a difference.
+Even though the book hasn't been a great financial success, it has proven its benefits. There are multiple reasons for this. For instance having all your content open might not be the best idea for a beginner author unless you have some way to upsell. This is something I'm going to experiment with to see if having at least some of the content closed makes a difference.
 
 ### Tackling Big Problems by Yourself
 
