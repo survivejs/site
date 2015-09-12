@@ -3,9 +3,9 @@
 </div>
 
 * 45 day money back guarantee
-* 150+ pages (pdf/epub/mobi)
+* 200+ pages (pdf/epub/mobi)
 * Future updates for free
-* Minimum $15 + VAT. Suggested $20 + VAT.
+* Minimum $20 + VAT.
 
 <a class='btn' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>
 
