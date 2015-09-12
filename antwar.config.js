@@ -141,157 +141,165 @@ module.exports = {
         return require.context('./pages');
       },
     },
-    blog: {
-      path: function() {
-        return require.context('./posts', true, /^\.\/.*\.md$/);
-      },
-      /*
-      draft: function() {
-        return require.context('./drafts', true, /^\.\/.*\.md$/);
-      },
-      */
-      processItem: {
-        layout: function() {
-          return require('./layouts/BlogItem.coffee');
-        },
-        url: function(o) {
-          if(o.file.url) {
-            return o.file.url;
-          }
+    blog: blog(),
+    webpack_react: webpackReact()
+  }
+};
 
-          var page = o.fileName.split('.')[0].split('-').slice(1).join('-');
-
-          return o.sectionName + '/' + page;
-        },
-        content: function(o) {
-          var content = o.file.__content.split('\n').slice(1).join('\n');
-          var tokens = parseQuotes(content);
-
-          return marked.parser(tokens, {
-            renderer: renderer,
-          });
-        }
-      },
-      layout: 'blog',
-      title: 'Blog posts',
+function blog() {
+  return {
+    path: function() {
+      return require.context('./posts', true, /^\.\/.*\.md$/);
     },
-    webpack_react: {
-      title: 'Table of Contents',
-      path: function() {
-        return require.context('../webpack_react/manuscript', true, /^\.\/.*\.md$/);
+    /*
+    draft: function() {
+      return require.context('./drafts', true, /^\.\/.*\.md$/);
+    },
+    */
+    processItem: {
+      layout: function() {
+        return require('./layouts/BlogItem.coffee');
       },
-      processItem: {
-        layout: function() {
-          return require('./layouts/Chapter.coffee');
-        },
-        title: function(o) {
-          var ret = removeMd(o.file.__content.split('\n')[0]);
+      url: function(o) {
+        if(o.file.url) {
+          return o.file.url;
+        }
 
-          // part
-          if(ret.indexOf('-#') === 0) {
-            ret = ret.slice(2).trim();
-          }
+        var page = o.fileName.split('.')[0].split('-').slice(1).join('-');
 
-          if(o.file.bonus) {
-            ret += '*';
-          }
-
-          return ret;
-        },
-        extra: function(o) {
-          var fileName = o.fileName;
-
-          if(parseInt(fileName.split('_')[0], 10) >= 0) {
-            return {
-              type: 'chapter'
-            };
-          }
-
-          return {
-            type: 'part'
-          };
-        },
-        content: function(o) {
-          var content = o.file.__content.split('\n').slice(1).join('\n');
-          var tokens = parseQuotes(content);
-
-          return marked.parser(tokens, {
-            renderer: renderer,
-          });
-        },
-        preview: function(o) {
-          var previewLimit = 300;
-          var content = o.file.__content.split('##')[0].split('\n').slice(1).join('\n');
-          var stripped = removeMd(content);
-
-          if(stripped.length > previewLimit) {
-            return stripped.substr(0, previewLimit) + '…';
-          }
-
-          return stripped;
-        },
-        url: function(o) {
-          var fileName = o.fileName.split('.')[0].toLowerCase();
-
-          // normal chapter
-          if(parseInt(fileName.split('_')[0], 10) >= 0) {
-            return o.sectionName + '/' + fileName.split('_').slice(1).join('_');
-          }
-
-          // part
-          return o.sectionName + '/' + fileName;
-        },
+        return o.sectionName + '/' + page;
       },
-      sort: function(files) {
-        var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-        var sourceSuffix = '/kanban_app';
-        var headers = require('../webpack_react/manuscript/headers.json');
-        var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
-        var ret = [];
+      content: function(o) {
+        var content = o.file.__content.split('\n').slice(1).join('\n');
+        var tokens = parseQuotes(content);
 
-        order = order.filter(function(name) {
-          return path.extname(name) === '.md';
+        return marked.parser(tokens, {
+          renderer: renderer,
         });
+      }
+    },
+    layout: 'blog',
+    title: 'Blog posts',
+  };
+}
 
-        order.forEach(function(name, i) {
-          var result = _.findWhere(files, {
-            name: name,
-          });
-          var header = headers[i];
+function webpackReact() {
+  return {
+    title: 'Table of Contents',
+    path: function() {
+      return require.context('../webpack_react/manuscript', true, /^\.\/.*\.md$/);
+    },
+    processItem: {
+      layout: function() {
+        return require('./layouts/Chapter.coffee');
+      },
+      title: function(o) {
+        var ret = removeMd(o.file.__content.split('\n')[0]);
 
-          if(!result) {
-            return console.error('failed to find', name);
-          }
+        // part
+        if(ret.indexOf('-#') === 0) {
+          ret = ret.slice(2).trim();
+        }
 
-          result.file.headerExtra = '<a href="' + header.source + '">' +
-            header.author + ' ('+ header.license + ')</a>';
-          result.file.headerImage = '/images/' + header.image;
-          result.file.previousInfo = 'Previous chapter';
-          result.file.nextInfo = 'Next chapter';
-          result.file.bonus = header.bonus;
-
-          if(header.demo) {
-            var previous = headers[i - 1] || {};
-
-            if(previous.demo) {
-              result.file.startSource = sourcePrefix + previous.demo + sourceSuffix;
-            }
-
-            result.file.endSource = sourcePrefix + header.demo + sourceSuffix;
-
-            result.file.demo = header.demo && '/demos/' + header.demo;
-          }
-
-          if(result) {
-            ret.push(result);
-          }
-        });
+        if(o.file.bonus) {
+          ret += '*';
+        }
 
         return ret;
       },
-    }
-  }
-};
+      extra: function(o) {
+        var fileName = o.fileName;
+
+        if(parseInt(fileName.split('_')[0], 10) >= 0) {
+          return {
+            type: 'chapter'
+          };
+        }
+
+        return {
+          type: 'part'
+        };
+      },
+      content: function(o) {
+        var content = o.file.__content.split('\n').slice(1).join('\n');
+        var tokens = parseQuotes(content);
+
+        return marked.parser(tokens, {
+          renderer: renderer,
+        });
+      },
+      preview: function(o) {
+        var previewLimit = 300;
+        var content = o.file.__content.split('##')[0].split('\n').slice(1).join('\n');
+        var stripped = removeMd(content);
+
+        if(stripped.length > previewLimit) {
+          return stripped.substr(0, previewLimit) + '…';
+        }
+
+        return stripped;
+      },
+      url: function(o) {
+        var fileName = o.fileName.split('.')[0].toLowerCase();
+
+        // normal chapter
+        if(parseInt(fileName.split('_')[0], 10) >= 0) {
+          return o.sectionName + '/' + fileName.split('_').slice(1).join('_');
+        }
+
+        // part
+        return o.sectionName + '/' + fileName;
+      },
+    },
+    sort: function(files) {
+      var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
+      var sourceSuffix = '/kanban_app';
+      var headers = require('../webpack_react/manuscript/headers.json');
+      var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
+      var ret = [];
+
+      order = order.filter(function(name) {
+        return path.extname(name) === '.md';
+      });
+
+      order.forEach(function(name, i) {
+        var result = _.findWhere(files, {
+          name: name,
+        });
+        var header = headers[i];
+
+        if(!result) {
+          return console.error('failed to find', name);
+        }
+
+        result.file.headerExtra = '<a href="' + header.source + '">' +
+          header.author + ' ('+ header.license + ')</a>';
+        result.file.headerImage = '/images/' + header.image;
+        result.file.previousInfo = 'Previous chapter';
+        result.file.nextInfo = 'Next chapter';
+        result.file.bonus = header.bonus;
+
+        if(header.demo) {
+          var previous = headers[i - 1] || {};
+
+          if(previous.demo) {
+            result.file.startSource = sourcePrefix + previous.demo + sourceSuffix;
+          }
+
+          result.file.endSource = sourcePrefix + header.demo + sourceSuffix;
+
+          result.file.demo = header.demo && '/demos/' + header.demo;
+        }
+
+        if(result) {
+          ret.push(result);
+        }
+      });
+
+      return ret;
+    },
+  };
+}
 
 function parseQuotes(data) {
   var tokens = marked.lexer(data).map(function(t) {
