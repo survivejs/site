@@ -43,6 +43,10 @@ var Index = React.createClass({
             return post.isDraft;
         })[0];
 
+        if(!post) {
+            return;
+        }
+
         return (
             <a className='front__latestpost-link' href={post.url}>
                 {'From the blog: ' + post.title}
