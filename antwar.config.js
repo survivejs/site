@@ -192,6 +192,10 @@ module.exports = {
             ret = ret.slice(2).trim();
           }
 
+          if(o.file.bonus) {
+            ret += '*';
+          }
+
           return ret;
         },
         extra: function(o) {
@@ -264,6 +268,7 @@ module.exports = {
           result.file.headerImage = '/images/' + header.image;
           result.file.previousInfo = 'Previous chapter';
           result.file.nextInfo = 'Next chapter';
+          result.file.bonus = header.bonus;
 
           if(header.demo) {
             var previous = headers[i - 1] || {};
