@@ -16,7 +16,7 @@ Even though there are [a lot of freely available React resources](https://github
 
 The book is open to external contributions and in fact a lot of people have contributed feedback and fixes. From author's point of view this has been just awesome!
 
-If you like the book and want to support the effort, [buying a copy](https://leanpub.com/survivejs_webpack_react) would most likely make the author's day. Suggested price without VAT is $20 though minimum of $15 is possible. Pay based on value you perceive as Leanpub books allow.
+If you like the book and want to support the effort, [buying a copy](https://leanpub.com/survivejs_webpack_react) would most likely make the author's day. Suggested price without VAT is $20. Pay based on value you perceive as Leanpub books allow.
 
 ### React Webpack Cookbook
 
