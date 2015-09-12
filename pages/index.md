@@ -13,6 +13,11 @@ Facebook's [React](https://facebook.github.io/react/) powers an increasing amoun
 0. Style your React application in various emerging ways.
 0. Implement drag and drop for your application using [React DnD](https://gaearon.github.io/react-dnd/).
 
+In addition, if you buy the Leanpub version you will get exclusive chapters that show you how to:
+
+0. Deal with typing in React.
+0. Test your React application in various ways.
+
 Please check out [the online version](webpack_react/introduction) of the book to get started! The book source is available through [GitHub](https://github.com/survivejs/webpack_react).
 
 The book is freely available under [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/) license. You can support creation of new content by [purchasing a digital copy of the book](https://leanpub.com/survivejs_webpack).
