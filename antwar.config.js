@@ -253,7 +253,6 @@ function webpackReact() {
     },
     sort: function(files) {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-      var sourceSuffix = '/kanban_app';
       var headers = require('../webpack_react/manuscript/headers.json');
       var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
       var ret = [];
@@ -281,9 +280,12 @@ function webpackReact() {
 
         if(header.demo) {
           var previous = headers[i - 1] || {};
+          var sourceSuffix = header.sourceRoot || '/kanban_app';
 
           if(previous.demo) {
-            result.file.startSource = sourcePrefix + previous.demo + sourceSuffix;
+            var previousSourceSuffix = previous.sourceRoot || '/kanban_app';
+
+            result.file.startSource = sourcePrefix + previous.demo + previousSourceSuffix;
           }
 
           result.file.endSource = sourcePrefix + header.demo + sourceSuffix;
