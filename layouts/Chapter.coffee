@@ -17,6 +17,8 @@ module.exports = React.createClass
     item = @getItem()
     author = item.author or config.author.name
     sectionItems = @getSectionItems()
+    resources = item.resources
+
     div className: 'chapter__wrapper',
       if item.headerImage? then div className: 'header-image', style: backgroundImage: "url(#{item.headerImage})"
       h1 className: 'post__heading',
@@ -30,6 +32,14 @@ module.exports = React.createClass
               span key: 'navItem' + i, className: "toc-nav__link toc-nav__link--current #{navItem.type}", navItem.title
             else
               a key: 'navItem' + i, href: "/#{navItem.url}", className: "toc-nav__link #{navItem.type}", navItem.title
+
+        if resources
+          div className: 'resources__wrapper',
+            h4 className: 'resources--header', 'Resources'
+
+            div className: 'resources-nav',
+              _.map resources, (resource, i) ->
+                a key: 'resourceItem' + i, href: "#{resource.url}", target: '_blank', className: 'resource-nav__link', resource.name
 
       div className: 'chapter',
         div className: 'post__content',
