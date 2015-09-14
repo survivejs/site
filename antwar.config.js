@@ -31,6 +31,24 @@ renderer.heading = function(text, level, raw) {
     + '>\n';
 };
 
+var markedDefaults = {
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  sanitizer: null,
+  mangle: true,
+  smartLists: false,
+  silent: false,
+  highlight: null,
+  langPrefix: 'lang-',
+  smartypants: false,
+  headerPrefix: '',
+  renderer: renderer,
+  xhtml: false
+};
+
 module.exports = {
   assets: [
     {
@@ -172,9 +190,7 @@ function blog() {
         var content = o.file.__content.split('\n').slice(1).join('\n');
         var tokens = parseQuotes(content);
 
-        return marked.parser(tokens, {
-          renderer: renderer,
-        });
+        return marked.parser(tokens, markedDefaults);
       }
     },
     layout: 'blog',
@@ -223,9 +239,7 @@ function webpackReact() {
         var content = o.file.__content.split('\n').slice(1).join('\n');
         var tokens = parseQuotes(content);
 
-        return marked.parser(tokens, {
-          renderer: renderer,
-        });
+        return marked.parser(tokens, markedDefaults);
       },
       preview: function(o) {
         var previewLimit = 300;
