@@ -14,10 +14,11 @@ npm init
 <p>If you are into version control, as you should, this would be a good time to set up your repository. You can create commits as you progress with the project.</p>
 <p>If you are using git, I recommend setting up a <code>.gitignore</code> to the project root:</p>
 <p><strong>.gitignore</strong></p>
-<pre><code><span class="hljs-tag">node_modules</span>
+<pre><code class="undefinedbash"><span class="hljs-tag">node_modules</span>
 *<span class="hljs-class">.log</span>
 <span class="hljs-class">.DS_Store</span>
-</code></pre><p>At the very least you should have <code>node_modules</code> here as you probably don&apos;t want that to end up in the source control. The problem with that is that as some modules need to be compiled per platform, it gets rather messy to collaborate. Ideally your <code>git status</code> should look clean. You can extend <code>.gitignore</code> as you go.</p>
+</code></pre>
+<p>At the very least you should have <code>node_modules</code> here as you probably don&apos;t want that to end up in the source control. The problem with that is that as some modules need to be compiled per platform, it gets rather messy to collaborate. Ideally your <code>git status</code> should look clean. You can extend <code>.gitignore</code> as you go.</p>
 <blockquote class="tip"><code>.DS_Store</code> is something OS X specific. It contains system specific custom attributes related to the directory. As a result it can be safely ignored.</blockquote><a class="header-anchor" href="#installing-webpack" id="installing-webpack"></a><h2>Installing Webpack<a class="header-anchor-select" href="#installing-webpack">#</a></h2>
 <p>Next, you should get Webpack installed. We&apos;ll do a local install and save it as a project dependency. This will allow us to maintain Webpack&apos;s version per project. Hit</p>
 <pre><code class="undefinedbash">npm i webpack node-libs-browser --save-dev
@@ -76,7 +77,7 @@ app.appendChild(component());
 <span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
 
 <span class="hljs-built_in">module</span>.exports = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
   output: {
     path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
     filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
@@ -201,7 +202,7 @@ app.appendChild(component());
 <span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
 
 <span class="hljs-keyword">var</span> common = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app/main&apos;</span>),
+  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
   output: {
     path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
     filename: <span class="hljs-string">&apos;bundle.js&apos;</span>

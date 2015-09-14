@@ -305,25 +305,25 @@ alert(<span class="hljs-string">&apos;foo&apos;</span>); <span class="hljs-comme
 <blockquote class="tip">ESLint implements a large part of the functionality provided by JSCS. It is possible you can skip JSCS altogether provided you configure ESLint correctly. There&apos;s a large amount of presets available.</blockquote><blockquote class="tip">Note that like some other tools, such as ESLint and JSHint, JSCS supports <code>package.json</code> based configuration. Simply add a <code>jscsConfig</code> field to it and write the configuration there.</blockquote><a class="header-anchor" href="#editorconfig" id="editorconfig"></a><h2>EditorConfig<a class="header-anchor-select" href="#editorconfig">#</a></h2>
 <p><a href="http://editorconfig.org/">EditorConfig</a> allows you to maintain a consistent coding style across different IDEs and editors. Some even come with built-in support. For others you have to install a separate plugin. In addition to this you&apos;ll need to set up a <code>.editorconfig</code> file like this:</p>
 <p><strong>.editorconfig</strong></p>
-<pre><code class="undefinedyaml">root = <span class="hljs-literal">true</span>
+<pre><code class="undefinedyaml"><span class="hljs-constant">root</span> = true
 
 <span class="hljs-comment"># General settings for whole project</span>
 [*]
-indent_style = space
-indent_size = <span class="hljs-number">4</span>
+<span class="hljs-constant">indent_style</span> = space
+<span class="hljs-constant">indent_size</span> = 4
 
-end_of_line = lf
-charset = utf-<span class="hljs-number">8</span>
-trim_trailing_whitespace = <span class="hljs-literal">true</span>
-insert_final_newline = <span class="hljs-literal">true</span>
+<span class="hljs-constant">end_of_line</span> = lf
+<span class="hljs-constant">charset</span> = utf-8
+<span class="hljs-constant">trim_trailing_whitespace</span> = true
+<span class="hljs-constant">insert_final_newline</span> = true
 
 <span class="hljs-comment"># Format specific overrides</span>
 [*.md]
-trim_trailing_whitespace = <span class="hljs-literal">false</span>
+<span class="hljs-constant">trim_trailing_whitespace</span> = false
 
 [app/**.js]
-indent_style = space
-indent_size = <span class="hljs-number">2</span>
+<span class="hljs-constant">indent_style</span> = space
+<span class="hljs-constant">indent_size</span> = 2
 </code></pre>
 <a class="header-anchor" href="#conclusion" id="conclusion"></a><h2>Conclusion<a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>In this chapter you learned how to lint your code using Webpack in various ways. It is one of those techniques that yields benefits over longer term. You can fix possible problems before they become actual issues.</p>

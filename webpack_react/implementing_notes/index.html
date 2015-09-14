@@ -385,9 +385,10 @@ Given we have a nice development setup now, we can actually get some work done. 
 </code></pre>
 <blockquote class="tip"><a href="https://www.npmjs.com/package/es5-shim">es5-shim</a>, <a href="https://www.npmjs.com/package/es6-shim">es6-shim</a> and <a href="https://www.npmjs.com/package/es7-shim">es7-shim</a> are good alternatives to <code>core-js</code>. At the moment they don&apos;t allow you to import the exact shims you need in a granular way. That said, using a whole library at once can be worth the convenience.</blockquote><p>We also need to attach the polyfill to our application.</p>
 <p><strong>app/index.jsx</strong></p>
-<pre><code><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;array.prototype.findindex&apos;</span>;
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;array.prototype.findindex&apos;</span>;
 ...
-</code></pre><p>After this you can use <code>findIndex</code> against arrays at your code. Note that this will bloat our final bundle a tiny bit (around 4 kB), but the convenience is worth it.</p>
+</code></pre>
+<p>After this you can use <code>findIndex</code> against arrays at your code. Note that this will bloat our final bundle a tiny bit (around 4 kB), but the convenience is worth it.</p>
 <a class="header-anchor" href="#implementing-onedit-logic" id="implementing-onedit-logic"></a><h3>Implementing <code>onEdit</code> Logic<a class="header-anchor-select" href="#implementing-onedit-logic">#</a></h3>
 <p>The only thing that remains is gluing this all together. We&apos;ll need to take the data and find index based on which to alter. Finally, we need to modify and commit it to the component state through <code>setState</code>.</p>
 <p><strong>app/components/App.jsx</strong></p>
