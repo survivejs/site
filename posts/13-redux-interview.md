@@ -90,7 +90,7 @@ With the advent of [pure functions as components](http://facebook.github.io/reac
 
 ## Who should I interview next?
 
-[André Staltz](https://twitter.com/andrestaltz), creator of [Cycle](cycle.js.org).
+[André Staltz](https://twitter.com/andrestaltz), creator of [Cycle](http://cycle.js.org/).
 
 ## Conclusion
 
