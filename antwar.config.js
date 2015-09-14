@@ -92,9 +92,8 @@ module.exports = {
     }),
     highlightPlugin({
       style: function() {
-        require('highlight.js/styles/github.css');
-      },
-      languages: ['bash', 'css', 'javascript', 'json', 'html', 'makefile', 'yaml'],
+        require('prismjs-coy-theme/prism-coy.css');
+      }
     }),
     prevnextPlugin(),
   ],
