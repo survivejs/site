@@ -10,21 +10,21 @@ Combined with webpack React becomes a joy to work with. Even though you can use 
 <blockquote class="tip">Libraries such as <a href="https://github.com/Matt-Esch/virtual-dom">Matt-Esch/virtual-dom</a> focus entirely on Virtual DOM. If you are interested in the theory, check it out.</blockquote><a class="header-anchor" href="#jsx-and-virtual-dom" id="jsx-and-virtual-dom"></a><h3>JSX and Virtual DOM<a class="header-anchor-select" href="#jsx-and-virtual-dom">#</a></h3>
 <p>React provides a <a href="https://facebook.github.io/react/docs/top-level-api.html">high level API</a> for generating virtual DOM. Generating complex structures using the API becomes cumbersome fast. Thus people usually don&apos;t write it by hand. Instead, they use some intermediate format that is converted into it. Facebook&apos;s <a href="https://facebook.github.io/jsx/">JSX</a> is one popular format.</p>
 <p>JSX is a superset of JavaScript that allows you to mix XMLish syntax with JavaScript. Consider the example below:</p>
-<pre><code class="undefinedjavascript">function render() {
-  const names = [&apos;John&apos;, &apos;Jill&apos;, &apos;Jack&apos;];
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;John&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Jill&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Jack&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  return (
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Names<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>h2<span class="token operator">&gt;</span>Names<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;names&apos;</span>&gt;</span>{
-        names.map((name) =&gt;
-          <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;name&apos;</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-        )
-      }<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-  );
-}
+      <span class="token operator">&lt;</span>ul className<span class="token operator">=</span><span class="token string">&apos;names&apos;</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+        names<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>li className<span class="token operator">=</span><span class="token string">&apos;name&apos;</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you haven&apos;t seen JSX before it will likely look strange. It isn&apos;t uncommon to experience &quot;JSX shock&quot; until you start to understand it. After that it all makes sense.</p>
 <p>Cory House goes into more detail <a href="https://medium.com/@housecor/react-s-jsx-the-other-side-of-the-coin-2ace7ab62b98">about the shock</a>. Briefly summarized, JSX gives us a level of validation we haven&apos;t encountered earlier. It takes a while to grasp but once you get it, it&apos;s hard to go back.</p>
@@ -47,43 +47,43 @@ Combined with webpack React becomes a joy to work with. Even though you can use 
 <p>I would be careful with <strong>stage 0</strong> features. The problem is that if the feature changes or gets removed you will end up with broken code and will need to rewrite it. In smaller experimental projects it may be worth the risk. In our project we&apos;ll enable <strong>stage 1</strong>. This allows us to use decorators and property spreading. These features will make our code a little tidier.</p>
 <blockquote class="tip">You can <a href="https://babeljs.io/repl/">try out Babel online</a> to see what kind of code it generates.</blockquote><a class="header-anchor" href="#configuring-babel-loader-" id="configuring-babel-loader-"></a><h3>Configuring <code>babel-loader</code><a class="header-anchor-select" href="#configuring-babel-loader-">#</a></h3>
 <p>You can use Babel with Webpack easily through <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. It takes our ES6 module definition based code and turn it into ES5 bundles. Install <em>babel-loader</em> with</p>
-<pre><code class="undefinedbash">npm i babel-core babel-loader --save-dev
+<pre><code class="lang-bash">npm i babel<span class="token operator">-</span>core babel<span class="token operator">-</span>loader <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>Besides, we need to add a loader declaration to the <em>loaders</em> section of configuration. It matches against <code>.js</code> and <code>.jsx</code> using a regular expression (<code>/\.jsx?$/</code>).</p>
 <p>To keep everything performant we restrict the loader to operate within <code>./app</code> directory. This way it won&apos;t traverse <code>node_modules</code>. An alternative would be to set up an <code>exclude</code> rule against <code>node_modules</code> explicitly. I find it more useful to <code>include</code> instead as that&apos;s more explicit. You never know what files might be in the structure after all.</p>
 <p>Here&apos;s the relevant configuration we need to make Babel work:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">var</span> common = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-  resolve: {
-    extensions: [<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>]
-  },
-  ...
-};
+<span class="token keyword">var</span> common <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.js&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.jsx&apos;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;eval-source-map&apos;</span>,
-    <span class="hljs-built_in">module</span>: {
-      loaders: [
-        {
-          test: <span class="hljs-regexp">/\.jsx?$/</span>,
-          loaders: [<span class="hljs-string">&apos;babel&apos;</span>],
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        }
-      ]
-    }
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;start&apos;</span> <span class="token operator">||</span> <span class="token operator">!</span>TARGET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;eval-source-map&apos;</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          test<span class="token punctuation">:</span> <span class="token regex">/\.jsx?$/</span><span class="token punctuation">,</span>
+          loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;babel&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Note that <code>resolve.extensions</code> setting will allow you to refer to JSX files without an extension now. I&apos;ll be using the extension for clarity but now you can omit it if you want to.</p>
 <blockquote class="tip">As <code>resolve.extensions</code> gets evaluated from left to right, we can use it to control which code gets loaded for given configuration. For instance, you could have <code>.web.js</code> to define web specific parts and then have something like <code>[&apos;&apos;, &apos;.web.js&apos;, &apos;.js&apos;, &apos;.jsx&apos;]</code>. If a &quot;web&quot; version of the file is found, Webpack would use that instead of the default.</blockquote><p>Also, we are going to need a <a href="https://babeljs.io/docs/usage/babelrc/">.babelrc</a>. You could pass Babel settings through Webpack (i.e. <code>babel?stage=1</code>), but then it would be just for Webpack only. That&apos;s why we are going to push our Babel settings to this specific dotfile. The same idea applies for other tools such as ESLint.</p>
 <p><strong>.babelrc</strong></p>
-<pre><code class="undefinedjson">{
-  &quot;<span class="hljs-attribute">stage</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span>
-</span>}
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;stage&quot;</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>There are other possible <a href="https://babeljs.io/docs/usage/babelrc/">.babelrc options</a>. Now we are just keeping it simple. You could, for instance, enable the features you want to use explicitly.</p>
 <a class="header-anchor" href="#advanced-babel-setup" id="advanced-babel-setup"></a><h3>Advanced Babel Setup<a class="header-anchor-select" href="#advanced-babel-setup">#</a></h3>
@@ -91,14 +91,14 @@ Combined with webpack React becomes a joy to work with. Even though you can use 
 <p>First you will need to make sure Babel is included into your project as a dependency. After that you can rename your <code>webpack.config.js</code> as <code>webpack.config.babel.js</code>. Webpack will process configuration through Babel after that. It picks up <code>.babelrc</code> settings.</p>
 <p>Sometimes you might want to perform advanced Babel configuration. Currently Babel allows you to control <code>.babelrc</code> through env. To quote <a href="https://babeljs.io/docs/usage/babelrc/">the documentation</a>, you could do something like this:</p>
 <p><strong>.babelrc</strong></p>
-<pre><code class="undefinedjson">{
-  &quot;<span class="hljs-attribute">stage</span>&quot;: <span class="hljs-value"><span class="hljs-number">1</span></span>,
-  &quot;<span class="hljs-attribute">env</span>&quot;: <span class="hljs-value">{
-    &quot;<span class="hljs-attribute">build</span>&quot;: <span class="hljs-value">{
-      &quot;<span class="hljs-attribute">optional</span>&quot;: <span class="hljs-value">[<span class="hljs-string">&quot;optimisation&quot;</span>, <span class="hljs-string">&quot;minification&quot;</span>]
-    </span>}
-  </span>}
-</span>}
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;stage&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;env&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;optional&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;optimisation&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;minification&quot;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This would enable production build specific Babel optimizations. You have to check out the official documentation for exact flags to use. Some may be considered experimental and might be better avoided for now.</p>
 <p>Doing the aforementioned configuration isn&apos;t enough. Babel determines <code>env</code> like this:</p>
@@ -108,54 +108,54 @@ Combined with webpack React becomes a joy to work with. Even though you can use 
 <li>Default to <code>development</code></li>
 </ol>
 <p>In this case we could set <code>BABEL_ENV</code> based on npm lifecycle event given we&apos;re triggering it through npm. The following line would work:</p>
-<pre><code class="undefinedjavascript">process.env.BABEL_ENV = process.env.npm_lifecycle_event;
+<pre><code class="lang-javascript">process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>BABEL_ENV <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_lifecycle_event<span class="token punctuation">;</span>
 </code></pre>
 <p>This setup provides you more control over Babel&apos;s behavior depending on the environment.</p>
 <a class="header-anchor" href="#developing-the-first-react-view" id="developing-the-first-react-view"></a><h2>Developing the First React View<a class="header-anchor-select" href="#developing-the-first-react-view">#</a></h2>
 <p>It is time to add a first application level dependency to our project. Hit</p>
-<pre><code class="undefinedbash">npm i react --save
+<pre><code class="lang-bash">npm i react <span class="token operator">--</span>save
 </code></pre>
 <p>to get React installed. This will save React to <code>dependencies</code> section of <code>package.json</code>. Later on we&apos;ll use this to generate a vendor build for the production version. It&apos;s a good practice to separate application and development level dependencies this way.</p>
 <p>Now that we got that out of the way, we can start to develop our Kanban application. First we should define the <code>App</code>. This will be the core of our application. It represents the high level view of our app and works as an entry point. Later on it will orchestrate the entire app.</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Note from <span class="token string">&apos;./Note.jsx&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> /&gt;</span>;</span>
-  }
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Note <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote class="tip">You can import portions from <code>react</code> using syntax <code>import React, { Component } from &apos;react&apos;;</code>. Then you can do <code>class App extends Component</code>. You may find this alternative a little neater.</blockquote><blockquote class="tip">It may be worth your while to install <a href="https://github.com/facebook/react-devtools">React Developer Tools</a> extension to your browser. Currently Chrome and Firefox are supported. This will make it easier to understand what&apos;s going on while developing.</blockquote><blockquote class="warning">It is important to note that ES6 based class approach <strong>doesn&apos;t</strong> support autobinding behavior. Apart from that you may find ES6 classes neater than <code>React.createClass</code>. See the end of this chapter for a comparison.</blockquote><a class="header-anchor" href="#setting-up-note-" id="setting-up-note-"></a><h3>Setting Up <code>Note</code><a class="header-anchor-select" href="#setting-up-note-">#</a></h3>
 <p>We also need to define the <code>Note</code> component. In this case, we will just want to show some text like <code>Learn Webpack</code>. <code>Hello world</code> would work if you are into clich&#xE9;s.</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Learn Webpack<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>;</span>
-  }
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Note</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Learn Webpack<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote class="tip">Note that we&apos;re using <em>jsx</em> extension here. It helps us to tell modules using JSX syntax apart from regular ones. It is not absolutely necessary, but it is a good convention to have.</blockquote><a class="header-anchor" href="#rendering-through-index-jsx-" id="rendering-through-index-jsx-"></a><h3>Rendering Through <code>index.jsx</code><a class="header-anchor-select" href="#rendering-through-index-jsx-">#</a></h3>
 <p>We&apos;ll need to adjust our <code>index.js</code> to render the component correctly. Note that I&apos;ve renamed it as <code>index.jsx</code> given we have JSX content there. First the rendering logic creates a DOM element where it will render. Then it renders our application through React.</p>
 <p><strong>app/index.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&apos;./main.css&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token string">&apos;./main.css&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./components/App.jsx&apos;</span>;
+<span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> App from <span class="token string">&apos;./components/App.jsx&apos;</span><span class="token punctuation">;</span>
 
-main();
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> app = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;div&apos;</span>);
+<span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> app <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="hljs-built_in">document</span>.body.appendChild(app);
+  document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>, app);
-}
-</span></code></pre>
+  React<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> app<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>I&apos;ll be using <code>const</code> whenever possible. It will give me a guarantee that the reference to the object won&apos;t get changed inadvertently. It does allow you to change the object contents, though, in that you can still push new items to an array and so on.</p>
 <p>If I want something mutable, I&apos;ll use <code>let</code> instead. <code>let</code> is scoped to the code block and is another new feature introduced with ES6. These both are good safety measures.</p>
 <blockquote class="warning">Avoid rendering directly to <code>document.body</code>. This can cause strange problems when relying on it. Instead give React a little sandbox of its own. That way everyone, including React, will stay happy.</blockquote><p>If you hit <code>npm start</code> now, you should see something familiar at <strong>localhost:8080</strong>.</p>
@@ -165,26 +165,26 @@ main();
 <p>Note that every time you perform a modification, the browser updates with a flash. That&apos;s unfortunate because this means our application loses state. It doesn&apos;t matter yet, but as we keep on expanding the application this will become painful. It is annoying to manipulate the user interface back to the state in which it was to test something.</p>
 <p>We can work around this problem using hot loading. This is enabled by <a href="https://gaearon.github.io/react-hot-loader/">react-hot-loader</a>. It will swap React components one by one as they change without forcing a full refresh. There will be times when that will be necessary, but it will help a lot. Once you get used to hot loading, it is hard to live without.</p>
 <p>To enable hot loading for React, you should first install the package using</p>
-<pre><code class="undefinedbash">npm i react-hot-loader --save-dev
+<pre><code class="lang-bash">npm i react<span class="token operator">-</span>hot<span class="token operator">-</span>loader <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>We also need to make our configuration aware of it so it can inject hooks Webpack requires for the system to work.</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;eval-source-map&apos;</span>,
-    <span class="hljs-built_in">module</span>: {
-      loaders: [
-        {
-          test: <span class="hljs-regexp">/\.jsx?$/</span>,
-          loaders: [<span class="hljs-string">&apos;react-hot&apos;</span>, <span class="hljs-string">&apos;babel&apos;</span>],
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        }
-      ]
-    }
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;start&apos;</span> <span class="token operator">||</span> <span class="token operator">!</span>TARGET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;eval-source-map&apos;</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          test<span class="token punctuation">:</span> <span class="token regex">/\.jsx?$/</span><span class="token punctuation">,</span>
+          loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;react-hot&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;babel&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Try hitting <code>npm start</code> again and modifying the component. Note what doesn&apos;t happen this time. There&apos;s no flash! It might take a while to sink in, but in practice, this is a powerful feature. Small things such as this add up and make you more effective.</p>
 <blockquote class="warning">Note that sourcemaps won&apos;t get updated in <a href="https://code.google.com/p/chromium/issues/detail?id=492902">Chrome</a> and Firefox due to browser level bugs! This may change in the future as the browsers get patched, though.</blockquote><a class="header-anchor" href="#react-component-styles" id="react-component-styles"></a><h2>React Component Styles<a class="header-anchor-select" href="#react-component-styles">#</a></h2>

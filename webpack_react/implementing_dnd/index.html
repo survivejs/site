@@ -2,19 +2,19 @@
 Our Kanban application is almost usable now. It looks alright and there&#x27;s some basic functionality in place. In this chapter I&#x27;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up React DnD. After this chapter you should be able to sort notes…"><meta name="keywords" content="webpack,react,javascript,programming,web development"><link rel="icon" type="image/png" href="../../assets/img/favicon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" href="../../assets/main.css"></head><body><div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog">Read the blog</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs_webpack">Buy the ebook</a></div><div class="nav__link"><a href=""></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Implementing Drag and Drop - " target="_blank">Submit feedback</a></div></div><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/dnd.jpg);"></div><h1 class="post__heading">Implementing Drag and Drop</h1><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a href="/webpack_react/introduction" class="toc-nav__link chapter">Introduction</a><a href="/webpack_react/webpack" class="toc-nav__link part">Setting Up Webpack</a><a href="/webpack_react/webpack_compared" class="toc-nav__link chapter">Webpack Compared</a><a href="/webpack_react/developing_with_webpack" class="toc-nav__link chapter">Developing with Webpack</a><a href="/webpack_react/webpack_and_react" class="toc-nav__link chapter">Webpack and React</a><a href="/webpack_react/react" class="toc-nav__link part">Developing Kanban Application</a><a href="/webpack_react/implementing_notes" class="toc-nav__link chapter">Implementing a Basic Note Application</a><a href="/webpack_react/react_and_flux" class="toc-nav__link chapter">React and Flux</a><a href="/webpack_react/from_notes_to_kanban" class="toc-nav__link chapter">From Notes to Kanban</a><span class="toc-nav__link toc-nav__link--current chapter">Implementing Drag and Drop</span><a href="/webpack_react/building_kanban" class="toc-nav__link chapter">Building Kanban</a><a href="/webpack_react/testing_react" class="toc-nav__link chapter">Testing React*</a><a href="/webpack_react/typing_with_react" class="toc-nav__link chapter">Typing with React*</a><a href="/webpack_react/advanced" class="toc-nav__link part">Advanced Techniques</a><a href="/webpack_react/linting_in_webpack" class="toc-nav__link chapter">Linting in Webpack</a><a href="/webpack_react/authoring_libraries" class="toc-nav__link chapter">Authoring Libraries</a><a href="/webpack_react/styling_react" class="toc-nav__link chapter">Styling React</a><a href="/webpack_react/troubleshooting" class="toc-nav__link chapter">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><div class="post__meta"><div class="post__start_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_from_notes_to_kanban/kanban_app" target="_blank">Start source code</a></div><div class="post__end_source"><a href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Finished source code</a></div><div class="post__demo"><a href="/demos/07_implementing_dnd" target="_blank">Demo</a></div></div><div><p>Our Kanban application is almost usable now. It looks alright and there&apos;s some basic functionality in place. In this chapter I&apos;ll show you how to take it to the next level. We will integrate some drag and drop functionality as we set up <a href="https://gaearon.github.io/react-dnd/">React DnD</a>. After this chapter you should be able to sort notes within a lane and drag them from a lane to another.</p>
 <a class="header-anchor" href="#setting-up-react-dnd" id="setting-up-react-dnd"></a><h2>Setting Up React DnD<a class="header-anchor-select" href="#setting-up-react-dnd">#</a></h2>
 <p>Before going further hit</p>
-<pre><code class="undefinedbash">npm i react-dnd --save
+<pre><code class="lang-bash">npm i react<span class="token operator">-</span>dnd <span class="token operator">--</span>save
 </code></pre>
 <p>to add React DnD to the project.</p>
 <p>As a first step we&apos;ll need to connect it with our project. Currently it provides an HTML5 Drag and Drop API specific back-end. There&apos;s no official support for touch yet but it&apos;s possible to add later on. In order to set it up, we need to use the <code>DragDropContext</code> decorator and provide the back-end to it:</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> {DragDropContext} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
-<span class="hljs-keyword">import</span> HTML5Backend <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd/modules/backends/HTML5&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>DragDropContext<span class="token punctuation">}</span> from <span class="token string">&apos;react-dnd&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> HTML5Backend from <span class="token string">&apos;react-dnd/modules/backends/HTML5&apos;</span><span class="token punctuation">;</span>
 
-@DragDropContext(HTML5Backend)
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  ...
-}
+@<span class="token function">DragDropContext</span><span class="token punctuation">(</span>HTML5Backend<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After this change the application should look exactly the same as before. We are now ready to add some sweet functionality to it.</p>
 <blockquote class="tip">Back-ends allow us to customize React DnD behavior. For instance we can add <a href="https://github.com/gaearon/react-dnd/pull/240">support for touch</a> to our application using one. There&apos;s also a testing specific one available.</blockquote><a class="header-anchor" href="#preparing-notes-to-be-sorted" id="preparing-notes-to-be-sorted"></a><h2>Preparing Notes to Be Sorted<a class="header-anchor-select" href="#preparing-notes-to-be-sorted">#</a></h2>
@@ -23,71 +23,71 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <p>We can use a handy little technique here that allows us to avoid code duplication. We can implement <code>Note</code> as a wrapper component. It will accept <code>Editable</code> and render it. This will allow us to keep DnD related logic at <code>Note</code>. This avoids having to duplicate any logic related to <code>Editable</code>.</p>
 <p>The magic lies in a single property known as <code>children</code>, React will render possible child components at <code>{this.props.children}</code> slot as seen below:</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> {<span class="hljs-attribute">...this.props</span>}&gt;</span>{this.props.children}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-    )</span>;
-  }
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Note</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>li <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>We also need to tweak <code>Notes</code> to use our wrapper component. We will simply wrap <code>Editable</code> using <code>Note</code> and we are good to go. We will pass <code>note</code> data to the wrapper as we&apos;ll need that later when dealing with logic:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> Note <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Note.jsx&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> Note from <span class="token string">&apos;./Note.jsx&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  ...
-  renderNote(note) {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{note.id}</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${note.id}`}</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)}
-          <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.props.onDelete.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
-    )</span>;
-  }
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Notes</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">renderNote</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&apos;note&apos;</span> id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>`note$<span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span>`<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>Editable
+          value<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span>
+          onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span>
+          onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onDelete<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Note<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After this change the application should look exactly same as before. We have achieved nothing yet. Fortunately, we can start adding functionality now that we have foundation in place.</p>
 <a class="header-anchor" href="#allowing-notes-to-be-dragged" id="allowing-notes-to-be-dragged"></a><h2>Allowing Notes to Be Dragged<a class="header-anchor-select" href="#allowing-notes-to-be-dragged">#</a></h2>
 <p>React DnD uses constants to tell different draggables apart. Set up a file for tracking <code>Note</code> as follows:</p>
 <p><strong>app/constants/itemTypes.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-tag">export</span> <span class="hljs-tag">default</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">NOTE</span>:<span class="hljs-value"> <span class="hljs-string">&apos;note&apos;</span>
-}</span></span>;
-</span></code></pre>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  NOTE<span class="token punctuation">:</span> <span class="token string">&apos;note&apos;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
 <p>This definition can be expanded later as we add new types to the system. Next, we need to tell our <code>Note</code> that it&apos;s possible to drag and drop it. This is done through <code>@DragSource</code> and <code>@DropTarget</code> annotations.</p>
 <a class="header-anchor" href="#setting-up-note-dragsource-" id="setting-up-note-dragsource-"></a><h3>Setting Up <code>Note</code> <code>@DragSource</code><a class="header-anchor-select" href="#setting-up-note-dragsource-">#</a></h3>
 <p>Marking a component as a <code>@DragSource</code> simply means that it can be dragged. Set up the annotation as follows:</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> {DragSource} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
-<span class="hljs-keyword">import</span> ItemTypes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../constants/itemTypes&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>DragSource<span class="token punctuation">}</span> from <span class="token string">&apos;react-dnd&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ItemTypes from <span class="token string">&apos;../constants/itemTypes&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> noteSource = {
-  beginDrag(props) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;begin dragging note&apos;</span>, props);
+<span class="token keyword">const</span> noteSource <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">beginDrag</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;begin dragging note&apos;</span><span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> {};
-  }
-};
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-@DragSource(ItemTypes.NOTE, noteSource, (connect) =&gt; ({
-  connectDragSource: connect.dragSource()
-}))
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">const</span> {connectDragSource, id, onMove, ...props} = <span class="hljs-keyword">this</span>.props;
+@<span class="token function">DragSource</span><span class="token punctuation">(</span>ItemTypes<span class="token punctuation">.</span>NOTE<span class="token punctuation">,</span> noteSource<span class="token punctuation">,</span> <span class="token punctuation">(</span>connect<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  connectDragSource<span class="token punctuation">:</span> connect<span class="token punctuation">.</span><span class="token function">dragSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Note</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>connectDragSource<span class="token punctuation">,</span> id<span class="token punctuation">,</span> onMove<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> connectDragSource(
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> {<span class="hljs-attribute">...props</span>}&gt;</span>{props.children}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-    )</span>;
-  }
-}
+    <span class="token keyword">return</span> <span class="token function">connectDragSource</span><span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>li <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>There are a couple of important changes:</p>
 <ul>
@@ -102,42 +102,42 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <blockquote class="warning">Note that React DnD doesn&apos;t support hot loading perfectly. You may need to refresh browser to see the logs you expect!</blockquote><a class="header-anchor" href="#setting-up-note-droptarget-" id="setting-up-note-droptarget-"></a><h3>Setting Up <code>Note</code> <code>@DropTarget</code><a class="header-anchor-select" href="#setting-up-note-droptarget-">#</a></h3>
 <p><code>@DropTarget</code> allows a component to receive components annotated using <code>@DragSource</code>. As <code>@DropTarget</code> triggers, we can perform actual logic based on the components. Expand as follows:</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> {DragSource, DropTarget} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
-<span class="hljs-keyword">import</span> ItemTypes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../constants/itemTypes&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>DragSource<span class="token punctuation">,</span> DropTarget<span class="token punctuation">}</span> from <span class="token string">&apos;react-dnd&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ItemTypes from <span class="token string">&apos;../constants/itemTypes&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> noteSource = {
-  beginDrag(props) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;begin dragging note&apos;</span>, props);
+<span class="token keyword">const</span> noteSource <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">beginDrag</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;begin dragging note&apos;</span><span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> {};
-  }
-};
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> noteTarget = {
-  hover(targetProps, monitor) {
-    <span class="hljs-keyword">const</span> sourceProps = monitor.getItem();
+<span class="token keyword">const</span> noteTarget <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">hover</span><span class="token punctuation">(</span>targetProps<span class="token punctuation">,</span> monitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> sourceProps <span class="token operator">=</span> monitor<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;dragging note&apos;</span>, sourceProps, targetProps);
-  }
-};
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;dragging note&apos;</span><span class="token punctuation">,</span> sourceProps<span class="token punctuation">,</span> targetProps<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-@DragSource(ItemTypes.NOTE, noteSource, (connect) =&gt; ({
-  connectDragSource: connect.dragSource()
-}))
-@DropTarget(ItemTypes.NOTE, noteTarget, (connect) =&gt; ({
-  connectDropTarget: connect.dropTarget()
-}))
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Note</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">const</span> {connectDragSource, connectDropTarget,
-      id, onMove, ...props} = <span class="hljs-keyword">this</span>.props;
+@<span class="token function">DragSource</span><span class="token punctuation">(</span>ItemTypes<span class="token punctuation">.</span>NOTE<span class="token punctuation">,</span> noteSource<span class="token punctuation">,</span> <span class="token punctuation">(</span>connect<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  connectDragSource<span class="token punctuation">:</span> connect<span class="token punctuation">.</span><span class="token function">dragSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+@<span class="token function">DropTarget</span><span class="token punctuation">(</span>ItemTypes<span class="token punctuation">.</span>NOTE<span class="token punctuation">,</span> noteTarget<span class="token punctuation">,</span> <span class="token punctuation">(</span>connect<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  connectDropTarget<span class="token punctuation">:</span> connect<span class="token punctuation">.</span><span class="token function">dropTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Note</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>connectDragSource<span class="token punctuation">,</span> connectDropTarget<span class="token punctuation">,</span>
+      id<span class="token punctuation">,</span> onMove<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> connectDragSource(connectDropTarget(
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">li</span> {<span class="hljs-attribute">...props</span>}&gt;</span>{props.children}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-    )</span>);
-  }
-}
+    <span class="token keyword">return</span> <span class="token function">connectDragSource</span><span class="token punctuation">(</span><span class="token function">connectDropTarget</span><span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>li <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Besides the initial debug log, we should see way more logs as we drag a <code>Note</code> around. Note that both decorators give us access to the <code>Note</code> props. In this case we are using <code>monitor.getItem()</code> to access them at <code>noteTarget</code>.</p>
 <a class="header-anchor" href="#developing-onmove-api-for-notes-" id="developing-onmove-api-for-notes-"></a><h2>Developing <code>onMove</code> API for <code>Notes</code><a class="header-anchor-select" href="#developing-onmove-api-for-notes-">#</a></h2>
@@ -149,241 +149,241 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 </ul>
 <p>You can see how this translates to code below:</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-const noteSource = {
-  beginDrag(props) {
-    <span class="hljs-built_in">return</span> {
-      id: props.id
-    };
-  }
-};
+<span class="token keyword">const</span> noteSource <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">beginDrag</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      id<span class="token punctuation">:</span> props<span class="token punctuation">.</span>id
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-const noteTarget = {
-  hover(targetProps, monitor) {
-    const targetId = targetProps.id;
-    const <span class="hljs-built_in">source</span>Props = monitor.getItem();
-    const <span class="hljs-built_in">source</span>Id = <span class="hljs-built_in">source</span>Props.id;
+<span class="token keyword">const</span> noteTarget <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">hover</span><span class="token punctuation">(</span>targetProps<span class="token punctuation">,</span> monitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> targetId <span class="token operator">=</span> targetProps<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceProps <span class="token operator">=</span> monitor<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceId <span class="token operator">=</span> sourceProps<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">source</span>Id !== targetId) {
-      targetProps.onMove({<span class="hljs-built_in">source</span>Id, targetId});
-    }
-  }
-};
+    <span class="token keyword">if</span><span class="token punctuation">(</span>sourceId <span class="token operator">!</span><span class="token operator">==</span> targetId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      targetProps<span class="token punctuation">.</span><span class="token function">onMove</span><span class="token punctuation">(</span><span class="token punctuation">{</span>sourceId<span class="token punctuation">,</span> targetId<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-...
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 </code></pre>
 <p>If you run the application now, you&apos;ll likely get a bunch of <code>onMove</code> related errors. We should make <code>Notes</code> aware of that:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  ...
-  renderNote(note) {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{this.onMoveNote}</span>
-        <span class="hljs-attribute">id</span>=<span class="hljs-value">{note.id}</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${note.id}`}</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)}
-          <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.props.onDelete.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
-    )</span>;
-  }
-  onMoveNote({sourceId, targetId}) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceId, <span class="hljs-string">&apos;target&apos;</span>, targetId);
-  }
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Notes</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">renderNote</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&apos;note&apos;</span> onMove<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onMoveNote<span class="token punctuation">}</span>
+        id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>`note$<span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span>`<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>Editable
+          value<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span>
+          onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span>
+          onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onDelete<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Note<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">onMoveNote</span><span class="token punctuation">(</span><span class="token punctuation">{</span>sourceId<span class="token punctuation">,</span> targetId<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;source&apos;</span><span class="token punctuation">,</span> sourceId<span class="token punctuation">,</span> <span class="token string">&apos;target&apos;</span><span class="token punctuation">,</span> targetId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you drag a <code>Note</code> around now, you should see logs like <code>source &lt;id&gt; target &lt;id&gt;</code> at console. We are getting close. We still need to figure out what to do with these ids, though.</p>
 <a class="header-anchor" href="#adding-action-and-store-method-for-moving" id="adding-action-and-store-method-for-moving"></a><h2>Adding Action and Store Method for Moving<a class="header-anchor-select" href="#adding-action-and-store-method-for-moving">#</a></h2>
 <p>The logic of drag and drop is quite simple. Let&apos;s say we have a list A, B, C. In case we move A below C we should end up with B, C, A. In case we have another list, say D, E, F, and move A to the beginning of it, we should end up with B, C and A, D, E, F.</p>
 <p>In our case, we&apos;ll get some extra complexity due to lane to lane dragging. When we move a <code>Note</code>, we know its original position and the intended target position. <code>Lane</code> knows what <code>Notes</code> belong to it by id. We are going to need some way to tell <code>LaneStore</code> that it should perform the logic over given notes. A good starting point is to define <code>LaneActions.move</code>:</p>
 <p><strong>app/actions/LaneActions.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> alt from <span class="token string">&apos;../libs/alt&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(
-  <span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;delete&apos;</span>,
-  <span class="hljs-string">&apos;attachToLane&apos;</span>, <span class="hljs-string">&apos;detachFromLane&apos;</span>,
-  <span class="hljs-string">&apos;move&apos;</span>
-);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">generateActions</span><span class="token punctuation">(</span>
+  <span class="token string">&apos;create&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;update&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;delete&apos;</span><span class="token punctuation">,</span>
+  <span class="token string">&apos;attachToLane&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;detachFromLane&apos;</span><span class="token punctuation">,</span>
+  <span class="token string">&apos;move&apos;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We should connect this action with <code>onMove</code> hook we just defined:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> LaneActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/LaneActions&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> LaneActions from <span class="token string">&apos;../actions/LaneActions&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Notes</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  ...
-  renderNote(note) {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Note</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;note&apos;</span> <span class="hljs-attribute">onMove</span>=<span class="hljs-value">{LaneActions.move}</span>
-        <span class="hljs-attribute">id</span>=<span class="hljs-value">{note.id}</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">{`note${note.id}`}</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Editable</span>
-          <span class="hljs-attribute">value</span>=<span class="hljs-value">{note.task}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.props.onEdit.bind(null,</span> <span class="hljs-attribute">note.id</span>)}
-          <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.props.onDelete.bind(null,</span> <span class="hljs-attribute">note.id</span>)} /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">Note</span>&gt;</span>
-    )</span>;
-  }
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Notes</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">renderNote</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&apos;note&apos;</span> onMove<span class="token operator">=</span><span class="token punctuation">{</span>LaneActions<span class="token punctuation">.</span>move<span class="token punctuation">}</span>
+        id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>`note$<span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span>`<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>Editable
+          value<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span>
+          onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span>
+          onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onDelete<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Note<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>We should also define a stub at <code>LaneStore</code> to see that we wired it up correctly:</p>
 <p><strong>app/stores/LaneStore.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
-  ...
-  move({sourceId, targetId}) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceId, <span class="hljs-string">&apos;target&apos;</span>, targetId);
-  }
-}
+<span class="token keyword">class</span> <span class="token class-name">LaneStore</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">{</span>sourceId<span class="token punctuation">,</span> targetId<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;source&apos;</span><span class="token punctuation">,</span> sourceId<span class="token punctuation">,</span> <span class="token string">&apos;target&apos;</span><span class="token punctuation">,</span> targetId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(LaneStore, <span class="hljs-string">&apos;LaneStore&apos;</span>);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">createStore</span><span class="token punctuation">(</span>LaneStore<span class="token punctuation">,</span> <span class="token string">&apos;LaneStore&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You should see the same logs as earlier. Next, we&apos;ll need to add some logic to make this work. We can use the logic outlined above here. We have two cases to worry about. Moving within a lane itself and moving from lane to another.</p>
 <a class="header-anchor" href="#implementing-note-drag-and-drop-logic" id="implementing-note-drag-and-drop-logic"></a><h2>Implementing Note Drag and Drop Logic<a class="header-anchor-select" href="#implementing-note-drag-and-drop-logic">#</a></h2>
 <p>Moving within a lane itself is more complicated. When you are operating based on ids and perform operations one at a time, you&apos;ll need to take possible index alterations into account. As a result, I&apos;m using <code>update</code> <a href="https://facebook.github.io/react/docs/update.html">immutability helper</a> helper from React as that solves the problem in one pass.</p>
 <p>It is possible to solve the lane to lane case using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">splice</a>. First we <code>splice</code> out the source note and then we <code>splice</code> it to the target lane. Again, <code>update</code> could work here, but I didn&apos;t see much point in that given <code>splice</code> is nice and simple. The code below illustrates a mutation based solution:</p>
 <p><strong>app/stores/LaneStore.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> update <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react/lib/update&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> update from <span class="token string">&apos;react/lib/update&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
-  ...
-  move({sourceId, targetId}) {
-    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
-    <span class="hljs-keyword">const</span> sourceLane = lanes.filter((lane) =&gt; {
-      <span class="hljs-keyword">return</span> lane.notes.indexOf(sourceId) &gt;= <span class="hljs-number">0</span>;
-    })[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">const</span> targetLane = lanes.filter((lane) =&gt; {
-      <span class="hljs-keyword">return</span> lane.notes.indexOf(targetId) &gt;= <span class="hljs-number">0</span>;
-    })[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">const</span> sourceNoteIndex = sourceLane.notes.indexOf(sourceId);
-    <span class="hljs-keyword">const</span> targetNoteIndex = targetLane.notes.indexOf(targetId);
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">LaneStore</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">move</span><span class="token punctuation">(</span><span class="token punctuation">{</span>sourceId<span class="token punctuation">,</span> targetId<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> lanes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lanes<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceLane <span class="token operator">=</span> lanes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>lane<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> lane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>sourceId<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> targetLane <span class="token operator">=</span> lanes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>lane<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> lane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>targetId<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceNoteIndex <span class="token operator">=</span> sourceLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>sourceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> targetNoteIndex <span class="token operator">=</span> targetLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>targetId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(sourceLane === targetLane) {
-      <span class="hljs-comment">// move at once to avoid complications</span>
-      sourceLane.notes = update(sourceLane.notes, {
-        $splice: [
-          [sourceNoteIndex, <span class="hljs-number">1</span>],
-          [targetNoteIndex, <span class="hljs-number">0</span>, sourceId]
-        ]
-      });
-    }
-    <span class="hljs-keyword">else</span> {
-      <span class="hljs-comment">// get rid of the source</span>
-      sourceLane.notes.splice(sourceNoteIndex, <span class="hljs-number">1</span>);
+    <span class="token keyword">if</span><span class="token punctuation">(</span>sourceLane <span class="token operator">===</span> targetLane<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// move at once to avoid complications</span>
+      sourceLane<span class="token punctuation">.</span>notes <span class="token operator">=</span> <span class="token function">update</span><span class="token punctuation">(</span>sourceLane<span class="token punctuation">.</span>notes<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        $splice<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span>sourceNoteIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span>targetNoteIndex<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> sourceId<span class="token punctuation">]</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// get rid of the source</span>
+      sourceLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>sourceNoteIndex<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      <span class="hljs-comment">// and move it to target</span>
-      targetLane.notes.splice(targetNoteIndex, <span class="hljs-number">0</span>, sourceId);
-    }
+      <span class="token comment" spellcheck="true">// and move it to target</span>
+      targetLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>targetNoteIndex<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> sourceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">this</span>.setState({lanes});
-  }
-}
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>lanes<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you try out the application now, you can actually drag notes around and it should behave as you expect. You cannot drag notes to an empty lane yet, though.</p>
 <a class="header-anchor" href="#dragging-notes-to-an-empty-lanes" id="dragging-notes-to-an-empty-lanes"></a><h2>Dragging Notes to an Empty Lanes<a class="header-anchor-select" href="#dragging-notes-to-an-empty-lanes">#</a></h2>
 <p>To drag notes to an empty lane we should allow lanes to receive notes. Just as above we can set up <code>DropTarget</code> based logic for this. First we need to capture the drag on <code>Lane</code>:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> {DropTarget} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dnd&apos;</span>;
-<span class="hljs-keyword">import</span> ItemTypes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../constants/itemTypes&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>DropTarget<span class="token punctuation">}</span> from <span class="token string">&apos;react-dnd&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ItemTypes from <span class="token string">&apos;../constants/itemTypes&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> noteTarget = {
-  hover(targetProps, monitor) {
-    <span class="hljs-keyword">const</span> targetId = targetProps.id;
-    <span class="hljs-keyword">const</span> sourceProps = monitor.getItem();
-    <span class="hljs-keyword">const</span> sourceId = sourceProps.id;
+<span class="token keyword">const</span> noteTarget <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">hover</span><span class="token punctuation">(</span>targetProps<span class="token punctuation">,</span> monitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> targetId <span class="token operator">=</span> targetProps<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceProps <span class="token operator">=</span> monitor<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceId <span class="token operator">=</span> sourceProps<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;source&apos;</span>, sourceId, <span class="hljs-string">&apos;target&apos;</span>, targetId);
-  }
-};
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;source&apos;</span><span class="token punctuation">,</span> sourceId<span class="token punctuation">,</span> <span class="token string">&apos;target&apos;</span><span class="token punctuation">,</span> targetId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-@DropTarget(ItemTypes.NOTE, noteTarget, (connect) =&gt; ({
-  connectDropTarget: connect.dropTarget()
-}))
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lane</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  ...
-  render() {
-    <span class="hljs-keyword">const</span> {connectDropTarget, id, name, notes, ...props} = <span class="hljs-keyword">this</span>.props;
+@<span class="token function">DropTarget</span><span class="token punctuation">(</span>ItemTypes<span class="token punctuation">.</span>NOTE<span class="token punctuation">,</span> noteTarget<span class="token punctuation">,</span> <span class="token punctuation">(</span>connect<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  connectDropTarget<span class="token punctuation">:</span> connect<span class="token punctuation">.</span><span class="token function">dropTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Lane</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>connectDropTarget<span class="token punctuation">,</span> id<span class="token punctuation">,</span> name<span class="token punctuation">,</span> notes<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> connectDropTarget(
-      ...
-    );
-  }
-}
+    <span class="token keyword">return</span> <span class="token function">connectDropTarget</span><span class="token punctuation">(</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you drag a note to a lane now, you should see logs at your console. The question is what to do with this data? Before actually moving the note to a lane we should check whether it&apos;s empty or not. If it has content already, the operation doesn&apos;t make sense. Our existing logic can deal with that.</p>
 <p>This is a simple check to make. Given we know the target lane at our <code>noteTarget</code> <code>hover</code> handler, we can check its <code>notes</code> array as below:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
-<pre><code class="undefinedjavascript">const noteTarget = {
-  hover(targetProps, monitor) {
-    const <span class="hljs-built_in">source</span>Props = monitor.getItem();
-    const <span class="hljs-built_in">source</span>Id = <span class="hljs-built_in">source</span>Props.id;
+<pre><code class="lang-javascript"><span class="token keyword">const</span> noteTarget <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">hover</span><span class="token punctuation">(</span>targetProps<span class="token punctuation">,</span> monitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> sourceProps <span class="token operator">=</span> monitor<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceId <span class="token operator">=</span> sourceProps<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(!targetProps.notes.length) {
-      console.log(<span class="hljs-string">&apos;source&apos;</span>, <span class="hljs-built_in">source</span>Id, <span class="hljs-string">&apos;target&apos;</span>, targetProps);
-    }
-  }
-};
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>targetProps<span class="token punctuation">.</span>notes<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;source&apos;</span><span class="token punctuation">,</span> sourceId<span class="token punctuation">,</span> <span class="token string">&apos;target&apos;</span><span class="token punctuation">,</span> targetProps<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If you refresh your browser and drag around now, the log should appear only when you drag a note to a lane that doesn&apos;t have any notes attached to it yet.</p>
 <a class="header-anchor" href="#trigger-move-logic" id="trigger-move-logic"></a><h3>Trigger <code>move</code> Logic<a class="header-anchor-select" href="#trigger-move-logic">#</a></h3>
 <p>Now we know what <code>Note</code> to move into which <code>Lane</code>. <code>LaneStore.attachToLane</code> is ideal for this purpose. Adjust <code>Lane</code> as below:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
-<pre><code class="undefinedjavascript">const noteTarget = {
-  hover(targetProps, monitor) {
-    const <span class="hljs-built_in">source</span>Props = monitor.getItem();
-    const <span class="hljs-built_in">source</span>Id = <span class="hljs-built_in">source</span>Props.id;
+<pre><code class="lang-javascript"><span class="token keyword">const</span> noteTarget <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">hover</span><span class="token punctuation">(</span>targetProps<span class="token punctuation">,</span> monitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> sourceProps <span class="token operator">=</span> monitor<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sourceId <span class="token operator">=</span> sourceProps<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(!targetProps.notes.length) {
-      LaneActions.attachToLane({
-        laneId: targetProps.id,
-        noteId: <span class="hljs-built_in">source</span>Id
-      });
-    }
-  }
-};
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>targetProps<span class="token punctuation">.</span>notes<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      LaneActions<span class="token punctuation">.</span><span class="token function">attachToLane</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        laneId<span class="token punctuation">:</span> targetProps<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+        noteId<span class="token punctuation">:</span> sourceId
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>There is one problem, though. What happens to the old instance of the <code>Note</code>? In the current solution the old lane will have an id pointing to it. As a result we have duplicate data in the system.</p>
 <p>Earlier we resolved this using <code>detachFromLane</code>. The problem is that we don&apos;t know which lane the note belonged. We could pass this data through the component hierarchy but that doesn&apos;t feel particularly nice.</p>
 <p>We could resolve this on store level instead by implementing an invariant at <code>attachToLane</code> that makes sure any possible earlier references get removed. This can be achieved by implementing <code>this.removeNote(noteId)</code> check:</p>
 <p><strong>app/stores/LaneStore.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LaneStore</span> </span>{
-  ...
-  attachToLane({laneId, noteId}) {
-    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
-    <span class="hljs-keyword">const</span> targetId = <span class="hljs-keyword">this</span>.findLane(laneId);
+<span class="token keyword">class</span> <span class="token class-name">LaneStore</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">attachToLane</span><span class="token punctuation">(</span><span class="token punctuation">{</span>laneId<span class="token punctuation">,</span> noteId<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> lanes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lanes<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> targetId <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findLane</span><span class="token punctuation">(</span>laneId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(targetId &lt; <span class="hljs-number">0</span>) {
-      <span class="hljs-keyword">return</span>;
-    }
+    <span class="token keyword">if</span><span class="token punctuation">(</span>targetId <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">this</span>.removeNote(noteId);
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">removeNote</span><span class="token punctuation">(</span>noteId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    ...
-  }
-  removeNote(noteId) {
-    <span class="hljs-keyword">const</span> lanes = <span class="hljs-keyword">this</span>.lanes;
-    <span class="hljs-keyword">const</span> removeLane = lanes.filter((lane) =&gt; {
-      <span class="hljs-keyword">return</span> lane.notes.indexOf(noteId) &gt;= <span class="hljs-number">0</span>;
-    })[<span class="hljs-number">0</span>];
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">removeNote</span><span class="token punctuation">(</span>noteId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> lanes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lanes<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> removeLane <span class="token operator">=</span> lanes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>lane<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> lane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>noteId<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(!removeLane) {
-      <span class="hljs-keyword">return</span>;
-    }
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>removeLane<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">const</span> removeNoteIndex = removeLane.notes.indexOf(noteId);
+    <span class="token keyword">const</span> removeNoteIndex <span class="token operator">=</span> removeLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>noteId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    removeLane.notes = removeLane.notes.slice(<span class="hljs-number">0</span>, removeNoteIndex).
-      concat(removeLane.notes.slice(removeNoteIndex + <span class="hljs-number">1</span>));
-  }
-  ...
-}
+    removeLane<span class="token punctuation">.</span>notes <span class="token operator">=</span> removeLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> removeNoteIndex<span class="token punctuation">)</span><span class="token punctuation">.</span>
+      <span class="token function">concat</span><span class="token punctuation">(</span>removeLane<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>removeNoteIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><code>removeNote(noteId)</code> goes through <code>LaneStore</code> data. If it finds a note by id, it will get rid of it. After that we have a clean slate and we can add a note to a lane. This change would allow us to drop <code>detachFromLane</code> from the system entirely but I&apos;ll leave doing that up to you.</p>
 <p>Now we have a Kanban table that is actually useful! We can create new lanes and notes, edit and remove them. In addition, we can move notes around. Mission accomplished!</p>

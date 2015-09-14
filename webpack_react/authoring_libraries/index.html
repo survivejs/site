@@ -25,84 +25,84 @@ npm is one of the reasons behind the popularity of Node.js. It has become the pa
 <a class="header-anchor" href="#understanding-package-json-" id="understanding-package-json-"></a><h2>Understanding <code>package.json</code><a class="header-anchor-select" href="#understanding-package-json-">#</a></h2>
 <p>All packages come with a <code>package.json</code> that describes metadata related to them. This includes information about the author, various links, dependencies and so on. The <a href="https://docs.npmjs.com/files/package.json">official documentation</a> covers them in detail.</p>
 <p>I&apos;ve annotated <code>package.json</code> of my <a href="https://github.com/survivejs/react-component-boilerplate">React component boilerplate</a> below.</p>
-<pre><code class="undefinedjson">{
-  <span class="hljs-comment">/* Name of the project */</span>
-  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;react-component-boilerplate&quot;</span>,
-  <span class="hljs-comment">/* Brief description */</span>
-  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Boilerplate for React.js components&quot;</span>,
-  <span class="hljs-comment">/* Who is the author + optional email */</span>
-  <span class="hljs-string">&quot;author&quot;</span>: <span class="hljs-string">&quot;Juho Vepsalainen &lt;email goes here&gt;&quot;</span>,
-  <span class="hljs-comment">/* This is boilerplate specific (not used by npm) */</span>
-  <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;bebraw&quot;</span>,
-  <span class="hljs-comment">/* Version of the package */</span>
-  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.0&quot;</span>,
-  <span class="hljs-comment">/* `npm run &lt;name&gt;` */</span>
-  <span class="hljs-string">&quot;scripts&quot;</span>: {
-    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;node dev-server/server.js&quot;</span>,
-    <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;jest &amp;&amp; npm run check-style &amp;&amp; npm run lint&quot;</span>,
-    <span class="hljs-string">&quot;gh-pages&quot;</span>: <span class="hljs-string">&quot;webpack --config ./config&quot;</span>,
-    <span class="hljs-string">&quot;deploy-gh-pages&quot;</span>: <span class="hljs-string">&quot;node ./config/deploy-gh-pages.js&quot;</span>,
-    <span class="hljs-string">&quot;dist-all&quot;</span>: <span class="hljs-string">&quot;npm run dist &amp;&amp; npm run dist-min&quot;</span>,
-    <span class="hljs-string">&quot;dist&quot;</span>: <span class="hljs-string">&quot;webpack&quot;</span>,
-    <span class="hljs-string">&quot;dist-min&quot;</span>: <span class="hljs-string">&quot;webpack&quot;</span>,
-    <span class="hljs-string">&quot;dist-modules&quot;</span>: <span class="hljs-string">&quot;babel ./src --out-dir ./dist-modules&quot;</span>,
-    <span class="hljs-string">&quot;lint&quot;</span>: <span class="hljs-string">&quot;eslint . --ext .js --ext .jsx&quot;</span>,
-    <span class="hljs-string">&quot;check-style&quot;</span>: <span class="hljs-string">&quot;jscs .&quot;</span>,
-    <span class="hljs-string">&quot;replace-meta&quot;</span>: <span class="hljs-string">&quot;node scripts/replace_meta.js&quot;</span>,
-    <span class="hljs-string">&quot;preversion&quot;</span>: <span class="hljs-string">&quot;npm run test &amp;&amp; npm run dist &amp;&amp; npm run dist-modules &amp;&amp; git commit --allow-empty -am \&quot;Update dist\&quot;&quot;</span>,
-    <span class="hljs-string">&quot;postpublish&quot;</span>: <span class="hljs-string">&quot;npm run gh-pages &amp;&amp; npm run deploy-gh-pages&quot;</span>
-  },
-  <span class="hljs-comment">/* Entry point for terminal (i.e. &lt;package name&gt;) */</span>
-  <span class="hljs-comment">/* Don&apos;t set this unless you intend to allow CLI usage */</span>
-  <span class="hljs-string">&quot;bin&quot;</span>: <span class="hljs-string">&quot;./index.js&quot;</span>,
-  <span class="hljs-comment">/* Entry point (defaults to index.js) */</span>
-  <span class="hljs-string">&quot;main&quot;</span>: <span class="hljs-string">&quot;dist-modules/index.js&quot;</span>,
-  <span class="hljs-comment">/* Package dependencies (small if possible) */</span>
-  <span class="hljs-string">&quot;dependencies&quot;</span>: {},
-  <span class="hljs-comment">/* Package development dependencies */</span>
-  <span class="hljs-string">&quot;devDependencies&quot;</span>: {
-    <span class="hljs-string">&quot;babel&quot;</span>: <span class="hljs-string">&quot;^5.1.10&quot;</span>,
-    <span class="hljs-string">&quot;babel-eslint&quot;</span>: <span class="hljs-string">&quot;^3.0.1&quot;</span>,
-    <span class="hljs-string">&quot;babel-loader&quot;</span>: <span class="hljs-string">&quot;^5.0.0&quot;</span>,
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  /* Name of the project */
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;react-component-boilerplate&quot;</span><span class="token punctuation">,</span>
+  /* Brief description */
+  <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Boilerplate for React.js components&quot;</span><span class="token punctuation">,</span>
+  /* Who is the author + optional email */
+  <span class="token property">&quot;author&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Juho Vepsalainen &lt;email goes here&gt;&quot;</span><span class="token punctuation">,</span>
+  /* This is boilerplate specific (not used by npm<span class="token punctuation">)</span> */
+  <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;bebraw&quot;</span><span class="token punctuation">,</span>
+  /* Version of the package */
+  <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.0.0&quot;</span><span class="token punctuation">,</span>
+  /* `npm run &lt;name&gt;` */
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node dev-server/server.js&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;test&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jest &amp;&amp; npm run check-style &amp;&amp; npm run lint&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;gh-pages&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack --config ./config&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;deploy-gh-pages&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node ./config/deploy-gh-pages.js&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;dist-all&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run dist &amp;&amp; npm run dist-min&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;dist&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;dist-min&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;dist-modules&quot;</span><span class="token operator">:</span> <span class="token string">&quot;babel ./src --out-dir ./dist-modules&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;lint&quot;</span><span class="token operator">:</span> <span class="token string">&quot;eslint . --ext .js --ext .jsx&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;check-style&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jscs .&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;replace-meta&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node scripts/replace_meta.js&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;preversion&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run test &amp;&amp; npm run dist &amp;&amp; npm run dist-modules &amp;&amp; git commit --allow-empty -am \&quot;</span>Update dist\<span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;postpublish&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run gh-pages &amp;&amp; npm run deploy-gh-pages&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  /* Entry point for terminal (i.e. &lt;package name&gt;<span class="token punctuation">)</span> */
+  /* Don&apos;t set this unless you intend to allow CLI usage */
+  <span class="token property">&quot;bin&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./index.js&quot;</span><span class="token punctuation">,</span>
+  /* Entry point (defaults to index.js<span class="token punctuation">)</span> */
+  <span class="token property">&quot;main&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dist-modules/index.js&quot;</span><span class="token punctuation">,</span>
+  /* Package dependencies (small if possible<span class="token punctuation">)</span> */
+  <span class="token property">&quot;dependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  /* Package development dependencies */
+  <span class="token property">&quot;devDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;babel&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^5.1.10&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;babel-eslint&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^3.0.1&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;babel-loader&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^5.0.0&quot;</span><span class="token punctuation">,</span>
     ...
-    <span class="hljs-string">&quot;webpack&quot;</span>: <span class="hljs-string">&quot;^1.8.4&quot;</span>,
-    <span class="hljs-string">&quot;webpack-dev-server&quot;</span>: <span class="hljs-string">&quot;^1.8.0&quot;</span>
-  },
-  <span class="hljs-comment">/* You may want to give a rough dependency hint for things
+    <span class="token property">&quot;webpack&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.8.4&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;webpack-dev-server&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.8.0&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  /* You may want to give a rough dependency hint for things
    * like React components. The idea is to avoid depending
    * directly and let user deal with it instead.
    *
-   * If the rule is too strict, that will cause problems for
-   * the user. */</span>
-  <span class="hljs-string">&quot;peerDependencies&quot;</span>: {
-    <span class="hljs-string">&quot;react&quot;</span>: <span class="hljs-string">&quot;&gt;=0.11.2 &lt;1.0.0&quot;</span>
-  },
-  <span class="hljs-comment">/* Links to repository, homepage and so on */</span>
-  <span class="hljs-string">&quot;repository&quot;</span>: {
-    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;git&quot;</span>,
-    <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://github.com/bebraw/react-component-boilerplate.git&quot;</span>
-  },
-  <span class="hljs-string">&quot;homepage&quot;</span>: <span class="hljs-string">&quot;https://bebraw.github.io/react-component-boilerplate/&quot;</span>,
-  <span class="hljs-string">&quot;bugs&quot;</span>: {
-    <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://github.com/bebraw/react-component-boilerplate/issues&quot;</span>
-  },
-  <span class="hljs-comment">/* Keywords related to package,
-   * fill this well to make the package findable */</span>
-  <span class="hljs-string">&quot;keywords&quot;</span>: [
-    <span class="hljs-string">&quot;react&quot;</span>,
-    <span class="hljs-string">&quot;reactjs&quot;</span>,
-    <span class="hljs-string">&quot;boilerplate&quot;</span>
-  ],
-  <span class="hljs-comment">/* Which license to use */</span>
-  <span class="hljs-string">&quot;license&quot;</span>: <span class="hljs-string">&quot;MIT&quot;</span>,
-  <span class="hljs-comment">/* Jest specific metadata */</span>
-  <span class="hljs-string">&quot;jest&quot;</span>: {
-    <span class="hljs-string">&quot;scriptPreprocessor&quot;</span>: <span class="hljs-string">&quot;./config/preprocessor.js&quot;</span>,
-    <span class="hljs-string">&quot;unmockedModulePathPatterns&quot;</span>: [
-      <span class="hljs-string">&quot;./node_modules/react&quot;</span>
-    ]
-  }
-}
+   * If the rule is too strict<span class="token punctuation">,</span> that will cause problems for
+   * the user. */
+  <span class="token property">&quot;peerDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&gt;=0.11.2 &lt;1.0.0&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  /* Links to repository<span class="token punctuation">,</span> homepage and so on */
+  <span class="token property">&quot;repository&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;git&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/bebraw/react-component-boilerplate.git&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;homepage&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://bebraw.github.io/react-component-boilerplate/&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;bugs&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/bebraw/react-component-boilerplate/issues&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  /* Keywords related to package<span class="token punctuation">,</span>
+   * fill this well to make the package findable */
+  <span class="token property">&quot;keywords&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;react&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;reactjs&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;boilerplate&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  /* Which license to use */
+  <span class="token property">&quot;license&quot;</span><span class="token operator">:</span> <span class="token string">&quot;MIT&quot;</span><span class="token punctuation">,</span>
+  /* Jest specific metadata */
+  <span class="token property">&quot;jest&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;scriptPreprocessor&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./config/preprocessor.js&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;unmockedModulePathPatterns&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;./node_modules/react&quot;</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>As you can see <code>package.json</code> can contain a lot of information. You can attach non-npm specific metadata there that can be used by tooling.</p>
 <a class="header-anchor" href="#npm-workflow" id="npm-workflow"></a><h2>npm Workflow<a class="header-anchor-select" href="#npm-workflow">#</a></h2>
@@ -119,67 +119,67 @@ npm is one of the reasons behind the popularity of Node.js. It has become the pa
 <p>In addition, I generate so called <em>distribution bundles</em>: <code>.js</code> and <code>.min.js</code>. There&apos;s a sourcemap (<code>.map</code>) for both. That is useful for debugging. It is possible to consume these bundles standalone. They come with an <a href="https://github.com/umdjs/umd">UMD</a> wrapper.</p>
 <p>UMD makes it possible to consume them from various environments including global, AMD and CommonJS (Node.js format). You can refresh your memory with these by checking the Getting Started chapter for examples.</p>
 <p>It is surprisingly easy to generate the aforementioned bundles using Webpack. In case of my boilerplate the configuration is as follows:</p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">var</span> mergeDist = merge.bind(<span class="hljs-literal">null</span>, {
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    output: {
-        path: config.paths.dist,
-        libraryTarget: <span class="hljs-string">&apos;umd&apos;</span>,
-        library: config.library
-    },
-    entry: config.paths.lib,
-    externals: {
-        react: <span class="hljs-string">&apos;react&apos;</span>,
-        <span class="hljs-string">&apos;react/addons&apos;</span>: <span class="hljs-string">&apos;react/addons&apos;</span>
-    },
-    <span class="hljs-built_in">module</span>: {
-        loaders: [
-            {
-                test: <span class="hljs-regexp">/\.jsx?$/</span>,
-                loaders: [<span class="hljs-string">&apos;babel&apos;</span>],
-                include: config.paths.lib
-            }
-        ]
-    }
-});
+<span class="token keyword">var</span> mergeDist <span class="token operator">=</span> merge<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        path<span class="token punctuation">:</span> config<span class="token punctuation">.</span>paths<span class="token punctuation">.</span>dist<span class="token punctuation">,</span>
+        libraryTarget<span class="token punctuation">:</span> <span class="token string">&apos;umd&apos;</span><span class="token punctuation">,</span>
+        library<span class="token punctuation">:</span> config<span class="token punctuation">.</span>library
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    entry<span class="token punctuation">:</span> config<span class="token punctuation">.</span>paths<span class="token punctuation">.</span>lib<span class="token punctuation">,</span>
+    externals<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        react<span class="token punctuation">:</span> <span class="token string">&apos;react&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;react/addons&apos;</span><span class="token punctuation">:</span> <span class="token string">&apos;react/addons&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.jsx?$/</span><span class="token punctuation">,</span>
+                loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;babel&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                include<span class="token punctuation">:</span> config<span class="token punctuation">.</span>paths<span class="token punctuation">.</span>lib
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-exports.dist = mergeDist({
-    output: {
-        filename: config.filename + <span class="hljs-string">&apos;.js&apos;</span>
-    },
-});
+exports<span class="token punctuation">.</span>dist <span class="token operator">=</span> <span class="token function">mergeDist</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        filename<span class="token punctuation">:</span> config<span class="token punctuation">.</span>filename <span class="token operator">+</span> <span class="token string">&apos;.js&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-exports.distMin = mergeDist({
-    output: {
-        filename: config.filename + <span class="hljs-string">&apos;.min.js&apos;</span>
-    },
-    plugins: [
-        <span class="hljs-keyword">new</span> webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: <span class="hljs-literal">false</span>
-            }
-        })
-    ]
-});
+exports<span class="token punctuation">.</span>distMin <span class="token operator">=</span> <span class="token function">mergeDist</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        filename<span class="token punctuation">:</span> config<span class="token punctuation">.</span>filename <span class="token operator">+</span> <span class="token string">&apos;.min.js&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            compress<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                warnings<span class="token punctuation">:</span> <span class="token keyword">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="tip">The example uses the same <code>merge</code> utility we defined earlier on. You should check <a href="https://github.com/bebraw/react-component-boilerplate">the boilerplate</a> itself for exact configuration.</blockquote><p>Most of the magic happens thanks to <code>devtool</code> and <code>output</code> declarations. In addition, I have set up <code>externals</code> as I want to avoid bundling React into my library. Instead, it will be loaded as an external dependency using the naming defined in the mapping.</p>
 <a class="header-anchor" href="#npm-lifecycle-hooks" id="npm-lifecycle-hooks"></a><h2>npm Lifecycle Hooks<a class="header-anchor-select" href="#npm-lifecycle-hooks">#</a></h2>
 <p>npm provides various lifecycle hooks that can be useful. Let&apos;s say you are authoring a React component using Babel and some of its goodies. You could let <code>package.json</code> <em>main</em> field point at the UMD version as generated above. This won&apos;t be ideal for those consuming the library through npm, though.</p>
 <p>It is better to generate a ES5 compatible version of the package for npm consumers. This can be achieved using <strong>babel</strong> CLI tool:</p>
-<pre><code class="undefinedbash">babel ./lib --out-dir ./dist-modules
+<pre><code class="lang-bash">babel <span class="token punctuation">.</span><span class="token operator">/</span>lib <span class="token operator">--</span>out<span class="token operator">-</span><span class="token function">dir</span> <span class="token punctuation">.</span><span class="token operator">/</span>dist<span class="token operator">-</span>modules
 </code></pre>
 <p>This will walk through <code>./lib</code> directory and output a processed file for each it encounters to <code>./dist-modules</code>.</p>
 <p>Since we want to avoid having to run the command directly whenever we publish a new version, we can connect it to <code>prepublish</code> hook like this:</p>
-<pre><code class="undefinedjson"><span class="hljs-string">&quot;scripts&quot;</span>: {
+<pre><code class="lang-json"><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   ...
-  <span class="hljs-string">&quot;prepublish&quot;</span>: <span class="hljs-string">&quot;babel ./lib --out-dir ./dist-modules&quot;</span>
-}
+  <span class="token property">&quot;prepublish&quot;</span><span class="token operator">:</span> <span class="token string">&quot;babel ./lib --out-dir ./dist-modules&quot;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Make sure you hit <code>npm i babel --save-dev</code> to include the tool into your project.</p>
 <p>You probably don&apos;t want the directory content to end up to your Git repository. In order to avoid this and to keep your <code>git status</code> clean, consider this sort of <code>.gitignore</code>:</p>
-<pre><code class="undefinedbash">dist-modules/
-...
+<pre><code class="lang-bash">dist<span class="token operator">-</span>modules<span class="token operator">/</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 </code></pre>
 <p>Besides <code>prepublish</code>, npm provides a set of other hooks. The naming is always the same and follows pattern <code>pre&lt;hook&gt;</code>, <code>&lt;hook&gt;</code>, <code>post&lt;hook&gt;</code> where <code>&lt;hook&gt;</code> can be <code>publish</code>, <code>install</code>, <code>test</code>, <code>stop</code>, <code>start</code>, <code>restart</code>, or <code>version</code>.</p>
 <p>Even though npm will trigger scripts bound to these automatically, you can trigger them explicitly through <code>npm run</code> for testing (i.e. <code>npm run prepublish</code>). The idea here is that we want to make our package as easy to consume as possible. We can take one for our library users.</p>

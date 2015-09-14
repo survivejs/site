@@ -11,58 +11,58 @@ This pr…"><meta name="keywords" content="webpack,react,javascript,programming,
 <p>You could say Make goes way back. It was initially released in 1977. Even though it&apos;s an old tool, it has remained relevant. Make allows you to write separate tasks for various purposes. For instance you might have separate tasks for creating a production build, minifying your JavaScript or running tests. You can find the same idea in many other tools.</p>
 <p>Even though Make is mostly used with C projects, it&apos;s not tied to it in any way. James Coglan discusses in detail <a href="https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/">how to use Make with JavaScript</a>. Consider the abbreviated code based on James&apos; post below:</p>
 <p><strong>Makefile</strong></p>
-<pre><code class="undefinedmakefile"><span class="hljs-constant">PATH</span>  := node_modules/.bin:<span class="hljs-variable">$(PATH)</span>
-<span class="hljs-constant">SHELL</span> := /bin/bash
+<pre><code class="lang-makefile">PATH  <span class="token operator">:=</span> node_modules/.bin<span class="token punctuation">:</span><span class="token variable">$</span><span class="token punctuation">(</span>PATH<span class="token punctuation">)</span>
+SHELL <span class="token operator">:=</span> /bin/bash
 
-<span class="hljs-constant">source_files</span> := <span class="hljs-variable">$(wildcard lib/*.coffee)</span>
-<span class="hljs-constant">build_files</span>  := <span class="hljs-variable">$(source_files:%.coffee=build/%.js)</span>
-<span class="hljs-constant">app_bundle</span>   := build/app.js
-<span class="hljs-constant">spec_coffee</span>  := <span class="hljs-variable">$(wildcard spec/*.coffee)</span>
-<span class="hljs-constant">spec_js</span>      := <span class="hljs-variable">$(spec_coffee:%.coffee=build/%.js)</span>
+source_files <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">wildcard</span> lib/*.coffee<span class="token punctuation">)</span>
+build_files  <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>source_files<span class="token punctuation">:</span>%.coffee<span class="token operator">=</span>build/%.js<span class="token punctuation">)</span>
+app_bundle   <span class="token operator">:=</span> build/app.js
+spec_coffee  <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">wildcard</span> spec/*.coffee<span class="token punctuation">)</span>
+spec_js      <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>spec_coffee<span class="token punctuation">:</span>%.coffee<span class="token operator">=</span>build/%.js<span class="token punctuation">)</span>
 
-<span class="hljs-constant">libraries</span>    := vendor/jquery.js
+libraries    <span class="token operator">:=</span> vendor/jquery.js
 
-<span class="hljs-phony"><span class="hljs-keyword">.PHONY</span>: all clean test</span>
+<span class="token builtin">.PHONY</span><span class="token punctuation">:</span> all clean test
 
-all: $(app_bundle)
+<span class="token symbol">all</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>app_bundle<span class="token punctuation">)</span>
 
-build/%.js: %.coffee
-    coffee -co $(dir $@) $&lt;
+<span class="token symbol">build/%.js</span><span class="token punctuation">:</span> %.coffee
+    coffee -co <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">dir</span> <span class="token variable">$@</span><span class="token punctuation">)</span> <span class="token variable">$&lt;</span>
 
-$(app_bundle): $(libraries) $(build_files)
-    uglifyjs -cmo $@ $^
+<span class="token symbol"><span class="token variable">$</span>(app_bundle)</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>libraries<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>build_files<span class="token punctuation">)</span>
+    uglifyjs -cmo <span class="token variable">$@</span> <span class="token variable">$^</span>
 
-test: $(app_bundle) $(spec_js)
+<span class="token symbol">test</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>app_bundle<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>spec_js<span class="token punctuation">)</span>
     phantomjs phantom.js
 
-<span class="hljs-title">clean:</span>
+<span class="token symbol">clean</span><span class="token punctuation">:</span>
     rm -rf build
 </code></pre>
 <p>With Make you will model your tasks using some Make specific syntax and terminal commands. This allows to use it with Webpack easily.</p>
 <a class="header-anchor" href="#grunt" id="grunt"></a><h2>Grunt<a class="header-anchor-select" href="#grunt">#</a></h2>
 <p><img src="/images/grunt.png" alt="Grunt"></p>
 <p>Grunt went mainstream before Gulp. Its plugin architecture especially contributed towards its popularity. At the same time this is the Achilles&apos; heel of Grunt. I know from experience that you <strong>don&apos;t</strong> want to end up having to maintain a 300-line <code>Gruntfile</code>. Here&apos;s an example from <a href="http://gruntjs.com/sample-gruntfile">Grunt documentation</a>:</p>
-<pre><code class="undefinedjavascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">grunt</span>) </span>{
-  grunt.initConfig({
-    jshint: {
-      files: [<span class="hljs-string">&apos;Gruntfile.js&apos;</span>, <span class="hljs-string">&apos;src/**/*.js&apos;</span>, <span class="hljs-string">&apos;test/**/*.js&apos;</span>],
-      options: {
-        globals: {
-          jQuery: <span class="hljs-literal">true</span>
-        }
-      }
-    },
-    watch: {
-      files: [<span class="hljs-string">&apos;&lt;%= jshint.files %&gt;&apos;</span>],
-      tasks: [<span class="hljs-string">&apos;jshint&apos;</span>]
-    }
-  });
+<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>grunt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    jshint<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      files<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;Gruntfile.js&apos;</span><span class="token punctuation">,</span> &apos;src<span class="token comment" spellcheck="true">/**/</span><span class="token operator">*</span><span class="token punctuation">.</span>js<span class="token string">&apos;, &apos;</span>test<span class="token comment" spellcheck="true">/**/</span><span class="token operator">*</span><span class="token punctuation">.</span>js&apos;<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        globals<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          jQuery<span class="token punctuation">:</span> <span class="token keyword">true</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      files<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;&lt;%= jshint.files %&gt;&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      tasks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;jshint&apos;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  grunt.loadNpmTasks(<span class="hljs-string">&apos;grunt-contrib-jshint&apos;</span>);
-  grunt.loadNpmTasks(<span class="hljs-string">&apos;grunt-contrib-watch&apos;</span>);
+  grunt<span class="token punctuation">.</span><span class="token function">loadNpmTasks</span><span class="token punctuation">(</span><span class="token string">&apos;grunt-contrib-jshint&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation">.</span><span class="token function">loadNpmTasks</span><span class="token punctuation">(</span><span class="token string">&apos;grunt-contrib-watch&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  grunt.registerTask(<span class="hljs-string">&apos;default&apos;</span>, [<span class="hljs-string">&apos;jshint&apos;</span>]);
-};
+  grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">&apos;default&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&apos;jshint&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>In this sample, we define two basic tasks related to <em>jshint</em>, a linting tool that helps you spot possible problem spots in your JavaScript source code. We have a standalone task for running jshint. Also, we have a watcher based task. When we run Grunt, we&apos;ll get warnings in real-time in our terminal as we edit and save our source code.</p>
 <p>In practice you would have many small tasks for various purposes, such as building the project. The example shows how these tasks are constructed. An important part of the power of Grunt is that it hides a lot of the wiring from you. Taken too far this can get problematic though. It can become hard to thoroughly understand what&apos;s going on under the hood.</p>
@@ -70,43 +70,43 @@ test: $(app_bundle) $(spec_js)
 <p><img src="/images/gulp.png" alt="Gulp"></p>
 <p>Gulp takes a different approach. Instead of relying on configuration per plugin, you deal with actual code. Gulp builds on top of the tried and true concept of piping. If you are familiar with Unix, it&apos;s the same idea here. You simply have sources, filters, and sinks.</p>
 <p>Sources match files. Filters perform operations on sources (e.g., convert to JavaScript). Finally, the results get passed to sinks (e.g., your build directory). Here&apos;s a sample <code>Gulpfile</code> to give you a better idea of the approach, taken from the project&apos;s README. It has been abbreviated a bit:</p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;gulp&apos;</span>);
-<span class="hljs-keyword">var</span> coffee = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;gulp-coffee&apos;</span>);
-<span class="hljs-keyword">var</span> concat = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;gulp-concat&apos;</span>);
-<span class="hljs-keyword">var</span> uglify = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;gulp-uglify&apos;</span>);
-<span class="hljs-keyword">var</span> sourcemaps = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;gulp-sourcemaps&apos;</span>);
-<span class="hljs-keyword">var</span> del = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;del&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> gulp <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;gulp&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> coffee <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;gulp-coffee&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> concat <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;gulp-concat&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> uglify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;gulp-uglify&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> sourcemaps <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;gulp-sourcemaps&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> del <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;del&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> paths = {
-    scripts: [<span class="hljs-string">&apos;client/js/**/*.coffee&apos;</span>, <span class="hljs-string">&apos;!client/external/**/*.coffee&apos;</span>]
-};
+<span class="token keyword">var</span> paths <span class="token operator">=</span> <span class="token punctuation">{</span>
+    scripts<span class="token punctuation">:</span> <span class="token punctuation">[</span>&apos;client<span class="token operator">/</span>js<span class="token comment" spellcheck="true">/**/</span><span class="token operator">*</span><span class="token punctuation">.</span>coffee<span class="token string">&apos;, &apos;</span><span class="token operator">!</span>client<span class="token operator">/</span>external<span class="token comment" spellcheck="true">/**/</span><span class="token operator">*</span><span class="token punctuation">.</span>coffee&apos;<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// Not all tasks need to use streams</span>
-<span class="hljs-comment">// A gulpfile is just another node program and you can use all packages available on npm</span>
-gulp.task(<span class="hljs-string">&apos;clean&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cb</span>) </span>{
-  <span class="hljs-comment">// You can use multiple globbing patterns as you would with `gulp.src`</span>
-  del([<span class="hljs-string">&apos;build&apos;</span>], cb);
-});
+<span class="token comment" spellcheck="true">// Not all tasks need to use streams</span>
+<span class="token comment" spellcheck="true">// A gulpfile is just another node program and you can use all packages available on npm</span>
+gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">&apos;clean&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// You can use multiple globbing patterns as you would with `gulp.src`</span>
+  <span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&apos;build&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-gulp.task(<span class="hljs-string">&apos;scripts&apos;</span>, [<span class="hljs-string">&apos;clean&apos;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-comment">// Minify and copy all JavaScript (except vendor scripts)</span>
-  <span class="hljs-comment">// with sourcemaps all the way down</span>
-  <span class="hljs-keyword">return</span> gulp.src(paths.scripts)
-    .pipe(sourcemaps.init())
-      .pipe(coffee())
-      .pipe(uglify())
-      .pipe(concat(<span class="hljs-string">&apos;all.min.js&apos;</span>))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(<span class="hljs-string">&apos;build/js&apos;</span>));
-});
+gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">&apos;scripts&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&apos;clean&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Minify and copy all JavaScript (except vendor scripts)</span>
+  <span class="token comment" spellcheck="true">// with sourcemaps all the way down</span>
+  <span class="token keyword">return</span> gulp<span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>scripts<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>sourcemaps<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">uglify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">&apos;all.min.js&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>sourcemaps<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span><span class="token string">&apos;build/js&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// Rerun the task when a file changes</span>
-gulp.task(<span class="hljs-string">&apos;watch&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-  gulp.watch(paths.scripts, [<span class="hljs-string">&apos;scripts&apos;</span>]);
-});
+<span class="token comment" spellcheck="true">// Rerun the task when a file changes</span>
+gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">&apos;watch&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  gulp<span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>scripts<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&apos;scripts&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// The default task (called when you run `gulp` from CLI)</span>
-gulp.task(<span class="hljs-string">&apos;default&apos;</span>, [<span class="hljs-string">&apos;watch&apos;</span>, <span class="hljs-string">&apos;scripts&apos;</span>]);
+<span class="token comment" spellcheck="true">// The default task (called when you run `gulp` from CLI)</span>
+gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">&apos;default&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&apos;watch&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;scripts&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Given the configuration is code, you can always just hack it if you run into troubles. You can wrap existing Node.js modules as Gulp plugins, and so on. Compared to Grunt, you have a clearer idea of what&apos;s going on. You still end up writing a lot of boilerplate for casual tasks, though. That is where some newer approaches come in.</p>
 <blockquote class="tip"><a href="https://www.npmjs.com/package/gulp-webpack">gulp-webpack</a> allows you to use Webpack in a Gulp environment.</blockquote><a class="header-anchor" href="#browserify" id="browserify"></a><h2>Browserify<a class="header-anchor-select" href="#browserify">#</a></h2>
@@ -120,26 +120,26 @@ gulp.task(<span class="hljs-string">&apos;default&apos;</span>, [<span class="hl
 <p>You could say Webpack (or just <em>webpack</em>) takes a more monolithic approach than Browserify. You simply get more out of the box. Webpack extends <code>require</code> and allows you to customize its behavior using loaders. You can load arbitrary content through this mechanism. This applies also to CSS files (<code>@import</code>). Webpack also provides plugins for tasks, such as minifying, localization, hot loading, and so on.</p>
 <p>All this is based on configuration. Here is a sample configuration adapted from <a href="http://webpack.github.io/docs/tutorials/getting-started/">the official webpack tutorial</a>:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;webpack&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-built_in">module</span>.exports = {
-  entry: <span class="hljs-string">&apos;./entry.js&apos;</span>,
-  output: {
-    path: __dirname,
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
-  },
-  <span class="hljs-built_in">module</span>: {
-    loaders: [
-      {
-        test: <span class="hljs-regexp">/\.css$/</span>,
-        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>]
-      }
-    ]
-  },
-  plugins: [
-    <span class="hljs-keyword">new</span> webpack.optimize.UglifyJsPlugin()
-  ]
-};
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> <span class="token string">&apos;./entry.js&apos;</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> __dirname<span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;style&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;css&apos;</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Given the configuration is written in JavaScript it&apos;s quite malleable. As long as it&apos;s JavaScript, Webpack is fine with it.</p>
 <p>The configuration model may make Webpack feel a bit opaque at times. It can be difficult to understand what it&apos;s doing. This is particularly true for more complicated cases. I have compiled <a href="https://christianalfoni.github.io/react-webpack-cookbook/">a webpack cookbook</a> with Christian Alfoni that goes into more detail when it comes to specific problems.</p>
@@ -159,46 +159,46 @@ gulp.task(<span class="hljs-string">&apos;default&apos;</span>, [<span class="hl
 <p>Webpack allows you to use different module formats, but under the hood they all work the same way.</p>
 <p><strong>CommonJS</strong></p>
 <p>If you have used Node.js, it is likely that you are familiar with CommonJS already. Here&apos;s a brief example:</p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> MyModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./MyModule&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> MyModule <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./MyModule&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// export at module root</span>
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ ... };
+<span class="token comment" spellcheck="true">// export at module root</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// alternatively, export individual functions</span>
-exports.hello = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{...};
+<span class="token comment" spellcheck="true">// alternatively, export individual functions</span>
+exports<span class="token punctuation">.</span>hello <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>ES6</strong></p>
 <p>ES6 is the format we all have been waiting for since 1995. As you can see, it resembles CommonJS a little bit and is quite clear!</p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> MyModule <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./MyModule.js&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> MyModule from <span class="token string">&apos;./MyModule.js&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// export at module root</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ ... };
+<span class="token comment" spellcheck="true">// export at module root</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// or export as module function,</span>
-<span class="hljs-comment">// you can have multiple of these per module</span>
-<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span>(<span class="hljs-params"></span>) </span>{...};
+<span class="token comment" spellcheck="true">// or export as module function,</span>
+<span class="token comment" spellcheck="true">// you can have multiple of these per module</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>AMD</strong></p>
 <p>AMD, or asynchronous module definition, was invented as a workaround. It introduces a <code>define</code> wrapper:</p>
-<pre><code class="undefinedjavascript">define([<span class="hljs-string">&apos;./MyModule.js&apos;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">MyModule</span>) </span>{
-  <span class="hljs-comment">// export at module root</span>
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{};
-});
+<pre><code class="lang-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&apos;./MyModule.js&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>MyModule<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// export at module root</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// or</span>
-define([<span class="hljs-string">&apos;./MyModule.js&apos;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">MyModule</span>) </span>{
-  <span class="hljs-comment">// export as module function</span>
-  <span class="hljs-keyword">return</span> {
-    hello: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{...}
-  };
-});
+<span class="token comment" spellcheck="true">// or</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&apos;./MyModule.js&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>MyModule<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// export as module function</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    hello<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Incidentally it is possible to use <code>require</code> within the wrapper like this:</p>
-<pre><code class="undefinedjavascript">define([<span class="hljs-string">&apos;require&apos;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">require</span>) </span>{
-  <span class="hljs-keyword">var</span> MyModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./MyModule.js&apos;</span>);
+<pre><code class="lang-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&apos;require&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>require<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> MyModule <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./MyModule.js&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{...};
-});
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>This approach definitely eliminates some of the clutter. You will still end up with some code that might feel redundant. Given there&apos;s ES6 now, it probably doesn&apos;t make much sense to use AMD anymore unless you really have to.</p>
 <p><strong>UMD</strong></p>

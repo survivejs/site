@@ -5,23 +5,23 @@ This sounds simple, but in practice, it can be a complicated an…"><meta name="
 <p>This sounds simple, but in practice, it can be a complicated and messy process. You definitely don&apos;t want to deal with all the details yourself. This is where Webpack fits in. Next, we&apos;ll get Webpack set up and your first project running in development mode.</p>
 <a class="header-anchor" href="#setting-up-the-project" id="setting-up-the-project"></a><h2>Setting Up the Project<a class="header-anchor-select" href="#setting-up-the-project">#</a></h2>
 <p>Webpack is one of those tools that depends on <a href="http://nodejs.org/">Node.js</a>. Make sure you have it installed and that you have <code>npm</code> available at your terminal. Set up a directory for your project, navigate there, hit <code>npm init</code> and fill in some details. You can just hit <em>return</em> for each and it will work. Here are the commands:</p>
-<pre><code class="undefinedbash">mkdir kanban_app
-<span class="hljs-built_in">cd</span> kanban_app
+<pre><code class="lang-bash"><span class="token function">mkdir</span> kanban_app
+<span class="token function">cd</span> kanban_app
 npm init
-<span class="hljs-comment"># hit return a few times till you have gone through the questions</span>
-</code></pre>
+<span class="token comment" spellcheck="true"># hit return a few times till you have gone through the questions
+</span></code></pre>
 <p>As a result, you should have <code>package.json</code> at your project root. You can still tweak it manually to make further changes. We&apos;ll be doing some changes through <code>npm</code> tool but it&apos;s fine to tweak the file to your liking. The official documentation explains various <a href="https://docs.npmjs.com/files/package.json">package.json options</a> in more detail. I also cover some useful library authoring related tricks later in this book.</p>
 <p>If you are into version control, as you should, this would be a good time to set up your repository. You can create commits as you progress with the project.</p>
 <p>If you are using git, I recommend setting up a <code>.gitignore</code> to the project root:</p>
 <p><strong>.gitignore</strong></p>
-<pre><code class="undefinedbash"><span class="hljs-tag">node_modules</span>
-*<span class="hljs-class">.log</span>
-<span class="hljs-class">.DS_Store</span>
+<pre><code class="lang-bash">node_modules
+<span class="token operator">*</span><span class="token punctuation">.</span>log
+<span class="token punctuation">.</span>DS_Store
 </code></pre>
 <p>At the very least you should have <code>node_modules</code> here as you probably don&apos;t want that to end up in the source control. The problem with that is that as some modules need to be compiled per platform, it gets rather messy to collaborate. Ideally your <code>git status</code> should look clean. You can extend <code>.gitignore</code> as you go.</p>
 <blockquote class="tip"><code>.DS_Store</code> is something OS X specific. It contains system specific custom attributes related to the directory. As a result it can be safely ignored.</blockquote><a class="header-anchor" href="#installing-webpack" id="installing-webpack"></a><h2>Installing Webpack<a class="header-anchor-select" href="#installing-webpack">#</a></h2>
 <p>Next, you should get Webpack installed. We&apos;ll do a local install and save it as a project dependency. This will allow us to maintain Webpack&apos;s version per project. Hit</p>
-<pre><code class="undefinedbash">npm i webpack node-libs-browser --save-dev
+<pre><code class="lang-bash">npm i webpack node<span class="token operator">-</span>libs<span class="token operator">-</span>browser <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <blockquote class="tip"><code>node-libs-browser</code> is installed as it is a peer dependency of Webpack. Starting from npm 3 it won&apos;t get installed automatically. It&apos;s a good idea to have it installed in order to be future-proof.</blockquote><p>This is a good opportunity to try to run Webpack for the first time. Hit <code>node_modules/.bin/webpack</code>. You should see a version log, a link to the command line interface guide and a long list of options. We won&apos;t be using most of those, but it&apos;s good to know that this tool is packed with functionality if nothing else.</p>
 <p>Webpack works using a global install as well (<code>-g</code> or <code>--global</code> flag during installation). It is preferred to keep it as a project dependency like this. The arrangement helps to keep your life simpler. This way you have direct control over the version you are running.</p>
@@ -46,48 +46,48 @@ npm init
 <a class="header-anchor" href="#setting-up-assets" id="setting-up-assets"></a><h2>Setting Up Assets<a class="header-anchor-select" href="#setting-up-assets">#</a></h2>
 <p>As you never get tired of <code>Hello world</code>, we might as well model a variant of that. Set up a component like this:</p>
 <p><strong>app/component.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">var</span> element = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;h1&apos;</span>);
+<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;h1&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  element.innerHTML = <span class="hljs-string">&apos;Hello world&apos;</span>;
+  element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">&apos;Hello world&apos;</span><span class="token punctuation">;</span>
 
-  <span class="hljs-keyword">return</span> element;
-};
+  <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Next, we are going to need an entry point for our application. It will simply <code>require</code> our component and render it through the DOM:</p>
 <p><strong>app/index.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> component = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./component&apos;</span>);
-<span class="hljs-keyword">var</span> app = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&apos;div&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> component <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./component&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-built_in">document</span>.body.appendChild(app);
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-app.appendChild(component());
+app<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <a class="header-anchor" href="#setting-up-webpack-configuration" id="setting-up-webpack-configuration"></a><h2>Setting Up Webpack Configuration<a class="header-anchor-select" href="#setting-up-webpack-configuration">#</a></h2>
 <p>We&apos;ll need to tell Webpack how to deal with the assets we just set up. For this purpose we&apos;ll build <code>webpack.config.js</code>. Webpack and its development server will be able to discover this file through convention.</p>
 <p>To keep things simple, we&apos;ll generate an entry point to our application using <code>html-webpack-plugin</code>. It will create links to possible assets and keep our life simple. Hit</p>
-<pre><code class="undefinedbash">npm i html-webpack-plugin --save-dev
+<pre><code class="lang-bash">npm i html<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>to install it to the project.</p>
 <p>To map our application to <em>build/bundle.js</em> and generate <em>build/index.html</em> we need configuration like this:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;path&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> HtmlwebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;html-webpack-plugin&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+<span class="token keyword">var</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-built_in">module</span>.exports = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-  output: {
-    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
-  },
-  plugins: [
-    <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
-      title: <span class="hljs-string">&apos;Kanban app&apos;</span>
-    })
-  ]
-};
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlwebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">&apos;Kanban app&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Given Webpack expects absolute paths we have some good options here. I like to use <code>path.resolve</code>, but <code>path.join</code> would be a good alternative. <code>path.resolve</code> is equivalent to navigating the file system through <em>cd</em>. <code>path.join</code> gives you just that, a join. See <a href="https://nodejs.org/api/path.html">Node.js path API</a> for the exact details.</p>
 <p>If you hit <code>node_modules/.bin/webpack</code> now you should see a Webpack build. You can serve <em>/build</em> through a dummy server such as <em>serve</em> (<code>npm i serve -g</code>). Examine the results in a browser.</p>
@@ -96,36 +96,36 @@ app.appendChild(component());
 <p>Now that we have the basic building blocks together, we can set up a development server. <code>webpack-dev-server</code> is a development server that automatically refreshes content in the browser while you develop your application.</p>
 <p>This makes it roughly equivalent to tools such as <a href="http://livereload.com/">LiveReload</a> or <a href="http://www.browsersync.io/">Browsersync</a>. The greatest advantage Webpack has over these tools is Hot Module Replacement (HMR). We&apos;ll discuss it when we go through React.</p>
 <p>Hit</p>
-<pre><code class="undefinedbash">npm i webpack-dev-server --save-dev
+<pre><code class="lang-bash">npm i webpack<span class="token operator">-</span>dev<span class="token operator">-</span>server <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>at the project root to get the server installed. We will be invoking our development server through npm. It allows us to set up <code>scripts</code> at <code>package.json</code>. The following configuration is enough:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="undefinedjson">...
-<span class="hljs-string">&quot;scripts&quot;</span>: {
-  <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server&quot;</span>
-},
+<pre><code class="lang-json">...
+<span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack-dev-server&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 ...
 </code></pre>
 <p>We also need to do some configuration work.</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">var</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;webpack&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+<span class="token keyword">var</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-built_in">module</span>.exports = {
-  ...
-  devServer: {
-    historyApiFallback: <span class="hljs-literal">true</span>,
-    hot: <span class="hljs-literal">true</span>,
-    inline: <span class="hljs-literal">true</span>,
-    progress: <span class="hljs-literal">true</span>
-  },
-  plugins: [
-    <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin(),
-    ...
-  ]
-};
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    historyApiFallback<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    hot<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    inline<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    progress<span class="token punctuation">:</span> <span class="token keyword">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>HotModuleReplacementPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Hit <code>npm start</code> and surf to <strong>localhost:8080</strong>. You should see something familiar there. Try modifying <code>app/component.js</code> while the server is running and see what happens. Quite neat, huh?</p>
 <p><img src="/images/hello_01.png" alt="Hello world"></p>
@@ -135,49 +135,49 @@ app.appendChild(component());
 <a class="header-anchor" href="#refreshing-css" id="refreshing-css"></a><h2>Refreshing CSS<a class="header-anchor-select" href="#refreshing-css">#</a></h2>
 <p>We can extend the approach to work with CSS. Webpack allows us to change CSS without forcing a full refresh. Let&apos;s see how to achieve that next.</p>
 <p>To load CSS into a project, we&apos;ll need to use a couple of loaders. To get started, invoke</p>
-<pre><code class="undefinedbash">npm i css-loader style-loader --save-dev
+<pre><code class="lang-bash">npm i css<span class="token operator">-</span>loader style<span class="token operator">-</span>loader <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>Now that we have the loaders we need, we&apos;ll need to make sure Webpack is aware of them. Configure as follows.</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;path&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> HtmlwebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;html-webpack-plugin&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+<span class="token keyword">var</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-built_in">module</span>.exports = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-  output: {
-    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
-  },
-  <span class="hljs-built_in">module</span>: {
-    loaders: [
-      {
-        test: <span class="hljs-regexp">/\.css$/</span>,
-        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>],
-        include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-      }
-    ]
-  },
-  plugins: [
-    <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
-      title: <span class="hljs-string">&apos;Kanban app&apos;</span>
-    })
-  ]
-};
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;style&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;css&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlwebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">&apos;Kanban app&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The configuration we added means that files ending with <code>.css</code> should invoke given loaders. <code>test</code> matches against a JavaScript style regular expression. The loaders are evaluated from right to left. In this case, <em>css-loader</em> gets evaluated first, then <em>style-loader</em>. <em>css-loader</em> will resolve <code>@import</code> and <code>url</code> statements in our CSS files. <em>style-loader</em> deals with <code>require</code> statements in our JavaScript. A similar approach works with CSS preprocessors, like Sass and Less, and their loaders.</p>
 <blockquote class="tip">Loaders are transformations that are applied to source files, and return the new source. Loaders can be chained together, like using a pipe in Unix. See Webpack&apos;s <a href="http://webpack.github.io/docs/using-loaders.html">What are loaders?</a> and <a href="http://webpack.github.io/docs/list-of-loaders.html">list of loaders</a>.</blockquote><blockquote class="warning">If <code>include</code> isn&apos;t set, Webpack will traverse all files within the base directory. This can hurt performance! It is a good idea to set up <code>include</code> always. There&apos;s also <code>exclude</code> option that may come in handy.</blockquote><p>We are missing just one bit, the actual CSS itself:</p>
 <p><strong>app/main.css</strong></p>
-<pre><code class="undefinedcss"><span class="hljs-tag">body</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> cornsilk</span></span>;
-}</span>
+<pre><code class="lang-css"><span class="token selector">body </span><span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> cornsilk<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Also, we&apos;ll need to make Webpack aware of this file:</p>
 <p><strong>app/index.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./main.css&apos;</span>);
+<pre><code class="lang-javascript"><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./main.css&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-...
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 </code></pre>
 <p>Hit <code>npm start</code> now. Point your browser to <strong>localhost:8080</strong> if you are using the default port.</p>
 <p>Open up <em>main.css</em> and change the background color to something like <code>lime</code> (<code>background: lime</code>). Develop styles as needed to make it look a little nicer.</p>
@@ -188,51 +188,51 @@ app.appendChild(component());
 <blockquote class="tip">Webpack works well as a basis for more advanced tools. I&apos;ve helped to develop a static site generator known as <a href="https://antwarjs.github.io/">Antwar</a>. It builds upon Webpack and React and hides a lot of the complexity from the user.</blockquote><p>I have settled with a single configuration file based approach. The idea is that there&apos;s a smart <code>merge</code> function. It overrides objects and concatenates arrays. This works well with Webpack configuration given that&apos;s what you want to do most of the time. In this approach the configuration block to use is determined based on npm environment. This approach is that it allows you to see all relevant configuration at one glance.</p>
 <a class="header-anchor" href="#setting-up-configuration-target-for-npm-start-" id="setting-up-configuration-target-for-npm-start-"></a><h3>Setting Up Configuration Target for <code>npm start</code><a class="header-anchor-select" href="#setting-up-configuration-target-for-npm-start-">#</a></h3>
 <p>As discussed we&apos;ll be using a custom <code>merge</code> function for sharing configuration between targets. Hit</p>
-<pre><code class="undefinedbash">npm i webpack-merge --save-dev
+<pre><code class="lang-bash">npm i webpack<span class="token operator">-</span>merge <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>to add it to the project. Add <code>merge</code> stub as below. The idea is that we detect npm lifecycle event (<code>start</code>, <code>build</code>, ...) and then branch and merge based on that. We&apos;ll expand these in the coming chapters.</p>
 <p>To improve debuggability of the application, we can set up sourcemaps while we are at it. These allow you to get proper debug information at the browser. You&apos;ll see exactly where an error was raised for instance. In Webpack this is controlled through the <code>devtool</code> setting. We can use decent defaults as follows:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path&apos;</span>);
-<span class="hljs-keyword">var</span> HtmlwebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;html-webpack-plugin&apos;</span>);
-<span class="hljs-keyword">var</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack&apos;</span>);
-<span class="hljs-keyword">var</span> merge = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webpack-merge&apos;</span>);
+<pre><code class="lang-javascript"><span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;path&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> HtmlwebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;html-webpack-plugin&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;webpack&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> merge <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;webpack-merge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> TARGET = process.env.npm_lifecycle_event;
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+<span class="token keyword">var</span> TARGET <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_lifecycle_event<span class="token punctuation">;</span>
+<span class="token keyword">var</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> common = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-  output: {
-    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
-  },
-  <span class="hljs-built_in">module</span>: {
-    loaders: [
-      {
-        test: <span class="hljs-regexp">/\.css$/</span>,
-        loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>],
-        include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-      }
-    ]
-  }
-  ...
-};
+<span class="token keyword">var</span> common <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;style&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;css&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;eval-source-map&apos;</span>,
-    devServer: {
-      historyApiFallback: <span class="hljs-literal">true</span>,
-      hot: <span class="hljs-literal">true</span>,
-      inline: <span class="hljs-literal">true</span>,
-      progress: <span class="hljs-literal">true</span>
-    },
-    plugins: [
-      <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin()
-    ]
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;start&apos;</span> <span class="token operator">||</span> <span class="token operator">!</span>TARGET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;eval-source-map&apos;</span><span class="token punctuation">,</span>
+    devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      historyApiFallback<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+      hot<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+      inline<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+      progress<span class="token punctuation">:</span> <span class="token keyword">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>HotModuleReplacementPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><code>if(TARGET === &apos;start&apos; || !TARGET) {</code> provides a default in case we&apos;re running outside of npm.</p>
 <p>If you run the development build now using <code>npm start</code>, Webpack will generate sourcemaps. Webpack provides many different ways to generate them as discussed in the <a href="https://webpack.github.io/docs/configuration.html#devtool">official documentation</a>. In this case, we&apos;re using <code>eval-source-map</code>. It builds slowly initially, but it provides fast rebuild speed and yields real files.</p>

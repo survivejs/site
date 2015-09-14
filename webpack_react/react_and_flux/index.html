@@ -23,25 +23,25 @@ Flux will allow us to separate data and application state from our Views. This h
 <p>In Alt you&apos;ll deal with Actions and Stores. Dispatcher is hidden, but you will still have access to it if needed. Compared to other implementations Alt hides a lot of boilerplate. There are special features to allow you to save and restore the application state. This is handy for implementing persistency and isomorphic rendering.</p>
 <a class="header-anchor" href="#setting-up-an-alt-instance" id="setting-up-an-alt-instance"></a><h3>Setting Up an Alt Instance<a class="header-anchor-select" href="#setting-up-an-alt-instance">#</a></h3>
 <p>Everything in Alt begins from an Alt instance. It keeps track of Actions and Stores and keeps communication going on. To get started, let&apos;s add Alt to our project:</p>
-<pre><code class="undefinedbash">npm i alt --save
+<pre><code class="lang-bash">npm i alt <span class="token operator">--</span>save
 </code></pre>
 <p>To keep things simple, we&apos;ll be treating all Alt components as a <a href="https://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>. Using the pattern we reuse the same instance within the whole application. To achieve this we can push it to a module of its own and then refer to that from everywhere. Set it up as follows:</p>
 <p><strong>app/libs/alt.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> Alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt&apos;</span>;
-<span class="hljs-comment">//import chromeDebug from &apos;alt/utils/chromeDebug&apos;;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> Alt from <span class="token string">&apos;alt&apos;</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//import chromeDebug from &apos;alt/utils/chromeDebug&apos;;</span>
 
-<span class="hljs-keyword">const</span> alt = <span class="hljs-keyword">new</span> Alt();
-<span class="hljs-comment">//chromeDebug(alt);</span>
+<span class="token keyword">const</span> alt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Alt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//chromeDebug(alt);</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt;
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">;</span>
 </code></pre>
 <p>Webpack caches the modules so the next time you import Alt, will return the same instance again.</p>
 <blockquote class="tip">There is a Chrome plugin known as <a href="https://github.com/goatslacker/alt-devtool">alt-devtool</a>. After installed you can connect to Alt by uncommenting the related lines above. You can use it to debug the state of your stores, search and travel in time.</blockquote><a class="header-anchor" href="#defining-crud-api-for-notes" id="defining-crud-api-for-notes"></a><h3>Defining CRUD API for Notes<a class="header-anchor-select" href="#defining-crud-api-for-notes">#</a></h3>
 <p>Next, we&apos;ll need to define a basic API for operating over the Note data. To keep this simple, let&apos;s CRUD (Create, Read, Update, Delete) it. Given Read is implicit, we won&apos;t be needing that. We can model the rest as Actions, though. Alt provides a shorthand known as <code>generateActions</code>. We can use it like this:</p>
 <p><strong>app/actions/NoteActions.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> alt from <span class="token string">&apos;../libs/alt&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.generateActions(<span class="hljs-string">&apos;create&apos;</span>, <span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-string">&apos;delete&apos;</span>);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">generateActions</span><span class="token punctuation">(</span><span class="token string">&apos;create&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;update&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;delete&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <a class="header-anchor" href="#defining-a-store-for-notes-" id="defining-a-store-for-notes-"></a><h2>Defining a Store for <code>Notes</code><a class="header-anchor-select" href="#defining-a-store-for-notes-">#</a></h2>
 <p>A Store is a single source of truth for a part of your application state. In this case, we need one to maintain the state of the notes. We will connect all the actions we defined above using the <code>bindActions</code> function.</p>
@@ -49,116 +49,116 @@ Flux will allow us to separate data and application state from our Views. This h
 <a class="header-anchor" href="#setting-up-a-skeleton" id="setting-up-a-skeleton"></a><h3>Setting Up a Skeleton<a class="header-anchor-select" href="#setting-up-a-skeleton">#</a></h3>
 <p>As a first step we can set up a skeleton for our Store. We can fill in the methods we need after that. Alt uses standard ES6 classes so it&apos;s the same syntax as we saw earlier with React components. Here&apos;s a starting point:</p>
 <p><strong>app/stores/NoteStore.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
-<span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
-<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> uuid from <span class="token string">&apos;node-uuid&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> alt from <span class="token string">&apos;../libs/alt&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> NoteActions from <span class="token string">&apos;../actions/NoteActions&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
-  constructor() {
-    <span class="hljs-keyword">this</span>.bindActions(NoteActions);
+<span class="token keyword">class</span> <span class="token class-name">NoteStore</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">bindActions</span><span class="token punctuation">(</span>NoteActions<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">this</span>.notes = [];
-  }
-  create(note) {
+    <span class="token keyword">this</span><span class="token punctuation">.</span>notes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">create</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  }
-  update({id, task}) {
+  <span class="token punctuation">}</span>
+  <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>id<span class="token punctuation">,</span> task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  }
-  <span class="hljs-keyword">delete</span>(id) {
+  <span class="token punctuation">}</span>
+  <span class="token keyword">delete</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  }
-}
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">createStore</span><span class="token punctuation">(</span>NoteStore<span class="token punctuation">,</span> <span class="token string">&apos;NoteStore&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We call <code>bindActions</code> to map each action to a method by name. We trigger the appropriate logic at each method based on that. Finally, we connect the Store with Alt using <code>alt.createStore</code>.</p>
 <p>Note that assigning a label to a store (<code>NoteStore</code> in this case) isn&apos;t required. It is a good practice as it protects the code against minification and possible collisions. These labels become important when we persist the data.</p>
 <a class="header-anchor" href="#implementing-create-" id="implementing-create-"></a><h3>Implementing <code>create</code><a class="header-anchor-select" href="#implementing-create-">#</a></h3>
 <p>Compared to the earlier logic <code>create</code> will generate an id for a <code>Note</code> automatically. This is a detail that can be hidden within the store.</p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;node-uuid&apos;</span>;
-<span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../libs/alt&apos;</span>;
-<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> uuid from <span class="token string">&apos;node-uuid&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> alt from <span class="token string">&apos;../libs/alt&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> NoteActions from <span class="token string">&apos;../actions/NoteActions&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
-  constructor() {
-    ...
-  }
-  create(note) {
-    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
+<span class="token keyword">class</span> <span class="token class-name">NoteStore</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">create</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
 
-    note.id = uuid.v4();
+    note<span class="token punctuation">.</span>id <span class="token operator">=</span> uuid<span class="token punctuation">.</span><span class="token function">v4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">this</span>.setState({
-      notes: notes.concat(note)
-    });
-  }
-  ...
-}
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      notes<span class="token punctuation">:</span> notes<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">createStore</span><span class="token punctuation">(</span>NoteStore<span class="token punctuation">,</span> <span class="token string">&apos;NoteStore&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>To keep the implementation clean we are using <code>this.setState</code>. It is a feature of Alt that allows us to signify that we are going to alter the Store state. Alt will signal the change to possible listeners.</p>
 <a class="header-anchor" href="#implementing-update-" id="implementing-update-"></a><h3>Implementing <code>update</code><a class="header-anchor-select" href="#implementing-update-">#</a></h3>
 <p><code>update</code> follows the earlier logic apart from some renaming. Most importantly we commit the new state through <code>this.setState</code>:</p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
-  ...
-  update({id, task}) {
-    <span class="hljs-keyword">let</span> notes = <span class="hljs-keyword">this</span>.notes;
-    <span class="hljs-keyword">const</span> noteIndex = <span class="hljs-keyword">this</span>.findNote(id);
+<span class="token keyword">class</span> <span class="token class-name">NoteStore</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>id<span class="token punctuation">,</span> task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> noteIndex <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findNote</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(noteIndex &lt; <span class="hljs-number">0</span>) {
-      <span class="hljs-keyword">return</span>;
-    }
+    <span class="token keyword">if</span><span class="token punctuation">(</span>noteIndex <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    notes[noteIndex].task = task;
+    notes<span class="token punctuation">[</span>noteIndex<span class="token punctuation">]</span><span class="token punctuation">.</span>task <span class="token operator">=</span> task<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">this</span>.setState({notes});
-  }
-  <span class="hljs-keyword">delete</span>(id) {
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">delete</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  }
-  findNote(id) {
-    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
-    <span class="hljs-keyword">const</span> noteIndex = notes.findIndex((note) =&gt; note.id === id);
+  <span class="token punctuation">}</span>
+  <span class="token function">findNote</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> noteIndex <span class="token operator">=</span> notes<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> note<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(noteIndex &lt; <span class="hljs-number">0</span>) {
-      <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">&apos;Failed to find note&apos;</span>, notes, id);
-    }
+    <span class="token keyword">if</span><span class="token punctuation">(</span>noteIndex <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">&apos;Failed to find note&apos;</span><span class="token punctuation">,</span> notes<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">return</span> noteIndex;
-  }
-}
+    <span class="token keyword">return</span> noteIndex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">createStore</span><span class="token punctuation">(</span>NoteStore<span class="token punctuation">,</span> <span class="token string">&apos;NoteStore&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We have one final operation left, <code>delete</code>.</p>
 <a class="header-anchor" href="#implementing-delete-" id="implementing-delete-"></a><h3>Implementing <code>delete</code><a class="header-anchor-select" href="#implementing-delete-">#</a></h3>
 <p><code>delete</code> is straightforward. Seek and destroy, as earlier, and remember to commit the change:</p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NoteStore</span> </span>{
-  ...
-  <span class="hljs-keyword">delete</span>(id) {
-    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.notes;
-    <span class="hljs-keyword">const</span> noteIndex = <span class="hljs-keyword">this</span>.findNote(id);
+<span class="token keyword">class</span> <span class="token class-name">NoteStore</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token keyword">delete</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> noteIndex <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findNote</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span>(noteIndex &lt; <span class="hljs-number">0</span>) {
-      <span class="hljs-keyword">return</span>;
-    }
+    <span class="token keyword">if</span><span class="token punctuation">(</span>noteIndex <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">this</span>.setState({
-      notes: notes.slice(<span class="hljs-number">0</span>, noteIndex).concat(notes.slice(noteIndex + <span class="hljs-number">1</span>))
-    });
-  }
-  findNote(id) {
-    ...
-  }
-}
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      notes<span class="token punctuation">:</span> notes<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> noteIndex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>notes<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>noteIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">findNote</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> alt.createStore(NoteStore, <span class="hljs-string">&apos;NoteStore&apos;</span>);
+<span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">createStore</span><span class="token punctuation">(</span>NoteStore<span class="token punctuation">,</span> <span class="token string">&apos;NoteStore&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>It would be possible to operate directly on data. For example a oneliner such as <code>this.notes.splice(targetId, 1)</code> would work for <code>delete</code>. It is recommended that you use <code>setState</code> with Alt to keep things clean and easy to understand.</p>
 <p>We have almost integrated Flux to our application now. We have a set of Actions that provide an API for manipulating <code>Notes</code> data. We also have a Store for actual data manipulation. We are missing one final bit - integration with our View. It will have to listen to the Store and be able to trigger Actions to complete the cycle.</p>
@@ -168,48 +168,48 @@ Flux will allow us to separate data and application state from our Views. This h
 <p>As you might remember from the earlier chapters, React provides a set of lifecycle hooks. We can subscribe to <code>NoteStore</code> within our View at <code>componentDidMount</code> and <code>componentWillUnmount</code>. By unsubscribing, we avoid possible memory leaks.</p>
 <p>Based on these ideas we can connect <code>App</code> with <code>NoteStore</code> and <code>NoteActions</code>:</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
-<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
-<span class="hljs-keyword">import</span> NoteStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/NoteStore&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Notes from <span class="token string">&apos;./Notes.jsx&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> NoteActions from <span class="token string">&apos;../actions/NoteActions&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> NoteStore from <span class="token string">&apos;../stores/NoteStore&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  constructor(props) {
-    <span class="hljs-keyword">super</span>(props);
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
-    <span class="hljs-keyword">this</span>.state = NoteStore.getState();
-  }
-  componentDidMount() {
-    NoteStore.listen(<span class="hljs-keyword">this</span>.storeChanged);
-  }
-  componentWillUnmount() {
-    NoteStore.unlisten(<span class="hljs-keyword">this</span>.storeChanged);
-  }
-  storeChanged(state) {
-    <span class="hljs-keyword">this</span>.setState(state);
-  }
-  render() {
-    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.state.notes;
+    <span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> NoteStore<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    NoteStore<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">componentWillUnmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    NoteStore<span class="token punctuation">.</span><span class="token function">unlisten</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">storeChanged</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">{notes}</span>
-          <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.editNote}</span> <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.deleteNote}</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    )</span>;
-  }
-  addNote() {
-    NoteActions.create({task: <span class="hljs-string">&apos;New task&apos;</span>});
-  }
-  editNote(id, task) {
-    NoteActions.update({id, task});
-  }
-  deleteNote(id) {
-    NoteActions.delete(id);
-  }
-}
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">&apos;add-note&apos;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>addNote<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>Notes items<span class="token operator">=</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span>
+          onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>editNote<span class="token punctuation">}</span> onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>deleteNote<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">addNote</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    NoteActions<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>task<span class="token punctuation">:</span> <span class="token string">&apos;New task&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">editNote</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> task<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    NoteActions<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>id<span class="token punctuation">,</span> task<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">deleteNote</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    NoteActions<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>As we alter <code>NoteStore</code> through actions, this leads to a cascade that causes our <code>App</code> state update through <code>setState</code>. This in turn will cause the component to <code>render</code>. That&apos;s Flux unidirectional flow in practice.</p>
 <p>We actually have more code now than before, but that&apos;s okay. <code>App</code> is a little neater and it&apos;s going to be easier to develop as we&apos;ll soon see. Most importantly we have managed to implement the Flux architecture for our application.</p>
@@ -237,19 +237,19 @@ Flux will allow us to separate data and application state from our Views. This h
 <p>To keep things simple and manageable, we can implement a little wrapper for <code>storage</code>. It will wrap all of these complexities. The API expects strings.</p>
 <p>As objects are convenient, we&apos;ll use <code>JSON.parse</code> and <code>JSON.stringify</code> for serialization. We need just <code>storage.get(k)</code> and <code>storage.set(k, v)</code> as seen in the implementation below:</p>
 <p><strong>app/libs/storage.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
-  get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k</span>) </span>{
-    <span class="hljs-keyword">try</span> {
-      <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(k));
-    }
-    <span class="hljs-keyword">catch</span>(e) {
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
-    }
-  },
-  set: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">k, v</span>) </span>{
-    localStorage.setItem(k, <span class="hljs-built_in">JSON</span>.stringify(v));
-  }
-};
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token keyword">get</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">set</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The implementation could be generalized further. You could convert it into a factory (<code>(storage) =&gt; {...}</code>) and make it possible to swap the storage. Now we are stuck with <code>localStorage</code> unless we change the code.</p>
 <blockquote class="tip">We&apos;re operating with <code>localStorage</code> directly to keep the implementation simple. An alternative would be to use <a href="https://github.com/mozilla/localForage">localForage</a> to hide all the complexity. You could even integrate it behind our interface.</blockquote><a class="header-anchor" href="#persisting-application-using-finalstore-" id="persisting-application-using-finalstore-"></a><h3>Persisting Application Using <code>FinalStore</code><a class="header-anchor-select" href="#persisting-application-using-finalstore-">#</a></h3>
@@ -258,39 +258,39 @@ Flux will allow us to separate data and application state from our Views. This h
 <blockquote class="tip">An alternative way would be to take a snapshot only when the window gets closed. There&apos;s a Window level <code>beforeunload</code> hook that could be used. The problem with this approach is that it is brittle. What if something unexpected happens and the hook doesn&apos;t get triggered for some reason? You&apos;ll lose data.</blockquote><p>In order to integrate this idea to our application we will need to implement a little module to manage it. We take the possible initial data into account there and trigger the new logic.</p>
 <p><em>app/libs/persist.js</em>  does the hard part. It will set up a <code>FinalStore</code>, deal with bootstrapping (restore data) and snapshotting (save data). I have included an escape hatch in form of <code>debug</code> flag. If it is set, the data won&apos;t get saved to <code>localStorage</code>. The reasoning is that by doing this you can set the flag (<code>localStorage.setItem(&apos;debug&apos;, &apos;true&apos;)</code>), hit <code>localStorage.clear()</code> and refresh the browser to get a clean slate. The implementation below illustrates these ideas:</p>
 <p><strong>app/libs/persist.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> makeFinalStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/utils/makeFinalStore&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> makeFinalStore from <span class="token string">&apos;alt/utils/makeFinalStore&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">alt, storage, storeName</span>) </span>{
-  <span class="hljs-keyword">const</span> finalStore = makeFinalStore(alt);
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span>alt<span class="token punctuation">,</span> storage<span class="token punctuation">,</span> storeName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> finalStore <span class="token operator">=</span> <span class="token function">makeFinalStore</span><span class="token punctuation">(</span>alt<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="hljs-keyword">try</span> {
-    alt.bootstrap(storage.get(storeName));
-  }
-  <span class="hljs-keyword">catch</span>(e) {
-    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&apos;Failed to bootstrap data&apos;</span>, e);
-  }
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    alt<span class="token punctuation">.</span><span class="token function">bootstrap</span><span class="token punctuation">(</span>storage<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>storeName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">&apos;Failed to bootstrap data&apos;</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  finalStore.listen(() =&gt; {
-    <span class="hljs-keyword">if</span>(!storage.get(<span class="hljs-string">&apos;debug&apos;</span>)) {
-      storage.set(storeName, alt.takeSnapshot());
-    }
-  });
-}
+  finalStore<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>storage<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&apos;debug&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      storage<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>storeName<span class="token punctuation">,</span> alt<span class="token punctuation">.</span><span class="token function">takeSnapshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Finally, we need to trigger the persistency logic at initialization. We will need to pass the relevant data to it (Alt instance, storage, storage name) and off we go.</p>
 <p><strong>app/index.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> alt <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./libs/alt&apos;</span>;
-<span class="hljs-keyword">import</span> storage <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./libs/storage&apos;</span>;
-<span class="hljs-keyword">import</span> persist <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./libs/persist&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> alt from <span class="token string">&apos;./libs/alt&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> storage from <span class="token string">&apos;./libs/storage&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> persist from <span class="token string">&apos;./libs/persist&apos;</span><span class="token punctuation">;</span>
 
-main();
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-  persist(alt, storage, <span class="hljs-string">&apos;app&apos;</span>);
+<span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">persist</span><span class="token punctuation">(</span>alt<span class="token punctuation">,</span> storage<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  ...
-}
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you try refreshing the browser now, the application should retain its state. The solution should scale with a minimal effort if we add more stores to the system. Integrating a real back-end wouldn&apos;t be a problem. There are hooks in place for that now.</p>
 <p>You could, for instance, pass the initial payload as a part of your HTML (isomorphic rendering), load it up and then persist the data to the back-end. You have a great deal of control over how to do this and you can use <code>localStorage</code> as a backup if you want.</p>
@@ -302,29 +302,29 @@ main();
 <p>If you have used languages such as Java or Python before, you might be familiar with the idea. Decorators are syntactic sugar that allow us to wrap and annotate classes and functions. In their <a href="https://github.com/wycats/javascript-decorators">current proposal</a> (stage 1) only class and method level wrapping is supported. Functions may become supported later on.</p>
 <a class="header-anchor" href="#implementing-logging-decorator" id="implementing-logging-decorator"></a><h3>Implementing Logging Decorator<a class="header-anchor-select" href="#implementing-logging-decorator">#</a></h3>
 <p>Sometimes it is useful to know how methods are being called. You could of course attach <code>console.log</code> there but it&apos;s more fun to implement <code>@log</code>. That&apos;s a more controllable way to deal with it. Consider the example below:</p>
-<pre><code class="undefinedjavascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Math</span> </span>{
+<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Math</span> <span class="token punctuation">{</span>
   @log
-  add(a, b) {
-    <span class="hljs-keyword">return</span> a + b;
-  }
-}
+  <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params">target, name, descriptor</span>) </span>{
-  <span class="hljs-keyword">var</span> oldValue = descriptor.value;
+<span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> oldValue <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
 
-  descriptor.value = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Calling &quot;<span class="hljs-subst">${name}</span>&quot; with`</span>, <span class="hljs-built_in">arguments</span>);
+  descriptor<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>`Calling <span class="token string">&quot;${name}&quot;</span> <span class="token keyword">with</span>`<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">return</span> oldValue.apply(<span class="hljs-literal">null</span>, <span class="hljs-built_in">arguments</span>);
-  };
+    <span class="token keyword">return</span> oldValue<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  <span class="hljs-keyword">return</span> descriptor;
-}
+  <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">const</span> math = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Math</span>();
+<span class="token keyword">const</span> math <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Math</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// passed parameters should get logged now</span>
-math.add(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+<span class="token comment" spellcheck="true">// passed parameters should get logged now</span>
+math<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>This logger could be pushed to a separate module. After that we could use it across our application whenever we want to log some methods. Once implemented decorators become powerful building blocks.</p>
 <p>The decorator receives three parameters:</p>
@@ -333,56 +333,56 @@ math.add(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
 <li><code>name</code> contains the name of the method being decorated</li>
 <li><code>descriptor</code> is the most interesting piece as it allows us to annotate the method and manipulate its behavior. It could look like this for instance:</li>
 </ul>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">const</span> descriptor = {
-  value: () =&gt; {...},
-  enumerable: <span class="hljs-literal">false</span>,
-  configurable: <span class="hljs-literal">true</span>,
-  writable: <span class="hljs-literal">true</span>
-};
+<pre><code class="lang-javascript"><span class="token keyword">const</span> descriptor <span class="token operator">=</span> <span class="token punctuation">{</span>
+  value<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  enumerable<span class="token punctuation">:</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+  configurable<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  writable<span class="token punctuation">:</span> <span class="token keyword">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>As you saw above <code>value</code> makes it possible to shape the behavior. The rest allow you to modify behavior on method level. For instance <code>@readonly</code> decorator could limit access. <code>@memoize</code> is another interesting example as that allows you to implement easy caching for methods.</p>
 <a class="header-anchor" href="#implementing-connect-" id="implementing-connect-"></a><h3>Implementing <code>@connect</code><a class="header-anchor-select" href="#implementing-connect-">#</a></h3>
 <p><code>@connect</code> will wrap our component in another component. That in turn will deal with the connection logic (<code>listen/unlisten/setState</code>). It will maintain the store state internally and then pass it to the child component that we are wrapping. During this process it will pass the state through props. The implementation below illustrates the idea:</p>
 <p><strong>app/decorators/connect.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> connect = (Component, store) =&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Connect</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    constructor(props) {
-      <span class="hljs-keyword">super</span>(props);
+<span class="token keyword">const</span> connect <span class="token operator">=</span> <span class="token punctuation">(</span>Component<span class="token punctuation">,</span> store<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">class</span> <span class="token class-name">Connect</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      <span class="hljs-keyword">this</span>.storeChanged = <span class="hljs-keyword">this</span>.storeChanged.bind(<span class="hljs-keyword">this</span>);
-      <span class="hljs-keyword">this</span>.state = store.getState();
+      <span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      store.listen(<span class="hljs-keyword">this</span>.storeChanged);
-    }
-    componentWillUnmount() {
-      store.unlisten(<span class="hljs-keyword">this</span>.storeChanged);
-    }
-    storeChanged() {
-      <span class="hljs-keyword">this</span>.setState(store.getState());
-    }
-    render() {
-      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Component</span> {<span class="hljs-attribute">...this.props</span>} {<span class="hljs-attribute">...this.state</span>} /&gt;</span>;</span>
-    }
-  };
-};
+      store<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">componentWillUnmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      store<span class="token punctuation">.</span><span class="token function">unlisten</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">storeChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span>store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (store) =&gt; {
-  <span class="hljs-keyword">return</span> (target) =&gt; connect(target, store);
-};
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>store<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">connect</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> store<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Can you see the wrapping idea? Our decorator tracks store state. After that it passes the state to the component contained through props.</p>
 <blockquote class="tip"><code>...</code> is known as <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">ES7 rest spread operator</a>. It expands the given object to separate key-value pairs, or props, as in this case.</blockquote><p>You can connect our new decorator with <code>App</code> like this:</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> connect <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../decorators/connect&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> connect from <span class="token string">&apos;../decorators/connect&apos;</span><span class="token punctuation">;</span>
 
-...
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-@connect(NoteStore)
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  <span class="hljs-comment">/*
+@<span class="token function">connect</span><span class="token punctuation">(</span>NoteStore<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/*
   these lines can be removed now
   constructor(props) {
     super(props);
@@ -400,32 +400,32 @@ math.add(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
     this.setState(state);
   }
    */</span>
-  render() {
-    <span class="hljs-keyword">const</span> notes = <span class="hljs-keyword">this</span>.props.notes;
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
 
-    ...
-  }
-  ...
-}
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Note how much code this simple decorator removes from our <code>App</code>. If we wanted to add more stores to the system and connect them to components, it would be trivial now. Even better we could connect multiple stores to a single component easily.</p>
 <a class="header-anchor" href="#decorator-ideas" id="decorator-ideas"></a><h3>Decorator Ideas<a class="header-anchor-select" href="#decorator-ideas">#</a></h3>
 <p>We can build new decorators for various functionalities, such as undo, in this manner. They allow us to keep our components tidy and push common logic elsewhere out of sight. Well designed decorators can be used across projects.</p>
 <a class="header-anchor" href="#alt-s-connecttostores-" id="alt-s-connecttostores-"></a><h3>Alt&apos;s <code>@connectToStores</code><a class="header-anchor-select" href="#alt-s-connecttostores-">#</a></h3>
 <p>Alt provides a similar decorator known as <code>@connectToStores</code>. It relies on static methods.  Rather than normal methods that are bound to a specific instance, these are bound on class level. This means you can call them through the class itself (i.e. <code>App.getStores()</code>). The example below shows how we might integrate <code>@connectToStores</code> into our application.</p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">import</span> connectToStores <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/utils/connectToStores&apos;</span>;
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">import</span> connectToStores from <span class="token string">&apos;alt/utils/connectToStores&apos;</span><span class="token punctuation">;</span>
 
 @connectToStores
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  static getStores(props) {
-    <span class="hljs-keyword">return</span> [NoteStore];
-  }
-  static getPropsFromStores(props) {
-    <span class="hljs-keyword">return</span> NoteStore.getState();
-  }
-  ...
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function">getStores</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>NoteStore<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">static</span> <span class="token function">getPropsFromStores</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> NoteStore<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This more verbose approach is roughly equivalent to our implementation. It actually does more as it allows you to connect to multiple stores at once. It also provides more control over the way you can shape store state to props.</p>
 <p>To get familiar with more approaches we&apos;ll be using the <code>AltContainer</code> in this project. Using the decorator is completely acceptable. It comes down to your personal preferences.</p>
@@ -433,30 +433,30 @@ math.add(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
 <p>The <a href="http://alt.js.org/docs/components/altContainer/">AltContainer</a> wrapper does the same thing and more. It provides a greater degree of customizability than our own solution. It&apos;s officially supported by Alt protecting us from possible API changes.</p>
 <p>The implementation below illustrates how to bind it all together. We&apos;ll drop <code>@connect</code> from the project altogether and expand <code>render()</code> to use the <code>AltContainer</code>. After these changes we are good to go.</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">import</span> AltContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;alt/AltContainer&apos;</span>;
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
-<span class="hljs-keyword">import</span> Notes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Notes.jsx&apos;</span>;
-<span class="hljs-keyword">import</span> NoteActions <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../actions/NoteActions&apos;</span>;
-<span class="hljs-keyword">import</span> NoteStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../stores/NoteStore&apos;</span>;
+<pre><code class="lang-javascript"><span class="token keyword">import</span> AltContainer from <span class="token string">&apos;alt/AltContainer&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> React from <span class="token string">&apos;react&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Notes from <span class="token string">&apos;./Notes.jsx&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> NoteActions from <span class="token string">&apos;../actions/NoteActions&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> NoteStore from <span class="token string">&apos;../stores/NoteStore&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">&apos;add-note&apos;</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.addNote}</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">AltContainer</span>
-          <span class="hljs-attribute">stores</span>=<span class="hljs-value">{[NoteStore]}</span>
-          <span class="hljs-attribute">inject</span>=<span class="hljs-value">{</span> {
-            <span class="hljs-attribute">items:</span> () =&gt;</span> NoteStore.getState().notes
-          } }
-        &gt;
-          <span class="hljs-tag">&lt;<span class="hljs-title">Notes</span> <span class="hljs-attribute">onEdit</span>=<span class="hljs-value">{this.editNote}</span> <span class="hljs-attribute">onDelete</span>=<span class="hljs-value">{this.deleteNote}</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">AltContainer</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    )</span>;
-  }
-  ...
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">&apos;add-note&apos;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>addNote<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>AltContainer
+          stores<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span>NoteStore<span class="token punctuation">]</span><span class="token punctuation">}</span>
+          inject<span class="token operator">=</span><span class="token punctuation">{</span> <span class="token punctuation">{</span>
+            items<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> NoteStore<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>notes
+          <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+        <span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>Notes onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>editNote<span class="token punctuation">}</span> onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>deleteNote<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>AltContainer<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>The <code>AltContainer</code> allows us to bind data to its immediate children. In this case it injects <code>items</code> property to <code>Notes</code>. It is the same idea as for decorators earlier but now it&apos;s closer to the code. The pattern allows us to set up arbitrary connections to multiple stores and manage them.</p>
 <p>Integrating the <code>AltContainer</code> actually grew our component a little bit. It also tied this component to Alt. If you wanted something forward-looking, you could push it into a component of your own. That facade would hide Alt and allow you to replace it with something else later on.</p>

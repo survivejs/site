@@ -5,46 +5,46 @@ Now that we have a nice Kanban application up and running we can worry about sho
 <a class="header-anchor" href="#setting-up-a-build-target" id="setting-up-a-build-target"></a><h2>Setting Up a Build Target<a class="header-anchor-select" href="#setting-up-a-build-target">#</a></h2>
 <p>In our current setup we serve the application through <code>webpack-dev-server</code> always. To get a build done, we&apos;ll need to extend <em>package.json</em> <code>scripts</code> section.</p>
 <p><strong>package.json</strong></p>
-<pre><code class="undefinedjson">{
+<pre><code class="lang-json"><span class="token punctuation">{</span>
   ...
-  <span class="hljs-string">&quot;scripts&quot;</span>: {
-    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;webpack&quot;</span>,
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack&quot;</span><span class="token punctuation">,</span>
     ...
-  },
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
   ...
-}
+<span class="token punctuation">}</span>
 </code></pre>
 <p>We&apos;ll also need some build specific configuration to make Webpack pick up our JSX. We can set up sourcemaps while at it. I&apos;ll be using <code>source-map</code> option here as that&apos;s a good pick for production.</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    <span class="hljs-built_in">module</span>: {
-      loaders: [
-        {
-          test: <span class="hljs-regexp">/\.jsx?$/</span>,
-          loaders: [<span class="hljs-string">&apos;babel&apos;</span>],
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        }
-      ]
-    }
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          test<span class="token punctuation">:</span> <span class="token regex">/\.jsx?$/</span><span class="token punctuation">,</span>
+          loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;babel&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After these changes <code>npm run build</code> should yield the following:</p>
-<pre><code class="undefinedbash">&gt; <span class="hljs-tag">webpack</span>
+<pre><code class="lang-bash"><span class="token operator">&gt;</span> webpack
 
-<span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> bd3b549c6c712233167f
-Version: webpack <span class="hljs-number">1.10</span>.<span class="hljs-number">1</span>
-Time: <span class="hljs-number">4903ms</span>
+Hash<span class="token punctuation">:</span> bd3b549c6c712233167f
+Version<span class="token punctuation">:</span> webpack <span class="token number">1.10</span><span class="token punctuation">.</span>1
+Time<span class="token punctuation">:</span> 4903ms
         Asset       Size  Chunks             Chunk Names
-    bundle.js    <span class="hljs-number">1.09</span> MB       <span class="hljs-number">0</span>  [emitted]  main
-bundle.js.map    <span class="hljs-number">1.28</span> MB       <span class="hljs-number">0</span>  [emitted]  main
-   index.html  <span class="hljs-number">184</span> bytes          [emitted]
-    + <span class="hljs-number">345</span> hidden modules
-</span></span></code></pre>
+    bundle<span class="token punctuation">.</span>js    <span class="token number">1.09</span> MB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+bundle<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map    <span class="token number">1.28</span> MB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+   index<span class="token punctuation">.</span>html  <span class="token number">184</span> bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+    <span class="token operator">+</span> <span class="token number">345</span> hidden modules
+</code></pre>
 <p>1.09 MB is quite a lot. We should do something about that.</p>
 <a class="header-anchor" href="#optimizing-build-size" id="optimizing-build-size"></a><h2>Optimizing Build Size<a class="header-anchor-select" href="#optimizing-build-size">#</a></h2>
 <p>There are a couple of basic things we can do to slim down our build. We can apply some minification to it. We can also tell React to optimize itself. Doing both will result in significant size savings. Provided we apply gzip compression on the content when serving it, further gains may be made.</p>
@@ -52,73 +52,73 @@ bundle.js.map    <span class="hljs-number">1.28</span> MB       <span class="hlj
 <p>Minification will convert our code into a smaller format without losing any meaning. Usually this means some amount of rewriting code through predefined transformations. Sometimes this can break code as it can rewrite pieces of code you inadvertently depend upon. This is the reason why we gave explicit ids to our stores for instance.</p>
 <p>The easiest way to enable minification is to call <code>webpack -p</code> (<code>-p</code> as in <code>production</code>). As Uglify will output a lot of these and they don&apos;t provide value in this case, we&apos;ll be disabling them. Add the following section to your Webpack configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    <span class="hljs-built_in">module</span>: {
-      ...
-    },
-    plugins: [
-      <span class="hljs-keyword">new</span> webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: <span class="hljs-literal">false</span>
-        }
-      })
-    ]
-  });
-}
+<pre><code class="lang-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        compress<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          warnings<span class="token punctuation">:</span> <span class="token keyword">false</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote class="tip">Uglify warnings can help you to understand how it processes the code. Therefore it may be beneficial to have a peek at the output every once in a while.</blockquote><p>If you hit <code>npm run build</code> now, you should see better results:</p>
-<pre><code class="undefinedbash">&gt; <span class="hljs-tag">webpack</span>
+<pre><code class="lang-bash"><span class="token operator">&gt;</span> webpack
 
-<span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> d3508663532b5b3565cc
-Version: webpack <span class="hljs-number">1.10</span>.<span class="hljs-number">1</span>
-Time: <span class="hljs-number">12221ms</span>
+Hash<span class="token punctuation">:</span> d3508663532b5b3565cc
+Version<span class="token punctuation">:</span> webpack <span class="token number">1.10</span><span class="token punctuation">.</span>1
+Time<span class="token punctuation">:</span> 12221ms
         Asset       Size  Chunks             Chunk Names
-    bundle.js     <span class="hljs-number">324</span> kB       <span class="hljs-number">0</span>  [emitted]  main
-bundle.js.map    <span class="hljs-number">2.66</span> MB       <span class="hljs-number">0</span>  [emitted]  main
-   index.html  <span class="hljs-number">184</span> bytes          [emitted]
-    + <span class="hljs-number">345</span> hidden modules
-</span></span></code></pre>
+    bundle<span class="token punctuation">.</span>js     <span class="token number">324</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+bundle<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map    <span class="token number">2.66</span> MB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+   index<span class="token punctuation">.</span>html  <span class="token number">184</span> bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+    <span class="token operator">+</span> <span class="token number">345</span> hidden modules
+</code></pre>
 <p>Given it needs to do more work, it took longer. But on the plus side the build is much smaller now.</p>
 <blockquote class="tip">It is possible to push minification further by enabling variable name mangling. It comes with some extra complexity to worry about but may be worth it when you are pushing for minimal size. See <a href="https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin">the official documentation</a> for details.</blockquote><a class="header-anchor" href="#-process-env-node_env-" id="-process-env-node_env-"></a><h3><code>process.env.NODE_ENV</code><a class="header-anchor-select" href="#-process-env-node_env-">#</a></h3>
 <p>We can perform one more step to decrease build size further. React relies on <code>process.env.NODE_ENV</code> based optimizations. If we force it to <code>production</code>, React will get built in an optimized manner. This will disable some checks (i.e. property type checks). Most importantly it will give you a smaller build and improved performance.</p>
 <p>In Webpack terms you can add the following snippet to the <code>plugins</code> section of your configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    <span class="hljs-built_in">module</span>: {
-      ...
-    },
-    plugins: [
-      <span class="hljs-keyword">new</span> webpack.DefinePlugin({
-        <span class="hljs-string">&apos;process.env&apos;</span>: {
-          <span class="hljs-comment">// This affects react lib size</span>
-          <span class="hljs-string">&apos;NODE_ENV&apos;</span>: <span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-string">&apos;production&apos;</span>)
-        }
-      }),
-      ...
-    ]
-  });
-}
+<pre><code class="lang-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string">&apos;process.env&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// This affects react lib size</span>
+          <span class="token string">&apos;NODE_ENV&apos;</span><span class="token punctuation">:</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token string">&apos;production&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This is a useful technique for your own code. If you have a section of code that evaluates as <code>false</code> after this process, the minifier will remove it from build completely. You can attach debugging specific utilities and such to your code easily this way. For instance, you could build a powerful logging system just for development. Here&apos;s a small example of what that could look like:</p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>) {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;developing like an ace&apos;</span>);
-}
+<pre><code class="lang-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">!</span><span class="token operator">==</span> <span class="token string">&apos;production&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&apos;developing like an ace&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote class="tip">That <code>JSON.stringify</code> is needed as Webpack will perform string replace &quot;as is&quot;. In this case, we&apos;ll want to end up with strings as that&apos;s what various comparisons expect, not just <code>production</code>. Latter would just cause an error. An alternative would be to use a string such as <code>&apos;&quot;production&quot;&apos;</code>. Note the &quot;&apos;s.</blockquote><p>Hit <code>npm run build</code> again and you should see improved results:</p>
-<pre><code class="undefinedbash">&gt; TARGET=build webpack
+<pre><code class="lang-bash"><span class="token operator">&gt;</span> TARGET<span class="token operator">=</span>build webpack
 
-Hash: 37ebe639517bfeb72ff6
-Version: webpack 1.10.1
-Time: 10930ms
+Hash<span class="token punctuation">:</span> 37ebe639517bfeb72ff6
+Version<span class="token punctuation">:</span> webpack <span class="token number">1.10</span><span class="token punctuation">.</span>1
+Time<span class="token punctuation">:</span> 10930ms
         Asset       Size  Chunks             Chunk Names
-    bundle.js     264 kB       0  [emitted]  main
-bundle.js.map    2.53 MB       0  [emitted]  main
-   index.html  184 bytes          [emitted]
-    + 339 hidden modules
+    bundle<span class="token punctuation">.</span>js     <span class="token number">264</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+bundle<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map    <span class="token number">2.53</span> MB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+   index<span class="token punctuation">.</span>html  <span class="token number">184</span> bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+    <span class="token operator">+</span> <span class="token number">339</span> hidden modules
 </code></pre>
 <p>So we went from 1.09 MB to 324 kB, and finally to 264 kB. The final build is a little faster than the previous one. As that 264k can be served gzipped, it is quite reasonable. gzipping will drop around another 40%. It is well supported by browsers.</p>
 <p>We can do a little better, though. We can split <code>app</code> and <code>vendor</code> bundles and add hashes to their filenames.</p>
@@ -128,25 +128,25 @@ bundle.js.map    2.53 MB       0  [emitted]  main
 <a class="header-anchor" href="#defining-a-vendor-entry-point" id="defining-a-vendor-entry-point"></a><h3>Defining a <code>vendor</code> Entry Point<a class="header-anchor-select" href="#defining-a-vendor-entry-point">#</a></h3>
 <p>To get started, we need to define a <code>vendor</code> entry point:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">var</span> pkg = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./package.json&apos;</span>);
+<span class="token keyword">var</span> pkg <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./package.json&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> TARGET = process.env.npm_lifecycle_event;
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+<span class="token keyword">var</span> TARGET <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_lifecycle_event<span class="token punctuation">;</span>
+<span class="token keyword">var</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-...
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    entry: {
-      app: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-      vendor: <span class="hljs-built_in">Object</span>.keys(pkg.dependencies)
-    },
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    ...
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      app<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      vendor<span class="token punctuation">:</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pkg<span class="token punctuation">.</span>dependencies<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This tells Webpack that we want a separate <em>entry chunk</em> for our project <code>vendor</code> level dependencies. Webpack provides multiple ways to define chunks. Each chunk will contain a part of your application code. For example is possible to set up chunks that are loaded dynamically.</p>
 <a class="header-anchor" href="#adding-hashing-to-filenames" id="adding-hashing-to-filenames"></a><h3>Adding Hashing to Filenames<a class="header-anchor-select" href="#adding-hashing-to-filenames">#</a></h3>
@@ -157,193 +157,193 @@ bundle.js.map    2.53 MB       0  [emitted]  main
 <li><code>[chunkhash]</code> - Returns a chunk specific hash.</li>
 </ul>
 <p>Using these placeholders you could end up with filenames such as:</p>
-<pre><code class="undefinedbash"><span class="hljs-tag">app</span><span class="hljs-class">.js</span>?<span class="hljs-tag">d587bbd6e38337f5accd</span>
-<span class="hljs-tag">vendor</span><span class="hljs-class">.js</span>?<span class="hljs-tag">dc746a5db4ed650296e1</span>
+<pre><code class="lang-bash">app<span class="token punctuation">.</span>js<span class="token operator">?</span>d587bbd6e38337f5accd
+vendor<span class="token punctuation">.</span>js<span class="token operator">?</span>dc746a5db4ed650296e1
 </code></pre>
 <p>The part behind the question mark will invalidate the cache. An alternative way would be to include it to the filename itself but I find this convention to be cleaner.</p>
 <p>We can use the placeholder idea within our configuration like this:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    entry: {
-      app: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-      vendor: <span class="hljs-built_in">Object</span>.keys(pkg.dependencies)
-    },
-    <span class="hljs-comment">/* important! */</span>
-    output: {
-      path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-      filename: <span class="hljs-string">&apos;[name].js?[chunkhash]&apos;</span>
-    },
-    ...
-  });
-}
+<pre><code class="lang-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      app<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      vendor<span class="token punctuation">:</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pkg<span class="token punctuation">.</span>dependencies<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true">/* important! */</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      filename<span class="token punctuation">:</span> <span class="token string">&apos;[name].js?[chunkhash]&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you hit <code>npm run build</code> now, you should see output like this.</p>
-<pre><code class="undefinedbash">&gt; <span class="hljs-tag">webpack</span>
+<pre><code class="lang-bash"><span class="token operator">&gt;</span> webpack
 
-<span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> <span class="hljs-number">93</span>b7068ed91340e3f5ac
-Version: webpack <span class="hljs-number">1.12</span>.<span class="hljs-number">0</span>
-Time: <span class="hljs-number">16398ms</span>
+Hash<span class="token punctuation">:</span> 93b7068ed91340e3f5ac
+Version<span class="token punctuation">:</span> webpack <span class="token number">1.12</span><span class="token punctuation">.</span>0
+Time<span class="token punctuation">:</span> 16398ms
                              Asset       Size  Chunks             Chunk Names
-       app.js?d9e6f800dcb46e3638b9     <span class="hljs-number">263</span> kB       <span class="hljs-number">0</span>  [emitted]  app
-    vendor.js?f6e6ad0dd8123b64e914     <span class="hljs-number">208</span> kB       <span class="hljs-number">1</span>  [emitted]  vendor
-   app.js.map?d9e6f800dcb46e3638b9    <span class="hljs-number">2.51</span> MB       <span class="hljs-number">0</span>  [emitted]  app
-vendor.js.map?f6e6ad0dd8123b64e914    <span class="hljs-number">2.13</span> MB       <span class="hljs-number">1</span>  [emitted]  vendor
-                        index.html  <span class="hljs-number">266</span> bytes          [emitted]
-   [<span class="hljs-number">0</span>] multi vendor <span class="hljs-number">76</span> bytes {<span class="hljs-number">1</span>} [built]
-    + <span class="hljs-number">316</span> hidden modules
-</span></span></code></pre>
+       app<span class="token punctuation">.</span>js<span class="token operator">?</span>d9e6f800dcb46e3638b9     <span class="token number">263</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+    vendor<span class="token punctuation">.</span>js<span class="token operator">?</span>f6e6ad0dd8123b64e914     <span class="token number">208</span> kB       <span class="token number">1</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+   app<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map<span class="token operator">?</span>d9e6f800dcb46e3638b9    <span class="token number">2.51</span> MB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+vendor<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map<span class="token operator">?</span>f6e6ad0dd8123b64e914    <span class="token number">2.13</span> MB       <span class="token number">1</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+                        index<span class="token punctuation">.</span>html  <span class="token number">266</span> bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> multi vendor <span class="token number">76</span> bytes <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+    <span class="token operator">+</span> <span class="token number">316</span> hidden modules
+</code></pre>
 <p>This isn&apos;t quite what we expected. Both our <code>app</code> and <code>vendor</code> bundles are big. The problem is that Webpack will include all the required files in the <code>app</code> bundle. This includes the <code>vendor</code> modules.</p>
 <a class="header-anchor" href="#setting-up-commonschunkplugin-" id="setting-up-commonschunkplugin-"></a><h3>Setting Up <code>CommonsChunkPlugin</code><a class="header-anchor-select" href="#setting-up-commonschunkplugin-">#</a></h3>
 <p>To fix our problem, we can use <code>CommonsChunkPlugin</code>. It can extract the code we need. We can tell it what <em>entry chunk</em> to extract and how to output it. Consider the configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    <span class="hljs-built_in">module</span>: {
-      ...
-    },
-    plugins: [
-      <span class="hljs-comment">/* important! */</span>
-      <span class="hljs-keyword">new</span> webpack.optimize.CommonsChunkPlugin(
-        <span class="hljs-string">&apos;vendor&apos;</span>,
-        <span class="hljs-string">&apos;[name].js?[chunkhash]&apos;</span>
-      ),
-      ...
-    ]
-  });
-}
+<pre><code class="lang-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token comment" spellcheck="true">/* important! */</span>
+      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>CommonsChunkPlugin</span><span class="token punctuation">(</span>
+        <span class="token string">&apos;vendor&apos;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;[name].js?[chunkhash]&apos;</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you run <code>npm run build</code> now, you should see output as below:</p>
-<pre><code class="undefinedbash">&gt; webpack
+<pre><code class="lang-bash"><span class="token operator">&gt;</span> webpack
 
-Hash: <span class="hljs-number">5</span>a0cf7711f1d3<span class="hljs-built_in">fc</span>5c930
-Version: webpack <span class="hljs-number">1.12</span>.<span class="hljs-number">0</span>
-Time: <span class="hljs-number">10565</span>ms
+Hash<span class="token punctuation">:</span> 5a0cf7711f1d3fc5c930
+Version<span class="token punctuation">:</span> webpack <span class="token number">1.12</span><span class="token punctuation">.</span>0
+Time<span class="token punctuation">:</span> 10565ms
                              Asset       Size  Chunks             Chunk Names
-       app.js?bf777bbb05bec4070276      <span class="hljs-number">55</span> kB       <span class="hljs-number">0</span>  [emitted]  app
-    vendor.js?f33176572a7ad31551ee     <span class="hljs-number">209</span> kB       <span class="hljs-number">1</span>  [emitted]  vendor
-   app.js.map?bf777bbb05bec4070276     <span class="hljs-number">389</span> kB       <span class="hljs-number">0</span>  [emitted]  app
-vendor.js.map?f33176572a7ad31551ee    <span class="hljs-number">2.13</span> MB       <span class="hljs-number">1</span>  [emitted]  vendor
-                        index.html  <span class="hljs-number">266</span> bytes          [emitted]
-   [<span class="hljs-number">0</span>] multi vendor <span class="hljs-number">76</span> bytes {<span class="hljs-number">1</span>} [built]
-    + <span class="hljs-number">316</span> hidden modules
+       app<span class="token punctuation">.</span>js<span class="token operator">?</span>bf777bbb05bec4070276      <span class="token number">55</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+    vendor<span class="token punctuation">.</span>js<span class="token operator">?</span>f33176572a7ad31551ee     <span class="token number">209</span> kB       <span class="token number">1</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+   app<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map<span class="token operator">?</span>bf777bbb05bec4070276     <span class="token number">389</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+vendor<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map<span class="token operator">?</span>f33176572a7ad31551ee    <span class="token number">2.13</span> MB       <span class="token number">1</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+                        index<span class="token punctuation">.</span>html  <span class="token number">266</span> bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> multi vendor <span class="token number">76</span> bytes <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+    <span class="token operator">+</span> <span class="token number">316</span> hidden modules
 </code></pre>
 <p>Note how small <code>app</code> bundle is in comparison. If we update the application now and deploy it, the users that have used it before will have to reload only 55 kB.</p>
 <p>One more way to push the build further would be to load popular dependencies, such as React, through a CDN. That would decrease the size of the vendor bundle even further while adding an external dependency on the project. The idea is that if the user has hit the CDN earlier, caching can kick in just like here.</p>
 <a class="header-anchor" href="#cleaning-the-build" id="cleaning-the-build"></a><h2>Cleaning the Build<a class="header-anchor-select" href="#cleaning-the-build">#</a></h2>
 <p>Our current setup doesn&apos;t clean the <code>build</code> directory between builds. As this can get annoying if we change our setup, we can use a plugin to clean the directory for us. Execute</p>
-<pre><code class="undefinedbash">npm i clean-webpack-plugin --save-dev
+<pre><code class="lang-bash">npm i clean<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>to install the plugin. Change the build configuration as below to integrate it:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">var</span> Clean = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;clean-webpack-plugin&apos;</span>);
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">var</span> Clean <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;clean-webpack-plugin&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-...
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    plugins: [
-      <span class="hljs-keyword">new</span> Clean([<span class="hljs-string">&apos;build&apos;</span>]),
-      ...
-    ]
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">Clean</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&apos;build&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After this change our <code>build</code> directory should remain nice and tidy when building. See <a href="https://www.npmjs.com/package/clean-webpack-plugin">clean-webpack-plugin</a> for further options.</p>
 <blockquote class="tip">An alternative would be to use your terminal (<code>rm -rf ./build/</code>) and set that up at the <code>scripts</code> of <code>package.json</code>.</blockquote><a class="header-anchor" href="#separating-css" id="separating-css"></a><h2>Separating CSS<a class="header-anchor-select" href="#separating-css">#</a></h2>
 <p>Even though we have a nice build set up now, where did all the CSS go? As per our configuration it has been inlined to JavaScript! Even though this can be convenient during development, it doesn&apos;t sound ideal. The current solution doesn&apos;t allow us to cache CSS. In some cases we might suffer from a flash of unstyled content (FOUC).</p>
 <p>As it happens Webpack provides means to generate a separate CSS bundle. We can achieve this using the <code>ExtractTextPlugin</code>. It comes with overhead during the compilation phase and it won&apos;t work with Hot Module Replacement (HMR) by design. Given we are using it only for production, that won&apos;t be a problem.</p>
 <p>It will take some configuration to make it work. Hit</p>
-<pre><code class="undefinedbash">npm i extract-text-webpack-plugin --save-dev
+<pre><code class="lang-bash">npm i extract<span class="token operator">-</span>text<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin <span class="token operator">--</span>save<span class="token operator">-</span>dev
 </code></pre>
 <p>to get started. Next, we need to get rid of our current css related declaration at <code>common</code> configuration. After that we need to split it up between <code>build</code> and <code>dev</code> configuration sections as below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="undefinedjavascript">...
-<span class="hljs-keyword">var</span> ExtractTextPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;extract-text-webpack-plugin&apos;</span>);
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">var</span> ExtractTextPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;extract-text-webpack-plugin&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> pkg = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./package.json&apos;</span>);
+<span class="token keyword">var</span> pkg <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./package.json&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> TARGET = process.env.npm_lifecycle_event;
-<span class="hljs-keyword">var</span> ROOT_PATH = path.resolve(__dirname);
+<span class="token keyword">var</span> TARGET <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_lifecycle_event<span class="token punctuation">;</span>
+<span class="token keyword">var</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">var</span> common = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-  resolve: {
-    extensions: [<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>]
-  },
-  output: {
-    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
-  },
-  plugins: [
-    <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
-      title: <span class="hljs-string">&apos;Kanban app&apos;</span>
-    })
-  ]
-};
+<span class="token keyword">var</span> common <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.js&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.jsx&apos;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlwebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">&apos;Kanban app&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    <span class="hljs-built_in">module</span>: {
-      loaders: [
-        {
-          test: <span class="hljs-regexp">/\.css$/</span>,
-          loaders: [<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>],
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        },
-        ...
-      ]
-    },
-    ...
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;start&apos;</span> <span class="token operator">||</span> <span class="token operator">!</span>TARGET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+          loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;style&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;css&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    devtool: <span class="hljs-string">&apos;source-map&apos;</span>,
-    <span class="hljs-built_in">module</span>: {
-      loaders: [
-        {
-          test: <span class="hljs-regexp">/\.css$/</span>,
-          loader: ExtractTextPlugin.extract(<span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;css&apos;</span>),
-          include: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>)
-        },
-        ...
-      ]
-    },
-    plugins: [
-      <span class="hljs-keyword">new</span> Clean([<span class="hljs-string">&apos;build&apos;</span>]),
-      <span class="hljs-keyword">new</span> ExtractTextPlugin(<span class="hljs-string">&apos;styles.css?[chunkhash]&apos;</span>),
-      ...
-    ]
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+          loader<span class="token punctuation">:</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token string">&apos;style&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;css&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">Clean</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&apos;build&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token string">&apos;styles.css?[chunkhash]&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Using this setup we can still benefit from the HMR during development. For production build we generate a separate CSS. <code>html-webpack-plugin</code> will pick it up automatically and inject it into our <code>index.html</code>.</p>
 <blockquote class="warning">Definition such as <code>loaders: [ExtractTextPlugin.extract(&apos;style&apos;, &apos;css&apos;)]</code> won&apos;t work and will cause the build to error instead! So when using <code>ExtractTextPlugin</code>, use <code>loader</code> form.</blockquote><blockquote class="warning">If you want to pass more loaders to the <code>ExtractTextPlugin</code>, you should use <code>!</code> syntax. Example: <code>ExtractTextPlugin.extract(&apos;style&apos;, &apos;css!autoprefixer-loader&apos;)</code>.</blockquote><p>After running <code>npm run build</code> you should similar output:</p>
-<pre><code class="undefinedbash">&gt; <span class="hljs-tag">webpack</span>
+<pre><code class="lang-bash"><span class="token operator">&gt;</span> webpack
 
-<span class="hljs-rule"><span class="hljs-attribute">Hash</span>:<span class="hljs-value"> <span class="hljs-number">27584124</span>a5659a941eea
-Version: webpack <span class="hljs-number">1.12</span>.<span class="hljs-number">0</span>
-Time: <span class="hljs-number">10589ms</span>
+Hash<span class="token punctuation">:</span> 27584124a5659a941eea
+Version<span class="token punctuation">:</span> webpack <span class="token number">1.12</span><span class="token punctuation">.</span>0
+Time<span class="token punctuation">:</span> 10589ms
                               Asset       Size  Chunks             Chunk Names
-        app.js?<span class="hljs-number">4</span>a3890cdb2f12f6bd4d5    <span class="hljs-number">54.3</span> kB       <span class="hljs-number">0</span>  [emitted]  app
-     vendor.js?<span class="hljs-number">876083</span>b45225c03d8a74     <span class="hljs-number">208</span> kB       <span class="hljs-number">1</span>  [emitted]  vendor
-    styles.css?bf777bbb05bec4070276  <span class="hljs-number">557</span> bytes       <span class="hljs-number">0</span>  [emitted]  app
-    app.js.map?<span class="hljs-number">4</span>a3890cdb2f12f6bd4d5     <span class="hljs-number">389</span> kB       <span class="hljs-number">0</span>  [emitted]  app
-styles.css.map?bf777bbb05bec4070276   <span class="hljs-number">87</span> bytes       <span class="hljs-number">0</span>  [emitted]  app
- vendor.js.map?<span class="hljs-number">876083</span>b45225c03d8a74    <span class="hljs-number">2.12</span> MB       <span class="hljs-number">1</span>  [emitted]  vendor
-                         index.html  <span class="hljs-number">317</span> bytes          [emitted]
-   [<span class="hljs-number">0</span>] multi vendor <span class="hljs-number">64</span> bytes {<span class="hljs-number">1</span>} [built]
-    + <span class="hljs-number">316</span> hidden modules
-Child extract-text-webpack-plugin:
-        + <span class="hljs-number">2</span> hidden modules
-</span></span></code></pre>
+        app<span class="token punctuation">.</span>js<span class="token operator">?</span>4a3890cdb2f12f6bd4d5    <span class="token number">54.3</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+     vendor<span class="token punctuation">.</span>js<span class="token operator">?</span>876083b45225c03d8a74     <span class="token number">208</span> kB       <span class="token number">1</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+    styles<span class="token punctuation">.</span>css<span class="token operator">?</span>bf777bbb05bec4070276  <span class="token number">557</span> bytes       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+    app<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map<span class="token operator">?</span>4a3890cdb2f12f6bd4d5     <span class="token number">389</span> kB       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+styles<span class="token punctuation">.</span>css<span class="token punctuation">.</span>map<span class="token operator">?</span>bf777bbb05bec4070276   <span class="token number">87</span> bytes       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+ vendor<span class="token punctuation">.</span>js<span class="token punctuation">.</span>map<span class="token operator">?</span>876083b45225c03d8a74    <span class="token number">2.12</span> MB       <span class="token number">1</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+                         index<span class="token punctuation">.</span>html  <span class="token number">317</span> bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> multi vendor <span class="token number">64</span> bytes <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+    <span class="token operator">+</span> <span class="token number">316</span> hidden modules
+Child extract<span class="token operator">-</span>text<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin<span class="token punctuation">:</span>
+        <span class="token operator">+</span> <span class="token number">2</span> hidden modules
+</code></pre>
 <p>This means we have separate app and vendor bundles. In addition, styles have been pushed to a separate file. And on top of this we have sourcemaps and an automatically generated <em>index.html</em>.</p>
 <blockquote class="tip">If you have a complex project with a lot of dependencies, it is likely a good idea to use the <code>DedupePlugin</code>. It will find possible duplicate files and deduplicate them. Use <code>new webpack.optimize.DedupePlugin()</code> at your plugins definition to enable it.</blockquote><blockquote class="warning">Note that there&apos;s <a href="https://github.com/webpack/webpack/issues/1315">a bug</a> in Webpack preventing this feature from working correctly at the moment! I.e. if you change your application code, <code>vendor</code> hash will change!</blockquote><a class="header-anchor" href="#isomorphic-rendering" id="isomorphic-rendering"></a><h2>Isomorphic Rendering<a class="header-anchor-select" href="#isomorphic-rendering">#</a></h2>
 <p>React supports isomorphic rendering. This means you can render static HTML through it. Once the JavaScript code gets run, it will pick up the markup. Even though this sounds trivial there are some nice advantages to this approach:</p>
@@ -356,112 +356,112 @@ Child extract-text-webpack-plugin:
 <p>Even though we don&apos;t have a proper back-end in our project this is a powerful approach you should be aware of. The same idea can be applied for other scenarios such as rendering a JSX template to a PDF invoice for example. React isn&apos;t limited to the web.</p>
 <p>We will need to perform a couple of tweaks to our project in order to enable isomorphic rendering. Thankfully <em>HtmlWebpackPlugin</em> can do most of the work for us. We just need to implement a custom template and render our initial JSX to it. Set up <em>index.tpl</em> as follows.</p>
 <p><strong>templates/index.tpl</strong></p>
-<pre><code class="undefinedhtml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">html{%</span> <span class="hljs-attribute">if</span>(<span class="hljs-attribute">o.htmlWebpackPlugin.files.manifest</span>) { %}
-  <span class="hljs-attribute">manifest</span>=<span class="hljs-value">&quot;{%= o.htmlWebpackPlugin.files.manifest %}&quot;</span><span class="hljs-value">{%</span> } %}&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">&quot;UTF-8&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>{%=o.htmlWebpackPlugin.options.title%}<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+<pre><code class="lang-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+&lt;html{% if(o.htmlWebpackPlugin.files.manifest) { %}
+  manifest=&quot;{%= o.htmlWebpackPlugin.files.manifest %}&quot;{% } %}&gt;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>{%=o.htmlWebpackPlugin.options.title%}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
     {% if (o.htmlWebpackPlugin.files.favicon) { %}
-    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;shortcut icon&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;{%=o.htmlWebpackPlugin.files.favicon%}&quot;</span>&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>shortcut icon<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{%<span class="token punctuation">=</span>o.htmlWebpackPlugin.files.favicon%}<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     {% } %}
     {% for (var css in o.htmlWebpackPlugin.files.css) { %}
-    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;{%=o.htmlWebpackPlugin.files.css[css] %}&quot;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet&quot;</span>&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{%<span class="token punctuation">=</span>o.htmlWebpackPlugin.files.css[css] %}<span class="token punctuation">&quot;</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
     {% } %}
-  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;app&quot;</span>&gt;</span>%app%<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>%app%<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 
     {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{%<span class="token punctuation">=</span>o.htmlWebpackPlugin.files.chunks[chunk].entry %}<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
     {% } %}
-  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p>This template is based on the default one used by <em>HtmlWebpackPlugin</em>. It relies on a templating library known as <a href="https://www.npmjs.com/package/blueimp-tmpl">blueimp-tpl</a>. That&apos;s why you see all those <code>{% ... %}</code> entries there. We will inject some syntax of our own at <code>&lt;div id=&quot;app&quot;&gt;%app%&lt;/div&gt;</code> next and let <em>HtmlWebpackPlugin</em> deal with the rest.</p>
 <p>As we&apos;ll be relying on JSX when rendering, we need to rename <em>webpack.config.js</em> as <em>webpack.config.babel.js</em> first. That way Webpack knows to process it through Babel and everything will work as we expect. Besides this we need to make <em>HtmlWebpackPlugin</em> aware of our template and add our custom rendering logic there.</p>
 <p><strong>webpack.config.babel.js</strong></p>
-<pre><code class="undefinedjavascript"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;fs&apos;</span>);
-<span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;react&apos;</span>);
-...
+<pre><code class="lang-javascript"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;fs&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> React <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;react&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">var</span> App = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./app/components/App.jsx&apos;</span>);
-<span class="hljs-keyword">var</span> pkg = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./package.json&apos;</span>);
+<span class="token keyword">var</span> App <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./app/components/App.jsx&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> pkg <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;./package.json&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> TARGET = process.env.npm_lifecycle_event;
-<span class="hljs-keyword">const</span> ROOT_PATH = path.resolve(__dirname);
-<span class="hljs-keyword">const</span> APP_TITLE = <span class="hljs-string">&apos;Kanban app&apos;</span>;
+<span class="token keyword">const</span> TARGET <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_lifecycle_event<span class="token punctuation">;</span>
+<span class="token keyword">const</span> ROOT_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> APP_TITLE <span class="token operator">=</span> <span class="token string">&apos;Kanban app&apos;</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">const</span> common = {
-  entry: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;app&apos;</span>),
-  resolve: {
-    extensions: [<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;.js&apos;</span>, <span class="hljs-string">&apos;.jsx&apos;</span>]
-  },
-  output: {
-    path: path.resolve(ROOT_PATH, <span class="hljs-string">&apos;build&apos;</span>),
-    filename: <span class="hljs-string">&apos;bundle.js&apos;</span>
-  }
-};
+<span class="token keyword">const</span> common <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.js&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.jsx&apos;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;start&apos;</span> || !TARGET) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    plugins: [
-      <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin(),
-      <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
-        title: APP_TITLE
-      })
-    ]
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;start&apos;</span> <span class="token operator">||</span> <span class="token operator">!</span>TARGET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>HotModuleReplacementPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">new</span> <span class="token class-name">HtmlwebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> APP_TITLE
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-keyword">if</span>(TARGET === <span class="hljs-string">&apos;build&apos;</span>) {
-  <span class="hljs-built_in">module</span>.exports = merge(common, {
-    ...
-    plugins: [
-      ...
-      <span class="hljs-keyword">new</span> HtmlwebpackPlugin({
-        title: APP_TITLE,
-        templateContent: renderTemplate(
-          fs.readFileSync(path.join(__dirname, <span class="hljs-string">&apos;templates/index.tpl&apos;</span>), <span class="hljs-string">&apos;utf8&apos;</span>),
-          {
-            app: React.renderToString(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>)</span>
-          })
-      })
-    ]
-  });
-}
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>common<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+      <span class="token keyword">new</span> <span class="token class-name">HtmlwebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> APP_TITLE<span class="token punctuation">,</span>
+        templateContent<span class="token punctuation">:</span> <span class="token function">renderTemplate</span><span class="token punctuation">(</span>
+          fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&apos;templates/index.tpl&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">&apos;utf8&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            app<span class="token punctuation">:</span> React<span class="token punctuation">.</span><span class="token function">renderToString</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderTemplate</span>(<span class="hljs-params">template, replacements</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">return</span> template.replace(<span class="hljs-regexp">/%(\w*)%/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">match</span>) </span>{
-      <span class="hljs-keyword">var</span> key = match.slice(<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>);
+<span class="token keyword">function</span> <span class="token function">renderTemplate</span><span class="token punctuation">(</span>template<span class="token punctuation">,</span> replacements<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> template<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/%(\w*)%/g</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>match<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> key <span class="token operator">=</span> match<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      <span class="hljs-keyword">return</span> replacements[key] ? replacements[key] : match;
-    });
-  };
-}
+      <span class="token keyword">return</span> replacements<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">?</span> replacements<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token punctuation">:</span> match<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>We cannot use isomorphic rendering for development in this case because the generated results and front-end state may differ. This is due to the fact that <code>localStorage</code> may contain some initial data. If you had an actual back-end to develop against and you store the data there, this wouldn&apos;t be a problem.</p>
 <p>Our isomorphic setup performs a regular expression based replacement to render our React code to <code>%app%</code>. Alternatively we could use a templating library, such as <a href="https://www.npmjs.com/package/handlebars">handlebars</a>, but this solution is enough for now. Finally <code>React.renderToString</code> returns the markup we need.</p>
 <blockquote class="tip">If you want output that doesn&apos;t have React keys, use <code>React.renderToStaticMarkup</code> instead. This is useful especially if you are writing static site generators.</blockquote><p>In addition, we need to tweak the entry point of our application to take these changes into account. When in production it should use the existing markup instead of injecting its own.</p>
 <p><strong>app/index.jsx</strong></p>
-<pre><code class="undefinedjavascript">...
+<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">main</span></span>() {
-  persist(alt, storage, <span class="hljs-string">&apos;app&apos;</span>);
+<span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">persist</span><span class="token punctuation">(</span>alt<span class="token punctuation">,</span> storage<span class="token punctuation">,</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="hljs-keyword">if</span>(process.env.NODE_ENV === <span class="hljs-string">&apos;production&apos;</span>) {
-    React.render(&lt;App /&gt;, document.getElementById(<span class="hljs-string">&apos;app&apos;</span>));
-  }
-  <span class="hljs-keyword">if</span>(process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>) {
-    const app = document.createElement(<span class="hljs-string">&apos;div&apos;</span>);
+  <span class="token keyword">if</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">===</span> <span class="token string">&apos;production&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    React<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">!</span><span class="token operator">==</span> <span class="token string">&apos;production&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> app <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    document.body.appendChild(app);
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    React.render(&lt;App /&gt;, app);
-  }
-}
+    React<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> app<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>The strange looking <code>NODE_ENV</code> checks are used to make sure dead code elimination kicks in when building the JavaScript. It will remove the entire branch from the eliminated code because the statement will evaluate as <code>false</code> in a static check performed by the minifier.</p>
 <p>If you hit <code>npm run build</code> now and wait for a while, you should end up with <code>build/index.html</code> that contains something familiar. <code>npm start</code> should work the same way as earlier.</p>
