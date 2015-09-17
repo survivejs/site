@@ -71,6 +71,10 @@ module.exports = {
       from: './google6292307d9ca2fc8d.html',
       to: './',
     },
+    {
+      from: './robots.txt',
+      to: './',
+    },
   ],
   output: 'build',
   name: 'SurviveJS - Webpack and React',
