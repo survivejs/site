@@ -48,7 +48,7 @@ module.exports = React.createClass
             if item.endSource then div className: 'post__end_source', a href: item.endSource, target: '_blank', 'Finished source code'
             if item.demo then div className: 'post__demo', a href: item.demo, target: '_blank', 'Demo'
 
-          div dangerouslySetInnerHTML: __html: item.content
+          div className: 'chapter-content', dangerouslySetInnerHTML: __html: item.content
           div className: 'social-links', dangerouslySetInnerHTML: __html: '<blockquote class="tip">If you enjoyed this ' +  item.type + ' consider subscribing to <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote>'
 
           div id: 'disqus_thread'

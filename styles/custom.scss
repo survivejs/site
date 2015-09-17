@@ -330,7 +330,7 @@ footer .footer-wrapper{
     }
 }
 
-/* XXX: fix in base theme */
+/* XXX: fix in base theme. needed as vw is broken by design... */
 .post__content, .post__content h1,.post__content h2, .post__content h3, .post__content h4,
 .post__content h5, .post__content h6, .post__content p, .post__content ol,
 .post__content ul, .post__content div, .post__content pre {
@@ -461,6 +461,19 @@ h4:hover .header-anchor-select {
 
     .frontpage, .frontpage .post.post--front {
         max-width: 100%;
+    }
+
+    .chapter-content {
+        padding: 0;
+    }
+
+    .post__content, .post__content h1,.post__content h2, .post__content h3, .post__content h4,
+    .post__content h5, .post__content h6, .post__content p, .post__content ol,
+    .post__content ul, .post__content div, .post__content pre {
+        margin: 0;
+        margin-bottom: 0.5em;
+        max-width: 100%;
+        width: 100vw; /* cannot be in pixels as otherwise max-width fails!!! */
     }
 }
 
