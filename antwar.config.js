@@ -56,25 +56,13 @@ module.exports = {
       to: 'images',
     },
     {
-      from: path.resolve('../webpack_react', 'project_source/builds'),
+      from: '../webpack_react/project_source/builds',
       to: 'demos',
     },
     {
-      from: './CNAME',
-      to: './',
-    },
-    {
-      from: './favicon.ico',
-      to: './',
-    },
-    {
-      from: './google6292307d9ca2fc8d.html',
-      to: './',
-    },
-    {
-      from: './robots.txt',
-      to: './',
-    },
+      from: './extra',
+      to: '.'
+    }
   ],
   output: 'build',
   name: 'SurviveJS - Webpack and React',
