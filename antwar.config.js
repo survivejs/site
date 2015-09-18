@@ -61,11 +61,7 @@ module.exports = {
       baseUrl: 'http://survivejs.com/',
       sections: ['blog'],
     }),
-    highlightPlugin({
-      style: function() {
-        require('prismjs-coy-theme/prism-coy.css');
-      }
-    }),
+    highlightPlugin(),
     prevnextPlugin(),
   ],
   theme: {
