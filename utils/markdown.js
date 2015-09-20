@@ -12,12 +12,13 @@ renderer.image = function(href, title, text) {
 renderer.heading = function(text, level, raw) {
   var id = raw.toLowerCase().replace(/[^\w]+/g, '-');
 
-  return '<a class="header-anchor" href="#' + id + '" id="' + id + '"></a>'
-    + '<h'
+  return '<h'
     + level
-    + '>'
+    + ' class="header">'
+    + '<a class="header-anchor" href="#' + id + '" id="' + id + '"></a>'
+    + '<span class="text">'
     + text
-    + '<a class="header-anchor-select" href="#' + id + '">#</a>'
+    + '</span><a class="header-anchor-select" href="#' + id + '">#</a>'
     + '</h'
     + level
     + '>\n';
