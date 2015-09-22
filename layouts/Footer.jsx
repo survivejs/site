@@ -1,6 +1,5 @@
 var React = require('react');
 var Paths = require('antwar-core/PathsMixin');
-var _ = require('lodash');
 
 module.exports = React.createClass({
     displayName: 'Footer',
@@ -63,9 +62,7 @@ module.exports = React.createClass({
         );
     },
     renderBlogTeaser: function(amount) {
-        var posts = _.reject(this.getSectionItems('blog'), function(post) {
-            return post.isDraft;
-        }).slice(0, amount);
+        var posts = this.getSectionItems('blog').slice(0, amount);
 
         return (
             <ul className='blog-teasers'>
