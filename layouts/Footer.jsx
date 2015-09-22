@@ -1,10 +1,8 @@
 var React = require('react');
-var Paths = require('antwar-core/PathsMixin');
+var BlogTeaser = require('./BlogTeaser');
 
 module.exports = React.createClass({
     displayName: 'Footer',
-
-    mixins: [Paths],
 
     render: function() {
         return (
@@ -32,7 +30,7 @@ module.exports = React.createClass({
                 <div className='footer-blog'>
                     <h3>From the Blog</h3>
 
-                    {this.renderBlogTeaser(5)}
+                    <BlogTeaser amount={5} />
                 </div>
                 <div className='footer-contact'>
                     <h3>Contact</h3>
@@ -59,21 +57,6 @@ module.exports = React.createClass({
                     </form>
                 </div>
             </div>
-        );
-    },
-    renderBlogTeaser: function(amount) {
-        var posts = this.getSectionItems('blog').slice(0, amount);
-
-        return (
-            <ul className='blog-teasers'>
-                {posts.map((post, i) => {
-                    return (<li key={'post' + i}>
-                        <a className='blog-teaser' href={post.url}>
-                            {post.title}
-                        </a>
-                    </li>);
-                })}
-            </ul>
         );
     }
 });
