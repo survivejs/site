@@ -1,5 +1,5 @@
 var React = require('react');
-var BlogTeaser = require('./BlogTeaser');
+var Teaser = require('./Teaser');
 
 module.exports = React.createClass({
     displayName: 'Footer',
@@ -30,7 +30,7 @@ module.exports = React.createClass({
                 <div className='footer-blog'>
                     <h3>From the Blog</h3>
 
-                    <BlogTeaser amount={5} />
+                    <Teaser section={'blog'} amount={5} />
                 </div>
                 <div className='footer-contact'>
                     <h3>Contact</h3>

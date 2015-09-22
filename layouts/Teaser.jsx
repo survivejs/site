@@ -7,8 +7,9 @@ module.exports = React.createClass({
     mixins: [Paths],
 
     render: function() {
+        var section = this.props.section;
         var amount = this.props.amount;
-        var posts = this.getSectionItems('blog').slice(0, amount);
+        var posts = this.getSectionItems(section).slice(0, amount);
 
         return (
             <ul className='blog-teasers'>
