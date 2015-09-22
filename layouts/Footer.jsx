@@ -23,7 +23,7 @@ module.exports = React.createClass({
                             <a href='https://github.com/survivejs/webpack_react' target='_blank'>GitHub</a>
                         </li>
                         <li>
-                            <a href='http://localhost:8000/atom.xml' target='_blank'>Blog RSS</a>
+                            <a href='/atom.xml"' target='_blank'>Blog RSS</a>
                         </li>
                     </ul>
                 </div>
