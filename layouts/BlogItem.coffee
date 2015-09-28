@@ -46,6 +46,6 @@ module.exports = React.createClass
             if item.next
                 div {className: 'prevnext__next'},
                   div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.next.headerImage})"}
-                  span className: 'prevnext__info', item.nextInfo || 'Next item'
+                  span className: 'prevnext__info', item.nextInfo || 'Next post'
                   a className: 'prevnext__link', href: "/#{item.next.url}", item.next.title
       script {type: 'text/javascript', dangerouslySetInnerHTML: __html: "var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();"}
