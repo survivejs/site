@@ -30,7 +30,7 @@ module.exports = React.createClass({
                 <div className='footer-blog'>
                     <h3>From the Blog</h3>
 
-                    <Teaser section={'blog'} amount={5} />
+                    <Teaser section={'blog'} amount={10} />
                 </div>
                 <div className='footer-contact'>
                     <h3>Contact</h3>
@@ -46,7 +46,7 @@ module.exports = React.createClass({
                         </label>
                         <label>
                             <span>Message:</span>
-                            <textarea name='message' rows='4' />
+                            <textarea name='message' rows='8' />
                         </label>
                         <input type='hidden' name='_subject' value='SurviveJS' />
                         <input type='hidden' name="_next" value='//survivejs.com/thanks' />
