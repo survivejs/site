@@ -428,8 +428,14 @@ footer .footer-wrapper{
 
     .toc-nav__wrapper {
         margin: 1em;
+        padding: 0.5em;
 
+        background: rgba(0,0,0,0.01);
         max-width: 250px;
+
+        .toc-nav--header {
+            margin-top: 0;
+        }
 
         .part {
             margin-top: 0.5em;
@@ -441,6 +447,19 @@ footer .footer-wrapper{
 
         .chapter:first-child {
             margin-left: inherit;
+        }
+    }
+
+    .chapter {
+        max-width: 700px;
+
+        .post__meta {
+            background: rgba(0,0,0,0.01);
+            padding: 0.5em;
+        }
+
+        .post__meta > * {
+            margin-right: 1em;
         }
     }
 
@@ -635,16 +654,4 @@ blockquote {
 // blog tweaks
 .post__author {
     flex-direction: row;
-}
-
-// TODO: fix at base theme
-.nav__toggle-label {
-    z-index: 10000; /* #241 */
-}
-
-/* XXXXX: width hack - restrict to content max */
-@media only screen {
-    .post__content h1, .post__content h2, .post__content h3, .post__content h4, .post__content h5, .post__content h6, .post__content p, .post__content ol, .post__content ul, .post__content div, .post__content pre, .post__content blockquote, .post__content form {
-        max-width: 700px;
-    }
 }
