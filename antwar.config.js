@@ -26,7 +26,7 @@ module.exports = {
     }
   ],
   output: 'build',
-  name: 'SurviveJS - Webpack and React',
+  name: 'SurviveJS',
   author: 'Juho Vepsäläinen',
   blog: {
     author: function() {
