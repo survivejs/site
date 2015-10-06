@@ -25,14 +25,12 @@ var Index = React.createClass({
                             <a className='btn btn--inverted' href='/webpack_react/introduction'>Read the book</a>
                             <a className='btn btn--inverted' href='https://leanpub.com/survivejs_webpack_react'>Buy the ebook</a>
                         </div>
-
-                        <div className='front__latestpost'>
-                            {this.renderBlogTeaser()}
-                        </div>
                     </div>
                 </div>
                 <div className='post post--front'>
                     <section className='post__content'>
+                        {this.renderBlogTeaser()}
+
                         <div dangerouslySetInnerHTML={{__html: require('./index.md').content}} />
                     </section>
 
@@ -51,9 +49,12 @@ var Index = React.createClass({
         }
 
         return (
-            <a className='front__latestpost-link' href={post.url}>
-                {'From the blog: ' + post.title}
-            </a>
+            <blockquote className='front__latestpost tip'>
+                <div>From the blog:</div>
+                <a className='front__latestpost-link' href={post.url}>
+                    {post.title}
+                </a>
+            </blockquote>
         );
     }
 });
