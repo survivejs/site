@@ -18,5 +18,5 @@ Juho Vepsäläinen has been dealing with the web since the 90s. He is behind [js
 He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](https://github.com/bebraw/reactabular) in addition to many other libraries.
 
 * [@bebraw](https://twitter.com/bebraw)
-* [Blog](http://nixtu.info)
+* [Personal blog](http://nixtu.info)
 * [GitHub](https://github.com/bebraw)
