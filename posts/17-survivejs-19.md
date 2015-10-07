@@ -18,9 +18,9 @@ Getting the book printed is a huge step for me personally. It's great unknown bu
 
 Ideally the book will continue to provide some level of income as that enables me to keep developing the content and technology around it.
 
-## Book Improvements - `v1.9.0`
+## Book Improvements - `1.9.0`
 
-In total 134 commits went to `v1.9.0`. To make it easier to follow what happened and where, I've split up the changes below.
+In total 134 commits went to `1.9.0`. To make it easier to follow what happened and where, I've split up the changes below.
 
 You can see GitHub for [all changes](https://github.com/survivejs/webpack_react/compare/v1.8.0...v1.9.0).
 
