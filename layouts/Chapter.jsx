@@ -2,7 +2,6 @@ import React from 'react';
 import Paths from 'antwar-core/PathsMixin';
 import Router from 'react-router';
 import config from 'config';
-import _ from 'lodash';
 import LatestPost from './LatestPost.jsx';
 
 module.exports = React.createClass({
