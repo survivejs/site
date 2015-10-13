@@ -1,11 +1,8 @@
 var React = require('react');
-var Paths = require('antwar-core/PathsMixin');
-var _ = require('lodash');
+var LatestPost = require('../layouts/LatestPost.jsx');
 
 var Index = React.createClass({
     displayName: 'Index',
-
-    mixins: [Paths],
 
     render: function() {
         return (
@@ -29,7 +26,7 @@ var Index = React.createClass({
                 </div>
                 <div className='post post--front'>
                     <section className='post__content'>
-                        {this.renderBlogTeaser()}
+                    <LatestPost />
 
                         <div dangerouslySetInnerHTML={{__html: require('./index.md').content}} />
                     </section>
@@ -37,24 +34,6 @@ var Index = React.createClass({
                     <aside className='post__sidebar' dangerouslySetInnerHTML={{__html: require('./sidebar.md').content}} />
                 </div>
             </div>
-        );
-    },
-    renderBlogTeaser: function() {
-        var post = _.reject(this.getSectionItems('blog'), function(post) {
-            return post.isDraft;
-        })[0];
-
-        if(!post) {
-            return;
-        }
-
-        return (
-            <blockquote className='front__latestpost tip'>
-                <div>From the blog:</div>
-                <a className='front__latestpost-link' href={post.url}>
-                    {post.title}
-                </a>
-            </blockquote>
         );
     }
 });
