@@ -88,6 +88,10 @@ module.exports = React.createClass({
     );
   },
   renderPostMeta(item) {
+    if(!(item.startSource || item.endSource || item.demo)) {
+      return;
+    }
+
     return (
       <div className="post__meta">
         {item.startSource ?
