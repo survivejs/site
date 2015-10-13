@@ -3,6 +3,7 @@ import Paths from 'antwar-core/PathsMixin';
 import Router from 'react-router';
 import config from 'config';
 import _ from 'lodash';
+import LatestPost from './LatestPost.jsx';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
@@ -32,6 +33,7 @@ module.exports = React.createClass({
 
         <div className="chapter">
           <div className="post__content">
+            <LatestPost />
             {this.renderPostMeta(item)}
             {this.renderPostContent(item)}
             {this.renderSocialLinks(item)}
