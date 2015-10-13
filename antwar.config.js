@@ -115,11 +115,11 @@ module.exports = {
 function blog() {
   return {
     path: function() {
-      return require.context('./posts', true, /^\.\/.*\.md$/);
+      return require.context('./posts', false, /^\.\/.*\.md$/);
     },
     /*
     draft: function() {
-      return require.context('./drafts', true, /^\.\/.*\.md$/);
+      return require.context('./drafts', false, /^\.\/.*\.md$/);
     },
     */
     processItem: {
@@ -150,7 +150,7 @@ function webpackReact() {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('../webpack_react/manuscript', true, /^\.\/.*\.md$/);
+      return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processItem: {
       layout: function() {
