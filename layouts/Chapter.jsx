@@ -95,21 +95,21 @@ module.exports = React.createClass({
     return (
       <div className="post__meta">
         {item.startSource ?
-          <div className="post__start_source"
+          <a className="post__start_source"
             href={item.startSource}
-            target="_blank">Start source code</div> :
+            target="_blank">Start source code</a> :
           null
         }
         {item.endSource ?
-          <div className="post__end_source"
+          <a className="post__end_source"
             href={item.endSource}
-            target="_blank">Finished source code</div> :
+            target="_blank">Finished source code</a> :
           null
         }
         {item.demo ?
-          <div className="post__demo"
+          <a className="post__demo"
             href={item.demo}
-            target="_blank">Demo</div> :
+            target="_blank">Demo</a> :
           null
         }
       </div>
