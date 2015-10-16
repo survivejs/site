@@ -1,5 +1,5 @@
 ---
-title: 'React-Bootstrap - Bootstrap rebuilt for React - Interview with Matt Smith'
+title: 'React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith'
 date: 2015-10-13
 headerImage: '/assets/img/bootstrap.jpg'
 ---
