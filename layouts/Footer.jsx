@@ -35,7 +35,7 @@ module.exports = React.createClass({
                 <div className='footer-contact'>
                     <h3>Contact</h3>
 
-                    <form action='//formspree.io/bebraw@gmail.com' method='POST'>
+                    <form action='//formspree.io/info@survivejs.com' method='POST'>
                         <label>
                             <span>Name:</span>
                             <input type='text' name='name' />
