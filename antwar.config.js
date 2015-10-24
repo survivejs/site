@@ -243,6 +243,8 @@ function webpackReact() {
           var previous = headers[i - 1] || {};
           var sourceSuffix = header.sourceRoot || '/kanban_app';
 
+          result.file.showDemo = !header.sourceRoot;
+
           if(previous.demo) {
             var previousSourceSuffix = previous.sourceRoot || '/kanban_app';
 
