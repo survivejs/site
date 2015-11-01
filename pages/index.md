@@ -50,10 +50,8 @@ This is the most useful book I’ve read this year. Apart from React itself it g
 
 <p>
 <img src='assets/img/testimonials/steve.jpg' alt='Steve Piercy' class='testimonial-photo' width='100' height='100' />
-SurviveJS connects the dots and fills the gaps left by the latest JavaScript tools and their documentation.  With its detailed step-by-step tutorial approach, SurviveJS gives practical examples of code and configuration while providing context for choosing one method over another.  As the state of JavaScript tools, frameworks, and libraries rapidly evolves, SurviveJS does exactly what its title implies: helps the developer survive JavaScript.
+SurviveJS connects the dots and fills the gaps left by the latest JavaScript tools and their documentation. With its detailed step-by-step tutorial approach, SurviveJS gives practical examples of code and configuration while providing context for choosing one method over another.
 </p>
-
-The author of SurviveJS, Juho Vepsäläinen, is a seasoned professional web application developer.  He has built a growing ecosystem around the book, including an open source repository on GitHub, an online chat room, and frequent updates to the book.
 
 ### Neeraj Singh (Founder of [BigBinary](http://bigbinary.com/))
 
