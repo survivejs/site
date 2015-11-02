@@ -74,7 +74,7 @@ module.exports = {
           url: '/',
         },
         {
-          title: sectionName === 'blog' ? 'Read the book' : 'Read the blog',
+          title: sectionName === 'blog' ? 'Read the free version' : 'Read the blog',
           url: sectionName === 'blog' ? '/webpack_react/introduction/' : '/blog',
         },
         {
