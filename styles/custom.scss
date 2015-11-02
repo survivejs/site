@@ -527,30 +527,36 @@ footer .footer-wrapper{
 }
 
 .previous-page, .next-page {
-    background: white;
-
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
 
+    top: calc(50% - 8em);
     position: fixed;
-    bottom: 20px;
 }
-
 .previous-page {
-    left: 10px;
-}
+    left: 1em;
+    width: 0px;
 
+    border-top: 8em solid rgba(0,0,0,0);
+    border-left: 0px solid rgba(0,0,0,0);
+    border-right: 1.5em solid rgba(0,0,0,0.10);
+    border-bottom: 8em solid rgba(0,0,0,0);
+}
+.previous-page:hover {
+    border-right: 1.5em solid rgba(0,0,0,0.20);
+}
 .next-page {
-    right: 10px;
-}
+    right: 1em;
+    width: 0px;
 
-.previous-page::before {
-    content: "\2190";
+    border-top: 8em solid rgba(0,0,0,0);
+    border-left: 1.5em solid rgba(0,0,0,0.10);
+    border-right: 0px solid rgba(0,0,0,0);
+    border-bottom: 8em solid rgba(0,0,0,0);
 }
-
-.next-page::after {
-    content: "\2192";
+.next-page:hover {
+    border-left: 1.5em solid rgba(0,0,0,0.20);
 }
 
 .nav {
@@ -576,7 +582,18 @@ footer .footer-wrapper{
         top: inherit;
         bottom: 0.5em;
         max-width: 40%;
+
+        // hide next/prev on mobile for now
+        border: none;
     }
+    /*
+    .previous-page::before {
+        content: "\2190";
+    }
+    .next-page::before {
+        content: "\2192";
+    }
+    */
 
     .nav {
         padding-top: 0.5em;

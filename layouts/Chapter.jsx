@@ -163,12 +163,12 @@ module.exports = React.createClass({
   },
   renderNext(item) {
     return item.next ?
-      <a className="next-page" href={`/${item.next.url}`}>{item.next.title}</a> :
+      <a className="next-page" href={`/${item.next.url}`} title={item.next.title} /> :
       null;
   },
   renderPrev(item) {
     return item.prev ?
-      <a className="previous-page" href={`/${item.prev.url}`}>{item.prev.title}</a> :
+      <a className="previous-page" href={`/${item.prev.url}`} title={item.prev.title} /> :
       null;
   },
   renderDisqus() {
