@@ -124,8 +124,7 @@ module.exports = React.createClass({
       <div className="social-links">
         <blockquote className="tip">
           {`If you enjoyed this ${item.type} consider subscribing to `}
-          <a href="http://eepurl.com/bth1v5">the mailing list</a> or following
-          <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates.
+          <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates.
           There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).
         </blockquote>
       </div>
