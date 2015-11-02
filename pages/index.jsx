@@ -19,7 +19,7 @@ var Index = React.createClass({
                         <h3 className='front-motto'>From apprentice to master</h3>
 
                         <div className='front__buttons'>
-                            <a className='btn btn--inverted' href='/webpack_react/introduction'>Read the free book</a>
+                            <a className='btn btn--inverted' href='/webpack_react/introduction'>Read the free version</a>
                             <a className='btn btn--inverted' href='https://leanpub.com/survivejs_webpack_react'>Buy the full ebook</a>
                         </div>
                     </div>
