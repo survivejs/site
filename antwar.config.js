@@ -215,6 +215,7 @@ function webpackReact() {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
       var headers = require('../webpack_react/manuscript/headers.json');
       var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
+      var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
       var ret = [];
 
       order = order.filter(function(name) {
@@ -226,6 +227,8 @@ function webpackReact() {
           name: name,
         });
         var header = headers[i];
+        var resourceName = './' + name.split('.')[0] + '.json';
+        var resources = reqResource(resourceName);
 
         if(!result) {
           return console.error('failed to find', name);
@@ -237,7 +240,7 @@ function webpackReact() {
         result.file.previousInfo = 'Previous chapter';
         result.file.nextInfo = 'Next chapter';
         result.file.bonus = header.bonus;
-        result.file.resources = header.resources;
+        result.file.resources = resources;
 
         if(header.demo) {
           var previous = headers[i - 1] || {};
