@@ -1,6 +1,6 @@
 ---
 title: 'Baobab - Data Trees with Cursors - Interview with Guillaume Plique'
-date: 2015-10-XX
+date: 2015-11-02
 headerImage: '/assets/img/baobab.jpg'
 ---
 
