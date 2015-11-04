@@ -130,6 +130,10 @@ bundle<span class="token punctuation">.</span>js<span class="token punctuation">
       app<span class="token punctuation">:</span> APP_PATH<span class="token punctuation">,</span>
       vendor<span class="token punctuation">:</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pkg<span class="token punctuation">.</span>dependencies<span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> BUILD_PATH<span class="token punctuation">,</span>
+      filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
     devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -265,10 +269,6 @@ vendor<span class="token punctuation">.</span>f33176572a7ad31551ee<span class="t
   resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.js&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.jsx&apos;</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> BUILD_PATH<span class="token punctuation">,</span>
-    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
   module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
@@ -385,13 +385,15 @@ Child extract<span class="token operator">-</span>text<span class="token operato
   ...
 <span class="token punctuation">}</span>
 </code></pre>
-<p>In order to get access to our build path, we need to expose something useful for <code>deploy</code> case. We could either match for it or just return some sane defaults from Webpack configuration. I&apos;m opting for the latter here to keep it simple:</p>
+<p>In order to get access to our build path, we need to expose something useful for <code>deploy</code> case. We can match for the case like this so we get useful configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> common<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//if(TARGET === &apos;build&apos; || TARGET === &apos;stats&apos;) {</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;build&apos;</span> <span class="token operator">||</span> TARGET <span class="token operator">===</span> <span class="token string">&apos;stats&apos;</span> <span class="token operator">||</span> TARGET <span class="token operator">===</span> <span class="token string">&apos;deploy&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 </code></pre>
-<p>If you import Webpack configuration without a matching target now, you&apos;ll get the common configuration out of it.</p>
 <p>To glue it all together, we need a deployment script like this:</p>
 <p><strong>lib/deploy.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword">var</span> ghpages <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;gh-pages&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

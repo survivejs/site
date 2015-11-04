@@ -61,10 +61,6 @@ Combined with Webpack React becomes a joy to work with. Even though you can use 
   resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.js&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;.jsx&apos;</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> BUILD_PATH<span class="token punctuation">,</span>
-    filename<span class="token punctuation">:</span> <span class="token string">&apos;bundle.js&apos;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
   module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
@@ -157,7 +153,6 @@ Combined with Webpack React becomes a joy to work with. Even though you can use 
 <p>We also need to make Babel aware of HMR. First we should pass target environment to Babel through our Webpack configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword">var</span> BUILD_PATH <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>ROOT_PATH<span class="token punctuation">,</span> <span class="token string">&apos;build&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>BABEL_ENV <span class="token operator">=</span> TARGET<span class="token punctuation">;</span>
 

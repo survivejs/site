@@ -42,7 +42,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
   <span class="token function">renderNote</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&quot;note&quot;</span> id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>`note$<span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span>`<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&quot;note&quot;</span> id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">&gt;</span>
         <span class="token operator">&lt;</span>Editable
           value<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span>
           onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span>
@@ -183,7 +183,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
   <span class="token function">renderNote</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&quot;note&quot;</span> onMove<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onMoveNote<span class="token punctuation">}</span>
-        id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>`note$<span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span>`<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">&gt;</span>
         <span class="token operator">&lt;</span>Editable
           value<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span>
           onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span>
@@ -200,7 +200,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <h2 class="header"><a class="header-anchor" href="#adding-action-and-store-method-for-moving" id="adding-action-and-store-method-for-moving"></a><span class="text">Adding Action and Store Method for Moving</span><a class="header-anchor-select" href="#adding-action-and-store-method-for-moving">#</a></h2>
 <p>The logic of drag and drop is quite simple. Suppose we have a list A, B, C. In case we move A below C we should end up with B, C, A. In case we have another list, say D, E, F, and move A to the beginning of it, we should end up with B, C and A, D, E, F.</p>
 <p>In our case, we&apos;ll get some extra complexity due to lane to lane dragging. When we move a <code>Note</code>, we know its original position and the intended target position. <code>Lane</code> knows what <code>Notes</code> belong to it by id. We are going to need some way to tell <code>LaneStore</code> that it should perform the logic over given notes. A good starting point is to define <code>LaneActions.move</code>:</p>
-<p><strong>app/actions/LaneActions.jsx</strong></p>
+<p><strong>app/actions/LaneActions.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword">import</span> alt from <span class="token string">&apos;../libs/alt&apos;</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> alt<span class="token punctuation">.</span><span class="token function">generateActions</span><span class="token punctuation">(</span>
@@ -219,7 +219,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
   <span class="token function">renderNote</span><span class="token punctuation">(</span>note<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">&quot;note&quot;</span> onMove<span class="token operator">=</span><span class="token punctuation">{</span>LaneActions<span class="token punctuation">.</span>move<span class="token punctuation">}</span>
-        id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>`note$<span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span>`<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+        id<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">&gt;</span>
         <span class="token operator">&lt;</span>Editable
           value<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span>
           onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> note<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span>
@@ -230,7 +230,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <span class="token punctuation">}</span>
 </code></pre>
 <p>We should also define a stub at <code>LaneStore</code> to see that we wired it up correctly:</p>
-<p><strong>app/stores/LaneStore.jsx</strong></p>
+<p><strong>app/stores/LaneStore.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
 <span class="token keyword">class</span> <span class="token class-name">LaneStore</span> <span class="token punctuation">{</span>
@@ -246,7 +246,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <h2 class="header"><a class="header-anchor" href="#implementing-note-drag-and-drop-logic" id="implementing-note-drag-and-drop-logic"></a><span class="text">Implementing Note Drag and Drop Logic</span><a class="header-anchor-select" href="#implementing-note-drag-and-drop-logic">#</a></h2>
 <p>Moving within a lane itself is more complicated. When you are operating based on ids and perform operations one at a time, you&apos;ll need to take possible index alterations into account. As a result, I&apos;m using <code>update</code> <a href="https://facebook.github.io/react/docs/update.html">immutability helper</a> from React as that solves the problem in one pass.</p>
 <p>It is possible to solve the lane to lane case using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">splice</a>. First we <code>splice</code> out the source note, and then we <code>splice</code> it to the target lane. Again, <code>update</code> could work here, but I didn&apos;t see much point in that given <code>splice</code> is nice and simple. The code below illustrates a mutation based solution:</p>
-<p><strong>app/stores/LaneStore.jsx</strong></p>
+<p><strong>app/stores/LaneStore.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token keyword">import</span> update from <span class="token string">&apos;react/lib/update&apos;</span><span class="token punctuation">;</span>
 
@@ -397,7 +397,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <p>There is one problem, though. What happens to the old instance of the <code>Note</code>? In the current solution, the old lane will have an id pointing to it. As a result we have duplicate data in the system.</p>
 <p>Earlier we resolved this using <code>detachFromLane</code>. The problem is that we don&apos;t know to which lane the note belonged. We could pass this data through the component hierarchy, but that doesn&apos;t feel particularly nice.</p>
 <p>We could resolve this on store level instead by implementing an invariant at <code>attachToLane</code> that makes sure any possible earlier references get removed. This can be achieved by implementing <code>this.removeNote(noteId)</code> check:</p>
-<p><strong>app/stores/LaneStore.jsx</strong></p>
+<p><strong>app/stores/LaneStore.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
 <span class="token keyword">class</span> <span class="token class-name">LaneStore</span> <span class="token punctuation">{</span>
