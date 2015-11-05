@@ -91,6 +91,6 @@ Depending on how 0.14 related tooling develops, I may do an intermediate release
 
 ## Conclusion
 
-The most amazing part of this project has been the amount of feedback I've received. I've tried to put it to good use. You can contact me [directly](mailto:info@survivejs.com) or through the GitHub [issue tracker](https://github.com/survivejs/webpack_react/issues). Also [Gitter](https://gitter.im/survivejs/webpack_react) will work.
+The most amazing part of this project has been the amount of feedback I've received. I've tried to put it to good use. You can [contact me directly](mailto:info@survivejs.com) or through the GitHub [issue tracker](https://github.com/survivejs/webpack_react/issues). Also [Gitter](https://gitter.im/survivejs/webpack_react) will work.
 
 Remember that you can support my work by [purchasing the book at Leanpub](https://leanpub.com/survivejs_webpack_react). Every little bit counts and allows me to keep it up.

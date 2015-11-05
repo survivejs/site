@@ -5,7 +5,14 @@
 Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly. Combined with [webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands.
 </p>
 
-*SurviveJS - Webpack and React* shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29) application based on these technologies. During the process you will learn to:
+
+*SurviveJS - Webpack and React* shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29) application based on these technologies as shown below:
+
+<p>
+<img src="assets/img/kanban.gif" alt="Kanban animation" class="kanban-animation" width="594" height="279" />
+</p>
+
+During the process you will learn to:
 
 0. Set up a Webpack based development and production environment. You will learn to get most out of [react-hot-loader](https://github.com/gaearon/react-hot-loader) and [Babel](https://babeljs.io/) for development.
 0. Improve the quality of your code by using [ESLint](http://eslint.org/) and friends to spot possible mistakes earlier.
@@ -15,7 +22,7 @@ Facebook's [React](https://facebook.github.io/react/) powers an increasing amoun
 
 ### Leanpub exclusives
 
-In addition, if you buy the Leanpub version you will get exclusive chapters that show you how to:
+In addition, if you buy the Leanpub version you will get access to exclusive chapters that show you how to:
 
 0. Deal with typing in React.
 0. Test your React application in various ways.
@@ -28,6 +35,10 @@ Please check out [the online version](webpack_react/introduction) of the book to
 
 The book is freely available under [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/) license. You can support creation of new content by [purchasing a digital copy of the book](https://leanpub.com/survivejs_webpack).
 
+<blockquote class="tip">
+Psst. <a href="/demos/08_building_kanban/" target="_blank">You can try out the application online.</a>
+</blockquote>
+
 ## What are the prerequisites?
 
 <div style="margin-bottom: 1em">
@@ -35,7 +46,9 @@ The book is freely available under [CC BY-NC-ND](https://creativecommons.org/lic
   <span class="legend" style="font-size: small;">[Dennis Hamilton](https://www.flickr.com/photos/91555706@N00/3879384912/) - Kanban (CC BY)</span>
 </div>
 
-I expect you know the basics of JavaScript and Node.js. Patience is a virtue. You can reach me personally through various ways. [gitter](https://gitter.im/survivejs/webpack_react) works well.
+I expect you know the basics of JavaScript and Node.js. Plenty of patience is needed as there's a lot to learn. Fortunately you don't have to be alone at your journey.
+
+Community support is available through [gitter](https://gitter.im/survivejs/webpack_react). You can also [contact me directly](mailto:info@survivejs.com).
 
 ## Testimonials
 
