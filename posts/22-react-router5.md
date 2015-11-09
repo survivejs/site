@@ -30,7 +30,7 @@ There is clear separation of concerns: router5 will take care of checking routin
 
 ## Why did you develop *react-router5*?
 
-I started using React a little more than a year ago, while still developing heavily with Angular. Working alongside a back-end team using Scala, I had slowly been introduced to functional programming, immutability, reactive programming, etc... I played with React, used it on a playground project at home, and one of the really first thing I searched for a router. I think it is a habit most of us have, being having used to rely on frameworks. And no surprise on the outcome, I ended up with react-router.
+I started using React a little more than a year ago, while still developing heavily with Angular. Working alongside a back-end team using Scala, I had slowly been introduced to functional programming, immutability, reactive programming, etc... I played with React, used it on a playground project at home, and one of the really first thing I searched for was a router. I think it is a habit most of us have, having being used to rely on frameworks. And no surprise on the outcome, I ended up with react-router.
 
 Slowly, my practice of React evolved. I started to reject state, played with Flux without being fully convinced, looked a lot at reactive programming but I didn't know what to do about routing. It felt like it was standing on my way, I wasn't building my application virtual tree, a router was doing it for me. So I started to play with routing, implementing custom solutions.
 
