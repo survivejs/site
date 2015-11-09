@@ -1,5 +1,5 @@
 ---
-title: 'react-router5 - Alternative Routing for React - Interview with Thomas Roch'
+title: 'react-router5 - Routing Alternative for React - Interview with Thomas Roch'
 date: 2015-11-09
 headerImage: '/assets/img/route.jpg'
 ---
