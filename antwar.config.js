@@ -98,7 +98,7 @@ module.exports = {
     },
     sectionIndex: function() {
       // TODO: push to section level
-      return require('./layouts/SectionIndex.coffee');
+      return require('./layouts/SectionIndex.jsx');
     },
   },
   paths: {
