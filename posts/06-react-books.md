@@ -38,6 +38,10 @@ As I haven't bought the book it is hard for me to evaluate how up to date it is.
 
 If you want a quick read that's straight to the point, this could be it. It's nowhere broad as **Developing a React Edge** for instance but if you just want to visualize data, this might work.
 
+### React - Beginner's Guide
+
+[React - Beginner's Guide](https://leanpub.com/react-beginner-guide) by Daniel Schmitz and Daniel Pedrinha Georgii is a small, focused book. Its minimum price is $5 VAT excluded.
+
 ### Descubre React
 
 [Descubre React](https://leanpub.com/descubre-react) by [Javi Jiménez](http://soyjavi.com/) is a Spanish introduction to React. It has 83 pages and its minimum price is $12.49 VAT excluded.
@@ -112,7 +116,7 @@ There's also an emerging category of React Native books and the first book has a
 
 ## Conclusion
 
-A lot of the React books have significant overlap. Their length ranges from very short (63 pages) up to quite long (301 pages). There's also wide variance in pricing as a result. The cheapest goes for $9 while the most expensive costs $49. There are both self-published options and books backed by a publisher. It is hard to comment on the quality of the books as I haven't read these.
+A lot of the React books have significant overlap. Their length ranges from very short (63 pages) up to quite long (301 pages). There's also wide variance in pricing as a result. The cheapest goes for $5 while the most expensive costs $49. There are both self-published options and books backed by a publisher. It is hard to comment on the quality of the books as I haven't read these.
 
 The situation is very interesting. It's going to be difficult for a book to stand out content-wise. The biggest differentiating factor I can see is actually openness of the book. My book is a notable exception to the rule. It's going to be interesting to see if it makes any difference compared to the competition and publisher backed options.
 
