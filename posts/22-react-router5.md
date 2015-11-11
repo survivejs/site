@@ -22,7 +22,7 @@ I have a degree in engineering, although my education was for most parts non spe
 
 I did a fair amount of full-stack web development, and a few years ago I decided to take front-end development very seriously, being amazed by what a difference Node.js and social coding had started to make. I am a French national, I am currently a software engineer at Fanduel and live in Glasgow, Scotland.
 
-## How would you describe *react-router5* to someone who has never heard of them?
+## How would you describe *react-router5* to someone who has never heard of it?
 
 *react-router5* (and router5) is a different way of thinking about routing in front-end applications, and a way which I think suits a lot more trees of components. Instead of focusing on what component to render for what route, or providing a handler function per route, it sees routing as going from A to B, not loading B.
 
