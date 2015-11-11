@@ -6,6 +6,7 @@ import config from 'config';
 import Disqus from '../components/Disqus.jsx';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
+import Footer from '../components/Footer.jsx';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
@@ -39,9 +40,9 @@ module.exports = React.createClass({
             {this.renderPostMeta(item)}
             {this.renderPostContent(item)}
             {this.renderSocialLinks(item)}
+            <PrevNext item={item} previousText='Previous chapter' nextText='Next chapter' />
             <div id="disqus_thread" />
           </div>
-          <PrevNext item={item} previousText='Previous chapter' nextText='Next chapter' />
           {this.renderNext(item)}
           {this.renderPrev(item)}
         </div>

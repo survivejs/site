@@ -39,7 +39,5 @@ module.exports = React.createClass
 
             main { role: 'main' }, @props.children
 
-            # show footer only for index
-            if not sectionName
-                footer { },
-                    Footer()
+            footer { },
+                Footer()
