@@ -25,7 +25,7 @@ module.exports = React.createClass({
         );
     },
     renderSingle(post) {
-        return <a className='blog-teaser' href={post.url}>
+        return <a className='blog-teaser' href={'/' + post.url}>
             {post.title}
         </a>;
     }
