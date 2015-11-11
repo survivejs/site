@@ -3,6 +3,7 @@ import Paths from 'antwar-core/PathsMixin';
 import Router from 'react-router';
 import config from 'config';
 
+import Disqus from './Disqus.jsx';
 import LatestPost from './LatestPost.jsx';
 import PrevNext from './PrevNext.jsx';
 
@@ -45,7 +46,7 @@ module.exports = React.createClass({
           {this.renderPrev(item)}
         </div>
 
-        {this.renderDisqus()}
+        <Disqus shortname='survivejs' />
       </div>
     );
   },
@@ -141,10 +142,5 @@ module.exports = React.createClass({
     return item.prev ?
       <a className="previous-page" href={`/${item.prev.url}`} title={item.prev.title} /> :
       null;
-  },
-  renderDisqus() {
-    return <script type="text/javascript" dangerouslySetInnerHTML={{
-      __html: `var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();`
-    }} />;
   }
 });

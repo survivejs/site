@@ -4,6 +4,8 @@ MomentDisplay = React.createFactory require 'antwar-default-theme/MomentDisplay'
 Paths = require 'antwar-core/PathsMixin'
 Router = require 'react-router'
 config = require 'config'
+
+Disqus = React.createFactory require './Disqus'
 Author = React.createFactory require './Author'
 PrevNext = React.createFactory require './PrevNext'
 
@@ -39,4 +41,4 @@ module.exports = React.createClass
 
         PrevNext item: item, previousText: 'Previous post', nextText: 'Next post'
 
-      script {type: 'text/javascript', dangerouslySetInnerHTML: __html: "var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();"}
+      Disqus shortname: 'survivejs'
