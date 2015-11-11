@@ -5,9 +5,9 @@ Paths = require 'antwar-core/PathsMixin'
 Router = require 'react-router'
 config = require 'config'
 
-Disqus = React.createFactory require './Disqus'
-Author = React.createFactory require './Author'
-PrevNext = React.createFactory require './PrevNext'
+Disqus = React.createFactory require '../components/Disqus'
+Author = React.createFactory require '../components/Author'
+PrevNext = React.createFactory require '../components/PrevNext'
 
 { div, span, header, h1, a, script } = require 'react-coffee-elements'
 

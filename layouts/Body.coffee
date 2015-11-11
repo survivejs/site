@@ -3,7 +3,7 @@ Nav = React.createFactory require 'antwar-default-theme/Nav'
 Paths = require('antwar-core/PathsMixin')
 require 'antwar-default-theme/scss/main.scss'
 
-Footer = React.createFactory require './Footer'
+Footer = React.createFactory require '../components/Footer'
 
 # XXX: this can get compiled before latter... figure out how to forcei order
 #require 'react-ghfork/gh-fork-ribbon.ie.css' # ie support

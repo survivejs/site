@@ -3,9 +3,9 @@ import Paths from 'antwar-core/PathsMixin';
 import Router from 'react-router';
 import config from 'config';
 
-import Disqus from './Disqus.jsx';
-import LatestPost from './LatestPost.jsx';
-import PrevNext from './PrevNext.jsx';
+import Disqus from '../components/Disqus.jsx';
+import LatestPost from '../components/LatestPost.jsx';
+import PrevNext from '../components/PrevNext.jsx';
 
 module.exports = React.createClass({
   displayName: 'Chapter',

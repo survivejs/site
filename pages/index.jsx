@@ -1,5 +1,5 @@
 var React = require('react');
-var LatestPost = require('../layouts/LatestPost.jsx');
+var LatestPost = require('../components/LatestPost.jsx');
 
 var Index = React.createClass({
     displayName: 'Index',
