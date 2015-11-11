@@ -94,7 +94,7 @@ module.exports = {
   },
   handlers: {
     body: function() {
-      return require('./layouts/Body.coffee');
+      return require('./layouts/Body.jsx');
     },
     sectionIndex: function() {
       // TODO: push to section level
