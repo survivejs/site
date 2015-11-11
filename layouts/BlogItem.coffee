@@ -5,6 +5,7 @@ Paths = require 'antwar-core/PathsMixin'
 Router = require 'react-router'
 config = require 'config'
 Author = React.createFactory require './Author'
+PrevNext = React.createFactory require './PrevNext'
 
 { div, span, header, h1, a, script } = require 'react-coffee-elements'
 
@@ -36,16 +37,6 @@ module.exports = React.createClass
 
         div id: 'disqus_thread'
 
-        if item.next or item.prev
-          div className: 'prevnext',
-            if item.prev
-                div {className: 'prevnext__prev'},
-                  div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.prev.headerImage})"}
-                  span className: 'prevnext__info', item.previousInfo || 'You might also like'
-                  a className: 'prevnext__link', href: "/#{item.prev.url}", item.prev.title
-            if item.next
-                div {className: 'prevnext__next'},
-                  div {className: 'prevnext__bg', style: backgroundImage: "url(#{item.next.headerImage})"}
-                  span className: 'prevnext__info', item.nextInfo || 'Next post'
-                  a className: 'prevnext__link', href: "/#{item.next.url}", item.next.title
+        PrevNext item: item, previousText: 'Previous post', nextText: 'Next post'
+
       script {type: 'text/javascript', dangerouslySetInnerHTML: __html: "var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();"}

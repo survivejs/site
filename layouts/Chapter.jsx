@@ -40,7 +40,7 @@ module.exports = React.createClass({
             {this.renderSocialLinks(item)}
             <div id="disqus_thread" />
           </div>
-          <PrevNext item={item} />
+          <PrevNext item={item} previousText='Previous chapter' nextText='Next chapter' />
           {this.renderNext(item)}
           {this.renderPrev(item)}
         </div>
