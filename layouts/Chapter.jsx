@@ -7,6 +7,7 @@ import Disqus from '../components/Disqus.jsx';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
 import Footer from '../components/Footer.jsx';
+import SocialLinks from '../components/SocialLinks';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
@@ -39,7 +40,7 @@ module.exports = React.createClass({
             <LatestPost />
             {this.renderPostMeta(item)}
             {this.renderPostContent(item)}
-            {this.renderSocialLinks(item)}
+            <SocialLinks type={item.type} />
             <PrevNext item={item} previousText='Previous chapter' nextText='Next chapter' />
             <div id="disqus_thread" />
           </div>
@@ -122,17 +123,6 @@ module.exports = React.createClass({
   renderPostContent(item) {
     return <div className="chapter-content"
       dangerouslySetInnerHTML={{__html: item.content}}></div>;
-  },
-  renderSocialLinks(item) {
-    return (
-      <div className="social-links">
-        <blockquote className="tip">
-          {`If you enjoyed this ${item.type} consider subscribing to `}
-          <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates.
-          There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).
-        </blockquote>
-      </div>
-    );
   },
   renderNext(item) {
     return item.next ?
