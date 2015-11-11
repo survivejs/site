@@ -124,7 +124,7 @@ function blog() {
     */
     processItem: {
       layout: function() {
-        return require('./layouts/BlogItem.coffee');
+        return require('./layouts/BlogItem.jsx');
       },
       url: function(o) {
         if(o.file.url) {
