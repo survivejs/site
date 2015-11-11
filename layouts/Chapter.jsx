@@ -2,7 +2,9 @@ import React from 'react';
 import Paths from 'antwar-core/PathsMixin';
 import Router from 'react-router';
 import config from 'config';
+
 import LatestPost from './LatestPost.jsx';
+import PrevNext from './PrevNext.jsx';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
@@ -38,7 +40,7 @@ module.exports = React.createClass({
             {this.renderSocialLinks(item)}
             <div id="disqus_thread" />
           </div>
-          {this.renderPrevNext(item)}
+          <PrevNext item={item} />
           {this.renderNext(item)}
           {this.renderPrev(item)}
         </div>
@@ -127,36 +129,6 @@ module.exports = React.createClass({
           <a href="http://eepurl.com/bth1v5">the mailing list</a> or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates.
           There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).
         </blockquote>
-      </div>
-    );
-  },
-  renderPrevNext(item) {
-    if(!(item.next || item.prev)) {
-      return;
-    }
-
-    return (
-      <div className="prevnext">
-        {item.prev ?
-          <div className="prevnext__prev">
-            <div className="prevnext__bg" style={{
-              backgroundImage: `url(${item.prev.headerImage})`
-            }}></div>
-            <span className="prevnext__info">Previous chapter</span>
-            <a className="prevnext__link" href={`/${item.prev.url}`}>{item.prev.title}</a>
-          </div> :
-          null
-        }
-        {item.next ?
-          <div className="prevnext__next">
-            <div className="prevnext__bg" style={{
-              backgroundImage: `url(${item.next.headerImage})`
-            }}></div>
-            <span className="prevnext__info">Next chapter</span>
-            <a className="prevnext__link" href={`/${item.next.url}`}>{item.next.title}</a>
-          </div> :
-          null
-        }
       </div>
     );
   },
