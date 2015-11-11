@@ -5,7 +5,7 @@ require 'antwar-default-theme/scss/main.scss'
 
 Footer = React.createFactory require '../components/Footer'
 
-# XXX: this can get compiled before latter... figure out how to forcei order
+# XXX: this can get compiled before latter... figure out how to force order
 #require 'react-ghfork/gh-fork-ribbon.ie.css' # ie support
 require 'react-ghfork/gh-fork-ribbon.css'
 Fork = React.createFactory(require 'react-ghfork')
