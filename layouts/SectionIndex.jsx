@@ -1,7 +1,6 @@
 import React from 'react';
 import Router from 'react-router';
 import MomentDisplay from 'antwar-default-theme/MomentDisplay';
-import Paths from 'antwar-core/PathsMixin';
 import SectionLink from 'antwar-core/SectionLink';
 import config from 'config';
 
@@ -9,13 +8,15 @@ import _ from 'lodash';
 
 module.exports = React.createClass({
   displayName: 'SectionIndex',
-  mixins: [Router.State, Paths],
+  mixins: [Router.State],
   render() {
+    const section = this.props.section;
+
     return (
       <div className="grid">
-        <h1>{this.getSectionTitle() || 'Blog posts'}</h1>
+        <h1>{section.title}</h1>
         <ul className='post-list'>
-          {this.getSectionItems().map((item) =>
+          {section.items.map((item) =>
             <li key={item.url}>
               <h3 className="post-list__heading">
                 <SectionLink item={item}>{item.title}</SectionLink>

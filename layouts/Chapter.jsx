@@ -1,51 +1,49 @@
 import React from 'react';
-import Paths from 'antwar-core/PathsMixin';
 import Router from 'react-router';
 import config from 'config';
 
 import Disqus from '../components/Disqus.jsx';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
-import Footer from '../components/Footer.jsx';
 import SocialLinks from '../components/SocialLinks';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
-  mixins: [Router.State, Paths],
+  mixins: [Router.State],
   render() {
-    const sectionItems = this.getSectionItems();
-    const item = this.getItem();
+    const section = this.props.section;
+    const page = this.props.page;
     const author = item.author || config.author.name;
     const resources = item.resources;
 
     return (
       <div className="chapter__wrapper">
-        {item.headerImage ?
+        {page.headerImage ?
           <div className="header-image" style={{
-            backgroundImage: `url(${item.headerImage})`
+            backgroundImage: `url(${page.headerImage})`
           }}></div> :
           null
         }
 
-        <h1 className="post__heading">{item.title}</h1>
+        <h1 className="post__heading">{page.title}</h1>
 
         <div className="toc-nav__wrapper">
           <h4 className="toc-nav--header">Table of Contents</h4>
-          {this.renderTOC(sectionItems, item)}
+          {this.renderTOC(section.items, page)}
           {this.renderResources(resources)}
         </div>
 
         <div className="chapter">
           <div className="post__content">
-            <LatestPost />
-            {this.renderPostMeta(item)}
-            {this.renderPostContent(item)}
-            <SocialLinks type={item.type} />
-            <PrevNext item={item} previousText='Previous chapter' nextText='Next chapter' />
+            <LatestPost sectionItems={section.items} />
+            {this.renderPostMeta(page)}
+            {this.renderPostContent(page)}
+            <SocialLinks type={page.type} />
+            <PrevNext item={page} previousText='Previous chapter' nextText='Next chapter' />
             <div id="disqus_thread" />
           </div>
-          {this.renderNext(item)}
-          {this.renderPrev(item)}
+          {this.renderNext(page)}
+          {this.renderPrev(page)}
         </div>
 
         <Disqus shortname='survivejs' />

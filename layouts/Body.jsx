@@ -1,6 +1,5 @@
 import React from  'react';
 import Nav from 'antwar-default-theme/Nav';
-import Paths from 'antwar-core/PathsMixin';
 
 import 'antwar-default-theme/scss/main.scss';
 
@@ -20,9 +19,9 @@ if(config.theme.customStyles) {
 
 module.exports = React.createClass({
   displayName: 'Body',
-  mixins: [Paths],
   render() {
-    const sectionName = this.getSectionName();
+    const section = this.props.section;
+    const sectionName = section.name;
 
     return (
       <div>
@@ -34,17 +33,15 @@ module.exports = React.createClass({
 
         <main role="main">{this.props.children}</main>
 
-        <footer>
-          <Footer />
-        </footer>
+        <Footer sectionItems={section.items} />
       </div>
     );
   },
   renderFeedback() {
-    const itemTitle = this.getItem().title;
+    const page = this.props.page;
 
     return <Fork className="right ribbon"
-      project={`survivejs/webpack_react/issues/new?title=${itemTitle} - `}
+      project={`survivejs/webpack_react/issues/new?title=${page.title} - `}
       text="Submit feedback"
       style={{backgroundColor: 'black'}}
       target="_blank" />;

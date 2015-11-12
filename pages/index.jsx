@@ -3,8 +3,9 @@ var LatestPost = require('../components/LatestPost.jsx');
 
 var Index = React.createClass({
     displayName: 'Index',
-
     render: function() {
+        const section = this.props.section;
+
         return (
             <div className='frontpage'>
                 <div className='front__heading' style={{
@@ -26,7 +27,7 @@ var Index = React.createClass({
                 </div>
                 <div className='post post--front'>
                     <section className='post__content'>
-                    <LatestPost />
+                    <LatestPost sectionItems={section.items} />
 
                         <div dangerouslySetInnerHTML={{__html: require('./index.md').content}} />
                     </section>

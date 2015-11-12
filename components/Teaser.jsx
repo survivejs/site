@@ -1,15 +1,11 @@
 var React = require('react');
-var Paths = require('antwar-core/PathsMixin');
 
 module.exports = React.createClass({
     displayName: 'BlogTeaser',
-
-    mixins: [Paths],
-
     render: function() {
         var section = this.props.section;
         var amount = this.props.amount;
-        var posts = this.getSectionItems(section).slice(0, amount);
+        var posts = this.props.sectionItems(section).slice(0, amount);
 
         return posts.length > 1 ?
             this.renderMultiple(posts) :
