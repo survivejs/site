@@ -53,7 +53,7 @@ module.exports = React.createClass({
   renderTOC(sectionItems, item) {
     return (
       <div className="toc-nav">
-        {sectionItems.map((navItem, i) => {
+        {sectionItems().map((navItem, i) => {
           return navItem.title === item.title ?
             <span key={`navItem${i}`}
               className={`toc-nav__link toc-nav__link--current ${navItem.type}`}>
