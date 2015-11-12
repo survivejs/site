@@ -6,6 +6,7 @@ import Disqus from '../components/Disqus.jsx';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
 import SocialLinks from '../components/SocialLinks';
+import Toc from '../components/Toc';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
@@ -29,7 +30,7 @@ module.exports = React.createClass({
 
         <div className="toc-nav__wrapper">
           <h4 className="toc-nav--header">Table of Contents</h4>
-          {this.renderTOC(section.items, page)}
+          <Toc sectionItems={section.items} page={page} />
           {this.renderResources(resources)}
         </div>
 
@@ -47,24 +48,6 @@ module.exports = React.createClass({
         </div>
 
         <Disqus shortname='survivejs' />
-      </div>
-    );
-  },
-  renderTOC(sectionItems, item) {
-    return (
-      <div className="toc-nav">
-        {sectionItems().map((navItem, i) => {
-          return navItem.title === item.title ?
-            <span key={`navItem${i}`}
-              className={`toc-nav__link toc-nav__link--current ${navItem.type}`}>
-              {navItem.title}
-            </span> :
-            <a key={`navItem${i}`}
-              href={`/${navItem.url}`}
-              className={`toc-nav__link ${navItem.type}`}>
-              {navItem.title}
-            </a>
-        })}
       </div>
     );
   },
