@@ -13,8 +13,8 @@ module.exports = React.createClass({
   render() {
     const section = this.props.section;
     const page = this.props.page;
-    const author = item.author || config.author.name;
-    const resources = item.resources;
+    const author = page.author || config.author.name;
+    const resources = page.resources;
 
     return (
       <div className="chapter__wrapper">
