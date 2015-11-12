@@ -1,8 +1,9 @@
 import React from 'react';
 import Router from 'react-router';
-import MomentDisplay from 'antwar-default-theme/MomentDisplay';
 import SectionLink from 'antwar-core/SectionLink';
 import config from 'config';
+
+import Moment from '../components/Moment';
 
 import _ from 'lodash';
 
@@ -29,7 +30,7 @@ module.exports = React.createClass({
                 null
               }
               {page.date ?
-                <MomentDisplay datetime={page.date} /> :
+                <Moment datetime={page.date} /> :
                 null
               }
               <p className="post-list__preview">{page.preview}</p>

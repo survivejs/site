@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
-import MomentDisplay from 'antwar-default-theme/MomentDisplay';
 import Router from 'react-router';
 import config from 'config';
 
+import Moment from '../components/Moment';
 import Disqus from '../components/Disqus';
 import Author from '../components/Author';
 import PrevNext from '../components/PrevNext';
@@ -43,7 +43,7 @@ module.exports = React.createClass({
             null
           }
           {page.date ?
-            <MomentDisplay className="post__moment" datetime={page.date} /> :
+            <Moment className="post__moment" datetime={page.date} /> :
             null
           }
           {author ?
