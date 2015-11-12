@@ -16,23 +16,23 @@ module.exports = React.createClass({
       <div className="grid">
         <h1>{section.title}</h1>
         <ul className='post-list'>
-          {section.items().map((item) =>
-            <li key={item.url}>
+          {section.pages().map((page) =>
+            <li key={page.url}>
               <h3 className="post-list__heading">
-                <SectionLink item={item}>{item.title}</SectionLink>
-                {item.isDraft ? <span className="draft-text">Draft</span> : null}
+                <SectionLink page={page}>{page.title}</SectionLink>
+                {page.isDraft ? <span className="draft-text">Draft</span> : null}
               </h3>
-              {item.showDemo ?
+              {page.showDemo ?
                 <div className="post-list__demo">
-                  <a href={item.demo} target="_blank">Demo</a>
+                  <a href={page.demo} target="_blank">Demo</a>
                 </div> :
                 null
               }
-              {item.date ?
-                <MomentDisplay datetime={item.date} /> :
+              {page.date ?
+                <MomentDisplay datetime={page.date} /> :
                 null
               }
-              <p className="post-list__preview">{item.preview}</p>
+              <p className="post-list__preview">{page.preview}</p>
             </li>
           )}
         </ul>

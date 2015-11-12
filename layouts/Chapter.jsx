@@ -30,17 +30,17 @@ module.exports = React.createClass({
 
         <div className="toc-nav__wrapper">
           <h4 className="toc-nav--header">Table of Contents</h4>
-          <Toc sectionItems={section.items} page={page} />
+          <Toc sectionPages={section.pages} page={page} />
           {this.renderResources(resources)}
         </div>
 
         <div className="chapter">
           <div className="post__content">
-            <LatestPost sectionItems={section.items} />
+            <LatestPost sectionPages={section.pages} />
             {this.renderPostMeta(page)}
             {this.renderPostContent(page)}
             <SocialLinks type={page.type} />
-            <PrevNext item={page} previousText='Previous chapter' nextText='Next chapter' />
+            <PrevNext page={page} previousText='Previous chapter' nextText='Next chapter' />
             <div id="disqus_thread" />
           </div>
           {this.renderNext(page)}

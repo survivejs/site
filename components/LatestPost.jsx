@@ -4,7 +4,7 @@ var _ = require('lodash');
 module.exports = React.createClass({
     displayName: 'LatestPost',
     render: function() {
-        var post = _.reject(this.props.sectionItems('blog'), function(post) {
+        var post = _.reject(this.props.sectionPages('blog'), function(post) {
             return post.isDraft;
         })[0];
 

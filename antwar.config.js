@@ -122,9 +122,9 @@ function blog() {
       return require.context('./drafts', false, /^\.\/.*\.md$/);
     },
     */
-    processItem: {
+    processPage: {
       layout: function() {
-        return require('./layouts/BlogItem.jsx');
+        return require('./layouts/BlogPage.jsx');
       },
       url: function(o) {
         if(o.file.url) {
@@ -152,7 +152,7 @@ function webpackReact() {
     path: function() {
       return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
-    processItem: {
+    processPage: {
       layout: function() {
         return require('./layouts/Chapter');
       },

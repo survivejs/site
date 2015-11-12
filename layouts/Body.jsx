@@ -1,11 +1,11 @@
 import React from  'react';
-import Nav from 'antwar-default-theme/Nav';
 
 import 'antwar-default-theme/scss/main.scss';
 
 import Fork from 'react-ghfork';
 
 import Footer from '../components/Footer';
+import Nav from '../components/Nav';
 
 //XXX: figure out how to force order
 //import 'react-ghfork/gh-fork-ribbon.ie.css' // ie support
@@ -26,14 +26,14 @@ module.exports = React.createClass({
     return (
       <div>
         {sectionName && sectionName !== '/' ?
-          <Nav items={config.theme.navigation(sectionName)} /> :
+          <Nav pages={config.theme.navigation(sectionName)} /> :
           null
         }
         {sectionName && sectionName !== '/' ? this.renderFeedback() : null}
 
         <main role="main">{this.props.children}</main>
 
-        <Footer sectionItems={section.items} />
+        <Footer sectionPages={section.pages} />
       </div>
     );
   },

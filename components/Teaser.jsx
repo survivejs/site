@@ -5,7 +5,7 @@ module.exports = React.createClass({
     render: function() {
         var section = this.props.section;
         var amount = this.props.amount;
-        var posts = this.props.sectionItems(section).slice(0, amount);
+        var posts = this.props.sectionPages(section).slice(0, amount);
 
         return posts.length > 1 ?
             this.renderMultiple(posts) :

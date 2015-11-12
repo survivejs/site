@@ -3,21 +3,21 @@ import React from 'react';
 module.exports = React.createClass({
   displayName: 'Toc',
   render() {
-    const sectionItems = this.props.sectionItems;
+    const sectionPages = this.props.sectionPages;
     const page = this.props.page;
 
     return (
       <div className="toc-nav">
-        {sectionItems().map((navItem, i) => {
-          return navItem.title === page.title ?
-            <span key={`navItem${i}`}
-              className={`toc-nav__link toc-nav__link--current ${navItem.type}`}>
-              {navItem.title}
+        {sectionPages().map((navPage, i) => {
+          return navPage.title === page.title ?
+            <span key={`navPage${i}`}
+              className={`toc-nav__link toc-nav__link--current ${navPage.type}`}>
+              {navPage.title}
             </span> :
-            <a key={`navItem${i}`}
-              href={`/${navItem.url}`}
-              className={`toc-nav__link ${navItem.type}`}>
-              {navItem.title}
+            <a key={`navPage${i}`}
+              href={`/${navPage.url}`}
+              className={`toc-nav__link ${navPage.type}`}>
+              {navPage.title}
             </a>
         })}
       </div>

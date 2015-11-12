@@ -27,7 +27,7 @@ var Index = React.createClass({
                 </div>
                 <div className='post post--front'>
                     <section className='post__content'>
-                    <LatestPost sectionItems={section.items} />
+                    <LatestPost sectionPages={section.pages} />
 
                         <div dangerouslySetInnerHTML={{__html: require('./index.md').content}} />
                     </section>

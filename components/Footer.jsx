@@ -31,7 +31,7 @@ module.exports = React.createClass({
                     <div className='footer-blog'>
                         <h3>From the Blog</h3>
 
-                        <Teaser sectionItems={this.props.sectionItems} section={'blog'} amount={10} />
+                        <Teaser sectionPages={this.props.sectionPages} section={'blog'} amount={10} />
                     </div>
                     <div className='footer-contact'>
                         <h3>Contact</h3>
