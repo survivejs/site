@@ -16,7 +16,7 @@ module.exports = React.createClass({
       <div className="grid">
         <h1>{section.title}</h1>
         <ul className='post-list'>
-          {section.items.map((item) =>
+          {section.items().map((item) =>
             <li key={item.url}>
               <h3 className="post-list__heading">
                 <SectionLink item={item}>{item.title}</SectionLink>
