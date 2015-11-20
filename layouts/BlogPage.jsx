@@ -1,7 +1,5 @@
 import _ from 'lodash';
 import React from 'react';
-import Router from 'react-router';
-import config from 'config';
 
 import Moment from '../components/Moment';
 import Disqus from '../components/Disqus';
@@ -10,10 +8,10 @@ import PrevNext from '../components/PrevNext';
 import SocialLinks from '../components/SocialLinks';
 
 module.exports = React.createClass({
-  displayName: 'BlogItem',
-  mixins: [Router.State],
+  displayName: 'BlogPage',
   render() {
     const page = this.props.page;
+    const config = this.props.config;
     let author = page.author || (config.blog && config.blog.author);
 
     if(_.isFunction(author)) {

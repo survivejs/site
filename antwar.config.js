@@ -108,9 +108,6 @@ function blog() {
     },
     */
     processPage: {
-      layout: function() {
-        return require('./layouts/BlogPage.jsx');
-      },
       url: function(o) {
         if(o.file.url) {
           return o.file.url;
@@ -131,7 +128,7 @@ function blog() {
         return themeConfig.layouts().SectionIndex;
       },
       page: function() {
-        return themeConfig.layouts().BlogPage;
+        return require('./layouts/BlogPage.jsx');
       }
     }
   };
