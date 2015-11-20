@@ -3,7 +3,6 @@ var path = require('path');
 
 var React = require('react');
 var _ = require('lodash');
-var merge = require('webpack-merge');
 var removeMd = require('remove-markdown');
 var themeConfig = require('antwar-default-theme');
 var rssPlugin = require('antwar-rss-plugin');
@@ -15,15 +14,7 @@ var markdown = require('./utils/markdown');
 var cwd = process.cwd();
 
 module.exports = {
-  webpack: merge({
-    // XXXXX: figure out why require.context doesn't resolve
-    /*resolve: {
-      modulesDirectories: [
-        path.resolve(cwd, '../webpack_react/manuscript'),
-        path.resolve(cwd, '../webpack_react_resources')
-      ]
-    }*/
-  }, themeConfig.webpack), // SCSS bits
+  webpack: themeConfig.webpack, // SCSS bits
   assets: [
     {
       from: '../webpack_react/manuscript/images',
@@ -138,8 +129,7 @@ function webpackReact() {
   return {
     title: 'Table of Contents',
     path: function() {
-      // XXXXX: forced to local path
-      return require.context('./webpack_react/manuscript', false, /^\.\/.*\.md$/);
+      return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
       layout: function() {
@@ -205,8 +195,7 @@ function webpackReact() {
       var headers = require('../webpack_react/manuscript/headers.json');
       var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
 
-      // XXXXX: forced to local path
-      var reqResource = require.context('./webpack_react_resources/', false, /^\.\/.*\.json$/)
+      var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
       var ret = [];
 
       order = order.filter(function(name) {
