@@ -1,28 +1,26 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
-    displayName: 'BlogTeaser',
-    render: function() {
-        var section = this.props.section;
-        var amount = this.props.amount;
-        var posts = this.props.sectionPages(section).slice(0, amount);
+export default React.createClass({
+  displayName: 'Teaser',
+  render: function() {
+    var pages = this.props.pages;
 
-        return posts.length > 1 ?
-            this.renderMultiple(posts) :
-            this.renderSingle(posts[0]);
-    },
-    renderMultiple(posts) {
-        return (
-            <ul className='blog-teasers'>
-                {posts.map((post, i) => {
-                    return <li key={'post' + i}>{this.renderSingle(post)}</li>;
-                })}
-            </ul>
-        );
-    },
-    renderSingle(post) {
-        return <a className='blog-teaser' href={'/' + post.url}>
-            {post.title}
-        </a>;
-    }
+    return pages.length > 1 ?
+        this.renderMultiple(pages) :
+        this.renderSingle(pages[0]);
+  },
+  renderMultiple(pages) {
+    return (
+        <ul className='blog-teasers'>
+            {pages.map((page, i) => {
+                return <li key={'post' + i}>{this.renderSingle(page)}</li>;
+            })}
+        </ul>
+    );
+  },
+  renderSingle(page) {
+    return page ? <a className='blog-teaser' href={'/' + page.url}>
+        {page.title}
+    </a> : null;
+  }
 });

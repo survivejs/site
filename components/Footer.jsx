@@ -5,6 +5,10 @@ module.exports = React.createClass({
     displayName: 'Footer',
 
     render: function() {
+        const props = this.props;
+        const section = props.section;
+        const pages = section.pages ? section.pages('blog').slice(10) : [];
+
         return (
             <footer>
                 <div className='footer-wrapper'>
@@ -31,7 +35,7 @@ module.exports = React.createClass({
                     <div className='footer-blog'>
                         <h3>From the Blog</h3>
 
-                        <Teaser sectionPages={this.props.sectionPages} section={'blog'} amount={10} />
+                        <Teaser pages={pages} />
                     </div>
                     <div className='footer-contact'>
                         <h3>Contact</h3>

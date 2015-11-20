@@ -1,47 +1,63 @@
-import React from  'react';
-
-import 'antwar-default-theme/scss/main.scss';
-
+import React from 'react';
 import Fork from 'react-ghfork';
+import {layouts, components} from 'antwar-helpers';
+import Footer from '../components/Footer.jsx';
 
-import Footer from '../components/Footer';
-import Nav from '../components/Nav';
+const Body = layouts.Body;
+const Navigation = components.Navigation;
+const RSS = components.RSS;
 
-//XXX: figure out how to force order
-//import 'react-ghfork/gh-fork-ribbon.ie.css' // ie support
-import 'react-ghfork/gh-fork-ribbon.css'
-
-import config from 'config';
-
-if(config.theme.customStyles) {
-  require('customStyles/' + config.theme.customStyles);
-}
-
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Body',
   render() {
-    const section = this.props.section;
-    const sectionName = section.name;
+    const props = this.props;
+    const section = props.section;
+    const pathname = props.location.pathname;
+    const sectionTitle = section.title;
 
     return (
-      <div>
-        {sectionName && sectionName !== '/' ?
-          <Nav pages={config.theme.navigation(sectionName)} /> :
-          null
-        }
-        {sectionName && sectionName !== '/' ? this.renderFeedback() : null}
+      <Body head={this.renderHead()} {...props}>
+        {props.children}
 
-        <main role="main">{this.props.children}</main>
+        {pathname !== '/' ? this.renderNavigation(props, sectionTitle) : null}
+        {pathname !== '/' ? this.renderFeedback(props.page.title) : null}
 
-        <Footer sectionPages={section.pages} />
-      </div>
+        <Footer {...props} />
+      </Body>
     );
   },
-  renderFeedback() {
-    const page = this.props.page;
-
+  renderHead() {
+    return <RSS href="./atom.xml" />
+  },
+  renderNavigation(props, sectionTitle) {
+    return (
+      <Navigation {...props} pages={[
+        {
+          title: 'Home',
+          url: '/',
+        },
+        {
+          title: sectionTitle === 'blog' ? 'Read the free version' : 'Read the blog',
+          url: sectionTitle === 'blog' ? '/webpack_react/introduction/' : '/blog',
+        },
+        {
+          title: 'Buy the full ebook',
+          url: 'https://leanpub.com/survivejs_webpack',
+        },
+        {
+          title: '',
+          url: '',
+        },
+        {
+          title: '@survivejs',
+          url: 'https://twitter.com/survivejs',
+        },
+      ]} />
+    );
+  },
+  renderFeedback(title) {
     return <Fork className="right ribbon"
-      project={`survivejs/webpack_react/issues/new?title=${page.title} - `}
+      project={`survivejs/webpack_react/issues/new?title=${title} - `}
       text="Submit feedback"
       style={{backgroundColor: 'black'}}
       target="_blank" />;

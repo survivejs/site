@@ -3,14 +3,27 @@ var path = require('path');
 
 var React = require('react');
 var _ = require('lodash');
+var merge = require('webpack-merge');
 var removeMd = require('remove-markdown');
+var themeConfig = require('antwar-default-theme');
 var rssPlugin = require('antwar-rss-plugin');
-var highlightPlugin = require('antwar-highlight-plugin');
 var prevnextPlugin = require('antwar-prevnext-plugin');
+var highlightPlugin = require('antwar-highlight-plugin');
 
 var markdown = require('./utils/markdown');
 
+var cwd = process.cwd();
+
 module.exports = {
+  webpack: merge({
+    // XXXXX: figure out why require.context doesn't resolve
+    /*resolve: {
+      modulesDirectories: [
+        path.resolve(cwd, '../webpack_react/manuscript'),
+        path.resolve(cwd, '../webpack_react_resources')
+      ]
+    }*/
+  }, themeConfig.webpack), // SCSS bits
   assets: [
     {
       from: '../webpack_react/manuscript/images',
@@ -26,7 +39,7 @@ module.exports = {
     }
   ],
   output: 'build',
-  name: 'SurviveJS',
+  title: 'SurviveJS',
   author: 'Juho Vepsäläinen',
   blog: {
     author: function() {
@@ -61,45 +74,16 @@ module.exports = {
       baseUrl: 'http://survivejs.com/',
       sections: ['blog'],
     }),
-    highlightPlugin(),
     prevnextPlugin(),
+    highlightPlugin()
   ],
-  theme: {
-    customStyles: 'custom.scss',
-    name: 'antwar-default-theme',
-    navigation: function(sectionName) {
-      return [
-        {
-          title: 'Home',
-          url: '/',
-        },
-        {
-          title: sectionName === 'blog' ? 'Read the free version' : 'Read the blog',
-          url: sectionName === 'blog' ? '/webpack_react/introduction/' : '/blog',
-        },
-        {
-          title: 'Buy the full ebook',
-          url: 'https://leanpub.com/survivejs_webpack',
-        },
-        {
-          title: '',
-          url: '',
-        },
-        {
-          title: '@survivejs',
-          url: 'https://twitter.com/survivejs',
-        },
-      ];
-    },
+  layout: function() {
+    return require('./layouts/Body.jsx');
   },
-  handlers: {
-    body: function() {
-      return require('./layouts/Body.jsx');
-    },
-    sectionIndex: function() {
-      // TODO: push to section level
-      return require('./layouts/SectionIndex.jsx');
-    },
+  style: function() {
+    require('antwar-default-theme/scss/main.scss');
+    require('./styles/custom.scss');
+    require('react-ghfork/gh-fork-ribbon.css');
   },
   paths: {
     '/': {
@@ -114,6 +98,7 @@ module.exports = {
 
 function blog() {
   return {
+    title: 'Blog posts',
     path: function() {
       return require.context('./posts', false, /^\.\/.*\.md$/);
     },
@@ -141,8 +126,14 @@ function blog() {
         return markdown.process(content);
       }
     },
-    layout: 'blog',
-    title: 'Blog posts',
+    layouts: {
+      index: function() {
+        return themeConfig.layouts().SectionIndex;
+      },
+      page: function() {
+        return themeConfig.layouts().BlogPage;
+      }
+    }
   };
 }
 
@@ -150,7 +141,8 @@ function webpackReact() {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
+      // XXXXX: forced to local path
+      return require.context('./webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
       layout: function() {
@@ -215,7 +207,9 @@ function webpackReact() {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
       var headers = require('../webpack_react/manuscript/headers.json');
       var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
-      var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
+
+      // XXXXX: forced to local path
+      var reqResource = require.context('./webpack_react_resources/', false, /^\.\/.*\.json$/)
       var ret = [];
 
       order = order.filter(function(name) {
@@ -231,7 +225,7 @@ function webpackReact() {
         var resources = reqResource(resourceName);
 
         if(!result) {
-          return console.error('failed to find', name);
+          return console.error('Failed to find', name, files);
         }
 
         result.file.headerExtra = '<a href="' + header.source + '">' +
@@ -266,6 +260,14 @@ function webpackReact() {
 
       return ret;
     },
+    layouts: {
+      index: function() {
+        return themeConfig.layouts().SectionIndex;
+      },
+      page: function() {
+        return themeConfig.layouts().DocsPage;
+      }
+    }
   };
 }
 
