@@ -230,7 +230,6 @@ function webpackReact() {
         file.nextInfo = 'Next chapter';
         file.bonus = header.bonus;
         file.resources = resources;
-        file.header = header;
 
         if(header.demo) {
           var previous = headers[i - 1] || {};
