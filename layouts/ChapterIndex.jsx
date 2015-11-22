@@ -1,42 +1,45 @@
 import React from 'react';
-import Router from 'react-router';
-import SectionLink from 'antwar-core/SectionLink';
-import config from 'config';
-
-import Moment from '../components/Moment';
-
 import _ from 'lodash';
+import {Link} from 'react-router';
+import {Moment} from 'antwar-helpers/components';
 
-module.exports = React.createClass({
-  displayName: 'SectionIndex',
-  mixins: [Router.State],
+export default React.createClass({
+  displayName: 'ChapterIndex',
   render() {
     const section = this.props.section;
 
     return (
       <div className="grid">
         <h1>{section.title}</h1>
-        <ul className='post-list'>
-          {section.pages().map((page) =>
-            <li key={page.url}>
+
+        <ul className="post-list">{_.map(section.pages(), (page, i) => {
+          return (
+            <li key={`post-list-item-${i}`}>
               <h3 className="post-list__heading">
-                <SectionLink page={page}>{page.title}</SectionLink>
-                {page.isDraft ? <span className="draft-text">Draft</span> : null}
+                <Link to={'/' + page.url}>{page.title}</Link>
+
+                {page.isDraft ?
+                  <span className="draft-text">Draft</span> :
+                  null
+                }
               </h3>
+
               {page.showDemo ?
                 <div className="post-list__demo">
                   <a href={page.demo} target="_blank">Demo</a>
                 </div> :
                 null
               }
+
               {page.date ?
-                <Moment datetime={page.date} /> :
+                <Moment className="post__moment" datetime={page.date} /> :
                 null
               }
+
               <p className="post-list__preview">{page.preview}</p>
             </li>
-          )}
-        </ul>
+          );
+        })}</ul>
       </div>
     );
   }

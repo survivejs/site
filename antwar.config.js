@@ -250,7 +250,7 @@ function webpackReact() {
     },
     layouts: {
       index: function() {
-        return themeConfig.layouts().SectionIndex;
+        return require('./layouts/ChapterIndex.jsx');
       },
       page: function() {
         return themeConfig.layouts().DocsPage;
