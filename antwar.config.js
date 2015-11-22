@@ -192,12 +192,7 @@ function webpackReact() {
       },
     },
     sort: function(files) {
-      var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-      var headers = require('../webpack_react/manuscript/headers.json');
       var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
-
-      // XXXXX
-      var reqResource = require.context('./webpack_react_resources/', false, /^\.\/.*\.json$/)
       var ret = [];
 
       order = order.filter(function(name) {
@@ -208,43 +203,56 @@ function webpackReact() {
         var result = _.findWhere(files, {
           name: name,
         });
-        var header = headers[i];
-        var resourceName = './' + name.split('.')[0] + '.json';
-        var resources = reqResource(resourceName);
 
         if(!result) {
           return console.error('Failed to find', name, files);
-        }
-
-        result.file.headerExtra = '<a href="' + header.source + '">' +
-          header.author + ' ('+ header.license + ')</a>';
-        result.file.headerImage = '/images/' + header.image;
-        result.file.previousInfo = 'Previous chapter';
-        result.file.nextInfo = 'Next chapter';
-        result.file.bonus = header.bonus;
-        result.file.resources = resources;
-
-        if(header.demo) {
-          var previous = headers[i - 1] || {};
-          var sourceSuffix = header.sourceRoot || '/kanban_app';
-
-          result.file.showDemo = !header.sourceRoot;
-
-          if(previous.demo) {
-            var previousSourceSuffix = previous.sourceRoot || '/kanban_app';
-
-            result.file.startSource = sourcePrefix + previous.demo + previousSourceSuffix;
-          }
-
-          result.file.endSource = sourcePrefix + header.demo + sourceSuffix;
-
-          result.file.demo = '/demos/' + header.demo;
         }
 
         ret.push(result);
       });
 
       return ret;
+    },
+    inject: function(files) {
+      var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
+      var headers = require('../webpack_react/manuscript/headers.json');
+
+      // XXXXX
+      var reqResource = require.context('./webpack_react_resources/', false, /^\.\/.*\.json$/)
+
+      return files.map(function(o, i) {
+        var file = o.file;
+        var header = headers[i];
+        var resourceName = './' + o.name.split('.')[0] + '.json';
+        var resources = reqResource(resourceName);
+
+        file.headerExtra = '<a href="' + header.source + '">' +
+          header.author + ' ('+ header.license + ')</a>';
+        file.headerImage = '/images/' + header.image;
+        file.previousInfo = 'Previous chapter';
+        file.nextInfo = 'Next chapter';
+        file.bonus = header.bonus;
+        file.resources = resources;
+        file.header = header;
+
+        if(header.demo) {
+          var previous = headers[i - 1] || {};
+          var sourceSuffix = header.sourceRoot || '/kanban_app';
+
+          file.showDemo = !header.sourceRoot;
+
+          if(previous.demo) {
+            var previousSourceSuffix = previous.sourceRoot || '/kanban_app';
+
+            file.startSource = sourcePrefix + previous.demo + previousSourceSuffix;
+          }
+
+          file.endSource = sourcePrefix + header.demo + sourceSuffix;
+          file.demo = '/demos/' + header.demo;
+        }
+
+        return o;
+      });
     },
     layouts: {
       index: function() {
