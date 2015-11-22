@@ -133,9 +133,6 @@ function webpackReact() {
       return require.context('./webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
-      layout: function() {
-        return require('./layouts/Chapter');
-      },
       title: function(o) {
         var ret = removeMd(o.file.__content.split('\n')[0]);
 
