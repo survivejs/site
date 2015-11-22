@@ -1,5 +1,5 @@
 <div class='front-cover-wrapper'>
-  <img class='front-cover' src='images/title_page_small.jpg' width=255 height=330 />
+  <img class='front-cover' src='images/title_page_small.png' width='255' height='329' />
 </div>
 
 * 45 day money back guarantee
