@@ -238,7 +238,7 @@ function webpackReact() {
 
           result.file.endSource = sourcePrefix + header.demo + sourceSuffix;
 
-          result.file.demo = header.demo && '/demos/' + header.demo;
+          result.file.demo = '/demos/' + header.demo;
         }
 
         if(result) {
@@ -253,7 +253,7 @@ function webpackReact() {
         return require('./layouts/ChapterIndex.jsx');
       },
       page: function() {
-        return themeConfig.layouts().DocsPage;
+        return require('./layouts/Chapter.jsx');
       }
     }
   };

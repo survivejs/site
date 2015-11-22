@@ -1,20 +1,16 @@
 import React from 'react';
 import Router from 'react-router';
-import config from 'config';
 
-import Disqus from '../components/Disqus.jsx';
+import {Disqus, Toc} from 'antwar-helpers/components';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
 import SocialLinks from '../components/SocialLinks';
-import Toc from '../components/Toc';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
-  mixins: [Router.State],
   render() {
     const section = this.props.section;
     const page = this.props.page;
-    const author = page.author || config.author.name;
     const resources = page.resources;
 
     return (
