@@ -129,8 +129,7 @@ function webpackReact() {
   return {
     title: 'Table of Contents',
     path: function() {
-      // XXXXX
-      return require.context('./webpack_react/manuscript', false, /^\.\/.*\.md$/);
+      return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
       title: function(o) {
@@ -214,8 +213,7 @@ function webpackReact() {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
       var headers = require('../webpack_react/manuscript/headers.json');
 
-      // XXXXX
-      var reqResource = require.context('./webpack_react_resources/', false, /^\.\/.*\.json$/)
+      var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
 
       return files.map(function(o, i) {
         var file = o.file;
