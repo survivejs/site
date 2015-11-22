@@ -27,7 +27,7 @@ export default React.createClass({
     );
   },
   renderHead() {
-    return <RSS href="./atom.xml" />
+    return <RSS />
   },
   renderNavigation(props, sectionTitle) {
     return (
