@@ -129,7 +129,8 @@ function webpackReact() {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
+      // XXXXX
+      return require.context('./webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
       layout: function() {
@@ -195,7 +196,8 @@ function webpackReact() {
       var headers = require('../webpack_react/manuscript/headers.json');
       var order = require('raw!../webpack_react/manuscript/Book.txt').split('\n').filter(id);
 
-      var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
+      // XXXXX
+      var reqResource = require.context('./webpack_react_resources/', false, /^\.\/.*\.json$/)
       var ret = [];
 
       order = order.filter(function(name) {
