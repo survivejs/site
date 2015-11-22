@@ -1,8 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 
-import Moment from '../components/Moment';
-import Disqus from '../components/Disqus';
+import {Disqus, Moment} from 'antwar-helpers/components';
 import Author from '../components/Author';
 import PrevNext from '../components/PrevNext';
 import SocialLinks from '../components/SocialLinks';
