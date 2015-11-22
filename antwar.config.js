@@ -259,7 +259,7 @@ function webpackReact() {
         return require('./layouts/ChapterIndex.jsx');
       },
       page: function() {
-        return require('./layouts/Chapter.jsx');
+        return require('./layouts/ChapterPage.jsx');
       }
     }
   };
