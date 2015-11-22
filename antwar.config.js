@@ -241,9 +241,7 @@ function webpackReact() {
           result.file.demo = '/demos/' + header.demo;
         }
 
-        if(result) {
-          ret.push(result);
-        }
+        ret.push(result);
       });
 
       return ret;
