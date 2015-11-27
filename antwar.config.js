@@ -74,6 +74,7 @@ module.exports = {
   style: function() {
     require('antwar-default-theme/scss/main.scss');
     require('./styles/custom.scss');
+    require('./styles/prism.css');
     require('react-ghfork/gh-fork-ribbon.css');
   },
   paths: {
