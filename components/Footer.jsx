@@ -7,7 +7,7 @@ module.exports = React.createClass({
     render: function() {
         const props = this.props;
         const section = props.section;
-        const pages = section.pages ? section.pages('blog').slice(10) : [];
+        const pages = section.pages ? section.pages('blog').slice(0, 10) : [];
 
         return (
             <footer>
