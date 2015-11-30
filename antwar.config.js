@@ -212,7 +212,7 @@ function webpackReact() {
     },
     inject: function(files) {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-      var headers = require('../webpack_react/manuscript/headers.json');
+      var headers = require('./headers.json');
 
       var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
 
