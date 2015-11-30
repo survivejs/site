@@ -24,6 +24,12 @@ module.exports = React.createClass({
 
         <h1 className="post__heading">{page.title}</h1>
 
+        {page.headerExtra ?
+          <div className="header-extra"
+            dangerouslySetInnerHTML={{__html: page.headerExtra}} /> :
+          null
+        }
+
         <div className="toc-nav__wrapper">
           <h4 className="toc-nav--header">Table of Contents</h4>
           <Toc sectionPages={section.pages} page={page} />
