@@ -25,7 +25,7 @@ The portions dealing with Alt don't support hot loading yet. I will have to craf
 
 ## What Next?
 
-I will prioritize my work depending on the feedback this release receives. I know some of the current content can be pushed further. For instance [deployment chapter](/webpack_react/deploying_applications) could use some TLC. On the other hand it would be a good idea to start serving my paying clients (i.e. Leanpub readers) better.
+I will prioritize my work depending on the feedback this release receives. I know some of the current content can be pushed further. For instance deployment chapter could use some TLC. On the other hand it would be a good idea to start serving my paying clients (i.e. Leanpub readers) better.
 
 Given I want to provide the guys that support me a little extra something I've thought of making [bonus chapters](https://github.com/survivejs/webpack_react/issues?q=is%3Aopen+is%3Aissue+label%3A%22bonus+chapter%22) available on early access through Leanpub. The chapters would become available to public as certain conditions are met.
 
