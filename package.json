@@ -9,7 +9,8 @@
     "build": "antwar -b && npm run sitemap",
     "deploy": "antwar -D && npm run purge_cf",
     "sitemap": "cd build && sitemap-static --prefix=http://survivejs.com/ > sitemap.xml",
-    "purge_cf": "node ./utils/purge_cf.js"
+    "purge_cf": "node ./utils/purge_cf.js",
+    "check_urls": "node ./utils/check_urls.js"
   },
   "dependencies": {
     "moment": "^2.10.6",
@@ -23,11 +24,15 @@
     "antwar-highlight-plugin": "antwarjs/highlight-plugin",
     "antwar-prevnext-plugin": "antwarjs/prevnext-plugin",
     "antwar-rss-plugin": "antwarjs/rss-plugin",
+    "bs-broken-links-checker": "^0.2.0",
     "cloudflare4": "^0.2.2",
+    "express": "^4.13.3",
     "lodash": "^3.9.1",
     "marked": "^0.3.3",
+    "portfinder": "^0.4.0",
     "raw-loader": "^0.5.1",
     "remove-markdown": "0.0.2",
+    "serve-static": "^1.10.0",
     "sitemap-static": "^0.2.0"
   },
   "repository": {
