@@ -21,11 +21,11 @@ function main() {
       }
 
       var brokenLinksChecker = new BrokenLinksChecker({
-        logger: console.error.bind(console),
+        logger: {
+          level: 'warn'
+        },
         onDone: function() {
-          console.log('done');
-
-          //server.close();
+          server.close();
         }
       });
 
