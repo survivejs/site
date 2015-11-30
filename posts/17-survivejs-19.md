@@ -48,7 +48,7 @@ You can see GitHub for [all changes](https://github.com/survivejs/webpack_react/
 ### Webpack and React
 
 * Dropped *babel-core* as *babel-loader* depends on that directly.
-* Replaced deprecated *react-hot-loader* with a [babel-plugin-react-transform](babel-plugin-react-transform) based solution. Even though it takes more configuration, it's more powerful. I recommend moving your projects to it if you are using *react-hot-loader*.
+* Replaced deprecated *react-hot-loader* with a [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform) based solution. Even though it takes more configuration, it's more powerful. I recommend moving your projects to it if you are using *react-hot-loader*.
 
 ### Implementing a Basic Note Application
 
