@@ -30,36 +30,15 @@ module.exports = React.createClass({
                             <li>
                                 <a href='/atom.xml' target='_blank'>Blog RSS</a>
                             </li>
+                            <li>
+                                <a href='http://goo.gl/forms/OWdGIOdHm9' target='_blank'>Contact</a>
+                            </li>
                         </ul>
                     </div>
                     <div className='footer-blog'>
                         <h3>From the Blog</h3>
 
                         <Teaser pages={pages} />
-                    </div>
-                    <div className='footer-contact'>
-                        <h3>Contact</h3>
-
-                        <form action='//formspree.io/info@survivejs.com' method='POST'>
-                            <label>
-                                <span>Name:</span>
-                                <input type='text' name='name' />
-                            </label>
-                            <label>
-                                <span>Email:</span>
-                                <input type='email' name='_replyto' />
-                            </label>
-                            <label>
-                                <span>Message:</span>
-                                <textarea name='message' rows='8' />
-                            </label>
-                            <input type='hidden' name='_subject' value='SurviveJS' />
-                            <input type='hidden' name="_next" value='//survivejs.com/thanks' />
-                            <input type='text' name='_gotcha' style={{display: 'none'}} />
-                            <label className='submit-container'>
-                                <input type='submit' value='Send' />
-                            </label>
-                        </form>
                     </div>
                 </div>
             </footer>
