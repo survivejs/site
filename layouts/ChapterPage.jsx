@@ -42,6 +42,11 @@ module.exports = React.createClass({
             {this.renderPostMeta(page)}
             {this.renderPostContent(page)}
             <SocialLinks type={page.type} />
+
+            <a href="http://www.reactindiebundle.com/" target="_blank">
+              <img src="/assets/img/rib_banner.png" alt="React Indie Bundle" className="banner" width='750' />
+            </a>
+
             <PrevNext page={page} previousText='Previous chapter' nextText='Next chapter' />
             <div id="disqus_thread" />
           </div>
