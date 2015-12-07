@@ -10,7 +10,7 @@ I discussed my [React component boilerplate](../react-component-boilerplate) ear
 
 <p>
   <span class="author">
-    <img src="/assets/img/starhackit/hf.jpg" alt="MrM" class='author' width='100' />
+    <img src="/assets/img/starhackit/hf.jpg" alt="Frederic Heem" class='author' width='100' />
   </span>
 I studied industrial engineering in France but ended up being a software engineer for the last the last 15 years mostly in the UK and Italy. Right now, I am working on blockchain and distributed ledger technology in the city of London. During my spare time and when the wind blows, I am hooked on my kitesurf.
 </p>
