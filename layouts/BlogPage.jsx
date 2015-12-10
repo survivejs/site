@@ -50,10 +50,6 @@ module.exports = React.createClass({
 
           <SocialLinks type="blog post" />
 
-          <a href="http://www.reactindiebundle.com/" target="_blank">
-            <img src="/assets/img/rib_banner.png" alt="React Indie Bundle" className="banner" width='750' />
-          </a>
-
           <PrevNext page={page} previousText="Previous post" nextText="Next post" />
 
           <div id="disqus_thread" />
