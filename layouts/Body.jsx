@@ -13,13 +13,12 @@ export default React.createClass({
     const props = this.props;
     const section = props.section;
     const pathname = props.location.pathname;
-    const sectionTitle = section.title;
 
     return (
       <Body head={this.renderHead()} {...props}>
         {props.children}
 
-        {pathname !== '/' ? this.renderNavigation(props, sectionTitle) : null}
+        {pathname !== '/' ? this.renderNavigation(props, section.name) : null}
         {pathname !== '/' ? this.renderFeedback(props.page.title) : null}
 
         <Footer {...props} />
@@ -29,7 +28,7 @@ export default React.createClass({
   renderHead() {
     return <RSS />
   },
-  renderNavigation(props, sectionTitle) {
+  renderNavigation(props, sectionName) {
     return (
       <Navigation {...props} pages={[
         {
@@ -37,8 +36,8 @@ export default React.createClass({
           url: '/',
         },
         {
-          title: sectionTitle === 'blog' ? 'Read the free version' : 'Read the blog',
-          url: sectionTitle === 'blog' ? '/webpack_react/introduction/' : '/blog',
+          title: sectionName === 'blog' ? 'Read the free version' : 'Read the blog',
+          url: sectionName === 'blog' ? '/webpack_react/introduction/' : '/blog',
         },
         {
           title: 'Buy the full ebook',
