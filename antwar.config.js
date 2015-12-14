@@ -7,7 +7,6 @@ var removeMd = require('remove-markdown');
 var themeConfig = require('antwar-default-theme');
 var rssPlugin = require('antwar-rss-plugin');
 var prevnextPlugin = require('antwar-prevnext-plugin');
-var highlightPlugin = require('antwar-highlight-plugin');
 
 var markdown = require('./utils/markdown');
 
@@ -65,8 +64,7 @@ module.exports = {
       baseUrl: 'http://survivejs.com/',
       sections: ['blog'],
     }),
-    prevnextPlugin(),
-    highlightPlugin()
+    prevnextPlugin()
   ],
   layout: function() {
     return require('./layouts/Body.jsx');
