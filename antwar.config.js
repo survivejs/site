@@ -9,6 +9,7 @@ var rssPlugin = require('antwar-rss-plugin');
 var prevnextPlugin = require('antwar-prevnext-plugin');
 
 var markdown = require('./utils/markdown');
+var highlight = require('./utils/highlight');
 
 var cwd = process.cwd();
 
@@ -110,7 +111,7 @@ function blog() {
       content: function(o) {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
-        return markdown.process(content);
+        return markdown.process(content, highlight);
       }
     },
     layouts: {
@@ -161,7 +162,7 @@ function webpackReact() {
       content: function(o) {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
-        return markdown.process(content);
+        return markdown.process(content, highlight);
       },
       preview: function(o) {
         var previewLimit = 300;
