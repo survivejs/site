@@ -82,6 +82,8 @@ function attachPrismHooks(Prism) {
       );
     }
 
-    env.element.innerHTML = env.highlightedCode;
+    if(env.element) {
+      env.element.innerHTML = env.highlightedCode;
+    }
   });
 }
