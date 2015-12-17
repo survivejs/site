@@ -22,6 +22,10 @@ If you like the book and want to support the effort, [buying a copy](https://lea
 
 [React Webpack Cookbook](https://christianalfoni.github.io/react-webpack-cookbook/) is a little guide I developed with [Christian Alfoni](http://www.christianalfoni.com/). The eventual plan is to polish the content and host the improved version here with a similar support model.
 
+### React Native Animation Book
+
+[React Native Animation Book](http://browniefed.com/react-native-animation-book/) by [Jason Brown](http://browniefed.com/) explains how to deal with animation in React Native. You get all relevant bits in a single place. That's it really.
+
 ## Commercial Books
 
 The commercial side of React books is about to go wild. **Developing a React Edge** was likely the first book on the market. Since then a few others have followed. The challenge for authors is that as React moves forward quite fast. Books will require constant maintenance effort to stay up to date.
@@ -42,11 +46,19 @@ If you want a quick read that's straight to the point, this could be it. It's no
 
 [React - Beginner's Guide](https://leanpub.com/react-beginner-guide) by Daniel Schmitz and Daniel Pedrinha Georgii is a small, focused book. Its minimum price is $5 VAT excluded.
 
+### Effective React
+
+[Effective React](https://leanpub.com/effective-react) by Ian Chursky covers the basic tools you need to get started with React. Also ECMAScript 6 is covered. Published through Leanpub, it's minimum price has been set to $16.99 (no VAT).
+
 ### Descubre React
 
 [Descubre React](https://leanpub.com/descubre-react) by [Javi Jiménez](http://soyjavi.com/) is a Spanish introduction to React. It has 83 pages and its minimum price is $12.49 VAT excluded.
 
 If you want a Spanish introduction to React, here's your only option at the moment.
+
+### Pengenalan ReactJS
+
+[Pengenalan ReactJS](https://leanpub.com/pengenalan-reactjs) by Donny Stark is an Indonesian introduction to React. It will be published through Leanpub. At the time of writing it has 34 pages. No minimum price has been set yet.
 
 ### Rails Meets React.js
 
@@ -65,6 +77,10 @@ If you want to learn React through a series of specific examples this might be t
 [Easy React](http://easyreactbook.com/) by [W. Jason Gilmore](http://www.wjgilmore.com/) is available through [Leanpub](https://leanpub.com/easyreact). The book is currently in beta and the price starts from $14.99 without VAT. At the time of writing it has 83 pages.
 
 **Easy React** is a project based book and focuses on an application known as *VocabGiant*, a language learning tool. The book discusses a wide range of topics ranging from setting up a development environment, developing the app (Flux included), developing a backend (REST + Express + MongoDB) and React Native. So by the looks of it this should be a great book for a full stack developer!
+
+### React Under the Hood
+
+[React Under the Hood](https://leanpub.com/reactunderthehood) by [Freddy Rangel](http://spaces-vs-tabs.com/) is available through Leanpub. The minimum price of the book is $9.99 without VAT. At the time of writing it has around 80 pages of content. As per title, the book delves into the technical foundations of React.
 
 ### ReactJS Cookbook
 
@@ -112,7 +128,11 @@ There's also an emerging category of React Native books and the first book has a
 
 ### Learning React Native
 
-[Learning React Native](http://shop.oreilly.com/product/0636920041511.do) by [Bonnie Eisenman](http://blog.bonnieeisenman.com/) is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is available for $32.59 and is expected to deliver at December. The book will be around 200 pages long.
+[Learning React Native](http://shop.oreilly.com/product/0636920041511.do) by [Bonnie Eisenman](http://blog.bonnieeisenman.com/) is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is available for $32.59 and is expected to deliver at December. The book is around 200 pages long.
+
+### React Quickly
+
+[React Quickly](https://www.manning.com/books/react-quickly) by [Azat Mardan](http://azat.co/), published by Manning Publications, delves through React related topics quickly as the title promises. The early access version costs $31.99. If you want the paperback as well, expect to pay $39.99.
 
 ## Conclusion
 
