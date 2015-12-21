@@ -100,6 +100,12 @@ The book is expected to have 194 pages. It covers basics of React and goes into 
 
 The planned length of the book is 170 pages and it will cover basics of React, Flux architecture and testing at least. There is also specific discussion about JSX.
 
+### Pro React
+
+[Pro React](https://www.apress.com/9781484212615) by Cassio de Sousa Antonio is available through Apress and Amazon. At Apress digital edition is available for $27.99 while print costs $39.99. At Amazon the print costs the same. The book should be available at December.
+
+The book has 280 pages and covers a wide range of React related topics.
+
 ### React: Up & Running: Building Web Applications
 
 [React: Up & Running: Building Web Applications](http://shop.oreilly.com/product/0636920042266.do) by [Stoyan Stefanov](http://www.phpied.com/) is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is slightly cheaper at $37.99.
