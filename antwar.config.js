@@ -10,6 +10,7 @@ var prevnextPlugin = require('antwar-prevnext-plugin');
 
 var markdown = require('./utils/markdown');
 var highlight = require('./utils/highlight');
+var headers = require('./headers');
 
 var cwd = process.cwd();
 
@@ -211,8 +212,6 @@ function webpackReact() {
     },
     inject: function(files) {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-      var headers = require('./headers.json');
-
       var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/)
 
       return files.map(function(o, i) {

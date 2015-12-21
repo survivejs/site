@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
         "author": "James Jordan",
         "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
@@ -113,12 +113,13 @@
         "license": "CC BY-NC-ND",
         "image": "taxi.jpg"
     },
-    {
+    // XXXXX: enable for 2.0
+    /*{
         "author": "wilhei",
         "source": "https://pixabay.com/en/font-lead-set-book-printing-705667/",
         "license": "Public Domain",
         "image": "language.jpg"
-    },
+    },*/
     {
         "author": "Ana_J",
         "source": "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
@@ -131,4 +132,4 @@
         "license": "Public Domain",
         "image": "scream.jpg"
     }
-]
+];
