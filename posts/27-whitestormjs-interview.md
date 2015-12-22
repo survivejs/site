@@ -96,4 +96,4 @@ He works with Three.js and make awesome abstract sites, which are worthy of atte
 
 ## Conclusion
 
-Thanks for your interview Alexander. Best of luck with your engine! If you want to study the engine, [head to GitHub]([GitHub](https://github.com/sasha240100/WhitestormJS)) or check out the [project homepage](http://whitestormjs.xyz/) for documentation and demos.
+Thanks for your interview Alexander. Best of luck with your engine! If you want to study the engine, [head to GitHub](https://github.com/sasha240100/WhitestormJS) or check out the [project homepage](http://whitestormjs.xyz/) for documentation and demos.
