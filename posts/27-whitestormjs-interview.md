@@ -38,7 +38,6 @@ var GAME = new WHS.init({
     anaglyph: false, // Anaglyph effect.
     helper: false, // Cannon.js shape helper
     stats: "fps", // fps, ms, mb or false if not need.
-    wagner: WAGNER, // wagner library variable
     gravity: { // Physics (gravity).
         x: 0,
         y: -200,
