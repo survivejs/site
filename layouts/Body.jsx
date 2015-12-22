@@ -2,6 +2,7 @@ import React from 'react';
 import Fork from 'react-ghfork';
 import {layouts, components} from 'antwar-helpers';
 import Footer from '../components/Footer.jsx';
+import Gitter from '../components/Gitter.jsx';
 
 const Body = layouts.Body;
 const Navigation = components.Navigation;
@@ -22,6 +23,8 @@ export default React.createClass({
         {pathname !== '/' ? this.renderFeedback(props.page.title) : null}
 
         <Footer {...props} />
+
+        <Gitter room="survivejs/webpack_react" />
       </Body>
     );
   },
