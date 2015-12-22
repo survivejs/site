@@ -1,12 +1,12 @@
 <html lang="en"><head><title>SurviveJS - Authoring Libraries</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 npm is one of the reasons behind the popularity of Node.js. Even though it was used initially for managing back-end packages, it has become increasingly popular for front-end usage as well. As you saw in the earlier chapters, it is easy to consume npm packages through Webpack.
 
-Eventually you may w…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/library.jpg);"></div><h1 class="post__heading">Authoring Libraries</h1><div class="header-extra"><a href="https://www.flickr.com/photos/19219926@N04/3707001321">Duke University Archives (CC BY-NC-SA)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><a class="toc-nav__link chapter" href="/webpack_react/developing_with_webpack">Developing with Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><a class="toc-nav__link chapter" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><a class="toc-nav__link chapter" href="/webpack_react/building_kanban">Building Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><span class="toc-nav__link toc-nav__link--current chapter">Authoring Libraries</span><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></blockquote><div class="chapter-content"><p><a href="https://www.npmjs.com/">npm</a> is one of the reasons behind the popularity of Node.js. Even though it was used initially for managing back-end packages, it has become increasingly popular for front-end usage as well. As you saw in the earlier chapters, it is easy to consume npm packages through Webpack.</p>
+Eventually you may w…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/library.jpg);"></div><h1 class="post__heading">Authoring Libraries</h1><div class="header-extra"><a href="https://www.flickr.com/photos/19219926@N04/3707001321">Duke University Archives (CC BY-NC-SA)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><a class="toc-nav__link chapter" href="/webpack_react/developing_with_webpack">Developing with Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><a class="toc-nav__link chapter" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><a class="toc-nav__link chapter" href="/webpack_react/building_kanban">Building Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><span class="toc-nav__link toc-nav__link--current chapter">Authoring Libraries</span><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></blockquote><div class="chapter-content"><p><a href="https://www.npmjs.com/">npm</a> is one of the reasons behind the popularity of Node.js. Even though it was used initially for managing back-end packages, it has become increasingly popular for front-end usage as well. As you saw in the earlier chapters, it is easy to consume npm packages through Webpack.</p>
 <p>Eventually you may want to author packages of your own. Publishing one is relatively easy. There are a lot of smaller details to know, though. This chapter goes through those so that you can avoid some of the common problems.</p>
 <h2 class="header"><a class="header-anchor" href="#anatomy-of-a-npm-package" id="anatomy-of-a-npm-package"></a><span class="text">Anatomy of a npm Package</span><a class="header-anchor-select" href="#anatomy-of-a-npm-package">#</a></h2>
 <p>Most of the available npm packages are small and include just a select few files such as:</p>
 <ul>
-<li><em>index.js</em> - On small projects it&apos;s enough to have the code at the root. On larger ones you may want to start splitting it up further.</li>
+<li><em>index.js</em> - On small projects it&#39;s enough to have the code at the root. On larger ones you may want to start splitting it up further.</li>
 <li><em>package.json</em> - npm metadata in JSON format</li>
 <li><em>README.md</em> - README is the most important document of your project. It is written in Markdown format and provides an overview. For simple projects the whole documentation can fit there. It will be shown at the package page at <em>npmjs.com</em>.</li>
 <li><em>LICENSE</em> - You should include licensing information within your project. You can refer to it from <em>package.json</em>.</li>
@@ -16,91 +16,91 @@ Eventually you may w…"/><meta name="keywords" content="webpack,react,javascrip
 <li><em>CONTRIBUTING.md</em> - A guide for potential contributors. How should the code be developed and so on.</li>
 <li><em>CHANGELOG.md</em> - This document describes major changes per version. If you do major API changes, it can be a good idea to cover them here. It is possible to generate the file based on Git commit history, provided you write nice enough commits.</li>
 <li><em>.travis.yml</em> - <a href="https://travis-ci.org/">Travis CI</a> is a popular continuous integration platform that is free for open source projects. You can run the tests of your package over multiple systems using it. There are other alternatives of course, but Travis is very popular.</li>
-<li><em>.gitignore</em> - Ignore patterns for Git, i.e., which files shouldn&apos;t go under version control. It can be useful to ignore npm distribution files here so they don&apos;t clutter your repository.</li>
-<li><em>.npmignore</em> - Ignore patterns for npm. This describes which files shouldn&apos;t go to your distribution version.</li>
+<li><em>.gitignore</em> - Ignore patterns for Git, i.e., which files shouldn&#39;t go under version control. It can be useful to ignore npm distribution files here so they don&#39;t clutter your repository.</li>
+<li><em>.npmignore</em> - Ignore patterns for npm. This describes which files shouldn&#39;t go to your distribution version.</li>
 <li><em>.eslintignore</em> - Ignore patterns for ESLint. Again, tool specific.</li>
 <li><em>.eslintrc</em> - Linting rules. You can use <em>.jshintrc</em> and such based on your preferences.</li>
 <li><em>webpack.config.js</em> - If you are using a simple setup, you might as well have the configuration at project root.</li>
 </ul>
-<p>In addition, you&apos;ll likely have various directories for source, tests, demos, documentation, and so on.</p>
+<p>In addition, you&#39;ll likely have various directories for source, tests, demos, documentation, and so on.</p>
 <h2 class="header"><a class="header-anchor" href="#understanding-package-json-" id="understanding-package-json-"></a><span class="text">Understanding <em>package.json</em></span><a class="header-anchor-select" href="#understanding-package-json-">#</a></h2>
 <p>All packages come with a <em>package.json</em> that describes metadata related to them. This includes information about the author, various links, dependencies, and so on. The <a href="https://docs.npmjs.com/files/package.json">official documentation</a> covers them in detail.</p>
-<p>I&apos;ve annotated a part of <em>package.json</em> of my <a href="https://github.com/survivejs/react-component-boilerplate">React component boilerplate</a> below.</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
+<p>I&#39;ve annotated a part of <em>package.json</em> of my <a href="https://github.com/survivejs/react-component-boilerplate">React component boilerplate</a> below.</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
   /* Name of the project */
-  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;react-component-boilerplate&quot;</span><span class="token punctuation">,</span>
+  <span class="token property" >"name"</span><span class="token operator" >:</span> <span class="token string" >"react-component-boilerplate"</span><span class="token punctuation" >,</span>
   /* Brief description */
-  <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Boilerplate for React.js components&quot;</span><span class="token punctuation">,</span>
+  <span class="token property" >"description"</span><span class="token operator" >:</span> <span class="token string" >"Boilerplate for React.js components"</span><span class="token punctuation" >,</span>
   /* Who is the author + optional email + optional site */
-  <span class="token property">&quot;author&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Juho Vepsalainen &lt;email goes here&gt; (site goes here)&quot;</span><span class="token punctuation">,</span>
+  <span class="token property" >"author"</span><span class="token operator" >:</span> <span class="token string" >"Juho Vepsalainen &lt;email goes here> (site goes here)"</span><span class="token punctuation" >,</span>
   /* Version of the package */
-  <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.0.0&quot;</span><span class="token punctuation">,</span>
-  /* `npm run &lt;name&gt;` */
-  /* You can namespace these if you want. Example<span class="token operator">:</span> build<span class="token operator">:</span>dist<span class="token punctuation">,</span> build<span class="token operator">:</span>gh-pages */
-  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack-dev-server&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;test&quot;</span><span class="token operator">:</span> <span class="token string">&quot;karma start&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;tdd&quot;</span><span class="token operator">:</span> <span class="token string">&quot;karma start --auto-watch --no-single-run&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;gh-pages&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;deploy-gh-pages&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node ./lib/deploy_gh_pages.js&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;dist&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;dist-min&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;dist-modules&quot;</span><span class="token operator">:</span> <span class="token string">&quot;babel ./src --out-dir ./dist-modules&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;lint&quot;</span><span class="token operator">:</span> <span class="token string">&quot;eslint . --ext .js --ext .jsx&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;preversion&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run test &amp;&amp; npm run lint &amp;&amp; npm run dist &amp;&amp; npm run dist-min &amp;&amp; git commit --allow-empty -am \&quot;</span>Update dist\<span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;prepublish&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run dist-modules&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;postpublish&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run gh-pages &amp;&amp; npm run deploy-gh-pages&quot;</span><span class="token punctuation">,</span>
-    /* If your library is installed through Git<span class="token punctuation">,</span> you may want to transpile it */
-    <span class="token property">&quot;postinstall&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node lib/post_install.js&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  /* Entry point for terminal (i.e.<span class="token punctuation">,</span> &lt;package name&gt;<span class="token punctuation">)</span> */
-  /* Don&apos;t set this unless you intend to allow CLI usage */
-  <span class="token property">&quot;bin&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./index.js&quot;</span><span class="token punctuation">,</span>
-  /* Entry point (defaults to index.js<span class="token punctuation">)</span> */
-  <span class="token property">&quot;main&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dist-modules&quot;</span><span class="token punctuation">,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token string" >"0.0.0"</span><span class="token punctuation" >,</span>
+  /* `npm run &lt;name>` */
+  /* You can namespace these if you want. Example<span class="token operator" >:</span> build<span class="token operator" >:</span>dist<span class="token punctuation" >,</span> build<span class="token operator" >:</span>gh-pages */
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"test"</span><span class="token operator" >:</span> <span class="token string" >"karma start"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"tdd"</span><span class="token operator" >:</span> <span class="token string" >"karma start --auto-watch --no-single-run"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"gh-pages"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"deploy-gh-pages"</span><span class="token operator" >:</span> <span class="token string" >"node ./lib/deploy_gh_pages.js"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"dist"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"dist-min"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"dist-modules"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"lint"</span><span class="token operator" >:</span> <span class="token string" >"eslint . --ext .js --ext .jsx"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm run test &amp;&amp; npm run lint &amp;&amp; npm run dist &amp;&amp; npm run dist-min &amp;&amp; git commit --allow-empty -am \"</span>Update dist\<span class="token string" >""</span><span class="token punctuation" >,</span>
+    <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run dist-modules"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"postpublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run gh-pages &amp;&amp; npm run deploy-gh-pages"</span><span class="token punctuation" >,</span>
+    /* If your library is installed through Git<span class="token punctuation" >,</span> you may want to transpile it */
+    <span class="token property" >"postinstall"</span><span class="token operator" >:</span> <span class="token string" >"node lib/post_install.js"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  /* Entry point for terminal (i.e.<span class="token punctuation" >,</span> &lt;package name><span class="token punctuation" >)</span> */
+  /* Don't set this unless you intend to allow CLI usage */
+  <span class="token property" >"bin"</span><span class="token operator" >:</span> <span class="token string" >"./index.js"</span><span class="token punctuation" >,</span>
+  /* Entry point (defaults to index.js<span class="token punctuation" >)</span> */
+  <span class="token property" >"main"</span><span class="token operator" >:</span> <span class="token string" >"dist-modules"</span><span class="token punctuation" >,</span>
   /* Package dependencies */
-  <span class="token property">&quot;dependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.14.0&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.14.0&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property" >"dependencies"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"react"</span><span class="token operator" >:</span> <span class="token string" >"^0.14.0"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"react-dom"</span><span class="token operator" >:</span> <span class="token string" >"^0.14.0"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   /* Package development dependencies */
-  <span class="token property">&quot;devDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;babel&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^5.8.23&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;babel-eslint&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^4.1.3&quot;</span><span class="token punctuation">,</span>
+  <span class="token property" >"devDependencies"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"babel"</span><span class="token operator" >:</span> <span class="token string" >"^5.8.23"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"babel-eslint"</span><span class="token operator" >:</span> <span class="token string" >"^4.1.3"</span><span class="token punctuation" >,</span>
     ...
-    <span class="token property">&quot;webpack&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.12.2&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;webpack-dev-server&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.12.0&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;webpack-merge&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.2.0&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  /* Links to repository<span class="token punctuation">,</span> homepage<span class="token punctuation">,</span> and issue tracker */
-  <span class="token property">&quot;repository&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;git&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/bebraw/react-component-boilerplate.git&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">&quot;homepage&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://bebraw.github.io/react-component-boilerplate/&quot;</span><span class="token punctuation">,</span>
-  <span class="token property">&quot;bugs&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/bebraw/react-component-boilerplate/issues&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property" >"webpack"</span><span class="token operator" >:</span> <span class="token string" >"^1.12.2"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"webpack-dev-server"</span><span class="token operator" >:</span> <span class="token string" >"^1.12.0"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"webpack-merge"</span><span class="token operator" >:</span> <span class="token string" >"^0.2.0"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  /* Links to repository<span class="token punctuation" >,</span> homepage<span class="token punctuation" >,</span> and issue tracker */
+  <span class="token property" >"repository"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"type"</span><span class="token operator" >:</span> <span class="token string" >"git"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"url"</span><span class="token operator" >:</span> <span class="token string" >"https://github.com/bebraw/react-component-boilerplate.git"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token property" >"homepage"</span><span class="token operator" >:</span> <span class="token string" >"https://bebraw.github.io/react-component-boilerplate/"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"bugs"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"url"</span><span class="token operator" >:</span> <span class="token string" >"https://github.com/bebraw/react-component-boilerplate/issues"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   /* Keywords related to package. */
   /* Fill this well to make the package findable. */
-  <span class="token property">&quot;keywords&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">&quot;react&quot;</span><span class="token punctuation">,</span>
-    <span class="token string">&quot;reactjs&quot;</span><span class="token punctuation">,</span>
-    <span class="token string">&quot;boilerplate&quot;</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property" >"keywords"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
+    <span class="token string" >"react"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"reactjs"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"boilerplate"</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
   /* Which license to use */
-  <span class="token property">&quot;license&quot;</span><span class="token operator">:</span> <span class="token string">&quot;MIT&quot;</span>
-<span class="token punctuation">}</span>
+  <span class="token property" >"license"</span><span class="token operator" >:</span> <span class="token string" >"MIT"</span>
+<span class="token punctuation" >}</span>
 </code></pre>
 <p>As you can see <em>package.json</em> can contain a lot of information. You can attach non-npm specific metadata there that can be used by tooling. Given this can bloat <em>package.json</em>, it may be preferable to keep metadata at files of their own.</p>
 <h2 class="header"><a class="header-anchor" href="#npm-workflow" id="npm-workflow"></a><span class="text">npm Workflow</span><a class="header-anchor-select" href="#npm-workflow">#</a></h2>
-<p>Working with npm is surprisingly simple. To get started, you need to use <a href="https://docs.npmjs.com/cli/adduser">npm adduser</a> (aliased to <code>npm login</code>). It allows you to set up an account. After this process has completed, it will create <em>~/.npmrc</em> and use that data for authentication. There&apos;s also <a href="https://docs.npmjs.com/cli/logout">npm logout</a> that will clear the credentials.</p>
+<p>Working with npm is surprisingly simple. To get started, you need to use <a href="https://docs.npmjs.com/cli/adduser">npm adduser</a> (aliased to <code>npm login</code>). It allows you to set up an account. After this process has completed, it will create <em>~/.npmrc</em> and use that data for authentication. There&#39;s also <a href="https://docs.npmjs.com/cli/logout">npm logout</a> that will clear the credentials.</p>
 <blockquote class="tip"><code>npm init</code> respects the values set at <em>~/.npmrc</em>. Hence it may be worth your while to set reasonable defaults there to save some time.</blockquote><h3 class="header"><a class="header-anchor" href="#publishing-a-package" id="publishing-a-package"></a><span class="text">Publishing a Package</span><a class="header-anchor-select" href="#publishing-a-package">#</a></h3>
-<p>Provided you have logged in, creating new packages is just a matter of hitting <code>npm publish</code>. Given that the package name is still available and everything goes fine, you should have something out there! After this you can install your package through <code>npm install</code> or <code>npm i</code> as we&apos;ve done so many times before in this book.</p>
+<p>Provided you have logged in, creating new packages is just a matter of hitting <code>npm publish</code>. Given that the package name is still available and everything goes fine, you should have something out there! After this you can install your package through <code>npm install</code> or <code>npm i</code> as we&#39;ve done so many times before in this book.</p>
 <p>An alternative way to consume a library is to point at it directly in <em>package.json</em>. In that case you can do <code>&quot;depName&quot;: &quot;&lt;github user&gt;/&lt;project&gt;#&lt;reference&gt;&quot;</code> where <code>&lt;reference&gt;</code> can be either commit hash, tag, or branch. This can be useful, especially if you need to hack around something and cannot wait for a fix.</p>
 <h3 class="header"><a class="header-anchor" href="#bumping-a-version" id="bumping-a-version"></a><span class="text">Bumping a Version</span><a class="header-anchor-select" href="#bumping-a-version">#</a></h3>
-<p>In order to bump your package version, you&apos;ll just need to invoke <code>npm version &lt;x.y.z&gt;</code>. That will update <em>package.json</em> and create a version commit to git automatically. If you hit <code>npm publish</code>, you should have something new out there.</p>
-<p>Note that in the example above I&apos;ve set up <code>version</code> related hooks to make sure a version will contain a fresh version of a distribution build. I also run tests just in case.</p>
+<p>In order to bump your package version, you&#39;ll just need to invoke <code>npm version &lt;x.y.z&gt;</code>. That will update <em>package.json</em> and create a version commit to git automatically. If you hit <code>npm publish</code>, you should have something new out there.</p>
+<p>Note that in the example above I&#39;ve set up <code>version</code> related hooks to make sure a version will contain a fresh version of a distribution build. I also run tests just in case.</p>
 <h3 class="header"><a class="header-anchor" href="#publishing-a-prerelease-version" id="publishing-a-prerelease-version"></a><span class="text">Publishing a Prerelease Version</span><a class="header-anchor-select" href="#publishing-a-prerelease-version">#</a></h3>
 <p>Sometimes you might want to publish something preliminary for other people to test. There are certain conventions for this. You rarely see <em>alpha</em> releases at npm. <em>beta</em> and *rc (release candidate) are common, though. For example, a package might have versions like this:</p>
 <ul>
@@ -111,7 +111,7 @@ Eventually you may w…"/><meta name="keywords" content="webpack,react,javascrip
 <li>v0.5.0-rc2</li>
 <li>v0.5.0</li>
 </ul>
-<p>The initial alpha release will allow the users to try out the upcoming functionality and provide feedback. The beta releases can be considered more stable. The release candidates (rc) are close to an actual release and won&apos;t introduce any new functionality. They are all about refining the release till it&apos;s suitable for general consumption.</p>
+<p>The initial alpha release will allow the users to try out the upcoming functionality and provide feedback. The beta releases can be considered more stable. The release candidates (rc) are close to an actual release and won&#39;t introduce any new functionality. They are all about refining the release till it&#39;s suitable for general consumption.</p>
 <p>The workflow in this case is straight-forward:</p>
 <ol>
 <li><code>npm version 0.5.0-alpha1</code> - Update <em>package.json</em> as discussed earlier.</li>
@@ -119,148 +119,148 @@ Eventually you may w…"/><meta name="keywords" content="webpack,react,javascrip
 </ol>
 <p>In order to consume the test version, your users will have to use <code>npm i &lt;your package name&gt;@alpha1</code>.</p>
 <blockquote class="tip">It can be useful to utilize <code>npm link</code> during development. That will allow you to use a development version of your library from some other context. Node.js will resolve to the linked version unless local <code>node_modules</code> happens to contain a version. If you want to remove the link, use <code>npm unlink</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#on-naming-packages" id="on-naming-packages"></a><span class="text">On Naming Packages</span><a class="header-anchor-select" href="#on-naming-packages">#</a></h3>
-<p>Before starting to develop, it can be a good idea to spend a little bit of time on figuring out a good name for your package. It&apos;s not very fun to write a great package just to notice the name has been taken. A good name is easy to find through a search engine, and most importantly, is available at npm.</p>
+<p>Before starting to develop, it can be a good idea to spend a little bit of time on figuring out a good name for your package. It&#39;s not very fun to write a great package just to notice the name has been taken. A good name is easy to find through a search engine, and most importantly, is available at npm.</p>
 <p>As of npm 2.7.0 it is possible to create <a href="https://docs.npmjs.com/getting-started/scoped-packages">scoped packages</a>. They follow format <code>@username/project-name</code>. Simply follow that when naming your project.</p>
 <h3 class="header"><a class="header-anchor" href="#dealing-with-preprocessing" id="dealing-with-preprocessing"></a><span class="text">Dealing with Preprocessing</span><a class="header-anchor-select" href="#dealing-with-preprocessing">#</a></h3>
-<p>It is possible to consume a library directly through Git. This can be problematic for library authors. One way to solve this is to set up a <code>postinstall</code> script that will generate a local npm version of your library in case it doesn&apos;t exist. This can be achieved through a <code>postinstall</code> script like this:</p>
+<p>It is possible to consume a library directly through Git. This can be problematic for library authors. One way to solve this is to set up a <code>postinstall</code> script that will generate a local npm version of your library in case it doesn&#39;t exist. This can be achieved through a <code>postinstall</code> script like this:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
   ...
-  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
     ...
-    <span class="token property">&quot;postinstall&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node lib/post_install.js&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">&quot;devDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property" >"postinstall"</span><span class="token operator" >:</span> <span class="token string" >"node lib/post_install.js"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token property" >"devDependencies"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
     ...
     /* You should install sync-exec through `npm i` to get a recent version */
-    <span class="token property">&quot;sync-exec&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.6.2&quot;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    <span class="token property" >"sync-exec"</span><span class="token operator" >:</span> <span class="token string" >"^0.6.2"</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
 </code></pre>
-<p>In addition we need to define a little script to do the work for us. It will check whether our package contains the directory we expect and will then act based on that. If it doesn&apos;t exist, we&apos;ll generate it. You may need to tweak the script to fit your exact purposes. The idea is the same, though:</p>
+<p>In addition we need to define a little script to do the work for us. It will check whether our package contains the directory we expect and will then act based on that. If it doesn&#39;t exist, we&#39;ll generate it. You may need to tweak the script to fit your exact purposes. The idea is the same, though:</p>
 <p><strong>lib/post_install.js</strong></p>
 <pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// adapted based on rackt/history (MIT)</span>
 <span class="token comment" spellcheck="true">// Node 0.10+</span>
-<span class="token keyword">var</span> execSync <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;child_process&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>execSync<span class="token punctuation">;</span>
-<span class="token keyword">var</span> stat <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;fs&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>stat<span class="token punctuation">;</span>
+<span class="token keyword" >var</span> execSync <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'child_process'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>execSync<span class="token punctuation" >;</span>
+<span class="token keyword" >var</span> stat <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'fs'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>stat<span class="token punctuation" >;</span>
 
 <span class="token comment" spellcheck="true">// Node 0.10 check</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>execSync<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  execSync <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;sync-exec&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword" >if</span> <span class="token punctuation" >(</span><span class="token operator" >!</span>execSync<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  execSync <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'sync-exec'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 
-<span class="token keyword">function</span> <span class="token function">exec</span><span class="token punctuation">(</span>command<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">execSync</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    stdio<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword" >function</span> <span class="token function" >exec</span><span class="token punctuation" >(</span>command<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token function" >execSync</span><span class="token punctuation" >(</span>command<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    stdio<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >,</span> <span class="token number" >1</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation" >]</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 
-<span class="token function">stat</span><span class="token punctuation">(</span><span class="token string">&apos;dist-modules&apos;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> stat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token operator">||</span> <span class="token operator">!</span>stat<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">&apos;npm i babel@5.x&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">&apos;npm run dist-modules&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function" >stat</span><span class="token punctuation" >(</span><span class="token string" >'dist-modules'</span><span class="token punctuation" >,</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>error<span class="token punctuation" >,</span> stat<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>error <span class="token operator" >||</span> <span class="token operator" >!</span>stat<span class="token punctuation" >.</span><span class="token function" >isDirectory</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token function" >exec</span><span class="token punctuation" >(</span><span class="token string" >'npm i babel@5.x'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token function" >exec</span><span class="token punctuation" >(</span><span class="token string" >'npm run dist-modules'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Even though setting up a script like this takes some time, it can be beneficial as it will make it a little easier to consume your library. After this you can point at your library directly through Git. If you are into shorthands, you could use a dependency declaration such as <code>&quot;my-project&quot;: &quot;&lt;name&gt;/&lt;project&gt;#reference&quot;</code>. <em>reference</em> can be a commit id or a tag name for instance.</p>
 <h3 class="header"><a class="header-anchor" href="#respect-the-semver" id="respect-the-semver"></a><span class="text">Respect the SemVer</span><a class="header-anchor-select" href="#respect-the-semver">#</a></h3>
 <p>Even though it is simple to publish new versions out there, it is important to respect the SemVer. Roughly it states that you should not break backwards compatibility, given certain rules are met. For example, if your current version is <code>0.1.4</code> and you do a breaking change, you should bump to <code>0.2.0</code> and document the changes. You can understand SemVer much better by studying <a href="http://semver.npmjs.com/">the online tool</a> and how it behaves.</p>
 <h3 class="header"><a class="header-anchor" href="#version-ranges" id="version-ranges"></a><span class="text">Version Ranges</span><a class="header-anchor-select" href="#version-ranges">#</a></h3>
-<p>npm supports multiple version ranges. I&apos;ve listed the common ones below:</p>
+<p>npm supports multiple version ranges. I&#39;ve listed the common ones below:</p>
 <ul>
 <li><code>~</code> - Tilde matches only patch versions. For example, <code>~1.2</code> would be equal to <code>1.2.x</code>.</li>
 <li><code>^</code> - Caret is the default you get using <code>--save</code> or <code>--save-dev</code>. It matches to It matches minor versions. This means <code>^0.2.0</code> would be equal to <code>0.2.x</code>.</li>
 <li><code>*</code> - Asterisk matches major releases. This is the most dangerous of the ranges. Using this recklessly can easily break your project in the future and I would advise against using it.</li>
 </ul>
-<p>You can set the default range using <code>npm config set save-prefix=&apos;^&apos;</code> in case you prefer something else than caret. Alternatively you can modify <em>~/.npmrc</em> directly.</p>
+<p>You can set the default range using <code>npm config set save-prefix=&#39;^&#39;</code> in case you prefer something else than caret. Alternatively you can modify <em>~/.npmrc</em> directly.</p>
 <blockquote class="tip">Sometimes using version ranges can feel a little dangerous. What if some future version is broken? <a href="https://docs.npmjs.com/cli/shrinkwrap">npm shrinkwrap</a> allows you to fix your project versions and have stricter control over the versions you are using in a production environment.</blockquote><h2 class="header"><a class="header-anchor" href="#library-formats" id="library-formats"></a><span class="text">Library Formats</span><a class="header-anchor-select" href="#library-formats">#</a></h2>
-<p>I output my React component in various formats at my boilerplate. I generate a version that&apos;s convenient to consume from Node.js by processing my component code through Babel. That will convert ES6 and other goodies to a format which is possible to consume from vanilla Node.js. This allows the user to refer to some specific module within the whole if needed.</p>
-<p>In addition, I generate so called <em>distribution bundles</em>: <code>.js</code> and <code>.min.js</code>. There&apos;s a sourcemap (<code>.map</code>) useful for debugging for both. It is possible to consume these bundles standalone as they come with an <a href="https://github.com/umdjs/umd">UMD</a> wrapper.</p>
+<p>I output my React component in various formats at my boilerplate. I generate a version that&#39;s convenient to consume from Node.js by processing my component code through Babel. That will convert ES6 and other goodies to a format which is possible to consume from vanilla Node.js. This allows the user to refer to some specific module within the whole if needed.</p>
+<p>In addition, I generate so called <em>distribution bundles</em>: <code>.js</code> and <code>.min.js</code>. There&#39;s a sourcemap (<code>.map</code>) useful for debugging for both. It is possible to consume these bundles standalone as they come with an <a href="https://github.com/umdjs/umd">UMD</a> wrapper.</p>
 <p>UMD makes it possible to consume them from various environments including global, AMD, and CommonJS (Node.js format). You can refresh your memory with these by checking the Getting Started chapter for examples.</p>
 <p>It is surprisingly easy to generate the aforementioned bundles using Webpack. The following example should give you the basic idea:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token keyword">var</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-  paths<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    dist<span class="token punctuation">:</span> <span class="token string">&apos;...&apos;</span><span class="token punctuation">,</span>
-    src<span class="token punctuation">:</span> <span class="token string">&apos;...&apos;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  filename<span class="token punctuation">:</span> <span class="token string">&apos;demo&apos;</span><span class="token punctuation">,</span>
-  library<span class="token punctuation">:</span> <span class="token string">&apos;Demo&apos;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword" >var</span> config <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  paths<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    dist<span class="token punctuation" >:</span> <span class="token string" >'...'</span><span class="token punctuation" >,</span>
+    src<span class="token punctuation" >:</span> <span class="token string" >'...'</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  filename<span class="token punctuation" >:</span> <span class="token string" >'demo'</span><span class="token punctuation" >,</span>
+  library<span class="token punctuation" >:</span> <span class="token string" >'Demo'</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">var</span> commonDist <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devtool<span class="token punctuation">:</span> <span class="token string">&apos;source-map&apos;</span><span class="token punctuation">,</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> config<span class="token punctuation">.</span>paths<span class="token punctuation">.</span>dist<span class="token punctuation">,</span>
-    libraryTarget<span class="token punctuation">:</span> <span class="token string">&apos;umd&apos;</span><span class="token punctuation">,</span>
-    library<span class="token punctuation">:</span> config<span class="token punctuation">.</span>library
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  entry<span class="token punctuation">:</span> config<span class="token punctuation">.</span>paths<span class="token punctuation">.</span>src<span class="token punctuation">,</span>
-  externals<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    react<span class="token punctuation">:</span> <span class="token string">&apos;react&apos;</span>
+<span class="token keyword" >var</span> commonDist <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  devtool<span class="token punctuation" >:</span> <span class="token string" >'source-map'</span><span class="token punctuation" >,</span>
+  output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    path<span class="token punctuation" >:</span> config<span class="token punctuation" >.</span>paths<span class="token punctuation" >.</span>dist<span class="token punctuation" >,</span>
+    libraryTarget<span class="token punctuation" >:</span> <span class="token string" >'umd'</span><span class="token punctuation" >,</span>
+    library<span class="token punctuation" >:</span> config<span class="token punctuation" >.</span>library
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  entry<span class="token punctuation" >:</span> config<span class="token punctuation" >.</span>paths<span class="token punctuation" >.</span>src<span class="token punctuation" >,</span>
+  externals<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    react<span class="token punctuation" >:</span> <span class="token string" >'react'</span>
     <span class="token comment" spellcheck="true">/* more complicated mapping for lodash */</span>
     <span class="token comment" spellcheck="true">/* we need to access it differently depending */</span>
     <span class="token comment" spellcheck="true">/* on the environment */</span>
-    lodash<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      commonjs<span class="token punctuation">:</span> <span class="token string">&apos;lodash&apos;</span><span class="token punctuation">,</span>
-      commonjs2<span class="token punctuation">:</span> <span class="token string">&apos;lodash&apos;</span><span class="token punctuation">,</span>
-      amd<span class="token punctuation">:</span> <span class="token string">&apos;_&apos;</span><span class="token punctuation">,</span>
-      root<span class="token punctuation">:</span> <span class="token string">&apos;_&apos;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.jsx?$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;babel&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        include<span class="token punctuation">:</span> config<span class="token punctuation">.</span>paths<span class="token punctuation">.</span>src
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    lodash<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      commonjs<span class="token punctuation" >:</span> <span class="token string" >'lodash'</span><span class="token punctuation" >,</span>
+      commonjs2<span class="token punctuation" >:</span> <span class="token string" >'lodash'</span><span class="token punctuation" >,</span>
+      amd<span class="token punctuation" >:</span> <span class="token string" >'_'</span><span class="token punctuation" >,</span>
+      root<span class="token punctuation" >:</span> <span class="token string" >'_'</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token punctuation" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.jsx?$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'babel'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+        include<span class="token punctuation" >:</span> config<span class="token punctuation" >.</span>paths<span class="token punctuation" >.</span>src
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >]</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;dist&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>commonDist<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      filename<span class="token punctuation">:</span> config<span class="token punctuation">.</span>filename <span class="token operator">+</span> <span class="token string">&apos;.js&apos;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'dist'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>commonDist<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      filename<span class="token punctuation" >:</span> config<span class="token punctuation" >.</span>filename <span class="token operator" >+</span> <span class="token string" >'.js'</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 
-<span class="token keyword">if</span><span class="token punctuation">(</span>TARGET <span class="token operator">===</span> <span class="token string">&apos;dist-min&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span>commonDist<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      filename<span class="token punctuation">:</span> config<span class="token punctuation">.</span>filename <span class="token operator">+</span> <span class="token string">&apos;.min.js&apos;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        compress<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-          warnings<span class="token punctuation">:</span> <span class="token keyword">false</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'dist-min'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>commonDist<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      filename<span class="token punctuation" >:</span> config<span class="token punctuation" >.</span>filename <span class="token operator" >+</span> <span class="token string" >'.min.js'</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>UglifyJsPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        compress<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+          warnings<span class="token punctuation" >:</span> <span class="token boolean" >false</span>
+        <span class="token punctuation" >}</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >]</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 </code></pre>
 <p>Most of the magic happens thanks to <code>devtool</code> and <code>output</code> declarations. In addition, I have set up <code>externals</code> as I want to avoid bundling React and lodash into my library. Instead, both will be loaded as external dependencies using the naming defined in the mapping.</p>
 <blockquote class="tip">The example uses the same <code>merge</code> utility we defined earlier on. You should check <a href="https://github.com/bebraw/react-component-boilerplate">the boilerplate</a> itself for the exact configuration.</blockquote><blockquote class="tip">If your library is using ES6 exclusively, <a href="https://www.npmjs.com/package/rollup">rollup</a> can be a valid, simple alternative to Webpack.</blockquote><h2 class="header"><a class="header-anchor" href="#npm-lifecycle-hooks" id="npm-lifecycle-hooks"></a><span class="text">npm Lifecycle Hooks</span><a class="header-anchor-select" href="#npm-lifecycle-hooks">#</a></h2>
-<p>npm provides various lifecycle hooks that can be useful. Suppose you are authoring a React component using Babel and some of its goodies. You could let the <em>package.json</em> <code>main</code> field point at the UMD version as generated above. This won&apos;t be ideal for those consuming the library through npm, though.</p>
+<p>npm provides various lifecycle hooks that can be useful. Suppose you are authoring a React component using Babel and some of its goodies. You could let the <em>package.json</em> <code>main</code> field point at the UMD version as generated above. This won&#39;t be ideal for those consuming the library through npm, though.</p>
 <p>It is better to generate a ES5 compatible version of the package for npm consumers. This can be achieved using <strong>babel</strong> CLI tool:</p>
-<pre><code class="lang-bash">babel <span class="token punctuation">.</span><span class="token operator">/</span>lib <span class="token operator">--</span>out<span class="token operator">-</span><span class="token function">dir</span> <span class="token punctuation">.</span><span class="token operator">/</span>dist<span class="token operator">-</span>modules
+<pre><code class="lang-bash">babel ./lib --out-dir ./dist-modules
 </code></pre>
 <p>This will walk through the <code>./lib</code> directory and output a processed file for each library it encounters to <code>./dist-modules</code>.</p>
 <p>Since we want to avoid having to run the command directly whenever we publish a new version, we can connect it to <code>prepublish</code> hook like this:</p>
-<pre><code class="lang-json"><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
   ...
-  <span class="token property">&quot;prepublish&quot;</span><span class="token operator">:</span> <span class="token string">&quot;babel ./lib --out-dir ./dist-modules&quot;</span>
-<span class="token punctuation">}</span>
+  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"babel ./lib --out-dir ./dist-modules"</span>
+<span class="token punctuation" >}</span>
 </code></pre>
 <p>Make sure you hit <code>npm i babel --save-dev</code> to include the tool into your project.</p>
-<p>You probably don&apos;t want the directory content to end up in your Git repository. In order to avoid this and to keep your <code>git status</code> clean, consider this sort of <code>.gitignore</code>:</p>
-<pre><code class="lang-bash">dist<span class="token operator">-</span>modules<span class="token operator">/</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<p>You probably don&#39;t want the directory content to end up in your Git repository. In order to avoid this and to keep your <code>git status</code> clean, consider this sort of <code>.gitignore</code>:</p>
+<pre><code class="lang-bash">dist-modules/
+<span class="token punctuation" >..</span>.
 </code></pre>
 <p>Besides <code>prepublish</code>, npm provides a set of other hooks. The naming is always the same and follows the pattern <code>pre&lt;hook&gt;</code>, <code>&lt;hook&gt;</code>, <code>post&lt;hook&gt;</code> where <code>&lt;hook&gt;</code> can be <code>publish</code>, <code>install</code>, <code>test</code>, <code>stop</code>, <code>start</code>, <code>restart</code>, or <code>version</code>. Even though npm will trigger scripts bound to these automatically, you can trigger them explicitly through <code>npm run</code> for testing (i.e., <code>npm run prepublish</code>).</p>
 <p>There are plenty of smaller tricks to learn for advanced usage. Those are better covered by <a href="https://docs.npmjs.com/misc/scripts">the official documentation</a>. Often all you need is just a <code>prepublish</code> script for build automation.</p>
@@ -279,11 +279,15 @@ Eventually you may w…"/><meta name="keywords" content="webpack,react,javascrip
 </ul>
 <p>These services provide badges you can integrate into your project <em>README.md</em>. These services may email you about important changes. They can also point out possible security issues that have been fixed.</p>
 <p>For testing your projects you can consider solutions such as <a href="https://travis-ci.org/">Travis CI</a> or <a href="https://saucelabs.com/">SauceLabs</a>. <a href="https://coveralls.io/">Coveralls</a> gives you code coverage information and a badge.</p>
-<p>These services are valuable as they allow you to test your updates against a variety of platforms quickly. Something that might work on your system might not work in some specific configuration. You&apos;ll want to know about that as fast as possible to avoid introducing problems.</p>
+<p>These services are valuable as they allow you to test your updates against a variety of platforms quickly. Something that might work on your system might not work in some specific configuration. You&#39;ll want to know about that as fast as possible to avoid introducing problems.</p>
 <h2 class="header"><a class="header-anchor" href="#sharing-authorship" id="sharing-authorship"></a><span class="text">Sharing Authorship</span><a class="header-anchor-select" href="#sharing-authorship">#</a></h2>
 <p>As packages evolve you may want to start developing with others. You could become the new maintainer of some project, or pass the torch to someone else. These things happen as packages evolve.</p>
-<p>npm provides a few commands for these purposes. It&apos;s all behind <code>npm owner</code> namespace. More specifically you&apos;ll find <code>ls &lt;package name&gt;</code>, <code>add &lt;user&gt; &lt;package name&gt;</code> and <code>rm &lt;user&gt; &lt;package name&gt;</code> there (i.e., <code>npm owner ls</code>). That&apos;s about it.</p>
+<p>npm provides a few commands for these purposes. It&#39;s all behind <code>npm owner</code> namespace. More specifically you&#39;ll find <code>ls &lt;package name&gt;</code>, <code>add &lt;user&gt; &lt;package name&gt;</code> and <code>rm &lt;user&gt; &lt;package name&gt;</code> there (i.e., <code>npm owner ls</code>). That&#39;s about it.</p>
 <p>See <a href="https://docs.npmjs.com/cli/owner">npm documentation</a> for the most up to date information about the topic.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>You should have a basic idea on how to author npm libraries with the help of Webpack now. It takes a lot of effort out of the process. Just keep the basic rules in mind when developing and remember to respect the SemVer.</p>
-</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/lint.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/linting_in_webpack">Linting in Webpack</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/taxi.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/styling_react">Styling React</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/styling_react" title="Styling React"></a><a class="previous-page" href="/webpack_react/linting_in_webpack" title="Linting in Webpack"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Authoring Libraries - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li><li><a class="blog-teaser" href="/blog/react-bootstrap-interview">React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith</a></li><li><a class="blog-teaser" href="/blog/survivejs-19">SurviveJS - Webpack and React v1.9.0</a></li></ul></div></div></footer></main></body></html>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/lint.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/linting_in_webpack">Linting in Webpack</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/taxi.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/styling_react">Styling React</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/styling_react" title="Styling React"></a><a class="previous-page" href="/webpack_react/linting_in_webpack" title="Linting in Webpack"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Authoring Libraries - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li><li><a class="blog-teaser" href="/blog/react-bootstrap-interview">React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith</a></li></ul></div></div></footer><div><script type="text/javascript">
+          ((window.gitter = {}).chat = {}).options = {
+            room: 'survivejs/webpack_react'
+          };
+        </script>,<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></main></body></html>
