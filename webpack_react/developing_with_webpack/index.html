@@ -1,27 +1,27 @@
 <html lang="en"><head><title>SurviveJS - Developing with Webpack</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 If you are not one of those people who likes to skip the introductions, you might have some clue what Webpack is. In its simplicity, it is a module bundler. It takes a bunch of assets in and outputs assets you can give to your client.
 
-This sounds simple, but in practice, it can be a complicated an…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/oscillo.jpg);"></div><h1 class="post__heading">Developing with Webpack</h1><div class="header-extra"><a href="https://www.flickr.com/photos/35237097961@N01/3561706030">Fumi Yamazaki (CC BY-NC-SA)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><span class="toc-nav__link toc-nav__link--current chapter">Developing with Webpack</span><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><a class="toc-nav__link chapter" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><a class="toc-nav__link chapter" href="/webpack_react/building_kanban">Building Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/authoring_libraries">Authoring Libraries</a><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div><div class="resources__wrapper"><h4 class="resources--header">Resources</h4><div class="resources-nav"><a href="https://www.npmjs.com/package/system-bell-webpack-plugin" class="resource-nav__link" target="_blank">System Bell plugin for webpack</a><a href="https://www.npmjs.com/package/html-webpack-template" class="resource-nav__link" target="_blank">html-webpack-template (more features than in default)</a></div></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></blockquote><div class="post__meta"><a class="post__end_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/02_developing_with_webpack/kanban_app" target="_blank">Finished source code</a><a class="post__demo" href="/demos/02_developing_with_webpack" target="_blank">Demo</a></div><div class="chapter-content"><p>If you are not one of those people who likes to skip the introductions, you might have some clue what Webpack is. In its simplicity, it is a module bundler. It takes a bunch of assets in and outputs assets you can give to your client.</p>
+This sounds simple, but in practice, it can be a complicated an…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/oscillo.jpg);"></div><h1 class="post__heading">Developing with Webpack</h1><div class="header-extra"><a href="https://www.flickr.com/photos/35237097961@N01/3561706030">Fumi Yamazaki (CC BY-NC-SA)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><span class="toc-nav__link toc-nav__link--current chapter">Developing with Webpack</span><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><a class="toc-nav__link chapter" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><a class="toc-nav__link chapter" href="/webpack_react/building_kanban">Building Kanban</a><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/authoring_libraries">Authoring Libraries</a><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link part" href="/webpack_react/appendices">Appendices</a><a class="toc-nav__link chapter" href="/webpack_react/language_features">Language Features</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div><div class="resources__wrapper"><h4 class="resources--header">Resources</h4><div class="resources-nav"><a href="https://www.npmjs.com/package/system-bell-webpack-plugin" class="resource-nav__link" target="_blank">System Bell plugin for webpack</a><a href="https://www.npmjs.com/package/html-webpack-template" class="resource-nav__link" target="_blank">html-webpack-template (more features than in default)</a></div></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></blockquote><div class="post__meta"><a class="post__end_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/02_developing_with_webpack/kanban_app" target="_blank">Finished source code</a><a class="post__demo" href="/demos/02_developing_with_webpack" target="_blank">Demo</a></div><div class="chapter-content"><p>If you are not one of those people who likes to skip the introductions, you might have some clue what Webpack is. In its simplicity, it is a module bundler. It takes a bunch of assets in and outputs assets you can give to your client.</p>
 <p>This sounds simple, but in practice, it can be a complicated and messy process. You definitely don&#39;t want to deal with all the details yourself. This is where Webpack fits in. Next, we&#39;ll get Webpack set up and your first project running in development mode.</p>
 <blockquote class="warning">Before getting started, make sure you are using a recent version of Node.js. Especially Node.js 0.10 has <a href="https://github.com/webpack/css-loader/issues/144">issues with css-loader</a>. This will save you some trouble.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-the-project" id="setting-up-the-project"></a><span class="text">Setting Up the Project</span><a class="header-anchor-select" href="#setting-up-the-project">#</a></h2>
-<p>Webpack is one of those tools that depends on <a href="http://nodejs.org/">Node.js</a>. Make sure you have it installed and that you have <code>npm</code> available at your terminal. Set up a directory for your project, navigate there, hit <code>npm init</code> and fill in some details. You can just hit <em>return</em> for each and it will work. Here are the commands:</p>
+<p>Webpack is one of those tools that depends on <a href="http://nodejs.org/">Node.js</a>. Make sure you have it installed and that you have <code>npm</code> available at your terminal. Set up a directory for your project, navigate there, execute <code>npm init</code>, and fill in some details. You can just hit <em>return</em> for each and it will work. Here are the commands:</p>
 <pre><code class="lang-bash"><span class="token function" >mkdir</span> kanban_app
 <span class="token function" >cd</span> kanban_app
-npm init
-<span class="token comment" spellcheck="true"># hit return a few times till you have gone through the questions</span>
+npm init -y <span class="token comment" spellcheck="true"># -y gives you default *package.json*, skip for more control</span>
 </code></pre>
 <p>As a result, you should have <em>package.json</em> at your project root. You can still tweak it manually to make further changes. We&#39;ll be doing some changes through <em>npm</em> tool, but it&#39;s fine to tweak the file to your liking. The official documentation explains various <a href="https://docs.npmjs.com/files/package.json">package.json options</a> in more detail. I also cover some useful library authoring related tricks later in this book.</p>
-<blockquote class="tip">You can set those <code>npm init</code> defaults at <em>~/.npmrc</em>. See the &quot;Authoring Libraries&quot; for more information about npm and its usage.</blockquote><p>If you are into version control, as you should, this would be a good time to set up your repository. You can create commits as you progress with the project.</p>
+<blockquote class="tip">You can set those <code>npm init</code> defaults at <em>~/.npmrc</em>. See the &quot;Authoring Libraries&quot; for more information about npm and its usage.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-git" id="setting-up-git"></a><span class="text">Setting Up Git</span><a class="header-anchor-select" href="#setting-up-git">#</a></h3>
+<p>If you are into version control, as you should, this would be a good time to set up your repository. You can create commits as you progress with the project.</p>
 <p>If you are using git, I recommend setting up a <em>.gitignore</em> to the project root:</p>
 <p><strong>.gitignore</strong></p>
 <pre><code class="lang-bash">node_modules
 </code></pre>
-<p>At the very least you should have <em>node_modules</em> here as you probably don&#39;t want that to end up in the source control. The problem with that is that as some modules need to be compiled per platform, it gets rather messy to collaborate. Ideally your <code>git status</code> should look clean. You can extend <em>.gitignore</em> as you go.</p>
-<blockquote class="tip">You can push operating system level ignore rules such as <em>.DS_Store</em> and <em>\</em>.log<em> to </em>~/.gitignore*. This will keep your project level rules simpler.</blockquote><h2 class="header"><a class="header-anchor" href="#installing-webpack" id="installing-webpack"></a><span class="text">Installing Webpack</span><a class="header-anchor-select" href="#installing-webpack">#</a></h2>
-<p>Next, you should get Webpack installed. We&#39;ll do a local install and save it as a project dependency. This will allow us to maintain Webpack&#39;s version per project. Hit</p>
+<p>At the very least, you should have <em>node_modules</em> here as you probably don&#39;t want that to end up in the source control. The problem with that is that as some modules need to be compiled per platform, it gets rather messy to collaborate. Ideally, your <code>git status</code> should look clean. You can extend <em>.gitignore</em> as you go.</p>
+<blockquote class="tip">You can push operating system level ignore rules, such as <em>.DS_Store</em> and <em>\</em>.log<em> to </em>~/.gitignore*. This will keep your project level rules simpler.</blockquote><h2 class="header"><a class="header-anchor" href="#installing-webpack" id="installing-webpack"></a><span class="text">Installing Webpack</span><a class="header-anchor-select" href="#installing-webpack">#</a></h2>
+<p>Next, you should get Webpack installed. We&#39;ll do a local install and save it as a project dependency. This will allow us to maintain Webpack&#39;s version per project. Execute</p>
 <pre><code class="lang-bash">npm i webpack --save-dev
 </code></pre>
-<p>This is a good opportunity to try to run Webpack for the first time. Hit <code>node_modules/.bin/webpack</code>. You should see a version log, a link to the command line interface guide and a long list of options. We won&#39;t be using most of those, but it&#39;s good to know that this tool is packed with functionality if nothing else.</p>
+<p>This is a good opportunity to try to run Webpack for the first time. Trigger <code>node_modules/.bin/webpack</code>. You should see a version log, a link to the command line interface guide and a long list of options. We won&#39;t be using most of those, but it&#39;s good to know that this tool is packed with functionality if nothing else.</p>
 <p>Webpack works using a global install as well (<code>-g</code> or <code>--global</code> flag during installation). It is preferred to keep it as a project dependency like this. The arrangement helps to keep your life simpler. This way you have direct control over the version you are running.</p>
 <p>We will be using <code>--save</code> and <code>--save-dev</code> to separate application and development dependencies. The separation keeps project dependencies more understandable. This will come in handy when we generate a vendor bundle later on.</p>
 <blockquote class="tip">There are handy shortcuts for <code>--save</code> and <code>--save-dev</code>. <code>-S</code> maps to <code>--save</code> and <code>-D</code> to <code>--save-dev</code>. So if you want to optimize for characters written, consider using these instead.</blockquote><h2 class="header"><a class="header-anchor" href="#directory-structure" id="directory-structure"></a><span class="text">Directory Structure</span><a class="header-anchor-select" href="#directory-structure">#</a></h2>
@@ -58,7 +58,7 @@ app<span class="token punctuation" >.</span><span class="token function" >append
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#setting-up-webpack-configuration" id="setting-up-webpack-configuration"></a><span class="text">Setting Up Webpack Configuration</span><a class="header-anchor-select" href="#setting-up-webpack-configuration">#</a></h2>
 <p>We&#39;ll need to tell Webpack how to deal with the assets we just set up. For this purpose we&#39;ll build <em>webpack.config.js</em>. Webpack and its development server will be able to discover this file through convention.</p>
-<p>To keep things simple, we&#39;ll generate an entry point to our application using <a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a>. We could create <em>index.html</em> by hand. Maintaining that could become troublesome as the project grows, though. <em>html-webpack-plugin</em> is able to create links to our assets keeping our life simple. Hit</p>
+<p>We could create <em>index.html</em> by hand. Maintaining that could become troublesome as the project grows, though. <a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a> is able to generate an <em>index.html</em> for us and create links to our assets keeping our life simple. Execute</p>
 <pre><code class="lang-bash">npm i html-webpack-plugin --save-dev
 </code></pre>
 <p>to install it to the project.</p>
@@ -88,178 +88,140 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Given Webpack expects absolute paths we have some good options here. I like to use <code>path.join</code>, but <code>path.resolve</code> would be a good alternative. <code>path.resolve</code> is equivalent to navigating the file system through <em>cd</em>. <code>path.join</code> gives you just that, a join. See <a href="https://nodejs.org/api/path.html">Node.js path API</a> for the exact details.</p>
-<p>If you hit <code>node_modules/.bin/webpack</code>, you should see a Webpack build at your output directory. You can open the <code>index.html</code> found there directly through a browser. On OS X you can use <code>open build/index.html</code> to see the result.</p>
-<p>Another way to achieve this would be to serve the contents of the directory through a server such as <em>serve</em> (<code>npm i serve -g</code>). In this case you would execute <code>serve</code> at the output directory and head to <code>localhost:3000</code> at your browser. You can configure the port through the <code>--port</code> parameter if you want to use some other port.</p>
-<blockquote class="tip">Note that you can pass a custom template to <em>html-webpack-plugin</em>. In our case, the default template it uses is fine for our purposes for now.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-webpack-dev-server-" id="setting-up-webpack-dev-server-"></a><span class="text">Setting Up <em>webpack-dev-server</em></span><a class="header-anchor-select" href="#setting-up-webpack-dev-server-">#</a></h2>
-<p>Now that we have the basic building blocks together, we can set up a development server. <em>webpack-dev-server</em> is a development server running in-memory that automatically refreshes content in the browser while you develop the application. You should use <em>webpack-dev-server</em> strictly for development. If you want to host your application, consider other, standard solutions such as Apache or Nginx.</p>
-<p>This makes it roughly equivalent to tools such as <a href="http://livereload.com/">LiveReload</a> or <a href="http://www.browsersync.io/">Browsersync</a>. The greatest advantage Webpack has over these tools is Hot Module Replacement (HMR). We&#39;ll discuss it when we go through React.</p>
-<p>Hit</p>
-<pre><code class="lang-bash">npm i webpack-dev-server --save-dev
-</code></pre>
-<p>at the project root to get the server installed. We will be invoking our development server through npm. It allows us to set up <code>scripts</code> at <em>package.json</em>. The following configuration is enough:</p>
+<p>If you trigger <code>node_modules/.bin/webpack</code>, you should see a Webpack build at your output directory. You can open the <code>index.html</code> found there directly through a browser. On OS X you can use <code>open build/index.html</code> to see the result.</p>
+<p>Another way to achieve this would be to serve the contents of the directory through a server, such as <em>serve</em> (<code>npm i serve -g</code>). In this case, you would execute <code>serve</code> at the output directory and head to <code>localhost:3000</code> at your browser. You can configure the port through the <code>--port</code> parameter if you want to use some other port.</p>
+<blockquote class="tip">Note that you can pass a custom template to <em>html-webpack-plugin</em>. In our case, the default template it uses is fine for our purposes for now.</blockquote><blockquote class="tip">Sometimes, it may make sense to define <code>context: &lt;some absolute path&gt;</code>. After this, you can write entries relative to the <a href="https://webpack.github.io/docs/configuration.html#context">context</a> path rather than using an absolute path for each entry. This is useful especially in more complicated scenarios.</blockquote><h2 class="header"><a class="header-anchor" href="#adding-a-build-shortcut" id="adding-a-build-shortcut"></a><span class="text">Adding a Build Shortcut</span><a class="header-anchor-select" href="#adding-a-build-shortcut">#</a></h2>
+<p>Given executing <code>node_modules/.bin/webpack</code> is a little verbose, we should do something about it. npm and <em>package.json</em> doubles as a task runner with some configuration. Adjust it as follows:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json">...
 <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server"</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 ...
 </code></pre>
-<p>We also need to do some configuration work. We are going to use a simplified setup here. Beyond defaults we will enable Hot Module Replacement (HMR) and HTML5 History API fallback. The former will come in handy when we discuss React in detail. The latter allows HTML5 History API routes to work. <em>inline</em> setting embeds the <em>webpack-dev-server</em> runtime into the bundle allowing HMR to work easily. Otherwise we would have to set up more <code>entry</code> paths. Here&#39;s the setup:</p>
+<p>You can execute the scripts defined this way through <em>npm run</em>. If you trigger <em>npm run build</em> now, you should get a build at your output directory.</p>
+<p>This works because npm adds <code>node_modules/.bin</code> temporarily to the path. As a result, rather than having to write <code>&quot;build&quot;: &quot;node_modules/.bin/webpack&quot;</code>, we can do just <code>&quot;build&quot;: &quot;webpack&quot;</code>. Unless Webpack is installed to the project, this can point to a possible global install. That can be potentially dangerous as it&#39;s a good idea to have control over the version of tools you are using.</p>
+<p>The scheme can be expanded further. Task runners, such as Grunt or Gulp, allow you to achieve the same. The advantage of task runners is that they will operate in a cross-platform manner without a second thought. If you operate through <em>package.json</em> like this, you may have to be more careful. On the plus side, this is a very light approach. To keep things simple we&#39;ll be relying on it.</p>
+<h2 class="header"><a class="header-anchor" href="#setting-up-webpack-dev-server-" id="setting-up-webpack-dev-server-"></a><span class="text">Setting Up <em>webpack-dev-server</em></span><a class="header-anchor-select" href="#setting-up-webpack-dev-server-">#</a></h2>
+<p>As developing your application through a build script like this will get boring eventually, Webpack provides neater means for development in particular. <em>webpack-dev-server</em> is a development server running in-memory. It refreshes content automatically in the browser while you develop your application. This makes it roughly equivalent to tools, such as <a href="http://livereload.com/">LiveReload</a> or <a href="http://www.browsersync.io/">Browsersync</a>.</p>
+<p>The greatest advantage Webpack has over these tools is Hot Module Replacement (HMR). We&#39;ll discuss it when we go through the React setup. You&#39;ll see there how to get a better setup than you might have gotten used to.</p>
+<blockquote class="warning">You should use <em>webpack-dev-server</em> strictly for development. If you want to host your application, consider other, standard solutions, such as Apache or Nginx.</blockquote><p>To get started with <em>webpack-dev-server</em>, execute</p>
+<pre><code class="lang-bash">npm i webpack-dev-server --save-dev
+</code></pre>
+<p>at the project root to get the server installed.</p>
+<p>Just like above, we&#39;ll need to define an entry point to the <code>scripts</code> section of <em>package.json</em>:</p>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json">...
+<span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span>
+</div>
+<div class="leanpub-insert">
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server"</span>
+</div>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+...
+</code></pre>
+<p>If you trigger either <em>npm run start</em> or <em>npm start</em> now, you should see something like this at the terminal:</p>
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack-dev-server
+
+http://localhost:8080/webpack-dev-server/
+webpack result is served from /
+content is served from <span class="token punctuation" >..</span>./kanban_app
+Hash: 2dad8c1de918274667eb
+Version: webpack 1.12.9
+Time: 120ms
+     Asset       Size  Chunks             Chunk Names
+ bundle.js    1.75 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
+index.html  184 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+chunk    <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> bundle.js <span class="token punctuation" >(</span>main<span class="token punctuation" >)</span> 280 bytes <span class="token punctuation" >[</span>rendered<span class="token punctuation" >]</span>
+    <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 144 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+    <span class="token punctuation" >[</span>1<span class="token punctuation" >]</span> ./app/component.js 136 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+webpack: bundle is now VALID.
+webpack: bundle is now INVALID.
+Hash: 8cdf5c4fa2d5afa613e0
+Version: webpack 1.12.9
+</code></pre>
+<p>This means the development server is running. If you open <em><a href="http://localhost:8080/">http://localhost:8080/</a></em> at your browser, you should see something. You can try modifying <em>app/component.js</em>. The problem is that nothing happens in the browser. You&#39;ll need to force a refresh. This is a little better than before, but not ideal. Some configuration is needed.</p>
+<p><img src="/images/hello_01.png" alt="Hello world"></p>
+<blockquote class="warning">If you fail to see anything at the browser, you may need to use a different port through <em>webpack-dev-server --port 3000</em> kind of invocation. The need of this may depend on the operating system you are using.</blockquote><h3 class="header"><a class="header-anchor" href="#splitting-up-configuration" id="splitting-up-configuration"></a><span class="text">Splitting Up Configuration</span><a class="header-anchor-select" href="#splitting-up-configuration">#</a></h3>
+<p>As the development setup has certain requirements of its own, we&#39;ll need to split our Webpack configuration. Given Webpack configuration is just JavaScript, there are many ways to achieve this. At least the following ways are feasible:</p>
+<ul>
+<li>Maintain configuration in multiple files and point Webpack to each through <code>--config</code> parameter. Share configuration through module imports. You can see this approach in action at <a href="https://github.com/webpack/react-starter">webpack/react-starter</a>.</li>
+<li>Push configuration to a library which you then consume. Example: <a href="https://github.com/HenrikJoreteg/hjs-webpack">HenrikJoreteg/hjs-webpack</a>.</li>
+<li>Maintain configuration within a single file and branch there. If we trigger a script through <em>npm</em> (i.e., <code>npm run test</code>), npm sets this information in an environment variable. We can match against it and return the configuration we want.</li>
+</ul>
+<p>I prefer the last approach as it allows me to understand what&#39;s going on easily. It is ideal for small projects, such as this.</p>
+<p>To keep things simple and help with the approach, I&#39;ve defined a custom <code>merge</code> function that concatenates arrays and merges objects. This is convenient with Webpack as we&#39;ll soon see. Execute</p>
+<pre><code class="lang-bash">npm i webpack-merge --save-dev
+</code></pre>
+<p>to add it to the project.</p>
+<p>Next, we need to define some split points to our configuration so we can customize it per npm script. Here&#39;s the basic idea:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token keyword" >var</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<div class="leanpub-insert">
+<span class="token keyword" >var</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack-merge'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
 
+<div class="leanpub-insert">
+<span class="token keyword" >const</span> TARGET <span class="token operator" >=</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>npm_lifecycle_event<span class="token punctuation" >;</span>
+</div>
 <span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
   app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
   build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
+<div class="leanpub-delete">
 module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    historyApiFallback<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    hot<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    inline<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    progress<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-
-    <span class="token comment" spellcheck="true">// Display only errors to reduce the amount of output.</span>
-    stats<span class="token punctuation" >:</span> <span class="token string" >'errors-only'</span><span class="token punctuation" >,</span>
-
-    <span class="token comment" spellcheck="true">// Parse host and port from env so this is easy to customize.</span>
-    host<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>HOST<span class="token punctuation" >,</span>
-    port<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>PORT
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-</code></pre>
-<p>Hit <code>npm start</code> and surf to <strong>localhost:8080</strong>. You should see something familiar there. Try modifying <em>app/component.js</em> while the server is running and see what happens. Quite neat, huh?</p>
-<p><img src="/images/hello_01.png" alt="Hello world"></p>
-<p>You should be able to access the application alternatively through <strong>localhost:8080/webpack-dev-server/</strong> instead of root. It provides an iframe showing a status bar that indicates the status of the rebundling process.</p>
-<blockquote class="tip">Note that the current setup won&#39;t output a bundle at all given the development setup runs in-memory. We will set up a proper bundle at the build chapter.</blockquote><blockquote class="tip">In case the amount of console output annoys you, you can set <code>quiet: true</code> at <code>devServer</code> configuration to keep it minimal.</blockquote><blockquote class="tip">If you are using an environment, such as Cloud9, you should set <code>HOST</code> to <code>0.0.0.0</code>. The default <code>localhost</code> isn&#39;t the best option always.</blockquote><h3 class="header"><a class="header-anchor" href="#alternative-ways-to-use-webpack-dev-server-" id="alternative-ways-to-use-webpack-dev-server-"></a><span class="text">Alternative Ways to Use <em>webpack-dev-server</em></span><a class="header-anchor-select" href="#alternative-ways-to-use-webpack-dev-server-">#</a></h3>
-<p>We could have passed <em>webpack-dev-server</em> options through the command line interface (CLI). I find it clearer to manage it within Webpack configuration as that helps to keep <em>package.json</em> nice and tidy. Alternatively we could have set up an Express server of our own and used <em>webpack-dev-server</em> as a <a href="https://webpack.github.io/docs/webpack-dev-middleware.html">middleware</a>. There&#39;s also a <a href="https://webpack.github.io/docs/webpack-dev-server.html#api">Node.js API</a>.</p>
-<blockquote class="warning">Note that there are <a href="https://github.com/webpack/webpack-dev-server/issues/106">slight differences</a> between the CLI and Node.js API and they may behave slightly differently at times. This is the reason why some prefer to use solely Node.js API.</blockquote><h3 class="header"><a class="header-anchor" href="#customizing-server-host-and-port-" id="customizing-server-host-and-port-"></a><span class="text">Customizing Server <em>host</em> and <em>port</em></span><a class="header-anchor-select" href="#customizing-server-host-and-port-">#</a></h3>
-<p>It is possible to customize host and port settings through the environment in our setup (i.e., <code>export PORT=3000</code> on Unix or <code>SET PORT=3000</code> on Windows). This can be useful if you want to access your server within the same network. The default settings are enough on most platforms.</p>
-<p>To access your server, you&#39;ll need to figure out the ip of your machine. On Unix this can be achieved using <code>ifconfig</code>. On Windows <code>ipconfig</code> can be used. A npm package, such as <a href="https://www.npmjs.com/package/node-ip">node-ip</a> may come in handy as well. Especially on Windows you may need to set your <code>HOST</code> to match your ip to make it accessible.</p>
-<h2 class="header"><a class="header-anchor" href="#refreshing-css" id="refreshing-css"></a><span class="text">Refreshing CSS</span><a class="header-anchor-select" href="#refreshing-css">#</a></h2>
-<p>We can extend the approach to work with CSS. Webpack allows us to change CSS without forcing a full refresh. To load CSS into a project, we&#39;ll need to use a couple of loaders. To get started, invoke</p>
-<pre><code class="lang-bash">npm i css-loader style-loader --save-dev
-</code></pre>
-<blockquote class="tip">If you are using Node.js 0.10, this is a good time to get a <a href="https://github.com/jakearchibald/es6-promise#auto-polyfill">ES6 Promise polyfill</a> set up.</blockquote><p>Now that we have the loaders we need, we&#39;ll need to make sure Webpack is aware of them. Configure as follows.</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+</div>
+<div class="leanpub-insert">
+<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+</div>
+  <span class="token comment" spellcheck="true">// Entry accepts a path or an object of entries.</span>
+  <span class="token comment" spellcheck="true">// The build chapter contains an example of the latter.</span>
   entry<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
   output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
     filename<span class="token punctuation" >:</span> <span class="token string" >'bundle.js'</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >{</span>
-        <span class="token comment" spellcheck="true">// Test expects a RegExp! Note the slashes!</span>
-        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
-        loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-        <span class="token comment" spellcheck="true">// Include accepts either a path or an array of paths.</span>
-        include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    historyApiFallback<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    hot<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    inline<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    progress<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-
-    <span class="token comment" spellcheck="true">// Display only errors to reduce the amount of output.</span>
-    stats<span class="token punctuation" >:</span> <span class="token string" >'errors-only'</span><span class="token punctuation" >,</span>
-
-    <span class="token comment" spellcheck="true">// Parse host and port from env so this is easy to customize.</span>
-    host<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>HOST<span class="token punctuation" >,</span>
-    port<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>PORT
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
     <span class="token keyword" >new</span> <span class="token class-name" >HtmlwebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
       title<span class="token punctuation" >:</span> <span class="token string" >'Kanban app'</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
   <span class="token punctuation" >]</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-</code></pre>
-<p>The configuration we added means that files ending with <code>.css</code> should invoke given loaders. <code>test</code> matches against a JavaScript style regular expression. The loaders are evaluated from right to left. In this case, <em>css-loader</em> gets evaluated first, then <em>style-loader</em>. <em>css-loader</em> will resolve <code>@import</code> and <code>url</code> statements in our CSS files. <em>style-loader</em> deals with <code>require</code> statements in our JavaScript. A similar approach works with CSS preprocessors, like Sass and Less, and their loaders.</p>
-<blockquote class="tip">Loaders are transformations that are applied to source files, and return the new source. Loaders can be chained together, like using a pipe in Unix. See Webpack&#39;s <a href="http://webpack.github.io/docs/using-loaders.html">What are loaders?</a> and <a href="http://webpack.github.io/docs/list-of-loaders.html">list of loaders</a>.</blockquote><blockquote class="warning">If <code>include</code> isn&#39;t set, Webpack will traverse all files within the base directory. This can hurt performance! It is a good idea to set up <code>include</code> always. There&#39;s also <code>exclude</code> option that may come in handy.</blockquote><p>We are missing just one bit, the actual CSS itself:</p>
-<p><strong>app/main.css</strong></p>
-<pre><code class="lang-css"><span class="token selector" >body </span><span class="token punctuation" >{</span>
-  <span class="token property" >background</span><span class="token punctuation" >:</span> cornsilk<span class="token punctuation" >;</span>
+
+<div class="leanpub-insert">
+<span class="token comment" spellcheck="true">// Default configuration</span>
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'start'</span> <span class="token operator" >||</span> <span class="token operator" >!</span>TARGET<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
+
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</div>
 </code></pre>
-<p>Also, we&#39;ll need to make Webpack aware of this file:</p>
-<p><strong>app/index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./main.css'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<p>Now that we have room for expansion, we can hook up Hot Module Replacement and make the development mode more useful.</p>
+<h3 class="header"><a class="header-anchor" href="#configuring-hot-module-replacement-hmr-" id="configuring-hot-module-replacement-hmr-"></a><span class="text">Configuring Hot Module Replacement (HMR)</span><a class="header-anchor-select" href="#configuring-hot-module-replacement-hmr-">#</a></h3>
+<p>Hot Module Replacement gives us simple means to refresh the browser automatically as we make changes. The idea is that if we change our <em>app/component.js</em>, the browser will refresh itself. The same goes for possible CSS changes. That doesn&#39;t require a full refresh even.</p>
+<p>In order to make this work, we&#39;ll need to connect the generated bundle running in-memory to the development server. Webpack uses WebSocket based communication to achieve this. To keep things simple, we&#39;ll let Webpack to generate the client portion for us through the development server <em>inline</em> option.</p>
+<p>Beyond this we&#39;ll need to enable <code>HotModuleReplacementPlugin</code> to make the setup work. In addition I am going to enable HTML5 History API fallback as that is convenient default to have especially if you are dealing with advanced routing. Here&#39;s the setup:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
+<span class="token keyword" >var</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-</code></pre>
-<p>Hit <code>npm start</code> now. Point your browser to <strong>localhost:8080</strong> if you are using the default port.</p>
-<p>Open up <em>main.css</em> and change the background color to something like <code>lime</code> (<code>background: lime</code>). Develop styles as needed to make it look a little nicer.</p>
-<p><img src="/images/hello_02.png" alt="Hello cornsilk world"></p>
-<h2 class="header"><a class="header-anchor" href="#making-the-configuration-extensible" id="making-the-configuration-extensible"></a><span class="text">Making the Configuration Extensible</span><a class="header-anchor-select" href="#making-the-configuration-extensible">#</a></h2>
-<p>Our current configuration is enough as long as we&#39;re interested in just developing our application. But what if we want to deploy it to the production or test our application? We need to define separate <strong>build targets</strong> for these purposes. Given Webpack uses a module based format for its configuration, there are multiple possible approaches. At least the following are feasible:</p>
-<ul>
-<li>Maintain configuration in multiple files and point Webpack to each through <code>--config</code> parameter. Share configuration through module imports. You can see this approach in action at <a href="https://github.com/webpack/react-starter">webpack/react-starter</a>.</li>
-<li>Push configuration to a library which you then consume. Example: <a href="https://github.com/HenrikJoreteg/hjs-webpack">HenrikJoreteg/hjs-webpack</a>.</li>
-<li>Maintain configuration within a single file and branch there. If we trigger a script through <em>npm</em> (i.e., <code>npm run test</code>), npm sets this information to an environment variable. We can match against it and return the configuration we want. I prefer this approach as it allows me to understand what&#39;s going on easily. We&#39;ll be using this approach.</li>
-</ul>
-<blockquote class="tip">Webpack works well as a basis for more advanced tools. I&#39;ve helped to develop a static site generator known as <a href="https://antwarjs.github.io/">Antwar</a>. It builds upon Webpack and React and hides a lot of the complexity from the user.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-configuration-target-for-npm-start-" id="setting-up-configuration-target-for-npm-start-"></a><span class="text">Setting Up Configuration Target for <code>npm start</code></span><a class="header-anchor-select" href="#setting-up-configuration-target-for-npm-start-">#</a></h3>
-<p>To keep things simple, I&#39;ve defined a custom <code>merge</code> function that concatenates arrays and merges objects. This is convenient with Webpack. Hit</p>
-<pre><code class="lang-bash">npm i webpack-merge --save-dev
-</code></pre>
-<p>to add it to the project. We will detect the npm lifecycle event (<code>start</code>, <code>build</code>, ...) and then return configuration for each case. We will define more of these later on as we expand the project.</p>
-<p>To improve the debuggability of the application, we can set up sourcemaps while we are at it. They allow you to see exactly where an error was raised. In Webpack this is controlled through the <code>devtool</code> setting. We can use decent defaults as follows:</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >var</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'path'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >var</span> HtmlwebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'html-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >var</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >var</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack-merge'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-<span class="token keyword" >const</span> TARGET <span class="token operator" >=</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>npm_lifecycle_event<span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-
-<span class="token keyword" >var</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  entry<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
-  <span class="token comment" spellcheck="true">// Given webpack-dev-server runs in-memory, we can drop</span>
-  <span class="token comment" spellcheck="true">// `output`. We'll look into it again once we get to the</span>
-  <span class="token comment" spellcheck="true">// build chapter.</span>
-  <span class="token comment" spellcheck="true">/*output: {
-    path: PATHS.build,
-    filename: 'bundle.js'
-  },*/</span>
-  module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >{</span>
-        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
-        loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-        include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token comment" spellcheck="true">// Important! move HotModuleReplacementPlugin below</span>
-    <span class="token comment" spellcheck="true">//new webpack.HotModuleReplacementPlugin(),</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >HtmlwebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      title<span class="token punctuation" >:</span> <span class="token string" >'Kanban app'</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
 <span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'start'</span> <span class="token operator" >||</span> <span class="token operator" >!</span>TARGET<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
   module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    devtool<span class="token punctuation" >:</span> <span class="token string" >'eval-source-map'</span><span class="token punctuation" >,</span>
     devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       historyApiFallback<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
       hot<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
@@ -277,18 +239,87 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
       <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
     <span class="token punctuation" >]</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p><code>if(TARGET === &#39;start&#39; || !TARGET) {</code> provides a default in case we&#39;re running Webpack outside of npm.</p>
+<p>Execute <code>npm start</code> and surf to <strong>localhost:8080</strong>. Try modifying <em>app/component.js</em>. It should refresh the browser.</p>
+<p>You should be able to access the application alternatively through <strong>localhost:8080/webpack-dev-server/</strong> instead of root. You can see all the files the development server is serving there.</p>
+<blockquote class="tip">If you want to default to some other port than <em>8080</em>, you can use a declaration like <code>port: 3000 || process.env.PORT</code>.</blockquote><blockquote class="tip"><a href="https://www.npmjs.com/package/dotenv">dotenv</a> allows you to define environment variables through a <em>.env</em> file. This can be somewhat convenient for development!</blockquote><blockquote class="warning"><em>webpack-dev-server</em> can be very particular about paths. If the given <code>include</code> paths don&#39;t match the system casing exactly, this can cause it to fail to work. Webpack <a href="https://github.com/webpack/webpack/issues/675">issue #675</a> discusses this in more detail.</blockquote><h3 class="header"><a class="header-anchor" href="#alternative-ways-to-use-webpack-dev-server-" id="alternative-ways-to-use-webpack-dev-server-"></a><span class="text">Alternative Ways to Use <em>webpack-dev-server</em></span><a class="header-anchor-select" href="#alternative-ways-to-use-webpack-dev-server-">#</a></h3>
+<p>We could have passed <em>webpack-dev-server</em> options through the command line interface (CLI). I find it clearer to manage it within Webpack configuration as that helps to keep <em>package.json</em> nice and tidy.</p>
+<p>Alternatively, we could have set up an Express server of our own and used <em>webpack-dev-server</em> as a <a href="https://webpack.github.io/docs/webpack-dev-middleware.html">middleware</a>. There&#39;s also a <a href="https://webpack.github.io/docs/webpack-dev-server.html#api">Node.js API</a>.</p>
+<blockquote class="warning">Note that there are <a href="https://github.com/webpack/webpack-dev-server/issues/106">slight differences</a> between the CLI and the Node.js API and they may behave slightly differently at times. This is the reason why some prefer to solely use the Node.js API.</blockquote><h3 class="header"><a class="header-anchor" href="#customizing-server-host-and-port-" id="customizing-server-host-and-port-"></a><span class="text">Customizing Server <code>host</code> and <code>port</code></span><a class="header-anchor-select" href="#customizing-server-host-and-port-">#</a></h3>
+<p>It is possible to customize host and port settings through the environment in our setup (i.e., <code>export PORT=3000</code> on Unix or <code>SET PORT=3000</code> on Windows). This can be useful if you want to access your server within the same network. The default settings are enough on most platforms.</p>
+<p>To access your server, you&#39;ll need to figure out the ip of your machine. On Unix this can be achieved using <code>ifconfig</code>. On Windows <code>ipconfig</code> can be used. An npm package, such as <a href="https://www.npmjs.com/package/node-ip">node-ip</a> may come in handy as well. Especially on Windows you may need to set your <code>HOST</code> to match your ip to make it accessible.</p>
+<blockquote class="tip">If you are using an environment, such as Cloud9, you should set <code>HOST</code> to <code>0.0.0.0</code>. The default <code>localhost</code> isn&#39;t always the best option.</blockquote><h2 class="header"><a class="header-anchor" href="#refreshing-css" id="refreshing-css"></a><span class="text">Refreshing CSS</span><a class="header-anchor-select" href="#refreshing-css">#</a></h2>
+<p>We can extend this approach to work with CSS. Webpack allows us to change CSS without forcing a full refresh. To load CSS into a project, we&#39;ll need to use a couple of loaders. To get started, invoke</p>
+<pre><code class="lang-bash">npm i css-loader style-loader --save-dev
+</code></pre>
+<blockquote class="tip">If you are using Node.js 0.10, this is a good time to get a <a href="https://github.com/jakearchibald/es6-promise#auto-polyfill">ES6 Promise polyfill</a> set up.</blockquote><p>Now that we have the loaders we need, we&#39;ll need to make sure Webpack is aware of them. Configure as follows.</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
+  module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token punctuation" >{</span>
+        <span class="token comment" spellcheck="true">// Test expects a RegExp! Note the slashes!</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+        <span class="token comment" spellcheck="true">// Include accepts either a path or an array of paths.</span>
+        include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >]</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>The configuration we added means that files ending with <code>.css</code> should invoke given loaders. <code>test</code> matches against a JavaScript style regular expression. The loaders are evaluated from right to left. In this case, <em>css-loader</em> gets evaluated first, then <em>style-loader</em>. <em>css-loader</em> will resolve <code>@import</code> and <code>url</code> statements in our CSS files. <em>style-loader</em> deals with <code>require</code> statements in our JavaScript. A similar approach works with CSS preprocessors, like Sass and Less, and their loaders.</p>
+<blockquote class="tip">Loaders are transformations that are applied to source files, and return the new source. Loaders can be chained together, like using a pipe in Unix. See Webpack&#39;s <a href="http://webpack.github.io/docs/using-loaders.html">What are loaders?</a> and <a href="http://webpack.github.io/docs/list-of-loaders.html">list of loaders</a>.</blockquote><blockquote class="warning">If <code>include</code> isn&#39;t set, Webpack will traverse all files within the base directory. This can hurt performance! It is a good idea to set up <code>include</code> always. There&#39;s also <code>exclude</code> option that may come in handy. Prefer <code>include</code>, however.</blockquote><p>We are missing just one bit, the actual CSS itself:</p>
+<p><strong>app/main.css</strong></p>
+<pre><code class="lang-css"><span class="token selector" >body </span><span class="token punctuation" >{</span>
+  <span class="token property" >background</span><span class="token punctuation" >:</span> cornsilk<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Also, we&#39;ll need to make Webpack aware of this file:</p>
+<p><strong>app/index.js</strong></p>
+<pre><code class="lang-javascript"><div class="leanpub-insert">
+<span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./main.css'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>Execute <code>npm start</code> now. Point your browser to <strong>localhost:8080</strong> if you are using the default port.</p>
+<p>Open up <em>main.css</em> and change the background color to something like <code>lime</code> (<code>background: lime</code>). Develop styles as needed to make it look a little nicer.</p>
+<p><img src="/images/hello_02.png" alt="Hello cornsilk world"></p>
+<h2 class="header"><a class="header-anchor" href="#enabling-sourcemaps" id="enabling-sourcemaps"></a><span class="text">Enabling Sourcemaps</span><a class="header-anchor-select" href="#enabling-sourcemaps">#</a></h2>
+<p>To improve the debuggability of the application, we can set up sourcemaps. They allow you to see exactly where an error was raised. In Webpack this is controlled through the <code>devtool</code> setting. We can use a decent default as follows:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'start'</span> <span class="token operator" >||</span> <span class="token operator" >!</span>TARGET<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+<div class="leanpub-insert">
+    devtool<span class="token punctuation" >:</span> <span class="token string" >'eval-source-map'</span><span class="token punctuation" >,</span>
+</div>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
 <p>If you run the development build now using <code>npm start</code>, Webpack will generate sourcemaps. Webpack provides many different ways to generate them as discussed in the <a href="https://webpack.github.io/docs/configuration.html#devtool">official documentation</a>. In this case, we&#39;re using <code>eval-source-map</code>. It builds slowly initially, but it provides fast rebuild speed and yields real files.</p>
-<blockquote class="warning">If <code>new webpack.HotModuleReplacementPlugin()</code> is added twice to the plugins declaration, Webpack will return <code>Uncaught RangeError: Maximum call stack size exceeded</code> while hot loading!</blockquote><p>Faster development specific options such as <code>cheap-module-eval-source-map</code> and <code>eval</code> produce lower quality sourcemaps. Especially <code>eval</code> is fast and is the most suitable for large projects.</p>
-<p>It is possible you may need to enable sourcemaps at your browser for this to work. See <a href="https://developer.chrome.com/devtools/docs/javascript-debugging">Chrome</a> and <a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map">Firefox</a> instructions for further details.</p>
-<p>Configuration could contain more sections such as these based on your needs. Later on we&#39;ll develop another section to generate a production build.</p>
+<p>Faster development specific options, such as <code>cheap-module-eval-source-map</code> and <code>eval</code>, produce lower quality sourcemaps. Especially <code>eval</code> is fast and is the most suitable for large projects.</p>
+<p>It is possible you may need to enable sourcemaps in your browser for this to work. See <a href="https://developer.chrome.com/devtools/docs/javascript-debugging">Chrome</a> and <a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map">Firefox</a> instructions for further details.</p>
 <h2 class="header"><a class="header-anchor" href="#linting-the-project" id="linting-the-project"></a><span class="text">Linting the Project</span><a class="header-anchor-select" href="#linting-the-project">#</a></h2>
-<p>I discuss linting in detail in the <em>Linting in Webpack</em> chapter. Consider integrating the setup to your project to save some time. It will allow you to pick certain categories of errors earlier.</p>
+<p>I discuss linting in detail in the <em>Linting in Webpack</em> chapter. Consider integrating that setup into your project now as that will save some debugging time. It will allow you to pick up certain categories of errors earlier.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
-<p>In this chapter you learned to build an effective development configuration using Webpack. Webpack deals with the heavy lifting for you now. The current setup can be expanded to support more scenarios. Next, we will see how to expand it to work with React.</p>
-</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/apples_oranges.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/webpack_compared">Webpack Compared</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/mainframe.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/webpack_and_react">Webpack and React</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/webpack_and_react" title="Webpack and React"></a><a class="previous-page" href="/webpack_react/webpack_compared" title="Webpack Compared"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Developing with Webpack - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li><li><a class="blog-teaser" href="/blog/react-bootstrap-interview">React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith</a></li></ul></div></div></footer><div><script type="text/javascript">
+<p>In this chapter, you learned to build and develop using Webpack. I will return to the build topic at &quot;Building Kanban&quot;. The current setup is not ideal. At this point it&#39;s the development configuration that matters. In the next chapter, we will see how to expand the approach to work with React.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/apples_oranges.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/webpack_compared">Webpack Compared</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/mainframe.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/webpack_and_react">Webpack and React</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/webpack_and_react" title="Webpack and React"></a><a class="previous-page" href="/webpack_react/webpack_compared" title="Webpack Compared"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Developing with Webpack - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></li><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li></ul></div></div></footer><div><script type="text/javascript">
           ((window.gitter = {}).chat = {}).options = {
             room: 'survivejs/webpack_react'
           };

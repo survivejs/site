@@ -1,0 +1,116 @@
+<html lang="en"><head><title>SurviveJS - SurviveJS - Webpack and React v2.0.0-beta2</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+
+The long awaited 2.0 is getting very close. babel-plugin-react-transform reached version 2.0 last …"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div><div class="post"><div class="header-image" style="background-image:url(/assets/img/winter_fog.jpg);"></div><h1 class="post__heading">SurviveJS - Webpack and React v2.0.0-beta2</h1><div class="post__content"><div><p>The long awaited 2.0 is getting very close. <a href="https://github.com/gaearon/babel-plugin-react-transform">babel-plugin-react-transform</a> reached version 2.0 last Wednesday. This was all I needed to push the book to Babel 6. I released <em>2.0.0-beta1</em> as a xmas present of some sort to my <a href="https://leanpub.com/survivejs_webpack_react">Leanpub readers</a> in early access at 25th. I think they earned it. :)</p>
+<p>Today, after some initial feedback and subsequent fixes, I am prepared to publish a wider scale beta. Besides Babel 6 support, I have improved the formatting of the code examples considerably. Instead of having to guess what code goes and where, the examples now contain bolding and overlining to illustrate the changes better. In addition, there&#39;s some new content about Flow and JavaScript language features.</p>
+<h2 class="header"><a class="header-anchor" href="#overview-of-the-situation" id="overview-of-the-situation"></a><span class="text">Overview of the Situation</span><a class="header-anchor-select" href="#overview-of-the-situation">#</a></h2>
+<p>The primary purpose of this beta is to encourage you to provide feedback as there&#39;s still some time before the book goes to printing presses. I know it&#39;s missing some interesting topics, but that&#39;s something that can be worked during the next iteration (2 -&gt; 3) of the book.</p>
+<p>I am prepared to spend the next week or two on improvements on both the book and the site. It might be fun to code something cool for a change. ;)</p>
+<h2 class="header"><a class="header-anchor" href="#book-improvements-2-0-0-beta2-" id="book-improvements-2-0-0-beta2-"></a><span class="text">Book Improvements - <code>2.0.0-beta2</code></span><a class="header-anchor-select" href="#book-improvements-2-0-0-beta2-">#</a></h2>
+<p>In total 129 commits went to <code>2.0.0-beta2</code>. To make it easier to follow what happened and where, I&#39;ve split up the changes below.</p>
+<p>You can see GitHub for <a href="https://github.com/survivejs/webpack_react/compare/v1.9.15...v2.0.0-beta2">all changes</a>.</p>
+<h3 class="header"><a class="header-anchor" href="#introduction" id="introduction"></a><span class="text">Introduction</span><a class="header-anchor-select" href="#introduction">#</a></h3>
+<ul>
+<li>Made the chapter paragraphs flow better.</li>
+<li>Improved section structure.</li>
+<li>Explained better who the book is meant for.</li>
+<li>Added a bit about book versioning. Version included.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#webpack-compared" id="webpack-compared"></a><span class="text">Webpack Compared</span><a class="header-anchor-select" href="#webpack-compared">#</a></h3>
+<ul>
+<li>Made Webpack explanation flow better. It should be easier to understand what it does now.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#developing-with-webpack" id="developing-with-webpack"></a><span class="text">Developing with Webpack</span><a class="header-anchor-select" href="#developing-with-webpack">#</a></h3>
+<ul>
+<li>Mentioned <code>npm init -y</code> shortcut. Far better than having to hit <em>return</em>.</li>
+<li>Reworked chapter structure. Now it&#39;s more logical and hopefully easier to follow.</li>
+<li>Expanded explanations and added warnings about gotchas.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#webpack-and-react" id="webpack-and-react"></a><span class="text">Webpack and React</span><a class="header-anchor-select" href="#webpack-and-react">#</a></h3>
+<ul>
+<li>Mentioned <a href="https://github.com/paldepind/snabbdom">paldepind/snabbdom</a> as a Virtual DOM alternative.</li>
+<li>Added missing section (JSX vs. HTML)</li>
+<li>Hinted about the difference of React components and elements. Components generate elements and are more complex by nature given they can contain state.</li>
+<li>Updated the setup to Babel 6.</li>
+<li>Explained Babel 6 plugins and presets.</li>
+<li>Simplified application entry point by introducing <a href="https://www.npmjs.com/package/html-webpack-template">html-webpack-template</a>. It&#39;s a versatile template that works simple projects like this perfectly. This avoids unnecessary DOM manipulation.</li>
+<li>Explained how <code>BABEL_ENV</code> works and why it needs to be set.</li>
+<li>Dropped the mention of <code>bind</code> convention and replaced that with a snippet about property initializers.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#implementing-a-basic-note-application" id="implementing-a-basic-note-application"></a><span class="text">Implementing a Basic Note Application</span><a class="header-anchor-select" href="#implementing-a-basic-note-application">#</a></h3>
+<ul>
+<li>Updated React components to use function based definitions where it made sense. This is a good starting point for new components.</li>
+<li>Renamed <code>items</code> to more specific <code>notes</code>. This has been done also for <code>lanes</code>.</li>
+<li>Hinted about the benefits of immutability when discussing <code>componentWillUpdate</code>.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#react-and-flux" id="react-and-flux"></a><span class="text">React and Flux</span><a class="header-anchor-select" href="#react-and-flux">#</a></h3>
+<ul>
+<li>Generalized <code>update</code> interface. Now it doesn&#39;t care about the data you pass to it. This has been done for both stores (<code>NoteStore</code>, <code>LaneStore</code>). The implementation goes through <code>object-assign</code>.</li>
+<li>Discussed possible alternative implementations briefly to give more perspective.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#from-notes-to-kanban" id="from-notes-to-kanban"></a><span class="text">From Notes to Kanban</span><a class="header-anchor-select" href="#from-notes-to-kanban">#</a></h3>
+<ul>
+<li>Generalized <code>update</code> interface here as well. One interesting refactoring would be to do a generic CRUD store and then reuse that from elsewhere.</li>
+<li>Dropped <code>waitFor</code>. It just introduced unnecessary complexity given we&#39;re dealing with synchronous data. There&#39;s still an explanation around as you need to be aware of it in asynchronous cases when you are dealing with data dependencies.</li>
+<li>Pushed <code>Lane</code> <code>bind</code>s from the <code>constructor</code> to <code>render()</code>. Although this isn&#39;t ideal performance-wise, this is something that is easier to handle in Flow typing.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#implementing-drag-and-drop" id="implementing-drag-and-drop"></a><span class="text">Implementing Drag and Drop</span><a class="header-anchor-select" href="#implementing-drag-and-drop">#</a></h3>
+<ul>
+<li>Did just grammar fixes, better highlighting.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#building-kanban" id="building-kanban"></a><span class="text">Building Kanban</span><a class="header-anchor-select" href="#building-kanban">#</a></h3>
+<ul>
+<li>Dropped <em>Setting Up a Build Target</em>. This was possible given we set up one at <em>Developing with Webpack</em> already.</li>
+<li>Improved flow and dropped some redundant information.</li>
+<li>Mentioned <a href="https://www.npmjs.com/package/babel-plugin-transform-inline-environment-variables">babel-plugin-transform-inline-environment-variables</a> as an alternative to <code>DefinePlugin</code>.</li>
+<li>Dropped sourcemaps from production. Less complexity.</li>
+<li>Mentioned about how to structure the project. I might write a little appendix about that, but we&#39;ll see.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#testing-react-" id="testing-react-"></a><span class="text">Testing React*</span><a class="header-anchor-select" href="#testing-react-">#</a></h3>
+<ul>
+<li>Fixed test path for <code>include</code>s. Interestingly this worked even if it was missing a &quot;s&quot;. That&#39;s something to investigate.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#typing-with-react-" id="typing-with-react-"></a><span class="text">Typing with React*</span><a class="header-anchor-select" href="#typing-with-react-">#</a></h3>
+<ul>
+<li>Expanded on Flow somewhat. Now you can see how you would begin to push the project towards Flow typing. Flow is still missing some functionality required by a full port, but this is far better than nothing.</li>
+<li>Linked to various TypeScript loaders. I might do a TypeScript version of Kanban if there&#39;s interest.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#linting-in-webpack" id="linting-in-webpack"></a><span class="text">Linting in Webpack</span><a class="header-anchor-select" href="#linting-in-webpack">#</a></h3>
+<ul>
+<li>Improved grammar, highlighting.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#authoring-libraries" id="authoring-libraries"></a><span class="text">Authoring Libraries</span><a class="header-anchor-select" href="#authoring-libraries">#</a></h3>
+<ul>
+<li>Mentioned <a href="https://docs.npmjs.com/files/package.json#files">files</a> <em>package.json</em> field as an alternative to <em>.npmignore</em>.</li>
+<li>Explained <code>peerDependencies</code>.</li>
+<li>Mentioned <a href="https://www.npmjs.com/package/semantic-release">semantic-release</a>. It&#39;s a tool that provides better release flow.</li>
+<li>Mentioned <code>&gt;= 1.3.0 &lt; 2.0.0</code> version range.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#styling-react" id="styling-react"></a><span class="text">Styling React</span><a class="header-anchor-select" href="#styling-react">#</a></h3>
+<ul>
+<li>Improved grammar.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#language-features" id="language-features"></a><span class="text">Language Features</span><a class="header-anchor-select" href="#language-features">#</a></h3>
+<ul>
+<li>New content! This is supposed to help especially those that haven&#39;t used the features before. The appendix is terse and gets to the point. I&#39;ll improve this based on your feedback.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#understanding-decorators-" id="understanding-decorators-"></a><span class="text">Understanding Decorators.</span><a class="header-anchor-select" href="#understanding-decorators-">#</a></h3>
+<ul>
+<li>Improved grammar.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#troubleshooting" id="troubleshooting"></a><span class="text">Troubleshooting</span><a class="header-anchor-select" href="#troubleshooting">#</a></h3>
+<ul>
+<li>Improved grammar.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What Next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>
+<p>This depends on you. I have a couple smaller things on my plate, but nothing major. I want to push the final release as far as I can. But to achieve that, I&#39;m going to need feedback so I know what to improve. There&#39;s no such thing as a perfect book, but at least I&#39;m willing to push this as far as I possibly can.</p>
+<p>I might do an intermediate <em>beta-3</em>. I want to do a final release within a week or two. After that I&#39;ll focus my efforts depending on demand.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>If you are working through the book, it might be a good idea to patch your project based on <a href="https://github.com/survivejs/webpack_react">the book repository</a> so it&#39;s up to date and continue from there. Eggs and omelette, right?</p>
+<p>Leanpub readers have access to the stable release through &quot;extras&quot;. I made a little switcheroo there. Earlier the beta version was within &quot;extras&quot;. Speaking of which, I will need to figure out a better way to archive releases and make them available. Leanpub isn&#39;t working in my favor here unfortunately.</p>
+<p>Remember that you can <a href="mailto:info@survivejs.com">contact me directly</a> or through the GitHub <a href="https://github.com/survivejs/webpack_react/issues">issue tracker</a>. Also <a href="https://gitter.im/survivejs/webpack_react">Gitter</a> will work. The last thing I want is that you curse some parts of the book alone. I&#39;m here to help after all.</p>
+<p>You can support my work by <a href="https://leanpub.com/survivejs_webpack_react">purchasing the book at Leanpub</a>. Every little bit counts and allows me to keep it up.</p>
+</div></div><time datetime="2015-12-28T00:00:00.000Z" class="post__moment">28 Dec 2015</time><div class="post__author"><span>Published by Juho <a href="https://twitter.com/bebraw" class="twitter">@bebraw</a> Vepsäläinen</span></div><div class="social-links"><blockquote class="tip">If you enjoyed this blog post consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__next" style="width:100%;"><div class="new-prevnext__bg" style="background-image:url(/assets/img/whitestorm.jpg);"></div><span class="new-prevnext__info">Next post</span><a class="new-prevnext__link" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></div></div><div id="disqus_thread"></div></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/webpack_react/introduction/">Read the free version</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=SurviveJS - Webpack and React v2.0.0-beta2 - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></li><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li></ul></div></div></footer><div><script type="text/javascript">
+          ((window.gitter = {}).chat = {}).options = {
+            room: 'survivejs/webpack_react'
+          };
+        </script>,<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></main></body></html>

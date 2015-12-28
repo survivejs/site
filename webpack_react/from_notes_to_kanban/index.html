@@ -1,10 +1,10 @@
 <html lang="en"><head><title>SurviveJS - From Notes to Kanban</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 
-So far we have managed to set up a nice little development environment. We have developed an application for keeping track of notes in localStorage`. We still have work to do to turn this into a real Kanban as pictured above. Most importantly our system is missing the concept of `Lane.
+So far, we have managed to set up a nice little development environment. We have developed an application for keeping track of notes in localStorage`. We still have work to do to turn this into a real Kanban as pictured above. Most importantly our system is missing the concept of `Lane.
 
-A Lane` is…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/kanban_photo.jpg);"></div><h1 class="post__heading">From Notes to Kanban</h1><div class="header-extra"><a href="https://www.flickr.com/photos/61745819@N00/10588140955">Radek Orszewski (CC BY-NC-ND)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><a class="toc-nav__link chapter" href="/webpack_react/developing_with_webpack">Developing with Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><span class="toc-nav__link toc-nav__link--current chapter">From Notes to Kanban</span><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><a class="toc-nav__link chapter" href="/webpack_react/building_kanban">Building Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/authoring_libraries">Authoring Libraries</a><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></blockquote><div class="post__meta"><a class="post__start_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/05_react_and_flux/kanban_app" target="_blank">Start source code</a><a class="post__end_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_from_notes_to_kanban/kanban_app" target="_blank">Finished source code</a><a class="post__demo" href="/demos/06_from_notes_to_kanban" target="_blank">Demo</a></div><div class="chapter-content"><p><img src="/images/kanban_05.png" alt="Kanban board"></p>
-<p>So far we have managed to set up a nice little development environment. We have developed an application for keeping track of notes in <code>localStorage</code>. We still have work to do to turn this into a real Kanban as pictured above. Most importantly our system is missing the concept of <code>Lane</code>.</p>
-<p>A <code>Lane</code> is something that should be able to contain many <code>Notes</code> within itself and track their order. One way to model this is simply to make a <code>Lane</code> point at <code>Notes</code> through an array of <code>Note</code> ids. This relation could be reversed. A <code>Note</code> could point at a <code>Lane</code> using an id and maintain information about its position within a <code>Lane</code>. In this case we are going to stick with the former design as that works well with re-ordering later on.</p>
+A Lane` i…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/kanban_photo.jpg);"></div><h1 class="post__heading">From Notes to Kanban</h1><div class="header-extra"><a href="https://www.flickr.com/photos/61745819@N00/10588140955">Radek Orszewski (CC BY-NC-ND)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><a class="toc-nav__link chapter" href="/webpack_react/developing_with_webpack">Developing with Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><span class="toc-nav__link toc-nav__link--current chapter">From Notes to Kanban</span><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><a class="toc-nav__link chapter" href="/webpack_react/building_kanban">Building Kanban</a><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/authoring_libraries">Authoring Libraries</a><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link part" href="/webpack_react/appendices">Appendices</a><a class="toc-nav__link chapter" href="/webpack_react/language_features">Language Features</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></blockquote><div class="post__meta"><a class="post__start_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/05_react_and_flux/kanban_app" target="_blank">Start source code</a><a class="post__end_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/06_from_notes_to_kanban/kanban_app" target="_blank">Finished source code</a><a class="post__demo" href="/demos/06_from_notes_to_kanban" target="_blank">Demo</a></div><div class="chapter-content"><p><img src="/images/kanban_05.png" alt="Kanban board"></p>
+<p>So far, we have managed to set up a nice little development environment. We have developed an application for keeping track of notes in <code>localStorage</code>. We still have work to do to turn this into a real Kanban as pictured above. Most importantly our system is missing the concept of <code>Lane</code>.</p>
+<p>A <code>Lane</code> is something that should be able to contain many <code>Notes</code> within itself and track their order. One way to model this is simply to make a <code>Lane</code> point at <code>Notes</code> through an array of <code>Note</code> ids. This relation could be reversed. A <code>Note</code> could point at a <code>Lane</code> using an id and maintain information about its position within a <code>Lane</code>. In this case, we are going to stick with the former design as that works well with re-ordering later on.</p>
 <h2 class="header"><a class="header-anchor" href="#extracting-lanes-" id="extracting-lanes-"></a><span class="text">Extracting <code>Lanes</code></span><a class="header-anchor-select" href="#extracting-lanes-">#</a></h2>
 <p>As earlier, we can use the same idea of two components here. There will be a component for the higher level (i.e., <code>Lanes</code>) and for the lower level (i.e., <code>Lane</code>). The higher level component will deal with lane ordering. A <code>Lane</code> will render itself (i.e., name and <code>Notes</code>) and have basic manipulation operations.</p>
 <p>Just as with <code>Notes</code>, we are going to need a set of actions. For now it is enough if we can just create new lanes so we can create a corresponding action for that as below:</p>
@@ -13,9 +13,10 @@ A Lane` is…"/><meta name="keywords" content="webpack,react,javascript,programm
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >generateActions</span><span class="token punctuation" >(</span><span class="token string" >'create'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>In addition, we are going to need a <code>LaneStore</code> and a method matching to <code>create</code>. The idea is pretty much the same as for <code>NoteStore</code> earlier. <code>create</code> will concatenate a new lane to the list of lanes. After that the change will propagate to the listeners (i.e., <code>FinalStore</code> and components).</p>
+<p>In addition, we are going to need a <code>LaneStore</code> and a method matching to <code>create</code>. The idea is pretty much the same as for <code>NoteStore</code> earlier. <code>create</code> will concatenate a new lane to the list of lanes. After that, the change will propagate to the listeners (i.e., <code>FinalStore</code> and components).</p>
 <p><strong>app/stores/LaneStore.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'node-uuid'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> assign <span class="token keyword" >from</span> <span class="token string" >'object-assign'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> LaneActions <span class="token keyword" >from</span> <span class="token string" >'../actions/LaneActions'</span><span class="token punctuation" >;</span>
 
@@ -53,33 +54,73 @@ A Lane` is…"/><meta name="keywords" content="webpack,react,javascript,programm
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>Next we need to make room for <code>Lanes</code> at <code>App</code>. We will simply replace <code>Notes</code> references with <code>Lanes</code>, set up actions, and store as needed:</p>
+<p>Next, we need to make room for <code>Lanes</code> at <code>App</code>. We will simply replace <code>Notes</code> references with <code>Lanes</code>, set up actions, and store as needed:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> AltContainer <span class="token keyword" >from</span> <span class="token string" >'alt-container'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<div class="leanpub-delete">
+<span class="token keyword" >import</span> Notes <span class="token keyword" >from</span> <span class="token string" >'./Notes.jsx'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> NoteStore <span class="token keyword" >from</span> <span class="token string" >'../stores/NoteStore'</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
 <span class="token keyword" >import</span> Lanes <span class="token keyword" >from</span> <span class="token string" >'./Lanes.jsx'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> LaneActions <span class="token keyword" >from</span> <span class="token string" >'../actions/LaneActions'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> LaneStore <span class="token keyword" >from</span> <span class="token string" >'../stores/LaneStore'</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
   <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
       <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
+<div class="leanpub-delete">
+        <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token string" >"add-note"</span> onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+</div>
+<div class="leanpub-insert">
         <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token string" >"add-lane"</span> onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addItem<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+</div>
         <span class="token operator" >&lt;</span>AltContainer
+<div class="leanpub-delete">
+          stores<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >[</span>NoteStore<span class="token punctuation" >]</span><span class="token punctuation" >}</span>
+</div>
+<div class="leanpub-insert">
           stores<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >[</span>LaneStore<span class="token punctuation" >]</span><span class="token punctuation" >}</span>
+</div>
           inject<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >{</span>
-            items<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> LaneStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>lanes <span class="token operator" >||</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span>
+<div class="leanpub-delete">
+            notes<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>notes
+</div>
+<div class="leanpub-insert">
+            lanes<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> LaneStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>lanes <span class="token operator" >||</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span>
+</div>
           <span class="token punctuation" >}</span><span class="token punctuation" >}</span>
         <span class="token operator" >></span>
+<div class="leanpub-delete">
+          <span class="token operator" >&lt;</span>Notes onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editNote<span class="token punctuation" >}</span> onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+</div>
+<div class="leanpub-insert">
           <span class="token operator" >&lt;</span>Lanes <span class="token operator" >/</span><span class="token operator" >></span>
+</div>
         <span class="token operator" >&lt;</span><span class="token operator" >/</span>AltContainer<span class="token operator" >></span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
     <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+<div class="leanpub-insert">
   <span class="token function" >addItem</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     LaneActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>name<span class="token punctuation" >:</span> <span class="token string" >'New lane'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+</div>
+<div class="leanpub-delete">
+  <span class="token function" >addNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >editNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+</div>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>The current implementation doesn&#39;t do much. It just shows a plus button and <em>lanes should go here</em> text. Even the add button doesn&#39;t work yet. We still need to model <code>Lane</code> and attach <code>Notes</code> to that to make this all work.</p>
@@ -89,18 +130,15 @@ A Lane` is…"/><meta name="keywords" content="webpack,react,javascript,programm
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> Lane <span class="token keyword" >from</span> <span class="token string" >'./Lane.jsx'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Lanes</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> lanes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>items<span class="token punctuation" >;</span>
-
-    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lanes"</span><span class="token operator" >></span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>renderLane<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-  <span class="token function" >renderLane</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>Lane className<span class="token operator" >=</span><span class="token string" >"lane"</span> key<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span> lane<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
+    <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lanes"</span><span class="token operator" >></span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span>
+      <span class="token operator" >&lt;</span>Lane className<span class="token operator" >=</span><span class="token string" >"lane"</span> key<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span> lane<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+    <span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
+  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>We are also going to need a <code>Lane</code> component to make this work. It will render the <code>Lane</code> name and associated <code>Notes</code>. The example below has been modeled largely after our earlier implementation of <code>App</code>. It will render an entire lane including its name and associated notes:</p>
+<p>We are also going to need a <code>Lane</code> component to make this work. It will render the <code>Lane</code> name and associated <code>Notes</code>. The example below has been modeled largely after our earlier implementation of <code>App</code>. It will render an entire lane, including its name and associated notes:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> AltContainer <span class="token keyword" >from</span> <span class="token string" >'alt-container'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
@@ -123,7 +161,7 @@ A Lane` is…"/><meta name="keywords" content="webpack,react,javascript,programm
         <span class="token operator" >&lt;</span>AltContainer
           stores<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >[</span>NoteStore<span class="token punctuation" >]</span><span class="token punctuation" >}</span>
           inject<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >{</span>
-            items<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>notes <span class="token operator" >||</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span>
+            notes<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>notes <span class="token operator" >||</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span>
           <span class="token punctuation" >}</span><span class="token punctuation" >}</span>
         <span class="token operator" >></span>
           <span class="token operator" >&lt;</span>Notes onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editNote<span class="token punctuation" >}</span> onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
@@ -147,16 +185,16 @@ A Lane` is…"/><meta name="keywords" content="webpack,react,javascript,programm
 <p><img src="/images/kanban_01.png" alt="Duplicate notes"></p>
 <p>The reason why this happens is simple. Our <code>NoteStore</code> is a singleton. This means every component that is listening to <code>NoteStore</code> will receive the same data. We will need to resolve this problem.</p>
 <h2 class="header"><a class="header-anchor" href="#making-lanes-responsible-of-notes-" id="making-lanes-responsible-of-notes-"></a><span class="text">Making <code>Lanes</code> Responsible of <code>Notes</code></span><a class="header-anchor-select" href="#making-lanes-responsible-of-notes-">#</a></h2>
-<p>Currently our <code>Lane</code> model is simple. We are just storing an array of objects. Each of the objects knows its <em>id</em> and <em>name</em>. We&#39;ll need something more. Each <code>Lane</code> needs to know which <code>Notes</code> belong to it. If a <code>Lane</code> contained an array of <code>Note</code> ids, it could then filter and display the <code>Notes</code> belonging to it.</p>
+<p>Currently, our <code>Lane</code> model is simple. We are just storing an array of objects. Each of the objects knows its <em>id</em> and <em>name</em>. We&#39;ll need something more. Each <code>Lane</code> needs to know which <code>Notes</code> belong to it. If a <code>Lane</code> contained an array of <code>Note</code> ids, it could then filter and display the <code>Notes</code> belonging to it.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-attachtolane-" id="setting-up-attachtolane-"></a><span class="text">Setting Up <code>attachToLane</code></span><a class="header-anchor-select" href="#setting-up-attachtolane-">#</a></h3>
-<p>When we add a new <code>Note</code> to the system using <code>addNote</code>, we need to make sure it&#39;s associated to some <code>Lane</code>. This association can be modeled using a method such as <code>LaneActions.attachToLane({laneId: &lt;id&gt;})</code>. As a <code>Note</code> needs to exist before this association can be made, this method needs to trigger <code>waitFor</code>.</p>
-<p><code>waitFor</code> tells the dispatcher that it should wait before going on. A line such as <code>this.waitFor(NoteStore);</code> at <code>LaneStore</code> would make the operation wait. It will resume only after <code>NoteStore</code> has finished its work. Here&#39;s an example of how it would work:</p>
-<pre><code class="lang-javascript">NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<p>When we add a new <code>Note</code> to the system using <code>addNote</code>, we need to make sure it&#39;s associated to some <code>Lane</code>. This association can be modeled using a method, such as <code>LaneActions.attachToLane({laneId: &lt;id&gt;, noteId: &lt;id&gt;})</code>. Before calling this method we should create a note and gets its id. Here&#39;s an example of how we could glue it together:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> note <span class="token operator" >=</span> NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment" spellcheck="true">// triggers waitFor</span>
-LaneActions<span class="token punctuation" >.</span><span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+LaneActions<span class="token punctuation" >.</span><span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  noteId<span class="token punctuation" >:</span> note<span class="token punctuation" >.</span>id<span class="token punctuation" >,</span>
+  laneId
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p><code>waitFor</code> is a feature that should be used carefully. Always consider other alternatives before using it. In this particular case, there&#39;s no easy way around it.</p>
 <p>To get started we should add <code>attachToLane</code> to actions as before:</p>
 <p><strong>app/actions/LaneActions.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
@@ -172,13 +210,8 @@ LaneActions<span class="token punctuation" >.</span><span class="token function"
 
 <span class="token keyword" >class</span> <span class="token class-name" >LaneStore</span> <span class="token punctuation" >{</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
   <span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >if</span><span class="token punctuation" >(</span><span class="token operator" >!</span>noteId<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >waitFor</span><span class="token punctuation" >(</span>NoteStore<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-      noteId <span class="token operator" >=</span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >slice</span><span class="token punctuation" >(</span><span class="token operator" >-</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >]</span><span class="token punctuation" >.</span>id<span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span>
-
     <span class="token keyword" >const</span> lanes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
       <span class="token keyword" >if</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>id <span class="token operator" >===</span> laneId<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
         <span class="token keyword" >if</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >indexOf</span><span class="token punctuation" >(</span>noteId<span class="token punctuation" >)</span> <span class="token operator" >===</span> <span class="token operator" >-</span><span class="token number" >1</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
@@ -194,12 +227,58 @@ LaneActions<span class="token punctuation" >.</span><span class="token function"
 
     <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+</div>
 <span class="token punctuation" >}</span>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >createStore</span><span class="token punctuation" >(</span>LaneStore<span class="token punctuation" >,</span> <span class="token string" >'LaneStore'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p><code>attachToLane</code> has been coded defensively to guard against possible problems. Unless we pass <code>noteId</code>, we <code>waitFor</code> one. Passing one explicitly becomes useful when we implement drag and drop, so it&#39;s good to have it in place.</p>
-<p>The rest of the code deals with the logic. First we try to find a matching lane. If found, we attach the note id to it unless it has been attached already.</p>
+<p><code>attachToLane</code> has been coded defensively to guard against possible problems. The rest of the code deals with the logic. First, we try to find a matching lane. If found, we attach the note id to it unless it has been attached already.</p>
+<p>We also need to make sure <code>NoteActions.create</code> returns a note. Otherwise our scheme won&#39;t work:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token function" >create</span><span class="token punctuation" >(</span>note<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >const</span> notes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >;</span>
+
+    note<span class="token punctuation" >.</span>id <span class="token operator" >=</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> notes<span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span>note<span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<div class="leanpub-insert">
+    <span class="token keyword" >return</span> note<span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<h3 class="header"><a class="header-anchor" href="#on-data-dependencies-and-waitfor-" id="on-data-dependencies-and-waitfor-"></a><span class="text">On Data Dependencies and <code>waitFor</code></span><a class="header-anchor-select" href="#on-data-dependencies-and-waitfor-">#</a></h3>
+<p>The current setup works because our actions are synchronous. It would become more problematic if we dealt with a back-end. In that case, we would have to set up <code>waitFor</code> based code. <a href="http://alt.js.org/guide/wait-for/">waitFor</a> allows us to deal with data dependencies. It tells the dispatcher that it should wait before going on. Here&#39;s an example of how this approach would work out (no need to change your code!):</p>
+<pre><code class="lang-javascript">NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// Triggers waitFor</span>
+LaneActions<span class="token punctuation" >.</span><span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p><strong>app/stores/LaneStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >class</span> <span class="token class-name" >LaneStore</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >if</span><span class="token punctuation" >(</span><span class="token operator" >!</span>noteId<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+      <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >waitFor</span><span class="token punctuation" >(</span>NoteStore<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+      noteId <span class="token operator" >=</span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >slice</span><span class="token punctuation" >(</span><span class="token operator" >-</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >]</span><span class="token punctuation" >.</span>id<span class="token punctuation" >;</span>
+    <span class="token punctuation" >}</span>
+
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Fortunately, we can avoid <code>waitFor</code> in this case. You should use it carefully. It becomes necessary when you need to deal with asynchronously fetched data that depends on each other.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-detachfromlane-" id="setting-up-detachfromlane-"></a><span class="text">Setting Up <code>detachFromLane</code></span><a class="header-anchor-select" href="#setting-up-detachfromlane-">#</a></h3>
 <p><code>deleteNote</code> is the opposite operation of <code>addNote</code>. When removing a <code>Note</code>, it&#39;s important to remove its association with a <code>Lane</code> as well. For this purpose we can implement <code>LaneActions.detachFromLane({laneId: &lt;id&gt;})</code>. We would use it like this:</p>
 <pre><code class="lang-javascript">LaneActions<span class="token punctuation" >.</span><span class="token function" >detachFromLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
@@ -209,9 +288,14 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <p><strong>app/actions/LaneActions.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
 
+<div class="leanpub-delete">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >generateActions</span><span class="token punctuation" >(</span><span class="token string" >'create'</span><span class="token punctuation" >,</span> <span class="token string" >'attachToLane'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >generateActions</span><span class="token punctuation" >(</span><span class="token string" >'create'</span><span class="token punctuation" >,</span> <span class="token string" >'attachToLane'</span><span class="token punctuation" >,</span> <span class="token string" >'detachFromLane'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
 </code></pre>
-<p>The implementation will resemble <code>attachToLane</code>. In this case we&#39;ll remove the possibly found <code>Note</code> instead:</p>
+<p>The implementation will resemble <code>attachToLane</code>. In this case, we&#39;ll remove the possibly found <code>Note</code> instead:</p>
 <p><strong>app/stores/LaneStore.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'node-uuid'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
@@ -222,6 +306,7 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
   <span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
   <span class="token punctuation" >}</span>
+<div class="leanpub-insert">
   <span class="token function" >detachFromLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token keyword" >const</span> lanes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
       <span class="token keyword" >if</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>id <span class="token operator" >===</span> laneId<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
@@ -233,6 +318,7 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 
     <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+</div>
 <span class="token punctuation" >}</span>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >createStore</span><span class="token punctuation" >(</span>LaneStore<span class="token punctuation" >,</span> <span class="token string" >'LaneStore'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
@@ -240,8 +326,8 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <p>Again, the implementation has been coded with drag and drop in mind. Later on we&#39;ll want to pass <code>noteId</code> explicitly, so it doesn&#39;t hurt to have it there. You&#39;ve seen the rest of the code earlier in different contexts.</p>
 <h3 class="header"><a class="header-anchor" href="#implementing-a-getter-for-notestore-" id="implementing-a-getter-for-notestore-"></a><span class="text">Implementing a Getter for <code>NoteStore</code></span><a class="header-anchor-select" href="#implementing-a-getter-for-notestore-">#</a></h3>
 <p>Given our lanes contain references to notes through ids, we are going to need some way to resolve those ids to actual notes. One neat way to do this is to implement a public method <code>NoteStore.get(notes)</code> for the purpose. It accepts an array of <code>Note</code> ids, and returns corresponding objects.</p>
-<p>This can be achieved using the <code>map</code> operation. First we need to get the ids of all notes to match against. After that, we can perform a lookup for each note id passed in using <code>indexOf</code>.</p>
-<p>Just implementing the method isn&#39;t enough. We also need to make it public. In Alt this can be achieved using <code>this.exportPublicMethods</code>. It takes an object that describes the public interface of the store in question. Consider the implementation below:</p>
+<p>This can be achieved using the <code>map</code> operation. First, we need to get the ids of all notes to match against. After that, we can perform a lookup for each note id passed in using <code>indexOf</code>.</p>
+<p>Just implementing the method isn&#39;t enough. We also need to make it public. In Alt, this can be achieved using <code>this.exportPublicMethods</code>. It takes an object that describes the public interface of the store in question. Consider the implementation below:</p>
 <p><strong>app/stores/NoteStore.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'node-uuid'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
@@ -253,16 +339,20 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 
     <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >;</span>
 
+<div class="leanpub-insert">
     <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >exportPublicMethods</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
       <span class="token keyword" >get</span><span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >)</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
   <span class="token punctuation" >}</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
   <span class="token keyword" >get</span><span class="token punctuation" >(</span>ids<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>ids <span class="token operator" >||</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>
       <span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>note<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> note<span class="token punctuation" >.</span>id <span class="token operator" >===</span> id<span class="token punctuation" >)</span>
     <span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>a<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> a<span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>a<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> a<span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+</div>
 <span class="token punctuation" >}</span>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >createStore</span><span class="token punctuation" >(</span>NoteStore<span class="token punctuation" >,</span> <span class="token string" >'NoteStore'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
@@ -272,77 +362,93 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <p>Now that we have the logical bits together, we can integrate it with <code>Lane</code>. We&#39;ll need to take the newly added props (<code>id</code>, <code>notes</code>) into account, and glue this all together:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
 <span class="token keyword" >import</span> LaneActions <span class="token keyword" >from</span> <span class="token string" >'../actions/LaneActions'</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Lane</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-    <span class="token keyword" >const</span> id <span class="token operator" >=</span> props<span class="token punctuation" >.</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >;</span>
-
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
   <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token keyword" >const</span> <span class="token punctuation" >{</span>lane<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+    <span class="token keyword" >const</span> id <span class="token operator" >=</span> lane<span class="token punctuation" >.</span>id<span class="token punctuation" >;</span>
 
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
       <span class="token operator" >&lt;</span>div <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token operator" >></span>
         <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lane-header"</span><span class="token operator" >></span>
           <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lane-name"</span><span class="token operator" >></span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>name<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
           <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lane-add-note"</span><span class="token operator" >></span>
-            <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+            <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
           <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
         <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
         <span class="token operator" >&lt;</span>AltContainer
           stores<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >[</span>NoteStore<span class="token punctuation" >]</span><span class="token punctuation" >}</span>
           inject<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >{</span>
-            items<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>notes<span class="token punctuation" >)</span>
+<div class="leanpub-delete">
+            notes<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>notes <span class="token operator" >||</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span>
+</div>
+<div class="leanpub-insert">
+            notes<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>notes<span class="token punctuation" >)</span>
+</div>
           <span class="token punctuation" >}</span><span class="token punctuation" >}</span>
         <span class="token operator" >></span>
           <span class="token operator" >&lt;</span>Notes
             onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editNote<span class="token punctuation" >}</span>
-            onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+            onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
         <span class="token operator" >&lt;</span><span class="token operator" >/</span>AltContainer<span class="token operator" >></span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
     <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+<div class="leanpub-delete">
+  <span class="token function" >addNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+</div>
+<div class="leanpub-insert">
   <span class="token function" >addNote</span><span class="token punctuation" >(</span>laneId<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+</div>
+<div class="leanpub-delete">
     NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    LaneActions<span class="token punctuation" >.</span><span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >const</span> note <span class="token operator" >=</span> NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    LaneActions<span class="token punctuation" >.</span><span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      noteId<span class="token punctuation" >:</span> note<span class="token punctuation" >.</span>id<span class="token punctuation" >,</span>
+      laneId
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
   <span class="token punctuation" >}</span>
   <span class="token function" >editNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+<div class="leanpub-delete">
+  <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+</div>
+<div class="leanpub-insert">
   <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+</div>
+<div class="leanpub-delete">
+    NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
     LaneActions<span class="token punctuation" >.</span><span class="token function" >detachFromLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
     NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>noteId<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>There are two important changes:</p>
 <ul>
-<li><code>items: () =&gt; NoteStore.get(notes)</code> - Our new getter is used to filter <code>notes</code>.</li>
+<li><code>notes: () =&gt; NoteStore.get(notes)</code> - Our new getter is used to filter <code>notes</code>.</li>
 <li><code>addNote</code>, <code>deleteNote</code> - These operate now based on the new logic we specified. Note that we trigger <code>detachFromLane</code> before <code>delete</code> at <code>deleteNote</code>. Otherwise we may try to render non-existent notes. You can try swapping the order to see warnings.</li>
 </ul>
 <p>After these changes, we now have a system that can maintain relations between <code>Lanes</code> and <code>Notes</code>. The current structure allows us to keep singleton stores and a flat data structure. Dealing with references is a little awkward, but that&#39;s consistent with the Flux architecture.</p>
 <p><img src="/images/kanban_02.png" alt="Separate notes"></p>
 <h2 class="header"><a class="header-anchor" href="#implementing-edit-remove-for-lane-" id="implementing-edit-remove-for-lane-"></a><span class="text">Implementing Edit/Remove for <code>Lane</code></span><a class="header-anchor-select" href="#implementing-edit-remove-for-lane-">#</a></h2>
-<p>We are still missing some basic functionality such as editing and removing lanes. Copy <em>Note.jsx</em> as <em>Editable.jsx</em>. We&#39;ll get back to that original <em>Note.jsx</em> later in this project. For now, we just want to get <code>Editable</code> into a good condition. Tweak the code as follows to generalize the implementation:</p>
+<p>We are still missing some basic functionality, such as editing and removing lanes. Copy <em>Note.jsx</em> as <em>Editable.jsx</em>. We&#39;ll get back to that original <em>Note.jsx</em> later in this project. For now, we just want to get <code>Editable</code> into a good condition. Tweak the code as follows to generalize the implementation:</p>
 <p><strong>app/components/Editable.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Editable</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-      editing<span class="token punctuation" >:</span> <span class="token boolean" >false</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
   <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
-    <span class="token keyword" >const</span> editing <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>editing<span class="token punctuation" >;</span>
+    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> onValueClick<span class="token punctuation" >,</span> editing<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
 
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
       <span class="token operator" >&lt;</span>div <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token operator" >></span>
@@ -357,11 +463,11 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
       onBlur<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>finishEdit<span class="token punctuation" >}</span>
       onKeyPress<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>checkEnter<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
-  renderValue <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span> <span class="token comment" spellcheck="true">// drop renderNote</span>
+  renderValue <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
     <span class="token keyword" >const</span> onDelete <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onDelete<span class="token punctuation" >;</span>
 
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>div onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>edit<span class="token punctuation" >}</span><span class="token operator" >></span>
+      <span class="token operator" >&lt;</span>div onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onValueClick<span class="token punctuation" >}</span><span class="token operator" >></span>
         <span class="token operator" >&lt;</span>span className<span class="token operator" >=</span><span class="token string" >"value"</span><span class="token operator" >></span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>value<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >></span>
         <span class="token punctuation" >{</span>onDelete <span class="token operator" >?</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >renderDelete</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >:</span> <span class="token keyword" >null</span> <span class="token punctuation" >}</span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
@@ -370,13 +476,22 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
   renderDelete <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
     <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token string" >"delete"</span> onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onDelete<span class="token punctuation" >}</span><span class="token operator" >></span>x<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  checkEnter <span class="token operator" >=</span> <span class="token punctuation" >(</span>e<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >if</span><span class="token punctuation" >(</span>e<span class="token punctuation" >.</span>key <span class="token operator" >===</span> <span class="token string" >'Enter'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+      <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >finishEdit</span><span class="token punctuation" >(</span>e<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >}</span>
+  finishEdit <span class="token operator" >=</span> <span class="token punctuation" >(</span>e<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >if</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onEdit<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+      <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span><span class="token function" >onEdit</span><span class="token punctuation" >(</span>e<span class="token punctuation" >.</span>target<span class="token punctuation" >.</span>value<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>There are a couple of important changes:</p>
 <ul>
 <li><code>{editing ? this.renderEdit() : this.renderValue()}</code> - This ternary selects what to render based on the editing state. Previously we had <code>Task</code>. Now we are using the term <code>Value</code> as that&#39;s more generic.</li>
-<li><code>const {value, onEdit, ...props} = this.props;</code> - We changed task to value here as well.</li>
+<li><code>const {value, onEdit, onValueClick, editing, ...props} = this.props;</code> - We changed task to value here as well.</li>
 <li><code>renderValue()</code> - Formerly this was known as <code>renderNote()</code>. Again, an abstraction step. Note that we refer to <code>this.props.value</code> and not <code>this.props.task</code>.</li>
 </ul>
 <p>Because the class name changes, <em>main.css</em> needs a small tweak:</p>
@@ -387,11 +502,16 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
   <span class="token property" >display</span><span class="token punctuation" >:</span> inline-block<span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<blockquote class="tip">Our current implementation of <code>Editable</code> encapsulates its <code>editing</code> state. This makes it impossible to control outside of the component. One way to resolve this issue would be to eliminate the internal state and provide enough API to control it. This would mean controlling <code>editing</code> state through a prop and allowing the consumer to react to the editing states through hooks such as <code>onBeginEdit</code> and <code>onFinishEdit</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#pointing-notes-to-editable-" id="pointing-notes-to-editable-"></a><span class="text">Pointing <code>Notes</code> to <code>Editable</code></span><a class="header-anchor-select" href="#pointing-notes-to-editable-">#</a></h3>
-<p>Next we need to make <em>Notes.jsx</em> point at the new component. We&#39;ll need to alter the import and the component name at <code>render()</code>:</p>
+<blockquote class="tip">Our current implementation of <code>Editable</code> encapsulates its <code>editing</code> state. This makes it impossible to control outside of the component. One way to resolve this issue would be to eliminate the internal state and provide enough API to control it. This would mean controlling <code>editing</code> state through a prop and allowing the consumer to react to the editing states through hooks, such as <code>onBeginEdit</code> and <code>onFinishEdit</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#pointing-notes-to-editable-" id="pointing-notes-to-editable-"></a><span class="text">Pointing <code>Notes</code> to <code>Editable</code></span><a class="header-anchor-select" href="#pointing-notes-to-editable-">#</a></h3>
+<p>Next, we need to make <em>Notes.jsx</em> point at the new component. We&#39;ll need to alter the import and the component name at <code>render()</code>:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<div class="leanpub-delete">
+<span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Note.jsx'</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
 <span class="token keyword" >import</span> Editable <span class="token keyword" >from</span> <span class="token string" >'./Editable.jsx'</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Notes</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
@@ -399,8 +519,16 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
     <span class="token comment" spellcheck="true">// note that we pass task to Editable through `value` prop now!</span>
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
       <span class="token operator" >&lt;</span>li className<span class="token operator" >=</span><span class="token string" >"note"</span> key<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span><span class="token operator" >></span>
+<div class="leanpub-delete">
+        <span class="token operator" >&lt;</span>Note
+          task<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>task<span class="token punctuation" >}</span>
+</div>
+<div class="leanpub-insert">
         <span class="token operator" >&lt;</span>Editable
+          editing<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>editing<span class="token punctuation" >}</span>
           value<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>task<span class="token punctuation" >}</span>
+          onValueClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onValueClick<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> note<span class="token punctuation" >.</span>id<span class="token punctuation" >)</span><span class="token punctuation" >}</span>
+</div>
           onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onEdit<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> note<span class="token punctuation" >.</span>id<span class="token punctuation" >)</span><span class="token punctuation" >}</span>
           onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>onDelete<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> note<span class="token punctuation" >.</span>id<span class="token punctuation" >)</span><span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
@@ -409,36 +537,61 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <span class="token punctuation" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#connecting-lane-with-editable-" id="connecting-lane-with-editable-"></a><span class="text">Connecting <code>Lane</code> with <code>Editable</code></span><a class="header-anchor-select" href="#connecting-lane-with-editable-">#</a></h3>
-<p>Next we can use this generic component to allow a <code>Lane</code>&#39;s name to be modified. This will give a hook for our logic. We&#39;ll need to alter <code>&lt;div className=&#39;lane-name&#39;&gt;{name}&lt;/div&gt;</code> as follows:</p>
+<p>Next, we can use this generic component to allow a <code>Lane</code>&#39;s name to be modified. This will give a hook for our logic. We&#39;ll need to alter <code>&lt;div className=&#39;lane-name&#39;&gt;{name}&lt;/div&gt;</code> as follows:</p>
 <p><strong>app/components/Lane.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
 <span class="token keyword" >import</span> Editable <span class="token keyword" >from</span> <span class="token string" >'./Editable.jsx'</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Lane</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>editName <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>editName<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
   <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token keyword" >const</span> <span class="token punctuation" >{</span>lane<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+    <span class="token keyword" >const</span> id <span class="token operator" >=</span> lane<span class="token punctuation" >.</span>id<span class="token punctuation" >;</span>
 
     <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
       <span class="token operator" >&lt;</span>div <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token operator" >></span>
         <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lane-header"</span><span class="token operator" >></span>
-          <span class="token operator" >&lt;</span>Editable className<span class="token operator" >=</span><span class="token string" >"lane-name"</span> value<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>name<span class="token punctuation" >}</span>
-            onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editName<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+<div class="leanpub-delete">
+          <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lane-name"</span><span class="token operator" >></span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>name<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
+</div>
+<div class="leanpub-insert">
+          <span class="token operator" >&lt;</span>Editable className<span class="token operator" >=</span><span class="token string" >"lane-name"</span> editing<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>editing<span class="token punctuation" >}</span>
+            value<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>name<span class="token punctuation" >}</span> onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editName<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span>
+            onValueClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>activateLaneEdit<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+</div>
           <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lane-add-note"</span><span class="token operator" >></span>
-            <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+            <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
           <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
         <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-        <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+        <span class="token operator" >&lt;</span>AltContainer
+          stores<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >[</span>NoteStore<span class="token punctuation" >]</span><span class="token punctuation" >}</span>
+          inject<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >{</span>
+            notes<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> NoteStore<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>notes<span class="token punctuation" >)</span>
+          <span class="token punctuation" >}</span><span class="token punctuation" >}</span>
+        <span class="token operator" >></span>
+          <span class="token operator" >&lt;</span>Notes
+<div class="leanpub-insert">
+            onValueClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>activateNoteEdit<span class="token punctuation" >}</span>
+</div>
+            onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editNote<span class="token punctuation" >}</span>
+            onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+        <span class="token operator" >&lt;</span><span class="token operator" >/</span>AltContainer<span class="token operator" >></span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
     <span class="token punctuation" >)</span>
   <span class="token punctuation" >}</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
   <span class="token function" >editName</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> name<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'edited lane name'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >,</span> name<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+  <span class="token function" >activateLaneEdit</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'edit lane name'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >activateNoteEdit</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'edit note task'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+</div>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>If you try to edit a lane name now, you should see a log at the console.</p>
@@ -448,10 +601,15 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <p><strong>app/actions/LaneActions.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
 
+<div class="leanpub-delete">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >generateActions</span><span class="token punctuation" >(</span><span class="token string" >'create'</span><span class="token punctuation" >,</span> <span class="token string" >'attachToLane'</span><span class="token punctuation" >,</span> <span class="token string" >'detachFromLane'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >generateActions</span><span class="token punctuation" >(</span>
   <span class="token string" >'create'</span><span class="token punctuation" >,</span> <span class="token string" >'update'</span><span class="token punctuation" >,</span> <span class="token string" >'delete'</span><span class="token punctuation" >,</span>
   <span class="token string" >'attachToLane'</span><span class="token punctuation" >,</span> <span class="token string" >'detachFromLane'</span>
 <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
 </code></pre>
 <p>We are also going to need <code>LaneStore</code> level implementations for these. They can be modeled based on what we have seen in <code>NoteStore</code> earlier:</p>
 <p><strong>app/stores/LaneStore.js</strong></p>
@@ -459,10 +617,11 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 
 <span class="token keyword" >class</span> <span class="token class-name" >LaneStore</span> <span class="token punctuation" >{</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> name<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-insert">
+  <span class="token function" >update</span><span class="token punctuation" >(</span>updatedLane<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token keyword" >const</span> lanes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >if</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>id <span class="token operator" >===</span> id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-        lane<span class="token punctuation" >.</span>name <span class="token operator" >=</span> name<span class="token punctuation" >;</span>
+      <span class="token keyword" >if</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >.</span>id <span class="token operator" >===</span> updatedLane<span class="token punctuation" >.</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+        lane <span class="token operator" >=</span> <span class="token function" >assign</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span> lane<span class="token punctuation" >,</span> updatedLane<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
       <span class="token punctuation" >}</span>
 
       <span class="token keyword" >return</span> lane<span class="token punctuation" >;</span>
@@ -475,6 +634,7 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
       lanes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>lanes<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> lane<span class="token punctuation" >.</span>id <span class="token operator" >!==</span> id<span class="token punctuation" >)</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
+</div>
   <span class="token function" >attachToLane</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>laneId<span class="token punctuation" >,</span> noteId<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
   <span class="token punctuation" >}</span>
@@ -488,19 +648,49 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Lane</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token function" >editNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >,</span> editing<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
   <span class="token function" >editName</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> name<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'edited lane name'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >,</span> name<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
     <span class="token keyword" >if</span><span class="token punctuation" >(</span>name<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      LaneActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> name<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+      LaneActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> name<span class="token punctuation" >,</span> editing<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
     <span class="token punctuation" >}</span>
     <span class="token keyword" >else</span> <span class="token punctuation" >{</span>
       LaneActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
     <span class="token punctuation" >}</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >activateLaneEdit</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'edit lane name'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    LaneActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> editing<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >activateNoteEdit</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'edit note task'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> editing<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>Try modifying a lane name now. Modifications now should get saved the same way as they do for notes. Deleting lanes should be possible as well.</p>
 <p><img src="/images/kanban_04.png" alt="Editing a lane name"></p>
-<h2 class="header"><a class="header-anchor" href="#styling-kanban-board" id="styling-kanban-board"></a><span class="text">Styling Kanban Board</span><a class="header-anchor-select" href="#styling-kanban-board">#</a></h2>
+<blockquote class="tip">If you want that lanes and notes are editable after they are created, set <code>lane.editing = true;</code> or <code>note.editing = true;</code> when creating them.</blockquote><h2 class="header"><a class="header-anchor" href="#styling-kanban-board" id="styling-kanban-board"></a><span class="text">Styling Kanban Board</span><a class="header-anchor-select" href="#styling-kanban-board">#</a></h2>
 <p>As we added <code>Lanes</code> to the application, the styling went a bit off. Add the following styling to make it a little nicer:</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="lang-css"><span class="token selector" >body </span><span class="token punctuation" >{</span>
@@ -556,28 +746,25 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <p>As this is a small project, we can leave the CSS in a single file like this. In case it starts growing, consider separating it to multiple files. One way to do this is to extract CSS per component and then refer to it there (e.g., <code>require(&#39;./lane.css&#39;)</code> at <code>Lane.jsx</code>).</p>
 <p>Besides keeping things nice and tidy, Webpack&#39;s lazy loading machinery can pick this up. As a result, the initial CSS your user has to load will be smaller. I go into further detail later as I discuss styling.</p>
 <h2 class="header"><a class="header-anchor" href="#on-namespacing-components" id="on-namespacing-components"></a><span class="text">On Namespacing Components</span><a class="header-anchor-select" href="#on-namespacing-components">#</a></h2>
-<p>So far we&#39;ve been defining a component per file. That&#39;s not the only way. It may be handy to treat a file as a namespace and expose multiple components from it. React provides <a href="https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components">namespaces components</a> just for this purpose. In this case we could apply namespacing to the concept of <code>Lane</code> or <code>Note</code>. This would add some flexibility to our system while keeping it simple to manage. By using namespacing we could do something like this:</p>
+<p>So far, we&#39;ve been defining a component per file. That&#39;s not the only way. It may be handy to treat a file as a namespace and expose multiple components from it. React provides <a href="https://facebook.github.io/react/docs/jsx-in-depth.html#namespaced-components">namespaces components</a> just for this purpose. In this case, we could apply namespacing to the concept of <code>Lane</code> or <code>Note</code>. This would add some flexibility to our system while keeping it simple to manage. By using namespacing, we could do something like this:</p>
 <p><strong>app/components/Lanes.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> Lane <span class="token keyword" >from</span> <span class="token string" >'./Lane.jsx'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Lanes</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> lanes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>items<span class="token punctuation" >;</span>
-
-    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lanes"</span><span class="token operator" >></span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>renderLane<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-  <span class="token function" >renderLane</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// new</span>
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>Lane className<span class="token operator" >=</span><span class="token string" >"lane"</span> key<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span><span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>Lane<span class="token punctuation" >.</span>Header id<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span> name<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>name<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>Lane<span class="token punctuation" >.</span>Notes id<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span> notes<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>notes<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
+    <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"lanes"</span><span class="token operator" >></span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span>
+<div class="leanpub-delete">
+      <span class="token operator" >&lt;</span>Lane className<span class="token operator" >=</span><span class="token string" >"lane"</span> key<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span> lane<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+</div>
+<div class="leanpub-insert">
+      <span class="token operator" >&lt;</span>Lane className<span class="token operator" >=</span><span class="token string" >"lane"</span> key<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span> lane<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >}</span><span class="token operator" >></span>
+        <span class="token operator" >&lt;</span>Lane<span class="token punctuation" >.</span>Header name<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>name<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+        <span class="token operator" >&lt;</span>Lane<span class="token punctuation" >.</span>Notes notes<span class="token operator" >=</span><span class="token punctuation" >{</span>lane<span class="token punctuation" >.</span>notes<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>Lane<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-    <span class="token comment" spellcheck="true">// old</span>
-    <span class="token comment" spellcheck="true">// return &lt;Lane className="lane" key={lane.id} lane={lane} />;</span>
-  <span class="token punctuation" >}</span>
+<div class="leanpub-insert">
+    <span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
+  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p><strong>app/components/Lane.jsx</strong></p>
@@ -596,14 +783,14 @@ Lane<span class="token punctuation" >.</span>Notes <span class="token operator" 
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> Lane<span class="token punctuation" >;</span>
 </code></pre>
-<p>Now we have pushed the control over <code>Lane</code> formatting to a higher level. In this case the change isn&#39;t worth it, but it can make sense in a more complex case.</p>
+<p>Now we have pushed the control over <code>Lane</code> formatting to a higher level. In this case, the change isn&#39;t worth it, but it can make sense in a more complex case.</p>
 <p>You can use a similar approach for more generic components as well. Consider something like <code>Form</code>. You could easily have <code>Form.Label</code>, <code>Form.Input</code>, <code>Form.Textarea</code> and so on. Each would contain your custom formatting and logic as needed.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>The current design has been optimized with drag and drop operations in mind. Moving notes within a lane is a matter of swapping ids. Moving notes from one lane to another is again an operation over ids. This structure leads to some complexity as we need to track ids, but it will pay off in the next chapter.</p>
 <p>There isn&#39;t always a clear cut way to model data and relations. In other scenarios, we could push the references elsewhere. For instance, the note to lane relation could be inversed and pushed to <code>Note</code> level. We would still need to track their order within a lane somehow. We would be pushing the complexity elsewhere by doing this.</p>
-<p>Currently <code>NoteStore</code> is treated as a singleton. Another way to deal with it would be to create <code>NoteStore</code> per <code>Notes</code> dynamically. Even though this simplifies dealing with the relations somewhat, this is a Flux anti-pattern better avoided.</p>
-<p>We still cannot move notes between lanes or within a lane. We will solve that in the next chapter as we implement drag and drop.</p>
-</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/delorean.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/react_and_flux">React and Flux</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/implementing_dnd" title="Implementing Drag and Drop"></a><a class="previous-page" href="/webpack_react/react_and_flux" title="React and Flux"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=From Notes to Kanban - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li><li><a class="blog-teaser" href="/blog/react-bootstrap-interview">React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith</a></li></ul></div></div></footer><div><script type="text/javascript">
+<p>Currently, <code>NoteStore</code> is treated as a singleton. Another way to deal with it would be to create <code>NoteStore</code> per <code>Notes</code> dynamically. Even though this simplifies dealing with the relations somewhat, this is a Flux anti-pattern better avoided. It brings complications of its own as you need to deal with store lifecycle at component level. Also dealing with drag and drop logic will become hard.</p>
+<p>We still cannot move notes between lanes or within a lane. We will solve that in the next chapter, as we implement drag and drop.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/delorean.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/react_and_flux">React and Flux</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/implementing_dnd" title="Implementing Drag and Drop"></a><a class="previous-page" href="/webpack_react/react_and_flux" title="React and Flux"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=From Notes to Kanban - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></li><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li><li><a class="blog-teaser" href="/blog/react-router5">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li><a class="blog-teaser" href="/blog/survivejs-195">SurviveJS - Webpack and React v1.9.5</a></li><li><a class="blog-teaser" href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li></ul></div></div></footer><div><script type="text/javascript">
           ((window.gitter = {}).chat = {}).options = {
             room: 'survivejs/webpack_react'
           };
