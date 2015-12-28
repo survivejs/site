@@ -73,6 +73,12 @@ module.exports = [
         "demo": "08_building_kanban"
     },
     {
+        "author": "NASA",
+        "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+        "license": "Public Domain",
+        "image": "skydiving.jpg"
+    },
+    {
         "author": "skeeze",
         "source": "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
         "license": "Public Domain",
@@ -88,12 +94,6 @@ module.exports = [
         "demo": "10_typing_with_react",
         "bonus": true,
         "sourceRoot": "/"
-    },
-    {
-        "author": "NASA",
-        "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
-        "license": "Public Domain",
-        "image": "skydiving.jpg"
     },
     {
         "author": "Eva the Weaver",
@@ -113,13 +113,18 @@ module.exports = [
         "license": "CC BY-NC-ND",
         "image": "taxi.jpg"
     },
-    // XXXXX: enable for 2.0
-    /*{
+    {
+        "author": "forwimuwi73",
+        "source": "https://pixabay.com/en/food-peanut-nuts-624600/",
+        "license": "Public Domain",
+        "image": "peanuts.jpg"
+    },
+    {
         "author": "wilhei",
         "source": "https://pixabay.com/en/font-lead-set-book-printing-705667/",
         "license": "Public Domain",
         "image": "language.jpg"
-    },*/
+    },
     {
         "author": "Ana_J",
         "source": "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
