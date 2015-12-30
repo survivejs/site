@@ -27,9 +27,9 @@ In addition, if you buy the Leanpub version you will get access to exclusive cha
 0. Deal with typing in React.
 0. Test your React application in various ways.
 
-The Leanpub version comes in pdf, epub, and mobi formats.
-
 By buying the book, you will support my efforts and allow me to develop more content.
+
+> The Leanpub version comes in pdf, epub, and mobi formats!
 
 ### Get started with the online version
 
