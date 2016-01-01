@@ -18,7 +18,7 @@ Today, I'm interviewing Alexander Buzin, the author of a new engine known as [Wh
 
 My name is Alexander Buzin. I am a front-end developer and a hockey player from Kiev. I am interested in WebGL technology and everything related to 3D rendering in Web, such as [Three.js](http://threejs.org/), [seen.js](http://seenjs.io/) and 3D physics engines like [Cannon.js](http://www.cannonjs.org/) or [Oimo.js](https://github.com/lo-th/Oimo.js/). I am inspired by projects created on it and my favourite one is [ROME](http://www.ro.me/).
 
-Beyond 3D projects, I want to highlight latest cool website which impressed me: [because-recollection.com](because-recollection.com).
+Beyond 3D projects, I want to highlight latest cool website which impressed me: [because-recollection.com](http://because-recollection.com/).
 Such sites make the internet a better place.
 
 Before I started learning Three.js, I tried my skills in AngularJS and NodeJS. But my ideal still was jQuery, given it's so simple to use.
