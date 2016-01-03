@@ -14,6 +14,15 @@ var headers = require('./headers');
 
 var cwd = process.cwd();
 
+// XXX: add custom loader to common config
+themeConfig.webpack.common = {
+  resolveLoader: {
+      alias: {
+          markdown: path.join(cwd, 'loaders/markdown')
+      }
+  }
+};
+
 module.exports = {
   webpack: themeConfig.webpack, // SCSS bits
   assets: [
@@ -80,7 +89,7 @@ module.exports = {
   paths: {
     '/': {
       path: function() {
-        return require.context('./pages');
+        return require.context('./pages', false, /^\.\/.*\.jsx$/);
       },
     },
     blog: blog(),
@@ -92,11 +101,11 @@ function blog() {
   return {
     title: 'Blog posts',
     path: function() {
-      return require.context('./posts', false, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!./posts', false, /^\.\/.*\.md$/);
     },
     /*
     draft: function() {
-      return require.context('./drafts', false, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!./drafts', false, /^\.\/.*\.md$/);
     },
     */
     processPage: {
@@ -130,7 +139,7 @@ function webpackReact() {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('../webpack_react/manuscript', false, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!../webpack_react/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
       title: function(o) {
@@ -212,7 +221,7 @@ function webpackReact() {
     },
     inject: function(files) {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-      var reqResource = require.context('../webpack_react_resources/', false, /^\.\/.*\.json$/);
+      var reqResource = require.context('json!../webpack_react_resources/', false, /^\.\/.*\.json$/);
 
       return files.map(function(o, i) {
         var file = o.file;

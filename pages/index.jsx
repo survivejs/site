@@ -29,10 +29,10 @@ var Index = React.createClass({
                     <section className='post__content'>
                     <LatestPost sectionPages={section.pages} />
 
-                        <div dangerouslySetInnerHTML={{__html: require('./index.md').content}} />
+                        <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./index.md')}} />
                     </section>
 
-                    <aside className='post__sidebar' dangerouslySetInnerHTML={{__html: require('./sidebar.md').content}} />
+                    <aside className='post__sidebar' dangerouslySetInnerHTML={{__html: require('raw!markdown!./sidebar.md')}} />
                 </div>
             </div>
         );
