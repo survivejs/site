@@ -120,6 +120,12 @@ module.exports = [
         "image": "peanuts.jpg"
     },
     {
+        "author": "epicantus",
+        "source": "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
+        "license": "Public Domain",
+        "image": "structure.jpg"
+    },
+    {
         "author": "wilhei",
         "source": "https://pixabay.com/en/font-lead-set-book-printing-705667/",
         "license": "Public Domain",
