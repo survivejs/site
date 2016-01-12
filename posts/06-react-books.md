@@ -12,7 +12,7 @@ Even though there are [a lot of freely available React resources](https://github
 
 ### SurviveJS - Webpack and React
 
-[SurviveJS - Webpack and React](http://survivejs.com/) is the most comprehensive freely available book I'm aware of. It will show you how to set up a [webpack](https://webpack.github.io/) based development environment and then develop a simple [Kanban](https://en.wikipedia.org/wiki/Kanban) based on it. More theoretical topics, such as linting, styling and library authoring are discussed as well. At the time of writing it has 150 pages and more content is planned based on demand.
+[SurviveJS - Webpack and React](http://survivejs.com/) is the most comprehensive freely available book I'm aware of. It will show you how to set up a [webpack](https://webpack.github.io/) based development environment and then develop a simple [Kanban](https://en.wikipedia.org/wiki/Kanban) based on it. More theoretical topics, such as linting, styling and library authoring are discussed as well. At the time of writing it has 250 pages and more content is planned based on demand.
 
 The book is open to external contributions and in fact a lot of people have contributed feedback and fixes. From author's point of view this has been just awesome!
 
@@ -21,6 +21,10 @@ If you like the book and want to support the effort, [buying a copy](https://lea
 ### React Webpack Cookbook
 
 [React Webpack Cookbook](https://christianalfoni.github.io/react-webpack-cookbook/) is a little guide I developed with [Christian Alfoni](http://www.christianalfoni.com/). The eventual plan is to polish the content and host the improved version here with a similar support model.
+
+### Hacking with React
+
+[Hacking with React](http://www.hackingwithreact.com/) by Paul Hudson delves straight into React. At the time of writing it has 123 pages and it uses a no-nonsense approach. In some ways it's the anti-thesis to SurviveJS, but there's room for different kind of offerings. Even though the book is free to read online, the author offers it through [Leanpub](https://leanpub.com/hackingwithreact/) as well. The minimum price without VAT is $10.
 
 ### React Native Animation Book
 
