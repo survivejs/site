@@ -99,7 +99,7 @@ You can see GitHub for [all changes](https://github.com/survivejs/webpack_react/
 
 ### Structuring React Projects
 
-* New content. This appendix gives you some ideas on how to proceed with [structuring React projects](../webpack_react/structuring_react_projects).
+* New content. This appendix gives you some ideas on how to proceed with [structuring React projects](../../webpack_react/structuring_react_projects).
 
 ### Language Features
 
