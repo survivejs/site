@@ -64,7 +64,7 @@ GAME.sphere = GAME.addObject("sphere",
 });
 ```
 
-The project is available through [GitHub](https://github.com/sasha240100/WhitestormJS). This way people can create pull requests to fix problems and improve the engine. I hope users will find it interesting.
+The project is available through [GitHub](https://github.com/WhitestormJS/whitestorm.js). This way people can create pull requests to fix problems and improve the engine. I hope users will find it interesting.
 
 ## Why did you develop WhitestormJS?
 
@@ -85,7 +85,7 @@ P.s.: Maybe we will release an editor for people, who don't know how to code.
 
 ## What does the future look like for game engines and front-end in general? Can you see any particular trends?
 
-Some weeks ago I contacted [Paul Lewis](ttps://twitter.com/aerotwist) from [Aerotwist blog](https://aerotwist.com/) and asked him a similar question. His answer was ES2015 (the latest version of JavaScript) and React.js.
+Some weeks ago I contacted [Paul Lewis](https://twitter.com/aerotwist) from [Aerotwist blog](https://aerotwist.com/) and asked him a similar question. His answer was ES2015 (the latest version of JavaScript) and React.js.
 
 As for me, I think it will be awesome, if we can play games with excellent graphics in browsers. Currently the problem is that we need to develop games separately for multiple platforms. The web solves that.
 
