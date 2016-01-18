@@ -4,6 +4,7 @@
 
 * 45 day money back guarantee
 * 250+ pages (pdf/epub/mobi)
+* 1000+ readers
 * Future updates for free
 * Minimum $19.99 + VAT.
 
