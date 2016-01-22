@@ -83,7 +83,6 @@ module.exports = [
         "source": "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
         "license": "Public Domain",
         "image": "testing.jpg",
-        "demo": "09_testing_react",
         "bonus": true
     },
     {
@@ -91,7 +90,6 @@ module.exports = [
         "source": "https://www.flickr.com/photos/10832246@N06/2925254789/",
         "license": "CC BY-NC-ND",
         "image": "typing.jpg",
-        "demo": "10_typing_with_react",
         "bonus": true,
         "sourceRoot": "/"
     },
