@@ -1,21 +1,22 @@
 <html lang="en"><head><title>SurviveJS - Building Kanban</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 Now that we have a nice Kanban application up and running, we can worry about showing it to the public. The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.
 
-"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/boots.jpg);"></div><h1 class="post__heading">Building Kanban</h1><div class="header-extra"><a href="https://www.flickr.com/photos/7870246@N03/481256246">Acid Pix (CC BY)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><a class="toc-nav__link chapter" href="/webpack_react/developing_with_webpack">Developing with Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><a class="toc-nav__link chapter" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><span class="toc-nav__link toc-nav__link--current chapter">Building Kanban</span><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/authoring_libraries">Authoring Libraries</a><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link part" href="/webpack_react/appendices">Appendices</a><a class="toc-nav__link chapter" href="/webpack_react/structuring_react_projects">Structuring React Projects</a><a class="toc-nav__link chapter" href="/webpack_react/language_features">Language Features</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div><div class="resources__wrapper"><h4 class="resources--header">Resources</h4><div class="resources-nav"><a href="https://alexkuz.github.io/webpack-chart/" class="resource-nav__link" target="_blank">Webpack Chart</a><a href="https://chrisbateman.github.io/webpack-visualizer/" class="resource-nav__link" target="_blank">Webpack Visualizer</a></div></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/survivejs200-rc2">SurviveJS - Webpack and React v2.0.0-rc2</a></blockquote><div class="post__meta"><a class="post__start_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Start source code</a><a class="post__end_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_building_kanban/kanban_app" target="_blank">Finished source code</a><a class="post__demo" href="/demos/08_building_kanban" target="_blank">Demo</a></div><div class="chapter-content"><p>Now that we have a nice Kanban application up and running, we can worry about showing it to the public. The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.</p>
+"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/images/boots.jpg);"></div><h1 class="post__heading">Building Kanban</h1><div class="header-extra"><a href="https://www.flickr.com/photos/7870246@N03/481256246">Acid Pix (CC BY)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><div class="toc-nav"><a class="toc-nav__link chapter" href="/webpack_react/introduction">Introduction</a><a class="toc-nav__link part" href="/webpack_react/webpack">Setting Up Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_compared">Webpack Compared</a><a class="toc-nav__link chapter" href="/webpack_react/developing_with_webpack">Developing with Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/webpack_and_react">Webpack and React</a><a class="toc-nav__link part" href="/webpack_react/react">Developing Kanban Application</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_notes">Implementing a Basic Note Application</a><a class="toc-nav__link chapter" href="/webpack_react/react_and_flux">React and Flux</a><a class="toc-nav__link chapter" href="/webpack_react/from_notes_to_kanban">From Notes to Kanban</a><a class="toc-nav__link chapter" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a><span class="toc-nav__link toc-nav__link--current chapter">Building Kanban</span><a class="toc-nav__link part" href="/webpack_react/advanced">Advanced Techniques</a><a class="toc-nav__link chapter" href="/webpack_react/testing_react">Testing React*</a><a class="toc-nav__link chapter" href="/webpack_react/typing_with_react">Typing with React*</a><a class="toc-nav__link chapter" href="/webpack_react/linting_in_webpack">Linting in Webpack</a><a class="toc-nav__link chapter" href="/webpack_react/authoring_libraries">Authoring Libraries</a><a class="toc-nav__link chapter" href="/webpack_react/styling_react">Styling React</a><a class="toc-nav__link part" href="/webpack_react/appendices">Appendices</a><a class="toc-nav__link chapter" href="/webpack_react/structuring_react_projects">Structuring React Projects</a><a class="toc-nav__link chapter" href="/webpack_react/language_features">Language Features</a><a class="toc-nav__link chapter" href="/webpack_react/understanding_decorators">Understanding Decorators</a><a class="toc-nav__link chapter" href="/webpack_react/troubleshooting">Troubleshooting</a></div><div class="resources__wrapper"><h4 class="resources--header">Resources</h4><div class="resources-nav"><a href="https://alexkuz.github.io/webpack-chart/" class="resource-nav__link" target="_blank">Webpack Chart</a><a href="https://chrisbateman.github.io/webpack-visualizer/" class="resource-nav__link" target="_blank">Webpack Visualizer</a><a href="https://github.com/robertknight/webpack-bundle-size-analyzer" class="resource-nav__link" target="_blank">Webpack Bundle Size Analyzer</a></div></div></div><div class="chapter"><div class="post__content"><blockquote class="front__latestpost tip"><div>From the blog:</div><a class="front__latestpost-link" href="/blog/survivejs200-rc3">SurviveJS - Webpack and React v2.0.0-rc3</a></blockquote><div class="post__meta"><a class="post__start_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/07_implementing_dnd/kanban_app" target="_blank">Start source code</a><a class="post__end_source" href="https://github.com/survivejs/webpack_react/tree/master/project_source/08_building_kanban/kanban_app" target="_blank">Finished source code</a><a class="post__demo" href="/demos/08_building_kanban" target="_blank">Demo</a></div><div class="chapter-content"><p>Now that we have a nice Kanban application up and running, we can worry about showing it to the public. The goal of this chapter is to set up a nice production grade build. There are various techniques we can apply to bring the bundle size down. We can also leverage browser caching.</p>
 <h2 class="header"><a class="header-anchor" href="#optimizing-build-size" id="optimizing-build-size"></a><span class="text">Optimizing Build Size</span><a class="header-anchor-select" href="#optimizing-build-size">#</a></h2>
 <p>If you run <code>npm run build</code>, you can see we have a problem:</p>
-<pre><code class="lang-bash">Hash: 55671c0d72bc0df82283
-Version: webpack 1.12.9
-Time: 4001ms
-     Asset       Size  Chunks             Chunk Names
- bundle.js    1.11 MB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
-index.html  511 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-    + 336 hidden modules
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: 1d6630b6a72d918bb24b
+Version: webpack 1.12.11
+Time: 3964ms
+    Asset     Size  Chunks             Chunk Names
+bundle.js  1.11 MB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
+    + 335 hidden modules
 </code></pre>
 <p>1.11 MB is a lot! There are a couple of basic things we can do to slim down our build. We can apply some minification to it. We can also tell React to optimize itself. Doing both will result in significant size savings. Provided we apply gzip compression on the content when serving it, further gains may be made.</p>
 <h3 class="header"><a class="header-anchor" href="#minification" id="minification"></a><span class="text">Minification</span><a class="header-anchor-select" href="#minification">#</a></h3>
 <p>Minification will convert our code into a smaller format without losing any meaning. Usually this means some amount of rewriting code through predefined transformations. Sometimes, this can break code as it can rewrite pieces of code you inadvertently depend upon. This is the reason why we gave explicit ids to our stores for instance.</p>
-<p>The easiest way to enable minification is to call <code>webpack -p</code> (<code>-p</code> as in <code>production</code>). As Uglify will output a lot of warnings and they don&#39;t provide value in this case, we&#39;ll be disabling them. Add the following section to your Webpack configuration:</p>
+<p>The easiest way to enable minification is to call <code>webpack -p</code> (<code>-p</code> as in <code>production</code>). Alternatively we an use a plugin directly as this provides us more control. By default Uglify will output a lot of warnings and they don&#39;t provide value in this case, we&#39;ll be disabling them. Add the following section to your Webpack configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
 <div class="leanpub-delete">
@@ -35,13 +36,14 @@ index.html  511 bytes          <span class="token punctuation" >[</span>emitted<
 <span class="token punctuation" >}</span>
 </code></pre>
 <blockquote class="tip">Uglify warnings can help you to understand how it processes the code. Therefore it may be beneficial to have a peek at the output every once in a while.</blockquote><p>If you trigger <code>npm run build</code> now, you should see better results:</p>
-<pre><code class="lang-bash">Hash: f9c284fdcddb11010ae1
-Version: webpack 1.12.9
-Time: 8888ms
-     Asset       Size  Chunks             Chunk Names
- bundle.js     367 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
-index.html  511 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-    + 336 hidden modules
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: 9f52871e77451f9d6f29
+Version: webpack 1.12.11
+Time: 10342ms
+    Asset    Size  Chunks             Chunk Names
+bundle.js  366 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
+    + 335 hidden modules
 </code></pre>
 <p>Given it needs to do more work, it took longer. But on the plus side the build is much smaller now.</p>
 <blockquote class="tip">It is possible to push minification further by enabling variable name mangling. It comes with some extra complexity to worry about, but it may be worth it when you are pushing for minimal size. See <a href="https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin">the official documentation</a> for details.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-process-env-node_env-" id="setting-process-env-node_env-"></a><span class="text">Setting <code>process.env.NODE_ENV</code></span><a class="header-anchor-select" href="#setting-process-env-node_env-">#</a></h3>
@@ -70,13 +72,14 @@ index.html  511 bytes          <span class="token punctuation" >[</span>emitted<
 </code></pre>
 <p>This is a useful technique for your own code. If you have a section of code that evaluates as <code>false</code> after this process, the minifier will remove it from the build completely.</p>
 <blockquote class="tip">That <code>JSON.stringify</code> is needed, as Webpack will perform string replace &quot;as is&quot;. In this case, we&#39;ll want to end up with strings, as that&#39;s what various comparisons expect, not just <code>production</code>. The latter would just cause an error. An alternative would be to use a string, such as <code>&#39;&quot;production&quot;&#39;</code>. Note the double quotation marks (&quot;).</blockquote><p>Trigger <code>npm run build</code> again, and you should see improved results:</p>
-<pre><code class="lang-bash">Hash: c6e0699d353a889156ac
-Version: webpack 1.12.9
-Time: 8052ms
-     Asset       Size  Chunks             Chunk Names
- bundle.js     306 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
-index.html  511 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-    + 332 hidden modules
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: a08756deaf3ac92da810
+Version: webpack 1.12.11
+Time: 8936ms
+    Asset    Size  Chunks             Chunk Names
+bundle.js  306 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  main
+    + 331 hidden modules
 </code></pre>
 <p>So we went from 1.11 MB to 367 kB, and finally, to 306 kB. The final build is a little faster than the previous one. As that 306 kB can be served gzipped, it is quite reasonable. gzipping will drop around another 40%. It is well supported by browsers.</p>
 <p>We can do a little better, though. We can split <code>app</code> and <code>vendor</code> bundles and add hashes to their filenames.</p>
@@ -88,7 +91,6 @@ index.html  511 bytes          <span class="token punctuation" >[</span>emitted<
 <p>To get started, we need to define a <code>vendor</code> entry point. Given <em>alt-utils</em> is problematic for this kind of setup, I&#39;ve simply excluded it from the <code>vendor</code> bundle. You can use a similar idea with other problematic dependencies. Here&#39;s the setup:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'path'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> HtmlwebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'html-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword" >const</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack-merge'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 
@@ -97,7 +99,13 @@ index.html  511 bytes          <span class="token punctuation" >[</span>emitted<
 <span class="token keyword" >const</span> pkg <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./package.json'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </div>
 
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token keyword" >const</span> TARGET <span class="token operator" >=</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>npm_lifecycle_event<span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>BABEL_ENV <span class="token operator" >=</span> TARGET<span class="token punctuation" >;</span>
 
 <span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
   entry<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
@@ -140,15 +148,16 @@ index.html  511 bytes          <span class="token punctuation" >[</span>emitted<
 <p>This tells Webpack that we want a separate <em>entry chunk</em> for our project <code>vendor</code> level dependencies.</p>
 <p>Beyond this, it&#39;s possible to define chunks that are loaded dynamically. This can be achieved through <a href="https://webpack.github.io/docs/code-splitting.html">require.ensure</a>.</p>
 <p>If you trigger the build now using <code>npm run build</code>, you should see something along this:</p>
-<pre><code class="lang-bash">Hash: 60ad70a898d7a5f6eb63
-Version: webpack 1.12.9
-Time: 12328ms
-     Asset       Size  Chunks             Chunk Names
-    app.js     306 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
- vendor.js     286 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-index.html  543 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 124 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-    + 332 hidden modules
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: 4cebe8ce0c6daca5cfa1
+Version: webpack 1.12.11
+Time: 13510ms
+    Asset    Size  Chunks             Chunk Names
+   app.js  306 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+vendor.js  285 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 112 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+    + 331 hidden modules
 </code></pre>
 <p>Now we have separate <em>app</em>  and <em>vendor</em> bundles. There&#39;s something wrong, however. If you examine the files, you&#39;ll see that <em>app.js</em> contains <em>vendor</em> dependencies. We need to do something to tell Webpack to avoid this situation. This is where <code>CommonsChunkPlugin</code> comes in.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-commonschunkplugin-" id="setting-up-commonschunkplugin-"></a><span class="text">Setting Up <code>CommonsChunkPlugin</code></span><a class="header-anchor-select" href="#setting-up-commonschunkplugin-">#</a></h3>
@@ -158,6 +167,7 @@ index.html  543 bytes          <span class="token punctuation" >[</span>emitted<
 
 <span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Define entry points needed for splitting</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
     <span class="token punctuation" >}</span>
@@ -174,16 +184,17 @@ index.html  543 bytes          <span class="token punctuation" >[</span>emitted<
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>If you run <code>npm run build</code> now, you should see output as below:</p>
-<pre><code class="lang-bash">Hash: 5ffb51edc6a097c70714
-Version: webpack 1.12.9
-Time: 8200ms
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: 1a18381bce0dd20fe684
+Version: webpack 1.12.11
+Time: 8630ms
       Asset       Size  Chunks             Chunk Names
-     app.js    20.5 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+     app.js    20.7 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
   vendor.js     285 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
 manifest.js  743 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
- index.html  580 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 124 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-    + 332 hidden modules
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 112 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+    + 331 hidden modules
 </code></pre>
 <p>The situation is far better now. Note how small <code>app</code> bundle compared to the <code>vendor</code> bundle. In order to really benefit from this split, we should set up caching. This can be achieved by adding cache busting hashes to filenames.</p>
 <h3 class="header"><a class="header-anchor" href="#adding-hashes-to-filenames" id="adding-hashes-to-filenames"></a><span class="text">Adding Hashes to Filenames</span><a class="header-anchor-select" href="#adding-hashes-to-filenames">#</a></h3>
@@ -202,6 +213,7 @@ vendor.dc746a5db4ed650296e1.js
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Define entry points needed for splitting</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
     <span class="token punctuation" >}</span>
@@ -219,24 +231,94 @@ vendor.dc746a5db4ed650296e1.js
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>If you execute <code>npm run build</code> now, you should see output like this.</p>
-<pre><code class="lang-bash">Hash: 836f0043a232838b4e2f
-Version: webpack 1.12.9
-Time: 8377ms
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: 1bedf99d8ce4cab9ca1b
+Version: webpack 1.12.11
+Time: 9871ms
                            Asset       Size  Chunks             Chunk Names
-     app.02b56f8ecdac65f64c5c.js    20.5 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-  vendor.2c4fda887887a42ca52a.js     285 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-manifest.741647f686fbc5d0f1ab.js  763 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-                      index.html  643 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 124 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-    + 332 hidden modules
+     app.76f47b014429236ae8de.js    20.7 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+  vendor.8727ee8bd7a21ec7e1fb.js     285 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+manifest.3abf3112b70cde9b4d49.js  763 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 112 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+    + 331 hidden modules
 </code></pre>
 <p>Our files have neat hashes now. To prove that it works, you could try altering <em>app/index.jsx</em> and include a <code>console.log</code> there. After you build, only <code>app</code> and <code>manifest</code> related bundles should change.</p>
 <p>One more way to improve the build further would be to load popular dependencies, such as React, through a CDN. That would decrease the size of the vendor bundle even further while adding an external dependency on the project. The idea is that if the user has hit the CDN earlier, caching can kick in just like here.</p>
+<h2 class="header"><a class="header-anchor" href="#generating-index-html-through-html-webpack-plugin-" id="generating-index-html-through-html-webpack-plugin-"></a><span class="text">Generating <em>index.html</em> through <em>html-webpack-plugin</em></span><a class="header-anchor-select" href="#generating-index-html-through-html-webpack-plugin-">#</a></h2>
+<p>Even though we have fine bundles now, there&#39;s one problem. Our current <em>index.html</em> doesn&#39;t point to them correctly. We could write the script tags we need by hand, but fortunately there are better ways. One option would be to trigger Webpack through its <a href="https://webpack.github.io/docs/node.js-api.html">Node.js API</a>. The build output its API provides contains the asset names we need. After that we could apply those to some template.</p>
+<p>A good alternative is to use a Webpack plugin and a template that have been designed for this purpose. <a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a> and <a href="https://www.npmjs.com/package/html-webpack-template">html-webpack-template</a> work well together and can perform a lot of the heavy lifting for us. Install them first:</p>
+<pre><code class="lang-bash">npm i html-webpack-plugin html-webpack-template@3 --save-dev
+</code></pre>
+<p>In order to connect it with out project, we need to tweak the configuration a notch. While at it, get rid of <em>build/index.html</em> as we won&#39;t need that anymore. The system will generate it for us after this step:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'path'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack-merge'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<div class="leanpub-insert">
+<span class="token keyword" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'html-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-delete">
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
+<div class="leanpub-insert">
+  <span class="token punctuation" >}</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      template<span class="token punctuation" >:</span> <span class="token string" >'node_modules/html-webpack-template/index.html'</span><span class="token punctuation" >,</span>
+      title<span class="token punctuation" >:</span> <span class="token string" >'Kanban app'</span><span class="token punctuation" >,</span>
+      appMountId<span class="token punctuation" >:</span> <span class="token string" >'app'</span><span class="token punctuation" >,</span>
+      inject<span class="token punctuation" >:</span> <span class="token boolean" >false</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+  <span class="token punctuation" >]</span>
+</div>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'start'</span> <span class="token operator" >||</span> <span class="token operator" >!</span>TARGET<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    devtool<span class="token punctuation" >:</span> <span class="token string" >'eval-source-map'</span><span class="token punctuation" >,</span>
+    devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+      contentBase<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
+</div>
+
+      <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >]</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>If you trigger <code>npm run build</code> now, the output should include <em>index.html</em>:</p>
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: 1bedf99d8ce4cab9ca1b
+Version: webpack 1.12.11
+Time: 10203ms
+                           Asset       Size  Chunks             Chunk Names
+     app.76f47b014429236ae8de.js    20.7 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+  vendor.8727ee8bd7a21ec7e1fb.js     285 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+manifest.3abf3112b70cde9b4d49.js  763 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+                      index.html  643 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 112 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+    + 331 hidden modules
+</code></pre>
+<p>Even though this adds some configuration to our project, we don&#39;t have to worry about gluing things together now. If more flexibility is needed, it&#39;s possible to implement a custom template.</p>
 <h2 class="header"><a class="header-anchor" href="#cleaning-the-build" id="cleaning-the-build"></a><span class="text">Cleaning the Build</span><a class="header-anchor-select" href="#cleaning-the-build">#</a></h2>
-<p>Our current setup doesn&#39;t clean the <code>build</code> directory between builds. As this can get annoying if we change our setup, we can use a plugin to clean the directory for us. Execute</p>
+<p>Our current setup doesn&#39;t clean the <code>build</code> directory between builds. As this can get annoying if we change our setup, we can use a plugin to clean the directory for us. Install the plugin first:</p>
 <pre><code class="lang-bash">npm i clean-webpack-plugin --save-dev
 </code></pre>
-<p>to install the plugin. Change the build configuration as follows to integrate it:</p>
+<p>Change the build configuration as follows to integrate it:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <div class="leanpub-insert">
@@ -250,7 +332,9 @@ manifest.741647f686fbc5d0f1ab.js  763 bytes       2  <span class="token punctuat
     <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
     plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
 <div class="leanpub-insert">
-      <span class="token keyword" >new</span> <span class="token class-name" >Clean</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >Clean</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >]</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+        verbose<span class="token punctuation" >:</span> <span class="token boolean" >false</span> <span class="token comment" spellcheck="true">// Don't write logs to console</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
       <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
     <span class="token punctuation" >]</span>
@@ -348,7 +432,9 @@ manifest.741647f686fbc5d0f1ab.js  763 bytes       2  <span class="token punctuat
     <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </div>
     plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token keyword" >new</span> <span class="token class-name" >Clean</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span><span class="token string" >'build'</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >Clean</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >]</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+        verbose<span class="token punctuation" >:</span> <span class="token boolean" >false</span> <span class="token comment" spellcheck="true">// Don't write logs to console</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
       <span class="token comment" spellcheck="true">// Output extracted CSS to a file</span>
       <span class="token keyword" >new</span> <span class="token class-name" >ExtractTextPlugin</span><span class="token punctuation" >(</span><span class="token string" >'styles.[chunkhash].css'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
@@ -360,8 +446,10 @@ manifest.741647f686fbc5d0f1ab.js  763 bytes       2  <span class="token punctuat
 </code></pre>
 <p>Using this setup, we can still benefit from the HMR during development. For a production build, we generate a separate CSS. <code>html-webpack-plugin</code> will pick it up automatically and inject it into our <code>index.html</code>.</p>
 <blockquote class="warning">Definitions, such as <code>loaders: [ExtractTextPlugin.extract(&#39;style&#39;, &#39;css&#39;)]</code>, won&#39;t work and will cause the build to error instead! So when using <code>ExtractTextPlugin</code>, use the <code>loader</code> form instead.</blockquote><blockquote class="warning">If you want to pass more loaders to the <code>ExtractTextPlugin</code>, you should use <code>!</code> syntax. Example: <code>ExtractTextPlugin.extract(&#39;style&#39;, &#39;css!autoprefixer-loader&#39;)</code>.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
-<pre><code class="lang-bash">Hash: b6b87447300880b09594
-Version: webpack 1.12.9
+<pre><code class="lang-bash"><span class="token operator" >></span> webpack
+
+Hash: b6b87447300880b09594
+Version: webpack 1.12.11
 Time: 9250ms
                            Asset       Size  Chunks             Chunk Names
      app.ec1ff5633cd6145ca3d1.js    15.9 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
@@ -406,7 +494,7 @@ Child extract-text-webpack-plugin:
 </code></pre>
 <p>If you trigger <code>npm run stats</code> now, you should find <em>stats.json</em> at your project root after it has finished processing. We can take this file and pass it to <a href="http://webpack.github.io/analyse/">the online tool</a>. Note that the tool works only over HTTP! If your data is sensitive, consider using <a href="https://github.com/webpack/analyse">the standalone version</a> instead.</p>
 <p>Besides helping you to understand your bundle composition, the tool can help you to optimize your output further.</p>
-<h2 class="header"><a class="header-anchor" href="#deployment" id="deployment"></a><span class="text">Deployment</span><a class="header-anchor-select" href="#deployment">#</a></h2>
+<blockquote class="warning">If any Webpack plugin or loader logs something, it will most likely end up in the stats output! This is why we are setting <code>verbose: false</code> for the <code>Clean</code> plugin.</blockquote><h2 class="header"><a class="header-anchor" href="#deployment" id="deployment"></a><span class="text">Deployment</span><a class="header-anchor-select" href="#deployment">#</a></h2>
 <p>There&#39;s no one right way to deploy our application. <code>npm run build</code> provides us something static to host. If you drop that on a suitable server, it will just work. One neat way to deal with it for small demos is to piggyback on GitHub Pages.</p>
 <h3 class="header"><a class="header-anchor" href="#hosting-on-github-pages" id="hosting-on-github-pages"></a><span class="text">Hosting on GitHub Pages</span><a class="header-anchor-select" href="#hosting-on-github-pages">#</a></h3>
 <p>A package known as <a href="https://www.npmjs.com/package/gh-pages">gh-pages</a> allows us to achieve this easily. You point it to your build directory first. It will then pick up the contents and push them to the <code>gh-pages</code> branch. To get started, execute</p>
@@ -430,7 +518,7 @@ Child extract-text-webpack-plugin:
 <p>Beyond the features discussed, Webpack allows you to <a href="https://webpack.github.io/docs/code-splitting.html">lazy load</a> content through <code>require.ensure</code>. This is handy if you happen to have a specific dependency on some view and want to load it when you need it.</p>
 <p>Our Kanban application is now ready to be served. We went from a chunky build to a slim one. Even better the production version can benefit from caching and it is able to invalidate it.</p>
 <p>If you wanted to develop the project further, it could be a good idea to rethink the project structure. I&#39;ve discussed the topic in <em>Structuring React Projects</em> appendix. It can be beneficial to read the <em>Authoring Libraries</em> chapter for more ideas on how to improve the npm setup of your project.</p>
-</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/skydiving.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/advanced">Advanced Techniques</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/advanced" title="Advanced Techniques"></a><a class="previous-page" href="/webpack_react/implementing_dnd" title="Implementing Drag and Drop"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Building Kanban - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs200-rc2">SurviveJS - Webpack and React v2.0.0-rc2</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc1">SurviveJS - Webpack and React v2.0.0-rc1</a></li><li><a class="blog-teaser" href="/blog/codemod-interview">Codemod - Refactoring Code Programmatically - Interview with Ramana Venkata</a></li><li><a class="blog-teaser" href="/blog/2015-recap">2015 Recap</a></li><li><a class="blog-teaser" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></li><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li><a class="blog-teaser" href="/blog/survivejs1910">SurviveJS - Webpack and React v1.9.10</a></li></ul></div></div></footer><div><script type="text/javascript">
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="clear"><input type="submit" class="btn button" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/images/dnd.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack_react/implementing_dnd">Implementing Drag and Drop</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/images/skydiving.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack_react/advanced">Advanced Techniques</a></div></div><div id="disqus_thread"></div></div><a class="next-page" href="/webpack_react/advanced" title="Advanced Techniques"></a><a class="previous-page" href="/webpack_react/implementing_dnd" title="Implementing Drag and Drop"></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=Building Kanban - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs200-rc3">SurviveJS - Webpack and React v2.0.0-rc3</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc2">SurviveJS - Webpack and React v2.0.0-rc2</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc1">SurviveJS - Webpack and React v2.0.0-rc1</a></li><li><a class="blog-teaser" href="/blog/codemod-interview">Codemod - Refactoring Code Programmatically - Interview with Ramana Venkata</a></li><li><a class="blog-teaser" href="/blog/2015-recap">2015 Recap</a></li><li><a class="blog-teaser" href="/blog/survivejs200-beta2">SurviveJS - Webpack and React v2.0.0-beta2</a></li><li><a class="blog-teaser" href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li><a class="blog-teaser" href="/blog/survivejs1915">SurviveJS - Webpack and React v1.9.15</a></li><li><a class="blog-teaser" href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li><a class="blog-teaser" href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li></ul></div></div></footer><div><script type="text/javascript">
           ((window.gitter = {}).chat = {}).options = {
             room: 'survivejs/webpack_react'
           };
