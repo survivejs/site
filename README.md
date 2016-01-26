@@ -24,10 +24,7 @@ Now going back to the `site` project, you need to install the dependencies:
 
 ```
 $ npm install
-$ npm install -g antwar-cli
 ```
-
-**NOTE**: There's some glitch in Antwar preventing it to work locally so it has to go this way.
 
 Finally, you can start the development server:
 
