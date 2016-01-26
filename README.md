@@ -1,6 +1,6 @@
 # SurviveJS - Site
 
-This is the source of [survivejs.com](survivejs.com).
+This is the source of [http://survivejs.com/](survivejs.com).
 
 ## Development
 
