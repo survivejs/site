@@ -47,7 +47,7 @@ It is hard to underestimate the importance of a good mailing list. It is an amaz
 
 ### Control over Output
 
-You can get output similar to Leanpub through something like [Gitbook](https://www.gitbook.com/). If you have the skills for that, you can customize the result as you want. You can sell the result through Gumroad, DPD and such. You will get more control over the sales process and can set up the sales funnel just the way you want it. I believe growing your mailing list becomes easier this way.
+You can get output similar to Leanpub through something like [Gitbook](https://www.gitbook.com/). If you have the skills for that, you can customize the result as you want. You can sell the result through Gumroad, DPD, and such. You will get more control over the sales process and can set up the sales funnel just the way you want it. I believe growing your mailing list becomes easier this way.
 
 ### Benefits of a Proxy
 
@@ -55,7 +55,7 @@ I feel selling is one of the smallest problems, especially if you go through a p
 
 ### Going Dead Tree and Beyond
 
-Note that services like [Lulu](https://www.lulu.com/) allow you to get actual dead tree books done. The obvious disadvantage of this is that it becomes difficult to push updates. Lulu also gives access to major digital bookshops, such as Amazon, B&N and iBooks. This means you'll need to have your book content fixed apart from grammatical fixes, though, as these platforms expect your book has an ISBN.
+Note that services like [Lulu](https://www.lulu.com/) allow you to get actual dead tree books done. The obvious disadvantage of this is that it becomes difficult to push updates. Lulu also gives access to major digital bookshops, such as Amazon, B&N, and iBooks. This means you'll need to have your book content fixed apart from grammatical fixes, though, as these platforms expect your book has an ISBN.
 
 ## Potential Benefits
 
@@ -67,7 +67,7 @@ Having a book in your CV doesn't hurt either. The next time I do a round of inte
 
 ## What Would I Do Differently?
 
-Just like with software projects the easiest thing to mess up is scoping. It's difficult to estimate how long getting things done actually takes. This is exacerbated by the fact that as a first time author you don't have a frame of reference. Based on this experience I would say it's better to aim for a short guide, say 30-50 pages, rather than shoot for the moon on the first go.
+Just like with software projects the easiest thing to mess up is scoping. It's difficult to estimate how long getting things done actually takes. This is exacerbated by the fact that as a first time author you don't have a frame of reference. Based on this experience I would say it's better to aim for a short guide, say 30-50 pages, rather than shoot for the moon from the first go.
 
 It is easier to expand than to cut down. Go for a short, quality book rather than something long and shoddy. Your readers will thank you.
 
