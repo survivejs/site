@@ -60,7 +60,7 @@ There are proposals that would allow you to write [stateful functions](https://g
 
 Even though you cannot do absolutely everything with function based components, they allow you to achieve quite much! I believe adopting the core ideas would allow larger scale sharing of components between libraries. Currently solutions like Deku or Cycle feel like islands of their own compared to the continent of React. Building bridges wouldn't hurt.
 
-> There have been interesting developments in the React world itself. Libraries, such as [raect-lite](https://github.com/Lucifier129/react-lite) and [Preact](https://developit.github.io/preact/), provide much lighter ways to achieve the same results as using vanilla React might.
+> There have been interesting developments in the React world itself. Libraries, such as [react-lite](https://github.com/Lucifier129/react-lite) and [Preact](https://developit.github.io/preact/), provide much lighter ways to achieve the same results as using vanilla React might.
 
 ## Conclusion
 
