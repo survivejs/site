@@ -5,7 +5,6 @@
 Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly. Combined with [webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands.
 </p>
 
-
 *SurviveJS - Webpack and React* shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29) application based on these technologies as shown below:
 
 <p>
@@ -80,6 +79,13 @@ Webpack is powerful but configuring it can be painful. Same goes with React. The
 <p>
 <img src='assets/img/testimonials/omar.jpg' alt='Omar van Galen' class='testimonial-photo' width='100' height='100' />
 Setting up a cutting-edge frontend development environment with React takes time. What sets SurviveJS aside is that it does not only show you exactly how to do it, it evolves, preventing JS fatigue, hence the name.
+</p>
+
+### Phil Ledgerwood ([Integrity Inspired Solutions](http://www.integrityinspired.com/))
+
+<p>
+<img src='assets/img/testimonials/phil.jpg' alt='Phil Ledgerwood' class='testimonial-photo' width='100' height='100' />
+I originally got this book to learn React, but I found quickly that the instruction on Webpack alone was worth the price of admission. I have followed this book's iteration from very early on, and it gets better every time. It is very useful, and to this day I keep going back to it as a good way to get new projects up and running.
 </p>
 
 <blockquote class="tip">If you want to stay up to date when it comes to SurviveJS, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">blog RSS</a> available for old beards (no pun intended).</blockquote>
