@@ -15,7 +15,7 @@ During the process you will learn to:
 
 0. Set up a Webpack based development and production environment. You will learn to get most out of [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform) and [Babel](https://babeljs.io/) for development.
 0. Improve the quality of your code by using [ESLint](http://eslint.org/) and friends to spot possible mistakes earlier.
-0. Get into the React mindset while learning the basics of [Alt](http://alt.js.org/), an implementation of [Flux Application Architecture](https://facebook.github.io/flux/docs/overview.html).
+0. Get into the React mindset while learning the basics of [Alt](http://alt.js.org/), an implementation of the [Flux Application Architecture](https://facebook.github.io/flux/docs/overview.html).
 0. Style your React application in various emerging ways.
 0. Implement drag and drop for your application using [React DnD](https://gaearon.github.io/react-dnd/).
 
