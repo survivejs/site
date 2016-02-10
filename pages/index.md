@@ -78,7 +78,7 @@ Webpack is powerful but configuring it can be painful. Same goes with React. The
 
 <p>
 <img src='assets/img/testimonials/omar.jpg' alt='Omar van Galen' class='testimonial-photo' width='100' height='100' />
-Setting up a cutting-edge frontend development environment with React takes time. What sets SurviveJS aside is that it does not only show you exactly how to do it, it evolves, preventing JS fatigue, hence the name.
+Setting up a cutting-edge frontend development environment with React takes time. What sets SurviveJS apart is that it does not only show you exactly how to do it, it evolves, preventing JS fatigue, hence the name.
 </p>
 
 ### Phil Ledgerwood ([Integrity Inspired Solutions](http://www.integrityinspired.com/))
