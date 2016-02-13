@@ -217,6 +217,8 @@ function webpackReact() {
         ret.push(result);
       });
 
+      ret.reverse();
+
       return ret;
     },
     inject: function(files) {
@@ -225,7 +227,7 @@ function webpackReact() {
 
       return files.map(function(o, i) {
         var file = o.file;
-        var header = headers[i];
+        var header = headers[files.length - i - 1];
         var resourceName = './' + o.name.split('.')[0] + '.json';
         var resources = reqResource(resourceName);
 

@@ -32,7 +32,7 @@ module.exports = React.createClass({
 
         <div className="toc-nav__wrapper">
           <h4 className="toc-nav--header">Table of Contents</h4>
-          <Toc sectionPages={section.pages} page={page} />
+          <Toc sectionPages={() => section.pages().reverse()} page={page} />
           {this.renderResources(resources)}
         </div>
 
