@@ -13,9 +13,9 @@ module.exports = React.createClass({
         }
 
         return (
-            <blockquote className='front__latestpost tip'>
+            <blockquote className='latestpost tip'>
                 <div>From the blog:</div>
-                <a className='front__latestpost-link' href={`/${post.url}`}>
+                <a className='latestpost-link' href={`/${post.url}`}>
                     {post.title}
                 </a>
             </blockquote>
