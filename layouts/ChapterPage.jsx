@@ -110,12 +110,16 @@ module.exports = React.createClass({
   },
   renderNext(item) {
     return item.next ?
-      <a className="next-page" href={`/${item.next.url}`} title={item.next.title} /> :
+      <a className="next-page" href={`/${item.next.url}`} title={item.next.title}>
+        <i className="icon-right-open" />
+      </a> :
       null;
   },
   renderPrev(item) {
     return item.prev ?
-      <a className="previous-page" href={`/${item.prev.url}`} title={item.prev.title} /> :
+      <a className="previous-page" href={`/${item.prev.url}`} title={item.prev.title}>
+        <i className="icon-left-open" />
+      </a> :
       null;
   }
 });
