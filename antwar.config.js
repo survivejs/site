@@ -81,7 +81,6 @@ module.exports = {
     return require('./layouts/Body.jsx');
   },
   style: function() {
-    require('antwar-default-theme/scss/main.scss');
     require('./styles/custom.scss');
     require('./styles/prism.css');
     require('./styles/fontello.css');
