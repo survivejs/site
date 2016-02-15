@@ -15,10 +15,17 @@ $line-height: 3px;
 .nav {
   flex-direction: row;
   background: linear-gradient(to top, #fff 0%, #fff 35%, rgba(#fff, 0) 100%);
-  z-index: 5;
   width: 100%;
   justify-content: center;
-  padding-top: $base-spacing-unit * 2;
+
+  padding: 0;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  position: fixed;
+  background: white;
+  z-index: 1000;
+
   @include layer;
   @include media-query(palm) {
     transform: translateY(-100%);
@@ -107,5 +114,16 @@ $line-height: 3px;
   }
   @include media-query(palm) {
     display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  .nav {
+    padding-top: 0.5em;
+  }
+
+  .nav__wrapper {
+    z-index: 1000;
+    background: white;
   }
 }
