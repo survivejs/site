@@ -39,7 +39,7 @@ You can see GitHub for [all changes](https://github.com/survivejs/webpack_react/
 
 ### Implementing a Basic Note Application
 
-* Added warning mentioning that hot loading isn't fool proof. It's at its best if you can push your state to a state container such as [redux](https://rackt.github.io/redux/).
+* Added warning mentioning that hot loading isn't fool proof. It's at its best if you can push your state to a state container such as [redux](http://redux.js.org/).
 * Changed `key` to use `id` directly. The ids are unique so why not.
 * Explained [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) in greater detail.
 

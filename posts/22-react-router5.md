@@ -4,7 +4,7 @@ date: 2015-11-09
 headerImage: '/assets/img/route.jpg'
 ---
 
-When people ask about what routing solution to use with React, they often get pointed at [react-router](https://github.com/rackt/react-router). It is a powerful solution and used by many so it can make sense. That doesn't mean it's the only alternative, though.
+When people ask about what routing solution to use with React, they often get pointed at [react-router](https://github.com/reactjs/react-router). It is a powerful solution and used by many so it can make sense. That doesn't mean it's the only alternative, though.
 
 This time I'm interviewing Thomas Roch, the author of [react-router5](https://github.com/router5/react-router5). It provides React bindings for [router5](https://router5.github.io/), a generic routing solution he has developed. Read on to learn more about this interesting alternative.
 

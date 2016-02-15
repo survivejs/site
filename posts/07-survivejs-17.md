@@ -60,7 +60,7 @@ For this to happen we'll need to lock the scope of the book. This is due to ISBN
 
 ### But There's More Technology to Cover
 
-I know interesting new technology, such as [redux](https://github.com/rackt/redux), keeps on coming out all the time. The problem is that if I keep on changing the newest cool thing I will never get a stable version out. It is far better idea to lock the scope and cover the interesting things through the blog.
+I know interesting new technology, such as [redux](http://redux.js.org/), keeps on coming out all the time. The problem is that if I keep on changing the newest cool thing I will never get a stable version out. It is far better idea to lock the scope and cover the interesting things through the blog.
 
 This gives me a more flexible way to try out various ideas before committing them to a book. It also helps to give the current work some visibility it sorely needs.
 

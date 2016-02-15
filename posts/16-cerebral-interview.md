@@ -78,7 +78,7 @@ Let's say you have an “isLoading” state.  You use that state in your views t
 
 I am going a bit off trail here! What I want to emphasize here is that addressbar lowers the threshold for developers. The threshold to explore urls in new ways. Creating new experiences and evolve urls to mean something more. Not just “what view to display”, but for example “what signal to trigger” like the Cerebral-Router.
 
-## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [mobservable](https://mweststrate.github.io/mobservable/) or [redux](https://rackt.github.io/redux/)?
+## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [mobservable](https://mweststrate.github.io/mobservable/) or [redux](http://redux.js.org/)?
 
 So I think a lot of innovation lately has been improving stores in Flux. It can be a bit difficult to reason about them. Projects like Mobservable and Redux do exactly this. They make it easier to reason about how to store state. It is amazing to see how much attention Redux has gotten. The community is enthusiastic and contributes a lot with their own ideas. Kudos to Dan for inspiring so many developers and handling it so well!
 

@@ -6,7 +6,7 @@ headerImage: '/assets/img/ducks.jpg'
 
 I remember seeing these strange `webpack.config.js` files in JavaScript projects for a long time. I didn’t give [Webpack](https://webpack.github.io/) a good look until the promise of hot loading with React drew me in. [Dan Abramov](https://twitter.com/dan_abramov)’s [React Hot Loader](https://github.com/gaearon/react-hot-loader) was life changing for me.
 
-Besides React Hot Loader, Dan is behind well-known projects such as [React DnD](https://gaearon.github.io/react-dnd/) and [Redux](https://rackt.github.io/redux/). Redux in particular has begun to make waves across the community even though it’s a young project. Compared to earlier [Flux](https://facebook.github.io/flux/docs/overview.html) inspired implementations it is particularly small (~2k) yet powerful.
+Besides React Hot Loader, Dan is behind well-known projects such as [React DnD](https://gaearon.github.io/react-dnd/) and [Redux](http://redux.js.org/). Redux in particular has begun to make waves across the community even though it’s a young project. Compared to earlier [Flux](https://facebook.github.io/flux/docs/overview.html) inspired implementations it is particularly small (~2k) yet powerful.
 
 ## How did you discover React? Can you provide a bit of background?
 
