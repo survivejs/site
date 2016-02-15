@@ -2,7 +2,7 @@
 
 <p>
 <img src="assets/img/react.png" alt="React" class="react-image" width="200" height="200" />
-Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly. Combined with [webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands.
+Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly. Combined with [Webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands.
 </p>
 
 *SurviveJS - Webpack and React* shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29) application based on these technologies as shown below:
