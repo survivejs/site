@@ -14,7 +14,7 @@ The goal of this release was to produce something worth publishing in a paper fo
 
 I feel this conscious effort towards a paperback contributed to the book in a nice way. It's not the perfect book and I am absolutely certain it's not everyone's cup of coffee. All I can hope is that someone finds it valuable and worth paying for.
 
-The 2.0 version of the book is now available through [CreateSpace](https://www.createspace.com/6052981). It will appear to Amazon and Kindle during this week.
+The 2.0 version of the book is now available through [Amazon](http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/)
 
 I want to thank you, my readers, for providing an ample amount of feedback. It is one of those things that keeps me going. As a result, all of us learn in the process. I hope we can continue this fruitful collaboration for a long while.
 
