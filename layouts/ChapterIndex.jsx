@@ -12,7 +12,7 @@ export default React.createClass({
       <div className="grid">
         <h1>{section.title}</h1>
 
-        <ul className="post-list">{_.map(section.pages(), (page, i) => {
+        <ul className="post-list">{_.map(section.pages().reverse(), (page, i) => {
           return (
             <li key={`post-list-item-${i}`}>
               <h3 className="post-list__heading">
