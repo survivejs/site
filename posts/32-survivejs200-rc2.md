@@ -1,5 +1,5 @@
 ---
-title: 'SurviveJS - Webpack and React v2.0.0-rc2'
+title: 'SurviveJS - Webpack and React - v2.0.0-rc2'
 date: 2016-01-10
 headerImage: '/assets/img/winter_sun2.jpg'
 ---

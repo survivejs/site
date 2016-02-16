@@ -1,5 +1,5 @@
 ---
-title: 'SurviveJS - Webpack and React v1.7.5'
+title: 'SurviveJS - Webpack and React - v1.7.5'
 date: 2015-08-30
 headerImage: '/assets/img/mushrooms2.jpg'
 ---
