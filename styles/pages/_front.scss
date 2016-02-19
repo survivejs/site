@@ -1,7 +1,5 @@
 .frontpage {
   .front__buttons {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -30,7 +28,7 @@
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
 
     .btn--buy {
-      margin-bottom: 0.5em;
+      padding: 1em;
 
       color: black;
       background-color: rgba(255, 255, 255, 0.9);
@@ -38,12 +36,17 @@
         background-color: white;
       }
     }
+
+    .read-free {
+      margin-top: 0.5em;
+    }
   }
 
   .front-header-wrapper {
     margin-top: 6em;
     margin-bottom: 2em;
     margin-right: 6em;
+    margin-left: 4em;
 
     h1 {
       color: darken($action-color, 30%);
@@ -70,7 +73,7 @@
   }
 
   .front-header {
-    margin-top: 0;
+    margin-top: 1em;
     margin-bottom: 0;
   }
 
@@ -102,13 +105,6 @@
     height: initial;
   }
 
-  .front-cover {
-    width: 255px;
-    box-shadow: 0 0.5em 1em 0.02em rgba(0,0,0,0.5);
-    margin: 0 auto;
-    margin-bottom: -4em;
-  }
-
   .post--front {
     max-width: 100%;
     width: auto;
@@ -124,21 +120,41 @@
     height: auto;
   }
 
-  @media screen and (min-width: 1150px) {
-    .front-cover {
-      margin-top: 1em;
-    }
+  .post--front {
+    overflow: auto;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .post--front, .front-heading-content-wrapper {
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+  .post__content {
+    margin: 0;
+    max-width: 600px;
 
-    .post--front {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-    .post__content {
-      margin-right: 2em;
-    }
+    float: left;
+  }
+  .front-header-wrapper {
+    float: left;
+  }
+  .post__sidebar {
+    float: right;
+  }
+
+  .front-cover {
+    float: left;
+
+    margin-left: 2em;
+    margin-top: 5em;
+
+    width: 255px;
+    box-shadow: 0 0.5em 1em 0.02em rgba(0,0,0,0.5);
+  }
+
+  @media screen and (min-width: 1150px) {
     .post__sidebar {
       max-width: 250px;
-      flex: 1 0 250px;
       font-size: 80%;
 
       ul > li:before {
@@ -147,14 +163,10 @@
     }
   }
 
-  .front-cover-wrapper {
-    vertical-align: middle;
-
-    @include media-query(portable) {
-      /* XXX */
-      .front-cover {
-        display: none;
-      }
+  @include media-query(portable) {
+    /* XXX */
+    .front-cover {
+      display: none;
     }
   }
 

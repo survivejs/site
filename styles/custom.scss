@@ -18,10 +18,6 @@ pre code {
 }
 
 footer .footer-wrapper {
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-
   background: #fafafa;
   background-image: url('/assets/img/dust.png');
 
@@ -102,13 +98,6 @@ footer .footer-wrapper {
 
 /* chapters */
 .chapter__wrapper {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-
   margin-top: 78vh;
 
   .toc-nav__wrapper {
@@ -172,13 +161,6 @@ footer .footer-wrapper {
 @media screen and (min-width: 1150px) {
   .post__heading {
     font-size: 54px;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .chapter__wrapper {
-    -webkit-flex-direction: column;
-    flex-direction: column;
   }
 }
 
@@ -257,16 +239,6 @@ footer .footer-wrapper {
     padding: 0;
   }
 
-  .post__content, .post__content h1,.post__content h2, .post__content h3, .post__content h4,
-  .post__content h5, .post__content h6, .post__content p, .post__content ol,
-  .post__content ul, .post__content div, .post__content pre {
-    margin: 0;
-    margin-bottom: 0.5em;
-    max-width: 100%;
-    width: 100%; /* cannot be in pixels as otherwise max-width fails!!! */
-  }
-
-  /* XXX */
   #disqus_thread {
     margin: 1em;
   }
@@ -316,24 +288,11 @@ blockquote {
   }
 }
 
-// blog tweaks
-.post__author {
-  flex-direction: row;
-}
-
-// XXX: hot fix
-.post__content {
-  max-width: 600px;
-}
-
 /* new prevnext - TODO: push elsewhere */
 .new-prevnext {
   min-height: 4em;
 
   letter-spacing: 1px;
-
-  display: flex;
-  flex-direction: row;
 
   .new-prevnext__bg {
       height: 100%;
@@ -350,8 +309,6 @@ blockquote {
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-direction: row;
-    flex-grow: 1;
   }
   .new-prevnext__bg {
     position: absolute;
@@ -385,9 +342,4 @@ blockquote {
 .leanpub-delete {
   display: inline-block;
   text-decoration: line-through;
-}
-
-// XXX: fix button positioning
-.gitter-chat-embed-action-bar {
-  flex-direction: row;
 }

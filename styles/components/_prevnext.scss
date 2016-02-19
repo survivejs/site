@@ -1,15 +1,10 @@
 .prevnext {
-  display: flex;
   width: 100%;
-  flex-direction: row;
   justify-content: space-between;
   margin: $base-spacing-unit * 2 0 0;
   left: 0;
   position: absolute;
   z-index: 200;
-  @include media-query(palm) {
-    flex-direction: row;
-  }
 }
 
 .prevnext__next,
@@ -19,13 +14,11 @@
   color: #fff;
   font-family: $heading-font;
   padding: $base-spacing-unit;
-  flex-direction: column;
   align-content: center;
   justify-content: center;
   align-items: center;
   text-align: center;
   height: $base-spacing-unit * 12;
-  flex-grow: 1;
   @include media-query(palm) {
     width: 100vw;
   }
@@ -50,9 +43,6 @@
   color: #fff;
   font-weight: $fat;
   z-index: 1;
-}
-.prevnext__next {
-  // flex-grow: 2;
 }
 
 /* XXX: simplify by altering html structure? */
