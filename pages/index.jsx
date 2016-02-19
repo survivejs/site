@@ -8,13 +8,7 @@ var Index = React.createClass({
 
     return (
       <div className='frontpage'>
-        <div className='front__heading' style={{
-          backgroundSize: 'cover',
-          backgroundImage: 'url(/assets/img/front.jpg)',
-          backgroundPosition: '0px 42%',
-          width: '100%',
-          flexDirection: 'row',
-        }}>
+        <div className='front__heading'>
           <div className='front-header-wrapper'>
             <h1 className='front-header'>Learn Webpack and React</h1>
             <h3 className='front-motto'>SurviveJS will take you from</h3>
