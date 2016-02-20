@@ -47,9 +47,9 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
 <p><a href="http://eslint.org/">ESLint</a> is a recent linting solution for JavaScript. It builds on top of ideas presented by JSLint and JSHint. More importantly it allows you to develop custom rules. As a result, a nice set of rules have been developed for React in the form of <a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a>.</p>
 <blockquote class="tip">Since <em>v1.4.0</em> ESLint supports a feature known as <a href="http://eslint.org/blog/2015/09/eslint-v1.4.0-released/">autofixing</a>. It allows you to perform certain rule fixes automatically. To activate it, pass the flag <code>--fix</code> to the tool.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-eslint-with-package-json-" id="connecting-eslint-with-package-json-"></a><span class="text">Connecting ESlint with <em>package.json</em></span><a class="header-anchor-select" href="#connecting-eslint-with-package-json-">#</a></h3>
 <p>In order to integrate ESLint with our project, we&#39;ll need to do a couple of little tweaks. First we&#39;ll need to execute</p>
-<pre><code class="lang-bash">npm i babel-eslint eslint eslint-plugin-react --save-dev
+<pre><code class="lang-bash">npm i eslint eslint-plugin-react --save-dev
 </code></pre>
-<p>This will add ESLint and the plugin we want to use as our project development dependencies. <em>babel-eslint</em> allows us to use Babel specific language features with ESLint. Next, we&#39;ll need to do some configuration:</p>
+<p>This will add ESLint and the plugin we want to use as our project development dependencies. Next, we&#39;ll need to do some configuration:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
   ...
@@ -62,11 +62,17 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
 <pre><code class="lang-bash">build/
 </code></pre>
 <blockquote class="tip">ESLint supports custom formatters through <code>--format</code> parameter. <a href="https://www.npmjs.com/package/eslint-friendly-formatter">eslint-friendly-formatter</a> is an example of a formatter that provides terminal friendly output. This way you can jump conveniently straight to the warnings and errors from there.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-eslint-with-babel" id="connecting-eslint-with-babel"></a><span class="text">Connecting ESLint with Babel</span><a class="header-anchor-select" href="#connecting-eslint-with-babel">#</a></h3>
-<p>Next, we&#39;ll need to activate <a href="https://www.npmjs.com/package/babel-eslint">babel-eslint</a> so that ESLint works with our Babel code. In addition, we need to activate React specific rules and set up a couple of our own. You can adjust these to your liking. For details see the official <a href="http://eslint.org/docs/rules/">ESLint rules documentation</a>. Note that we are extending the recommended set of rules through the <code>extends</code> field:</p>
+<p>Next, we need to activate ES6 parsing, a couple React specific rules and set up a few of our own. You can adjust these to your liking. For details see the official <a href="http://eslint.org/docs/rules/">ESLint rules documentation</a>. Note that we are extending the recommended set of rules through the <code>extends</code> field:</p>
 <p><strong>.eslintrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
   <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"eslint:recommended"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"parser"</span><span class="token operator" >:</span> <span class="token string" >"babel-eslint"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"parserOptions"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"ecmaVersion"</span><span class="token operator" >:</span> <span class="token number" >6</span><span class="token punctuation" >,</span>
+    <span class="token property" >"ecmaFeatures"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+      <span class="token property" >"jsx"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    <span class="token property" >"sourceType"</span><span class="token operator" >:</span> <span class="token string" >"module"</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
     <span class="token property" >"browser"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
     <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
