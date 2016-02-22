@@ -11,7 +11,11 @@ Facebook's [React](https://facebook.github.io/react/) powers an increasing amoun
 <img src="assets/img/kanban.gif" alt="Kanban animation" class="kanban-animation" width="594" height="279" />
 </p>
 
-During the process you will learn to:
+<blockquote class="tip">
+Psst. <a href="/demos/08_building_kanban/" target="_blank">You can try out the application online.</a>
+</blockquote>
+
+By reading this book you will learn to:
 
 0. Set up a Webpack based development and production environment. You will learn to get most out of [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform) and [Babel](https://babeljs.io/) for development.
 0. Improve the quality of your code by using [ESLint](http://eslint.org/) and friends to spot possible mistakes earlier.
@@ -19,9 +23,9 @@ During the process you will learn to:
 0. Style your React application in various emerging ways.
 0. Implement drag and drop for your application using [React DnD](https://gaearon.github.io/react-dnd/).
 
-### Leanpub exclusives
+### Leanpub/Amazon exclusives
 
-In addition, if you buy the Leanpub version you will get access to exclusive chapters that show you how to:
+In addition, if you buy the Leanpub or Amazon version you will get access to exclusive chapters that show you how to:
 
 0. Deal with typing in React.
 0. Test your React application in various ways.
@@ -35,10 +39,6 @@ By buying the book, you will support my efforts and allow me to develop more con
 Please check out [the online version](webpack_react/introduction) of the book to get started! The book source is available through [GitHub](https://github.com/survivejs/webpack_react).
 
 The book is freely available under [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/) license. You can support creation of new content by [purchasing a digital copy of the book](https://leanpub.com/survivejs_webpack).
-
-<blockquote class="tip">
-Psst. <a href="/demos/08_building_kanban/" target="_blank">You can try out the application online.</a>
-</blockquote>
 
 ## What are the prerequisites?
 
