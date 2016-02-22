@@ -1,5 +1,6 @@
 var React = require('react');
 var LatestPost = require('../components/LatestPost.jsx');
+var Testimonial = require('../components/Testimonial.jsx');
 
 var Index = React.createClass({
   displayName: 'Index',
@@ -29,6 +30,43 @@ var Index = React.createClass({
             <img className='front-cover' src='images/title_page_small.png' width='255' height='329' />
           </div>
         </div>
+        <div className='front__testimonials'>
+          <Testimonial
+            text='This is the most useful book I’ve read this year. Apart from React itself it gives you a headstart into Webpack which is gaining traction as the weapon of choice for deploying Javascript apps and Flux architecture pattern. Well-written, full of annotated code, what’s not to like? Yes, I would recommend it to a friend.'
+            image={require('../assets/img/testimonials/nick.jpg')}
+            name='Nick Ostrovsky'
+            url='http://firedev.com/'
+            />
+
+          <Testimonial
+            text='SurviveJS connects the dots and fills the gaps left by the latest JavaScript tools and their documentation. With its detailed step-by-step tutorial approach, SurviveJS gives practical examples of code and configuration while providing context for choosing one method over another.'
+            image={require('../assets/img/testimonials/steve.jpg')}
+            name='Steve Piercy'
+            url='http://www.StevePiercy.com'
+            />
+
+          <Testimonial
+            text='Webpack is powerful but configuring it can be painful. Same goes with React. There are so many ways of configuring React with asset compilation, minification etc that it is easy to get lost. This book provides practical tips on how to get configure Webpack to make it work with React and other modern JavaScript tools like Babel.'
+            image={require('../assets/img/testimonials/raj.jpg')}
+            name='Neeraj Singh (Founder of BigBinary)'
+            url='http://bigbinary.com/'
+            />
+
+          <Testimonial
+            text='Setting up a cutting-edge frontend development environment with React takes time. What sets SurviveJS apart is that it does not only show you exactly how to do it, it evolves, preventing JS fatigue, hence the name.'
+            image={require('../assets/img/testimonials/omar.jpg')}
+            name='Omar van Galen (Intrasoft)'
+            url='http://www.intrasoft.nl/'
+            />
+
+          <Testimonial
+            text="I originally got this book to learn React, but I found quickly that the instruction on Webpack alone was worth the price of admission. I have followed this book's iteration from very early on, and it gets better every time. It is very useful, and to this day I keep going back to it as a good way to get new projects up and running."
+            image={require('../assets/img/testimonials/phil.jpg')}
+            name='Phil Ledgerwood (Integrity Inspired Solutions)'
+            url='http://www.integrityinspired.com/'
+            />
+        </div>
+
         <div className='post post--front'>
           <section className='post__content'>
             <LatestPost sectionPages={section.pages} />
