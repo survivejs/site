@@ -1,6 +1,7 @@
-<div class='front-cover-wrapper'>
-  <img class='front-cover' src='images/title_page_small.png' width='255' height='329' />
-</div>
+<p>
+<a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>
+<a class='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/'>Buy at Amazon</a>
+</p>
 
 * 45 day money back guarantee
 * 250+ pages (pdf/epub/mobi)
@@ -8,11 +9,6 @@
 * Future updates for free
 * Digital version - min. $19.99 + VAT
 * Paperback - $29.99
-
-<p>
-<a class='btn btn--normal' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>
-<a class='btn btn--normal' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/'>Buy at Amazon</a>
-</p>
 
 ## About Author
 

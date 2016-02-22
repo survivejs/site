@@ -18,29 +18,40 @@ pre code {
 }
 
 footer .footer-wrapper {
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-
   background: #fafafa;
   background-image: url('/assets/img/dust.png');
+  overflow: auto;
 
-  > * {
-    margin: 1em;
-    padding: 1em;
+  padding-bottom: 1em;
 
-    max-width: 100%;
+  .footer-content-wrapper {
+    margin: 0 auto;
+    width: 75%;
+  }
+  @include media-query(portable) {
+    .footer-content-wrapper {
+      width: 100%;
+    }
   }
 
   .footer-social {
+    float: left;
+
+    margin-left: 2em;
+
     ul {
-        margin: auto;
+      margin: auto;
     }
   }
 
   .footer-blog {
+    float: left;
+    max-width: 75%;
+
+    margin-left: 2em;
+
     ul {
-        margin: auto;
+      margin: auto;
     }
   }
 }
@@ -51,6 +62,10 @@ footer .footer-wrapper {
 .header-image + .post__heading {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.post {
+  margin: 0 auto;
 }
 
 /* make sure post content isn't centered (probably should remove that default) */
@@ -102,16 +117,11 @@ footer .footer-wrapper {
 
 /* chapters */
 .chapter__wrapper {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-
   margin-top: 78vh;
 
   .toc-nav__wrapper {
+    float: left;
+
     margin: 1em;
     padding: 0.5em;
 
@@ -137,6 +147,7 @@ footer .footer-wrapper {
 
   .chapter {
     max-width: 700px;
+    margin: 0 auto;
 
     .post__meta {
       background: rgba(0,0,0,0.01);
@@ -152,6 +163,13 @@ footer .footer-wrapper {
     .post__content {
       /* XXX: force min height to avoid cropping with the footer. not ideal */
       min-height: 150%;
+    }
+  }
+
+  @include media-query(portable) {
+    .toc-nav__wrapper {
+      float: inherit;
+      max-width: 100%;
     }
   }
 }
@@ -172,13 +190,6 @@ footer .footer-wrapper {
 @media screen and (min-width: 1150px) {
   .post__heading {
     font-size: 54px;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .chapter__wrapper {
-    -webkit-flex-direction: column;
-    flex-direction: column;
   }
 }
 
@@ -253,24 +264,10 @@ footer .footer-wrapper {
     border: none;
   }
 
-  .frontpage, .frontpage .post.post--front {
-    max-width: 100%;
-  }
-
   .chapter-content {
     padding: 0;
   }
 
-  .post__content, .post__content h1,.post__content h2, .post__content h3, .post__content h4,
-  .post__content h5, .post__content h6, .post__content p, .post__content ol,
-  .post__content ul, .post__content div, .post__content pre {
-    margin: 0;
-    margin-bottom: 0.5em;
-    max-width: 100%;
-    width: 100%; /* cannot be in pixels as otherwise max-width fails!!! */
-  }
-
-  /* XXX */
   #disqus_thread {
     margin: 1em;
   }
@@ -320,29 +317,12 @@ blockquote {
   }
 }
 
-// blog tweaks
-.post__author {
-  flex-direction: row;
-}
-
-// XXX: hot fix
-.post__content {
-  max-width: 600px;
-}
-
-/* XXXXX: make lower resolutions work at ff */
-.post--front > *, .post__content > * {
-  display: inline-block;
-}
-
 /* new prevnext - TODO: push elsewhere */
 .new-prevnext {
   min-height: 4em;
+  margin-bottom: 1em;
 
   letter-spacing: 1px;
-
-  display: flex;
-  flex-direction: row;
 
   .new-prevnext__bg {
       height: 100%;
@@ -350,8 +330,13 @@ blockquote {
 
   .new-prevnext__next,
   .new-prevnext__prev {
+    vertical-align: top;
+    display: inline-block;
     position: relative;
+
     width: 50%;
+    height: 10em;
+
     color: #fff;
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
     padding: 27px;
@@ -359,8 +344,6 @@ blockquote {
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-direction: row;
-    flex-grow: 1;
   }
   .new-prevnext__bg {
     position: absolute;
@@ -374,10 +357,21 @@ blockquote {
     z-index: 0;
     filter: brightness(0.4);
   }
+  .new-prevnext__info {
+    display: block;
+  }
   .new-prevnext__info, .new-prevnext__link {
+    position: relative;
     z-index: 1;
 
     padding: 0.5em;
+  }
+
+  @include media-query(portable) {
+    .new-prevnext__next,
+    .new-prevnext__prev {
+      width: 100%;
+    }
   }
 }
 
@@ -396,7 +390,16 @@ blockquote {
   text-decoration: line-through;
 }
 
-// XXX: fix button positioning
-.gitter-chat-embed-action-bar {
-  flex-direction: row;
+/* social */
+.social-links .subscribe-header {
+  margin: 0;
+}
+.social-form {
+  .social-input-container, .social-subscribe-container {
+    display: inline;
+  }
+
+  .social-subscribe-container {
+    margin-left: 2em;
+  }
 }

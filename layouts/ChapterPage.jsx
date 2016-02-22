@@ -1,10 +1,11 @@
 import React from 'react';
 import Router from 'react-router';
 
-import {Disqus, Toc} from 'antwar-helpers/components';
+import {Disqus} from 'antwar-helpers/components';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
-import SocialLinks from '../components/SocialLinks';
+import SocialLinks from '../components/SocialLinks.jsx';
+import Toc from '../components/Toc.jsx';
 
 module.exports = React.createClass({
   displayName: 'Chapter',
@@ -63,16 +64,16 @@ module.exports = React.createClass({
       <div className="resources__wrapper">
         <h4 className="resources--header">Resources</h4>
 
-        <div className="resources-nav">
+        <ul className="resources-nav">
           {resources.map((resource, i) => {
-            return <a key={`resourceItem${i}`}
+            return <li key={`resourceItem${i}`}><a
               href={`${resource.url}`}
               className="resource-nav__link"
               target="_blank">
               {resource.name}
-            </a>
+            </a></li>
           })}
-        </div>
+        </ul>
       </div>
     );
   },

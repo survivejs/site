@@ -68,9 +68,11 @@ function parseCustomQuote(token, match, className) {
     var text = token.text;
 
     if(text.indexOf(match) === 0) {
+      var icon = className === 'tip' ? 'icon-attention-circled' : 'icon-attention';
+
       return {
         type: 'html',
-        text: '<blockquote class="' + className + '">' + text.slice(2).trim() + '</blockquote>',
+        text: '<blockquote class="' + className + '"><i class="' + icon + '"></i>' + text.slice(2).trim() + '</blockquote>',
       };
     }
   }
