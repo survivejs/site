@@ -23,7 +23,7 @@ var Index = React.createClass({
               <h3 className='front-motto'>apprentice to master</h3>
 
               <div className='front-button-wrapper'>
-                <a className='btn btn--buy' href='https://leanpub.com/survivejs_webpack_react'>Become a master</a>
+                <a className='btn btn--buy-main' href='https://leanpub.com/survivejs_webpack_react'>Become a master</a>
                 <span className='read-free'>or <a href='/webpack_react/introduction'>read the free version</a></span>
               </div>
             </div>
