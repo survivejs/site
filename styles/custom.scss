@@ -315,6 +315,7 @@ blockquote {
 /* new prevnext - TODO: push elsewhere */
 .new-prevnext {
   min-height: 4em;
+  margin-bottom: 1em;
 
   letter-spacing: 1px;
 
@@ -329,7 +330,7 @@ blockquote {
     position: relative;
 
     width: 50%;
-    height: 100%;
+    height: 10em;
 
     color: #fff;
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
@@ -359,6 +360,13 @@ blockquote {
     z-index: 1;
 
     padding: 0.5em;
+  }
+
+  @include media-query(portable) {
+    .new-prevnext__next,
+    .new-prevnext__prev {
+      width: 100%;
+    }
   }
 }
 
