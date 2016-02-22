@@ -20,23 +20,33 @@ pre code {
 footer .footer-wrapper {
   background: #fafafa;
   background-image: url('/assets/img/dust.png');
+  overflow: auto;
 
-  > * {
-    margin: 1em;
-    padding: 1em;
-
-    max-width: 100%;
+  .footer-content-wrapper {
+    margin: 0 auto;
+    width: 50%;
+  }
+  @include media-query(portable) {
+    .footer-content-wrapper {
+      width: 100%;
+    }
   }
 
   .footer-social {
+    float: left;
+
+    margin-left: 2em;
+
     ul {
-        margin: auto;
+      margin: auto;
     }
   }
 
   .footer-blog {
+    float: left;
+
     ul {
-        margin: auto;
+      margin: auto;
     }
   }
 }

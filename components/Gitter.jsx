@@ -12,7 +12,7 @@ export default React.createClass({
           ((window.gitter = {}).chat = {}).options = {
             room: '${room}'
           };
-        `}} />,
+        `}} />
       <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
     </div>);
   }
