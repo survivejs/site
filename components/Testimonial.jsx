@@ -5,8 +5,14 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className='testimonial'>
+        <div className='name-wrapper'>
+          <span className='name'>{this.props.name}</span>
+        </div>
+        <div className='title-wrapper'>
+          <span className='title'>{this.props.title}</span>
+        </div>
         <div className='text-wrapper'>
-          <div className='text'>{this.props.text}</div>
+          <span className='text'>{this.props.text}</span>
         </div>
         <div className='photo-wrapper'>
           <a href={this.props.url} target='_blank'>
