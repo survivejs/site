@@ -1,6 +1,7 @@
 var React = require('react');
 var LatestPost = require('../components/LatestPost.jsx');
 var Testimonial = require('../components/Testimonial.jsx');
+var SocialLinks = require('../components/SocialLinks.jsx');
 
 var Index = React.createClass({
   displayName: 'Index',
@@ -75,6 +76,8 @@ var Index = React.createClass({
         <div className='post post--front'>
           <section className='post__content'>
             <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./index.md')}} />
+
+            <SocialLinks />
           </section>
 
           <aside className='post__sidebar'>
