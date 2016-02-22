@@ -9,7 +9,7 @@ module.exports = React.createClass({
           <span className='name'>{this.props.name}</span>
         </div>
         <div className='title-wrapper'>
-          <span className='title'>{this.props.title}</span>
+          <span className='title'>{this.props.title || '\u00a0'}</span>
         </div>
         <div className='text-wrapper'>
           <span className='text'>{this.props.text}</span>
