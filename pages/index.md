@@ -15,7 +15,7 @@ Facebook's [React](https://facebook.github.io/react/) powers an increasing amoun
 Psst. <a href="/demos/08_building_kanban/" target="_blank">You can try out the application online.</a>
 </blockquote>
 
-By reading this book you will learn to:
+By reading this book, you will learn to:
 
 0. Set up a Webpack based development and production environment. You will learn to get most out of [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform) and [Babel](https://babeljs.io/) for development.
 0. Improve the quality of your code by using [ESLint](http://eslint.org/) and friends to spot possible mistakes earlier.
