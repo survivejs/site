@@ -64,16 +64,16 @@ module.exports = React.createClass({
       <div className="resources__wrapper">
         <h4 className="resources--header">Resources</h4>
 
-        <div className="resources-nav">
+        <ul className="resources-nav">
           {resources.map((resource, i) => {
-            return <a key={`resourceItem${i}`}
+            return <li key={`resourceItem${i}`}><a
               href={`${resource.url}`}
               className="resource-nav__link"
               target="_blank">
               {resource.name}
-            </a>
+            </a></li>
           })}
-        </div>
+        </ul>
       </div>
     );
   },
