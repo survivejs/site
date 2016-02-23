@@ -15,10 +15,11 @@ function main() {
 
     api.zonePurgeCacheBy(zone.id, {
       files: [
-        'http://survivejs.com/assets/main.css'
+        'http://survivejs.com/assets/main.css',
+        'http://survivejs.com/webpack_react/*'
       ]
     }).then(function(ok) {
-      console.log('purged main.css');
+      console.log('purged main.css and content');
     }).catch(function(err) {
       console.error(err);
     });
