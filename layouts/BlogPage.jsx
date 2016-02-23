@@ -4,6 +4,7 @@ import React from 'react';
 import {Disqus, Moment} from 'antwar-helpers/components';
 import Author from '../components/Author';
 import PrevNext from '../components/PrevNext';
+import PrevNextMini from '../components/PrevNextMini.jsx';
 import SocialLinks from '../components/SocialLinks';
 
 module.exports = React.createClass({
@@ -54,6 +55,8 @@ module.exports = React.createClass({
 
           <div id="disqus_thread" />
         </div>
+        <PrevNextMini page={page} />
+
         <Disqus shortname="survivejs" />
       </div>
     );
