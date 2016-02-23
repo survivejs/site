@@ -47,6 +47,6 @@ The book is freely available under [CC BY-NC-ND](https://creativecommons.org/lic
   <span class="legend" style="font-size: small;">[Dennis Hamilton](https://www.flickr.com/photos/91555706@N00/3879384912/) - Kanban (CC BY)</span>
 </div>
 
-I expect you know the basics of JavaScript and Node.js. Plenty of patience is needed as there's a lot to learn. Fortunately you don't have to be alone at your journey.
+I expect you know the basics of JavaScript and Node.js. Some experience in ES6 won't hurt. Plenty of patience is needed as there's a lot to learn.
 
-Community support is available through [gitter](https://gitter.im/survivejs/webpack_react). You can also [contact me directly](mailto:info@survivejs.com).
+Fortunately, you don't have to be alone in your journey. Community support is available through [gitter](https://gitter.im/survivejs/webpack_react). You can also [contact me directly](mailto:info@survivejs.com).
