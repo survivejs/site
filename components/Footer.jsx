@@ -33,6 +33,9 @@ module.exports = React.createClass({
                 <li>
                   <a href='http://goo.gl/forms/OWdGIOdHm9' target='_blank'>Contact</a>
                 </li>
+                <li>
+                  <a href='https://github.com/survivejs/ama/issues' target='_blank'>Ask Me Anything</a>
+                </li>
               </ul>
             </div>
             <div className='footer-blog'>
