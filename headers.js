@@ -41,7 +41,7 @@ module.exports = [
         "source": "https://www.flickr.com/photos/61745819@N00/10588140955",
         "license": "CC BY-NC-SA",
         "image": "kanban_photo.jpg",
-        "type": "chapter"
+        "type": "part"
     },
     {
         "author": "Angela",
