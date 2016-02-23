@@ -16,7 +16,8 @@ function main() {
     api.zonePurgeCacheBy(zone.id, {
       files: [
         'http://survivejs.com/assets/main.css',
-        'http://survivejs.com/webpack_react/*'
+        'http://survivejs.com/webpack_react/*',
+        'http://survivejs.com/'
       ]
     }).then(function(ok) {
       console.log('purged main.css and content');
