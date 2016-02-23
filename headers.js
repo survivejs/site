@@ -96,6 +96,7 @@ module.exports = [
         "license": "Public Domain",
         "image": "testing.jpg",
         "bonus": true,
+        "endSource": "09_testing_react/kanban_app",
         "type": "chapter"
     },
     {
@@ -104,7 +105,7 @@ module.exports = [
         "license": "CC BY-NC-ND",
         "image": "typing.jpg",
         "bonus": true,
-        "sourceRoot": "/",
+        "endSource": "10_typing_with_react",
         "type": "chapter"
     },
     {

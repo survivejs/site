@@ -229,20 +229,17 @@ function webpackReact() {
         file.resources = resources;
         file.type = header.type;
 
-        if(header.demo) {
-          var previous = headers[i - 1] || {};
+        if(header.endSource) {
+          file.showDemo = false;
+          file.endSource = sourcePrefix + header.endSource;
+        }
+        else if(header.demo) {
           var sourceSuffix = header.sourceRoot || '/kanban_app';
 
-          file.showDemo = !header.sourceRoot;
-
-          if(previous.demo) {
-            var previousSourceSuffix = previous.sourceRoot || '/kanban_app';
-
-            file.startSource = sourcePrefix + previous.demo + previousSourceSuffix;
-          }
-
-          file.endSource = sourcePrefix + header.demo + sourceSuffix;
           file.demo = '/demos/' + header.demo;
+
+          file.showDemo = !header.sourceRoot;
+          file.endSource = sourcePrefix + header.demo + sourceSuffix;
         }
 
         return o;

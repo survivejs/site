@@ -78,18 +78,12 @@ module.exports = React.createClass({
     );
   },
   renderPostMeta(item) {
-    if(!(item.startSource || item.endSource || item.demo)) {
+    if(!(item.endSource || item.demo)) {
       return;
     }
 
     return (
       <div className="post__meta">
-        {item.startSource ?
-          <a className="post__start_source"
-            href={item.startSource}
-            target="_blank">Start source code</a> :
-          null
-        }
         {item.endSource ?
           <a className="post__end_source"
             href={item.endSource}
