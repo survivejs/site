@@ -158,19 +158,6 @@ function webpackReact() {
 
         return ret;
       },
-      extra: function(o) {
-        var fileName = o.fileName;
-
-        if(parseInt(fileName.split('_')[0], 10) >= 0) {
-          return {
-            type: 'chapter'
-          };
-        }
-
-        return {
-          type: 'part'
-        };
-      },
       content: function(o) {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
@@ -240,6 +227,7 @@ function webpackReact() {
         file.nextInfo = 'Next chapter';
         file.bonus = header.bonus;
         file.resources = resources;
+        file.type = header.type;
 
         if(header.demo) {
           var previous = headers[i - 1] || {};

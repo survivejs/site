@@ -9,7 +9,7 @@ module.exports = React.createClass({
     return (
       <ul className="toc-nav">
         {sectionPages().map((navPage, i) => {
-          return <li key={`navPage${i}`}>
+          return <li key={`navPage${i}`} className={'toc-' + navPage.type}>
           {navPage.title === page.title ?
             <span className={`toc-nav__link toc-nav__link--current ${navPage.type}`}>
               {navPage.title}
