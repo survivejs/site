@@ -4,6 +4,7 @@ import Router from 'react-router';
 import {Disqus} from 'antwar-helpers/components';
 import LatestPost from '../components/LatestPost.jsx';
 import PrevNext from '../components/PrevNext.jsx';
+import PrevNextMini from '../components/PrevNextMini.jsx';
 import SocialLinks from '../components/SocialLinks.jsx';
 import Toc from '../components/Toc.jsx';
 
@@ -47,8 +48,7 @@ module.exports = React.createClass({
             <PrevNext page={page} previousText='Previous chapter' nextText='Next chapter' />
             <div id="disqus_thread" />
           </div>
-          {this.renderNext(page)}
-          {this.renderPrev(page)}
+          <PrevNextMini page={page} />
         </div>
 
         <Disqus shortname='survivejs' />
@@ -108,19 +108,5 @@ module.exports = React.createClass({
   renderPostContent(item) {
     return <div className="chapter-content"
       dangerouslySetInnerHTML={{__html: item.content}}></div>;
-  },
-  renderNext(item) {
-    return item.next ?
-      <a className="next-page" href={`/${item.next.url}`} title={item.next.title}>
-        <i className="icon-right-open" />
-      </a> :
-      null;
-  },
-  renderPrev(item) {
-    return item.prev ?
-      <a className="previous-page" href={`/${item.prev.url}`} title={item.prev.title}>
-        <i className="icon-left-open" />
-      </a> :
-      null;
   }
 });
