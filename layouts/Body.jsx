@@ -24,7 +24,7 @@ export default React.createClass({
 
         <Footer {...props} />
 
-        <Gitter room="survivejs/webpack_react" />
+        <Gitter room="survivejs/webpack_react" title="Need help?" />
       </Body>
     );
   },
