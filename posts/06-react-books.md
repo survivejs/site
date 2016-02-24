@@ -12,11 +12,13 @@ Even though there are [a lot of freely available React resources](https://github
 
 ### SurviveJS - Webpack and React
 
-[SurviveJS - Webpack and React](http://survivejs.com/) is the most comprehensive freely available book I'm aware of. It will show you how to set up a [webpack](https://webpack.github.io/) based development environment and then develop a simple [Kanban](https://en.wikipedia.org/wiki/Kanban) based on it. More theoretical topics, such as linting, styling and library authoring are discussed as well. At the time of writing it has 250 pages and more content is planned based on demand.
+[SurviveJS - Webpack and React](http://survivejs.com/) is the most comprehensive freely available book I'm aware of. It will show you how to set up a [webpack](https://webpack.github.io/) based development environment and then develop a simple [Kanban](https://en.wikipedia.org/wiki/Kanban) based on it. More theoretical topics, such as linting, styling and library authoring are discussed as well. At the time of writing it has over 250 pages and more content is planned based on demand.
 
 The book is open to external contributions and in fact a lot of people have contributed feedback and fixes. From author's point of view this has been just awesome!
 
-If you like the book and want to support the effort, [buying a copy](https://leanpub.com/survivejs_webpack_react) would most likely make the author's day. Suggested price without VAT is $19.99. Pay based on value you perceive as Leanpub books allow.
+If you like the book and want to support the effort, [buying a digital copy](https://leanpub.com/survivejs_webpack_react) would most likely make the author's day. Suggested price without VAT is $19.99. Pay based on value you perceive as Leanpub books allow.
+
+There's also [a paper version available through Amazon](http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X).
 
 ### React Webpack Cookbook
 
@@ -59,6 +61,10 @@ If you want a quick read that's straight to the point, this could be it. It's no
 [Descubre React](https://leanpub.com/descubre-react) by [Javi Jiménez](http://soyjavi.com/) is a Spanish introduction to React. It has 83 pages and its minimum price is $12.49 VAT excluded.
 
 If you want a Spanish introduction to React, here's your only option at the moment.
+
+### Thinking in React
+
+[Thinking in React](https://www.thinkinginreact.xyz/) by K-2052 is a work in progress introduction to React. At the moment it's available digitally. The price starts from $10 and rises by a dollar each time a new chapter is released.
 
 ### Pengenalan ReactJS
 
