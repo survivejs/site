@@ -34,22 +34,22 @@ module.exports = React.createClass({
               null
             }
             <div dangerouslySetInnerHTML={{__html: page.content}} />
-          </div>
-          {page.headerExtra ?
-            <div className="header-extra"
-              dangerouslySetInnerHTML={{__html: page.headerExtra}} /> :
-            null
-          }
-          {page.date ?
-            <Moment className="post__moment" datetime={page.date} /> :
-            null
-          }
-          {author ?
-            <Author author={author} /> :
-            null
-          }
+            {page.headerExtra ?
+              <div className="header-extra"
+                dangerouslySetInnerHTML={{__html: page.headerExtra}} /> :
+              null
+            }
+            {page.date ?
+              <Moment className="post__moment" datetime={page.date} /> :
+              null
+            }
+            {author ?
+              <Author author={author} /> :
+              null
+            }
 
-          <SocialLinks type="blog post" />
+            <SocialLinks type="blog post" />
+          </div>
 
           <PrevNext page={page} previousText="Previous post" nextText="Next post" />
 

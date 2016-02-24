@@ -147,8 +147,44 @@
   .front-header-wrapper {
     float: left;
   }
+
   .post__sidebar {
     float: right;
+
+    max-width: 250px;
+    font-size: 80%;
+
+    ul > li:before {
+      content: '';
+    }
+
+    // XXX
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ol,
+    ul,
+    div,
+    pre,
+    blockquote,
+    form {
+      @include media-query('palm') {
+        padding: 0 $half-spacing-unit;
+      }
+    }
+  }
+
+  @include media-query(portable) {
+    .post__content, .post__sidebar {
+      margin: 0 auto;
+      max-width: $max-width;
+
+      float: initial;
+    }
   }
 
   .front-cover {
@@ -159,17 +195,6 @@
 
     width: 255px;
     box-shadow: 0 0.5em 1em 0.02em rgba(0,0,0,0.5);
-  }
-
-  @media screen and (min-width: 1150px) {
-    .post__sidebar {
-      max-width: 250px;
-      font-size: 80%;
-
-      ul > li:before {
-        content: '';
-      }
-    }
   }
 
   @include media-query(portable) {
