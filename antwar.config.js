@@ -10,7 +10,8 @@ var prevnextPlugin = require('antwar-prevnext-plugin');
 
 var markdown = require('./utils/markdown');
 var highlight = require('./utils/highlight');
-var headers = require('./headers');
+var webpackReactHeaders = require('./headers/webpack_react');
+var webpackCookbookHeaders = require('./headers/webpack_cookbook');
 
 var cwd = process.cwd();
 
@@ -95,7 +96,8 @@ module.exports = {
       },
     },
     blog: blog(),
-    webpack_react: webpackReact()
+    webpack_react: webpackReact(webpackReactHeaders),
+    webpack_cookbook: webpackCookbook(webpackCookbookHeaders)
   }
 };
 
@@ -137,7 +139,7 @@ function blog() {
   };
 }
 
-function webpackReact() {
+function webpackReact(headers) {
   return {
     title: 'Table of Contents',
     path: function() {
@@ -241,6 +243,107 @@ function webpackReact() {
           file.showDemo = !header.sourceRoot;
           file.endSource = sourcePrefix + header.demo + sourceSuffix;
         }
+
+        return o;
+      });
+    },
+    layouts: {
+      index: function() {
+        return require('./layouts/ChapterIndex.jsx');
+      },
+      page: function() {
+        return require('./layouts/ChapterPage.jsx');
+      }
+    }
+  };
+}
+
+function webpackCookbook(headers) {
+  return {
+    title: 'Table of Contents',
+    path: function() {
+      return require.context('json!yaml-frontmatter!../webpack_cookbook/manuscript', false, /^\.\/.*\.md$/);
+    },
+    processPage: {
+      title: function(o) {
+        var ret = removeMd(o.file.__content.split('\n')[0]);
+
+        // part
+        if(ret.indexOf('-#') === 0) {
+          ret = ret.slice(2).trim();
+        }
+
+        if(o.file.bonus) {
+          ret += '*';
+        }
+
+        return ret;
+      },
+      content: function(o) {
+        var content = o.file.__content.split('\n').slice(1).join('\n');
+
+        return markdown.process(content, highlight);
+      },
+      preview: function(o) {
+        var previewLimit = 300;
+        var content = o.file.__content.split('##')[0].split('\n').slice(1).join('\n');
+        var stripped = removeMd(content);
+
+        if(stripped.length > previewLimit) {
+          return stripped.substr(0, previewLimit) + '…';
+        }
+
+        return stripped;
+      },
+      url: function(o) {
+        var fileName = o.fileName.split('.')[0].toLowerCase();
+
+        // normal chapter
+        if(parseInt(fileName.split('_')[0], 10) >= 0) {
+          return o.sectionName + '/' + fileName.split('_').slice(1).join('_');
+        }
+
+        // part
+        return o.sectionName + '/' + fileName;
+      },
+    },
+    sort: function(files) {
+      var order = require('raw!../webpack_cookbook/manuscript/Book.txt').split('\n').filter(id);
+      var ret = [];
+
+      order = order.filter(function(name) {
+        return path.extname(name) === '.md';
+      });
+
+      order.forEach(function(name, i) {
+        var result = _.findWhere(files, {
+          name: name,
+        });
+
+        if(!result) {
+          return console.error('Failed to find', name);
+        }
+
+        ret.push(result);
+      });
+
+      ret.reverse();
+
+      return ret;
+    },
+    inject: function(files) {
+      // TODO: figure out proper header images and inject them here
+
+      return files.map(function(o, i) {
+        var file = o.file;
+        var header = headers[files.length - i - 1] || {};
+
+        //file.headerExtra = '<a href="' + header.source + '">' +
+        //  header.author + ' ('+ header.license + ')</a>';
+        file.headerImage = '/images/taxi.jpg'; // XXX
+        file.previousInfo = 'Previous chapter';
+        file.nextInfo = 'Next chapter';
+        file.type = header.type;
 
         return o;
       });
