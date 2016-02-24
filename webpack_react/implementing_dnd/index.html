@@ -607,7 +607,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <h3 class="header"><a class="header-anchor" href="#fixing-editing-behavior-during-dragging" id="fixing-editing-behavior-during-dragging"></a><span class="text">Fixing Editing Behavior During Dragging</span><a class="header-anchor-select" href="#fixing-editing-behavior-during-dragging">#</a></h3>
 <p>The current implementation has a small glitch. If you edit a note, you can still drag it around while it&#39;s being edited. This isn&#39;t ideal as it overrides the default behavior most people are used to. You cannot for instance double-click on an input to select all the text.</p>
 <p>Fortunately, this is simple to fix. We&#39;ll need to use the <code>editing</code> state per each <code>Note</code> to adjust its behavior. First we need to pass <code>editing</code> state to an individual <code>Note</code>:</p>
-<p><strong>app/components/Notes.js</strong></p>
+<p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >,</span> onValueClick<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> onDelete<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
@@ -633,7 +633,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>Next we need to take this into account while rendering:</p>
-<p><strong>app/components/Note.js</strong></p>
+<p><strong>app/components/Note.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
 @<span class="token function" >DragSource</span><span class="token punctuation" >(</span>ItemTypes<span class="token punctuation" >.</span>NOTE<span class="token punctuation" >,</span> noteSource<span class="token punctuation" >,</span> <span class="token punctuation" >(</span>connect<span class="token punctuation" >,</span> monitor<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
