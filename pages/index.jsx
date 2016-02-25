@@ -28,7 +28,7 @@ var Index = React.createClass({
               </div>
             </div>
 
-            <img className='front-cover' src='images/title_page_small.png' width='255' height='329' />
+            <img className='front-cover' src='assets/img/title_page_small.png' width='255' height='329' />
           </div>
         </div>
         <div className='front__testimonials'>

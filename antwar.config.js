@@ -28,10 +28,6 @@ module.exports = {
   webpack: themeConfig.webpack, // SCSS bits
   assets: [
     {
-      from: '../webpack_react/manuscript/images',
-      to: 'images',
-    },
-    {
       from: '../webpack_react/project_source/builds',
       to: 'demos',
     },
@@ -224,7 +220,7 @@ function webpackReact(headers) {
 
         file.headerExtra = '<a href="' + header.source + '">' +
           header.author + ' ('+ header.license + ')</a>';
-        file.headerImage = '/images/' + header.image;
+        file.headerImage = '/assets/img/chapters/' + header.image;
         file.previousInfo = 'Previous chapter';
         file.nextInfo = 'Next chapter';
         file.bonus = header.bonus;
@@ -340,7 +336,7 @@ function webpackCookbook(headers) {
 
         //file.headerExtra = '<a href="' + header.source + '">' +
         //  header.author + ' ('+ header.license + ')</a>';
-        file.headerImage = '/images/taxi.jpg'; // XXX
+        file.headerImage = '/assets/img/chapters/taxi.jpg'; // XXX
         file.previousInfo = 'Previous chapter';
         file.nextInfo = 'Next chapter';
         file.type = header.type;
