@@ -92,59 +92,59 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "Acid Pix",
+    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
+    "license": "CC BY",
+    "image": "boots.jpg",
     "type": "part"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
+    "license": "Public Domain",
+    "image": "production.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/books-student-study-education-1012088/",
+    "license": "Public Domain",
+    "image": "bundle.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "cocoparisienne",
+    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
+    "license": "Public Domain",
+    "image": "firewood.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "caja",
+    "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
+    "license": "Public Domain",
+    "image": "chunks.jpg",
     "type": "part"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "Hans",
+    "source": "https://pixabay.com/en/mozartkugeln-chocolates-sweetness-116782/",
+    "license": "Public Domain",
+    "image": "mozart.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "weinstock",
+    "source": "https://pixabay.com/en/key-metal-home-security-wedding-96233/",
+    "license": "Public Domain",
+    "image": "keys.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "PixelAnarchy",
+    "source": "https://pixabay.com/en/koala-bear-australia-teddy-sleep-9960/",
+    "license": "Public Domain",
+    "image": "koala.jpg",
     "type": "chapter"
   },
   {
