@@ -218,8 +218,14 @@ function webpackReact(headers) {
         var resourceName = './' + o.name.split('.')[0] + '.json';
         var resources = reqResource(resourceName);
 
-        file.headerExtra = '<a href="' + header.source + '">' +
-          header.author + ' ('+ header.license + ')</a>';
+        if(header.source && header.author && header.license) {
+          file.headerExtra = '<a href="' + header.source + '">' +
+            header.author + ' ('+ header.license + ')</a>';
+        }
+        else if(header.license) {
+          file.headerExtra = header.license;
+        }
+
         file.headerImage = '/assets/img/chapters/' + header.image;
         file.previousInfo = 'Previous chapter';
         file.nextInfo = 'Next chapter';
@@ -328,15 +334,19 @@ function webpackCookbook(headers) {
       return ret;
     },
     inject: function(files) {
-      // TODO: figure out proper header images and inject them here
-
       return files.map(function(o, i) {
         var file = o.file;
         var header = headers[files.length - i - 1] || {};
 
-        //file.headerExtra = '<a href="' + header.source + '">' +
-        //  header.author + ' ('+ header.license + ')</a>';
-        file.headerImage = '/assets/img/chapters/taxi.jpg'; // XXX
+        if(header.source && header.author && header.license) {
+          file.headerExtra = '<a href="' + header.source + '">' +
+            header.author + ' ('+ header.license + ')</a>';
+        }
+        else if(header.license) {
+          file.headerExtra = header.license;
+        }
+
+        file.headerImage = '/assets/img/chapters/' + header.image;
         file.previousInfo = 'Previous chapter';
         file.nextInfo = 'Next chapter';
         file.type = header.type;
