@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 module.exports = React.createClass({
   displayName: 'Toc',
@@ -14,10 +15,9 @@ module.exports = React.createClass({
             <span className={`toc-nav__link toc-nav__link--current ${navPage.type}`}>
               {navPage.title}
             </span> :
-            <a href={`/${navPage.url}`}
-              className={`toc-nav__link ${navPage.type}`}>
+            <Link to={`/${navPage.url}`} className={`toc-nav__link ${navPage.type}`}>
               {navPage.title}
-            </a>
+            </Link>
           }
           </li>
         })}

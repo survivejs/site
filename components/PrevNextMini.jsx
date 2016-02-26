@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 module.exports = React.createClass({
   displayName: 'PrevNextMini',
@@ -14,16 +15,16 @@ module.exports = React.createClass({
   },
   renderNext(next) {
     return next ?
-      <a className="next-page" href={`/${next.url}`} title={next.title}>
+      <Link className="next-page" to={`/${next.url}`} title={next.title}>
         <i className="icon-right-open" />
-      </a> :
+      </Link> :
       null;
   },
   renderPrev(prev) {
     return prev ?
-      <a className="previous-page" href={`/${prev.url}`} title={prev.title}>
+      <Link className="previous-page" to={`/${prev.url}`} title={prev.title}>
         <i className="icon-left-open" />
-      </a> :
+      </Link> :
       null;
   }
 });

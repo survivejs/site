@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 module.exports = React.createClass({
   displayName: 'PrevNext',
@@ -26,7 +27,9 @@ module.exports = React.createClass({
               backgroundImage: `url(${page.prev.headerImage})`
             }}></div>
             <span className="new-prevnext__info">{previousText}</span>
-            <a className="new-prevnext__link" href={`/${page.prev.url}`}>{page.prev.title}</a>
+            <Link className="new-prevnext__link" to={`/${page.prev.url}`}>
+              {page.prev.title}
+            </Link>
           </div> :
           null
         }
@@ -36,7 +39,9 @@ module.exports = React.createClass({
               backgroundImage: `url(${page.next.headerImage})`
             }}></div>
             <span className="new-prevnext__info">{nextText}</span>
-            <a className="new-prevnext__link" href={`/${page.next.url}`}>{page.next.title}</a>
+            <Link className="new-prevnext__link" to={`/${page.next.url}`}>
+              {page.next.title}
+            </Link>
           </div> :
           null
         }
