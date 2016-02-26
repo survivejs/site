@@ -11,7 +11,7 @@ var prevnextPlugin = require('antwar-prevnext-plugin');
 var markdown = require('./utils/markdown');
 var highlight = require('./utils/highlight');
 var webpackReactHeaders = require('./headers/webpack_react');
-var webpackCookbookHeaders = require('./headers/webpack_cookbook');
+var webpackHeaders = require('./headers/webpack');
 
 var cwd = process.cwd();
 
@@ -97,7 +97,7 @@ module.exports = {
     },
     blog: blog(),
     webpack_react: webpackReact(webpackReactHeaders),
-    webpack_cookbook: webpackCookbook(webpackCookbookHeaders)
+    webpack: webpack(webpackHeaders)
   }
 };
 
@@ -264,11 +264,11 @@ function webpackReact(headers) {
   };
 }
 
-function webpackCookbook(headers) {
+function webpack(headers) {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('json!yaml-frontmatter!../webpack_cookbook/manuscript', false, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!../webpack/manuscript', false, /^\.\/.*\.md$/);
     },
     processPage: {
       title: function(o) {
@@ -314,7 +314,7 @@ function webpackCookbook(headers) {
       },
     },
     sort: function(files) {
-      var order = require('raw!../webpack_cookbook/manuscript/Book.txt').split('\n').filter(id);
+      var order = require('raw!../webpack/manuscript/Book.txt').split('\n').filter(id);
       var ret = [];
 
       order = order.filter(function(name) {
