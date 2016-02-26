@@ -148,87 +148,87 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "NASA",
+    "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+    "license": "Public Domain",
+    "image": "skydiving.jpg",
     "type": "part"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "Duke University Archives",
+    "source": "https://www.flickr.com/photos/19219926@N04/3707001321",
+    "license": "CC BY-NC-SA",
+    "image": "library.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "jannebjo",
+    "source": "https://pixabay.com/en/volvo-wheel-loaders-machine-906771/",
+    "license": "Public Domain",
+    "image": "loader.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
     "type": "part"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    "license": "Public Domain",
+    "image": "caliper.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
+    "license": "Public Domain",
+    "image": "wrench.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "Mrtvolka666",
+    "source": "https://pixabay.com/en/the-screws-technique-steel-thread-736747/",
+    "license": "Public Domain",
+    "image": "screws.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "bdyczewski",
+    "source": "https://pixabay.com/en/laboratory-chemistry-subjects-1009188/",
+    "license": "Public Domain",
+    "image": "lab.jpg",
     "type": "part"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "Marko Heinrich",
+    "source": "https://pixabay.com/en/event-technology-light-panel-644537/",
+    "license": "Public Domain",
+    "image": "panel.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "mrNilssen",
+    "source": "https://pixabay.com/en/fire-burning-flame-hot-burn-770109/",
+    "license": "Public Domain",
+    "image": "hot.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "confused_me",
+    "source": "https://pixabay.com/en/water-splash-flow-drop-of-water-282784/",
+    "license": "Public Domain",
+    "image": "water.jpg",
     "type": "chapter"
   },
   {
-    "author": "James Jordan",
-    "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
-    "license": "CC BY-ND",
-    "image": "journey.jpg",
+    "author": "skeeze",
+    "source": "https://pixabay.com/en/milky-way-andromeda-stars-galaxy-923801/",
+    "license": "Public Domain",
+    "image": "andromeda.jpg",
     "type": "chapter"
   },
 ];
