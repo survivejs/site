@@ -105,7 +105,9 @@ A Lane is something that should be able to contain many Notes within itself a…
     <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
 <div class="leanpub-delete">
-  deleteNote <span class="token operator" >=</span> <span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  deleteNote <span class="token operator" >=</span> <span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> e<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+    e<span class="token punctuation" >.</span><span class="token function" >stopPropagation</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
     NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
   addNote <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
@@ -184,7 +186,9 @@ A Lane is something that should be able to contain many Notes within itself a…
   <span class="token function" >addNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
-  <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> e<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    e<span class="token punctuation" >.</span><span class="token function" >stopPropagation</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
     NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
@@ -397,7 +401,9 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
   <span class="token function" >addNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
     NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
-  <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token function" >deleteNote</span><span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> e<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    e<span class="token punctuation" >.</span><span class="token function" >stopPropagation</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
     NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
 </div>
