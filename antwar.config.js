@@ -302,11 +302,11 @@ function webpack(headers) {
         return stripped;
       },
       url: function(o) {
-        var fileName = o.fileName.split('.')[0].toLowerCase();
+        var fileName = o.fileName.split('.')[0].toLowerCase().replace(/_/g, '-');
 
         // normal chapter
-        if(parseInt(fileName.split('_')[0], 10) >= 0) {
-          return o.sectionName + '/' + fileName.split('_').slice(1).join('_');
+        if(parseInt(fileName.split('-')[0], 10) >= 0) {
+          return o.sectionName + '/' + fileName.split('-').slice(1).join('-');
         }
 
         // part
