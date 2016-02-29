@@ -10,7 +10,7 @@ As React deals only with the view layer you will often have to complement it wit
 
 <p>
 <span class="author">
-  <img src="https://www.gravatar.com/avatar/bdbeb02a7fe50b769e67e0c076b33c54?size=100" alt="Michel Weststrate" class='author' width='100' height='100' />
+  <img src="https://www.gravatar.com/avatar/bdbeb02a7fe50b769e67e0c076b33c54?size=200" alt="Michel Weststrate" class='author' width='100' height='100' />
 </span>
 I'm a lead developer at Mendix where I worked on both frontend and backend development. About half a year ago me and my team started working on a greenfield,  enterprise scale project where most of the complexity is on the client side. We started a small research project to find the right technology and looked into Angular, Ember and React.
 </p>
