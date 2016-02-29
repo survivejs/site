@@ -8,6 +8,7 @@ First, you need to clone this repository and the `webpack_react` one:
 
 ```
 $ git clone https://github.com/survivejs/site
+$ git clone https://github.com/survivejs/webpack
 $ git clone https://github.com/survivejs/webpack_react
 $ git clone https://github.com/survivejs/webpack_react_resources
 ```
