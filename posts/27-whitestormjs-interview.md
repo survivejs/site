@@ -2,6 +2,7 @@
 title: 'WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin'
 date: 2015-12-22
 headerImage: '/assets/img/whitestorm.jpg'
+keywords: ['interview']
 ---
 
 I remember, when a few years ago a friend asked me what JavaScript game engine to use. As a result, I set up a little gist that in turn lead to something larger, namely [jswiki](https://github.com/bebraw/jswiki), and eventually [jster.net](http://jster.net/). The [game engine listing](https://github.com/bebraw/jswiki/wiki/Game-Engines) and [game engine feature matrix](https://github.com/bebraw/jswiki/wiki/Game-engine-feature-matrix) are quite useful still.

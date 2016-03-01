@@ -2,6 +2,7 @@
 title: 'How to Succeed at Technical Books?'
 date: 2015-09-04
 headerImage: '/assets/img/writing.jpg'
+keywords: ['publishing']
 ---
 
 I've [written about book publishing earlier](http://www.nixtu.info/2015/07/on-economics-of-ebook-publishing.html) at my personal blog. It is an interesting yet difficult business. I sort of stumbled into the world by chance. In this post I want to share some of my learnings.

@@ -2,6 +2,7 @@
 title: 'Cerebral - Expressing Application Flow with Signals - Interview with Christian Alfoni'
 date: 2015-10-05
 headerImage: '/assets/img/cerebral.jpg'
+keywords: ['interview']
 ---
 
 I ran into [Christian Alfoni](http://www.christianalfoni.com/) through his original blog early this year (2015). He had written a nice post about Webpack. That led me to provide a several suggestions and I realized we might want to combine some of our knowledge in the form of a [React/Webpack cookbook](https://christianalfoni.github.io/react-webpack-cookbook/). Eventually the development led to this book so I suppose you can blame Christian for that.

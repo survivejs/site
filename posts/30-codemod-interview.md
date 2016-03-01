@@ -2,6 +2,7 @@
 title: 'Codemod - Refactoring Code Programmatically - Interview with Ramana Venkata'
 date: 2016-01-01
 headerImage: '/assets/img/codemod.jpg'
+keywords: ['interview']
 ---
 
 Performing big changes to a codebase is always a little daunting. Doing each change by hand is time consuming and generally leads to errors, unless you have a good test suite in place.

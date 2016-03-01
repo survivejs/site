@@ -2,6 +2,7 @@
 title: 'React Indie Bundle - Summary'
 date: 2015-12-07
 headerImage: '/assets/img/rib_header.png'
+keywords: ['react']
 ---
 
 It is amazing what a great year this turned out to be. I launched this site [around July](../the-story-so-far). Since then a lot has changed. While the situation might have looked a little desperate back then, I feel we are on a sustainable track now. And there is still a lot to come.

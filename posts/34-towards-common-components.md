@@ -2,6 +2,7 @@
 title: 'Towards a Common Component Definition'
 date: 2016-02-02
 headerImage: '/assets/img/bridge.jpg'
+keywords: ['react', 'opinion']
 ---
 
 There has been talk of JavaScript fatigue. It's true the field is progressing fast. And as you move fast, it can be tiring for sure. Fortunately, as we understand better what we are doing, we can actually standardize our ways of doing. That should take away some of the pain.

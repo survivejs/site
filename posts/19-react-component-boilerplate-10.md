@@ -2,6 +2,7 @@
 title: 'React Component Boilerplate v1.0'
 date: 2015-10-22
 headerImage: '/assets/img/boilerplate.jpg'
+keywords: ['react']
 ---
 
 If you [try searching GitHub for React boilerplates](https://github.com/search?utf8=%E2%9C%93&q=react+boilerplate), you'll find over thousand results. Nothing is harder than to agree on a standard boilerplate. As a result we have many to choose from.

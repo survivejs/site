@@ -2,6 +2,7 @@
 title: 'ShaderFrog - Building a WebGL Shader Editor and Composer - Interview with Andrew Ray'
 date: 2015-09-28
 headerImage: '/assets/img/frog.jpg'
+keywords: ['interview']
 ---
 
 It's always impressive when people take an idea and turn it into a concrete service. [Andrew Ray](http://andrewray.me/) did this with his [ShaderFrog](http://shaderfrog.com/). It's a portal where you can design 3D shaders using WebGL. Most interestingly, it has been developed using React.

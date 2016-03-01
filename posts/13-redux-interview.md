@@ -2,6 +2,7 @@
 title: 'Redux - Reinventing Flux - Interview with Dan Abramov'
 date: 2015-09-14
 headerImage: '/assets/img/ducks.jpg'
+keywords: ['interview']
 ---
 
 I remember seeing these strange `webpack.config.js` files in JavaScript projects for a long time. I didn’t give [Webpack](https://webpack.github.io/) a good look until the promise of hot loading with React drew me in. [Dan Abramov](https://twitter.com/dan_abramov)’s [React Hot Loader](https://github.com/gaearon/react-hot-loader) was life changing for me.

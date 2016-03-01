@@ -2,6 +2,7 @@
 title: 'SurviveJS - Webpack and React - v1.8.0'
 date: 2015-09-13
 headerImage: '/assets/img/yellow.jpg'
+keywords: ['release-note']
 ---
 
 We have once more new chapters in the book. I'm going to try a new model with these. For now the full versions of the testing and typing chapters will be available through [Leanpub](https://leanpub.com/survivejs_webpack_react) only. The community version will contain TLDR;s for these so you still get the core points. Of course the project source is public for examination.

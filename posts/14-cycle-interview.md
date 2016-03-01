@@ -2,6 +2,7 @@
 title: 'Cycle.js - Reactive Framework for HCI - Interview with André Staltz'
 date: 2015-09-21
 headerImage: '/assets/img/cycle.jpg'
+keywords: ['interview']
 ---
 
 If there's one thing that has been bubbling below for a couple of years now, it must be reactive programming. There have been solutions, such as [RxJS](https://github.com/Reactive-Extensions/RxJS) or [bacon.js](https://github.com/baconjs/bacon.js), but they haven't quite made it to the mainstream yet. I feel the time for that might be close, though.

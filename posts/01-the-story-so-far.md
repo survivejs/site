@@ -2,6 +2,7 @@
 title: 'SurviveJS - The Story So Far'
 date: 2015-07-13
 headerImage: '/assets/img/sunset2.jpg'
+keywords: ['publishing']
 ---
 Given I'm a first time author I've done my fair share of mistakes with [SurviveJS - Webpack and React](http://survivejs.com/). It was an attempt to change the direction of my career. Being a subcontractor's subcontractor provides income, sure, but was a dead end for me with no room to grow in an economy that keeps getting tougher. Interestingly the book has garnered a lot of attention and I believe some have found it useful. It has been bit of a disaster economically and it's hard to imagine I could keep a business like this up for long if something doesn't change.
 

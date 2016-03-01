@@ -2,6 +2,7 @@
 title: 'Front-end Singularity and How to Deal with It'
 date: 2015-09-06
 headerImage: '/assets/img/bigbang.jpg'
+keywords: ['opinion']
 ---
 
 Technological progress is both exhilarating and terrifying thing. And by the looks of it, it just keeps on progressing faster and faster. This has lead to an idea of technological singularity. As singularity is reached, technology develops so fast humans can't keep up with the progress anymore. It feels like something similar is happening with front-end development right now.

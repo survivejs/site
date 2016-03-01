@@ -2,6 +2,7 @@
 title: 'Baobab - Data Trees with Cursors - Interview with Guillaume Plique'
 date: 2015-11-02
 headerImage: '/assets/img/baobab.jpg'
+keywords: ['interview']
 ---
 
 I remember running into [Baobab](https://github.com/Yomguithereal/baobab) through [Christian Alfoni's post about it](http://www.christianalfoni.com/articles/2015_02_06_Plant-a-Baobab-tree-in-your-flux-application). In short, it's a library that provides you optionally immutable data trees with cursors. Admittedly that's quite a mouthful.

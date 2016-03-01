@@ -2,6 +2,7 @@
 title: 'A Quick Look at React Books'
 date: 2015-08-01
 headerImage: '/assets/img/books.jpg'
+keywords: ['react', 'publishing']
 ---
 
 As an author I like to keep an eye on the market. You have to know who you are against after all! It's not an understatement to say could that it's about to get swarmed with books. In this post I'll go through the ones I could find and provide you some intel on them. Perhaps you would like to get a couple of books to your collection!
