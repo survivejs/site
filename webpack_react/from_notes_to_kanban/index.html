@@ -316,7 +316,7 @@ NoteActions<span class="token punctuation" >.</span><span class="token keyword" 
 <h3 class="header"><a class="header-anchor" href="#implementing-a-getter-for-notestore-" id="implementing-a-getter-for-notestore-"></a><span class="text">Implementing a Getter for <code>NoteStore</code></span><a class="header-anchor-select" href="#implementing-a-getter-for-notestore-">#</a></h3>
 <p>One neat way to resolve lane notes to actual data is to implement a public method <code>NoteStore.getNotesByIds(notes)</code>. It accepts an array of <code>Note</code> ids, and returns the corresponding objects.</p>
 <p>Just implementing the method isn&#39;t enough. We also need to make it public. In Alt, this can be achieved using <code>this.exportPublicMethods</code>. It takes an object that describes the public interface of the store in question. Consider the implementation below:</p>
-<p><strong>app/stores/NoteStore.jsx</strong></p>
+<p><strong>app/stores/NoteStore.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'node-uuid'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
