@@ -2,6 +2,7 @@
 title: 'Reindex - Instant GraphQL Backend for Your React Apps - Interview with Ville Immonen'
 date: 2016-03-07
 headerImage: '/assets/img/aurora.jpg'
+keywords: ['interview']
 ---
 
 More often than not, you are going to need a back-end for your application. Particularly RESTful APIs are popular. They are not the only choice, though. GraphQL is a specification that has been designed apps in mind. Rather than separating our API end-points by resource, we get something entirely different.
