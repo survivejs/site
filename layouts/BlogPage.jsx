@@ -10,6 +10,7 @@ import SocialLinks from '../components/SocialLinks';
 module.exports = React.createClass({
   displayName: 'BlogPage',
   render() {
+    const section = this.props.section;
     const page = this.props.page;
     const config = this.props.config;
     let author = page.author || (config.blog && config.blog.author);
@@ -17,6 +18,8 @@ module.exports = React.createClass({
     if(_.isFunction(author)) {
       author = author();
     }
+
+    console.log(page.keywords, section.pages());
 
     return (
       <div className="post__wrapper">
