@@ -27,7 +27,9 @@ module.exports = React.createClass({
             }} /> :
             null
           }
+
           <h1 className="post__heading">{page.title}</h1>
+
           <div className="post__content">
             {page.isDraft ?
               <span className="draft-text">Draft</span> :

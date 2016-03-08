@@ -41,15 +41,19 @@ module.exports = React.createClass({
         <div className="chapter">
           <div className="post__content">
             <LatestPost sectionPages={section.pages} />
+
             {this.renderPostMeta(page)}
+
             {this.renderPostContent(page)}
+
             <SocialLinks type={page.type} />
 
             <PrevNext page={page} previousText='Previous chapter' nextText='Next chapter' />
+
             <div id="disqus_thread" />
           </div>
-          <PrevNextMini page={page} />
         </div>
+        <PrevNextMini page={page} />
 
         <Disqus shortname='survivejs' />
       </div>
