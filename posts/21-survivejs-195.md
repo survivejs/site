@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v1.9.5'
 date: 2015-11-03
 headerImage: '/assets/img/types.jpg'
-keywords: ['release-note']
+keywords: ['release-notes']
 ---
 
 You could say a lot has happened since [the previous release](../survivejs-19). [React 0.14](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) came out mere hours after it. React DnD gained 0.14 compatibility in its 2.0 release. Node.js reached [5.0.0](https://nodejs.org/en/blog/release/v5.0.0/) (v4 is LTS, supported for four years). And a couple of days ago [Babel 6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0/) was released. In addition [Webpack 2](https://github.com/webpack/webpack/pull/861) is in sight.

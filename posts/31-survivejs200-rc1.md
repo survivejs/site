@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v2.0.0-rc1'
 date: 2016-01-06
 headerImage: '/assets/img/ice_morning.jpg'
-keywords: ['release-note']
+keywords: ['release-notes']
 ---
 
 Since the [beta](../survivejs200-beta2) was launched, I've been working on remaining improvements. This has mostly meant tuning the existing content, although there are some new bits as well.

@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React v1.9.15'
 date: 2015-12-11
 headerImage: '/assets/img/blue.jpg'
-keywords: ['release-note']
+keywords: ['release-notes']
 ---
 
 This is perhaps the last release before the long awaited `2.0`. [Alt](http://alt.js.org/) reached version `0.18`. As a result a certain part of the book broke. I have fixed that issue in this release. There are also plenty of other tweaks here and there, and even some new content.

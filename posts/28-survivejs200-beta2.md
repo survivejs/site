@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v2.0.0-beta2'
 date: 2015-12-28
 headerImage: '/assets/img/winter_fog.jpg'
-keywords: ['release-note']
+keywords: ['release-notes']
 ---
 
 The long awaited 2.0 is getting very close. [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform) reached version 2.0 last Wednesday. This was all I needed to push the book to Babel 6. I released *2.0.0-beta1* as a xmas present of some sort to my [Leanpub readers](https://leanpub.com/survivejs_webpack_react) in early access at 25th. I think they earned it. :)

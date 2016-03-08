@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v1.5'
 date: 2015-07-31
 headerImage: '/assets/img/mushrooms.jpg'
-keywords: ['release-note']
+keywords: ['release-notes']
 ---
 
 Compared to the previous tagged release (v1.1.0, 10th of July) this new one (v1.5.0) is a monster. 274 commits went into it and nine contributors took part. Of course it was up to me to do most of the work. That said it is always amazing to get external contributions. It always makes my day when I get one.
