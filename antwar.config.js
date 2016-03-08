@@ -18,9 +18,9 @@ var cwd = process.cwd();
 // XXX: add custom loader to common config
 themeConfig.webpack.common = {
   resolveLoader: {
-      alias: {
-          markdown: path.join(cwd, 'loaders/markdown')
-      }
+    alias: {
+      markdown: path.join(cwd, 'loaders/markdown')
+    }
   }
 };
 
