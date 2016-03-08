@@ -19,17 +19,25 @@ module.exports = React.createClass({
     }
 
     return (
-      <div>
+      <div className="post__wrapper">
+        {page.headerImage ?
+          <div className="header-image" style={{
+            backgroundImage: `url(${page.headerImage})`
+          }} /> :
+          null
+        }
+
+        <h1 className="post__heading">{page.title}</h1>
+
+        {/*
+        <div className="related-post__wrapper">
+          <h4 className="related-post--header">Related posts</h4>
+
+          <div>TODO</div>
+        </div>
+        */}
+
         <div className="post">
-          {page.headerImage ?
-            <div className="header-image" style={{
-              backgroundImage: `url(${page.headerImage})`
-            }} /> :
-            null
-          }
-
-          <h1 className="post__heading">{page.title}</h1>
-
           <div className="post__content">
             {page.isDraft ?
               <span className="draft-text">Draft</span> :
@@ -51,12 +59,13 @@ module.exports = React.createClass({
             }
 
             <SocialLinks type="blog post" />
+
+            <PrevNext page={page} previousText="Previous post" nextText="Next post" />
+
+            <div id="disqus_thread" />
           </div>
-
-          <PrevNext page={page} previousText="Previous post" nextText="Next post" />
-
-          <div id="disqus_thread" />
         </div>
+
         <PrevNextMini page={page} />
 
         <Disqus shortname="survivejs" />

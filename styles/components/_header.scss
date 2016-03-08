@@ -1,4 +1,39 @@
-h1, h2, h3, h4, h5, h6 {
-  margin-top: $base-spacing-unit * 2;
-  margin-bottom: $base-spacing-unit * 0.5;
+.header-image {
+  width: 100vw;
+  height: 78vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $brand-dark;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 300;
+  filter: brightness(0.4);
+  @include layer;
+}
+.header-image + .post__heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin-top: calc(39vh); //Subtract footer links height
+  text-align: center;
+  color: #fff;
+  transform: translateY(-50%);
+  z-index: 400;
+  @include layer;
+  > h1,
+  > h3  {
+    color: #fff;
+    margin-top: 0;
+  }
+}
+.header-image + .post__heading + .post__content {
+  margin-top: 73vh;
+  padding-top: $base-spacing-unit * 2;
+}
+
+/* given 100vw doesn't take scrollbar in count maximum width needs to be clamped */
+.header-image, .post__heading {
+  max-width: 100%;
 }
