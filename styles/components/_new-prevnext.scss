@@ -1,0 +1,56 @@
+.new-prevnext {
+  min-height: 4em;
+  margin-bottom: 1em;
+
+  letter-spacing: 1px;
+
+  .new-prevnext__bg {
+      height: 100%;
+  }
+
+  .new-prevnext__next,
+  .new-prevnext__prev {
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+
+    width: 50%;
+    height: 10em;
+
+    color: #fff;
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    padding: 27px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .new-prevnext__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #434343;
+    background-size: cover;
+    background-position: 50% 50%;
+    z-index: 0;
+    filter: brightness(0.4);
+  }
+  .new-prevnext__info {
+    display: block;
+  }
+  .new-prevnext__info, .new-prevnext__link {
+    position: relative;
+    z-index: 1;
+
+    padding: 0.5em;
+  }
+
+  @include media-query(portable) {
+    .new-prevnext__next,
+    .new-prevnext__prev {
+      width: 100%;
+    }
+  }
+}
