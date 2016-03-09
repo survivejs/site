@@ -1,0 +1,46 @@
+.toc-nav__wrapper {
+  float: left;
+
+  margin: 1em;
+  margin-left: 2em;
+  padding: 0.5em;
+
+  background: rgba(0,0,0,0.01);
+  max-width: 300px;
+
+  h4 {
+    margin-top: 2em;
+  }
+
+  .toc-nav {
+    margin-bottom: 2em;
+  }
+
+  .toc-nav > li:before {
+    content: '';
+  }
+
+  .toc-nav--header {
+    margin-top: 0;
+  }
+
+  li.toc-part {
+    margin-top: 0.5em;
+  }
+
+  li.toc-chapter {
+    padding-left: 1em;
+    padding-right: 0;
+  }
+
+  .chapter:first-child {
+    margin-left: inherit;
+  }
+}
+
+@include media-query(portable) {
+  .toc-nav__wrapper {
+    float: inherit;
+    max-width: 100%;
+  }
+}

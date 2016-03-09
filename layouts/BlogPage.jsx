@@ -38,7 +38,7 @@ module.exports = React.createClass({
 
         <h1 className="post__heading">{page.title}</h1>
 
-        <div className="related-post__wrapper">
+        <div className="toc-nav__wrapper">
           <RelatedPosts page={page} posts={relatedPosts} headers={relatedHeaders} />
         </div>
 
@@ -85,7 +85,7 @@ function RelatedPosts({page, posts, headers}) {
       {_.map(posts, (pages, name) => {
         return (
           <div key={`related-posts-${name}`}>
-            <h4>{headers[name] || titleCase(name)}</h4>
+            <h4 className="toc-nav--header">{headers[name] || titleCase(name)}</h4>
 
             <Toc sectionPages={() => pages} page={page} />
           </div>

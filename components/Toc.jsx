@@ -10,12 +10,14 @@ module.exports = React.createClass({
     return (
       <ul className="toc-nav">
         {sectionPages().map((navPage, i) => {
-          return <li key={`navPage${i}`} className={'toc-' + navPage.type}>
+          const type = navPage.type || '';
+
+          return <li key={`navPage${i}`} className={type && 'toc-' + type}>
           {navPage.title === page.title ?
-            <span className={`toc-nav__link toc-nav__link--current ${navPage.type}`}>
+            <span className={`toc-nav__link toc-nav__link--current ${type}`}>
               {navPage.title}
             </span> :
-            <Link to={`/${navPage.url}`} className={`toc-nav__link ${navPage.type}`}>
+            <Link to={`/${navPage.url}`} className={`toc-nav__link ${type}`}>
               {navPage.title}
             </Link>
           }
