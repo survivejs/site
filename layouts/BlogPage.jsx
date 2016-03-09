@@ -14,12 +14,13 @@ module.exports = React.createClass({
     const page = this.props.page;
     const config = this.props.config;
     let author = page.author || (config.blog && config.blog.author);
+    const relatedPosts = getRelatedPosts(page.keywords, section.pages());
 
     if(_.isFunction(author)) {
       author = author();
     }
 
-    console.log(page.keywords, section.pages());
+    console.log('related posts', relatedPosts);
 
     return (
       <div className="post__wrapper">
@@ -76,3 +77,21 @@ module.exports = React.createClass({
     );
   }
 });
+
+function getRelatedPosts(keywords, pages) {
+  let ret = {}; // keyword -> posts
+
+  keywords.forEach((keyword) => {
+    if(!ret[keyword]) {
+      ret[keyword] = [];
+    }
+
+    pages.forEach((page) => {
+      if(page.keywords && page.keywords.indexOf(keyword) >= 0) {
+        ret[keyword].push(page);
+      }
+    });
+  });
+
+  return ret;
+}
