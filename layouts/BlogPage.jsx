@@ -1,11 +1,13 @@
 import _ from 'lodash';
 import React from 'react';
+import titleCase from 'title-case';
 
 import {Disqus, Moment} from 'antwar-helpers/components';
 import Author from '../components/Author';
 import PrevNext from '../components/PrevNext';
 import PrevNextMini from '../components/PrevNextMini.jsx';
 import SocialLinks from '../components/SocialLinks';
+import Toc from '../components/Toc.jsx';
 
 module.exports = React.createClass({
   displayName: 'BlogPage',
@@ -15,12 +17,15 @@ module.exports = React.createClass({
     const config = this.props.config;
     let author = page.author || (config.blog && config.blog.author);
     const relatedPosts = getRelatedPosts(page.keywords, section.pages());
+    const relatedHeaders = {
+      interview: 'Interviews',
+      opinion: 'Opinions',
+      publishing: 'Publishing thoughts'
+    };
 
     if(_.isFunction(author)) {
       author = author();
     }
-
-    console.log('related posts', relatedPosts);
 
     return (
       <div className="post__wrapper">
@@ -33,13 +38,9 @@ module.exports = React.createClass({
 
         <h1 className="post__heading">{page.title}</h1>
 
-        {/*
         <div className="related-post__wrapper">
-          <h4 className="related-post--header">Related posts</h4>
-
-          <div>TODO</div>
+          <RelatedPosts page={page} posts={relatedPosts} headers={relatedHeaders} />
         </div>
-        */}
 
         <div className="post">
           <div className="post__content">
@@ -77,6 +78,22 @@ module.exports = React.createClass({
     );
   }
 });
+
+function RelatedPosts({page, posts, headers}) {
+  return (
+    <div>
+      {_.map(posts, (pages, name) => {
+        return (
+          <div key={`related-posts-${name}`}>
+            <h4>{headers[name] || titleCase(name)}</h4>
+
+            <Toc sectionPages={() => pages} page={page} />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 function getRelatedPosts(keywords, pages) {
   let ret = {}; // keyword -> posts
