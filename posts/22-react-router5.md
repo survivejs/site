@@ -15,7 +15,7 @@ This time I'm interviewing Thomas Roch, the author of [react-router5](https://gi
 
 <p>
 <span class="author">
-  <img src="/assets/img/roch.jpg" alt="Thomas Roch" class='author' width='100' height='100' />
+  <img src="/assets/img/interviews/roch.jpg" alt="Thomas Roch" class='author' width='100' height='100' />
 </span>
 </p>
 

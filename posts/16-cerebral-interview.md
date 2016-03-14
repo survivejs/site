@@ -13,7 +13,7 @@ While I've been plugging away with the book, Christian has been busy developing 
 
 <p>
 <span class="author">
-  <img src="/assets/img/christian.jpg" alt="Christian Alfoni" class='author' width='100' height='100' />
+  <img src="/assets/img/interviews/christian.jpg" alt="Christian Alfoni" class='author' width='100' height='100' />
 </span>
 I had saved up some money and chose to quit my job the summer of last year (2014). I wanted to spend 6 months on my own researching web technologies and play around with projects. I feel kinda lucky that way, as obsessed I am with JavaScript and building things I now got the chance to level up. At my previous employer I left a Backbone app with a Grunt workflow. Before that it was all vanilla JavaScript… crazy, but learned a lot!
 </p>

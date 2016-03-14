@@ -13,7 +13,7 @@ Besides React Hot Loader, Dan is behind well-known projects such as [React DnD](
 
 <p>
 <span class="author">
-  <img src="/assets/img/dan.jpg" alt="Dan Abramov" class='author' width='100' height='100' />
+  <img src="/assets/img/interviews/dan.jpg" alt="Dan Abramov" class='author' width='100' height='100' />
 </span>
 I think it’s a typical story. In 2014, when I was working at [Stampsy](http://stampsy.com), we needed to pivot from an iPad app to a webapp in a matter of a few months. We only knew Backbone so we went with it, but as the app grew more dynamic and complicated, we knew we couldn’t use it for much longer.
 </p>

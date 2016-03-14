@@ -13,7 +13,7 @@ In order to understand the topic a little better, it's probably best to let the 
 
 <p>
   <span class="author">
-    <img src="/assets/img/plique.jpg" alt="Guillaume Plique" class="author" width="100" height="100" />
+    <img src="/assets/img/interviews/plique.jpg" alt="Guillaume Plique" class="author" width="100" height="100" />
   </span>
 
 My name is Guillaume Plique and I am a full stack developer currently working in Paris for Sciences Po's [médialab](https://github.com/medialab) which is a laboratory aiming at gathering people from social sciences, design and IT in order to develop innovative research projects.
