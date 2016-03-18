@@ -135,6 +135,10 @@ function blog() {
       page: function() {
         return require('./layouts/BlogPage.jsx');
       }
+    },
+    redirects: {
+      'mobservable-interview': 'mobx-interview',
+      'react-router5': 'react-router5-interview'
     }
   };
 }
