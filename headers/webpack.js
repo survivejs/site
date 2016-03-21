@@ -36,10 +36,10 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "Isaac Fryxelius",
-    "source": "https://pixabay.com/en/banana-requirements-fairtrade-stone-342677/",
+    "author": "Efraimstochter",
+    "source": "https://pixabay.com/en/wheels-machine-installation-art-784865/",
     "license": "Public Domain",
-    "image": "banana.jpg",
+    "image": "wheels.jpg",
     "type": "chapter"
   },
   {
