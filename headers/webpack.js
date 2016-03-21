@@ -6,6 +6,7 @@ module.exports = [
     "image": "journey.jpg",
     "type": "intro"
   },
+  /* Basics of Webpack */
   {
     "license": "Public Domain",
     "image": "shape_sorter.jpg",
@@ -42,6 +43,65 @@ module.exports = [
     "image": "wheels.jpg",
     "type": "chapter"
   },
+  /* Deployment strategies */
+  {
+    "author": "Acid Pix",
+    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
+    "license": "CC BY",
+    "image": "boots.jpg",
+    "type": "part"
+  },
+  {
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
+    "license": "Public Domain",
+    "image": "production.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/books-student-study-education-1012088/",
+    "license": "Public Domain",
+    "image": "bundle.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "cocoparisienne",
+    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
+    "license": "Public Domain",
+    "image": "firewood.jpg",
+    "type": "chapter"
+  },
+  /* Optimization techniques */
+  {
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
+    "type": "part"
+  },
+  {
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    "license": "Public Domain",
+    "image": "caliper.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
+    "license": "Public Domain",
+    "image": "wrench.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "Mrtvolka666",
+    "source": "https://pixabay.com/en/the-screws-technique-steel-thread-736747/",
+    "license": "Public Domain",
+    "image": "screws.jpg",
+    "type": "chapter"
+  },
+  /* CSS, Fonts, and Images */
   {
     "author": "condesign",
     "source": "https://pixabay.com/en/camera-photos-photograph-514992/",
@@ -91,34 +151,7 @@ module.exports = [
     "image": "typing.jpg",
     "type": "chapter"
   },
-  {
-    "author": "Acid Pix",
-    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
-    "license": "CC BY",
-    "image": "boots.jpg",
-    "type": "part"
-  },
-  {
-    "author": "jarmoluk",
-    "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
-    "license": "Public Domain",
-    "image": "production.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "stevepb",
-    "source": "https://pixabay.com/en/books-student-study-education-1012088/",
-    "license": "Public Domain",
-    "image": "bundle.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "cocoparisienne",
-    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
-    "license": "Public Domain",
-    "image": "firewood.jpg",
-    "type": "chapter"
-  },
+  /* Chunking in Webpack */
   {
     "author": "caja",
     "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
@@ -147,6 +180,7 @@ module.exports = [
     "image": "koala.jpg",
     "type": "chapter"
   },
+  /* Advanced Techniques */
   {
     "author": "NASA",
     "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
@@ -168,34 +202,7 @@ module.exports = [
     "image": "loader.jpg",
     "type": "chapter"
   },
-  {
-    "author": "werner22brigitte",
-    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
-    "license": "Public Domain",
-    "image": "machine.jpg",
-    "type": "part"
-  },
-  {
-    "author": "jpj2000nl",
-    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
-    "license": "Public Domain",
-    "image": "caliper.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "jpj2000nl",
-    "source": "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
-    "license": "Public Domain",
-    "image": "wrench.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "Mrtvolka666",
-    "source": "https://pixabay.com/en/the-screws-technique-steel-thread-736747/",
-    "license": "Public Domain",
-    "image": "screws.jpg",
-    "type": "chapter"
-  },
+  /* React Techniques */
   {
     "author": "bdyczewski",
     "source": "https://pixabay.com/en/laboratory-chemistry-subjects-1009188/",
