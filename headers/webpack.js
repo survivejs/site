@@ -6,18 +6,18 @@ module.exports = [
     "image": "journey.jpg",
     "type": "intro"
   },
-  /* Basics of Webpack */
-  {
-    "license": "Public Domain",
-    "image": "shape_sorter.jpg",
-    "type": "part"
-  },
   {
     "author": "Unsplash",
     "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
     "license": "Public Domain",
     "image": "hoodie.jpg",
-    "type": "chapter"
+    "type": "intro"
+  },
+  /* Basics of Webpack */
+  {
+    "license": "Public Domain",
+    "image": "shape_sorter.jpg",
+    "type": "part"
   },
   {
     "license": "Public Domain",
