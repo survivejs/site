@@ -115,29 +115,7 @@ module.exports = [
     "image": "boots.jpg",
     "type": "chapter"
   },
-  /* Optimization techniques */
-  {
-    "author": "werner22brigitte",
-    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
-    "license": "Public Domain",
-    "image": "machine.jpg",
-    "type": "part"
-  },
-  {
-    "author": "jpj2000nl",
-    "source": "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
-    "license": "Public Domain",
-    "image": "wrench.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "Mrtvolka666",
-    "source": "https://pixabay.com/en/the-screws-technique-steel-thread-736747/",
-    "license": "Public Domain",
-    "image": "screws.jpg",
-    "type": "chapter"
-  },
-  /* CSS, Fonts, and Images */
+  /* Loading Assets */
   {
     "author": "condesign",
     "source": "https://pixabay.com/en/camera-photos-photograph-514992/",
@@ -150,13 +128,6 @@ module.exports = [
     "source": "https://pixabay.com/en/austin-tx-sign-texas-downtown-713746/",
     "license": "Public Domain",
     "image": "skinny.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "kaboompics",
-    "source": "https://pixabay.com/en/tablet-digital-technology-device-791050/",
-    "license": "Public Domain",
-    "image": "stylus.jpg",
     "type": "chapter"
   },
   {
@@ -180,28 +151,6 @@ module.exports = [
     "image": "typing.jpg",
     "type": "chapter"
   },
-  /* Chunking in Webpack */
-  {
-    "author": "caja",
-    "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
-    "license": "Public Domain",
-    "image": "chunks.jpg",
-    "type": "part"
-  },
-  {
-    "author": "Hans",
-    "source": "https://pixabay.com/en/mozartkugeln-chocolates-sweetness-116782/",
-    "license": "Public Domain",
-    "image": "mozart.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "PixelAnarchy",
-    "source": "https://pixabay.com/en/koala-bear-australia-teddy-sleep-9960/",
-    "license": "Public Domain",
-    "image": "koala.jpg",
-    "type": "chapter"
-  },
   /* Advanced Techniques */
   {
     "author": "NASA",
@@ -209,6 +158,20 @@ module.exports = [
     "license": "Public Domain",
     "image": "skydiving.jpg",
     "type": "part"
+  },
+  {
+    "author": "caja",
+    "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
+    "license": "Public Domain",
+    "image": "chunks.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
+    "type": "chapter"
   },
   {
     "author": "Duke University Archives",
