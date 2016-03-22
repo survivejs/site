@@ -196,13 +196,6 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "weinstock",
-    "source": "https://pixabay.com/en/key-metal-home-security-wedding-96233/",
-    "license": "Public Domain",
-    "image": "keys.jpg",
-    "type": "chapter"
-  },
-  {
     "author": "PixelAnarchy",
     "source": "https://pixabay.com/en/koala-bear-australia-teddy-sleep-9960/",
     "license": "Public Domain",
