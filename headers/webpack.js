@@ -13,7 +13,7 @@ module.exports = [
     "image": "hoodie.jpg",
     "type": "intro"
   },
-  /* Basics of Webpack */
+  /* Developing with Webpack */
   {
     "license": "Public Domain",
     "image": "shape_sorter.jpg",
@@ -43,14 +43,15 @@ module.exports = [
     "image": "wheels.jpg",
     "type": "chapter"
   },
-  /* Deployment strategies */
+  /* Building with Webpack */
   {
-    "author": "Acid Pix",
-    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
-    "license": "CC BY",
-    "image": "boots.jpg",
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
     "type": "part"
   },
+  /* Minifying Build */
   {
     "author": "jarmoluk",
     "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
@@ -58,6 +59,15 @@ module.exports = [
     "image": "production.jpg",
     "type": "chapter"
   },
+  /* Setting Environment Variables */
+  {
+    "author": "cocoparisienne",
+    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
+    "license": "Public Domain",
+    "image": "firewood.jpg",
+    "type": "chapter"
+  },
+  /* Splitting Bundles */
   {
     "author": "stevepb",
     "source": "https://pixabay.com/en/books-student-study-education-1012088/",
@@ -65,11 +75,44 @@ module.exports = [
     "image": "bundle.jpg",
     "type": "chapter"
   },
+  /* Adding Hashes to Filenames */
   {
-    "author": "cocoparisienne",
-    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
+    "author": "ctowner",
+    "source": "https://pixabay.com/en/root-potato-hash-healthy-vegetable-1112017/",
     "license": "Public Domain",
-    "image": "firewood.jpg",
+    "image": "hash.jpg",
+    "type": "chapter"
+  },
+  /* Cleaning Build */
+  {
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
+    "license": "Public Domain",
+    "image": "cleaning.jpg",
+    "type": "chapter"
+  },
+  /* Separating CSS */
+  {
+    "author": "Andrea Williams",
+    "source": "https://www.flickr.com/photos/82405581@N00/3173065446",
+    "license": "CC BY-NC-ND",
+    "image": "taxi.jpg",
+    "type": "chapter"
+  },
+  /* Analyzing Build Statistics */
+  {
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    "license": "Public Domain",
+    "image": "caliper.jpg",
+    "type": "chapter"
+  },
+  /* Hosting on GitHub Pages */
+  {
+    "author": "Acid Pix",
+    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
+    "license": "CC BY",
+    "image": "boots.jpg",
     "type": "chapter"
   },
   /* Optimization techniques */
@@ -79,13 +122,6 @@ module.exports = [
     "license": "Public Domain",
     "image": "machine.jpg",
     "type": "part"
-  },
-  {
-    "author": "jpj2000nl",
-    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
-    "license": "Public Domain",
-    "image": "caliper.jpg",
-    "type": "chapter"
   },
   {
     "author": "jpj2000nl",
@@ -108,13 +144,6 @@ module.exports = [
     "license": "Public Domain",
     "image": "photos.jpg",
     "type": "part"
-  },
-  {
-    "author": "Andrea Williams",
-    "source": "https://www.flickr.com/photos/82405581@N00/3173065446",
-    "license": "CC BY-NC-ND",
-    "image": "taxi.jpg",
-    "type": "chapter"
   },
   {
     "author": "BreaLeaDesigns",
