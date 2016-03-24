@@ -25,6 +25,13 @@ module.exports = [
     "type": "chapter"
   },
   {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
+    "license": "Public Domain",
+    "image": "axe.jpg",
+    "type": "chapter"
+  },
+  {
     "author": "PublicDomainPictures",
     "source": "https://pixabay.com/en/splashing-splash-aqua-water-rain-165192/",
     "license": "Public Domain",
