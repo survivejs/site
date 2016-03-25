@@ -147,7 +147,7 @@ function webpackReact(headers) {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('json!yaml-frontmatter!../webpack_react/manuscript', false, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!../webpack_react/manuscript', true, /^\.\/.*\.md$/);
     },
     processPage: {
       title: function(o) {
@@ -272,7 +272,7 @@ function webpack(headers) {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('json!yaml-frontmatter!../webpack/manuscript', false, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!../webpack/manuscript', true, /^\.\/.*\.md$/);
     },
     processPage: {
       title: function(o) {

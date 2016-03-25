@@ -7,20 +7,35 @@ module.exports = [
     "type": "intro"
   },
   {
+    "author": "Unsplash",
+    "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
+    "license": "Public Domain",
+    "image": "hoodie.jpg",
+    "type": "intro"
+  },
+  {
+    "author": "422737",
+    "source": "https://pixabay.com/en/cd-dvd-edge-demarcation-447955/",
+    "license": "Public Domain",
+    "image": "dvd.jpg",
+    "type": "intro"
+  },
+  /* Developing with Webpack */
+  {
     "license": "Public Domain",
     "image": "shape_sorter.jpg",
     "type": "part"
   },
   {
-    "author": "Unsplash",
-    "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
     "license": "Public Domain",
-    "image": "hoodie.jpg",
+    "image": "jumper.jpg",
     "type": "chapter"
   },
   {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
     "license": "Public Domain",
-    "image": "jumper.jpg",
+    "image": "axe.jpg",
     "type": "chapter"
   },
   {
@@ -36,12 +51,85 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "Isaac Fryxelius",
-    "source": "https://pixabay.com/en/banana-requirements-fairtrade-stone-342677/",
+    "author": "Efraimstochter",
+    "source": "https://pixabay.com/en/wheels-machine-installation-art-784865/",
     "license": "Public Domain",
-    "image": "banana.jpg",
+    "image": "wheels.jpg",
     "type": "chapter"
   },
+  /* Building with Webpack */
+  {
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
+    "type": "part"
+  },
+  /* Minifying Build */
+  {
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
+    "license": "Public Domain",
+    "image": "production.jpg",
+    "type": "chapter"
+  },
+  /* Setting Environment Variables */
+  {
+    "author": "cocoparisienne",
+    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
+    "license": "Public Domain",
+    "image": "firewood.jpg",
+    "type": "chapter"
+  },
+  /* Splitting Bundles */
+  {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/books-student-study-education-1012088/",
+    "license": "Public Domain",
+    "image": "bundle.jpg",
+    "type": "chapter"
+  },
+  /* Adding Hashes to Filenames */
+  {
+    "author": "ctowner",
+    "source": "https://pixabay.com/en/root-potato-hash-healthy-vegetable-1112017/",
+    "license": "Public Domain",
+    "image": "hash.jpg",
+    "type": "chapter"
+  },
+  /* Cleaning Build */
+  {
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
+    "license": "Public Domain",
+    "image": "cleaning.jpg",
+    "type": "chapter"
+  },
+  /* Separating CSS */
+  {
+    "author": "Andrea Williams",
+    "source": "https://www.flickr.com/photos/82405581@N00/3173065446",
+    "license": "CC BY-NC-ND",
+    "image": "taxi.jpg",
+    "type": "chapter"
+  },
+  /* Analyzing Build Statistics */
+  {
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    "license": "Public Domain",
+    "image": "caliper.jpg",
+    "type": "chapter"
+  },
+  /* Hosting on GitHub Pages */
+  {
+    "author": "Acid Pix",
+    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
+    "license": "CC BY",
+    "image": "boots.jpg",
+    "type": "chapter"
+  },
+  /* Loading Assets */
   {
     "author": "condesign",
     "source": "https://pixabay.com/en/camera-photos-photograph-514992/",
@@ -50,24 +138,10 @@ module.exports = [
     "type": "part"
   },
   {
-    "author": "Andrea Williams",
-    "source": "https://www.flickr.com/photos/82405581@N00/3173065446",
-    "license": "CC BY-NC-ND",
-    "image": "taxi.jpg",
-    "type": "chapter"
-  },
-  {
     "author": "BreaLeaDesigns",
     "source": "https://pixabay.com/en/austin-tx-sign-texas-downtown-713746/",
     "license": "Public Domain",
     "image": "skinny.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "kaboompics",
-    "source": "https://pixabay.com/en/tablet-digital-technology-device-791050/",
-    "license": "Public Domain",
-    "image": "stylus.jpg",
     "type": "chapter"
   },
   {
@@ -91,68 +165,27 @@ module.exports = [
     "image": "typing.jpg",
     "type": "chapter"
   },
-  {
-    "author": "Acid Pix",
-    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
-    "license": "CC BY",
-    "image": "boots.jpg",
-    "type": "part"
-  },
-  {
-    "author": "jarmoluk",
-    "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
-    "license": "Public Domain",
-    "image": "production.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "stevepb",
-    "source": "https://pixabay.com/en/books-student-study-education-1012088/",
-    "license": "Public Domain",
-    "image": "bundle.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "cocoparisienne",
-    "source": "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
-    "license": "Public Domain",
-    "image": "firewood.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "caja",
-    "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
-    "license": "Public Domain",
-    "image": "chunks.jpg",
-    "type": "part"
-  },
-  {
-    "author": "Hans",
-    "source": "https://pixabay.com/en/mozartkugeln-chocolates-sweetness-116782/",
-    "license": "Public Domain",
-    "image": "mozart.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "weinstock",
-    "source": "https://pixabay.com/en/key-metal-home-security-wedding-96233/",
-    "license": "Public Domain",
-    "image": "keys.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "PixelAnarchy",
-    "source": "https://pixabay.com/en/koala-bear-australia-teddy-sleep-9960/",
-    "license": "Public Domain",
-    "image": "koala.jpg",
-    "type": "chapter"
-  },
+  /* Advanced Techniques */
   {
     "author": "NASA",
     "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
     "license": "Public Domain",
     "image": "skydiving.jpg",
     "type": "part"
+  },
+  {
+    "author": "caja",
+    "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
+    "license": "Public Domain",
+    "image": "chunks.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
+    "type": "chapter"
   },
   {
     "author": "Duke University Archives",
@@ -168,34 +201,7 @@ module.exports = [
     "image": "loader.jpg",
     "type": "chapter"
   },
-  {
-    "author": "werner22brigitte",
-    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
-    "license": "Public Domain",
-    "image": "machine.jpg",
-    "type": "part"
-  },
-  {
-    "author": "jpj2000nl",
-    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
-    "license": "Public Domain",
-    "image": "caliper.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "jpj2000nl",
-    "source": "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
-    "license": "Public Domain",
-    "image": "wrench.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "Mrtvolka666",
-    "source": "https://pixabay.com/en/the-screws-technique-steel-thread-736747/",
-    "license": "Public Domain",
-    "image": "screws.jpg",
-    "type": "chapter"
-  },
+  /* React Techniques */
   {
     "author": "bdyczewski",
     "source": "https://pixabay.com/en/laboratory-chemistry-subjects-1009188/",
