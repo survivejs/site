@@ -432,36 +432,7 @@ Our Kanban application is almost usable now. It looks alright and there&#x27;s s
 </div>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>If you drag a note within a lane, the dragged note should be shown as blank. If you try moving the note to another lane and move it there, you will see this doesn&#39;t quite work, though.</p>
-<p>The problem is that our note component gets unmounted during this process. This makes it lose <code>isDragging</code> state. Fortunately, we can override the default behavior by implementing a <code>isDragging</code> check of our own to fix the issue. Perform the following addition:</p>
-<p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-<div class="leanpub-delete">
-<span class="token keyword" >const</span> noteSource <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token function" >beginDrag</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
-      id<span class="token punctuation" >:</span> props<span class="token punctuation" >.</span>id
-    <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-</div>
-<div class="leanpub-insert">
-<span class="token keyword" >const</span> noteSource <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token function" >beginDrag</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
-      id<span class="token punctuation" >:</span> props<span class="token punctuation" >.</span>id
-    <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token function" >isDragging</span><span class="token punctuation" >(</span>props<span class="token punctuation" >,</span> monitor<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >return</span> props<span class="token punctuation" >.</span>id <span class="token operator" >===</span> monitor<span class="token punctuation" >.</span><span class="token function" >getItem</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>id<span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-</div>
-
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-</code></pre>
-<p>This tells React DnD to perform our custom check instead of relying on the default logic. After this change, unmounting won&#39;t be an issue and the feature works as we expect.</p>
+<p>If you drag a note within a lane, the dragged note should be shown as blank.</p>
 <p>There is one little problem in our system. We cannot drag notes to an empty lane yet.</p>
 <h2 class="header"><a class="header-anchor" href="#dragging-notes-to-empty-lanes" id="dragging-notes-to-empty-lanes"></a><span class="text">Dragging Notes to Empty Lanes</span><a class="header-anchor-select" href="#dragging-notes-to-empty-lanes">#</a></h2>
 <p>To drag notes to empty lanes, we should allow them to receive notes. Just as above, we can set up <code>DropTarget</code> based logic for this. First, we need to capture the drag on <code>Lane</code>:</p>

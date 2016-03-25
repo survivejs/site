@@ -1,114 +1,94 @@
 <html lang="en"><head><title>SurviveJS - Table of Contents</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="grid"><h1>Table of Contents</h1><ul class="post-list"><li><h3 class="post-list__heading"><a class="" href="/webpack/introduction">Introduction</a></h3><p class="post-list__preview">
-Webpack (or just webpack) simplifies web development by solving a fundamental problem - the problem of bundling. It takes in various assets, such as JavaScript, CSS, and HTML, and then transforms these assets into a format that&#x27;s easy to consume through a browser.
+Webpack (or just webpack) simplifies web development by solving a fundamental problem - the problem of bundling. It takes in various assets, such as JavaScript, CSS, and HTML, and then transforms these assets into a format that&#x27;s easy to consume through a browser. By doing this well, it takes away …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/webpack-compared">Webpack Compared</a></h3><p class="post-list__preview">
+You can understand better why Webpack&#x27;s approach is powerful by putting it into historical context. Back in the day, it was enough just to concatenate some scripts together. Times have changed, though, and now distributing your JavaScript code can be a complex endeavor.
 
-By doing this well, it takes away…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/basics-of-webpack">Basics of Webpack</a></h3><p class="post-list__preview">
-This part covers basic tasks related to Webpack.
+This problem has escalated …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/formats-supported">Formats Supported by Webpack</a></h3><p class="post-list__preview">
+Webpack supports a large variety of formats through loaders. In addition, it supports a couple of JavaScript module formats out of the box. I discuss specific asset types in the Loading Assets part. Generally, the idea is always the same. You always set up a loader, or loaders, and connect those wi…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack">Developing with Webpack</a></h3><p class="post-list__preview">
+Webpack is driven by configuration, normally named as webpack.config.js. That&#x27;s the heart of it all. The configuration defines the inputs and the outputs of your project. Most importantly, it describes the types of transformations you perform. These transformations are defined using loaders and plu…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/getting-started">Getting Started</a></h3><p class="post-list__preview">
+If you are not one of those people who likes to skip the introductions, you might have some clue what Webpack is. In its simplicity, it is a module bundler. It takes a bunch of assets in and outputs assets you can give to your client.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/introduction-to-webpack">Introduction to Webpack</a></h3><p class="post-list__preview">
-In web development we deal with a lot of small technical artifacts. You use HTML to describe page structure, CSS how to style it and JavaScript for logic. Or you can replace HTML with something like Jade, CSS with Sass or LESS, JavaScript with CoffeeScript, TypeScript and the ilk. In addition you h…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/getting-started">Getting Started</a></h3><p class="post-list__preview">
-&gt; Before getting started you should make sure you have a recent version of Node.js and NPM installed. See nodejs.org for installation details. We&#x27;ll use NPM to set up various tools.
+This sounds simple, but in practice, it can be a complicated an…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/splitting-configuration">Splitting the Configuration</a></h3><p class="post-list__preview">
+As the development setup has certain requirements of its own, we&#x27;ll need to split our Webpack configuration. Given Webpack configuration is just JavaScript, there are many ways to achieve this. At least the following ways are feasible:
 
-Getting started with Webpack is straightforward. I&#x27;ll show you how to set up a simple project based on it. As a firs…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/running-a-workflow">Running a Workflow</a></h3><p class="post-list__preview">
-Hitting npm run build all the time will get boring eventually. Fortunately we can work around that quite easily. Let&#x27;s set up webpack-dev-server.
+Maintain configuration in multiple files and point Webpack to …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/automatic-browser-refresh">Automatic Browser Refresh</a></h3><p class="post-list__preview">
+Tools, such as LiveReload or Browsersync, allow us to refresh the browser as we develop our application. They can even avoid refresh for CSS changes. It is possible to set up the latter to work with Webpack by using browser-sync-webpack-plugin. In this case I&#x27;m going to show you how to use somethin…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/refreshing-css">Refreshing CSS</a></h3><p class="post-list__preview">
+We can extend automatic browser refreshing to work with CSS. Webpack doesn&#x27;t even have to force a full refresh in this case.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/automatic-browser-refresh">Automatic Browser Refresh</a></h3><p class="post-list__preview">
-When webpack-dev-server is running it will watch your files for changes. When that happens it rebundles your project and notifies browsers listening to refresh. To trigger this behavior you need to change your index.html file in the build/ folder.
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/setting-up-npm-install-webpack-plugin">Setting Up npm-install-webpack-plugin</a></h3><p class="post-list__preview">
+In order to avoid some typing, we can set up a Webpack plugin known as npm-install-webpack-plugin. As we develop the project, it will detect changes made to Webpack configuration and the projects files and install the dependencies for us. It will modify package.json automatically as well.
 
-build/index.html
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack">Building with Webpack</a></h3><p class="post-list__preview">
+In the previous part I showed you how to set up a basic development setup with Webpack. In this part we&#x27;ll dig into build related concerns. We&#x27;ll discuss aspects like code minification, bundle splitting, and caching.
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/minifying-build">Minifying the Build</a></h3><p class="post-list__preview">
+So far we haven&#x27;t given thought to our build output. To make this part more realistic, we could add a heavy dependency, like React, to our project. After that we will apply various techniques to bring down the size of the initial build.
 
-`html
-!DOCTYPE html
-html
-  head
-…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/requiring-files">Requiring Files</a></h3><p class="post-list__preview">
-Webpack allows you to refer to files in various ways.
+The first of these techniques is known as minification. It is…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/setting-environment-variables">Setting Environment Variables</a></h3><p class="post-list__preview">
+React relies on process.env.NODE_ENV based optimizations. If we force it to production, React will get built in an optimized manner. This will disable some checks (e.g., property type checks). Most importantly it will give you a smaller build and improved performance.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/css-fonts-and-images">CSS, Fonts, and Images</a></h3><p class="post-list__preview">
-This part covers basic tasks related to CSS, fonts, and images.
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></h3><p class="post-list__preview">
+The main advantage of splitting the application into two separate bundles is that it allows us to benefit from client level caching. We might, for instance, make most of our changes to the small app bundle. In this case, the client would have to fetch only the app bundle, assuming the vendor bundle…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/adding-hashes-to-filenames">Adding Hashes to Filenames</a></h3><p class="post-list__preview">
+Webpack provides placeholders that can be used to access different types of hashes and entry name as we saw before. The most useful ones are:
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-css">Loading CSS</a></h3><p class="post-list__preview">
-Webpack allows you to load CSS like you load any other code. What strategy you choose is up to you, but you can do everything from loading all your css in the main entry point file to one css file for each component.
+[name] - Returns entry name.
+[hash] - Returns build hash.
+[chunkhash] - Returns a chunk specific hash.
 
-Loading CSS requires the css-loader and the style-loader. They have two different…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-less-or-sass">Loading LESS or SASS</a></h3><p class="post-list__preview">
-If you want to use compiled CSS, there are two loaders available for you. The less-loader and the sass-loader. Depending on your preference, this is how you set it up.
+Using these placeholders you could end up with filen…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></h3><p class="post-list__preview">
+Our current setup doesn&#x27;t clean the build directory between builds. As this can get annoying if we change our setup, we can use a plugin to clean the directory for us.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-stylus-and-yeticss">Loading Stylus and YETICSS</a></h3><p class="post-list__preview">
-Another css extension is the stylus-loader. A great complement to this is yeticss a lightweight, modular pattern library written in stylus.
+Another valid way to resolve the issue would be to handle this outside of Webpack. You could set solve it on the system level thro…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/separating-css">Separating CSS</a></h3><p class="post-list__preview">
+Even though we have a nice build set up now, where did all the CSS go? As per our configuration, it has been inlined to JavaScript! Even though this can be convenient during development, it doesn&#x27;t sound ideal. The current solution doesn&#x27;t allow us to cache CSS. In some cases we might suffer from a…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/analyzing-build-statistics">Analyzing Build Statistics</a></h3><p class="post-list__preview">
+Analyzing build statistics is a good step towards understanding Webpack better. We can get statistics from it easily and we can visualize them using a tool. This shows us the composition of our bundles.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-images">Loading Images</a></h3><p class="post-list__preview">
-Until HTTP/2 is here you want to avoid setting up too many HTTP requests when your application is loading. Depending on the browser you have a set number of requests that can run in parallel. If you load a lot of images in your CSS it is possible to automatically inline these images as BASE64 strin…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-svg">Loading SVG</a></h3><p class="post-list__preview">
+In order to get suitable output we&#x27;ll need to do a couple of tweaks to our configuration:
+
+pack…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/hosting-on-github-pages">Hosting on GitHub Pages</a></h3><p class="post-list__preview">
+A package known as gh-pages allows us host our application on GitHub easily. You point it to your build directory first. It will then pick up the contents and push them to the gh-pages branch.
+
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets">Loading Assets</a></h3><p class="post-list__preview">
+This part discusses how to load various common assets using Webpack.
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-styles">Loading Styles</a></h3><p class="post-list__preview">
+TODO
+
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-images">Loading Images</a></h3><p class="post-list__preview">
+Until HTTP/2 is here you want to avoid setting up too many HTTP requests when your application is loading. Depending on the browser you have a set number of requests that can run in parallel. If you load a lot of images in your CSS it is possible to automatically inline these images as BASE64 strin…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-svg">Loading SVG</a></h3><p class="post-list__preview">
 Webpack has a few ways to load SVG. However the simplest way is through file-loader.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-fonts">Loading Fonts</a></h3><p class="post-list__preview">
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-fonts">Loading Fonts</a></h3><p class="post-list__preview">
 Fonts can be really difficult to get right. First of all we have typically 4 different formats, but only one of them will be used by the respective browser. You do not want to inline all 4 formats, as that will just bloat your CSS file and in no way be an optimization.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/deployment-strategies">Deployment Strategies</a></h3><p class="post-list__preview">
-This part covers basic deployment strategies.
-
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/deploying-to-production">Deploying to Production</a></h3><p class="post-list__preview">
-There are two things you want to do preparing for a production build.
-
-Configure a script to run in your package.json file
-Create a production config
-
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/single-bundle">Single Bundle</a></h3><p class="post-list__preview">
-
-Lets have a look at the simplest setup you can create for your application. Use a single bundle when:
-
-You have a small application
-You will rarely update the application
-You are not too concerned about perceived initial loading time
-
-webpack.production.config.js
-`javascript
-var path = require(&#x27;pa…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/splitting-app-and-vendors">Splitting app and vendors</a></h3><p class="post-list__preview">
-When your application is depending on other libraries, especially large ones like React JS, you should consider splitting those dependencies into its own vendors bundle. This will allow you to do updates to your application, without requiring the users to download the vendors bundle again. Use this…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/chunking-in-webpack">Chunking in Webpack</a></h3><p class="post-list__preview">
-This part covers chunk related aspects. The better you understand Webpack chunking, the better you are able to leverage Webpack&#x27;s more advanced functionality.
-
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/understanding-chunks">Understanding Chunks</a></h3><p class="post-list__preview">
-Explain how webpack thinks chunks and not files
-What are files to load? And what does webpack create for you? And how?
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/multiple-entry-points">Multiple Entry Points</a></h3><p class="post-list__preview">
-Maybe you are building an application that has multiple urls. An example of this would be a solution where you have two, or more, different URLs responding with different pages. Maybe you have one user page and one admin page. They both share a lot of code, but you do not want to load all the admin…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/lazy-loaded-entry-points">Lazy Loaded Entry Points</a></h3><p class="post-list__preview">
-It is also possible to lazy load entry points. This means that you load parts of your application as they are requested. A typical scenario for this would be that your users only visits specific parts of the application. And an example of that would be twitter.com. You do not always visit your prof…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques">Advanced Techniques</a></h3><p class="post-list__preview">
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques">Advanced Techniques</a></h3><p class="post-list__preview">
 This part covers advanced techniques related to Webpack.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/authoring-libraries">Authoring Libraries</a></h3><p class="post-list__preview">
-Webpack can be handy for packaging your library for general consumption. You can use it to output UMD, a format that&#x27;s compatible with various module loaders (CommonJS, AMD) and globals.
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/understanding-chunks">Understanding Chunks</a></h3><p class="post-list__preview">
+Explain how webpack thinks chunks and not files
+What are files to load? And what does webpack create for you? And how?
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/writing-loaders">Writing Loaders</a></h3><p class="post-list__preview">
-Let&#x27;s say we want a custom Markdown loader. Ie. we would like to do something like var readme = require(&#x27;../README.md&#x27;); at our JavaScript file and inject some Markdown converted as HTML there.
-
-As it happens doing something like this is quite easy with Webpack. We&#x27;ll need to implement a little loa…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/optimization-techniques">Optimization Techniques</a></h3><p class="post-list__preview">
-This part covers optimization techniques related to Webpack based workflow.
-
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/optimizing-development">Optimizing Development</a></h3><p class="post-list__preview">
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/optimizing-development">Optimizing Development</a></h3><p class="post-list__preview">
 We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.
 
 webpack.config.js
 `javascript
 var webpack = require(&#x27;webpack&#x27;);
-var path =…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/optimizing-caching">Optimizing Caching</a></h3><p class="post-list__preview">
-When users hit the URL of your application they will need to download different assets. CSS, JavaScript, HTML, images and fonts. The great thing about Webpack is that you can stop thinking how you should download all these assets. You can do it through JavaScript.
+var path =…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/authoring-libraries">Authoring Libraries</a></h3><p class="post-list__preview">
+Webpack can be handy for packaging your library for general consumption. You can use it to output UMD, a format that&#x27;s compatible with various module loaders (CommonJS, AMD) and globals.
 
-&gt; OccurenceOrderPlugin
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/writing-loaders">Writing Loaders</a></h3><p class="post-list__preview">
+Let&#x27;s say we want a custom Markdown loader. Ie. we would like to do something like var readme = require(&#x27;../README.md&#x27;); at our JavaScript file and inject some Markdown converted as HTML there.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/optimizing-rebundling">Optimizing Rebundling</a></h3><p class="post-list__preview">
-You might notice after requiring React JS into your project that the time it takes from a save to a finished rebundle of your application takes more time. In development you ideally want 200-800 ms rebundle speed, depending on what part of the application you are working on.
-
-&gt; IMPORTANT! This setu…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/react-techniques">React Techniques</a></h3><p class="post-list__preview">
+As it happens doing something like this is quite easy with Webpack. We&#x27;ll need to implement a little loa…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/react-techniques">React Techniques</a></h3><p class="post-list__preview">
 This part covers basic techniques related to React.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/configuring-react">Configuring React</a></h3><p class="post-list__preview">
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/react-techniques/configuring-react">Configuring React</a></h3><p class="post-list__preview">
 npm install react react-dom --save
 
 There is really nothing more to it. You can now start using React JS in your code.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/hot-loading-components">Hot Loading Components</a></h3><p class="post-list__preview">
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/react-techniques/hot-loading-components">Hot Loading Components</a></h3><p class="post-list__preview">
 So this part is just freakin&#x27; awesome. With React JS and the react-hot-loader you can change the class code of your component and see the instances update live in the DOM, without losing their state! This is pretty much exactly how CSS updates behave, only that it is your components.
 
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/type-checking-with-flow">Type Checking with Flow</a></h3><p class="post-list__preview">
-If you come to JavaScript from other programming languages you are familiar with types. You have types in JavaScript too, but you do not have to specify these types when declaring variables, receiving arguments etc. This is one of the things that makes JavaScript great, but at the same time not so …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/universal-app">Universal App</a></h3><p class="post-list__preview">
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/react-techniques/type-checking-with-flow">Type Checking with Flow</a></h3><p class="post-list__preview">
+If you come to JavaScript from other programming languages you are familiar with types. You have types in JavaScript too, but you do not have to specify these types when declaring variables, receiving arguments etc. This is one of the things that makes JavaScript great, but at the same time not so …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/react-techniques/universal-applications">Universal Applications</a></h3><p class="post-list__preview">
 So the great thing about React JS is that it runs on the server too. But that does not mean you can just create any app and run it on the server. You have to make some decisions on the architecture. The reason is that even though React JS and the components run on the server, you might be having de…</p></li></ul></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/webpack_react/issues/new?title=undefined - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/react-rocks-interview">React.rocks - React Components and Demos - Interview with Jeff Winkler</a></li><li><a class="blog-teaser" href="/blog/reindex-interview">Reindex - Instant GraphQL Backend for Your React Apps - Interview with Ville Immonen</a></li><li><a class="blog-teaser" href="/blog/survivejs-interview">SurviveJS - Learn Webpack and React - Interview with Juho Vepsäläinen</a></li><li><a class="blog-teaser" href="/blog/styleguidist-interview">react-styleguidist - Style guide generator for React - Interview with Artem Sapegin</a></li><li><a class="blog-teaser" href="/blog/survivejs200">SurviveJS - Webpack and React - v2.0.0</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc4">SurviveJS - Webpack and React - v2.0.0-rc4</a></li><li><a class="blog-teaser" href="/blog/towards-common-components">Towards a Common Component Definition</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc3">SurviveJS - Webpack and React - v2.0.0-rc3</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc2">SurviveJS - Webpack and React - v2.0.0-rc2</a></li><li><a class="blog-teaser" href="/blog/survivejs200-rc1">SurviveJS - Webpack and React - v2.0.0-rc1</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
             ((window.gitter = {}).chat = {}).options = {
               showChatByDefault: false,
