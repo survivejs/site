@@ -13,6 +13,13 @@ module.exports = [
     "image": "hoodie.jpg",
     "type": "intro"
   },
+  {
+    "author": "422737",
+    "source": "https://pixabay.com/en/cd-dvd-edge-demarcation-447955/",
+    "license": "Public Domain",
+    "image": "dvd.jpg",
+    "type": "intro"
+  },
   /* Developing with Webpack */
   {
     "license": "Public Domain",
