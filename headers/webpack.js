@@ -152,13 +152,6 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "GDJ",
-    "source": "https://pixabay.com/en/colorful-prismatic-chromatic-1191074/",
-    "license": "Public Domain",
-    "image": "map.jpg",
-    "type": "chapter"
-  },
-  {
     "author": "Markus Mayer",
     "source": "https://www.flickr.com/photos/10832246@N06/2925254789/",
     "license": "CC BY-NC-ND",
