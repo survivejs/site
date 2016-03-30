@@ -45,17 +45,14 @@ pack…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/bu
 A package known as gh-pages allows us host our application on GitHub easily. You point it to your build directory first. It will then pick up the contents and push them to the gh-pages branch.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets">Loading Assets</a></h3><p class="post-list__preview">
-This part discusses how to load various common assets using Webpack.
+This part discusses how to load various common assets, such as styling files, images, and fonts, using Webpack.
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/formats-supported">Formats Supported</a></h3><p class="post-list__preview">
-Webpack supports a large variety of formats through loaders. In addition, it supports a couple of JavaScript module formats out of the box. I discuss specific asset types in the Loading Assets part. Generally, the idea is always the same. You always set up a loader, or loaders, and connect those wi…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-styles">Loading Styles</a></h3><p class="post-list__preview">
-TODO
+Webpack supports a large variety of formats through loaders. In addition, it supports a couple of JavaScript module formats out of the box. Generally, the idea is always the same. You always set up a loader, or loaders, and connect those with your directory structure. The system relies on configura…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-styles">Loading Styles</a></h3><p class="post-list__preview">
+Generally loading styles follows the same idea. You set up a loader definition that matches your style files and apply the format specific loaders to it. There&#x27;s some complexity involved as you need to use multiple loaders in conjunction.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-images">Loading Images</a></h3><p class="post-list__preview">
-Until HTTP/2 is here you want to avoid setting up too many HTTP requests when your application is loading. Depending on the browser you have a set number of requests that can run in parallel. If you load a lot of images in your CSS it is possible to automatically inline these images as BASE64 strin…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-svg">Loading SVG</a></h3><p class="post-list__preview">
-Webpack has a few ways to load SVG. However the simplest way is through file-loader.
-
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-fonts">Loading Fonts</a></h3><p class="post-list__preview">
-Fonts can be really difficult to get right. First of all we have typically 4 different formats, but only one of them will be used by the respective browser. You do not want to inline all 4 formats, as that will just bloat your CSS file and in no way be an optimization.
+The easiest way to make your application slow is to load a lot of small assets. Each request comes with an overhead after all. HTTP/2 will help in this regard and change the situation somewhat drastically. Till then we are stuck with different approaches. Webpack allows a few of these. They are par…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-fonts">Loading Fonts</a></h3><p class="post-list__preview">
+Loading fonts is a surprisingly tough problem. There are typically four(!) font formats to worry about, each for certain browser. Inlining all formats at once wouldn&#x27;t be a particularly good idea. There are a couple of strategies we can consider.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques">Advanced Techniques</a></h3><p class="post-list__preview">
 This part covers advanced techniques related to Webpack.
