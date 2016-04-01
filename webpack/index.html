@@ -16,6 +16,9 @@ We can extend automatic browser refreshing to work with CSS. Webpack doesn&#x27;
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/setting-up-npm-install-webpack-plugin">Setting Up npm-install-webpack-plugin</a></h3><p class="post-list__preview">
 In order to avoid some typing, we can set up a Webpack plugin known as npm-install-webpack-plugin. As we develop the project, it will detect changes made to Webpack configuration and the projects files and install the dependencies for us. It will modify package.json automatically as well.
 
+</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/optimizing-development">Optimizing Development</a></h3><p class="post-list__preview">
+We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.
+
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack">Building with Webpack</a></h3><p class="post-list__preview">
 In the previous part I showed you how to set up a basic development setup with Webpack. In this part we&#x27;ll dig into build related concerns. We&#x27;ll discuss aspects like code minification, bundle splitting, and caching.
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/minifying-build">Minifying the Build</a></h3><p class="post-list__preview">
@@ -58,16 +61,7 @@ Loading fonts is a surprisingly tough problem. There are typically four(!) font 
 This part covers advanced techniques related to Webpack.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/understanding-chunks">Understanding Chunks</a></h3><p class="post-list__preview">
-Explain how webpack thinks chunks and not files
-What are files to load? And what does webpack create for you? And how?
-
-</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/optimizing-development">Optimizing Development</a></h3><p class="post-list__preview">
-We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.
-
-webpack.config.js
-`javascript
-var webpack = require(&#x27;webpack&#x27;);
-var path =…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/authoring-libraries">Authoring Libraries</a></h3><p class="post-list__preview">
+Chunks are one of the most fundamental concepts of Webpack. We already touched the topic at the Splitting Bundles chapter. There we set up two separate entries, one for the application code and one for our vendor dependencies. With some additional setup Webpack was able to output separate bundles f…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/authoring-libraries">Authoring Libraries</a></h3><p class="post-list__preview">
 Webpack can be handy for packaging your library for general consumption. You can use it to output UMD, a format that&#x27;s compatible with various module loaders (CommonJS, AMD) and globals.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/advanced-techniques/writing-loaders">Writing Loaders</a></h3><p class="post-list__preview">
