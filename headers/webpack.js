@@ -50,6 +50,14 @@ module.exports = [
     "image": "wheels.jpg",
     "type": "chapter"
   },
+  /* Optimizing Development */
+  {
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
+    "type": "chapter"
+  },
   /* Building with Webpack */
   {
     "author": "werner22brigitte",
@@ -171,13 +179,6 @@ module.exports = [
     "source": "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
     "license": "Public Domain",
     "image": "chunks.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "werner22brigitte",
-    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
-    "license": "Public Domain",
-    "image": "machine.jpg",
     "type": "chapter"
   },
   {
