@@ -9,8 +9,8 @@ This sounds simple, but in practice, it can be a complicated an…"/><meta name=
 <p>Before going further, make sure you have <code>node</code> and <code>npm</code> commands available at your terminal.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-the-project" id="setting-up-the-project"></a><span class="text">Setting Up the Project</span><a class="header-anchor-select" href="#setting-up-the-project">#</a></h2>
 <p>To get a starting point, we should create a directory for our project and set up a <em>package.json</em> there. npm uses that to manage project dependencies. Here are the basic commands:</p>
-<pre><code class="lang-bash"><span class="token function" >mkdir</span> webpack_demo
-<span class="token function" >cd</span> webpack_demo
+<pre><code class="lang-bash"><span class="token function" >mkdir</span> webpack-demo
+<span class="token function" >cd</span> webpack-demo
 npm init -y <span class="token comment" spellcheck="true"># -y gives you default *package.json*, skip for more control</span>
 </code></pre>
 <p>You can tweak the generated <em>package.json</em> manually to make further changes to it. We&#39;ll be doing some changes through <em>npm</em> tool, but manual tweaks are acceptable. The official documentation explains various <a href="https://docs.npmjs.com/files/package.json">package.json options</a> in more detail.</p>
@@ -22,7 +22,7 @@ npm init -y <span class="token comment" spellcheck="true"># -y gives you default
 <p>You should see Webpack at your <em>package.json</em> <code>devDependencies</code> section after this. In addition to installing the package locally below the <em>node_modules</em> directory, npm also generates an entry for the executable.</p>
 <p>You can display the exact path of the executables using <code>npm bin</code>. Most likely it points at <em>./node_modules/.bin</em>. Try executing Webpack from there through terminal using <code>node_modules/.bin/webpack</code> or a similar command.</p>
 <p>After executing, you should see a version, a link to the command line interface guide and a long list of options. We won&#39;t be using most of those, but it&#39;s good to know that this tool is packed with functionality, if nothing else.</p>
-<pre><code class="lang-bash">webpack_demo $ node_modules/.bin/webpack
+<pre><code class="lang-bash">webpack-demo $ node_modules/.bin/webpack
 webpack 1.12.14
 Usage: https://webpack.github.io/docs/cli.html
 

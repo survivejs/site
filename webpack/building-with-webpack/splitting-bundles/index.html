@@ -5,6 +5,7 @@ The main advantage of splitting the application into two separate bundles is tha
 <p>To make it easy to split the bundles, check out <em>package.json</em> and make sure only <strong>react</strong> is included in <code>dependencies</code>. We&#39;ll use this information for constructing our <code>vendor</code> bundle. Here&#39;s the basic setup:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'path'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'html-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword" >const</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack-merge'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword" >const</span> NpmInstallPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'npm-install-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
@@ -20,14 +21,12 @@ The main advantage of splitting the application into two separate bundles is tha
   build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
-process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>BABEL_ENV <span class="token operator" >=</span> TARGET<span class="token punctuation" >;</span>
-
 <span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// Entry accepts a path or an object of entries.</span>
+  <span class="token comment" spellcheck="true">// We'll be using the latter form given it's</span>
+  <span class="token comment" spellcheck="true">// convenient with more complex configurations.</span>
   entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  resolve<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    extensions<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >''</span><span class="token punctuation" >,</span> <span class="token string" >'.js'</span><span class="token punctuation" >,</span> <span class="token string" >'.jsx'</span><span class="token punctuation" >]</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
@@ -60,7 +59,7 @@ process<span class="token punctuation" >.</span>env<span class="token punctuatio
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>The setup tells Webpack that we want a separate <em>entry chunk</em> for our project <code>vendor</code> level dependencies.</p>
-<p>Beyond this, it&#39;s possible to define chunks that are loaded dynamically. This can be achieved through <a href="https://webpack.github.io/docs/code-splitting.html">require.ensure</a>. We&#39;ll cover bundle splitting in detail later in this book.</p>
+<p>Beyond this, it&#39;s possible to define chunks that are loaded dynamically. This can be achieved through <a href="https://webpack.github.io/docs/code-splitting.html">require.ensure</a>. We&#39;ll cover it in the <em>Understanding Chunks</em> chapter.</p>
 <p>If you execute the build now using <code>npm run build</code>, you should see something along this:</p>
 <pre><code class="lang-bash">Hash: faafbe36cd3283ec761e
 Version: webpack 1.12.14
@@ -105,7 +104,7 @@ Child html-webpack-plugin <span class="token keyword" >for</span> <span class="t
 Version: webpack 1.12.14
 Time: 5712ms
       Asset       Size  Chunks             Chunk Names
-     app.js    3.99 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+     app.js    3.92 kB    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
   vendor.js     131 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
 manifest.js  743 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
  index.html  225 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>

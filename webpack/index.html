@@ -17,14 +17,12 @@ We can extend automatic browser refreshing to work with CSS. Webpack doesn&#x27;
 In order to avoid some typing, we can set up a Webpack plugin known as npm-install-webpack-plugin. As we develop the project, it will detect changes made to Webpack configuration and the projects files and install the dependencies for us. It will modify package.json automatically as well.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/developing-with-webpack/optimizing-development">Optimizing Development</a></h3><p class="post-list__preview">
-We talked about how you could use the minified versions of your dependencies in development to make the rebundling go as fast as possible. Let us look at a small helper you can implement to make this a bit easier to handle.
+There are times when you might want to optimize your development setup. I am going to show you one useful trick. To benefit from it, we need to make our project heavier first, though. In order to achieve this, we can install React and speed up our development build after that.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack">Building with Webpack</a></h3><p class="post-list__preview">
 In the previous part I showed you how to set up a basic development setup with Webpack. In this part we&#x27;ll dig into build related concerns. We&#x27;ll discuss aspects like code minification, bundle splitting, and caching.
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/minifying-build">Minifying the Build</a></h3><p class="post-list__preview">
-So far we haven&#x27;t given thought to our build output. To make this part more realistic, we could add a heavy dependency, like React, to our project. After that we will apply various techniques to bring down the size of the initial build.
-
-The first of these techniques is known as minification. It is…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/setting-environment-variables">Setting Environment Variables</a></h3><p class="post-list__preview">
+So far we haven&#x27;t given thought to our build output and no doubt it&#x27;s going to be a little chunky, especially as we included React to it. We can apply a variety of techniques to bring down the size of it. We can also leverage client level caching, load certain assets lazily. I&#x27;ll discuss the latter…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/setting-environment-variables">Setting Environment Variables</a></h3><p class="post-list__preview">
 React relies on process.env.NODE_ENV based optimizations. If we force it to production, React will get built in an optimized manner. This will disable some checks (e.g., property type checks). Most importantly it will give you a smaller build and improved performance.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></h3><p class="post-list__preview">

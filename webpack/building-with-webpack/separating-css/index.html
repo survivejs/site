@@ -1,7 +1,7 @@
 <html lang="en"><head><title>SurviveJS - Separating CSS</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 Even though we have a nice build set up now, where did all the CSS go? As per our configuration, it has been inlined to JavaScript! Even though this can be convenient during development, it doesn&#x27;t sound ideal. The current solution doesn&#x27;t allow us to cache CSS. In some cases we might suffer from a…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/taxi.jpg);"></div><h1 class="post__heading">Separating CSS</h1><div class="header-extra"><a href="https://www.flickr.com/photos/82405581@N00/3173065446">Andrea Williams (CC BY-NC-ND)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/webpack-compared">Webpack Compared</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing-with-webpack">Developing with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/splitting-configuration">Splitting the Configuration</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/refreshing-css">Refreshing CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/setting-up-npm-install-webpack-plugin">Setting Up npm-install-webpack-plugin</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/optimizing-development">Optimizing Development</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building-with-webpack">Building with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/minifying-build">Minifying the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/setting-environment-variables">Setting Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Separating CSS</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/hosting-on-github-pages">Hosting on GitHub Pages</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/loading-assets">Loading Assets</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading-assets/formats-supported">Formats Supported</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading-assets/loading-styles">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading-assets/loading-images">Loading Images</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading-assets/loading-fonts">Loading Fonts</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/understanding-chunks">Understanding Chunks</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/authoring-libraries">Authoring Libraries</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/writing-loaders">Writing Loaders</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/react-techniques">React Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/react-techniques/configuring-react">Configuring React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/react-techniques/hot-loading-components">Hot Loading Components</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/react-techniques/type-checking-with-flow">Type Checking with Flow</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/react-techniques/universal-applications">Universal Applications</a></li></ul></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/react-rocks-interview">React.rocks - React Components and Demos - Interview with Jeff Winkler</a></blockquote><div class="chapter-content"><p>Even though we have a nice build set up now, where did all the CSS go? As per our configuration, it has been inlined to JavaScript! Even though this can be convenient during development, it doesn&#39;t sound ideal. The current solution doesn&#39;t allow us to cache CSS. In some cases we might suffer from a flash of unstyled content (FOUC).</p>
 <p>It just so happens that Webpack provides a means to generate a separate CSS bundle. We can achieve this using the <a href="https://www.npmjs.com/package/extract-text-webpack-plugin">ExtractTextPlugin</a>. It comes with overhead during the compilation phase, and it won&#39;t work with Hot Module Replacement (HMR) by design. Given we are using it only for production, that won&#39;t be a problem.</p>
-<h2 class="header"><a class="header-anchor" href="#setting-up-extract-text-webpack-plugin-" id="setting-up-extract-text-webpack-plugin-"></a><span class="text">Setting Up <code>extract-text-webpack-plugin</code></span><a class="header-anchor-select" href="#setting-up-extract-text-webpack-plugin-">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>This same technique can be used with other assets, like templates, too.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-extract-text-webpack-plugin-" id="setting-up-extract-text-webpack-plugin-"></a><span class="text">Setting Up <code>extract-text-webpack-plugin</code></span><a class="header-anchor-select" href="#setting-up-extract-text-webpack-plugin-">#</a></h2>
 <p>It will take some configuration to make it work. Execute</p>
 <pre><code class="lang-bash">npm i extract-text-webpack-plugin --save-dev
 </code></pre>
@@ -15,11 +15,16 @@ Even though we have a nice build set up now, where did all the CSS go? As per ou
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
 <span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// Entry accepts a path or an object of entries.</span>
+  <span class="token comment" spellcheck="true">// We'll be using the latter form given it's</span>
+  <span class="token comment" spellcheck="true">// convenient with more complex configurations.</span>
   entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  resolve<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    extensions<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >''</span><span class="token punctuation" >,</span> <span class="token string" >'.js'</span><span class="token punctuation" >,</span> <span class="token string" >'.jsx'</span><span class="token punctuation" >]</span>
+  output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
+    <span class="token comment" spellcheck="true">// Output using the entry name</span>
+    filename<span class="token punctuation" >:</span> <span class="token string" >'[name].js'</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
     <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
@@ -64,7 +69,8 @@ Even though we have a nice build set up now, where did all the CSS go? As per ou
 </div>
     plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
       <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-    <span class="token punctuation" >]</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 
@@ -98,15 +104,15 @@ Even though we have a nice build set up now, where did all the CSS go? As per ou
 </code></pre>
 <p>Using this setup, we can still benefit from the HMR during development. For a production build, we generate a separate CSS, though. <em>html-webpack-plugin</em> will pick it up automatically and inject it into our <code>index.html</code>.</p>
 <blockquote class="warning"><i class="icon-attention"></i>Definitions, such as <code>loaders: [ExtractTextPlugin.extract(&#39;style&#39;, &#39;css&#39;)]</code>, won&#39;t work and will cause the build to error instead! So when using <code>ExtractTextPlugin</code>, use the <code>loader</code> form instead.</blockquote><blockquote class="warning"><i class="icon-attention"></i>If you want to pass more loaders to the <code>ExtractTextPlugin</code>, you should use <code>!</code> syntax. Example: <code>ExtractTextPlugin.extract(&#39;style&#39;, &#39;css!postcss&#39;)</code>.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
-<pre><code class="lang-bash">clean-webpack-plugin: <span class="token punctuation" >..</span>./webpack_demo/build has been removed.
+<pre><code class="lang-bash">clean-webpack-plugin: <span class="token punctuation" >..</span>./webpack-demo/build has been removed.
 Hash: 5576106e9ebb9a1d8c1e
 Version: webpack 1.12.14
-Time: 5604ms
+Time: 5688ms
                            Asset       Size  Chunks             Chunk Names
-     app.3bdd5f69f8374d244dff.js  277 bytes    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-  vendor.81bcf80e75a5333783c4.js     131 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-manifest.795f5bf566d083d8a946.js  763 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-    app.3bdd5f69f8374d244dff.css   24 bytes    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+     app.d5784ed97e8034f66273.js  228 bytes    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+  vendor.32ffcee47b9808ea7de7.js     131 kB    1, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+manifest.5845ef4d01edbef2544f.js  763 bytes       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+    app.d5784ed97e8034f66273.css   24 bytes    0, 2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
                       index.html  347 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
    <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 186 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
    <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 28 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
@@ -133,6 +139,7 @@ Child extract-text-webpack-plugin:
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
 <span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  react<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'node_modules/react/dist/react.min.js'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
   app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 <div class="leanpub-delete">
   build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span>
@@ -161,16 +168,16 @@ Child extract-text-webpack-plugin:
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <p>If you build the project now through <code>npm run build</code>, you should see something like this:</p>
-<pre><code class="lang-bash">clean-webpack-plugin: <span class="token punctuation" >..</span>./webpack_demo/build has been removed.
+<pre><code class="lang-bash">clean-webpack-plugin: <span class="token punctuation" >..</span>./webpack-demo/build has been removed.
 Hash: a0699bad5573ea059c39
 Version: webpack 1.12.14
-Time: 5827ms
+Time: 5647ms
                            Asset       Size  Chunks             Chunk Names
-     app.0cff8ece60ddfcada2ae.js  250 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-   style.896457f18867289e6614.js   38 bytes    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  style
-  vendor.d9a332053af2a294217b.js     131 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-manifest.732260bc4c7f53c7812b.js  788 bytes       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-  style.896457f18867289e6614.css   24 bytes    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  style
+     app.ee7cdcb255609569a291.js  201 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+   style.a99616d0ff966461386c.js   38 bytes    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  style
+  vendor.05a555881b4c125d77fc.js     131 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+manifest.26f23cea21d7734e9dd0.js  788 bytes       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+  style.a99616d0ff966461386c.css   24 bytes    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  style
                       index.html  402 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
    <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 163 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
    <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> multi vendor 28 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
