@@ -73,7 +73,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <li><code>&lt;li key={note.id}&gt;{note.task}&lt;/li&gt;</code> - In order to tell React in which order to render the elements, we use the <code>key</code> property. It is important that this is unique or else React won&#39;t be able to figure out the correct order in which to render. If not set, React will give a warning. See <a href="https://facebook.github.io/react/docs/multiple-components.html">Multiple Components</a> for more information.</li>
 </ul>
 <p>If you run the application now, you can see a list of notes. It&#39;s not particularly pretty, but it&#39;s a start:</p>
-<p><img src="/images/react_03.png" alt="A list of notes"></p>
+<p><img src="/webpack_react/images/react_03.png" alt="A list of notes"></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to examine your application further, it can be useful to attach a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger">debugger;</a> statement to the place you want to study. It has to be placed on a line that will get executed for the browser to pick it up! The statement will cause the browser debugging tools to trigger and allow you to study the current call stack and scope. You can attach breakpoints like this through the browser, but this is a good alternative.</blockquote><h2 class="header"><a class="header-anchor" href="#adding-new-items-to-the-list" id="adding-new-items-to-the-list"></a><span class="text">Adding New Items to the List</span><a class="header-anchor-select" href="#adding-new-items-to-the-list">#</a></h2>
 <p>Adding more items to the list would be a good starting point for further development. Each React component may maintain internal <code>state</code>. In this case <code>state</code> would refer to the data model we just defined. As we modify the state through React&#39;s <code>setState</code> method, React will eventually call the <code>render()</code> method and update the user interface. This idea allows us to implement interactivity, such as adding new items to the list.</p>
 <p>React forces you to think about state carefully. As the complexity of your application grows, this becomes a fundamental issue. This is the reason why various state management solutions have been developed. They allow you to push application state management related concerns out of your React components.</p>
@@ -184,7 +184,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 </code></pre>
 <p>If we were operating with a back-end, we would trigger a query here and capture the id from the response. For now it&#39;s enough to just generate an entry and a custom id.</p>
 <p>In case you refresh the browser and click the plus button now, you should see a new item at the list:</p>
-<p><img src="/images/react_05.png" alt="Notes with a plus"></p>
+<p><img src="/webpack_react/images/react_05.png" alt="Notes with a plus"></p>
 <p>We are still missing two crucial features: editing and deletion. Before moving onto these, it&#39;s a good idea to make room for them by expanding our component hierarchy. It will become easier to deal with the features after that. Working with React is like this. You develop a component for a while until you realize it could be split up further.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><code>this.setState</code> accepts a second parameter like this: <code>this.setState({...}, () =&gt; console.log(&#39;set state!&#39;))</code>. This is handy to know if you want to trigger some behavior right after <code>setState</code> has completed.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>You could use <code>[...this.state.notes, {id: uuid.v4(), task: &#39;New task&#39;}]</code> to achieve the same result. This <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">spread operator</a> can be used with function parameters as well.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Using <a href="https://www.npmjs.com/package/autobind-decorator">autobind-decorator</a> would be a valid alternative for property initializers. In this case we would use <code>@autobind</code> annotation either on class or method level. To learn more about decorators, read <em>Understanding Decorators</em>.</blockquote><h2 class="header"><a class="header-anchor" href="#improving-component-hierarchy" id="improving-component-hierarchy"></a><span class="text">Improving Component Hierarchy</span><a class="header-anchor-select" href="#improving-component-hierarchy">#</a></h2>
 <p>Our current, one component based setup isn&#39;t going to take us far. It would be complicated to add more separate collections of notes to it. In the current setup this would mean we would have to duplicate code.</p>
@@ -395,7 +395,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <blockquote class="tip"><i class="icon-attention-circled"></i>It can be a good idea to name your callbacks using <code>on</code> prefix. This will allow you to distinguish them from other props and keep your code a little tidier.</blockquote><h3 class="header"><a class="header-anchor" href="#communicating-note-state-changes" id="communicating-note-state-changes"></a><span class="text">Communicating <code>Note</code> State Changes</span><a class="header-anchor-select" href="#communicating-note-state-changes">#</a></h3>
 <p>Given we are currently dealing with the logic at <code>App</code>, we can deal with <code>onEdit</code> there as well. An alternative design might be to push the logic to <code>Notes</code> level. This would get problematic with <code>addNote</code> as it is functionality that doesn&#39;t belong within <code>Notes</code> domain. Therefore we&#39;ll keep the application state at <code>App</code> level.</p>
 <p>In order to make <code>onEdit</code> work, we will need to capture its output and delegate the result to <code>App</code>. Furthermore we will need to know which <code>Note</code> was modified so we can update the data accordingly. This can be achieved through data binding as illustrated by the diagram below:</p>
-<p><img src="/images/bind.png" alt="`onEdit` flow"></p>
+<p><img src="/webpack_react/images/bind.png" alt="`onEdit` flow"></p>
 <p>As <code>onEdit</code> is defined on <code>App</code> level, we&#39;ll need to pass <code>onEdit</code> handler through <code>Notes</code>. So for the stub to work, changes in two files are needed. Here&#39;s what it should look like for <code>App</code>:</p>
 <p><strong>app/components/App.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'node-uuid'</span><span class="token punctuation" >;</span>
@@ -463,7 +463,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 </code></pre>
 <p>If you refresh and try to edit a <code>Note</code> now, the modification should stick. The same idea can be used to implement a lot of functionality and this is a pattern you will see a lot.</p>
 <p>The current design isn&#39;t flawless. What if we wanted to allow newly created notes to be editable straight from the start? Given <code>Note</code> encapsulated this state, we don&#39;t have simple means to access it from the outside. The current solution is enough for now. We&#39;ll address this issue properly in <em>From Notes to Kanban</em> chapter and extract the state there.</p>
-<p><img src="/images/react_06.png" alt="Edited a note"></p>
+<p><img src="/webpack_react/images/react_06.png" alt="Edited a note"></p>
 <h2 class="header"><a class="header-anchor" href="#removing-notes-" id="removing-notes-"></a><span class="text">Removing <code>Notes</code></span><a class="header-anchor-select" href="#removing-notes-">#</a></h2>
 <p>We are still missing one vital functionality. It would be nice to be able to delete notes. We could implement a button per <code>Note</code> and trigger the logic using that. It will look a little rough initially, but we will style it later.</p>
 <p>As before, we&#39;ll need to define some logic on <code>App</code> level. Deleting a note can be achieved by first looking for a <code>Note</code> to remove based on id. After we know which <code>Note</code> to remove, we can construct a new state without it.</p>
@@ -566,7 +566,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>After these changes and refreshing you should be able to delete notes as you like.</p>
-<p><img src="/images/react_07.png" alt="Deleted a note"></p>
+<p><img src="/webpack_react/images/react_07.png" alt="Deleted a note"></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You may need to trigger a refresh at the browser to make these changes show up. Hit <em>CTRL/CMD-R</em>.</blockquote><h2 class="header"><a class="header-anchor" href="#styling-application" id="styling-application"></a><span class="text">Styling Application</span><a class="header-anchor-select" href="#styling-application">#</a></h2>
 <p>Aesthetically, our current application is very barebones. As pretty applications are more fun to use, we can do a little something about that. In this case we&#39;ll be sticking to an old skool way of styling. In other words, we&#39;ll sprinkle some CSS classes around and then apply CSS selectors based on those. The <em>Styling React</em> chapter discusses various other approaches in greater detail.</p>
 <h3 class="header"><a class="header-anchor" href="#attaching-classes-to-components" id="attaching-classes-to-components"></a><span class="text">Attaching Classes to Components</span><a class="header-anchor-select" href="#attaching-classes-to-components">#</a></h3>
@@ -667,7 +667,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>Looking a little nicer now:</p>
-<p><img src="/images/react_08.png" alt="Sans serif"></p>
+<p><img src="/webpack_react/images/react_08.png" alt="Sans serif"></p>
 <p>A good next step would be to constrain the <code>Notes</code> container a little and get rid of those list bullets.</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="lang-css"><span class="token selector" ><span class="token class" >...</span>
@@ -686,7 +686,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>Removing bullets helps:</p>
-<p><img src="/images/react_09.png" alt="No bullets"></p>
+<p><img src="/webpack_react/images/react_09.png" alt="No bullets"></p>
 <p>To make individual <code>Notes</code> stand out we can apply a couple of rules.</p>
 <p><strong>app/main.css</strong></p>
 <pre><code class="lang-css"><span class="token selector" ><span class="token class" >...</span>
@@ -710,7 +710,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>Now the notes stand out a bit:</p>
-<p><img src="/images/react_10.png" alt="Styling notes"></p>
+<p><img src="/webpack_react/images/react_10.png" alt="Styling notes"></p>
 <p>I animated <code>Note</code> shadow in the process. This way the user gets a better indication of what <code>Note</code> is being hovered upon. This won&#39;t work on touch based interfaces, but it&#39;s a nice touch for the desktop.</p>
 <p>Finally, we should make those delete buttons stand out less. One way to achieve this is to hide them by default and show them on hover. The gotcha is that delete won&#39;t work on touch, but we can live with that.</p>
 <p><strong>app/main.css</strong></p>
@@ -733,7 +733,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>No more of those pesky delete buttons:</p>
-<p><img src="/images/react_11.png" alt="Delete on hover"></p>
+<p><img src="/webpack_react/images/react_11.png" alt="Delete on hover"></p>
 <p>After these few steps, we have an application that looks passable. We&#39;ll be improving its appearance as we add functionality, but at least it&#39;s somewhat visually appealing.</p>
 <h2 class="header"><a class="header-anchor" href="#understanding-react-components" id="understanding-react-components"></a><span class="text">Understanding React Components</span><a class="header-anchor-select" href="#understanding-react-components">#</a></h2>
 <p>Understanding how <code>props</code> and <code>state</code> work is important. Component lifecycle is another key concept. We already touched on it earlier, but it&#39;s a good idea to understand it in more detail. You can achieve most tasks in React by applying these concepts throughout your application. React provides the following lifecycle hooks:</p>

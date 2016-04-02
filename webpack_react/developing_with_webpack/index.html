@@ -171,7 +171,7 @@ content is served from <span class="token punctuation" >..</span>./kanban_app/bu
 webpack: bundle is now VALID.
 </code></pre>
 <p>The output means that the development server is running. If you open <em><a href="http://localhost:8080/">http://localhost:8080/</a></em> at your browser, you should see something. If you try modifying the code, you should see output at your terminal. The problem is that the browser doesn&#39;t catch these changes without a hard refresh. That&#39;s something we need to resolve next.</p>
-<p><img src="/images/hello_01.png" alt="Hello world"></p>
+<p><img src="/webpack_react/images/hello_01.png" alt="Hello world"></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you fail to see anything at the browser, you may need to use a different port through <em>webpack-dev-server --port 3000</em> kind of invocation. One reason why the server might fail to run is simply because there&#39;s something else running in the port. You can verify this through a terminal command, such as <code>netstat -na | grep 8080</code>. If there&#39;s something running in the port 8080, it should display a message. The exact command may depend on your platform.</blockquote><h3 class="header"><a class="header-anchor" href="#splitting-up-the-configuration" id="splitting-up-the-configuration"></a><span class="text">Splitting Up the Configuration</span><a class="header-anchor-select" href="#splitting-up-the-configuration">#</a></h3>
 <p>As the development setup has certain requirements of its own, we&#39;ll need to split our Webpack configuration. Given Webpack configuration is just JavaScript, there are many ways to achieve this. At least the following ways are feasible:</p>
 <ul>
@@ -375,7 +375,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 </code></pre>
 <p>Execute <code>npm start</code> now. Point your browser to <strong>localhost:8080</strong> if you are using the default port.</p>
 <p>Open up <em>main.css</em> and change the background color to something like <code>lime</code> (<code>background: lime</code>). Develop styles as needed to make it look a little nicer.</p>
-<p><img src="/images/hello_02.png" alt="Hello cornsilk world"></p>
+<p><img src="/webpack_react/images/hello_02.png" alt="Hello cornsilk world"></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>An alternative way to load CSS would be to define a separate entry through which we point at CSS. I discuss that at the <em>Building Kanban</em> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#enabling-sourcemaps" id="enabling-sourcemaps"></a><span class="text">Enabling Sourcemaps</span><a class="header-anchor-select" href="#enabling-sourcemaps">#</a></h2>
 <p>To improve the debuggability of the application, we can set up sourcemaps. They allow you to see exactly where an error was raised. In Webpack this is controlled through the <code>devtool</code> setting. We can use a decent default as follows:</p>
 <p><strong>webpack.config.js</strong></p>

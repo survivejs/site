@@ -41,12 +41,12 @@ This change in the mindset …"/><meta name="keywords" content="webpack,react,ja
 <p>The methodologies also bring their own quirks (e.g., complex naming schemes). This may make certain things more complicated than they have to be. They don&#39;t necessarily solve any of the bigger underlying issues. They rather provide patches around them.</p>
 <p>There are various approaches that go deeper and solve some of these fundamental problems. That said, it&#39;s not an either-or proposition. You may adopt a methodology even if you use some CSS processor.</p>
 <h2 class="header"><a class="header-anchor" href="#less-sass-stylus-postcss-cssnext" id="less-sass-stylus-postcss-cssnext"></a><span class="text">Less, Sass, Stylus, PostCSS, cssnext</span><a class="header-anchor-select" href="#less-sass-stylus-postcss-cssnext">#</a></h2>
-<p><img src="/images/css.png" alt="CSS Processors"></p>
+<p><img src="/webpack_react/images/css.png" alt="CSS Processors"></p>
 <p>Vanilla CSS is missing some functionality that would make maintenance work easier. Consider something basic like variables, nesting, mixins, math or color functions. It would also be nice to be able to forget about browser specific prefixes. These are small things that add up quite fast and make it annoying to write vanilla CSS.</p>
 <p>Sometimes, you may see terms <em>preprocessor</em> or <em>postprocessor</em>. <a href="https://medium.com/@ddprrt/deconfusing-pre-and-post-processing-d68e3bd078a3">Stefan Baumgartner</a> calls these tools simply <em>CSS processors</em>. The image above adapted based on Stefan&#39;s work gets to the point. The tooling operates both on authoring and optimization level. By authoring we mean features that make it easier to write CSS. Optimization features operate based on vanilla CSS and convert it into something more optimal for browsers to consume.</p>
 <p>The interesting thing is that you may actually want to use multiple CSS processors. Stefan&#39;s image illustrates how you can author your code using Sass and still benefit from processing done through PostCSS. For example, it can <em>autoprefix</em> your CSS code so that you don&#39;t have to worry about prefixing per browser anymore.</p>
 <h3 class="header"><a class="header-anchor" href="#less" id="less"></a><span class="text">Less</span><a class="header-anchor-select" href="#less">#</a></h3>
-<p><img src="/images/less.png" alt="Less"></p>
+<p><img src="/webpack_react/images/less.png" alt="Less"></p>
 <p><a href="http://lesscss.org/">Less</a> is a popular CSS processor that is packed with functionality. In Webpack using Less doesn&#39;t take a lot of effort. <a href="https://www.npmjs.com/package/less-loader">less-loader</a> deals with the heavy lifting:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.less$/</span><span class="token punctuation" >,</span>
@@ -56,7 +56,7 @@ This change in the mindset …"/><meta name="keywords" content="webpack,react,ja
 </code></pre>
 <p>There is also support for Less plugins, sourcemaps, and so on. To understand how those work you should check out the project itself.</p>
 <h3 class="header"><a class="header-anchor" href="#sass" id="sass"></a><span class="text">Sass</span><a class="header-anchor-select" href="#sass">#</a></h3>
-<p><img src="/images/sass.png" alt="Sass"></p>
+<p><img src="/webpack_react/images/sass.png" alt="Sass"></p>
 <p><a href="http://sass-lang.com/">Sass</a> is a popular alternative to Less. You should use <a href="https://www.npmjs.com/package/sass-loader">sass-loader</a> with it. Remember to install <code>node-sass</code> to your project as the loader has a peer dependency on that. Webpack doesn&#39;t take much configuration:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.scss$/</span><span class="token punctuation" >,</span>
@@ -66,7 +66,7 @@ This change in the mindset …"/><meta name="keywords" content="webpack,react,ja
 </code></pre>
 <p>Check out the loader for more advanced usage.</p>
 <h3 class="header"><a class="header-anchor" href="#stylus" id="stylus"></a><span class="text">Stylus</span><a class="header-anchor-select" href="#stylus">#</a></h3>
-<p><img src="/images/stylus.png" alt="Stylus"></p>
+<p><img src="/webpack_react/images/stylus.png" alt="Stylus"></p>
 <p><a href="https://learnboost.github.io/stylus/">Stylus</a> is a Python inspired way to write CSS. Besides providing an indentation based syntax, it is a full-featured processor. When using Webpack, you can use <a href="https://www.npmjs.com/package/stylus-loader">stylus-loader</a> to Stylus within your project. Configure as follows:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.styl$/</span><span class="token punctuation" >,</span>
@@ -97,7 +97,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#cssnext" id="cssnext"></a><span class="text">cssnext</span><a class="header-anchor-select" href="#cssnext">#</a></h3>
-<p><img src="/images/cssnext.jpg" alt="cssnext"></p>
+<p><img src="/webpack_react/images/cssnext.jpg" alt="cssnext"></p>
 <p><a href="https://cssnext.github.io/">cssnext</a> is a PostCSS plugin that allows us to experience the future now. There are some restrictions, but it may be worth a go. In Webpack it is simply a matter of installing <a href="https://www.npmjs.com/package/cssnext-loader">cssnext-loader</a> and attaching it to your CSS configuration. In our case, you would end up with the following:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>

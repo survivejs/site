@@ -43,7 +43,7 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
 <p>This tells JSHint we&#39;re operating within browser environment, don&#39;t care about linting for camelcase naming, want to use double quotes everywhere and so on.</p>
 <p>If you try running JSHint on our project, you will get a lot of output. It&#39;s not the ideal solution for React projects. ESLint will be more useful so we&#39;ll be setting it up next for better insights. Remember to remove JSHint configuration before proceeding further.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-eslint" id="setting-up-eslint"></a><span class="text">Setting Up ESLint</span><a class="header-anchor-select" href="#setting-up-eslint">#</a></h2>
-<p><img src="/images/eslint.png" alt="ESLint"></p>
+<p><img src="/webpack_react/images/eslint.png" alt="ESLint"></p>
 <p><a href="http://eslint.org/">ESLint</a> is a recent linting solution for JavaScript. It builds on top of ideas presented by JSLint and JSHint. More importantly it allows you to develop custom rules. As a result, a nice set of rules have been developed for React in the form of <a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Since <em>v1.4.0</em> ESLint supports a feature known as <a href="http://eslint.org/blog/2015/09/eslint-v1.4.0-released/">autofixing</a>. It allows you to perform certain rule fixes automatically. To activate it, pass the flag <code>--fix</code> to the tool.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-eslint-with-package-json-" id="connecting-eslint-with-package-json-"></a><span class="text">Connecting ESlint with <em>package.json</em></span><a class="header-anchor-select" href="#connecting-eslint-with-package-json-">#</a></h3>
 <p>In order to integrate ESLint with our project, we&#39;ll need to do a couple of little tweaks. First we&#39;ll need to execute</p>
@@ -272,7 +272,7 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
 </code></pre>
 <p>Given stylelint is still under development, there&#39;s no CLI tool available yet. <code>.stylelintrc</code> type functionality is planned.</p>
 <h2 class="header"><a class="header-anchor" href="#checking-javascript-style-with-jscs" id="checking-javascript-style-with-jscs"></a><span class="text">Checking JavaScript Style with JSCS</span><a class="header-anchor-select" href="#checking-javascript-style-with-jscs">#</a></h2>
-<p><img src="/images/jscs.png" alt="JSCS"></p>
+<p><img src="/webpack_react/images/jscs.png" alt="JSCS"></p>
 <p>Especially in a team environment, it can be annoying if one guy uses tabs and another uses spaces. There can also be discrepancies between space usage. Some like to use two spaces, and some like four for indentation. In short, it can get pretty messy without any discipline. To solve this issue, JSCS allows you to define a style guide for your project.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Just like ESLint, also JSCS has autofixing capabilities. To fix certain issues, you can invoke <code>jscs --fix</code> and it will modify your code.</blockquote><p>JSCS can be installed through</p>
 <pre><code class="lang-bash">npm i jscs jscs-loader --save-dev
