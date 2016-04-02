@@ -44,7 +44,9 @@ export default React.createClass({
         },
         {
           title: 'Buy the full ebook',
-          url: 'https://leanpub.com/survivejs_webpack',
+          url: sectionName === 'webpack' ?
+            'https://leanpub.com/survivejs-webpack' :
+            'https://leanpub.com/survivejs_webpack_react',
         },
         {
           title: '',
