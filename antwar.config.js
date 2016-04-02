@@ -32,6 +32,10 @@ module.exports = {
       to: 'images',
     },
     {
+      from: '../webpack/manuscript/images',
+      to: 'images',
+    },
+    {
       from: '../webpack_react/project_source/builds',
       to: 'demos',
     },
