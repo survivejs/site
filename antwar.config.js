@@ -29,11 +29,11 @@ module.exports = {
   assets: [
     {
       from: '../webpack_react/manuscript/images',
-      to: 'images',
+      to: 'webpack_react/images',
     },
     {
       from: '../webpack/manuscript/images',
-      to: 'images',
+      to: 'webpack/images',
     },
     {
       from: '../webpack_react/project_source/builds',
@@ -129,7 +129,7 @@ function blog() {
       content: function(o) {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
-        return markdown.process(content, highlight);
+        return markdown().process(content, highlight);
       }
     },
     layouts: {
@@ -171,7 +171,7 @@ function webpackReact(headers) {
       content: function(o) {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
-        return markdown.process(content, highlight);
+        return markdown('webpack_react').process(content, highlight);
       },
       preview: function(o) {
         var previewLimit = 300;
@@ -296,7 +296,7 @@ function webpack(headers) {
       content: function(o) {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
-        return markdown.process(content, highlight);
+        return markdown('webpack').process(content, highlight);
       },
       preview: function(o) {
         var previewLimit = 300;
