@@ -22,3 +22,12 @@ He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular
 * [@bebraw](https://twitter.com/bebraw)
 * [Personal blog](http://nixtu.info)
 * [GitHub](https://github.com/bebraw)
+
+# Now Available!
+
+<a href="webpack/introduction"><img class='sidebar-cover' src='assets/img/webpack_title_page_small.png' width='255' height='329' /></a>
+
+<p>
+<a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
+</p>
+
