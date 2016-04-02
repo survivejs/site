@@ -20,7 +20,7 @@ export default React.createClass({
         {props.children}
 
         {pathname !== '/' ? this.renderNavigation(props, section.name) : null}
-        {pathname !== '/' ? this.renderFeedback(props.page.title) : null}
+        {pathname !== '/' ? this.renderFeedback(props.page.title, section.name) : null}
 
         <Footer {...props} />
 
@@ -59,9 +59,9 @@ export default React.createClass({
       ]} />
     );
   },
-  renderFeedback(title) {
+  renderFeedback(title, sectionName) {
     return <Fork className="right ribbon"
-      project={`survivejs/webpack_react/issues/new?title=${title} - `}
+      project={`survivejs/${sectionName}/issues/new?title=${title} - `}
       text="Submit feedback"
       style={{backgroundColor: 'black'}}
       target="_blank" />;
