@@ -195,40 +195,11 @@ module.exports = [
     "image": "loader.jpg",
     "type": "chapter"
   },
-  /* React Techniques */
-  {
-    "author": "bdyczewski",
-    "source": "https://pixabay.com/en/laboratory-chemistry-subjects-1009188/",
-    "license": "Public Domain",
-    "image": "lab.jpg",
-    "type": "part"
-  },
   {
     "author": "Marko Heinrich",
     "source": "https://pixabay.com/en/event-technology-light-panel-644537/",
     "license": "Public Domain",
     "image": "panel.jpg",
     "type": "chapter"
-  },
-  {
-    "author": "mrNilssen",
-    "source": "https://pixabay.com/en/fire-burning-flame-hot-burn-770109/",
-    "license": "Public Domain",
-    "image": "hot.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "confused_me",
-    "source": "https://pixabay.com/en/water-splash-flow-drop-of-water-282784/",
-    "license": "Public Domain",
-    "image": "water.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "skeeze",
-    "source": "https://pixabay.com/en/milky-way-andromeda-stars-galaxy-923801/",
-    "license": "Public Domain",
-    "image": "andromeda.jpg",
-    "type": "chapter"
-  },
+  }
 ];
