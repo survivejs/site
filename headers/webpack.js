@@ -146,6 +146,13 @@ module.exports = [
     "type": "chapter"
   },
   {
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
+    "license": "Public Domain",
+    "image": "wrench.jpg",
+    "type": "chapter"
+  },
+  {
     "author": "BreaLeaDesigns",
     "source": "https://pixabay.com/en/austin-tx-sign-texas-downtown-713746/",
     "license": "Public Domain",
