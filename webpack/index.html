@@ -48,7 +48,20 @@ A package known as gh-pages allows us host our application on GitHub easily. You
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets">Loading Assets</a></h3><p class="post-list__preview">
 This part discusses how to load various common assets, such as styling files, images, and fonts, using Webpack.
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/formats-supported">Formats Supported</a></h3><p class="post-list__preview">
-Webpack supports a large variety of formats through loaders. In addition, it supports a couple of JavaScript module formats out of the box. Generally, the idea is always the same. You always set up a loader, or loaders, and connect those with your directory structure. The system relies on configura…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-styles">Loading Styles</a></h3><p class="post-list__preview">
+Webpack supports a large variety of formats through loaders. In addition, it supports a couple of JavaScript module formats out of the box. Generally, the idea is always the same. You always set up a loader, or loaders, and connect those with your directory structure. The system relies on configura…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loader-definitions">Loader Definitions</a></h3><p class="post-list__preview">
+Sometimes you might want to pass query parameters to a loader. By default you could do it through a query string:
+
+`javascript
+{
+  test: /\.jsx?$/,
+  loaders: [
+    &#x27;babel?cacheDirectory,presets[]=react,presets[]=es2015&#x27;
+  ],
+  include: path.join(__dirname, &#x27;app&#x27;)
+}
+`
+
+The problem with this approac…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-styles">Loading Styles</a></h3><p class="post-list__preview">
 Generally loading styles follows the same idea. You set up a loader definition that matches your style files and apply the format specific loaders to it. There&#x27;s some complexity involved as you need to use multiple loaders in conjunction.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/loading-assets/loading-images">Loading Images</a></h3><p class="post-list__preview">
