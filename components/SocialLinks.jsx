@@ -4,13 +4,14 @@ module.exports = React.createClass({
   displayName: 'SocialLinks',
   render() {
     const type = this.props.type;
-    const start = type ? `If you enjoyed this ${type} consider` : 'Consider';
+    const start = type ? `If you enjoyed this ${type}, consider` : 'Consider';
 
     return (
       <div className="social-links">
         <blockquote className="tip">
           {`${start} subscribing to the mailing list below or following `}
-          <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote>
+          <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).
+        </blockquote>
 
         <h2 className="subscribe-header">Subscribe to the mailing list</h2>
 
