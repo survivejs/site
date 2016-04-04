@@ -36,6 +36,24 @@ There are times when you might want to optimize your development setup. I am goi
 <span class="token keyword" >if</span><span class="token punctuation" >(</span>TARGET <span class="token operator" >===</span> <span class="token string" >'start'</span> <span class="token operator" >||</span> <span class="token operator" >!</span>TARGET<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
     <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+    module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+        <span class="token comment" spellcheck="true">// Define development specific CSS setup</span>
+        <span class="token punctuation" >{</span>
+          test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+          loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+          include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
+        <span class="token punctuation" >}</span>
+<div class="leanpub-delete">
+      <span class="token punctuation" >]</span>
+</div>
+<div class="leanpub-insert">
+      <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+      noParse<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+        PATHS<span class="token punctuation" >.</span>react
+      <span class="token punctuation" >]</span>
+</div>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
     plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
       <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
       <span class="token keyword" >new</span> <span class="token class-name" >NpmInstallPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
@@ -46,11 +64,6 @@ There are times when you might want to optimize your development setup. I am goi
 </div>
 <div class="leanpub-insert">
     <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      noParse<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-        PATHS<span class="token punctuation" >.</span>react
-      <span class="token punctuation" >]</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
     resolve<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       alias<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
         react<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>react
