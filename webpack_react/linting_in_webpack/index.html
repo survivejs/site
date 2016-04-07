@@ -18,7 +18,7 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
   module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     preLoaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
       <span class="token punctuation" >{</span>
-        test<span class="token punctuation" >:</span> <span class="token regex" >/\.js?$/</span><span class="token punctuation" >,</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.jsx?$/</span><span class="token punctuation" >,</span>
         loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'jshint'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
         <span class="token comment" spellcheck="true">// define an include so we check just the files we need</span>
         include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
@@ -95,7 +95,7 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>ESLint supports ES6 features through configuration. You will have to specify the features to use through the <a href="http://eslint.org/docs/user-guide/configuring.html#specifying-language-options">ecmaFeatures</a> property.</blockquote><p>The severity of an individual rule is defined by a number as follows:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>ESLint supports ES6 features through configuration. You will have to specify the features to use through the <a href="http://eslint.org/docs/user-guide/configuring.html#specifying-language-options">ecmaFeatures</a> property.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>In case you want to lint against custom language features, use <a href="https://www.npmjs.com/package/babel-eslint">babel-eslint</a>. After installing, you can make ESLint aware of it by setting <code>&quot;parser&quot;: &quot;babel-eslint&quot;</code>. It should be safe to drop <code>parserOptions</code> section of <em>.babelrc</em> assuming custom parser is set.</blockquote><p>The severity of an individual rule is defined by a number as follows:</p>
 <ul>
 <li>0 - The rule has been disabled.</li>
 <li>1 - The rule will emit a warning.</li>
@@ -308,6 +308,12 @@ Better yet, modern editors and IDEs offer strong support for popular tools. This
   <span class="token property" >"disallowImplicitTypeConversion"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"string"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
 
   <span class="token property" >"safeContextKeyword"</span><span class="token operator" >:</span> <span class="token string" >"that"</span><span class="token punctuation" >,</span>
+
+  <span class="token property" >"validateQuoteMarks"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"mark"</span><span class="token operator" >:</span> "'"<span class="token punctuation" >,</span>
+    <span class="token property" >"escape"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"ignoreJSX"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 
   <span class="token property" >"excludeFiles"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
     <span class="token string" >"dist/**"</span><span class="token punctuation" >,</span>

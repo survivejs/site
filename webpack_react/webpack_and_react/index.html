@@ -78,7 +78,9 @@ Combined with Webpack, React becomes a joy to work with. Even though you can use
         test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
         loaders<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
         include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
+<div class="leanpub-delete">
       <span class="token punctuation" >}</span>
+</div>
 <div class="leanpub-insert">
       <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
       <span class="token comment" spellcheck="true">// Set up jsx. This accepts js too thanks to RegExp</span>
@@ -232,6 +234,7 @@ ReactDOM<span class="token punctuation" >.</span><span class="token function" >r
 <p>We have already implemented the development server side setup for this. The problem is that we are missing a part that allows the client portion to catch the changes and patch the code. Some setup is needed in order to add it to our project.</p>
 <p><a href="https://github.com/gaearon/babel-plugin-react-transform">babel-plugin-react-transform</a> allows us to instrument React components in various ways. Hot loading is one of these. It can be enabled through <a href="https://github.com/gaearon/react-transform-hmr">react-transform-hmr</a>.</p>
 <p><em>react-transform-hmr</em> will swap React components one by one as they change without forcing a full refresh. Given it just replaces methods, it won&#39;t catch every possible change. This includes changes made to class constructors. There will be times when you will need to force a refresh, but it will work most of the time.</p>
+<blockquote class="warning"><i class="icon-attention"></i>An IDE feature known as <strong>safe save</strong> can wreak havoc with the hot loading. Therefore it is advisable to turn it off when developing a project like this.</blockquote><h2 class="header"><a class="header-anchor" href="#configuring-babel-preset-react-hmre-" id="configuring-babel-preset-react-hmre-"></a><span class="text">Configuring <em>babel-preset-react-hmre</em></span><a class="header-anchor-select" href="#configuring-babel-preset-react-hmre-">#</a></h2>
 <p>A Babel preset known as <a href="https://www.npmjs.com/package/babel-preset-react-hmre">babel-preset-react-hmre</a> will keep our setup simple. It comes with reasonable defaults and cuts down the amount of configuration you need to maintain. Install it through:</p>
 <pre><code class="lang-bash">npm i babel-preset-react-hmre --save-dev
 </code></pre>
