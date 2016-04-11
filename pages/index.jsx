@@ -1,9 +1,9 @@
-var React = require('react');
-var LatestPost = require('../components/LatestPost.jsx');
-var Testimonial = require('../components/Testimonial.jsx');
-var SocialLinks = require('../components/SocialLinks.jsx');
+import React from 'react';
+import LatestPost from '../components/LatestPost';
+import Testimonial from '../components/Testimonial';
+import SocialLinks from '../components/SocialLinks';
 
-var Index = React.createClass({
+const Index = React.createClass({
   displayName: 'Index',
   render: function() {
     const section = this.props.section;
@@ -93,4 +93,3 @@ var Index = React.createClass({
 Index.description = 'Want to learn Webpack or React? Get started for free and build a Kanban board by following the example project.';
 
 module.exports = Index;
-

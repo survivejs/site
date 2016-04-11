@@ -1,12 +1,10 @@
 import React from 'react';
 import Fork from 'react-ghfork';
-import {layouts, components} from 'antwar-helpers';
 import Footer from '../components/Footer.jsx';
 import Gitter from '../components/Gitter.jsx';
-
-const Body = layouts.Body;
-const Navigation = components.Navigation;
-const RSS = components.RSS;
+import Body from 'antwar-helpers/layouts/Body';
+import Navigation from 'antwar-helpers/components/Navigation';
+import RSS from 'antwar-helpers/components/RSS';
 
 export default React.createClass({
   displayName: 'Body',
@@ -16,7 +14,7 @@ export default React.createClass({
     const pathname = props.location.pathname;
 
     return (
-      <Body head={this.renderHead()} {...props}>
+      <Body head={<RSS />} {...props}>
         {props.children}
 
         {pathname !== '/' ? this.renderNavigation(props, section.name) : null}
@@ -27,9 +25,6 @@ export default React.createClass({
         <Gitter room="survivejs/webpack_react" title="Need help?" />
       </Body>
     );
-  },
-  renderHead() {
-    return <RSS />
   },
   renderNavigation(props, sectionName) {
     return (

@@ -4,15 +4,15 @@ import {Link} from 'react-router';
 import Moment from 'antwar-helpers/components/Moment';
 
 export default React.createClass({
-  displayName: 'ChapterIndex',
+  displayName: 'BlogIndex',
   render() {
     const section = this.props.section;
 
     return (
       <div className="grid">
-        <h1>{section.title}</h1>
+        <h1>{section.title || 'Blog posts'}</h1>
 
-        <ul className="post-list">{_.map(section.pages().reverse(), (page, i) => {
+        <ul className="post-list">{_.map(section.pages(), (page, i) => {
           return (
             <li key={`post-list-item-${i}`}>
               <h3 className="post-list__heading">
@@ -23,13 +23,6 @@ export default React.createClass({
                   null
                 }
               </h3>
-
-              {page.showDemo ?
-                <div className="post-list__demo">
-                  <a href={page.demo} target="_blank">Demo</a>
-                </div> :
-                null
-              }
 
               {page.date ?
                 <Moment className="post__moment" datetime={page.date} /> :

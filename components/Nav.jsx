@@ -3,7 +3,7 @@ import NavigationLink from 'antwar-core/NavigationLink';
 import _ from  'lodash';
 import config from 'config';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Nav',
   render() {
     const pages = this.props.pages || config.theme.navigation;

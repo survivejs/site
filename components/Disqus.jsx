@@ -1,6 +1,6 @@
 import React from 'react';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Disqus',
   render() {
     const shortname = this.props.shortname;

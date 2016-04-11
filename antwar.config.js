@@ -134,10 +134,10 @@ function blog() {
     },
     layouts: {
       index: function() {
-        return themeConfig.layouts().SectionIndex;
+        return require('./layouts/BlogIndex.jsx').default;
       },
       page: function() {
-        return require('./layouts/BlogPage.jsx');
+        return require('./layouts/BlogPage.jsx').default;
       }
     },
     redirects: {
@@ -263,10 +263,10 @@ function webpackReact(headers) {
     },
     layouts: {
       index: function() {
-        return require('./layouts/ChapterIndex.jsx');
+        return require('./layouts/ChapterIndex.jsx').default;
       },
       page: function() {
-        return require('./layouts/ChapterPage.jsx');
+        return require('./layouts/ChapterPage.jsx').default;
       }
     }
   };
@@ -368,10 +368,10 @@ function webpack(headers) {
     },
     layouts: {
       index: function() {
-        return require('./layouts/ChapterIndex.jsx');
+        return require('./layouts/ChapterIndex.jsx').default;
       },
       page: function() {
-        return require('./layouts/ChapterPage.jsx');
+        return require('./layouts/ChapterPage.jsx').default;
       }
     }
   };

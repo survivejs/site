@@ -1,14 +1,14 @@
 import React from 'react';
 import Router from 'react-router';
 
-import {Disqus} from 'antwar-helpers/components';
-import LatestPost from '../components/LatestPost.jsx';
-import PrevNext from '../components/PrevNext.jsx';
-import PrevNextMini from '../components/PrevNextMini.jsx';
-import SocialLinks from '../components/SocialLinks.jsx';
-import Toc from '../components/Toc.jsx';
+import Disqus from 'antwar-helpers/components/Disqus';
+import LatestPost from '../components/LatestPost';
+import PrevNext from '../components/PrevNext';
+import PrevNextMini from '../components/PrevNextMini';
+import SocialLinks from '../components/SocialLinks';
+import Toc from '../components/Toc';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Chapter',
   render() {
     const section = this.props.section;

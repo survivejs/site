@@ -2,14 +2,15 @@ import _ from 'lodash';
 import React from 'react';
 import titleCase from 'title-case';
 
-import {Disqus, Moment} from 'antwar-helpers/components';
+import Disqus from 'antwar-helpers/components/Disqus';
+import Moment from 'antwar-helpers/components/Moment';
 import Author from '../components/Author';
 import PrevNext from '../components/PrevNext';
-import PrevNextMini from '../components/PrevNextMini.jsx';
+import PrevNextMini from '../components/PrevNextMini';
 import SocialLinks from '../components/SocialLinks';
-import Toc from '../components/Toc.jsx';
+import Toc from '../components/Toc';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'BlogPage',
   render() {
     const section = this.props.section;

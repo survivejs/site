@@ -1,7 +1,7 @@
-var React = require('react');
-var Teaser = require('./Teaser');
+import React from 'react';
+import Teaser from './Teaser';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Footer',
   render: function() {
     const props = this.props;

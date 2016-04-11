@@ -1,6 +1,6 @@
 import React from 'react';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'SocialLinks',
   render() {
     const type = this.props.type;

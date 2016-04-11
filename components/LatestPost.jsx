@@ -1,7 +1,7 @@
-var React = require('react');
-var _ = require('lodash');
+import React from 'react';
+import _ from 'lodash';
 
-module.exports = React.createClass({
+export default React.createClass({
     displayName: 'LatestPost',
     render: function() {
         var post = _.reject(this.props.sectionPages('blog'), function(post) {
@@ -22,3 +22,4 @@ module.exports = React.createClass({
         );
     }
 });
+

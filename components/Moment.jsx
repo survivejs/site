@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Moment',
   getDefaultProps() {
     return {
