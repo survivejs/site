@@ -5,7 +5,7 @@ headerImage: '/assets/img/frzr.jpg'
 keywords: ['interview']
 ---
 
-Often when you pick up a JavaScript library it's going to be a little chunky. Tens, or even hundreds of kilobytes even. Even though this can be entirely acceptable given the benefits, it might be a little much at times.
+Often when you pick up a JavaScript library it's going to be a little chunky - tens, or even hundreds of kilobytes. Though this can be entirely acceptable given the benefits, it might be a little much at times.
 
 What if it was possible to begin from the other extreme and go from there? This is what Juha Lindstedt's library [FRZR](https://frzr.js.org) is about. Read on to learn more.
 
