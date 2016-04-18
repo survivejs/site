@@ -25,7 +25,7 @@ I started in 1999 with Flash and also used PHP few years. In 2011 I fell in love
 
 FRZR is a tiny view library (only 2 kB). It is so easy that I can teach you in 20 minutes how it works under the hood. It's also really really fast and versatile.
 
-Last week I actually did a presentation, where I built FRZR from scratch live, and that way explained how it works. It took me 40 minutes, but this week I'm giving another presentation where I have to do it 20 minutes. That tells something about the complexity.
+Last week I actually did a presentation, where I built FRZR from scratch live, and that way explained how it works. It took me 40 minutes, but this week I'm giving another presentation where I have to do it 20 minutes. That tells something about the simplicity.
 
 To give you a better idea, consider the login form example below:
 
