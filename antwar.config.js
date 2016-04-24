@@ -373,6 +373,10 @@ function webpack(headers) {
       page: function() {
         return require('./layouts/ChapterPage.jsx').default;
       }
+    },
+    redirects: {
+      'developing-with-webpack/setting-up-npm-install-webpack-plugin': 'introduction',
+      'developing-with-webpack/optimizing-development': 'advanced-techniques/configuring-react'
     }
   };
 }
