@@ -36,6 +36,7 @@ export default React.createClass({
           <h4 className="toc-nav--header">Table of Contents</h4>
           <Toc sectionPages={() => section.pages().reverse()} page={page} />
           {this.renderResources(resources)}
+          {this.renderBuy(section.name)}
         </div>
 
         <div className="chapter">
@@ -63,6 +64,30 @@ export default React.createClass({
         <PrevNextMini page={page} />
 
         <Disqus shortname='survivejs' />
+      </div>
+    );
+  },
+  renderBuy(sectionName) {
+    if(sectionName === 'webpack') {
+      return (
+        <div className='buy-container'>
+          <img className='sidebar-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
+
+          <p>
+          <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className='buy-container'>
+        <img className='sidebar-cover' src='/assets/img/title_page_small.png' width='255' height='329' />
+
+        <p>
+          <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>
+          <a className='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/'>Buy at Amazon</a>
+        </p>
       </div>
     );
   },
