@@ -27,6 +27,8 @@ In total 118 commits went to the book since the last release. You can find the i
 
 * Improved flow. Now JSPM has a section of its own and overall the chapter reads a little better.
 
+## Developing with Webpack
+
 ### Getting Started
 
 * Improved flow here as well. The chapter should be a little easier to read now. I've done flow tweaks elsewhere too and I won't be mentioning about it separately anymore. They are small tweaks, but they count.
