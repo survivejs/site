@@ -222,7 +222,7 @@ function webpackReact(headers) {
     },
     inject: function(files) {
       var sourcePrefix = 'https://github.com/survivejs/webpack_react/tree/master/project_source/';
-      var reqResource = require.context('json!../webpack_react_resources/', false, /^\.\/.*\.json$/);
+      var reqResource = require.context('json!../webpack_react_resources/', true, /^\.\/.*\.json$/);
 
       return files.map(function(o, i) {
         var file = o.file;
