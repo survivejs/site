@@ -1,5 +1,5 @@
 var path = require('path');
-var _common = require('./_common.js');
+var _common = require('./_common');
 
 module.exports = function webpack(headers) {
   return {

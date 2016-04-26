@@ -7,7 +7,7 @@ var themeConfig = require('antwar-default-theme');
 var rssPlugin = require('antwar-rss-plugin');
 var prevnextPlugin = require('antwar-prevnext-plugin');
 
-var webpackReactHeaders = require('./headers/webpack_react');
+var reactHeaders = require('./headers/react');
 var webpackHeaders = require('./headers/webpack');
 
 var sections = require('./sections');
@@ -99,8 +99,8 @@ module.exports = {
       },
     },
     blog: sections.blog(),
-    //react: sections.react(),
-    webpack_react: sections.webpackReact(webpackReactHeaders),
+    react: sections.react(reactHeaders),
+    webpack_react: sections.webpackReact(),
     webpack: sections.webpack(webpackHeaders)
   }
 };
