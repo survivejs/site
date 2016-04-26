@@ -1,7 +1,5 @@
 var path = require('path');
-var removeMd = require('remove-markdown');
-var markdown = require('../utils/markdown');
-var highlight = require('../utils/highlight');
+var _common = require('./_common.js');
 
 module.exports = function webpack(headers) {
   return {
@@ -10,52 +8,10 @@ module.exports = function webpack(headers) {
       return require.context('json!yaml-frontmatter!../../webpack/manuscript', true, /^\.\/.*\.md$/);
     },
     processPage: {
-      title: function(o) {
-        var ret = removeMd(o.file.__content.split('\n')[0]);
-
-        // part
-        if(ret.indexOf('-#') === 0) {
-          ret = ret.slice(2).trim();
-        }
-
-        if(o.file.bonus) {
-          ret += '*';
-        }
-
-        return ret;
-      },
-      content: function(o) {
-        var content = o.file.__content.split('\n').slice(1).join('\n');
-
-        return markdown('webpack').process(content, highlight);
-      },
-      preview: function(o) {
-        var previewLimit = 300;
-        var content = o.file.__content.split('##')[0].split('\n').slice(1).join('\n');
-        var stripped = removeMd(content);
-
-        if(stripped.length > previewLimit) {
-          return stripped.substr(0, previewLimit) + '…';
-        }
-
-        return stripped;
-      },
-      url: function(o) {
-        var fileName = o.fileName.split('.')[0].toLowerCase().replace(/_/g, '-');
-        var parts = fileName.split('/');
-        var partName = parts[0];
-
-        if(parts.length > 1) {
-          var chapterName = parts[1].split('-').slice(1).join('-');
-
-          return o.sectionName + '/' + partName + '/' + chapterName;
-        }
-        else {
-          partName = parts[0].split('-').slice(1).join('-');
-        }
-
-        return o.sectionName + '/' + partName;
-      },
+      title: _common.title,
+      content: _common.content('webpack'),
+      preview: _common.preview,
+      url: _common.url
     },
     sort: function(files) {
       var order = require('raw!../../webpack/manuscript/Book.txt').split('\n').filter(id);
