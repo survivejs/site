@@ -7,39 +7,9 @@ module.exports = [
     "type": "intro"
   },
   {
-    "author": "Unsplash",
-    "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
-    "license": "Public Domain",
-    "image": "hoodie.jpg",
-    "type": "part"
-  },
-  {
-    "author": "Philip Brown",
-    "source": "https://www.flickr.com/photos/67478016@N00/379064899",
-    "license": "CC BY-NC-ND",
-    "image": "apples_oranges.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "Fumi Yamazaki",
-    "source": "https://www.flickr.com/photos/35237097961@N01/3561706030",
-    "license": "CC BY-NC-SA",
-    "image": "oscillo.jpg",
-    "demo": "02_developing_with_webpack",
-    "type": "chapter"
-  },
-  {
-    "author": "Jairus Khan",
-    "source": "https://www.flickr.com/photos/10282509@N00/4674249352",
-    "license": "CC BY-NC-SA",
-    "image": "mainframe.jpg",
-    "demo": "03_webpack_and_react",
-    "type": "chapter"
-  },
-  {
     "author": "Radek Orszewski",
     "source": "https://www.flickr.com/photos/61745819@N00/10588140955",
-    "license": "CC BY-NC-SA",
+    "license": "CC BY-NC-ND",
     "image": "kanban_photo.jpg",
     "type": "part"
   },
@@ -52,6 +22,13 @@ module.exports = [
     "type": "chapter"
   },
   {
+    "author": "Philip Brown",
+    "source": "https://www.flickr.com/photos/67478016@N00/379064899",
+    "license": "CC BY-NC-ND",
+    "image": "apples_oranges.jpg",
+    "type": "chapter"
+  },
+  {
     "author": "jeremyg3030",
     "source": "https://www.flickr.com/photos/126433814@N04/16298563416",
     "license": "CC BY",
@@ -60,11 +37,17 @@ module.exports = [
     "type": "chapter"
   },
   {
+    "author": "Unsplash",
+    "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
+    "license": "Public Domain",
+    "image": "hoodie.jpg",
+    "type": "chapter"
+  },
+  {
     "author": "Radek Orszewski",
     "source": "https://www.flickr.com/photos/61745819@N00/10588140955",
-    "license": "CC BY-NC-ND",
+    "license": "CC BY-NC-SA",
     "image": "kanban_photo.jpg",
-    "demo": "06_from_notes_to_kanban",
     "type": "chapter"
   },
   {
@@ -76,18 +59,10 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "Acid Pix",
-    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
-    "license": "CC BY",
-    "image": "boots.jpg",
-    "demo": "08_building_kanban",
-    "type": "chapter"
-  },
-  {
-    "author": "NASA",
-    "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
-    "license": "Public Domain",
-    "image": "skydiving.jpg",
+    "author": "Jairus Khan",
+    "source": "https://www.flickr.com/photos/10282509@N00/4674249352",
+    "license": "CC BY-NC-SA",
+    "image": "mainframe.jpg",
     "type": "part"
   },
   {
@@ -109,24 +84,17 @@ module.exports = [
     "type": "chapter"
   },
   {
-    "author": "Eva the Weaver",
-    "source": "https://www.flickr.com/photos/16324044@N00/10833734686",
-    "license": "CC BY-NC-SA",
-    "image": "lint.jpg",
-    "type": "chapter"
-  },
-  {
-    "author": "Duke University Archives",
-    "source": "https://www.flickr.com/photos/19219926@N04/3707001321",
-    "license": "CC BY-NC-SA",
-    "image": "library.jpg",
-    "type": "chapter"
-  },
-  {
     "author": "Andrea Williams",
     "source": "https://www.flickr.com/photos/82405581@N00/3173065446",
     "license": "CC BY-NC-ND",
     "image": "taxi.jpg",
+    "type": "chapter"
+  },
+  {
+    "author": "epicantus",
+    "source": "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
+    "license": "Public Domain",
+    "image": "structure.jpg",
     "type": "chapter"
   },
   {
@@ -135,13 +103,6 @@ module.exports = [
     "license": "Public Domain",
     "image": "peanuts.jpg",
     "type": "part"
-  },
-  {
-    "author": "epicantus",
-    "source": "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
-    "license": "Public Domain",
-    "image": "structure.jpg",
-    "type": "chapter"
   },
   {
     "author": "wilhei",
