@@ -14,6 +14,13 @@ module.exports = [
     "type": "part"
   },
   {
+    "author": "Efraimstochter",
+    "source": "https://pixabay.com/en/wheels-machine-installation-art-784865/",
+    "license": "Public Domain",
+    "image": "wheels.jpg",
+    "type": "chapter"
+  },
+  {
     "author": "Angela",
     "source": "https://www.flickr.com/photos/73635318@N00/2663422833",
     "license": "CC BY-NC-SA",
