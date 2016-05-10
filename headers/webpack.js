@@ -181,6 +181,13 @@ module.exports = [
     "type": "chapter"
   },
   {
+    "author": "Eva the Weaver",
+    "source": "https://www.flickr.com/photos/16324044@N00/10833734686",
+    "license": "CC BY-NC-SA",
+    "image": "lint.jpg",
+    "type": "chapter"
+  },
+  {
     "author": "Duke University Archives",
     "source": "https://www.flickr.com/photos/19219926@N04/3707001321",
     "license": "CC BY-NC-SA",
