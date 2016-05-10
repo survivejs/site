@@ -2,7 +2,7 @@
 title: 'React.rocks - React Components and Demos - Interview with Jeff Winkler'
 date: 2016-03-14
 headerImage: '/assets/img/rocks.jpg'
-keywords: ['interview']
+keywords: ['interview', 'react']
 ---
 
 Given there's a lot going on in the React ecosystem, it can be difficult to keep up. Jeff Winkler maintains a service known as [React.rocks](https://react.rocks/) to alleviate this problem. To get a better idea of what the service is about, read on.

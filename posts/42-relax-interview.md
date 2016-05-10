@@ -2,7 +2,7 @@
 title: 'Relax - New generation CMS on top of React and Node.js - Interview with Bruno Mota'
 date: 2016-04-11
 headerImage: '/assets/img/relax.jpg'
-keywords: ['interview']
+keywords: ['interview', 'react']
 ---
 
 Even though I've spent a lot of time with web development, I never really delved into the world of Content Management Systems (CMS). I'm of course aware of WordPress, Drupal, and such. I've managed to get away with either something entirely custom or a static site generator. Even this site has been developed using [one](https://antwarjs.github.io/).

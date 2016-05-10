@@ -2,7 +2,7 @@
 title: 'SurviveJS - Learn Webpack and React - Interview with Juho Vepsäläinen'
 date: 2016-02-29
 headerImage: '/assets/img/survivejs_cover.jpg'
-keywords: ['interview']
+keywords: ['interview', 'react']
 ---
 
 There is always some level of tension between getting things done and learning new technologies. A lot of the recent JavaScript fatigue stems from that. A year ago I decided to take some preemptive moves against it. The whole point of the SurviveJS effort is to smoothen the way, and quite literally, survive JavaScript and its growth.

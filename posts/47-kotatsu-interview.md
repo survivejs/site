@@ -2,7 +2,7 @@
 title: 'Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique'
 date: 2016-05-02
 headerImage: '/assets/img/japanese-maple.jpg'
-keywords: ['interview']
+keywords: ['interview', 'react', 'boilerplate']
 ---
 
 npm alone has more than three thousand JavaScript boilerplates. Often it's easier to maintain your own than to use one designed by someone else. Everyone has their own preferences. At best boilerplates work as inspiration for your own work. The question is, can the amount of boilerplate be reduced?

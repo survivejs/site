@@ -2,7 +2,7 @@
 title: 'StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem'
 date: 2015-11-24
 headerImage: '/assets/img/starhackit/puntatrettu.jpg'
-keywords: ['interview']
+keywords: ['interview', 'react']
 ---
 
 I discussed my [React component boilerplate](../react-component-boilerplate) earlier on. It is focused and deals only with the frontend. Often you need more than just a frontend, though. This is where Frederic Heem's [StarHackIt](http://starhack.it/) fits. It is a full stack boilerplate. Read on to learn more.

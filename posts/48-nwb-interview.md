@@ -2,7 +2,7 @@
 title: 'nwb - CLI for React Applications and Components - Interview with Jonny Buchanan'
 date: 2016-05-09
 headerImage: '/assets/img/clock.jpg'
-keywords: ['interview', 'react']
+keywords: ['interview', 'react', 'boilerplate']
 ---
 
 Boilerplate code is perhaps one of the leading causes of JavaScript fatigue. You often have to go through certain motions to set up a project or maintain a boilerplate of your own. In [the previous interview about kotatsu](../../blog/kotatsu-interview) we saw one possible solution.
