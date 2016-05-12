@@ -460,7 +460,7 @@ Given we have a nice development setup now, we can actually get some work done. 
 </div>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>To make the scheme work as designed, we need to modify <code>Notes</code> to work according to the idea. It will <code>bind</code> the id of the note in question. When the callback is triggered, the remaining parameter receives a value and the callback gets called:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i><code>this.setState({notes})</code> is using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">Object initializer syntax</a>. It is the same as writing <code>this.setState({notes: notes})</code>. See the <em>Language Features</em> appendix for more information.</blockquote><p>To make the scheme work as designed, we need to modify <code>Notes</code> to work according to the idea. It will <code>bind</code> the id of the note in question. When the callback is triggered, the remaining parameter receives a value and the callback gets called:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Note.jsx'</span><span class="token punctuation" >;</span>
