@@ -312,14 +312,19 @@ function webpack(headers) {
       },
       url: function(o) {
         var fileName = o.fileName.split('.')[0].toLowerCase().replace(/_/g, '-');
+        var parts = fileName.split('/');
+        var partName = parts[0];
 
-        // normal chapter
-        if(parseInt(fileName.split('-')[0], 10) >= 0) {
-          return o.sectionName + '/' + fileName.split('-').slice(1).join('-');
+        if(parts.length > 1) {
+          var chapterName = parts[1].split('-').slice(1).join('-');
+
+          return o.sectionName + '/' + partName + '/' + chapterName;
+        }
+        else {
+          partName = parts[0].split('-').slice(1).join('-');
         }
 
-        // part
-        return o.sectionName + '/' + fileName;
+        return o.sectionName + '/' + partName;
       },
     },
     sort: function(files) {
