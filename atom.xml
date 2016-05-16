@@ -1,4 +1,188 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title >SurviveJS</title><link href="http://survivejs.com/atom.xml" rel="self"> </link><link href="http://survivejs.com/"> </link><updated >2016-05-12T15:00:19+03:00</updated><id >http://survivejs.com/</id><author ><name >Juho Vepsäläinen</name><email ></email></author><entry ><title >SurviveJS - Webpack - v1.2.0</title><id >asurvivejswebpackv1202016-05-11t00:00:00+03:00</id><link href="http://survivejs.com/blog/survivejs-webpack-120"></link><updated >2016-05-11T00:00:00+03:00</updated><content type="html">&lt;p&gt;As I&amp;#39;ve been working towards splitting &lt;a href=&quot;../../webpack_react/introduction&quot;&gt;the first book&lt;/a&gt;, I realized I must do one more release of this Webpack one before I can complete it. That&amp;#39;s what the current release, &lt;code&gt;1.2.0&lt;/code&gt;, is about. I&amp;#39;ve moved certain content there (mainly linting, npm related) and done assorted tweaks based on feedback.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title >SurviveJS</title><link href="http://survivejs.com/atom.xml" rel="self"> </link><link href="http://survivejs.com/"> </link><updated >2016-05-16T20:47:24+03:00</updated><id >http://survivejs.com/</id><author ><name >Juho Vepsäläinen</name><email ></email></author><entry ><title >Builder - A npm-based task runner - Interview with Ryan Roemer</title><id >abuilderanpmbasedtaskrunnerinterviewwithryanroemer2016-05-16t00:00:00+03:00</id><link href="http://survivejs.com/blog/builder-interview"></link><updated >2016-05-16T00:00:00+03:00</updated><content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder&quot;&gt;Builder&lt;/a&gt; by Formidable Labs is one of those projects tackling the boilerplate issue. It is a project that repurposes npm &lt;code&gt;scripts&lt;/code&gt; into something more powerful. To learn more, let&amp;#39;s let &lt;a href=&quot;https://twitter.com/ryan_roemer&quot;&gt;Ryan Roemer&lt;/a&gt; discuss builder in detail.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#can-you-tell-a-bit-about-yourself-&quot; id=&quot;can-you-tell-a-bit-about-yourself-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Can you tell a bit about yourself?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#can-you-tell-a-bit-about-yourself-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;
+&lt;span class=&quot;author&quot;&gt;
+  &lt;img src=&quot;https://www.gravatar.com/avatar/e5b6fdf2e8af6487241497183581f87a?s=200&quot; alt&quot;Ryan Roemer&quot; class=&quot;author&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;
+&lt;/span&gt;
+
+I am the CTO and co-founder of &lt;a href=&quot;http://formidable.com/&quot;&gt;Formidable&lt;/a&gt;, a   development shop in (the delightfully weird neighborhood of) Fremont in Seattle, WA. Our main area of focus is React frontends and Node.js backends. Most of my client and open source work these days tends towards frontend build infrastructures.
+&lt;/p&gt;
+
+&lt;p&gt;Before Formidable, I&amp;#39;ve had stints as a distributed systems engineer and security researcher. And, in my deep, dark past, I used to be a patent attorney before finding my way to engineering.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-would-you-describe-builder-to-someone-who-has-never-heard-of-it-&quot; id=&quot;how-would-you-describe-builder-to-someone-who-has-never-heard-of-it-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How would you describe &lt;em&gt;builder&lt;/em&gt; to someone who has never heard of it?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-would-you-describe-builder-to-someone-who-has-never-heard-of-it-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Builder is a tool for wrangling build infrastructures and workflows for a collection of similar projects. It leverages the modern development trend of &lt;a href=&quot;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&quot;&gt;&lt;code&gt;npm&lt;/code&gt;-based workflows&lt;/a&gt; with better scalability and flexibility.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-does-builder-work-&quot; id=&quot;how-does-builder-work-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How does &lt;em&gt;builder&lt;/em&gt; work?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-does-builder-work-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Let&amp;#39;s walk through a basic example. Imagine that we have two projects with identical &lt;code&gt;npm&lt;/code&gt; tasks:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo FOO&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo BAR&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;foobar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;npm run foo &amp;amp;&amp;amp; npm run bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project2&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo FOO&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo BAR&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;foobar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;npm run foo &amp;amp;&amp;amp; npm run bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which allows us to:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+$ npm run foobar
+FOO
+BAR
+
+$ cd &amp;lt;project2&amp;gt;
+$ npm run foobar
+FOO
+BAR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Great! Unfortunately, as the number of projects increases and these similar tasks change, we end up with a bit of a maintenance nightmare -- keeping up with and updating the latest task set across all projects.&lt;/p&gt;
+&lt;p&gt;Builder solves this problem with the notion of an &lt;a href=&quot;http://formidable.com/open-source/builder/#archetypes&quot;&gt;&amp;quot;archetype&amp;quot;&lt;/a&gt; -- a separate npm module responsible for abstracting and managing the common tasks, configurations, and dependencies. Builder allows us to move common &lt;code&gt;scripts&lt;/code&gt; tasks and &lt;code&gt;dependencies&lt;/code&gt; / &lt;code&gt;devDependencies&lt;/code&gt; for those tasks into an archetype project. The archetype can then be published and consumed just like any normal Node.js module.&lt;/p&gt;
+&lt;p&gt;The builder version of the above example would be:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project2&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;archetype&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo FOO&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo BAR&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;foobar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;builder run foo &amp;amp;&amp;amp; builder run bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that we&amp;#39;re now using &lt;code&gt;builder run &amp;lt;task&amp;gt;&lt;/code&gt; in the place of &lt;code&gt;npm run &amp;lt;task&amp;gt;&lt;/code&gt;. We can execute the tasks with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+$ builder run foobar
+FOO
+BAR
+
+$ cd &amp;lt;project2&amp;gt;
+$ builder run foobar
+FOO
+BAR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With this simple abstraction, builder allows us to have one central location for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder#tasks&quot;&gt;&lt;code&gt;scripts&lt;/code&gt; tasks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder#moving-scripts-and-config-files&quot;&gt;configuration files&lt;/a&gt; (typically in a &lt;code&gt;config/&lt;/code&gt; directory)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder#moving-dependencies-and-devdependencies-from-an-existing-packagejson&quot;&gt;&lt;code&gt;dependencies&lt;/code&gt; / &lt;code&gt;devDependencies&lt;/code&gt;&lt;/a&gt; for the tasks&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder#npm-config&quot;&gt;npm &lt;code&gt;config&lt;/code&gt;&lt;/a&gt; variables in &lt;code&gt;package.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;while still mostly behaving &amp;quot;just like &lt;code&gt;npm&lt;/code&gt;&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Builder also provides critical &lt;em&gt;flexibility&lt;/em&gt; for tasks. Many meta / build frameworks are great when you follow the given workflows, but break down when a project goes &amp;quot;off script&amp;quot;. By contrast, builder supports projects doing sub-tasks differently as a first class concern and at a very granular level.&lt;/p&gt;
+&lt;p&gt;Let&amp;#39;s tweak our example so that &lt;code&gt;&amp;lt;project2&amp;gt;&lt;/code&gt; has a slightly different &lt;code&gt;bar&lt;/code&gt; task like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project2&gt;/package.json&lt;/span&gt;
+&lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;
+  &lt;span class=&quot;token string&quot; &gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo \&quot;I&apos;M GONNA BE DIFFERENT\&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we run the specific tasks, we get the correct overrides:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+$ builder run bar
+BAR
+
+$ cd &amp;lt;project2&amp;gt;
+$ builder run bar
+I&amp;#39;M GONNA BE DIFFERENT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Builder resolves tasks starting with the root project and then moves up to the archetype on a &lt;em&gt;per task&lt;/em&gt; basis. This means that composed tasks like &lt;code&gt;foobar&lt;/code&gt; will pick up root overrides together with existing archetype commands giving us:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+$ builder run foobar
+FOO
+BAR
+
+$ cd &amp;lt;project2&amp;gt;
+$ builder run foobar
+FOO
+I&amp;#39;M GONNA BE DIFFERENT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And just like that, a single project can easily do one-off changes from the archetype, while keeping all the overall composed tasks and workflows intact.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-else-can-builder-do-&quot; id=&quot;what-else-can-builder-do-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What else can &lt;em&gt;builder&lt;/em&gt; do?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-else-can-builder-do-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Aside from archetypes, builder provides an enhanced script runner and a project generator.&lt;/p&gt;
+&lt;p&gt;The motivation for builder&amp;#39;s &lt;strong&gt;script runner&lt;/strong&gt; capabilities is that &lt;code&gt;npm run &amp;lt;task&amp;gt;&lt;/code&gt; is sometimes a bit limited, particularly when you want to write cross-operating-system compatible projects. Thus, builder has a few &amp;quot;nice to have&amp;quot; extras beyond &lt;code&gt;builder run &amp;lt;task&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder#builder-concurrent&quot;&gt;&lt;strong&gt;Concurrent tasks&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;builder concurrent &amp;lt;task1&amp;gt; &amp;lt;task2&amp;gt;&lt;/code&gt; - Great for running multiple tasks at the same time.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder#builder-envs&quot;&gt;&lt;strong&gt;Multiple environment variables&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;builder envs &amp;lt;task&amp;gt; &amp;#39;[{&amp;quot;MSG&amp;quot;: &amp;quot;hi&amp;quot;}, {&amp;quot;MSG&amp;quot;: &amp;quot;yo&amp;quot;}]&amp;#39;&lt;/code&gt; - Run the same task many times concurrently, but with different environment variables injected into the respective processes. Great for scenarios like integration tests on various different OS / browser combinations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At Formidable, we have a couple of one-off projects that don&amp;#39;t need an archetype for central control, but do use builder for these task execution helpers.&lt;/p&gt;
+&lt;p&gt;Looking to builder&amp;#39;s &lt;strong&gt;project / boilerplate generation&lt;/strong&gt; features, archetypes usually following a defined file structure. It is thus a natural extension for builder archetypes to actually create new, idiomatic projects.&lt;/p&gt;
+&lt;p&gt;With this in mind, we created &lt;a href=&quot;https://github.com/FormidableLabs/builder-init&quot;&gt;&lt;code&gt;builder-init&lt;/code&gt;&lt;/a&gt; -- a simple script that generates projects from special archetype files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder-init#archetype-data&quot;&gt;&lt;code&gt;init.js&lt;/code&gt;&lt;/a&gt; - a control file with prompts for template variables. (&lt;a href=&quot;https://github.com/FormidableLabs/builder-react-component/tree/master/init.js&quot;&gt;example&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder-init#archetype-templates&quot;&gt;&lt;code&gt;init/**&lt;/code&gt;&lt;/a&gt; - template files to expand into a new project. (&lt;a href=&quot;https://github.com/FormidableLabs/builder-react-component/tree/master/init&quot;&gt;example&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once these are defined in an archetype, &lt;code&gt;builder-init&lt;/code&gt; can then create a new project via any means that &lt;code&gt;npm&lt;/code&gt; can install a module:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ builder-init builder-react-component
+$ builder-init builder-react-component@0.3.3
+$ builder-init FormidableLabs/builder-react-component#v0.3.3
+$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git#v0.3.3
+$ builder-init /FULL/PATH/TO/builder-react-component
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a great way to keep your new project boilerplate always up to date. Additionally, we utilize &lt;code&gt;builder-init&lt;/code&gt; in the &lt;a href=&quot;https://github.com/FormidableLabs/builder-react-component/blob/master/.travis.yml#L35-L58&quot;&gt;CI for the archetype&lt;/a&gt; to check that the archetype works as expected in consuming projects. It&amp;#39;s a fantastic sanity check on your boilerplate to ensure it&amp;#39;s always ready to ship.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#when-is-builder-appropriate-when-is-it-not-&quot; id=&quot;when-is-builder-appropriate-when-is-it-not-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;When is &lt;em&gt;builder&lt;/em&gt; appropriate? When is it not?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#when-is-builder-appropriate-when-is-it-not-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Builder is great for situations in which you have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Many nearly identical projects&lt;/li&gt;
+&lt;li&gt;With lots of &lt;code&gt;npm&lt;/code&gt; &lt;code&gt;scripts&lt;/code&gt; tasks and dependencies&lt;/li&gt;
+&lt;li&gt;Large teams of developers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We have been helping Walmart Labs migrate their web properties to React. Just looking at React components, there are already something like 60 component repositories, split across many verticals and development teams. Builder archetypes manage the components, allowing us to funnel all of the infrastructure / workflow updates, bug fixes, and everything else into &lt;em&gt;one place&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;At Formidable, we use a multi-repository strategy for our collection of &lt;a href=&quot;http://formidable.com/open-source/victory/&quot;&gt;Victory&lt;/a&gt; data visualization components, all controlled by a single archetype, &lt;a href=&quot;https://github.com/FormidableLabs/builder-victory-component&quot;&gt;&lt;code&gt;builder-victory-component&lt;/code&gt;&lt;/a&gt;. This has been great for having a single location for things like our &lt;a href=&quot;https://github.com/FormidableLabs/builder-victory-component/pull/40&quot;&gt;upgrade to Babel 6&lt;/a&gt;, &lt;a href=&quot;https://github.com/FormidableLabs/builder-victory-component/pull/59&quot;&gt;switch to optimized lodash plugins&lt;/a&gt;, etc.&lt;/p&gt;
+&lt;p&gt;At the same time, not all projects would benefit from a builder archetype solution. If you have a one-off, single-purpose project, there&amp;#39;s no need to abstract to an archetype. And the same goes for projects (like &lt;a href=&quot;https://github.com/babel/babel&quot;&gt;Babel&lt;/a&gt;) that follow a &lt;a href=&quot;https://github.com/babel/babel/blob/4c371132ae7321f6d08567eab54a59049e07f246/doc/design/monorepo.md&quot;&gt;monorepo strategy&lt;/a&gt; with a single repository.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-does-builder-differ-from-the-other-solutions-&quot; id=&quot;how-does-builder-differ-from-the-other-solutions-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How does &lt;em&gt;builder&lt;/em&gt; differ from the other solutions?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-does-builder-differ-from-the-other-solutions-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Builder is unlike most other &amp;quot;meta&amp;quot; approaches that I&amp;#39;m aware of...&lt;/p&gt;
+&lt;p&gt;Builder differs from other React infrastructure / build frameworks in that it&amp;#39;s completely technology agnostic -- it&amp;#39;s really a way of enhancing &lt;code&gt;npm&lt;/code&gt; to work from a single, controllable location. It doesn&amp;#39;t specify dependencies, tasks, or anything really.&lt;/p&gt;
+&lt;p&gt;While the &lt;em&gt;substantive content&lt;/em&gt; of a given archetype will end up being very opinionated (tasks, dependencies, and workflows, specific to the team writing the archetype), the underlying builder mechanics are not.&lt;/p&gt;
+&lt;p&gt;Builder differs from other task runners like &lt;a href=&quot;http://gulpjs.com/&quot;&gt;Gulp&lt;/a&gt; or &lt;a href=&quot;http://gruntjs.com/&quot;&gt;Grunt&lt;/a&gt; in that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Builder doesn&amp;#39;t require &amp;quot;plugins&amp;quot; or depend on wrappers for task functionality. It uses the same dependencies / scripts that you would use from the command line in a normal, non-builder project.&lt;/li&gt;
+&lt;li&gt;Builder is much more flexible for a single project going &amp;quot;off script&amp;quot; at a fine-grained level.&lt;/li&gt;
+&lt;li&gt;Builder has a specific strategy for coordinating tasks across multiple projects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#why-did-you-develop-builder-&quot; id=&quot;why-did-you-develop-builder-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Why did you develop &lt;em&gt;builder&lt;/em&gt;?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#why-did-you-develop-builder-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The motivation for writing builder really goes back to our community&amp;#39;s ongoing conversation regarding multiple vs. single repositories.&lt;/p&gt;
+&lt;p&gt;As JavaScript has become more complex, there has been a shift to &amp;quot;monorepos&amp;quot; -- monolithic repositories that house all of the code for an organization / project. And while there definitely &lt;em&gt;are&lt;/em&gt; appropriate scenarios for monorepos, several of our client projects have run into significant difficulties with them, particularly in the cases of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Large teams and sub-organizations&lt;/li&gt;
+&lt;li&gt;Many developers of varying abilities and backgrounds&lt;/li&gt;
+&lt;li&gt;Complex production build / release cycles&lt;/li&gt;
+&lt;li&gt;Differing team sprint and release cadences&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In a monorepo, these factors can lead to higher likelihoods of bug introduction, one team stomping on the toes of another team, slower code velocity, etc. That is not to say that monorepos can&amp;#39;t be implemented successfully, just that many of the organizations we&amp;#39;ve helped have encountered many painful experiences with them.&lt;/p&gt;
+&lt;p&gt;These days in particular, I think many teams choose a monorepo because it &lt;em&gt;appears easier&lt;/em&gt; and in large part due to the lack of effective tools for multiple-repository management. And that&amp;#39;s really why builder was created -- to make multiple project wrangling sensible, scalable, and flexible.&lt;/p&gt;
+&lt;p&gt;Before creating builder, I kept seeing the same &lt;code&gt;scripts&lt;/code&gt; tasks and dependencies copied and pasted across multiple repositories, and the end result was always the same -- a maintenance and coordination nightmare. As someone who likes to have &amp;quot;one source of truth&amp;quot; across repositories, I really wanted a way to define tasks and infrastructures &lt;em&gt;once&lt;/em&gt; for many repositories.&lt;/p&gt;
+&lt;p&gt;As we were already using &lt;code&gt;npm&lt;/code&gt;-based workflows for most projects, I realized I just wanted a slightly enhanced version of &lt;code&gt;npm&lt;/code&gt; for multiple projects. And that has really been the guiding direction for builder -- it&amp;#39;s &amp;quot;almost&amp;quot; &lt;code&gt;npm&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We support &lt;code&gt;scripts&lt;/code&gt;, dependencies, and &lt;code&gt;config&lt;/code&gt; just like &lt;code&gt;npm&lt;/code&gt; does. And &lt;code&gt;builder-init&lt;/code&gt; works with modules the same as &lt;code&gt;npm&lt;/code&gt; does. And to keep us honest and grounded, we even include a section in the builder documentation on &lt;a href=&quot;https://github.com/FormidableLabs/builder#i-give-up-how-do-i-abandon-builder&quot;&gt;how to abandon builder archetypes&lt;/a&gt; and go back to vanilla &lt;code&gt;npm&lt;/code&gt;-based workflows.&lt;/p&gt;
+&lt;p&gt;That said, it is not all roses and unicorns with builder archetypes. Turning back to the complexity of modern JavaScript, archetypes don&amp;#39;t &lt;em&gt;reduce&lt;/em&gt; this complexity in any fashion, they just &lt;em&gt;channel&lt;/em&gt; it to one place. And because of some idiosyncrasies with Node.js &lt;code&gt;require&lt;/code&gt; resolution, it&amp;#39;s even a bit &lt;em&gt;harder&lt;/em&gt; to wrangle an archetype than straight &lt;code&gt;npm&lt;/code&gt; tasks in a vanilla project.&lt;/p&gt;
+&lt;p&gt;But for us and clients like Walmart Labs, the ability to funnel complexity has been a big enough win in allowing a smaller group of senior developers to manage the really tricky build / test / transpilation / infrastructure intricacies for the larger group of developers working in individual project repositories.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-next-&quot; id=&quot;what-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The base feature set for builder is mostly complete for folks wrangling &amp;quot;just a few&amp;quot; to &amp;quot;enterprise-level number&amp;quot; of projects. We&amp;#39;ve still got some tickets left on the roadmap, but there&amp;#39;s nothing really transformative at this point.&lt;/p&gt;
+&lt;p&gt;Most of my current work is more broadly supporting multi-repository projects. Our latest project is &lt;a href=&quot;https://github.com/FormidableLabs/multibot&quot;&gt;Multibot&lt;/a&gt;, which allows you to use simple JavaScript transforms to change files (text, markdown, JS, etc.) across multiple repositories, going all the way to a pull request with a single command and no files actually touching disk.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-does-the-future-look-like-for-builder-and-web-development-in-general-can-you-see-any-particular-trends-&quot; id=&quot;what-does-the-future-look-like-for-builder-and-web-development-in-general-can-you-see-any-particular-trends-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What does the future look like for &lt;em&gt;builder&lt;/em&gt; and web development in general? Can you see any particular trends?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-does-the-future-look-like-for-builder-and-web-development-in-general-can-you-see-any-particular-trends-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The future looks &lt;strong&gt;increasingly complex&lt;/strong&gt;. And extremely powerful. With the meteoric rise of &lt;a href=&quot;https://babeljs.io/&quot;&gt;Babel&lt;/a&gt;, we&amp;#39;re seeing developers becoming more and more interested in tweaking the language itself that we are writing. And in ways that are in no way on the eventual ECMAScript roadmap. (Witness the power of the &lt;a href=&quot;https://github.com/thejameskyle/babel-plugin-ken-wheeler&quot;&gt;&lt;code&gt;babel-plugin-ken-wheeler&lt;/code&gt;&lt;/a&gt; plugin.)&lt;/p&gt;
+&lt;p&gt;I think developers of all levels of experience will have to work very hard to keep up with both our application and infrastructure technologies. I know I certainly do.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#who-should-i-interview-next-&quot; id=&quot;who-should-i-interview-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Who should I interview next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#who-should-i-interview-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;One Ryan is nice, but two would be &lt;strong&gt;awesome&lt;/strong&gt;. Interview &lt;a href=&quot;https://twitter.com/ryanflorence&quot;&gt;Ryan Florence&lt;/a&gt; next. In addition to leading projects that help in the boilerplate arena, he works in the trenches with an incredibly wide swath of developers of all backgrounds and will surely have some good insights as to how all these technologies are working in the wild.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#conclusion&quot; id=&quot;conclusion&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Conclusion&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#conclusion&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Thanks for the interview Ryan! Builder definitely seems like a powerful tool especially if you have to orchestrate a complex setup. If you want to study it further, consider the links below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://formidable.com/open-source/builder/&quot;&gt;Builder Website&lt;/a&gt; (generated off GitHub README)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder&quot;&gt;Builder GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder-init&quot;&gt;Builder-init GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Example Archetypes:&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder-react-component&quot;&gt;https://github.com/FormidableLabs/builder-react-component&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder-victory-component&quot;&gt;https://github.com/FormidableLabs/builder-victory-component&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content></entry><entry ><title >SurviveJS - Webpack - v1.2.0</title><id >asurvivejswebpackv1202016-05-11t00:00:00+03:00</id><link href="http://survivejs.com/blog/survivejs-webpack-120"></link><updated >2016-05-11T00:00:00+03:00</updated><content type="html">&lt;p&gt;As I&amp;#39;ve been working towards splitting &lt;a href=&quot;../../webpack_react/introduction&quot;&gt;the first book&lt;/a&gt;, I realized I must do one more release of this Webpack one before I can complete it. That&amp;#39;s what the current release, &lt;code&gt;1.2.0&lt;/code&gt;, is about. I&amp;#39;ve moved certain content there (mainly linting, npm related) and done assorted tweaks based on feedback.&lt;/p&gt;
 &lt;p&gt;Compared to &lt;a href=&quot;../../blog/survivejs-webpack-110&quot;&gt;the previous release&lt;/a&gt; we have something more mature together now. There are still improvements in store, but you have to take one step at a time.&lt;/p&gt;
 &lt;p&gt;Getting the split done successfully is my next major goal with this effort. Completing that will take a lot of pressure out of my shoulders and allow new content to be developed more easily.&lt;/p&gt;
 &lt;blockquote&gt;

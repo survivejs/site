@@ -1,0 +1,193 @@
+<html lang="en"><head><title>SurviveJS - Builder - A npm-based task runner - Interview with Ryan Roemer</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+
+Builder by Formidable Labs is one of those projects tackling the boilerplate issue. It is a projec…"/><meta name="keywords" content="interview,react,boilerplate"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="post__wrapper"><div class="header-image" style="background-image:url(/assets/img/builder.jpg);"></div><h1 class="post__heading">Builder - A npm-based task runner - Interview with Ryan Roemer</h1><div class="toc-nav__wrapper"><div><div><h4 class="toc-nav--header">Interviews</h4><ul class="toc-nav"><li class=""><span class="toc-nav__link toc-nav__link--current ">Builder - A npm-based task runner - Interview with Ryan Roemer</span></li><li class=""><a class="toc-nav__link " href="/blog/nwb-interview">nwb - CLI for React Applications and Components - Interview with Jonny Buchanan</a></li><li class=""><a class="toc-nav__link " href="/blog/kotatsu-interview">Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique</a></li><li class=""><a class="toc-nav__link " href="/blog/hashnode-interview">Hashnode - Community for Software Developers - Interview with Sandeep Panda</a></li><li class=""><a class="toc-nav__link " href="/blog/frzr-interview">FRZR - a Tiny View Library - Interview with Juha Lindstedt</a></li><li class=""><a class="toc-nav__link " href="/blog/relax-interview">Relax - New generation CMS on top of React and Node.js - Interview with Bruno Mota</a></li><li class=""><a class="toc-nav__link " href="/blog/react-rocks-interview">React.rocks - React Components and Demos - Interview with Jeff Winkler</a></li><li class=""><a class="toc-nav__link " href="/blog/reindex-interview">Reindex - Instant GraphQL Backend for Your React Apps - Interview with Ville Immonen</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-interview">SurviveJS - Learn Webpack and React - Interview with Juho Vepsäläinen</a></li><li class=""><a class="toc-nav__link " href="/blog/styleguidist-interview">react-styleguidist - Style guide generator for React - Interview with Artem Sapegin</a></li><li class=""><a class="toc-nav__link " href="/blog/codemod-interview">Codemod - Refactoring Code Programmatically - Interview with Ramana Venkata</a></li><li class=""><a class="toc-nav__link " href="/blog/whitestormjs-interview">WhitestormJS - Three.js Based Game Engine - Interview with Alexander Buzin</a></li><li class=""><a class="toc-nav__link " href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li class=""><a class="toc-nav__link " href="/blog/react-router5-interview">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li class=""><a class="toc-nav__link " href="/blog/baobab-interview">Baobab - Data Trees with Cursors - Interview with Guillaume Plique</a></li><li class=""><a class="toc-nav__link " href="/blog/react-bootstrap-interview">React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith</a></li><li class=""><a class="toc-nav__link " href="/blog/cerebral-interview">Cerebral - Expressing Application Flow with Signals - Interview with Christian Alfoni</a></li><li class=""><a class="toc-nav__link " href="/blog/shaderfrog-interview">ShaderFrog - Building a WebGL Shader Editor and Composer - Interview with Andrew Ray</a></li><li class=""><a class="toc-nav__link " href="/blog/cycle-interview">Cycle.js - Reactive Framework for HCI - Interview with André Staltz</a></li><li class=""><a class="toc-nav__link " href="/blog/redux-interview">Redux - Reinventing Flux - Interview with Dan Abramov</a></li><li class=""><a class="toc-nav__link " href="/blog/mobx-interview">MobX - Reactive React - Interview with Michel Weststrate</a></li></ul></div><div><h4 class="toc-nav--header">React</h4><ul class="toc-nav"><li class=""><span class="toc-nav__link toc-nav__link--current ">Builder - A npm-based task runner - Interview with Ryan Roemer</span></li><li class=""><a class="toc-nav__link " href="/blog/nwb-interview">nwb - CLI for React Applications and Components - Interview with Jonny Buchanan</a></li><li class=""><a class="toc-nav__link " href="/blog/kotatsu-interview">Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique</a></li><li class=""><a class="toc-nav__link " href="/blog/relax-interview">Relax - New generation CMS on top of React and Node.js - Interview with Bruno Mota</a></li><li class=""><a class="toc-nav__link " href="/blog/react-rocks-interview">React.rocks - React Components and Demos - Interview with Jeff Winkler</a></li><li class=""><a class="toc-nav__link " href="/blog/reindex-interview">Reindex - Instant GraphQL Backend for Your React Apps - Interview with Ville Immonen</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-interview">SurviveJS - Learn Webpack and React - Interview with Juho Vepsäläinen</a></li><li class=""><a class="toc-nav__link " href="/blog/styleguidist-interview">react-styleguidist - Style guide generator for React - Interview with Artem Sapegin</a></li><li class=""><a class="toc-nav__link " href="/blog/towards-common-components">Towards a Common Component Definition</a></li><li class=""><a class="toc-nav__link " href="/blog/codemod-interview">Codemod - Refactoring Code Programmatically - Interview with Ramana Venkata</a></li><li class=""><a class="toc-nav__link " href="/blog/react-indie-bundle">React Indie Bundle - Summary</a></li><li class=""><a class="toc-nav__link " href="/blog/starhackit-interview">StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem</a></li><li class=""><a class="toc-nav__link " href="/blog/react-router5-interview">react-router5 - Routing Alternative for React - Interview with Thomas Roch</a></li><li class=""><a class="toc-nav__link " href="/blog/react-component-boilerplate-10">React Component Boilerplate v1.0</a></li><li class=""><a class="toc-nav__link " href="/blog/cerebral-interview">Cerebral - Expressing Application Flow with Signals - Interview with Christian Alfoni</a></li><li class=""><a class="toc-nav__link " href="/blog/shaderfrog-interview">ShaderFrog - Building a WebGL Shader Editor and Composer - Interview with Andrew Ray</a></li><li class=""><a class="toc-nav__link " href="/blog/redux-interview">Redux - Reinventing Flux - Interview with Dan Abramov</a></li><li class=""><a class="toc-nav__link " href="/blog/mobx-interview">MobX - Reactive React - Interview with Michel Weststrate</a></li><li class=""><a class="toc-nav__link " href="/blog/react-books">A Quick Look at React Books</a></li></ul></div><div><h4 class="toc-nav--header">Boilerplate</h4><ul class="toc-nav"><li class=""><span class="toc-nav__link toc-nav__link--current ">Builder - A npm-based task runner - Interview with Ryan Roemer</span></li><li class=""><a class="toc-nav__link " href="/blog/nwb-interview">nwb - CLI for React Applications and Components - Interview with Jonny Buchanan</a></li><li class=""><a class="toc-nav__link " href="/blog/kotatsu-interview">Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique</a></li></ul></div></div></div><div class="post"><div class="post__content"><div><p><a href="https://github.com/FormidableLabs/builder">Builder</a> by Formidable Labs is one of those projects tackling the boilerplate issue. It is a project that repurposes npm <code>scripts</code> into something more powerful. To learn more, let&#39;s let <a href="https://twitter.com/ryan_roemer">Ryan Roemer</a> discuss builder in detail.</p>
+<h3 class="header"><a class="header-anchor" href="#can-you-tell-a-bit-about-yourself-" id="can-you-tell-a-bit-about-yourself-"></a><span class="text">Can you tell a bit about yourself?</span><a class="header-anchor-select" href="#can-you-tell-a-bit-about-yourself-">#</a></h3>
+<p>
+<span class="author">
+  <img src="https://www.gravatar.com/avatar/e5b6fdf2e8af6487241497183581f87a?s=200" alt"Ryan Roemer" class="author" width="100" height="100" />
+</span>
+
+I am the CTO and co-founder of <a href="http://formidable.com/">Formidable</a>, a   development shop in (the delightfully weird neighborhood of) Fremont in Seattle, WA. Our main area of focus is React frontends and Node.js backends. Most of my client and open source work these days tends towards frontend build infrastructures.
+</p>
+
+<p>Before Formidable, I&#39;ve had stints as a distributed systems engineer and security researcher. And, in my deep, dark past, I used to be a patent attorney before finding my way to engineering.</p>
+<h2 class="header"><a class="header-anchor" href="#how-would-you-describe-builder-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-builder-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>builder</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-builder-to-someone-who-has-never-heard-of-it-">#</a></h2>
+<p>Builder is a tool for wrangling build infrastructures and workflows for a collection of similar projects. It leverages the modern development trend of <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/"><code>npm</code>-based workflows</a> with better scalability and flexibility.</p>
+<h3 class="header"><a class="header-anchor" href="#how-does-builder-work-" id="how-does-builder-work-"></a><span class="text">How does <em>builder</em> work?</span><a class="header-anchor-select" href="#how-does-builder-work-">#</a></h3>
+<p>Let&#39;s walk through a basic example. Imagine that we have two projects with identical <code>npm</code> tasks:</p>
+<pre><code class="lang-js"><span class="token comment" spellcheck="true">// &lt;project1>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+  <span class="token string" >"foo"</span><span class="token punctuation" >:</span> <span class="token string" >"echo FOO"</span><span class="token punctuation" >,</span>
+  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo BAR"</span><span class="token punctuation" >,</span>
+  <span class="token string" >"foobar"</span><span class="token punctuation" >:</span> <span class="token string" >"npm run foo &amp;&amp; npm run bar"</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span>
+
+<span class="token comment" spellcheck="true">// &lt;project2>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+  <span class="token string" >"foo"</span><span class="token punctuation" >:</span> <span class="token string" >"echo FOO"</span><span class="token punctuation" >,</span>
+  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo BAR"</span><span class="token punctuation" >,</span>
+  <span class="token string" >"foobar"</span><span class="token punctuation" >:</span> <span class="token string" >"npm run foo &amp;&amp; npm run bar"</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>which allows us to:</p>
+<pre><code class="lang-sh">$ cd &lt;project1&gt;
+$ npm run foobar
+FOO
+BAR
+
+$ cd &lt;project2&gt;
+$ npm run foobar
+FOO
+BAR
+</code></pre>
+<p>Great! Unfortunately, as the number of projects increases and these similar tasks change, we end up with a bit of a maintenance nightmare -- keeping up with and updating the latest task set across all projects.</p>
+<p>Builder solves this problem with the notion of an <a href="http://formidable.com/open-source/builder/#archetypes">&quot;archetype&quot;</a> -- a separate npm module responsible for abstracting and managing the common tasks, configurations, and dependencies. Builder allows us to move common <code>scripts</code> tasks and <code>dependencies</code> / <code>devDependencies</code> for those tasks into an archetype project. The archetype can then be published and consumed just like any normal Node.js module.</p>
+<p>The builder version of the above example would be:</p>
+<pre><code class="lang-js"><span class="token comment" spellcheck="true">// &lt;project1>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+
+<span class="token comment" spellcheck="true">// &lt;project2>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+
+<span class="token comment" spellcheck="true">// &lt;archetype>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+  <span class="token string" >"foo"</span><span class="token punctuation" >:</span> <span class="token string" >"echo FOO"</span><span class="token punctuation" >,</span>
+  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo BAR"</span><span class="token punctuation" >,</span>
+  <span class="token string" >"foobar"</span><span class="token punctuation" >:</span> <span class="token string" >"builder run foo &amp;&amp; builder run bar"</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Note that we&#39;re now using <code>builder run &lt;task&gt;</code> in the place of <code>npm run &lt;task&gt;</code>. We can execute the tasks with:</p>
+<pre><code class="lang-sh">$ cd &lt;project1&gt;
+$ builder run foobar
+FOO
+BAR
+
+$ cd &lt;project2&gt;
+$ builder run foobar
+FOO
+BAR
+</code></pre>
+<p>With this simple abstraction, builder allows us to have one central location for:</p>
+<ul>
+<li><a href="https://github.com/FormidableLabs/builder#tasks"><code>scripts</code> tasks</a></li>
+<li><a href="https://github.com/FormidableLabs/builder#moving-scripts-and-config-files">configuration files</a> (typically in a <code>config/</code> directory)</li>
+<li><a href="https://github.com/FormidableLabs/builder#moving-dependencies-and-devdependencies-from-an-existing-packagejson"><code>dependencies</code> / <code>devDependencies</code></a> for the tasks</li>
+<li><a href="https://github.com/FormidableLabs/builder#npm-config">npm <code>config</code></a> variables in <code>package.json</code></li>
+</ul>
+<p>while still mostly behaving &quot;just like <code>npm</code>&quot;.</p>
+<p>Builder also provides critical <em>flexibility</em> for tasks. Many meta / build frameworks are great when you follow the given workflows, but break down when a project goes &quot;off script&quot;. By contrast, builder supports projects doing sub-tasks differently as a first class concern and at a very granular level.</p>
+<p>Let&#39;s tweak our example so that <code>&lt;project2&gt;</code> has a slightly different <code>bar</code> task like:</p>
+<pre><code class="lang-js"><span class="token comment" spellcheck="true">// &lt;project1>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+
+<span class="token comment" spellcheck="true">// &lt;project2>/package.json</span>
+<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo \"I'M GONNA BE DIFFERENT\""</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>If we run the specific tasks, we get the correct overrides:</p>
+<pre><code class="lang-sh">$ cd &lt;project1&gt;
+$ builder run bar
+BAR
+
+$ cd &lt;project2&gt;
+$ builder run bar
+I&#39;M GONNA BE DIFFERENT
+</code></pre>
+<p>Builder resolves tasks starting with the root project and then moves up to the archetype on a <em>per task</em> basis. This means that composed tasks like <code>foobar</code> will pick up root overrides together with existing archetype commands giving us:</p>
+<pre><code class="lang-sh">$ cd &lt;project1&gt;
+$ builder run foobar
+FOO
+BAR
+
+$ cd &lt;project2&gt;
+$ builder run foobar
+FOO
+I&#39;M GONNA BE DIFFERENT
+</code></pre>
+<p>And just like that, a single project can easily do one-off changes from the archetype, while keeping all the overall composed tasks and workflows intact.</p>
+<h3 class="header"><a class="header-anchor" href="#what-else-can-builder-do-" id="what-else-can-builder-do-"></a><span class="text">What else can <em>builder</em> do?</span><a class="header-anchor-select" href="#what-else-can-builder-do-">#</a></h3>
+<p>Aside from archetypes, builder provides an enhanced script runner and a project generator.</p>
+<p>The motivation for builder&#39;s <strong>script runner</strong> capabilities is that <code>npm run &lt;task&gt;</code> is sometimes a bit limited, particularly when you want to write cross-operating-system compatible projects. Thus, builder has a few &quot;nice to have&quot; extras beyond <code>builder run &lt;task&gt;</code>:</p>
+<ul>
+<li><a href="https://github.com/FormidableLabs/builder#builder-concurrent"><strong>Concurrent tasks</strong></a>: <code>builder concurrent &lt;task1&gt; &lt;task2&gt;</code> - Great for running multiple tasks at the same time.</li>
+<li><a href="https://github.com/FormidableLabs/builder#builder-envs"><strong>Multiple environment variables</strong></a>: <code>builder envs &lt;task&gt; &#39;[{&quot;MSG&quot;: &quot;hi&quot;}, {&quot;MSG&quot;: &quot;yo&quot;}]&#39;</code> - Run the same task many times concurrently, but with different environment variables injected into the respective processes. Great for scenarios like integration tests on various different OS / browser combinations.</li>
+</ul>
+<p>At Formidable, we have a couple of one-off projects that don&#39;t need an archetype for central control, but do use builder for these task execution helpers.</p>
+<p>Looking to builder&#39;s <strong>project / boilerplate generation</strong> features, archetypes usually following a defined file structure. It is thus a natural extension for builder archetypes to actually create new, idiomatic projects.</p>
+<p>With this in mind, we created <a href="https://github.com/FormidableLabs/builder-init"><code>builder-init</code></a> -- a simple script that generates projects from special archetype files:</p>
+<ul>
+<li><a href="https://github.com/FormidableLabs/builder-init#archetype-data"><code>init.js</code></a> - a control file with prompts for template variables. (<a href="https://github.com/FormidableLabs/builder-react-component/tree/master/init.js">example</a>)</li>
+<li><a href="https://github.com/FormidableLabs/builder-init#archetype-templates"><code>init/**</code></a> - template files to expand into a new project. (<a href="https://github.com/FormidableLabs/builder-react-component/tree/master/init">example</a>)</li>
+</ul>
+<p>Once these are defined in an archetype, <code>builder-init</code> can then create a new project via any means that <code>npm</code> can install a module:</p>
+<pre><code class="lang-sh">$ builder-init builder-react-component
+$ builder-init builder-react-component@0.3.3
+$ builder-init FormidableLabs/builder-react-component#v0.3.3
+$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git#v0.3.3
+$ builder-init /FULL/PATH/TO/builder-react-component
+</code></pre>
+<p>This is a great way to keep your new project boilerplate always up to date. Additionally, we utilize <code>builder-init</code> in the <a href="https://github.com/FormidableLabs/builder-react-component/blob/master/.travis.yml#L35-L58">CI for the archetype</a> to check that the archetype works as expected in consuming projects. It&#39;s a fantastic sanity check on your boilerplate to ensure it&#39;s always ready to ship.</p>
+<h3 class="header"><a class="header-anchor" href="#when-is-builder-appropriate-when-is-it-not-" id="when-is-builder-appropriate-when-is-it-not-"></a><span class="text">When is <em>builder</em> appropriate? When is it not?</span><a class="header-anchor-select" href="#when-is-builder-appropriate-when-is-it-not-">#</a></h3>
+<p>Builder is great for situations in which you have:</p>
+<ul>
+<li>Many nearly identical projects</li>
+<li>With lots of <code>npm</code> <code>scripts</code> tasks and dependencies</li>
+<li>Large teams of developers</li>
+</ul>
+<p>We have been helping Walmart Labs migrate their web properties to React. Just looking at React components, there are already something like 60 component repositories, split across many verticals and development teams. Builder archetypes manage the components, allowing us to funnel all of the infrastructure / workflow updates, bug fixes, and everything else into <em>one place</em>.</p>
+<p>At Formidable, we use a multi-repository strategy for our collection of <a href="http://formidable.com/open-source/victory/">Victory</a> data visualization components, all controlled by a single archetype, <a href="https://github.com/FormidableLabs/builder-victory-component"><code>builder-victory-component</code></a>. This has been great for having a single location for things like our <a href="https://github.com/FormidableLabs/builder-victory-component/pull/40">upgrade to Babel 6</a>, <a href="https://github.com/FormidableLabs/builder-victory-component/pull/59">switch to optimized lodash plugins</a>, etc.</p>
+<p>At the same time, not all projects would benefit from a builder archetype solution. If you have a one-off, single-purpose project, there&#39;s no need to abstract to an archetype. And the same goes for projects (like <a href="https://github.com/babel/babel">Babel</a>) that follow a <a href="https://github.com/babel/babel/blob/4c371132ae7321f6d08567eab54a59049e07f246/doc/design/monorepo.md">monorepo strategy</a> with a single repository.</p>
+<h2 class="header"><a class="header-anchor" href="#how-does-builder-differ-from-the-other-solutions-" id="how-does-builder-differ-from-the-other-solutions-"></a><span class="text">How does <em>builder</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-builder-differ-from-the-other-solutions-">#</a></h2>
+<p>Builder is unlike most other &quot;meta&quot; approaches that I&#39;m aware of...</p>
+<p>Builder differs from other React infrastructure / build frameworks in that it&#39;s completely technology agnostic -- it&#39;s really a way of enhancing <code>npm</code> to work from a single, controllable location. It doesn&#39;t specify dependencies, tasks, or anything really.</p>
+<p>While the <em>substantive content</em> of a given archetype will end up being very opinionated (tasks, dependencies, and workflows, specific to the team writing the archetype), the underlying builder mechanics are not.</p>
+<p>Builder differs from other task runners like <a href="http://gulpjs.com/">Gulp</a> or <a href="http://gruntjs.com/">Grunt</a> in that:</p>
+<ul>
+<li>Builder doesn&#39;t require &quot;plugins&quot; or depend on wrappers for task functionality. It uses the same dependencies / scripts that you would use from the command line in a normal, non-builder project.</li>
+<li>Builder is much more flexible for a single project going &quot;off script&quot; at a fine-grained level.</li>
+<li>Builder has a specific strategy for coordinating tasks across multiple projects.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#why-did-you-develop-builder-" id="why-did-you-develop-builder-"></a><span class="text">Why did you develop <em>builder</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-builder-">#</a></h2>
+<p>The motivation for writing builder really goes back to our community&#39;s ongoing conversation regarding multiple vs. single repositories.</p>
+<p>As JavaScript has become more complex, there has been a shift to &quot;monorepos&quot; -- monolithic repositories that house all of the code for an organization / project. And while there definitely <em>are</em> appropriate scenarios for monorepos, several of our client projects have run into significant difficulties with them, particularly in the cases of:</p>
+<ul>
+<li>Large teams and sub-organizations</li>
+<li>Many developers of varying abilities and backgrounds</li>
+<li>Complex production build / release cycles</li>
+<li>Differing team sprint and release cadences</li>
+</ul>
+<p>In a monorepo, these factors can lead to higher likelihoods of bug introduction, one team stomping on the toes of another team, slower code velocity, etc. That is not to say that monorepos can&#39;t be implemented successfully, just that many of the organizations we&#39;ve helped have encountered many painful experiences with them.</p>
+<p>These days in particular, I think many teams choose a monorepo because it <em>appears easier</em> and in large part due to the lack of effective tools for multiple-repository management. And that&#39;s really why builder was created -- to make multiple project wrangling sensible, scalable, and flexible.</p>
+<p>Before creating builder, I kept seeing the same <code>scripts</code> tasks and dependencies copied and pasted across multiple repositories, and the end result was always the same -- a maintenance and coordination nightmare. As someone who likes to have &quot;one source of truth&quot; across repositories, I really wanted a way to define tasks and infrastructures <em>once</em> for many repositories.</p>
+<p>As we were already using <code>npm</code>-based workflows for most projects, I realized I just wanted a slightly enhanced version of <code>npm</code> for multiple projects. And that has really been the guiding direction for builder -- it&#39;s &quot;almost&quot; <code>npm</code>.</p>
+<p>We support <code>scripts</code>, dependencies, and <code>config</code> just like <code>npm</code> does. And <code>builder-init</code> works with modules the same as <code>npm</code> does. And to keep us honest and grounded, we even include a section in the builder documentation on <a href="https://github.com/FormidableLabs/builder#i-give-up-how-do-i-abandon-builder">how to abandon builder archetypes</a> and go back to vanilla <code>npm</code>-based workflows.</p>
+<p>That said, it is not all roses and unicorns with builder archetypes. Turning back to the complexity of modern JavaScript, archetypes don&#39;t <em>reduce</em> this complexity in any fashion, they just <em>channel</em> it to one place. And because of some idiosyncrasies with Node.js <code>require</code> resolution, it&#39;s even a bit <em>harder</em> to wrangle an archetype than straight <code>npm</code> tasks in a vanilla project.</p>
+<p>But for us and clients like Walmart Labs, the ability to funnel complexity has been a big enough win in allowing a smaller group of senior developers to manage the really tricky build / test / transpilation / infrastructure intricacies for the larger group of developers working in individual project repositories.</p>
+<h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>
+<p>The base feature set for builder is mostly complete for folks wrangling &quot;just a few&quot; to &quot;enterprise-level number&quot; of projects. We&#39;ve still got some tickets left on the roadmap, but there&#39;s nothing really transformative at this point.</p>
+<p>Most of my current work is more broadly supporting multi-repository projects. Our latest project is <a href="https://github.com/FormidableLabs/multibot">Multibot</a>, which allows you to use simple JavaScript transforms to change files (text, markdown, JS, etc.) across multiple repositories, going all the way to a pull request with a single command and no files actually touching disk.</p>
+<h2 class="header"><a class="header-anchor" href="#what-does-the-future-look-like-for-builder-and-web-development-in-general-can-you-see-any-particular-trends-" id="what-does-the-future-look-like-for-builder-and-web-development-in-general-can-you-see-any-particular-trends-"></a><span class="text">What does the future look like for <em>builder</em> and web development in general? Can you see any particular trends?</span><a class="header-anchor-select" href="#what-does-the-future-look-like-for-builder-and-web-development-in-general-can-you-see-any-particular-trends-">#</a></h2>
+<p>The future looks <strong>increasingly complex</strong>. And extremely powerful. With the meteoric rise of <a href="https://babeljs.io/">Babel</a>, we&#39;re seeing developers becoming more and more interested in tweaking the language itself that we are writing. And in ways that are in no way on the eventual ECMAScript roadmap. (Witness the power of the <a href="https://github.com/thejameskyle/babel-plugin-ken-wheeler"><code>babel-plugin-ken-wheeler</code></a> plugin.)</p>
+<p>I think developers of all levels of experience will have to work very hard to keep up with both our application and infrastructure technologies. I know I certainly do.</p>
+<h2 class="header"><a class="header-anchor" href="#who-should-i-interview-next-" id="who-should-i-interview-next-"></a><span class="text">Who should I interview next?</span><a class="header-anchor-select" href="#who-should-i-interview-next-">#</a></h2>
+<p>One Ryan is nice, but two would be <strong>awesome</strong>. Interview <a href="https://twitter.com/ryanflorence">Ryan Florence</a> next. In addition to leading projects that help in the boilerplate arena, he works in the trenches with an incredibly wide swath of developers of all backgrounds and will surely have some good insights as to how all these technologies are working in the wild.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>Thanks for the interview Ryan! Builder definitely seems like a powerful tool especially if you have to orchestrate a complex setup. If you want to study it further, consider the links below:</p>
+<ul>
+<li><a href="http://formidable.com/open-source/builder/">Builder Website</a> (generated off GitHub README)</li>
+<li><a href="https://github.com/FormidableLabs/builder">Builder GitHub</a></li>
+<li><a href="https://github.com/FormidableLabs/builder-init">Builder-init GitHub</a></li>
+<li>Example Archetypes:<ul>
+<li><a href="https://github.com/FormidableLabs/builder-react-component">https://github.com/FormidableLabs/builder-react-component</a></li>
+<li><a href="https://github.com/FormidableLabs/builder-victory-component">https://github.com/FormidableLabs/builder-victory-component</a></li>
+</ul>
+</li>
+</ul>
+</div><time datetime="2016-05-16T00:00:00.000Z" class="post__moment">16 May 2016</time><div class="post__author"><span>Published by Juho <a href="https://twitter.com/bebraw" class="twitter">@bebraw</a> Vepsäläinen</span></div><div class="social-links"><blockquote class="tip">If you enjoyed this blog post, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev" style="width:100%;"><div class="new-prevnext__bg" style="background-image:url(/assets/img/bell.jpg);"></div><span class="new-prevnext__info">Previous post</span><a class="new-prevnext__link" href="/blog/survivejs-webpack-120">SurviveJS - Webpack - v1.2.0</a></div></div><div id="disqus_thread"></div></div></div><div><a class="previous-page" title="SurviveJS - Webpack - v1.2.0" href="/blog/survivejs-webpack-120"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/webpack_react/introduction/">Read the free version</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack_react">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/blog/issues/new?title=Builder - A npm-based task runner - Interview with Ryan Roemer - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs/webpack_react" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs/webpack_react" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/builder-interview">Builder - A npm-based task runner - Interview with Ryan Roemer</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-120">SurviveJS - Webpack - v1.2.0</a></li><li><a class="blog-teaser" href="/blog/nwb-interview">nwb - CLI for React Applications and Components - Interview with Jonny Buchanan</a></li><li><a class="blog-teaser" href="/blog/kotatsu-interview">Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/hashnode-interview">Hashnode - Community for Software Developers - Interview with Sandeep Panda</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-110">SurviveJS - Webpack - v1.1.0</a></li><li><a class="blog-teaser" href="/blog/frzr-interview">FRZR - a Tiny View Library - Interview with Juha Lindstedt</a></li><li><a class="blog-teaser" href="/blog/survivejs210">SurviveJS - Webpack and React - v2.1.0</a></li><li><a class="blog-teaser" href="/blog/relax-interview">Relax - New generation CMS on top of React and Node.js - Interview with Bruno Mota</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-100">SurviveJS - Webpack - v1.0.0</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+            ((window.gitter = {}).chat = {}).options = {
+              showChatByDefault: false,
+              activationElement: '.gitter-open-chat-button',
+              room: 'survivejs/webpack_react'
+            };
+          </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></main></body></html>
