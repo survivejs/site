@@ -30,6 +30,22 @@ module.exports = [
     "demo": "04_implementing_notes",
     "type": "chapter"
   },
+  /* deleting notes */
+  {
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
+    "license": "Public Domain",
+    "image": "cleaning.jpg",
+    "type": "chapter"
+  },
+  /* editing notes */
+  {
+    "author": "jpj2000nl",
+    "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    "license": "Public Domain",
+    "image": "caliper.jpg",
+    "type": "chapter"
+  },
   /* styling notes */
   {
     "author": "Philip Brown",
