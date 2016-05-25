@@ -27,7 +27,7 @@ Builder is a tool for wrangling build infrastructures and workflows for a collec
 
 Let's walk through a basic example. Imagine that we have two projects with identical `npm` tasks:
 
-```js
+```javascript
 // <project1>/package.json
 "scripts": {
   "foo": "echo FOO",
@@ -45,7 +45,7 @@ Let's walk through a basic example. Imagine that we have two projects with ident
 
 which allows us to:
 
-```sh
+```bash
 $ cd <project1>
 $ npm run foobar
 FOO
@@ -63,7 +63,7 @@ Builder solves this problem with the notion of an ["archetype"](http://formidabl
 
 The builder version of the above example would be:
 
-```js
+```javascript
 // <project1>/package.json
 "scripts": {}
 
@@ -80,7 +80,7 @@ The builder version of the above example would be:
 
 Note that we're now using `builder run <task>` in the place of `npm run <task>`. We can execute the tasks with:
 
-```sh
+```bash
 $ cd <project1>
 $ builder run foobar
 FOO
@@ -105,7 +105,7 @@ Builder also provides critical *flexibility* for tasks. Many meta / build framew
 
 Let's tweak our example so that `<project2>` has a slightly different `bar` task like:
 
-```js
+```javascript
 // <project1>/package.json
 "scripts": {}
 
@@ -117,7 +117,7 @@ Let's tweak our example so that `<project2>` has a slightly different `bar` task
 
 If we run the specific tasks, we get the correct overrides:
 
-```sh
+```bash
 $ cd <project1>
 $ builder run bar
 BAR
@@ -129,7 +129,7 @@ I'M GONNA BE DIFFERENT
 
 Builder resolves tasks starting with the root project and then moves up to the archetype on a _per task_ basis. This means that composed tasks like `foobar` will pick up root overrides together with existing archetype commands giving us:
 
-```sh
+```bash
 $ cd <project1>
 $ builder run foobar
 FOO
@@ -163,7 +163,7 @@ With this in mind, we created [`builder-init`](https://github.com/FormidableLabs
 
 Once these are defined in an archetype, `builder-init` can then create a new project via any means that `npm` can install a module:
 
-```sh
+```bash
 $ builder-init builder-react-component
 $ builder-init builder-react-component@0.3.3
 $ builder-init FormidableLabs/builder-react-component#v0.3.3
