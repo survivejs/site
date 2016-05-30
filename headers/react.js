@@ -38,6 +38,14 @@ module.exports = [
     "image": "cleaning.jpg",
     "type": "chapter"
   },
+  /* understanding react components */
+  {
+    "author": "werner22brigitte",
+    "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    "license": "Public Domain",
+    "image": "machine.jpg",
+    "type": "chapter"
+  },
   /* editing notes */
   {
     "author": "jpj2000nl",
