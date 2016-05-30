@@ -71,6 +71,12 @@ module.exports = [
     "demo": "05_react_and_flux",
     "type": "chapter"
   },
+  /* implementing store and actions */
+  {
+    "license": "Public Domain",
+    "image": "jumper.jpg",
+    "type": "chapter"
+  },
   /* implementing persistency */
   {
     "author": "Unsplash",
@@ -79,12 +85,20 @@ module.exports = [
     "image": "hoodie.jpg",
     "type": "chapter"
   },
-  /* from notes to kanban */
+  /* handling data dependencies */
   {
     "author": "Radek Orszewski",
     "source": "https://www.flickr.com/photos/61745819@N00/10588140955",
     "license": "CC BY-NC-SA",
     "image": "kanban_photo.jpg",
+    "type": "chapter"
+  },
+  /* editing lanes */
+  {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
+    "license": "Public Domain",
+    "image": "axe.jpg",
     "type": "chapter"
   },
   /* drag and drop */
