@@ -24,7 +24,7 @@ export default React.createClass({
                 }
               </h3>
 
-              {page.showDemo ?
+              {page.demo ?
                 <div className="post-list__demo">
                   <a href={page.demo} target="_blank">Demo</a>
                 </div> :

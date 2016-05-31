@@ -19,6 +19,8 @@ module.exports = [
     "source": "https://pixabay.com/en/wheels-machine-installation-art-784865/",
     "license": "Public Domain",
     "image": "wheels.jpg",
+    "demo": "getting-started/introduction-to-react",
+    "endSource": "getting_started/01_introduction_to_react",
     "type": "chapter"
   },
   /* implementing notes */
@@ -27,7 +29,8 @@ module.exports = [
     "source": "https://www.flickr.com/photos/73635318@N00/2663422833",
     "license": "CC BY-NC-SA",
     "image": "notes.jpg",
-    "demo": "04_implementing_notes",
+    "demo": "getting-started/implementing-notes",
+    "endSource": "getting_started/02_implementing_notes",
     "type": "chapter"
   },
   /* deleting notes */
@@ -36,6 +39,8 @@ module.exports = [
     "source": "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
     "license": "Public Domain",
     "image": "cleaning.jpg",
+    "demo": "getting-started/deleting-notes",
+    "endSource": "getting_started/03_deleting_notes",
     "type": "chapter"
   },
   /* understanding react components */
@@ -52,6 +57,8 @@ module.exports = [
     "source": "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
     "license": "Public Domain",
     "image": "caliper.jpg",
+    "demo": "getting-started/editing-notes",
+    "endSource": "getting_started/05_editing_notes",
     "type": "chapter"
   },
   /* styling notes */
@@ -60,6 +67,8 @@ module.exports = [
     "source": "https://www.flickr.com/photos/67478016@N00/379064899",
     "license": "CC BY-NC-ND",
     "image": "apples_oranges.jpg",
+    "demo": "getting-started/styling-notes",
+    "endSource": "getting_started/02_styling_notes",
     "type": "chapter"
   },
   /* Part: implementing kanban */
@@ -76,13 +85,16 @@ module.exports = [
     "source": "https://www.flickr.com/photos/126433814@N04/16298563416",
     "license": "CC BY",
     "image": "delorean.jpg",
-    "demo": "05_react_and_flux",
+    "demo": "implementing-kanban/react-and-flux",
+    "endSource": "implementing_kanban/01_react_and_flux",
     "type": "chapter"
   },
   /* implementing store and actions */
   {
     "license": "Public Domain",
     "image": "jumper.jpg",
+    "demo": "implementing-kanban/implementing-store-and-actions",
+    "endSource": "implementing_kanban/02_implementing_store_and_actions",
     "type": "chapter"
   },
   /* implementing persistency */
@@ -91,6 +103,8 @@ module.exports = [
     "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
     "license": "Public Domain",
     "image": "hoodie.jpg",
+    "demo": "implementing-kanban/implementing-persistency",
+    "endSource": "implementing_kanban/03_implementing_persistency",
     "type": "chapter"
   },
   /* handling data dependencies */
@@ -99,6 +113,8 @@ module.exports = [
     "source": "https://www.flickr.com/photos/61745819@N00/10588140955",
     "license": "CC BY-NC-SA",
     "image": "kanban_photo.jpg",
+    "demo": "implementing-kanban/handling-data-dependencies",
+    "endSource": "implementing_kanban/04_handling_data_dependencies",
     "type": "chapter"
   },
   /* editing lanes */
@@ -107,6 +123,8 @@ module.exports = [
     "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
     "license": "Public Domain",
     "image": "axe.jpg",
+    "demo": "implementing-kanban/editing-lanes",
+    "endSource": "implementing_kanban/05_editing_lanes",
     "type": "chapter"
   },
   /* drag and drop */
@@ -115,7 +133,8 @@ module.exports = [
     "source": "https://www.flickr.com/photos/15146367@N00/4083260446",
     "license": "CC BY-NC",
     "image": "dnd.jpg",
-    "demo": "07_implementing_dnd",
+    "demo": "implementing-kanban/drag-and-drop",
+    "endSource": "implementing_kanban/06_drag_and_drop",
     "type": "chapter"
   },
   /* Part: advanced techniques */
@@ -133,7 +152,7 @@ module.exports = [
     "license": "Public Domain",
     "image": "testing.jpg",
     "bonus": true,
-    "endSource": "09_testing_react/kanban_app",
+    "endSource": "advanced_techniques/01_testing_react",
     "type": "chapter"
   },
   /* typing with react */
@@ -143,7 +162,7 @@ module.exports = [
     "license": "CC BY-NC-ND",
     "image": "typing.jpg",
     "bonus": true,
-    "endSource": "10_typing_with_react",
+    "endSource": "advanced_techniques/02_typing_with_react",
     "type": "chapter"
   },
   /* styling react */

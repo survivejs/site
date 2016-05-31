@@ -63,16 +63,10 @@ module.exports = function react(headers) {
         file.type = header.type;
 
         if(header.endSource) {
-          file.showDemo = false;
           file.endSource = sourcePrefix + header.endSource;
         }
-        else if(header.demo) {
-          var sourceSuffix = header.sourceRoot || '/kanban_app';
-
+        if(header.demo) {
           file.demo = '/demos/' + header.demo;
-
-          file.showDemo = !header.sourceRoot;
-          file.endSource = sourcePrefix + header.demo + sourceSuffix;
         }
 
         return o;
