@@ -22,7 +22,7 @@ export default React.createClass({
 
         <Footer {...props} />
 
-        <Gitter room="survivejs/webpack_react" title="Need help?" />
+        <GitterChat sectionName={section.name} />
       </Body>
     );
   },
@@ -62,3 +62,11 @@ export default React.createClass({
       target="_blank" />;
   }
 });
+
+const GitterChat = ({sectionName}) => {
+  if(sectionName === 'webpack' || sectionName === 'react') {
+    return <Gitter room={'survivejs/' + sectionName} title="Need help?" />
+  }
+
+  return <Gitter room={'survivejs/react'} title="Need help?" />
+}
