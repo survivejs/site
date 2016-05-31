@@ -28,7 +28,12 @@
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
 
     .btn--buy-main {
-      padding: 1em;
+      display: inline-block;
+      padding: 0.25em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
 
       color: black;
       background-color: rgba(255, 255, 255, 0.9);
@@ -37,9 +42,12 @@
       }
     }
 
-    .read-free {
-      margin-left: 1em;
+    .buy-or {
+      margin-left: 0.5em;
+      margin-right: 0.5em;
     }
+
+    .read-free {}
   }
 
   .front-header-wrapper {
@@ -102,12 +110,23 @@
     height: 60%;
   }
 
+  @include media-query(portable) {
+    .front__heading {
+      min-height: 35em;
+    }
+  }
+
   .react-image {
     margin-left: 1em;
     margin-right: 1em;
     width: 100px;
     height: 100px;
     float: right;
+  }
+
+  .front-cover {
+    margin-right: 1em;
+    float: left;
   }
 
   .kanban-image {
@@ -119,17 +138,7 @@
     width: auto;
   }
 
-  .post__sidebar {
-    margin: 1em;
-
-    .sidebar-cover {
-      width: 255px;
-      box-shadow: 0 0.5em 1em 0.02em rgba(0,0,0,0.5);
-      max-width: 100%;
-    }
-  }
-
-  .kanban-animation {
+  .front-cover, .kanban-animation {
     max-width: auto;
     width: auto;
     height: auto;
@@ -144,81 +153,25 @@
     margin: 0 auto;
     max-width: 1000px;
   }
-  .post__content {
-    margin: 0;
-    max-width: 600px;
-
-    float: left;
-  }
   .front-header-wrapper {
     float: left;
   }
 
-  .post__sidebar {
-    float: right;
-
-    max-width: 250px;
-    font-size: 80%;
-
-    ul > li:before {
-      content: '';
-    }
-
-    // XXX
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    ol,
-    ul,
-    div,
-    pre,
-    blockquote,
-    form {
-      @include media-query('palm') {
-        padding: 0 $half-spacing-unit;
-      }
-    }
-  }
-
-  @include media-query(portable) {
-    .post__content, .post__sidebar {
-      margin: 0 auto;
-      max-width: $max-width;
-
-      float: initial;
-    }
-  }
-
-  .front-cover {
-    float: left;
-
-    margin-left: 2em;
-    margin-top: 5em;
-
-    width: 255px;
-    box-shadow: 0 0.5em 1em 0.02em rgba(0,0,0,0.5);
-  }
-
   @include media-query(portable) {
     .front-header-wrapper {
-      max-width: 50%;
-      margin-right: 0;
-    }
-
-    .front-cover {
-      margin-top: 6em;
-      max-width: 30%;
-      height: auto;
+      max-width: 100%;
+      margin-right: 0.5em;
+      margin-left: 0.5em;
     }
 
     .read-free {
       margin-top: 0.5em;
 
       display: inline-block;
+    }
+
+    .post--front {
+      padding: 1em;
     }
   }
 
@@ -227,10 +180,6 @@
       max-width: 100%;
       margin: 0;
       padding: 1em;
-    }
-
-    .front-cover {
-      display: none;
     }
   }
 

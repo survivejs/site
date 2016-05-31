@@ -1,11 +1,11 @@
 <p>
-<a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>
+<a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-react'>Buy at Leanpub</a>
 <a class='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/'>Buy at Amazon</a>
 </p>
 
 * 45 day money back guarantee
-* 250+ pages (pdf/epub/mobi)
-* 1000+ readers
+* 200+ pages (pdf/epub/mobi)
+* 2000+ readers
 * Future updates for free
 * Digital version - min. $19.99 + VAT
 * Paperback - $29.99
@@ -19,15 +19,8 @@ Juho Vepsäläinen has been dealing with the web since the 90s. He is behind [js
 
 He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](https://github.com/bebraw/reactabular) in addition to many other libraries.
 
+He started the SurviveJS effort early 2015 and has been pushing it forward ever since!
+
 * [@bebraw](https://twitter.com/bebraw)
 * [Personal blog](http://nixtu.info)
 * [GitHub](https://github.com/bebraw)
-
-# Now Available!
-
-<a href="webpack/introduction"><img class='sidebar-cover' src='assets/img/webpack_title_page_small.png' width='255' height='329' /></a>
-
-<p>
-<a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
-</p>
-

@@ -82,7 +82,7 @@ export default React.createClass({
 
     return (
       <div className='buy-container'>
-        <img className='sidebar-cover' src='/assets/img/title_page_small.png' width='255' height='329' />
+        <img className='sidebar-cover' src='/assets/img/react_title_page_small.png' width='255' height='329' />
 
         <p>
           <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>

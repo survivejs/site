@@ -19,18 +19,27 @@ const Index = React.createClass({
               </div>
 
               <h1 className='front-header'>Learn Webpack and React</h1>
-              <h3 className='front-motto'>SurviveJS will take you from</h3>
-              <h3 className='front-motto'>apprentice to master</h3>
+              <h3 className='front-motto'>SurviveJS will take you from apprentice to master</h3>
 
               <div className='front-button-wrapper'>
-                <a className='btn btn--buy-main' href='https://leanpub.com/survivejs_webpack_react'>Become a master</a>
-                <span className='read-free'>or <a href='/webpack_react/introduction'>read the free version</a></span>
+                <a className='btn btn--buy-main'
+                  href='https://leanpub.com/survivejs_webpack_react'>Become a React master</a>
+                <span className='buy-or'>or</span>
+                <a className='btn btn--buy-main'
+                  href='https://leanpub.com/survivejs-webpack'>Become a Webpack master</a>
+                <span className='buy-or'>(or both!)</span>
+              </div>
+
+              <div className='front-button-wrapper'>
+                <div className='read-free-note'>There are also free versions available!</div>
+                <span className='read-free'>
+                  <a href='/react/introduction'>Read the free version of the React book</a> or <a href='/webpack/introduction'>read the free version of the Webpack book</a>
+                </span>
               </div>
             </div>
-
-            <img className='front-cover' src='assets/img/title_page_small.png' width='255' height='329' />
           </div>
         </div>
+
         <div className='front__testimonials'>
           <Testimonial
             text='SurviveJS connects the dots and fills the gaps left by the latest JavaScript tools and their documentation. With its detailed step-by-step tutorial approach, SurviveJS gives practical examples of code and configuration while providing context for choosing one method over another.'
@@ -75,16 +84,13 @@ const Index = React.createClass({
 
         <div className='post post--front'>
           <section className='post__content'>
+            <LatestPost sectionPages={section.pages} />
             <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./index.md')}} />
 
             <SocialLinks />
-          </section>
 
-          <aside className='post__sidebar'>
             <LatestPost sectionPages={section.pages} />
-
-            <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./sidebar.md')}} />
-          </aside>
+          </section>
         </div>
       </div>
     );
