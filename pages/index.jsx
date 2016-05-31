@@ -23,7 +23,7 @@ const Index = React.createClass({
 
               <div className='front-button-wrapper'>
                 <a className='btn btn--buy-main'
-                  href='https://leanpub.com/survivejs_webpack_react'>Become a React master</a>
+                  href='https://leanpub.com/survivejs-react'>Become a React master</a>
                 <span className='buy-or'>or</span>
                 <a className='btn btn--buy-main'
                   href='https://leanpub.com/survivejs-webpack'>Become a Webpack master</a>
