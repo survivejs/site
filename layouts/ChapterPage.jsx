@@ -70,24 +70,21 @@ export default React.createClass({
   renderBuy(sectionName) {
     if(sectionName === 'webpack') {
       return (
-        <div className='buy-container'>
-          <img className='sidebar-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
+        <div>
+          <BuyWebpack />
 
-          <p>
-          <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
-          </p>
+          <h3>See also</h3>
+          <BuyReact />
         </div>
       );
     }
 
     return (
-      <div className='buy-container'>
-        <img className='sidebar-cover' src='/assets/img/react_title_page_small.png' width='255' height='329' />
+      <div>
+        <BuyReact />
 
-        <p>
-          <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs_webpack_react'>Buy at Leanpub</a>
-          <a className='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/'>Buy at Amazon</a>
-        </p>
+        <h3>See also</h3>
+        <BuyWebpack />
       </div>
     );
   },
@@ -140,3 +137,27 @@ export default React.createClass({
       dangerouslySetInnerHTML={{__html: item.content}}></div>;
   }
 });
+
+const BuyWebpack = () => (
+  <div className='buy-container'>
+    <a href="/webpack/introduction">
+      <img className='sidebar-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
+    </a>
+
+    <p>
+      <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
+    </p>
+  </div>
+);
+
+const BuyReact = () => (
+  <div className='buy-container'>
+    <a href="/react/introduction">
+      <img className='sidebar-cover' src='/assets/img/react_title_page_small.png' width='255' height='329' />
+    </a>
+
+    <p>
+      <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-react'>Buy at Leanpub</a>
+    </p>
+  </div>
+);
