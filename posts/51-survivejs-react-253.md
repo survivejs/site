@@ -131,7 +131,7 @@ Given the content has changed (two books!), I've implemented the following prici
 
 * The [Amazon edition](https://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X) will be available for $19.99. Once I have paper versions of the new books out there, this book will go out of market.
 * ["SurviveJS - Webpack" - Leanpub edition](https://leanpub.com/survivejs-webpack) goes to $15.99. Thanks early supporters!
-* ["SurviveJS - React" - Leanpub edition](https://leanpub.com/survivejs-react) goes to $15.99. If you bought the original book, you will receive "SurviveJS - React" for free.
+* ["SurviveJS - React" - Leanpub edition](https://leanpub.com/survivejs-react) goes to $15.99. If you bought the original book, you will receive "SurviveJS - Webpack" for free.
 * ["SurviveJS - Webpack" + "SurviveJS - React" bundle](https://leanpub.com/b/survivejs-webpack-react) - $27.99.
 
 The idea is that as more content gets developed, the price will gradually go up. Also if splits like this happen, the modus operandi is the same. You will receive the split book as well. This is my way of saying thanks to those who support the effort monetarily.
