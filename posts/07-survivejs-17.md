@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v1.7'
 date: 2015-08-16
 headerImage: '/assets/img/pineapple.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 I skipped doing a public post for `v1.6` as I was too tired (berry season is taxing). Now I'm going to give you release notes for both `v1.6` and `v1.7` at once. I have also some news of the future plans. So stay tuned.

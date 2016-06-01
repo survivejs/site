@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v1.9.10'
 date: 2015-11-22
 headerImage: '/assets/img/winter.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 It's time for another maintenance release with minor tweaks here and there. Probably the biggest change is the fancy new cover which I crafted based on the logo design of [Prospect One](http://prospectone.pl/). Cheers for that.

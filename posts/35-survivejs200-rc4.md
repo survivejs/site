@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v2.0.0-rc4'
 date: 2016-02-07
 headerImage: '/assets/img/snow.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 [The previous release candidate](../survivejs200-rc3) prompted a nice amount of feedback. I've taken that into account in this release. I have a date for the final in sight and I won't be making any significant changes for the final release.

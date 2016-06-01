@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v1.7.5'
 date: 2015-08-30
 headerImage: '/assets/img/mushrooms2.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 Onwards we go. `v1.7.5` can be characterized as a refinement release. I went through "React and Flux" and "From Notes to Kanban" with my editor (thanks Jesús!). As a result we should have something that's a notch better together. I took some decompression time during this iteration and negotiated a lot towards a better future I hope.

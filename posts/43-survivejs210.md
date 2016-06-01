@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v2.1.0'
 date: 2016-04-17
 headerImage: '/assets/img/field.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 It has been a while since [the previous release](../../blog/survivejs200) and quite a bit has happened. As you might have noticed, there's actually [a new book about Webpack](../../blog/survivejs-webpack-100) out there now. The idea is that I will split this one in two.

@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v2.0.0'
 date: 2016-02-15
 headerImage: '/assets/img/laptop.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 When I started this project roughly a year ago I had no idea how rewarding and demanding one it would be. Writing books is way harder than it sounds. Especially when you go through the self-publishing route, you have a lot to learn!

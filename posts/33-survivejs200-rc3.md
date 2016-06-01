@@ -2,7 +2,7 @@
 title: 'SurviveJS - Webpack and React - v2.0.0-rc3'
 date: 2016-01-22
 headerImage: '/assets/img/cool.jpg'
-keywords: ['release-notes']
+keywords: ['release-notes', 'webpack', 'react']
 ---
 
 If the previous [release candidate](../survivejs200-rc2) had few changes, this one is the opposite. I consider this good news as it's better to catch bigger issues now rather than later. Thanks for feedback!
