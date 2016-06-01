@@ -1,0 +1,410 @@
+<html lang="en"><head><title>SurviveJS - Implementing NoteStore and NoteActions</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+Now that we have pushed data management related concerns in the right places, we can focus on implementing the remaining portions - NoteStore and NoteActions. These will encapsulate the application data and logic.
+
+No matter what state management solution you end up using, there is usually somethin…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/jumper.jpg);"></div><h1 class="post__heading">Implementing NoteStore and NoteActions</h1><div class="header-extra">Public Domain</div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/react/introduction">Introduction</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/introduction-to-react">Introduction to React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/setting-up-the-project">Setting Up the Project</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/implementing-notes">Implementing a Note Application</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/deleting-notes">Deleting Notes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/understanding-react-components">Understanding React Components</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/editing-notes">Editing Notes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/styling-notes">Styling the Notes Application</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/implementing-kanban">Implementing Kanban</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/react-and-flux">React and Flux</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Implementing NoteStore and NoteActions</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/implementing-persistency">Implementing Persistency over localStorage</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/handling-data-dependencies">Handling Data Dependencies</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/editing-lanes">Editing Lanes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/drag-and-drop">Implementing Drag and Drop</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/testing-react">Testing React*</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/typing-with-react">Typing with React*</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/styling-react">Styling React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/structuring-react-projects">Structuring React Projects</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/appendices/language-features">Language Features</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/appendices/understanding-decorators">Understanding Decorators</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/appendices/troubleshooting">Troubleshooting</a></li></ul><div><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-react-253">SurviveJS - React - v2.5.3</a></blockquote><div class="post__meta"><a class="post__end_source" href="https://github.com/survivejs/react/tree/master/project_source/implementing_kanban/02_implementing_store_and_actions" target="_blank">Finished source code</a><a class="post__demo" href="/demos/implementing-kanban/implementing-store-and-actions" target="_blank">Demo</a></div><div class="chapter-content"><p>Now that we have pushed data management related concerns in the right places, we can focus on implementing the remaining portions - <code>NoteStore</code> and <code>NoteActions</code>. These will encapsulate the application data and logic.</p>
+<p>No matter what state management solution you end up using, there is usually something equivalent around. In Redux you would end up using actions that then trigger a state change through a reducer. In MobX you could model action API within an ES6 class that then manipulates the data causing your views to refresh as needed.</p>
+<p>The idea is similar here. We will set up actions that will end up triggering our store methods that modify the state. As the state changes, our views will update. To get started, we can implement a <code>NoteStore</code> and then define logic to manipulate it. Once we have done that, we have completed porting our application to the Flux architecture.</p>
+<h2 class="header"><a class="header-anchor" href="#setting-up-a-notestore-" id="setting-up-a-notestore-"></a><span class="text">Setting Up a <code>NoteStore</code></span><a class="header-anchor-select" href="#setting-up-a-notestore-">#</a></h2>
+<p>Currently we maintain the application state at <code>App</code>. The first step towards pushing it to Alt is to define a store and then consume it from there. This will break the logic of our application temporarily as that needs to be pushed to Alt as well. Setting up an initial store is a good step towards this overall goal, though.</p>
+<p>To set up a store we need to perform three steps. We&#39;ll need to set it up, then connect it with Alt at <code>Provider</code>, and finally connect it with <code>App</code>.</p>
+<p>In Alt we model stores using ES6 classes. Here&#39;s a minimal implementation modeled after our current state:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes <span class="token operator" >=</span> <span class="token punctuation" >[</span>
+      <span class="token punctuation" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'Learn React'</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'Do laundry'</span>
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>The next step is connecting the store with <code>Provider</code>. This is where that <code>setup</code> module comes in handy:</p>
+<p><strong>app/components/Provider/setup.js</strong></p>
+<pre><code class="lang-javascript"><div class="leanpub-delete">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> alt <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+</div>
+<div class="leanpub-insert">
+<span class="token keyword" >import</span> NoteStore <span class="token keyword" >from</span> <span class="token string" >'../../stores/NoteStore'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> alt <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  alt<span class="token punctuation" >.</span><span class="token function" >addStore</span><span class="token punctuation" >(</span><span class="token string" >'NoteStore'</span><span class="token punctuation" >,</span> NoteStore<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</div>
+</code></pre>
+<p>To prove that our setup works, we can adjust <code>App</code> to consume its data from the store. This will break the logic since we don&#39;t have any way to adjust the store data yet, but that&#39;s something we&#39;ll fix in the next section. Tweak <code>App</code> as follows to make <code>notes</code> available there:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+        <span class="token punctuation" >{</span>
+          id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+          task<span class="token punctuation" >:</span> <span class="token string" >'Learn React'</span>
+        <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+        <span class="token punctuation" >{</span>
+          id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+          task<span class="token punctuation" >:</span> <span class="token string" >'Do laundry'</span>
+        <span class="token punctuation" >}</span>
+      <span class="token punctuation" >]</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >}</span>
+</div>
+  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+</div>
+
+    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
+      <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
+<div class="leanpub-delete">
+        <span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>test<span class="token punctuation" >}</span>
+</div>
+        <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token string" >"add-note"</span> onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+        <span class="token operator" >&lt;</span>Notes
+          notes<span class="token operator" >=</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span>
+          onNoteClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>activateNoteEdit<span class="token punctuation" >}</span>
+          onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editNote<span class="token punctuation" >}</span>
+          onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >}</span>
+          <span class="token operator" >/</span><span class="token operator" >></span>
+      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
+    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<div class="leanpub-delete">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token string" >'test'</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span>App<span class="token punctuation" >)</span>
+</div>
+<div class="leanpub-insert">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  notes
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span>App<span class="token punctuation" >)</span>
+</div>
+</code></pre>
+<p>If you refresh the application now, you should see exactly the same data as before. This time, however, we are consuming the data from our store. As a result our logic is broken. That&#39;s something we&#39;ll need to fix next as we define <code>NoteActions</code> and push our state manipulation to the <code>NoteStore</code>.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Given <code>App</code> doesn&#39;t depend on state anymore, it would be possible to port it as a function based component. Often most of your components will be based on functions just for this reason. If you aren&#39;t using state or refs, then it&#39;s safe to default to functions.</blockquote><h2 class="header"><a class="header-anchor" href="#understanding-actions" id="understanding-actions"></a><span class="text">Understanding Actions</span><a class="header-anchor-select" href="#understanding-actions">#</a></h2>
+<p>Actions are one of the core concepts of the Flux architecture. To be exact, it is a good idea to separate <strong>actions</strong> from <strong>action creators</strong>. Often the terms might be used interchangeably, but there&#39;s a considerably difference.</p>
+<p>Action creators are literally functions that <em>dispatch</em> actions. The payload of the action will then be delivered to the interested stores. It can be useful to think them as messages wrapped into an envelope and then delivered.</p>
+<p>This split is useful when you have to perform asynchronous actions. You might for example want to fetch the initial data of your Kanban board. The operation might then either succeed or fail. This gives you three separate actions to dispatch. You could dispatch when starting to query and when you receive some response.</p>
+<p>All of this data is valuable is it allows you to control the user interface. You could display a progress widget while a query is being performed and then update the application state once it has been fetched from the server. If the query fails, you can then let the user know about that.</p>
+<p>You can see this theme across different state management solutions. Often you model an action as a function that returns a function (a <em>thunk</em>) that then dispatches individual actions as the asynchronous query progresses. In a naïve synchronous case it&#39;s enough to return the action payload directly.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The official documentation of Alt covers <a href="http://alt.js.org/docs/createActions/">asynchronous actions</a> in greater detail.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-noteactions-" id="setting-up-noteactions-"></a><span class="text">Setting Up <code>NoteActions</code></span><a class="header-anchor-select" href="#setting-up-noteactions-">#</a></h2>
+<p>Alt provides a little helper method known as <code>alt.generateActions</code> that can generate simple action creators for us. They will simply dispatch the data passed to them. We&#39;ll then connect these actions at the relevant stores. In this case that will be the <code>NoteStore</code> we defined earlier.</p>
+<p>When it comes to the application, it is enough if we model basic CRUD (Create, Read, Update, Delete) operations. Given Read is implicit, we can skip that. But having the rest available as actions is useful. Set up <code>NoteActions</code> using the <code>alt.generateActions</code> shorthand like this:</p>
+<p><strong>app/actions/NoteActions.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> alt <span class="token keyword" >from</span> <span class="token string" >'../libs/alt'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >.</span><span class="token function" >generateActions</span><span class="token punctuation" >(</span><span class="token string" >'create'</span><span class="token punctuation" >,</span> <span class="token string" >'update'</span><span class="token punctuation" >,</span> <span class="token string" >'delete'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>This doesn&#39;t do much by itself. Given we need to <code>connect</code> the actions with <code>App</code> to actually trigger them, this would be a good place to do that. We can start worrying about individual actions after that as we expand our store. To <code>connect</code> the actions, tweak <code>App</code> like this:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> Notes <span class="token keyword" >from</span> <span class="token string" >'./Notes'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> connect <span class="token keyword" >from</span> <span class="token string" >'../libs/connect'</span><span class="token punctuation" >;</span>
+<div class="leanpub-insert">
+<span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<div class="leanpub-delete">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  notes
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span>App<span class="token punctuation" >)</span>
+</div>
+<div class="leanpub-insert">
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  notes
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+  NoteActions
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span>App<span class="token punctuation" >)</span>
+</div>
+</code></pre>
+<p>This gives us <code>this.props.NoteActions.create</code> kind of API for triggering various actions. That&#39;s good for expanding the implementation further.</p>
+<h2 class="header"><a class="header-anchor" href="#connecting-noteactions-with-notestore-" id="connecting-noteactions-with-notestore-"></a><span class="text">Connecting <code>NoteActions</code> with <code>NoteStore</code></span><a class="header-anchor-select" href="#connecting-noteactions-with-notestore-">#</a></h2>
+<p>Alt provides a couple of convenient ways to connect actions to a store:</p>
+<ul>
+<li><code>this.bindAction(NoteActions.CREATE, this.create)</code> - Bind a specific action to a specific method.</li>
+<li><code>this.bindActions(NoteActions)</code>- Bind all actions to methods by convention. I.e., <code>create</code> action would map to a method named <code>create</code>.</li>
+<li><code>reduce(state, { action, data })</code> - It is possible to implement a custom method known as <code>reduce</code>. This mimics the way Redux reducers work. The idea is that you&#39;ll return a new state based on the given state and payload.</li>
+</ul>
+<p>We&#39;ll use <code>this.bindActions</code> in this case as it&#39;s enough to rely on convention. Tweak the store as follows to connect the actions and to add initial stubs for the logic:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
+<div class="leanpub-insert">
+<span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >bindActions</span><span class="token punctuation" >(</span>NoteActions<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes <span class="token operator" >=</span> <span class="token punctuation" >[</span>
+      <span class="token punctuation" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'Learn React'</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'Do laundry'</span>
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+<div class="leanpub-insert">
+  <span class="token function" >create</span><span class="token punctuation" >(</span>note<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'create note'</span><span class="token punctuation" >,</span> note<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >update</span><span class="token punctuation" >(</span>updatedNote<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'update note'</span><span class="token punctuation" >,</span> updatedNote<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'delete note'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+</div>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>To actually see it working, we&#39;ll need to start connecting our actions at <code>App</code> and the start porting the logic over.</p>
+<h2 class="header"><a class="header-anchor" href="#porting-app-addnote-to-flux" id="porting-app-addnote-to-flux"></a><span class="text">Porting <code>App.addNote</code> to Flux</span><a class="header-anchor-select" href="#porting-app-addnote-to-flux">#</a></h2>
+<p><code>App.addNote</code> is a good starting point. The first step is to trigger the associate action (<code>NoteActions.create</code>) from the method and see if we see something at the browser console. If we do, then we can manipulate the state. Trigger the action like this:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token punctuation" >}</span>
+  addNote <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    <span class="token comment" spellcheck="true">// It would be possible to write this in an imperative style.</span>
+    <span class="token comment" spellcheck="true">// I.e., through `this.state.notes.push` and then</span>
+    <span class="token comment" spellcheck="true">// `this.setState({notes: this.state.notes})` to commit.</span>
+    <span class="token comment" spellcheck="true">//</span>
+    <span class="token comment" spellcheck="true">// I tend to favor functional style whenever that makes sense.</span>
+    <span class="token comment" spellcheck="true">// Even though it might take more code sometimes, I feel</span>
+    <span class="token comment" spellcheck="true">// the benefits (easy to reason about, no side effects)</span>
+    <span class="token comment" spellcheck="true">// more than make up for it.</span>
+    <span class="token comment" spellcheck="true">//</span>
+    <span class="token comment" spellcheck="true">// Libraries, such as Immutable.js, go a notch further.</span>
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span><span class="token punctuation" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>NoteActions<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      task<span class="token punctuation" >:</span> <span class="token string" >'New task'</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>If you refresh and click the &quot;add note&quot; button now, you should see messages like this at the browser console:</p>
+<pre><code class="lang-bash">create note Object <span class="token punctuation" >{</span>id: <span class="token string" >"62098959-6289-4894-9bf1-82e983356375"</span>, task: <span class="token string" >"New task"</span><span class="token punctuation" >}</span>
+</code></pre>
+<p>This means we have the data we need at the <code>NoteStore</code> <code>create</code> method. We still need to manipulate the data. After that we have completed the loop and we should see new notes through the user interface. Alt follows a similar API as React here. Consider the implementation below:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >create</span><span class="token punctuation" >(</span>note<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'create note'</span><span class="token punctuation" >,</span> note<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span>note<span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>If you try adding a note now, the update should go through. Alt maintains the state now and the edit goes through thanks to the architecture we set up. We still have to repeat the process for the remaining methods to complete the work.</p>
+<h2 class="header"><a class="header-anchor" href="#porting-app-deletenote-to-flux" id="porting-app-deletenote-to-flux"></a><span class="text">Porting <code>App.deleteNote</code> to Flux</span><a class="header-anchor-select" href="#porting-app-deletenote-to-flux">#</a></h2>
+<p>The process exactly the same for <code>App.deleteNote</code>. We&#39;ll need to connect it with our action and then port it over. Here&#39;s the <code>App</code> portion:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  deleteNote <span class="token operator" >=</span> <span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> e<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Avoid bubbling to edit</span>
+    e<span class="token punctuation" >.</span><span class="token function" >stopPropagation</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<div class="leanpub-delete">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span> note<span class="token punctuation" >.</span>id <span class="token operator" >!==</span> id<span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>NoteActions<span class="token punctuation" >.</span><span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>If you refresh and try to delete a note now, you should see a message like this at the browser console:</p>
+<pre><code class="lang-bash">delete note 501c13e0-40cb-47a3-b69a-b1f2f69c4c55
+</code></pre>
+<p>To finalize the porting, we&#39;ll need to move the <code>setState</code> logic to the <code>delete</code> method. Remember to drop <code>this.state.notes</code> and replace that with just <code>this.notes</code>:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token keyword" >delete</span><span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'delete note'</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span> note<span class="token punctuation" >.</span>id <span class="token operator" >!==</span> id<span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>After this change you should be able to delete notes just like before. There are still a couple of methods to port.</p>
+<h2 class="header"><a class="header-anchor" href="#porting-app-activatenoteedit-to-flux" id="porting-app-activatenoteedit-to-flux"></a><span class="text">Porting <code>App.activateNoteEdit</code> to Flux</span><a class="header-anchor-select" href="#porting-app-activatenoteedit-to-flux">#</a></h2>
+<p><code>App.activateNoteEdit</code> is essentially an <code>update</code> operation. We&#39;ll need to change the <code>editing</code> flag of the given note as <code>true</code>. That will initiate the editing process. As usual, we can port <code>App</code> to the scheme first:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  activateNoteEdit <span class="token operator" >=</span> <span class="token punctuation" >(</span>id<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+        <span class="token keyword" >if</span><span class="token punctuation" >(</span>note<span class="token punctuation" >.</span>id <span class="token operator" >===</span> id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+          note<span class="token punctuation" >.</span>editing <span class="token operator" >=</span> <span class="token boolean" >true</span><span class="token punctuation" >;</span>
+        <span class="token punctuation" >}</span>
+
+        <span class="token keyword" >return</span> note<span class="token punctuation" >;</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> editing<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>If you refresh and try to edit now, you should see messages like this at the browser console:</p>
+<pre><code class="lang-bash">update note Object <span class="token punctuation" >{</span>id: <span class="token string" >"2c91ba0f-12f5-4203-8d60-ea673ee00e03"</span>, editing: true<span class="token punctuation" >}</span>
+</code></pre>
+<p>We still need to commit the change to make this work. The logic is the same as in <code>App</code> before except we have generalized it further using <code>Object.assign</code>:</p>
+<p><strong>app/stores/NoteStore.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> NoteActions <span class="token keyword" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token function" >update</span><span class="token punctuation" >(</span>updatedNote<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'update note'</span><span class="token punctuation" >,</span> updatedNote<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+        <span class="token keyword" >if</span><span class="token punctuation" >(</span>note<span class="token punctuation" >.</span>id <span class="token operator" >===</span> updatedNote<span class="token punctuation" >.</span>id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+          <span class="token keyword" >return</span> Object<span class="token punctuation" >.</span><span class="token function" >assign</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span> note<span class="token punctuation" >,</span> updatedNote<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+        <span class="token punctuation" >}</span>
+
+        <span class="token keyword" >return</span> note<span class="token punctuation" >;</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>It should be possible to start editing a note now. If you try to finish editing, you should get an error like <code>Uncaught TypeError: Cannot read property &#39;notes&#39; of null</code>. This is because we are missing one final portion of the porting effort, <code>App.editNote</code>.</p>
+<h2 class="header"><a class="header-anchor" href="#porting-app-editnote-to-flux" id="porting-app-editnote-to-flux"></a><span class="text">Porting <code>App.editNote</code> to Flux</span><a class="header-anchor-select" href="#porting-app-editnote-to-flux">#</a></h2>
+<p>This final part is easy. We have already the logic we need. Now it&#39;s just a matter of connecting <code>App.editNote</code> to it in a correct way. We&#39;ll need to call our <code>update</code> method the correct way:</p>
+<p><strong>app/components/App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  editNote <span class="token operator" >=</span> <span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+        <span class="token keyword" >if</span><span class="token punctuation" >(</span>note<span class="token punctuation" >.</span>id <span class="token operator" >===</span> id<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+          note<span class="token punctuation" >.</span>editing <span class="token operator" >=</span> <span class="token boolean" >false</span><span class="token punctuation" >;</span>
+          note<span class="token punctuation" >.</span>task <span class="token operator" >=</span> task<span class="token punctuation" >;</span>
+        <span class="token punctuation" >}</span>
+
+        <span class="token keyword" >return</span> note<span class="token punctuation" >;</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>NoteActions<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+
+    NoteActions<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >,</span> editing<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>After refreshing you should be able to modify tasks again and the application should work just like before now. As we alter <code>NoteStore</code> through actions, this leads to a cascade that causes our <code>App</code> state to update through <code>setState</code>. This in turn will cause the component to <code>render</code>. That&#39;s Flux&#39;s unidirectional flow in practice.</p>
+<p>We actually have more code now than before, but that&#39;s okay. <code>App</code> is a little neater and it&#39;s going to be easier to develop as we&#39;ll soon see. Most importantly we have managed to implement the Flux architecture for our application.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The current implementation is naïve in that it doesn&#39;t validate parameters in any way. It would be a very good idea to validate the object shape to avoid incidents during development. <a href="http://flowtype.org/">Flow</a> based gradual typing provides one way to do this. In addition you could write tests to support the system.</blockquote><h3 class="header"><a class="header-anchor" href="#what-s-the-point-" id="what-s-the-point-"></a><span class="text">What&#39;s the Point?</span><a class="header-anchor-select" href="#what-s-the-point-">#</a></h3>
+<p>Even though integrating a state management system took a lot of effort, it was not all in vain. Consider the following questions:</p>
+<ol>
+<li>Suppose we wanted to persist the notes within <code>localStorage</code>. Where would you implement that? One approach would be to handle that at the <code>Provider</code> <code>setup</code>.</li>
+<li>What if we had many components relying on the data? We would just consume the data through <code>connect</code> and display it, however we want.</li>
+<li>What if we had many, separate Note lists for different types of tasks? We could set up another store for tracking these lists. That store could refer to actual Notes by id. We&#39;ll do something like this in the next chapter, as we generalize the approach.</li>
+</ol>
+<p>Adopting a state management system can be useful as the scale of your React application grows. The abstraction comes with some cost as you end up with more code. But on the other hand if you do it right, you&#39;ll end up with something that&#39;s easy to reason and develop further. Especially the unidirectional flow embraced by these systems helps when it comes to debugging and testing.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>In this chapter, you saw how to port our simple application to use Flux architecture. In the process we learned more about <strong>actions</strong> and <strong>stores</strong> of Flux. Now we are ready to start adding more functionality to our application. We&#39;ll add <code>localStorage</code> based persistency to the application next and perform a little clean up while at it.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/delorean.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/react/implementing-kanban/react-and-flux">React and Flux</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/hoodie.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/react/implementing-kanban/implementing-persistency">Implementing Persistency over localStorage</a></div></div><blockquote class="tip"><p>This book is <a href="https://leanpub.com/survivejs_webpack_react">available through Leanpub</a>. By purchasing the book you support the development of further content.</p></blockquote><div id="disqus_thread"></div></div></div><div><a class="next-page" title="Implementing Persistency over localStorage" href="/react/implementing-kanban/implementing-persistency"><i class="icon-right-open"></i></a><a class="previous-page" title="React and Flux" href="/react/implementing-kanban/react-and-flux"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack_react">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/react/issues/new?title=Implementing NoteStore and NoteActions - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs-react-253">SurviveJS - React - v2.5.3</a></li><li><a class="blog-teaser" href="/blog/builder-interview">Builder - A npm-based task runner - Interview with Ryan Roemer</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-120">SurviveJS - Webpack - v1.2.0</a></li><li><a class="blog-teaser" href="/blog/nwb-interview">nwb - CLI for React Applications and Components - Interview with Jonny Buchanan</a></li><li><a class="blog-teaser" href="/blog/kotatsu-interview">Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/hashnode-interview">Hashnode - Community for Software Developers - Interview with Sandeep Panda</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-110">SurviveJS - Webpack - v1.1.0</a></li><li><a class="blog-teaser" href="/blog/frzr-interview">FRZR - a Tiny View Library - Interview with Juha Lindstedt</a></li><li><a class="blog-teaser" href="/blog/survivejs210">SurviveJS - Webpack and React - v2.1.0</a></li><li><a class="blog-teaser" href="/blog/relax-interview">Relax - New generation CMS on top of React and Node.js - Interview with Bruno Mota</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+            ((window.gitter = {}).chat = {}).options = {
+              showChatByDefault: false,
+              activationElement: '.gitter-open-chat-button',
+              room: 'survivejs/react'
+            };
+          </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></main></body></html>

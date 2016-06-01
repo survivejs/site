@@ -1,0 +1,332 @@
+<html lang="en"><head><title>SurviveJS - Language Features</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+ES6 (or ES2015) was arguably the biggest change to JavaScript in a long time. As a result, we received a wide variety of new functionality. The purpose of this appendix is to illustrate the features used in the book in isolation to make it clearer to understand how they work. Rather than going thro…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="./atom.xml"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/language.jpg);"></div><h1 class="post__heading">Language Features</h1><div class="header-extra"><a href="https://pixabay.com/en/font-lead-set-book-printing-705667/">wilhei (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/react/introduction">Introduction</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/introduction-to-react">Introduction to React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/setting-up-the-project">Setting Up the Project</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/implementing-notes">Implementing a Note Application</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/deleting-notes">Deleting Notes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/understanding-react-components">Understanding React Components</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/editing-notes">Editing Notes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/getting-started/styling-notes">Styling the Notes Application</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/implementing-kanban">Implementing Kanban</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/react-and-flux">React and Flux</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/implementing-store-and-actions">Implementing NoteStore and NoteActions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/implementing-persistency">Implementing Persistency over localStorage</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/handling-data-dependencies">Handling Data Dependencies</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/editing-lanes">Editing Lanes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/implementing-kanban/drag-and-drop">Implementing Drag and Drop</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/testing-react">Testing React*</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/typing-with-react">Typing with React*</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/styling-react">Styling React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/advanced-techniques/structuring-react-projects">Structuring React Projects</a></li><li class="toc-part"><a class="toc-nav__link part" href="/react/appendices">Appendices</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Language Features</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/appendices/understanding-decorators">Understanding Decorators</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/react/appendices/troubleshooting">Troubleshooting</a></li></ul><div class="resources__wrapper"><h4 class="resources--header">Resources</h4><ul class="resources-nav"><li><a href="https://github.com/DrkSephy/es6-cheatsheet" class="resource-nav__link" target="_blank">ES6 Cheatsheet</a></li></ul></div><div><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-react-253">SurviveJS - React - v2.5.3</a></blockquote><div class="chapter-content"><p>ES6 (or ES2015) was arguably the biggest change to JavaScript in a long time. As a result, we received a wide variety of new functionality. The purpose of this appendix is to illustrate the features used in the book in isolation to make it clearer to understand how they work. Rather than going through <a href="http://www.ecma-international.org/ecma-262/6.0/index.html">the entire specification</a>, I will just focus on the subset of features used in the book.</p>
+<h2 class="header"><a class="header-anchor" href="#modules" id="modules"></a><span class="text">Modules</span><a class="header-anchor-select" href="#modules">#</a></h2>
+<p>ES6 introduced proper module declarations. Earlier, this was somewhat ad hoc and we used formats, such as AMD or CommonJS. ES6 module declarations are statically analyzable. This is highly useful for tool authors. Effectively, this means we can gain features like <em>tree shaking</em>. This allows the tooling to skip unused code easily simply by analyzing the import structure.</p>
+<h3 class="header"><a class="header-anchor" href="#-import-and-export-for-single" id="-import-and-export-for-single"></a><span class="text"><code>import</code> and <code>export</code> for Single</span><a class="header-anchor-select" href="#-import-and-export-for-single">#</a></h3>
+<p>To give you an example of exporting directly through a module, consider below:</p>
+<p><strong>persist.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> makeFinalStore <span class="token keyword" >from</span> <span class="token string" >'alt-utils/lib/makeFinalStore'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>alt<span class="token punctuation" >,</span> storage<span class="token punctuation" >,</span> storeName<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p><strong>index.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> persist <span class="token keyword" >from</span> <span class="token string" >'./persist'</span><span class="token punctuation" >;</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<h3 class="header"><a class="header-anchor" href="#-import-and-export-for-multiple" id="-import-and-export-for-multiple"></a><span class="text"><code>import</code> and <code>export</code> for Multiple</span><a class="header-anchor-select" href="#-import-and-export-for-multiple">#</a></h3>
+<p>Sometimes it can be useful to use modules as a namespace for multiple functions:</p>
+<p><strong>math.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >function</span> <span class="token function" >add</span><span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> a <span class="token operator" >+</span> b<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >function</span> <span class="token function" >multiply</span><span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> a <span class="token operator" >*</span> b<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >function</span> <span class="token function" >square</span><span class="token punctuation" >(</span>a<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> a <span class="token operator" >*</span> a<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Alternatively we could write the module in a form like this:</p>
+<p><strong>math.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> add <span class="token operator" >=</span> <span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> a <span class="token operator" >+</span> b<span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> multiple <span class="token operator" >=</span> <span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> a <span class="token operator" >*</span> b<span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// You can omit ()'s with a single parameter if you want.</span>
+<span class="token keyword" >const</span> square <span class="token operator" >=</span> a <span class="token operator" >=</span><span class="token operator" >></span> a <span class="token operator" >*</span> a<span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token punctuation" >{</span>add<span class="token punctuation" >,</span> multiple<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// Equivalent to</span>
+<span class="token comment" spellcheck="true">//export {add: add, multiple: multiple};</span>
+</code></pre>
+<p>The example leverages the <em>fat arrow syntax</em> and the <em>property value shorthand</em>.</p>
+<p>This definition can be consumed through an import like this:</p>
+<p><strong>index.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span>add<span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'./math'</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// Alternatively we could bind the math methods to a key</span>
+<span class="token comment" spellcheck="true">// import * as math from './math';</span>
+<span class="token comment" spellcheck="true">// math.add, math.multiply, ...</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>Especially <code>export default</code> is useful if you prefer to keep your modules focused. The <code>persist</code> function is an example of such. Regular <code>export</code> is useful for collecting multiple functions below the same umbrella.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Given the ES6 module syntax is statically analyzable, it enables tooling such as <a href="https://www.npmjs.com/package/analyze-es6-modules">analyze-es6-modules</a>.</blockquote><h3 class="header"><a class="header-anchor" href="#aliasing-imports" id="aliasing-imports"></a><span class="text">Aliasing Imports</span><a class="header-anchor-select" href="#aliasing-imports">#</a></h3>
+<p>Sometimes it can be handy to alias imports. Example:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span>actions <span class="token keyword" >as</span> TodoActions<span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'../actions/todo'</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p><code>as</code> allows you to avoid naming conflicts.</p>
+<h3 class="header"><a class="header-anchor" href="#webpack-resolve-alias-" id="webpack-resolve-alias-"></a><span class="text">Webpack <code>resolve.alias</code></span><a class="header-anchor-select" href="#webpack-resolve-alias-">#</a></h3>
+<p>Bundlers, such as Webpack, can provide some features beyond this. You could define a <code>resolve.alias</code> for some of your module directories for example. This would allow you to use an import, such as <code>import persist from &#39;libs/persist&#39;;</code>, regardless of where you import. A simple <code>resolve.alias</code> could look like this:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+resolve<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+  alias<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    libs<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'libs'</span><span class="token punctuation" >)</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>The official documentation describes <a href="https://webpack.github.io/docs/configuration.html#resolve-alias">possible variants</a> in fuller detail.</p>
+<h2 class="header"><a class="header-anchor" href="#classes" id="classes"></a><span class="text">Classes</span><a class="header-anchor-select" href="#classes">#</a></h2>
+<p>Unlike many other languages out there, JavaScript uses prototype based inheritance instead of class based one. Both approaches have their merits. In fact, you can mimic a class based model through a prototype based one. ES6 classes are about providing syntactical sugar above the basic mechanisms of JavaScript. Internally it still uses the same old system. It just looks a little different to the programmer.</p>
+<p>These days React supports class based component definitions. Not all agree that it&#39;s a good thing. That said, the definition can be quite neat as long as you don&#39;t abuse it. To give you a simple example, consider the code below:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    <span class="token comment" spellcheck="true">// This is a regular property outside of React's machinery.</span>
+    <span class="token comment" spellcheck="true">// If you don't need to trigger render() when it's changed,</span>
+    <span class="token comment" spellcheck="true">// this can work.</span>
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>privateProperty <span class="token operator" >=</span> <span class="token string" >'private'</span><span class="token punctuation" >;</span>
+
+    <span class="token comment" spellcheck="true">// React specific state. Alter this through `this.setState`. That</span>
+    <span class="token comment" spellcheck="true">// will call `render()` eventually.</span>
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'Class demo'</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Use the properties somehow.</span>
+    <span class="token keyword" >const</span> privateProperty <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>privateProperty<span class="token punctuation" >;</span>
+    <span class="token keyword" >const</span> name <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>name
+    <span class="token keyword" >const</span> notes <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>notes<span class="token punctuation" >;</span>
+
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Perhaps the biggest advantage of the class based approach is the fact that it cuts down some complexity, especially when it comes to React lifecycle methods. It is important to note that class methods won&#39;t get by default, though! This is why the book relies on an experimental feature known as property initializers.</p>
+<h3 class="header"><a class="header-anchor" href="#classes-and-modules" id="classes-and-modules"></a><span class="text">Classes and Modules</span><a class="header-anchor-select" href="#classes-and-modules">#</a></h3>
+<p>As stated above, the ES6 modules allow <code>export</code> and <code>import</code> single and multiple objects, functions, or even classes. In the latter, you can use <code>export default class</code> to export an anonymous class or export multiple classes from the same module using <code>export class className</code>.</p>
+<p>To export and import a single class you can use <code>export default class</code> to export an anonymous class and call it whatever you want at import time:</p>
+<p><strong>Note.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >extends</span> React<span class="token punctuation" >.</span>Component <span class="token punctuation" >{</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span> <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</code></pre>
+<p><strong>Notes.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Note.jsx'</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>Or use <code>export class className</code> to export several named classes from a single module:</p>
+<p><strong>Components.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >class</span> <span class="token class-name" >Note</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span> <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >class</span> <span class="token class-name" >Notes</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span> <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</code></pre>
+<p><strong>App.jsx</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> Notes <span class="token keyword" >from</span> <span class="token string" >'./Components.jsx'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Components.jsx'</span><span class="token punctuation" >;</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>It is recommended to keep your classes separated in different modules.</p>
+<h2 class="header"><a class="header-anchor" href="#class-properties-and-property-initializers" id="class-properties-and-property-initializers"></a><span class="text">Class Properties and Property Initializers</span><a class="header-anchor-select" href="#class-properties-and-property-initializers">#</a></h2>
+<p>ES6 classes won&#39;t bind their methods by default. This can be problematic sometimes, as you still may want to be able to access the instance properties. Experimental features known as <a href="https://github.com/jeffmo/es-class-static-properties-and-fields">class properties and property initializers</a> solve this problem. Without them, we might write something like this:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    <span class="token keyword" >this</span><span class="token punctuation" >.</span>renderNote <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>renderNote<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Use `renderNote` here somehow.</span>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+    <span class="token keyword" >return</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >renderNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >renderNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Given renderNote was bound, we can access `this` as expected</span>
+    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>div<span class="token operator" >></span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>note<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+App<span class="token punctuation" >.</span>propTypes <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  value<span class="token punctuation" >:</span> React<span class="token punctuation" >.</span>PropTypes<span class="token punctuation" >.</span>string
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+App<span class="token punctuation" >.</span>defaultProps <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  value<span class="token punctuation" >:</span> <span class="token string" >''</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> App<span class="token punctuation" >;</span>
+</code></pre>
+<p>Using class properties and property initializers we could write something tidier instead:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// propType definition through static class properties</span>
+  <span class="token keyword" >static</span> propTypes <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+    value<span class="token punctuation" >:</span> React<span class="token punctuation" >.</span>PropTypes<span class="token punctuation" >.</span>string
+  <span class="token punctuation" >}</span>
+  <span class="token keyword" >static</span> defaultProps <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+    value<span class="token punctuation" >:</span> <span class="token string" >''</span>
+  <span class="token punctuation" >}</span>
+  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Use `renderNote` here somehow.</span>
+    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+    <span class="token keyword" >return</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >renderNote</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  <span class="token comment" spellcheck="true">// Property initializer gets rid of the `bind`</span>
+  renderNote <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Given renderNote was bound, we can access `this` as expected</span>
+    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>div<span class="token operator" >></span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>note<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Now that we&#39;ve pushed the declaration to method level, the code reads better. I decided to use the feature in this book primarily for this reason. There is simply less to worry about.</p>
+<h2 class="header"><a class="header-anchor" href="#functions" id="functions"></a><span class="text">Functions</span><a class="header-anchor-select" href="#functions">#</a></h2>
+<p>Traditionally, JavaScript has been very flexible with its functions. To give you a better idea, see the implementation of <code>map</code> below:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >function</span> <span class="token function" >map</span><span class="token punctuation" >(</span>cb<span class="token punctuation" >,</span> values<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >var</span> ret <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+  <span class="token keyword" >var</span> i<span class="token punctuation" >,</span> len<span class="token punctuation" >;</span>
+
+  <span class="token keyword" >for</span><span class="token punctuation" >(</span>i <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >,</span> len <span class="token operator" >=</span> values<span class="token punctuation" >.</span>length<span class="token punctuation" >;</span> i <span class="token operator" >&lt;</span> len<span class="token punctuation" >;</span> i<span class="token operator" >++</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    ret<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation" >(</span><span class="token function" >cb</span><span class="token punctuation" >(</span>values<span class="token punctuation" >[</span>i<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+
+  <span class="token keyword" >return</span> ret<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token function" >map</span><span class="token punctuation" >(</span><span class="token keyword" >function</span><span class="token punctuation" >(</span>v<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> v <span class="token operator" >*</span> <span class="token number" >2</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token punctuation" >[</span><span class="token number" >34</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation" >,</span> <span class="token number" >5</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// yields [68, 4, 10]</span>
+</code></pre>
+<p>In ES6 we could write it as follows:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >function</span> <span class="token function" >map</span><span class="token punctuation" >(</span>cb<span class="token punctuation" >,</span> values<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> ret <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+  <span class="token keyword" >const</span> i<span class="token punctuation" >,</span> len<span class="token punctuation" >;</span>
+
+  <span class="token keyword" >for</span><span class="token punctuation" >(</span>i <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >,</span> len <span class="token operator" >=</span> values<span class="token punctuation" >.</span>length<span class="token punctuation" >;</span> i <span class="token operator" >&lt;</span> len<span class="token punctuation" >;</span> i<span class="token operator" >++</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    ret<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation" >(</span><span class="token function" >cb</span><span class="token punctuation" >(</span>values<span class="token punctuation" >[</span>i<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+
+  <span class="token keyword" >return</span> ret<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>v<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> v <span class="token operator" >*</span> <span class="token number" >2</span><span class="token punctuation" >,</span> <span class="token punctuation" >[</span><span class="token number" >34</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation" >,</span> <span class="token number" >5</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// yields [68, 4, 10]</span>
+</code></pre>
+<p>The implementation of <code>map</code> is more or less the same still. The interesting bit is at the way we call it. Especially that <code>(v) =&gt; v * 2</code> part is intriguing. Rather than having to write <code>function</code> everywhere, the fat arrow syntax provides us a handy little shorthand. To give you further examples of usage, consider below:</p>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// These are the same</span>
+v <span class="token operator" >=</span><span class="token operator" >></span> v <span class="token operator" >*</span> <span class="token number" >2</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >(</span>v<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> v <span class="token operator" >*</span> <span class="token number" >2</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// I prefer this variant for short functions</span>
+<span class="token punctuation" >(</span>v<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span> <span class="token comment" spellcheck="true">// Use this if you need multiple statements</span>
+  <span class="token keyword" >return</span> v <span class="token operator" >*</span> <span class="token number" >2</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token comment" spellcheck="true">// We can bind these to a variable</span>
+<span class="token keyword" >const</span> double <span class="token operator" >=</span> <span class="token punctuation" >(</span>v<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> v <span class="token operator" >*</span> <span class="token number" >2</span><span class="token punctuation" >;</span>
+
+console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token function" >double</span><span class="token punctuation" >(</span><span class="token number" >2</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// If you want to use a shorthand and return an object,</span>
+<span class="token comment" spellcheck="true">// you need to wrap the object.</span>
+v <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  foo<span class="token punctuation" >:</span> <span class="token string" >'bar'</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<h3 class="header"><a class="header-anchor" href="#arrow-function-context" id="arrow-function-context"></a><span class="text">Arrow Function Context</span><a class="header-anchor-select" href="#arrow-function-context">#</a></h3>
+<p>Arrow functions are special in that they don&#39;t have <code>this</code> at all. Rather, <code>this</code> will point at the caller object scope. Consider the example below:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >var</span> obj <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  context<span class="token punctuation" >:</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >return</span> <span class="token keyword" >this</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  name<span class="token punctuation" >:</span> <span class="token string" >'demo object 1'</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >var</span> obj2 <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  context<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token keyword" >this</span><span class="token punctuation" >,</span>
+  name<span class="token punctuation" >:</span> <span class="token string" >'demo object 2'</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span>obj<span class="token punctuation" >.</span><span class="token function" >context</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// { context: [Function], name: 'demo object 1' }</span>
+console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span>obj2<span class="token punctuation" >.</span><span class="token function" >context</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// {} in Node.js, Window in browser</span>
+</code></pre>
+<p>As you can notice in the snippet above, the anonymous function has a <code>this</code> pointing to the <code>context</code> function in the <code>obj</code> object. In other words, it is binding the scope of the caller object <code>obj</code> to the <code>context</code> function.</p>
+<p>This happens because <code>this</code> doesn&#39;t point to the object scopes that contains it, but the caller object scopes, as you can see it in the next snippet of code:</p>
+<pre><code class="lang-javascript">console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span>obj<span class="token punctuation" >.</span>context<span class="token punctuation" >.</span><span class="token function" >call</span><span class="token punctuation" >(</span>obj2<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// { context: [Function], name: 'demo object 2' }</span>
+</code></pre>
+<p>The arrow function in the object <code>obj2</code> doesn&#39;t bind any object to its context, following the normal lexical scoping rules resolving the reference to the nearest outer scope. In this case it happens to be Node.js <code>global</code> object.</p>
+<p>Even though the behavior might seem a little weird, it is actually useful. In the past, if you wanted to access parent context, you either needed to <code>bind</code> it or attach the parent context to a variable <code>var that = this;</code>. The introduction of the arrow function syntax has mitigated this problem.</p>
+<h3 class="header"><a class="header-anchor" href="#function-parameters" id="function-parameters"></a><span class="text">Function Parameters</span><a class="header-anchor-select" href="#function-parameters">#</a></h3>
+<p>Historically, dealing with function parameters has been somewhat limited. There are various hacks, such as <code>values = values || [];</code>, but they aren&#39;t particularly nice and they are prone to errors. For example, using <code>||</code> can cause problems with zeros. ES6 solves this problem by introducing default parameters. We can simply write <code>function map(cb, values=[])</code> now.</p>
+<p>There is more to that and the default values can even depend on each other. You can also pass an arbitrary amount of parameters through <code>function map(cb, values...)</code>. In this case, you would call the function through <code>map(a =&gt; a * 2, 1, 2, 3, 4)</code>. The API might not be perfect for <code>map</code>, but it might make more sense in some other scenario.</p>
+<p>There are also convenient means to extract values out of passed objects. This is highly useful with React component defined using the function syntax:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>name<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// ES6 string interpolation. Note the back-ticks!</span>
+  <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>div<span class="token operator" >></span><span class="token punctuation" >{</span><span class="token template-string" ><span class="token string" >`Hello </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>name<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >!`</span></span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#string-interpolation" id="string-interpolation"></a><span class="text">String Interpolation</span><a class="header-anchor-select" href="#string-interpolation">#</a></h2>
+<p>Earlier, dealing with strings was somewhat painful in JavaScript. Usually you just ended up using a syntax like <code>&#39;Hello&#39; + name + &#39;!&#39;</code>. Overloading <code>+</code> for this purpose wasn&#39;t perhaps the smartest move as it can lead to strange behavior due to type coercion. For example, <code>0 + &#39; world</code> would yield <code>0 world</code> string as a result.</p>
+<p>Besides being clearer, ES6 style string interpolation provides us multi-line strings. This is something the old syntax didn&#39;t support. Consider the examples below:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> hello <span class="token operator" >=</span> <span class="token template-string" ><span class="token string" >`Hello </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>name<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >!`</span></span><span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> multiline <span class="token operator" >=</span> <span class="token template-string" ><span class="token string" >`
+multiple
+lines of
+awesomeness
+`</span></span><span class="token punctuation" >;</span>
+</code></pre>
+<p>The back-tick syntax may take a while to get used to, but it&#39;s powerful and less prone to mistakes.</p>
+<h2 class="header"><a class="header-anchor" href="#destructuring" id="destructuring"></a><span class="text">Destructuring</span><a class="header-anchor-select" href="#destructuring">#</a></h2>
+<p>That <code>...</code> is related to the idea of destructuring. For example, <code>const {lane, ...props} = this.props;</code> would extract <code>lane</code> out of <code>this.props</code> while the rest of the object would go to <code>props</code>. This object based syntax is still experimental. ES6 specifies an official way to perform the same for arrays like this:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> <span class="token punctuation" >[</span>lane<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>rest<span class="token punctuation" >]</span> <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token string" >'foo'</span><span class="token punctuation" >,</span> <span class="token string" >'bar'</span><span class="token punctuation" >,</span> <span class="token string" >'baz'</span><span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+
+console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span>lane<span class="token punctuation" >,</span> rest<span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// 'foo', ['bar', 'baz']</span>
+</code></pre>
+<p>The spread operator (<code>...</code>) is useful for concatenating. You see syntax like this in Redux examples often. They rely on experimental <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">Object rest/spread syntax</a>:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >[</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>state<span class="token punctuation" >,</span> action<span class="token punctuation" >.</span>lane<span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// This is equal to</span>
+state<span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>action<span class="token punctuation" >.</span>lane<span class="token punctuation" >]</span><span class="token punctuation" >)</span>
+</code></pre>
+<p>The same idea applies to React components:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> <span class="token punctuation" >{</span>value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+
+  <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>div <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token operator" >></span>Spread demo<span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<blockquote class="warning"><i class="icon-attention"></i>There are several gotchas related to the spread operator. Given it is <em>shallow</em> by default, it can lead to interesting behavior that might be unexpected. This is particularly true if you are trying to use it to clone an object using it. Josh Black discusses this problem in detail at his Medium post titled <a href="https://medium.com/@joshblack/gotchas-in-es2015-spread-5db06dfb1e10">Gotchas in ES2015+ Spread</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#object-initializers" id="object-initializers"></a><span class="text">Object Initializers</span><a class="header-anchor-select" href="#object-initializers">#</a></h2>
+<p>In order to make it easier to work with objects, ES6 provides a variety of features just for this. To quote <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer">MDN</a>, consider the examples below:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> a <span class="token operator" >=</span> <span class="token string" >'demo'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> shorthand <span class="token operator" >=</span> <span class="token punctuation" >{</span>a<span class="token punctuation" >}</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// Same as {a: a}</span>
+
+<span class="token comment" spellcheck="true">// Shorthand methods</span>
+<span class="token keyword" >const</span> o <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >get</span> <span class="token function" >property</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token keyword" >set</span> <span class="token function" >property</span><span class="token punctuation" >(</span>value<span class="token punctuation" >)</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token function" >demo</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// Computed property names</span>
+<span class="token keyword" >const</span> computed <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >[</span>a<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token string" >'testing'</span> <span class="token comment" spellcheck="true">// demo -> testing</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#-const-let-var-" id="-const-let-var-"></a><span class="text"><code>const</code>, <code>let</code>, <code>var</code></span><a class="header-anchor-select" href="#-const-let-var-">#</a></h2>
+<p>In JavaScript, variables are global by default. <code>var</code> binds them on <em>function level</em>. This is in contrast to many other languages that implement <em>block level</em> binding. ES6 introduces block level binding through <code>let</code>.</p>
+<p>There&#39;s also support for <code>const</code>, which guarantees the reference to the variable itself cannot change. This doesn&#39;t mean, however, that you cannot modify the contents of the variable. So if you are pointing at an object, you are still allowed to tweak it!</p>
+<p>I tend to favor to default to <code>const</code> whenever possible. If I need something mutable, <code>let</code> will do fine. It is hard to find any good use for <code>var</code> anymore as <code>const</code> and <code>let</code> cover the need in a more understandable manner. In fact, all of the book&#39;s code, apart from this appendix, relies on <code>const</code>. That just shows you how far you can get with it.</p>
+<h2 class="header"><a class="header-anchor" href="#decorators" id="decorators"></a><span class="text">Decorators</span><a class="header-anchor-select" href="#decorators">#</a></h2>
+<p>Given decorators are still an experimental feature and there&#39;s a lot to cover about them, there&#39;s an entire appendix dedicated to the topic. Read <em>Understanding Decorators</em> for more information.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>There&#39;s a lot more to ES6 and the upcoming specifications than this. If you want to understand the specification better, <a href="http://es6katas.org/">ES6 Katas</a> is a good starting point for learning more. Just having a good idea of the basics will take you far.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/peanuts.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/react/appendices">Appendices</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/decorators.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/react/appendices/understanding-decorators">Understanding Decorators</a></div></div><blockquote class="tip"><p>This book is <a href="https://leanpub.com/survivejs_webpack_react">available through Leanpub</a>. By purchasing the book you support the development of further content.</p></blockquote><div id="disqus_thread"></div></div></div><div><a class="next-page" title="Understanding Decorators" href="/react/appendices/understanding-decorators"><i class="icon-right-open"></i></a><a class="previous-page" title="Appendices" href="/react/appendices"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs_webpack_react">Buy the full ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><div class="right ribbon github-fork-ribbon-wrapper"><div class="github-fork-ribbon" style="background-color:black;"><a href="https://github.com/survivejs/react/issues/new?title=Language Features - " target="_blank">Submit feedback</a></div></div><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs-react-253">SurviveJS - React - v2.5.3</a></li><li><a class="blog-teaser" href="/blog/builder-interview">Builder - A npm-based task runner - Interview with Ryan Roemer</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-120">SurviveJS - Webpack - v1.2.0</a></li><li><a class="blog-teaser" href="/blog/nwb-interview">nwb - CLI for React Applications and Components - Interview with Jonny Buchanan</a></li><li><a class="blog-teaser" href="/blog/kotatsu-interview">Kotatsu - Less Boilerplate for Modern JavaScript - Interview with Guillaume Plique</a></li><li><a class="blog-teaser" href="/blog/hashnode-interview">Hashnode - Community for Software Developers - Interview with Sandeep Panda</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-110">SurviveJS - Webpack - v1.1.0</a></li><li><a class="blog-teaser" href="/blog/frzr-interview">FRZR - a Tiny View Library - Interview with Juha Lindstedt</a></li><li><a class="blog-teaser" href="/blog/survivejs210">SurviveJS - Webpack and React - v2.1.0</a></li><li><a class="blog-teaser" href="/blog/relax-interview">Relax - New generation CMS on top of React and Node.js - Interview with Bruno Mota</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+            ((window.gitter = {}).chat = {}).options = {
+              showChatByDefault: false,
+              activationElement: '.gitter-open-chat-button',
+              room: 'survivejs/react'
+            };
+          </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></main></body></html>

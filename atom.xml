@@ -1,4 +1,79 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title >SurviveJS</title><link href="http://survivejs.com/atom.xml" rel="self"> </link><link href="http://survivejs.com/"> </link><updated >2016-05-16T20:47:24+03:00</updated><id >http://survivejs.com/</id><author ><name >Juho Vepsäläinen</name><email ></email></author><entry ><title >Builder - A npm-based task runner - Interview with Ryan Roemer</title><id >abuilderanpmbasedtaskrunnerinterviewwithryanroemer2016-05-16t00:00:00+03:00</id><link href="http://survivejs.com/blog/builder-interview"></link><updated >2016-05-16T00:00:00+03:00</updated><content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder&quot;&gt;Builder&lt;/a&gt; by Formidable Labs is one of those projects tackling the boilerplate issue. It is a project that repurposes npm &lt;code&gt;scripts&lt;/code&gt; into something more powerful. To learn more, let&amp;#39;s let &lt;a href=&quot;https://twitter.com/ryan_roemer&quot;&gt;Ryan Roemer&lt;/a&gt; discuss builder in detail.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title >SurviveJS</title><link href="http://survivejs.com/atom.xml" rel="self"> </link><link href="http://survivejs.com/"> </link><updated >2016-06-01T15:13:58+03:00</updated><id >http://survivejs.com/</id><author ><name >Juho Vepsäläinen</name><email ></email></author><entry ><title >SurviveJS - React - v2.5.3</title><id >asurvivejsreactv2532016-06-01t00:00:00+03:00</id><link href="http://survivejs.com/blog/survivejs-react-253"></link><updated >2016-06-01T00:00:00+03:00</updated><content type="html">&lt;p&gt;It has been a while since &lt;a href=&quot;../../blog/survivejs210&quot;&gt;the previous release&lt;/a&gt; and a lot has happened. In addition to ramping up my consulting and &lt;a href=&quot;https://survivejs.github.io/training&quot;&gt;training&lt;/a&gt; business, I managed to publish a &lt;a href=&quot;../../webpack/introduction&quot;&gt;book on Webpack&lt;/a&gt;. That was the first part of my planned split. This is the second.&lt;/p&gt;
+&lt;p&gt;From now on we&amp;#39;ll continue with two books - &amp;quot;SurviveJS - Webpack&amp;quot; and &amp;quot;SurviveJS - React&amp;quot;. I am a lot more comfortable with this setup as now it&amp;#39;s easier to focus and we can cover more advanced topics. In short, the effort is more manageable now.&lt;/p&gt;
+&lt;blockquote class=&quot;tip&quot;&gt;&lt;i class=&quot;icon-attention-circled&quot;&gt;&lt;/i&gt;To reward my current Leanpub readers, you will receive the Leanpub version of &amp;quot;SurviveJS - Webpack&amp;quot; for free. You will receive an email about that.&lt;/blockquote&gt;&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#overview-of-the-situation&quot; id=&quot;overview-of-the-situation&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Overview of the Situation&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#overview-of-the-situation&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This release, 2.5, is easily the biggest I&amp;#39;ve done in a while. Just extracting the Webpack portions wasn&amp;#39;t enough. I felt the book needed polish. As a result I ended up rewriting a significant portion of it. It took time but I&amp;#39;m happy with the outcome.&lt;/p&gt;
+&lt;p&gt;The book consists of smaller, more focused chapters now. This brings down the difficulty while allowing me to cover different dimensions of React in greater detail. The rework enables me to develop further content easier than the old one. You can see this also in the application architecture.&lt;/p&gt;
+&lt;p&gt;In short, I&amp;#39;m confident about the direction of the effort. Thanks to the effort I&amp;#39;ll be able to pick up the pace again and add more advanced information to the book.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#book-improvements-2-5-3-&quot; id=&quot;book-improvements-2-5-3-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Book Improvements - &lt;code&gt;2.5.3&lt;/code&gt;&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#book-improvements-2-5-3-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In total 191 commits went to book since the last release. Given the book has changed so much, it would be easier to tell you what hasn&amp;#39;t changed that what did, but I&amp;#39;ll try my best.&lt;/p&gt;
+&lt;p&gt;You can find the important changes below. See GitHub for &lt;a href=&quot;https://github.com/survivejs/webpack_react/compare/v2.1.0...v2.5.1&quot;&gt;all changes&lt;/a&gt;. Especially the &amp;quot;Files changed&amp;quot; tab is highly useful although in this case it&amp;#39;s probably going to be a little sluggish.&lt;/p&gt;
+&lt;blockquote class=&quot;tip&quot;&gt;&lt;i class=&quot;icon-attention-circled&quot;&gt;&lt;/i&gt;If you were following an old version through the web, remember that you can find the versions tagged at &lt;a href=&quot;https://github.com/survivejs/react&quot;&gt;GitHub&lt;/a&gt;.&lt;/blockquote&gt;&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#getting-started&quot; id=&quot;getting-started&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Getting Started&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#getting-started&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This part replaces the earlier &lt;em&gt;Setting Up Webpack&lt;/em&gt; chapter. Rather than stepping you through how to develop your own Webpack configuration, you will start from a &lt;a href=&quot;https://github.com/survivejs/react-boilerplate&quot;&gt;small boilerplate&lt;/a&gt; instead. &lt;a href=&quot;../../webpack/introduction&quot;&gt;The Webpack book&lt;/a&gt; covers the techniques used there in detail.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#introduction-to-react&quot; id=&quot;introduction-to-react&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Introduction to React&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#introduction-to-react&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I felt the previous version didn&amp;#39;t spend enough time on discussing React. This has been remedied now as I discuss the basic ideas of React in greater detail. Especially the Virtual DOM has received more attention. This chapter will likely grow further as I receive feedback on it.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#setting-up-the-project&quot; id=&quot;setting-up-the-project&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Setting Up the Project&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#setting-up-the-project&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The idea of this chapter is to show you how to get the boilerplate project up and running. It also describes the boilerplate and the custom language features used.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#implementing-a-note-application&quot; id=&quot;implementing-a-note-application&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Implementing a Note Application&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#implementing-a-note-application&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This chapter existed in the previous version as well. This time, however, I have split it up into multiple smaller ones. All major steps belong to chapters of their own. This allows more detailed discussion where needed.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#deleting-notes-&quot; id=&quot;deleting-notes-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Deleting &lt;code&gt;Notes&lt;/code&gt;&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#deleting-notes-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Even though a short chapter, I felt deletion deserved a chapter of its own. It&amp;#39;s a breather after the a heavier chapter if nothing else.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#understanding-react-components&quot; id=&quot;understanding-react-components&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Understanding React Components&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#understanding-react-components&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Earlier the React component discussion was quite terse and scattered. I resolved the problem by gathering the material to a chapter of its own. This is more of a reference level chapter that you can check out if you have some component level related question in mind. I&amp;#39;ll likely use it a lot myself for this purpose.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#editing-notes-&quot; id=&quot;editing-notes-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Editing &lt;code&gt;Notes&lt;/code&gt;&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#editing-notes-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This is another tutorial level chapter that moves the implementation forward. As usual, there&amp;#39;s material on component design. I pushed the entire &lt;code&gt;Editable&lt;/code&gt; component here to simplify the later portions of the book.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#styling-the-notes-application&quot; id=&quot;styling-the-notes-application&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Styling the Notes Application&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#styling-the-notes-application&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I pushed the Notes application styling related aspects to a chapter of its own. Also &lt;a href=&quot;https://www.npmjs.org/package/classnames&quot;&gt;classnames&lt;/a&gt; is discussed briefly now. It would be possible to expand this chapter to discuss &lt;strong&gt;CSS Modules&lt;/strong&gt; in detail. I&amp;#39;m still on the edge about that, though.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#implementing-kanban&quot; id=&quot;implementing-kanban&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Implementing Kanban&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#implementing-kanban&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This part existed in the earlier version. It is more focused, though, as the Notes application was pushed to the new part we just covered.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#react-and-flux&quot; id=&quot;react-and-flux&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;React and Flux&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#react-and-flux&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I expanded the scope of this chapter a notch. It mentions solutions such as Redux and MobX and puts them into a perspective. I evolved the application architecture so that instead of using &lt;code&gt;AltContainer&lt;/code&gt; directly, we push the state management related aspects behind a facade.&lt;/p&gt;
+&lt;p&gt;I achieved this by implementing a &lt;code&gt;Provider&lt;/code&gt; and a &lt;code&gt;connect&lt;/code&gt; higher order function pair based on &lt;a href=&quot;https://www.npmjs.com/package/react-redux&quot;&gt;react-redux&lt;/a&gt; API. It takes effort to implement the pair, but on the plus side now the Kanban has a looser dependency on Alt.&lt;/p&gt;
+&lt;p&gt;The point of this change was to enable the development of new content. I could imagine Redux and MobX specific chapters. It would be possible to achieve now without having to rewrite significant portions of the application. Even then the rewrite needed would be very instructive.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#implementing-store-and-actions&quot; id=&quot;implementing-store-and-actions&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Implementing Store and Actions&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#implementing-store-and-actions&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Given the previous chapter focused on theory and connecting a state management system with React, this one adds a missing concepts - store and actions.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#implementing-persistency-over-localstorage-&quot; id=&quot;implementing-persistency-over-localstorage-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Implementing Persistency over &lt;code&gt;localStorage&lt;/code&gt;&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#implementing-persistency-over-localstorage-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Persistency felt like a chapter of its own so I changed it that way. It might be possible to push this chapter further (offline usage?) but even the current version is quite fine. At least it is focused.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#handling-data-dependencies&quot; id=&quot;handling-data-dependencies&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Handling Data Dependencies&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#handling-data-dependencies&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Earlier the difficult concept of data relations was within the &lt;em&gt;From Notes to Kanban&lt;/em&gt; chapter. Now the idea is an entire chapter of its own as it felt like one of those ideas that deserves more emphasis.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#editing-lanes&quot; id=&quot;editing-lanes&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Editing Lanes&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#editing-lanes&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This chapter does the remainder of the implementation apart from drag and drop. It just uses the collection of components we have together to get it together.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#drag-and-drop&quot; id=&quot;drag-and-drop&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Drag and Drop&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#drag-and-drop&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The drag and drop portion related more or less the same. The chapter is simpler now as certain logic is handled earlier. I was able to drop a couple of steps as a result. The chapter should flow a little better now.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#advanced-techniques&quot; id=&quot;advanced-techniques&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Advanced Techniques&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#advanced-techniques&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This part gained a new chapter as I moved structuring ideas here. The part received a beauty pass as I went through the content to make it work with the new implementation of Kanban.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#testing-react-&quot; id=&quot;testing-react-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Testing React*&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#testing-react-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This Leanpub exclusive chapter gained updated graphics. Thanks to the improved implementation, now the tests are a little simpler as well. There&amp;#39;s some complexity involved given now the book defaults to stateless functional components, but overall the chapter feels better.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#typing-with-react-&quot; id=&quot;typing-with-react-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Typing with React*&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#typing-with-react-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Typing with React&lt;/em&gt; received a beauty pass as well. Given Flow supports stateless functional components now, this was a fun one to improve.&lt;/p&gt;
+&lt;p&gt;TypeScript might deserve more attention in the future. Especially the upcoming 2.0 release looks promising!&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#styling-react&quot; id=&quot;styling-react&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Styling React&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#styling-react&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Not a lot happened here. I removed Webpack references but nothing drastic happened.&lt;/p&gt;
+&lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#structuring-react-projects&quot; id=&quot;structuring-react-projects&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Structuring React Projects&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#structuring-react-projects&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I felt structuring is a core topic so I pushed it here. The chapter should probably be pushed further. It could perhaps use more concrete examples.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#appendices&quot; id=&quot;appendices&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Appendices&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#appendices&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Apart from that move the appendices didn&amp;#39;t see a lot of action. There were minor tweaks but those are too small to mention.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-next-&quot; id=&quot;what-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What Next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Now that I have completed the split, it is easier to develop the content again. I will prioritize state management related work. Here is my task list based on priority:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add a new chapter or two on state management. Essentially we would port the application to Redux and MobX here and discuss different systems in detail. I feel Alt works adequately for the purposes of the book but having this sort of advanced discussion would improve it.&lt;/li&gt;
+&lt;li&gt;Expand on asynchronous handling. The current edition improves on this but we can do better.&lt;/li&gt;
+&lt;li&gt;Figure out what to do after these have been tackled. I have proposed chapters at &lt;a href=&quot;https://github.com/survivejs/react/issues&quot;&gt;the issue tracker&lt;/a&gt;. Feel free to propose one or comment on the existing ones there. Maybe a routing chapter would be nice?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#pricing-changes&quot; id=&quot;pricing-changes&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Pricing Changes&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#pricing-changes&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Given the content has changed (two books!), I&amp;#39;ve implemented the following pricing changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;a href=&quot;https://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X&quot;&gt;Amazon edition&lt;/a&gt; will be available for $19.99. Once I have paper versions of the new books out there, this book will go out of market.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://leanpub.com/survivejs-webpack&quot;&gt;&amp;quot;SurviveJS - Webpack&amp;quot; - Leanpub edition&lt;/a&gt; goes to $15.99. Thanks early supporters!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://leanpub.com/survivejs-react&quot;&gt;&amp;quot;SurviveJS - React&amp;quot; - Leanpub edition&lt;/a&gt; goes to $15.99. If you bought the original book, you will receive &amp;quot;SurviveJS - React&amp;quot; for free.&lt;/li&gt;
+&lt;li&gt;&amp;quot;SurviveJS - Webpack&amp;quot; + &amp;quot;SurviveJS - React&amp;quot; bundle - $27.99.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The idea is that as more content gets developed, the price will gradually go up. Also if splits like this happen, the modus operandi is the same. You will receive the split book as well. This is my way of saying thanks to those who support the effort monetarily.&lt;/p&gt;
+&lt;blockquote class=&quot;tip&quot;&gt;&lt;i class=&quot;icon-attention-circled&quot;&gt;&lt;/i&gt;If you have bought the paper version before June 2016, get in touch and I&amp;#39;ll hook you up with the digital versions.&lt;/blockquote&gt;&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#conclusion&quot; id=&quot;conclusion&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Conclusion&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#conclusion&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I hope you enjoy this release. As usual, your support keeps this effort going on. Thanks!&lt;/p&gt;
+&lt;p&gt;Remember that you can find up to date code from &lt;a href=&quot;https://github.com/survivejs/react&quot;&gt;the book repository&lt;/a&gt;. The stable version of the book is available at the &lt;code&gt;master&lt;/code&gt; branch.&lt;/p&gt;
+&lt;p&gt;You can &lt;a href=&quot;mailto:info@survivejs.com&quot;&gt;contact me directly&lt;/a&gt; or through the GitHub &lt;a href=&quot;https://github.com/survivejs/react/issues&quot;&gt;issue tracker&lt;/a&gt;. Also &lt;a href=&quot;https://gitter.im/survivejs/react&quot;&gt;Gitter&lt;/a&gt; will work. There are topic specific channels now so it&amp;#39;s easier to handle.&lt;/p&gt;
+&lt;p&gt;You can support my work by &lt;a href=&quot;https://leanpub.com/survivejs-react&quot;&gt;purchasing the book at Leanpub&lt;/a&gt; or an earlier version of the book at &lt;a href=&quot;amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X&quot;&gt;Amazon&lt;/a&gt; (paper version). Every little bit counts and allows me to keep it up.&lt;/p&gt;
+</content></entry><entry ><title >Builder - A npm-based task runner - Interview with Ryan Roemer</title><id >abuilderanpmbasedtaskrunnerinterviewwithryanroemer2016-05-16t00:00:00+03:00</id><link href="http://survivejs.com/blog/builder-interview"></link><updated >2016-05-16T00:00:00+03:00</updated><content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder&quot;&gt;Builder&lt;/a&gt; by Formidable Labs is one of those projects tackling the boilerplate issue. It is a project that repurposes npm &lt;code&gt;scripts&lt;/code&gt; into something more powerful. To learn more, let&amp;#39;s let &lt;a href=&quot;https://twitter.com/ryan_roemer&quot;&gt;Ryan Roemer&lt;/a&gt; discuss builder in detail.&lt;/p&gt;
 &lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#can-you-tell-a-bit-about-yourself-&quot; id=&quot;can-you-tell-a-bit-about-yourself-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Can you tell a bit about yourself?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#can-you-tell-a-bit-about-yourself-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;
 &lt;span class=&quot;author&quot;&gt;
@@ -13,7 +88,7 @@ I am the CTO and co-founder of &lt;a href=&quot;http://formidable.com/&quot;&gt;
 &lt;p&gt;Builder is a tool for wrangling build infrastructures and workflows for a collection of similar projects. It leverages the modern development trend of &lt;a href=&quot;http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/&quot;&gt;&lt;code&gt;npm&lt;/code&gt;-based workflows&lt;/a&gt; with better scalability and flexibility.&lt;/p&gt;
 &lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-does-builder-work-&quot; id=&quot;how-does-builder-work-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How does &lt;em&gt;builder&lt;/em&gt; work?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-does-builder-work-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Let&amp;#39;s walk through a basic example. Imagine that we have two projects with identical &lt;code&gt;npm&lt;/code&gt; tasks:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
 &lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;
   &lt;span class=&quot;token string&quot; &gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo FOO&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
   &lt;span class=&quot;token string&quot; &gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&quot;echo BAR&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;,&lt;/span&gt;
@@ -28,12 +103,12 @@ I am the CTO and co-founder of &lt;a href=&quot;http://formidable.com/&quot;&gt;
 &lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;which allows us to:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project1&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ npm run foobar
 FOO
 BAR
 
-$ cd &amp;lt;project2&amp;gt;
+$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project2&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ npm run foobar
 FOO
 BAR
@@ -41,7 +116,7 @@ BAR
 &lt;p&gt;Great! Unfortunately, as the number of projects increases and these similar tasks change, we end up with a bit of a maintenance nightmare -- keeping up with and updating the latest task set across all projects.&lt;/p&gt;
 &lt;p&gt;Builder solves this problem with the notion of an &lt;a href=&quot;http://formidable.com/open-source/builder/#archetypes&quot;&gt;&amp;quot;archetype&amp;quot;&lt;/a&gt; -- a separate npm module responsible for abstracting and managing the common tasks, configurations, and dependencies. Builder allows us to move common &lt;code&gt;scripts&lt;/code&gt; tasks and &lt;code&gt;dependencies&lt;/code&gt; / &lt;code&gt;devDependencies&lt;/code&gt; for those tasks into an archetype project. The archetype can then be published and consumed just like any normal Node.js module.&lt;/p&gt;
 &lt;p&gt;The builder version of the above example would be:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
 &lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project2&gt;/package.json&lt;/span&gt;
@@ -55,12 +130,12 @@ BAR
 &lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that we&amp;#39;re now using &lt;code&gt;builder run &amp;lt;task&amp;gt;&lt;/code&gt; in the place of &lt;code&gt;npm run &amp;lt;task&amp;gt;&lt;/code&gt;. We can execute the tasks with:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project1&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ builder run foobar
 FOO
 BAR
 
-$ cd &amp;lt;project2&amp;gt;
+$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project2&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ builder run foobar
 FOO
 BAR
@@ -75,7 +150,7 @@ BAR
 &lt;p&gt;while still mostly behaving &amp;quot;just like &lt;code&gt;npm&lt;/code&gt;&amp;quot;.&lt;/p&gt;
 &lt;p&gt;Builder also provides critical &lt;em&gt;flexibility&lt;/em&gt; for tasks. Many meta / build frameworks are great when you follow the given workflows, but break down when a project goes &amp;quot;off script&amp;quot;. By contrast, builder supports projects doing sub-tasks differently as a first class concern and at a very granular level.&lt;/p&gt;
 &lt;p&gt;Let&amp;#39;s tweak our example so that &lt;code&gt;&amp;lt;project2&amp;gt;&lt;/code&gt; has a slightly different &lt;code&gt;bar&lt;/code&gt; task like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-js&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project1&gt;/package.json&lt;/span&gt;
 &lt;span class=&quot;token string&quot; &gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// &amp;lt;project2&gt;/package.json&lt;/span&gt;
@@ -84,24 +159,24 @@ BAR
 &lt;span class=&quot;token punctuation&quot; &gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If we run the specific tasks, we get the correct overrides:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project1&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ builder run bar
 BAR
 
-$ cd &amp;lt;project2&amp;gt;
+$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project2&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ builder run bar
-I&amp;#39;M GONNA BE DIFFERENT
+I&apos;M GONNA BE DIFFERENT
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Builder resolves tasks starting with the root project and then moves up to the archetype on a &lt;em&gt;per task&lt;/em&gt; basis. This means that composed tasks like &lt;code&gt;foobar&lt;/code&gt; will pick up root overrides together with existing archetype commands giving us:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ cd &amp;lt;project1&amp;gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project1&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ builder run foobar
 FOO
 BAR
 
-$ cd &amp;lt;project2&amp;gt;
+$ &lt;span class=&quot;token function&quot; &gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;project2&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;
 $ builder run foobar
 FOO
-I&amp;#39;M GONNA BE DIFFERENT
+I&apos;M GONNA BE DIFFERENT
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And just like that, a single project can easily do one-off changes from the archetype, while keeping all the overall composed tasks and workflows intact.&lt;/p&gt;
 &lt;h3 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-else-can-builder-do-&quot; id=&quot;what-else-can-builder-do-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What else can &lt;em&gt;builder&lt;/em&gt; do?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-else-can-builder-do-&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
@@ -119,10 +194,10 @@ I&amp;#39;M GONNA BE DIFFERENT
 &lt;li&gt;&lt;a href=&quot;https://github.com/FormidableLabs/builder-init#archetype-templates&quot;&gt;&lt;code&gt;init/**&lt;/code&gt;&lt;/a&gt; - template files to expand into a new project. (&lt;a href=&quot;https://github.com/FormidableLabs/builder-react-component/tree/master/init&quot;&gt;example&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Once these are defined in an archetype, &lt;code&gt;builder-init&lt;/code&gt; can then create a new project via any means that &lt;code&gt;npm&lt;/code&gt; can install a module:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-sh&quot;&gt;$ builder-init builder-react-component
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;$ builder-init builder-react-component
 $ builder-init builder-react-component@0.3.3
-$ builder-init FormidableLabs/builder-react-component#v0.3.3
-$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git#v0.3.3
+$ builder-init FormidableLabs/builder-react-component&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;#v0.3.3&lt;/span&gt;
+$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;#v0.3.3&lt;/span&gt;
 $ builder-init /FULL/PATH/TO/builder-react-component
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is a great way to keep your new project boilerplate always up to date. Additionally, we utilize &lt;code&gt;builder-init&lt;/code&gt; in the &lt;a href=&quot;https://github.com/FormidableLabs/builder-react-component/blob/master/.travis.yml#L35-L58&quot;&gt;CI for the archetype&lt;/a&gt; to check that the archetype works as expected in consuming projects. It&amp;#39;s a fantastic sanity check on your boilerplate to ensure it&amp;#39;s always ready to ship.&lt;/p&gt;
