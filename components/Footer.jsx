@@ -22,10 +22,10 @@ export default React.createClass({
                   <a href='http://eepurl.com/bth1v5' target='_blank'>Mailing List</a>
                 </li>
                 <li>
-                  <a href='https://gitter.im/survivejs/webpack_react' target='_blank'>Gitter Chat</a>
+                  <a href='https://gitter.im/survivejs' target='_blank'>Gitter Chat</a>
                 </li>
                 <li>
-                  <a href='https://github.com/survivejs/webpack_react' target='_blank'>GitHub</a>
+                  <a href='https://github.com/survivejs' target='_blank'>GitHub</a>
                 </li>
                 <li>
                   <a href='/atom.xml' target='_blank'>Blog RSS</a>
