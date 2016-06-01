@@ -15,12 +15,20 @@ module.exports = [
   },
   /* introduction to react */
   {
+    "author": "Marko Heinrich",
+    "source": "https://pixabay.com/en/event-technology-light-panel-644537/",
+    "license": "Public Domain",
+    "image": "panel.jpg",
+    "type": "chapter"
+  },
+  /* setting up the project */
+  {
     "author": "Efraimstochter",
     "source": "https://pixabay.com/en/wheels-machine-installation-art-784865/",
     "license": "Public Domain",
     "image": "wheels.jpg",
-    "demo": "getting-started/introduction-to-react",
-    "endSource": "getting_started/01_introduction_to_react",
+    "demo": "getting-started/setting-up-the-project",
+    "endSource": "getting_started/02_setting_up_the_project",
     "type": "chapter"
   },
   /* implementing notes */
@@ -30,7 +38,7 @@ module.exports = [
     "license": "CC BY-NC-SA",
     "image": "notes.jpg",
     "demo": "getting-started/implementing-notes",
-    "endSource": "getting_started/02_implementing_notes",
+    "endSource": "getting_started/03_implementing_notes",
     "type": "chapter"
   },
   /* deleting notes */
@@ -40,7 +48,7 @@ module.exports = [
     "license": "Public Domain",
     "image": "cleaning.jpg",
     "demo": "getting-started/deleting-notes",
-    "endSource": "getting_started/03_deleting_notes",
+    "endSource": "getting_started/04_deleting_notes",
     "type": "chapter"
   },
   /* understanding react components */
@@ -58,7 +66,7 @@ module.exports = [
     "license": "Public Domain",
     "image": "caliper.jpg",
     "demo": "getting-started/editing-notes",
-    "endSource": "getting_started/05_editing_notes",
+    "endSource": "getting_started/06_editing_notes",
     "type": "chapter"
   },
   /* styling notes */
@@ -68,7 +76,7 @@ module.exports = [
     "license": "CC BY-NC-ND",
     "image": "apples_oranges.jpg",
     "demo": "getting-started/styling-notes",
-    "endSource": "getting_started/02_styling_notes",
+    "endSource": "getting_started/07_styling_notes",
     "type": "chapter"
   },
   /* Part: implementing kanban */
