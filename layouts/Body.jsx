@@ -68,5 +68,5 @@ const GitterChat = ({sectionName}) => {
     return <Gitter room={'survivejs/' + sectionName} title="Need help?" />
   }
 
-  return <Gitter room={'survivejs'} title="Need help?" />
+  return <Gitter room={'survivejs/react'} title="Need help?" />
 }
