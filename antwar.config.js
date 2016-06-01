@@ -27,15 +27,15 @@ module.exports = {
   webpack: themeConfig.webpack, // SCSS bits
   assets: [
     {
-      from: '../webpack_react/manuscript/images',
-      to: 'webpack_react/images',
+      from: '../react/manuscript/images',
+      to: 'react/images',
     },
     {
       from: '../webpack/manuscript/images',
       to: 'webpack/images',
     },
     {
-      from: '../webpack_react/project_source/builds',
+      from: '../react/project_source/builds',
       to: 'demos',
     },
     {

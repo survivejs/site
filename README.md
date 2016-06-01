@@ -4,19 +4,19 @@ This is the source of [http://survivejs.com/](survivejs.com).
 
 ## Development
 
-First, you need to clone this repository and the `webpack_react` one:
+First, you need to clone this repository and the book ones:
 
 ```
 $ git clone https://github.com/survivejs/site
 $ git clone https://github.com/survivejs/webpack
-$ git clone https://github.com/survivejs/webpack_react
+$ git clone https://github.com/survivejs/react
 $ git clone https://github.com/survivejs/webpack_react_resources
 ```
 
-Then, you need to build each `webpack_react` project (it is a needed requisite to build this site):
+Then, you need to build each project (it is a needed requisite to build this site):
 
 ```
-$ cd webpack_react/project_source
+$ cd react/project_source
 $ npm install
 $ ./build_all.js
 ```

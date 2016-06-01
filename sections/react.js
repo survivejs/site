@@ -5,16 +5,16 @@ module.exports = function react(headers) {
   return {
     title: 'Table of Contents',
     path: function() {
-      return require.context('json!yaml-frontmatter!../../webpack_react/manuscript', true, /^\.\/.*\.md$/);
+      return require.context('json!yaml-frontmatter!../../react/manuscript', true, /^\.\/.*\.md$/);
     },
     processPage: {
       title: _common.title,
-      content: _common.content('webpack_react'),
+      content: _common.content('react'),
       preview: _common.preview,
       url: _common.url
     },
     sort: function(files) {
-      var order = require('raw!../../webpack_react/manuscript/Book.txt').split('\n').filter(id);
+      var order = require('raw!../../react/manuscript/Book.txt').split('\n').filter(id);
       var ret = [];
 
       order = order.filter(function(name) {

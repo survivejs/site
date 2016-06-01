@@ -17,6 +17,8 @@ function main() {
       files: [
         'http://survivejs.com/assets/main.css',
         'http://survivejs.com/webpack_react/*',
+        'http://survivejs.com/webpack/*',
+        'http://survivejs.com/react/*',
         'http://survivejs.com/assets/img/favicon.png',
         'http://survivejs.com/favicon.ico',
         'http://survivejs.com/'
