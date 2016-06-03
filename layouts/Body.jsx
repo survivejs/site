@@ -35,13 +35,13 @@ export default React.createClass({
         },
         {
           title: sectionName === 'blog' ? 'Read the free version' : 'Read the blog',
-          url: sectionName === 'blog' ? '/webpack_react/introduction/' : '/blog',
+          url: sectionName === 'blog' ? '/react/introduction/' : '/blog',
         },
         {
           title: 'Buy the full ebook',
           url: sectionName === 'webpack' ?
             'https://leanpub.com/survivejs-webpack' :
-            'https://leanpub.com/survivejs_webpack_react',
+            'https://leanpub.com/survivejs-react',
         },
         {
           title: '',
