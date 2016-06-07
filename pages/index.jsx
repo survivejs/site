@@ -27,7 +27,7 @@ const Index = React.createClass({
                 <span className='buy-or'>or</span>
                 <a className='btn btn--buy-main'
                   href='https://leanpub.com/survivejs-webpack'>Become a Webpack master</a>
-                <span className='buy-or'>(or both!)</span>
+                <span className='buy-or'>(or <a href='https://leanpub.com/b/survivejs-webpack-react'>both</a>!)</span>
               </div>
 
               <div className='front-button-wrapper'>
