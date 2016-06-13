@@ -71,7 +71,7 @@ I also saw an opportunity to learn and use new technologies, which I couldn't do
 - We urgently need a logo and identity. If you have the design skills please [help](https://github.com/npms-io/npms-www/issues/15)!
 - Both `npms-cli` and `npms-badge` projects are yet to be done. Those will make the whole `npms` project more complete.
 - We want to make the search results more personal. The goal is to use data from your GitHub account (who you follow, what you starred, etc.) to further improve the quality of the search results.
-- We are paying the infrastructure costs ourselves to provide this service for free. Though, if use the service regularly please consider [donating](https://salt.bountysource.com/teams/npms) to cover these costs.
+- We are paying the infrastructure costs ourselves to provide this service for free. Though, if you use the service regularly, please consider [donating](https://salt.bountysource.com/teams/npms) to cover these costs.
 
 ## What does the future look like for *npms* and web development in general? Can you see any particular trends?
 
