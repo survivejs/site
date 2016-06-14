@@ -17,7 +17,7 @@ export default React.createClass({
     const page = this.props.page;
     const config = this.props.config;
     let author = page.author || (config.blog && config.blog.author);
-    const relatedPosts = getRelatedPosts(page.keywords, section.pages());
+    const relatedPosts = getRelatedPosts(page.keywords, section.pages(), 10);
     const relatedHeaders = {
       interview: 'Interviews',
       opinion: 'Opinions',
@@ -96,7 +96,7 @@ function RelatedPosts({page, posts, headers}) {
   );
 }
 
-function getRelatedPosts(keywords, pages) {
+function getRelatedPosts(keywords, pages, limit) {
   let ret = {}; // keyword -> posts
 
   keywords.forEach((keyword) => {
@@ -106,6 +106,10 @@ function getRelatedPosts(keywords, pages) {
 
     pages.forEach((page) => {
       if(page.keywords && page.keywords.indexOf(keyword) >= 0) {
+        if(ret[keyword].length > limit) {
+          return;
+        }
+
         ret[keyword].push(page);
       }
     });
