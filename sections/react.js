@@ -39,7 +39,7 @@ module.exports = function react(headers) {
     },
     inject: function(files) {
       var sourcePrefix = 'https://github.com/survivejs/react/tree/master/project_source/';
-      var reqResource = require.context('json!../../webpack_react_resources/', true, /^\.\/.*\.json$/);
+      var reqResource = require.context('json!../resources/react/', true, /^\.\/.*\.json$/);
 
       return files.map(function(o, i) {
         var file = o.file;

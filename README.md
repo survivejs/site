@@ -10,7 +10,6 @@ First, you need to clone this repository and the book ones:
 $ git clone https://github.com/survivejs/site
 $ git clone https://github.com/survivejs/webpack
 $ git clone https://github.com/survivejs/react
-$ git clone https://github.com/survivejs/webpack_react_resources
 ```
 
 Then, you need to build each project (it is a needed requisite to build this site):
