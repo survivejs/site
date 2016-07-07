@@ -106,6 +106,14 @@ module.exports = [
     "image": "taxi.jpg",
     "type": "chapter"
   },
+  /* Eliminating Unused CSS */
+  {
+    "author": "heikografie",
+    "source": "https://pixabay.com/en/analog-photography-dusty-old-1048928/",
+    "license": "Public Domain",
+    "image": "unused.jpg",
+    "type": "chapter"
+  },
   /* Analyzing Build Statistics */
   {
     "author": "jpj2000nl",
