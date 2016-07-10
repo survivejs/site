@@ -6,5 +6,4 @@ module.exports = function(markdown) {
     this.cacheable();
 
     return marked(markdown);
-}
-;
+};
