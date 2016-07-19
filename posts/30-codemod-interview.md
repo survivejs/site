@@ -13,7 +13,7 @@ Performing big changes to a codebase is always a little daunting. Doing each cha
 
 <p>
   <span class="author">
-    <img src="https://www.gravatar.com/avatar/641693d5a45d1cd8b698aa96cebb3178?s=200" alt"Ramana Venkata" class='author' width='100' height='100' />
+    <img src="https://www.gravatar.com/avatar/641693d5a45d1cd8b698aa96cebb3178?s=200" alt="Ramana Venkata" class='author' width='100' height='100' />
   </span>
 My name is Ramana Venkata. I am front-end developer from India. I have been following the React Community since a year and half or so. I wanted to contribute to this community from that but I couldn't due to my commitments at college and lack of experience I guess. But now that I have started working, I have a good amount of free time and I am trying to put good use.
 </p>

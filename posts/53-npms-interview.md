@@ -13,7 +13,7 @@ That is where services like [npms.io](https://npms.io/) by [André Cruz](https:/
 
 <p>
 <span class="author">
-  <img src="https://www.gravatar.com/avatar/1a691c6ddec4c073246eeaf13afeb0ef?s=200" alt"André Cruz" class="author" width="100" height="100" />
+  <img src="https://www.gravatar.com/avatar/1a691c6ddec4c073246eeaf13afeb0ef?s=200" alt="André Cruz" class="author" width="100" height="100" />
 </span>
 
 My name is André Cruz. I'm 28 years old and I live in Porto, Portugal with my wife and little child.

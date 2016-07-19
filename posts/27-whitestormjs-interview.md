@@ -13,7 +13,7 @@ Today, I'm interviewing Alexander Buzin, the author of a new engine known as [Wh
 
 <p>
 <span class="author">
-  <img src="https://www.gravatar.com/avatar/e002d265845b7625ef396bf74763e31d?s=200" alt"Alexander Buzin" class='author' width='100' height='100' />
+  <img src="https://www.gravatar.com/avatar/e002d265845b7625ef396bf74763e31d?s=200" alt="Alexander Buzin" class='author' width='100' height='100' />
 </span>
 </p>
 

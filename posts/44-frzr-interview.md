@@ -13,7 +13,7 @@ What if it was possible to begin from the other extreme and go from there? This 
 
 <p>
 <span class="author">
-  <img src="https://www.gravatar.com/avatar/46846cd7fc5658dbae2c7a8998b394dc?s=200" alt"Juha Lindstedt" class='author' width='100' height='100' />
+  <img src="https://www.gravatar.com/avatar/46846cd7fc5658dbae2c7a8998b394dc?s=200" alt="Juha Lindstedt" class='author' width='100' height='100' />
 </span>
 
 I've been working as a freelance senior web developer, doing projects with small businesses and advertising agencies. Lately I've focused on developing [iDiD](http://www.idid.fi) digital signage system at [ConnectingTalents](http://www.talents.fi), where I currently work.

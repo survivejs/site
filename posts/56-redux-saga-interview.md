@@ -13,7 +13,7 @@ T> Check out [the earlier interview about Redux](../../blog/redux-interview) if 
 
 <p>
 <span class="author">
-  <img src="/assets/img/interviews/yassine.jpg" alt"Yassine Elouafi" class="author" width="100" height="100" />
+  <img src="/assets/img/interviews/yassine.jpg" alt="Yassine Elouafi" class="author" width="100" height="100" />
 </span>
 
 My name is Yassine Elouafi, 39 old and Dad for 2 kids. I live in Tangier (Morocco) and work on a real estate company. I have a lot of passion for coding and learning and hacking new things, exploring new ideas.
