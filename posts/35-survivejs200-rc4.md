@@ -19,7 +19,7 @@ My secondary goals included getting some coding done and preparing for a little 
 
 Since you need to be able to practice what you preach, I did a little API design experiment in form of [react-pagify](https://bebraw.github.io/react-pagify/). It is a paginator component for React. I know it sounds like a trivial one, but the goal here was to end up with something flexible while providing a minimal API surface. This was achieved partially through utilizing [React context](https://facebook.github.io/react/docs/context.html).
 
-I've been considering using a similar design for [reactabular](https://bebraw.github.io/reactabular/), a data table component of mine. This was a good chance to experiment with the ideas in smaller scale. I think the design will fit *reactabular* well and allow me to improve its API further without sacrificing any functionality.
+I've been considering using a similar design for [reactabular](http://reactabular.js.org/), a data table component of mine. This was a good chance to experiment with the ideas in smaller scale. I think the design will fit *reactabular* well and allow me to improve its API further without sacrificing any functionality.
 
 ### Preparing for February Meetup
 

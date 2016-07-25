@@ -17,7 +17,7 @@
 Juho Vepsäläinen has been dealing with the web since the 90s. He is behind [jswiki](https://github.com/bebraw/jswiki) and [jster.net](http://jster.net/).
 </p>
 
-He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](https://github.com/bebraw/reactabular) in addition to many other libraries.
+He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](http://reactabular.js.org/) in addition to many other libraries.
 
 He started the SurviveJS effort early 2015 and has been pushing it forward ever since!
 

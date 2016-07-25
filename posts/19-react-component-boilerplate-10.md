@@ -7,7 +7,7 @@ keywords: ['react']
 
 If you [try searching GitHub for React boilerplates](https://github.com/search?utf8=%E2%9C%93&q=react+boilerplate), you'll find over thousand results. Nothing is harder than to agree on a standard boilerplate. As a result we have many to choose from.
 
-Given I like to author React components, such as [Reactabular](https://bebraw.github.io/reactabular/), I've developed a little boilerplate myself. [survivejs/react-component-boilerplate](https://survivejs.github.io/react-component-boilerplate/) incorporates a large amount of good practices. I'll go through some of them next. I cover many of them [at the book](../../webpack_react/authoring_libraries/) but it doesn't hurt to dig deeper.
+Given I like to author React components, such as [Reactabular](http://reactabular.js.org/), I've developed a little boilerplate myself. [survivejs/react-component-boilerplate](https://survivejs.github.io/react-component-boilerplate/) incorporates a large amount of good practices. I'll go through some of them next. I cover many of them [at the book](../../webpack_react/authoring_libraries/) but it doesn't hurt to dig deeper.
 
 ## Testing
 
