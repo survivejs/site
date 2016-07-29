@@ -23,18 +23,19 @@ React relies on process.env.NODE_ENV based optimizations. If we force it to prod
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></h3><p class="post-list__preview">
 Currently the production version of our application is a single JavaScript file. This isn&#x27;t ideal. If we change the application, the client has to download vendor dependencies as well. It would be better to download only the changed portion. If the vendor dependencies change, then the client should…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/adding-hashes-to-filenames">Adding Hashes to Filenames</a></h3><p class="post-list__preview">
-Webpack provides placeholders that can be used to access different types of hashes and entry name as we saw before. The most useful ones are:
+Webpack relies on the concept of placeholders. These strings are used to attach specific information to Webpack output. The most useful ones are:
 
-[path] - Returns entry path.
-[name] - Returns entry name.
-[hash] - Returns build hash.
+[path] - Returns an entry path.
+[name] - Returns an entry name.
+[hash] - Returns the build hash.
 [chunkhash] - Returns a chunk specific hash.
 
-Using these placeholder…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></h3><p class="post-list__preview">
+Assuming …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></h3><p class="post-list__preview">
 Our current setup doesn&#x27;t clean the build directory between builds. As this can get annoying if we change our setup, we can use a plugin to clean the directory for us.
 
 Another valid way to resolve the issue would be to handle this outside of Webpack. You could solve it on the system level through …</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/separating-css">Separating CSS</a></h3><p class="post-list__preview">
-Even though we have a nice build set up now, where did all the CSS go? As per our configuration, it has been inlined to JavaScript! Even though this can be convenient during development, it doesn&#x27;t sound ideal. The current solution doesn&#x27;t allow us to cache CSS. In some cases we might suffer from a…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/analyzing-build-statistics">Analyzing Build Statistics</a></h3><p class="post-list__preview">
+Even though we have a nice build set up now, where did all the CSS go? As per our configuration, it has been inlined to JavaScript! Even though this can be convenient during development, it doesn&#x27;t sound ideal. The current solution doesn&#x27;t allow us to cache CSS. In some cases we might suffer from a…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/eliminating-unused-css">Eliminating Unused CSS</a></h3><p class="post-list__preview">
+Frameworks like Bootstrap tend to come with a lot of CSS. Often you use only a small part of it. Normally you just bundle even the unused CSS. It is possible, however, to eliminate the portions you aren&#x27;t using. A tool known as purifycss can achieve this by analyzing our files. It also works with s…</p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/analyzing-build-statistics">Analyzing Build Statistics</a></h3><p class="post-list__preview">
 Analyzing build statistics is a good step towards understanding Webpack better. We can get statistics from it easily and we can visualize them using a tool. This shows us the composition of our bundles.
 
 </p></li><li><h3 class="post-list__heading"><a class="" href="/webpack/building-with-webpack/hosting-on-github-pages">Hosting on GitHub Pages</a></h3><p class="post-list__preview">
