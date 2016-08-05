@@ -117,7 +117,7 @@ If you bought the paper version before June 2016, get in touch and I'll hook you
 ## About the Author
 
 <p>
-<img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200" alt="Juho Vepsäläinen' class='author-photo' width='100' height='100' />
+<img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200' alt='Juho Vepsäläinen' class='author-photo' width='100' height='100' />
 Juho Vepsäläinen has been dealing with the web since the 90s. He is behind [jswiki](https://github.com/bebraw/jswiki) and [jster.net](http://jster.net/).
 </p>
 
