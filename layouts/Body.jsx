@@ -55,6 +55,9 @@ export default React.createClass({
     );
   },
   renderFeedback(title, sectionName) {
+    if (sectionName === 'blog') {
+      sectionName = 'site';
+    }
     return <Fork className="right ribbon"
       project={`survivejs/${sectionName}/issues/new?title=${title} - `}
       text="Submit feedback"
