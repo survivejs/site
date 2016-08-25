@@ -1,5 +1,5 @@
 import React from 'react';
-import Fork from 'react-ghfork';
+import GithubCorner from 'react-github-corner';
 import Footer from '../components/Footer.jsx';
 import Gitter from '../components/Gitter.jsx';
 import Body from 'antwar-helpers/layouts/Body';
@@ -58,11 +58,17 @@ export default React.createClass({
     if (sectionName === 'blog') {
       sectionName = 'site';
     }
-    return <Fork className="right ribbon"
-      project={`survivejs/${sectionName}/issues/new?title=${title} - `}
-      text="Submit feedback"
-      style={{backgroundColor: 'black'}}
-      target="_blank" />;
+    return (
+      <GithubCorner
+        href={`https://github.com/survivejs/${sectionName}`}
+        bannerColor="#fff"
+        octoColor="#000"
+        width={80}
+        height={80}
+        direction="right"
+        target="_blank"
+      />
+    );
   }
 });
 

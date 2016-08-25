@@ -89,7 +89,6 @@ module.exports = {
     require('./styles/prism.css');
     require('./styles/fontello-codes.css');
     require('./styles/fontello-embedded.css');
-    require('react-ghfork/gh-fork-ribbon.css');
   },
   paths: {
     '/': {
