@@ -14,7 +14,7 @@ export default React.createClass({
     const pathname = props.location.pathname;
 
     return (
-      <Body head={<RSS />} {...props}>
+      <Body head={<RSS href="/atom.xml" />} {...props}>
         {props.children}
 
         {pathname !== '/' ? this.renderNavigation(props, section.name) : null}
