@@ -48,7 +48,7 @@ This is the reason why I will be splitting up the book in two in the near future
 
 The idea is that the current book will be rebranded as *SurviveJS - React*. The current Leanpub readers will receive *SurviveJS - Webpack* for free. The total cost of both books will go up while the price of an individual book might go down a notch. So if you want to save a bit, this might be a good chance to pick the current offering.
 
-There's [an early draft of the Webpack book](../webpack/introduction/) online. It is based on the Webpack cookbook I wrote with [Christian](http://www.christianalfoni.com/) a year ago. I will still have to dig through the content and modernize it. During the process I will also port the Webpack bits from the current book there and implement a lighter setup for the React project.
+There's [an early draft of the Webpack book](/webpack/introduction/) online. It is based on the Webpack cookbook I wrote with [Christian](http://www.christianalfoni.com/) a year ago. I will still have to dig through the content and modernize it. During the process I will also port the Webpack bits from the current book there and implement a lighter setup for the React project.
 
 The model will remain the same. A part of the content will remain closed to motivate people to pay for it. Obviously I cannot force anyone to buy it, but for now this seems like a good way to go.
 

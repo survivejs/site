@@ -51,7 +51,7 @@ You can find the important changes below. See GitHub for [all changes](https://g
 
 ### Webpack and React
 
-* Linked to the correct page related to [Babel's experimental features]((https://babeljs.io/docs/plugins/#stage-x-experimental-presets-)).
+* Linked to the correct page related to [Babel's experimental features](https://babeljs.io/docs/plugins/#stage-x-experimental-presets-).
 * Mentioned that it's a good idea to disable IDE feature known as **safe save** if you are using HMR. It can cause problems.
 * Clarified the section about React component styles.
 
