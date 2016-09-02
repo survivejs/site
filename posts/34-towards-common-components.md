@@ -57,7 +57,7 @@ If the definition looks simple, that's because it is. A function based component
 
 Components like this don't require a direct dependency on React thanks to [babel-plugin-react-require](https://www.npmjs.com/package/babel-plugin-react-require). The plugin injects `import React from 'react';` so that the JSX transpilation process works. It would be possible to pull this off with other libraries as well.
 
-There are proposals that would allow you to write [stateful functions](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State). Deku implements something like [React context](https://dekujs.github.io/deku/docs/advanced/context.html) (read-only within the tree). Adopting ideas like these would give more room for potential sharing.
+There are proposals that would allow you to write [stateful functions](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State). Deku implements something like [React context](https://github.com/anthonyshort/deku/blob/master/docs/advanced/context.md) (read-only within the tree). Adopting ideas like these would give more room for potential sharing.
 
 Even though you cannot do absolutely everything with function based components, they allow you to achieve quite much! I believe adopting the core ideas would allow larger scale sharing of components between libraries. Currently solutions like Deku or Cycle feel like islands of their own compared to the continent of React. Building bridges wouldn't hurt.
 
