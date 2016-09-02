@@ -13,7 +13,7 @@ One of the challenges of being a web developer is keeping up with the world. The
 
 I am Sandeep, a software developer based out of Bangalore, India. I have been developing for the web for last 6 years. Apart from programming I also like writing and helping people get better at coding.
 
-I have written two books, [Jump Start HTML5 : APIs](http://shop.oreilly.com/product/9780980285826.do) and [AngularJS : Novice to Ninja](https://learnable.com/books/angularjs-novice-to-ninja), and have contributed many tutorials to [SitePoint](sitepoint.com/author/spanda).
+I have written two books, [Jump Start HTML5 : APIs](http://shop.oreilly.com/product/9780980285826.do) and [AngularJS : Novice to Ninja](https://learnable.com/books/angularjs-novice-to-ninja), and have contributed many tutorials to [SitePoint](https://www.sitepoint.com/author/spanda/).
 
 Recently I, along with [Fazle](https://twitter.com/@fazlerocks), started Hashnode which is a community for software developers.
 

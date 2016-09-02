@@ -146,4 +146,4 @@ Remember that you can find up to date code from [the book repository](https://gi
 
 You can [contact me directly](mailto:info@survivejs.com) or through the GitHub [issue tracker](https://github.com/survivejs/react/issues). Also [Gitter](https://gitter.im/survivejs/react) will work. There are topic specific channels now so it's easier to handle.
 
-You can support my work by [purchasing the book at Leanpub](https://leanpub.com/survivejs-react) or an earlier version of the book at [Amazon](amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X) (paper version). Every little bit counts and allows me to keep it up.
+You can support my work by [purchasing the book at Leanpub](https://leanpub.com/survivejs-react) or an earlier version of the book at [Amazon](https://amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X) (paper version). Every little bit counts and allows me to keep it up.
