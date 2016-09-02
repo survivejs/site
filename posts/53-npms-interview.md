@@ -25,7 +25,7 @@ When I was a kid, I used to sneak into my brothers computer. Every time I used h
 
 That's where my passion in coding and programming started. Since then, I've explored and used several technologies, became graduated in Computers and Telematic Engineering, gave a couple [of](https://www.youtube.com/watch?v=PHlZan97TN0) [talks](https://www.youtube.com/watch?v=5h66mv6Ve4o) and built many projects.
 
-Fast-forward to the future, I'm the lead developer of <a href="https://baboom.com/about">BABOOM</a> and I contribute to many open-source [projects](https://github.com/IndigoUnited). Working in open-source heavily influenced me as a developer and as a person, for the better. I encourage everyone to the same. Not doing so is like going to Paris without visiting the Eiffel tower :)
+Fast-forward to the future, I'm the lead developer of [BABOOM](https://baboom.com) and I contribute to many open-source [projects](https://github.com/IndigoUnited). Working in open-source heavily influenced me as a developer and as a person, for the better. I encourage everyone to the same. Not doing so is like going to Paris without visiting the Eiffel tower :)
 
 ## How would you describe *npms* to someone who has never heard of it?
 
