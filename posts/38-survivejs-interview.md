@@ -74,4 +74,4 @@ I know who I am going to interview next. You have to wait till the next intervie
 
 This was a weird interview to write. I hope it gave you some insight on what runs inside my head and how I think about technology. Web development is at the same time awesome yet frustrating. At least you will never run out of things to learn.
 
-If you haven't checked out the current book, consider starting out [the online edition](../webpack_react/introduction/). Even if you know the technology well, there could be some nuggets of information you could put into good use at your work. I hope you find the effort useful!
+If you haven't checked out the current book, consider starting out [the online edition](../react/introduction/). Even if you know the technology well, there could be some nuggets of information you could put into good use at your work. I hope you find the effort useful!
