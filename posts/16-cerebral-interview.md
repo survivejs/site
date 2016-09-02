@@ -42,7 +42,7 @@ No matter what you call your architecture it has three main layers. A layer to p
 
 What I realized is that we often do this with a single function. We get some user input and call a function that does one or more state updates. This is fine if you just want to increase/decrease a counter. It is not so nice if you want to handle more than one HTTP response and do other conditionals.
 
-It is difficult to understand the flow of an application reading implementation details. So I wanted to express the state changes of my app without having to dive into implementation details. I also wanted to be able to analyze this flow to create developer tools. Reading your [interview with Dan Abramov](../redux-interview) I can totally relate to how Redux got started. With Cerebral it is the signals the makes this possible.
+It is difficult to understand the flow of an application reading implementation details. So I wanted to express the state changes of my app without having to dive into implementation details. I also wanted to be able to analyze this flow to create developer tools. Reading your [interview with Dan Abramov](../../blog/redux-interview) I can totally relate to how Redux got started. With Cerebral it is the signals the makes this possible.
 
 Signals is a way to express state changes in your application using pure functions. These pure functions, called actions, are composed into a signal. This makes a signal declarative. It is almost like reading a sentence and it can be complex without being hard to read and reason about. But it is also functional as these actions are just functions. So for example factories is an important part of expressing your state flow.
 
@@ -79,13 +79,13 @@ Let's say you have an “isLoading” state.  You use that state in your views t
 
 I am going a bit off trail here! What I want to emphasize here is that addressbar lowers the threshold for developers. The threshold to explore urls in new ways. Creating new experiences and evolve urls to mean something more. Not just “what view to display”, but for example “what signal to trigger” like the Cerebral-Router.
 
-## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [mobservable](https://mweststrate.github.io/mobservable/) or [redux](http://redux.js.org/)?
+## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [MobX](https://mobxjs.github.io/mobx/) or [Redux](http://redux.js.org/)?
 
-So I think a lot of innovation lately has been improving stores in Flux. It can be a bit difficult to reason about them. Projects like Mobservable and Redux do exactly this. They make it easier to reason about how to store state. It is amazing to see how much attention Redux has gotten. The community is enthusiastic and contributes a lot with their own ideas. Kudos to Dan for inspiring so many developers and handling it so well!
+So I think a lot of innovation lately has been improving stores in Flux. It can be a bit difficult to reason about them. Projects like MobX and Redux do exactly this. They make it easier to reason about how to store state. It is amazing to see how much attention Redux has gotten. The community is enthusiastic and contributes a lot with their own ideas. Kudos to Dan for inspiring so many developers and handling it so well!
 
-Personally I have not dived into Mobservable and Redux. For me it was Baobab that made the difference, which had an earlier release. It is a single immutable state tree storing all the state of your application.
+Personally I have not dived into MobX and Redux. For me it was Baobab that made the difference, which had an earlier release. It is a single immutable state tree storing all the state of your application.
 
-So both Redux and Mobservable make Flux simpler. That said, I think there are still challenges to tackle. I am going to compare these two projects to Cerebral, but only to highlight what Cerebral does. I am not saying that any of them are bad.
+So both Redux and MobX make Flux simpler. That said, I think there are still challenges to tackle. I am going to compare these two projects to Cerebral, but only to highlight what Cerebral does. I am not saying that any of them are bad.
 
 Both the solutions mentioned here hides state from the other state entities. It being reducers or stores. Take note that Redux does indeed produce a single state tree by combining its reducers. But inside a reducer, you do not have access to the whole tree as far as I know.
 
@@ -93,7 +93,7 @@ So many entities to store state is in my experience a challenge. Large applicati
 
 You risk creating relationships which can be hard to reason about and even create. If you just have one entity, there is no relationship, which makes it easier to reason about and scale your app. This is what I like about [Baobab](https://github.com/Yomguithereal/baobab). It is impossible to go wrong in how you structure your state.
 
-But Baobab does not have any concepts for producing state. In Redux you produce state in the reducer itself or in combination with an async action creator. Mobservable does this inside the stores. What these two have in common, like many others, is that producing a state change is expressed with a single function. You have to read the implementation details of this function to understand it. This is easy when you want to add a todo or change a counter, but our applications are more complex than that.
+But Baobab does not have any concepts for producing state. In Redux you produce state in the reducer itself or in combination with an async action creator. MobX does this inside the stores. What these two have in common, like many others, is that producing a state change is expressed with a single function. You have to read the implementation details of this function to understand it. This is easy when you want to add a todo or change a counter, but our applications are more complex than that.
 
 I think the concept of expressing a “state changing flow” is where we have to go next. Cerebral is a contribution to this. Libraries like [Cycle.js](http://cycle.js.org/) uses FRP concepts to express this flow. I thought about this for Cerebral, but to me it is hard to reason about complex flows using FRP.
 

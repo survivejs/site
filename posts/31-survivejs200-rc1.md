@@ -5,7 +5,7 @@ headerImage: '/assets/img/ice_morning.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-Since the [beta](../survivejs200-beta2) was launched, I've been working on remaining improvements. This has mostly meant tuning the existing content, although there are some new bits as well.
+Since the [beta](../../blog/survivejs200-beta2) was launched, I've been working on remaining improvements. This has mostly meant tuning the existing content, although there are some new bits as well.
 
 Obviously the released book won't be complete in sense that it contains everything you need to know about React and surrounded technologies. But I believe it amounts to something. Given the nature of the effort, the coverage will slowly but surely improve over time.
 

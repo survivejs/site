@@ -42,7 +42,7 @@ Sometimes it's hard to get motivated to update the site, but finding new things 
 
 I've been thinking performance a lot - how to benchmark the rendering of React components? How do you encode policies in [Flow](http://flowtype.org/)/[ESLint](http://eslint.org/) to keep an app fast as developers and component counts grow?
 
-On the backend, [Elixir](http://elixir-lang.org/) is very interesting to me. It's a language built on the [Erlang](https://www.erlang.org/) VM that's been powering telecomm for 30 years. Ground-up Immutability and functional style, multi-core ready.
+On the backend, [Elixir](http://elixir-lang.org/) is very interesting to me. It's a language built on the [Erlang](http://www.erlang.org/) VM that's been powering telecomm for 30 years. Ground-up Immutability and functional style, multi-core ready.
 
 I need to open source the code for React.rocks, to get contributions from smarter folks.
 

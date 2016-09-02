@@ -53,11 +53,11 @@ Why would you use it? Redux embraces immutability and [ties your hands to free y
 
 Redux is my attempt to answer the following question: what is the least opinionated API surface useful for predictably managing state of complex apps with a [great developer experience](https://github.com/gaearon/redux-devtools)? What hooks do we need to expose to create [an ecosystem](https://github.com/xgrommx/awesome-redux) around a 2K library?
 
-There is nothing new in Redux: David Nolen has been talking about benefits of a single immutable state tree [for two years now](http://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/), and Evan Czaplicki has made an enormous effort to describe the [Elm architecture](https://github.com/evancz/elm-architecture-tutorial) from which Redux borrows its ideas.
+There is nothing new in Redux: David Nolen has been talking about benefits of a single immutable state tree [for two years now](https://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs), and Evan Czaplicki has made an enormous effort to describe the [Elm architecture](https://github.com/evancz/elm-architecture-tutorial) from which Redux borrows its ideas.
 
 ## Why did you develop Redux?
 
-I didn’t mean to create a Flux framework. When React Europe was first announced, I proposed a talk on “hot reloading and time travel” but to be honest I had no idea how to implement time travel. I thought about it for a while, and I knew there was prior art in [Elm](http://elm-lang.org), so I read [Elm Architecture](https://github.com/evancz/elm-architecture-tutorial), but forgot about it soon. I [attempted](https://github.com/gaearon/flux-hot-loader/issues/1) to create a “Flux Hot Loader” but it was full of [horrible hacks](https://github.com/gaearon/flux-hot-loader/blob/e74ca3ca4493e1855af37cb72a18b66d2a967efc/index.js#L68-L120) to work around all the side effects inside Flux Stores: registering a handler, managing subscriptions.
+I didn’t mean to create a Flux framework. When React Europe was first announced, I proposed a talk on “hot reloading and time travel” but to be honest I had no idea how to implement time travel. I thought about it for a while, and I knew there was prior art in [Elm](http://elm-lang.org), so I read [Elm Architecture](https://github.com/evancz/elm-architecture-tutorial), but forgot about it soon. I attempted to create a “Flux Hot Loader” but it was full of horrible hacks to work around all the side effects inside Flux Stores: registering a handler, managing subscriptions.
 
 I wanted the logic of the Stores to be hot reloadable so I tried to move subscriptions and registering outside the Stores. I also realized I needed to guarantee the data to be immutable. I remembered how Pete Hunt and others described Flux Stores as `state, action => state`, and how Jing Chen suggested me to replay actions for hot reloading. So all of this was in my head, but I was still prototyping when I released Redux 0.1.0.
 
@@ -69,7 +69,7 @@ This is how Redux came to be. I was trying to write some code for a fancy React 
 
 ## What next?
 
-I am happy to have moved Redux to [rackt](http://github.com/rackt) where we share ownership of quality React-related code. I’ve been doing things on my own for quite a while, and lately it’s been more stressful because of the attention my work is receiving, so I intend to [step back](http://250bpm.com/blog:50) from the active maintenance of Redux once I’m happy with it. (And I almost am.)
+I am happy to have moved Redux to [reactjs](http://github.com/reactjs) where we share ownership of quality React-related code. I’ve been doing things on my own for quite a while, and lately it’s been more stressful because of the attention my work is receiving, so I intend to [step back](http://250bpm.com/blog:50) from the active maintenance of Redux once I’m happy with it. (And I almost am.)
 
 Andrew Clark is collaborating with [Ryan and Michael](https://reactjs-training.com/) on the [React Router integration](https://github.com/acdlite/redux-react-router)—people have been asking for it for a long time, so I’m full of joy this is finally happening.
 
@@ -77,11 +77,11 @@ I have released [a few new tools](https://github.com/gaearon/react-transform-boi
 
 And then—who knows?—I might even take a day job!
 
-## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [mobservable](https://mweststrate.github.io/mobservable/) or [cerebral](http://christianalfoni.com/cerebral/)?
+## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [MobX](https://mobxjs.github.io/mobx/) or [Cerebral](http://christianalfoni.com/cerebral/)?
 
-I am not the right person to ask, as I have not used them. I’m definitely in awe of the work Christian has been putting into Cerebral and the [developer experience behind it](http://www.youtube.com/watch?v=xCIv4-Q2dtA). Its concept of signals and expressing async flow declaratively is [also very interesting](https://github.com/rackt/redux/issues/343).
+I am not the right person to ask, as I have not used them. I’m definitely in awe of the work Christian has been putting into Cerebral and the [developer experience behind it](http://www.youtube.com/watch?v=xCIv4-Q2dtA). Its concept of signals and expressing async flow declaratively is [also very interesting](https://github.com/reactjs/redux/issues/343).
 
-My hope with Redux is that it’s extensible enough that great ideas and patterns find its way into it as userland extensions like [Redux middleware](https://rackt.github.io/redux/docs/advanced/Middleware.html). My other hope is that migrating *from* Redux to something better won’t be difficult because of its tiny API surface.
+My hope with Redux is that it’s extensible enough that great ideas and patterns find its way into it as userland extensions like [Redux middleware](http://redux.js.org/docs/advanced/Middleware.html). My other hope is that migrating *from* Redux to something better won’t be difficult because of its tiny API surface.
 
 ## What does the future look like for React? Can you see any particular trends?
 
@@ -99,7 +99,7 @@ Thanks for the interview Dan! It has been certainly amazing to see how much Reac
 
 It was straight-forward to port the [Kanban example of the book to Redux](https://github.com/survivejs/redux-demo). There's a lot of familiar code. It has been just structured a little differently. It is easy to understand what's going on.
 
-If Redux piqued your interest, check out [the official documentation](https://rackt.github.io/redux/) to get started. Even though the library is tiny, it comes with high quality documentation. See the following resources for more:
+If Redux piqued your interest, check out [the official documentation](http://redux.js.org/) to get started. Even though the library is tiny, it comes with high quality documentation. See the following resources for more:
 
 * [Full-Stack Redux Tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
 * [Tutorial: Handcrafting an Isomorphic Redux Application (With Love)](https://medium.com/@bananaoomarang/handcrafting-an-isomorphic-redux-application-with-love-40ada4468af4)

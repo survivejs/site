@@ -5,7 +5,7 @@ headerImage: '/assets/img/rib_header.png'
 keywords: ['react']
 ---
 
-It is amazing what a great year this turned out to be. I launched this site [around July](../the-story-so-far). Since then a lot has changed. While the situation might have looked a little desperate back then, I feel we are on a sustainable track now. And there is still a lot to come.
+It is amazing what a great year this turned out to be. I launched this site [around July](../../blog/the-story-so-far). Since then a lot has changed. While the situation might have looked a little desperate back then, I feel we are on a sustainable track now. And there is still a lot to come.
 
 If you've been wondering about the radio silence, a lot of it has to do with the [React Indie Bundle](http://www.reactindiebundle.com/). We got a couple of smart heads together and decided to launch something that would work well as an entry point to React. In order to support the effort, I launched a little campaign of my own. I thought it would be fun to summarize some of my efforts, so here we go.
 
@@ -59,7 +59,7 @@ The cool thing about front-end development that you don't need an actual endpoin
 
 ### How to Structure a React Project?
 
-[How to Structure a React Project?](https://reactjsnews.com/structuring-react-projects/) written for [ReactJS News](https://reactjsnews.com/) gained some nice visibility through [Hacker News](https://news.ycombinator.com/item?id=10645170). This was surprising given I usually get ignored there. But I'm not complaining.
+[How to Structure a React Project?](https://reactjsnews.com/structuring-react-projects) written for [ReactJS News](https://reactjsnews.com/) gained some nice visibility through [Hacker News](https://news.ycombinator.com/item?id=10645170). This was surprising given I usually get ignored there. But I'm not complaining.
 
 I think the post hit some nerve. Even though the Reddit commentary wasn't entirely supporting as some readers felt there wasn't enough substance, I believe the core idea of the post is valid.
 

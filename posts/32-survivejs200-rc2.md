@@ -5,7 +5,7 @@ headerImage: '/assets/img/winter_sun2.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-Not a lot has happened since the previous [release candidate](../survivejs200-rc1). The biggest change has to do with a little bug that the recent release of Babel 6.4 revealed. All property initializer based declarations were missing a semicolon as Babel treated them in a too lax way before. This has been fixed in this release candidate.
+Not a lot has happened since the previous [release candidate](../../blog/survivejs200-rc1). The biggest change has to do with a little bug that the recent release of Babel 6.4 revealed. All property initializer based declarations were missing a semicolon as Babel treated them in a too lax way before. This has been fixed in this release candidate.
 
 ## Overview of the Situation
 
@@ -15,11 +15,11 @@ The next bigger effort is porting the chapters to it. The implementation will mo
 
 ### Experimenting with Webpack
 
-I experimented with a higher level format for configuring Webpack. You can see my work in the form of [.webpackrc](https://github.com/survivejs/react-component-boilerplate/blob/webpackrc/.webpackrc). There's a little parser that converts the JSON format into the one we all are more or less familiar with.
+I experimented with a higher level format for configuring Webpack. You can see my work in the form of [webpack-presets](https://www.npmjs.com/package/webpack-presets). There's a little parser that converts the JSON format into the one we all are more or less familiar with.
 
 I am not the only one who is looking into this problem. Jason Quense developed a prototype known as [webpack-config-utils](https://github.com/jquense/webpack-config-utils). The idea is to provide a DSL that hides some problems of the current format. Most importantly it's able to give us good errors.
 
-A user known as @scriptjs has led an effort to push Webpack into a Babel style monorepo. There's an [early specification](https://github.com/webpack-lab/webpack/wiki/Presets). The approach is quite close to *.webpackrc* and we've been collaborating on it.
+A user known as @scriptjs has led an effort to push Webpack into a Babel style monorepo. There was an early specification that has since been removed. The approach is quite close to *.webpackrc* and we've been collaborating on it.
 
 Tobias Koppers, the author of Webpack, has prepared a specification known as [Concord](https://github.com/webpack/concord). It's yet another way to solve these issues. Especially the mimetype, loader mapping is highly interesting.
 

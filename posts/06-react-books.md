@@ -63,10 +63,6 @@ If you want a quick read that's straight to the point, this could be it. It's no
 
 If you want a Spanish introduction to React, here's your only option at the moment.
 
-### Thinking in React
-
-[Thinking in React](https://www.thinkinginreact.xyz/) by K-2052 is a work in progress introduction to React. At the moment it's available digitally. The price starts from $10 and rises by a dollar each time a new chapter is released.
-
 ### Pengenalan ReactJS
 
 [Pengenalan ReactJS](https://leanpub.com/pengenalan-reactjs) by Donny Stark is an Indonesian introduction to React. It will be published through Leanpub. At the time of writing it has 34 pages. No minimum price has been set yet.
@@ -119,7 +115,7 @@ The book has 280 pages and covers a wide range of React related topics.
 
 ### React: Up & Running: Building Web Applications
 
-[React: Up & Running: Building Web Applications](http://shop.oreilly.com/product/0636920042266.do) by [Stoyan Stefanov](http://www.phpied.com/) is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is slightly cheaper at $37.99.
+[React: Up & Running: Building Web Applications](http://shop.oreilly.com/product/0636920042266.do) by Stoyan Stefanov is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is slightly cheaper at $37.99.
 
 Early chapters of the book are already available and according to Amazon the full book should be completed by December. The book will have around 250 pages.
 

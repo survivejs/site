@@ -7,7 +7,7 @@ keywords: ['interview', 'react']
 
 Even though I've spent a lot of time with web development, I never really delved into the world of Content Management Systems (CMS). I'm of course aware of WordPress, Drupal, and such. I've managed to get away with either something entirely custom or a static site generator. Even this site has been developed using [one](https://antwarjs.github.io/).
 
-Given how much effort developing a static site generator takes, I can only imagine how hard it is to develop an entire CMS. [Bruno Mota](https://twitter.com/bruno12mota) and friends have developed a system known as [Relax](http://getrelax.io/) on top of React and Node.js. He claims it is a new generation CMS. What does this mean? Let's find out.
+Given how much effort developing a static site generator takes, I can only imagine how hard it is to develop an entire CMS. [Bruno Mota](https://twitter.com/bruno12mota) and friends have developed a system known as Relax on top of React and Node.js. He claims it is a new generation CMS. What does this mean? Let's find out.
 
 ## Can you tell a bit about yourself?
 

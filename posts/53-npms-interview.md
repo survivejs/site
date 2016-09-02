@@ -25,7 +25,7 @@ When I was a kid, I used to sneak into my brothers computer. Every time I used h
 
 That's where my passion in coding and programming started. Since then, I've explored and used several technologies, became graduated in Computers and Telematic Engineering, gave a couple [of](https://www.youtube.com/watch?v=PHlZan97TN0) [talks](https://www.youtube.com/watch?v=5h66mv6Ve4o) and built many projects.
 
-Fast-forward to the future, I'm the lead developer of [BABOOM](https://baboom.com) and I contribute to many open-source [projects](https://github.com/IndigoUnited). Working in open-source heavily influenced me as a developer and as a person, for the better. I encourage everyone to the same. Not doing so is like going to Paris without visiting the Eiffel tower :)
+Fast-forward to the future, I'm the lead developer of [BABOOM](http://baboom.com) and I contribute to many open-source [projects](https://github.com/IndigoUnited). Working in open-source heavily influenced me as a developer and as a person, for the better. I encourage everyone to the same. Not doing so is like going to Paris without visiting the Eiffel tower :)
 
 ## How would you describe *npms* to someone who has never heard of it?
 
@@ -50,7 +50,7 @@ The most interesting stuff happens in the `npms-analyzer`. Its role is to proces
 
 When I started the project, I knew that there were several other projects that tried to solve the npmjs.com problem. While they were an improvement over the official search, I felt that there was room for improvement.
 
-What really makes `npms` stand out from solutions like [npmsearch](https://npmsearch.com/) or [nipster](http://nipstr.com/) is the quality of the search results. We collect much more information about a module, using sources like GitHub, [David](https://david-dm.org/) and [Node Security Platform](https://nodesecurity.io/).
+What really makes `npms` stand out from solutions like [npmsearch](http://npmsearch.com/) or [nipster](http://nipstr.com/) is the quality of the search results. We collect much more information about a module, using sources like GitHub, [David](https://david-dm.org/) and [Node Security Platform](https://nodesecurity.io/).
 
 The more information we have from a module the better we can evaluate and score it. We have also invested a lot of time into polishing the scoring algorithm and the search weights to make the results even better.
 
