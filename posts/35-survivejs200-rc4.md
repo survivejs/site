@@ -5,7 +5,7 @@ headerImage: '/assets/img/snow.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-[The previous release candidate](../survivejs200-rc3) prompted a nice amount of feedback. I've taken that into account in this release. I have a date for the final in sight and I won't be making any significant changes for the final release.
+[The previous release candidate](../../blog/survivejs200-rc3) prompted a nice amount of feedback. I've taken that into account in this release. I have a date for the final in sight and I won't be making any significant changes for the final release.
 
 It's not going to be the perfect book in any way, but it's absolutely far better book than I could have pulled off on my own. Given this is my first effort, it has been a great learning experience. And it continues to be so.
 
@@ -23,7 +23,7 @@ I've been considering using a similar design for [reactabular](http://reactabula
 
 ### Preparing for February Meetup
 
-Beyond component development I put thought towards a presentation I have to give at [February Meetup of Frontend Finland](http://www.meetup.com/frontendfinland/events/228369937/). Given I rather write than talk, this gave me a good excuse to write an opinion piece. I believe there's room for [a common component definition](../towards-common-components). Something like this would allow us to make the ecosystem stronger and more vibrant.
+Beyond component development I put thought towards a presentation I have to give at [February Meetup of Frontend Finland](http://www.meetup.com/frontendfinland/events/228369937/). Given I rather write than talk, this gave me a good excuse to write an opinion piece. I believe there's room for [a common component definition](../../blog/towards-common-components). Something like this would allow us to make the ecosystem stronger and more vibrant.
 
 ### Improving Kanban
 

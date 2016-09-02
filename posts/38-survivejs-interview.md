@@ -7,7 +7,7 @@ keywords: ['interview', 'react']
 
 There is always some level of tension between getting things done and learning new technologies. A lot of the recent JavaScript fatigue stems from that. A year ago I decided to take some preemptive moves against it. The whole point of the SurviveJS effort is to smoothen the way, and quite literally, survive JavaScript and its growth.
 
-The effort reached an important milestone as my first book, *SurviveJS - Webpack and React*, reached its [2.0 version](../survivejs200). As a part of the release, [a paper version](http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X) became available. This wouldn't have been possible without the awesome community around me of course. The support during this little journey has enabled me to continue.
+The effort reached an important milestone as my first book, *SurviveJS - Webpack and React*, reached its [2.0 version](../../blog/survivejs200). As a part of the release, [a paper version](http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X) became available. This wouldn't have been possible without the awesome community around me of course. The support during this little journey has enabled me to continue.
 
 As it's a good idea to recover a bit after a major release, I've had time to reflect and scheme. Even though I have taken it easier when it comes to writing, I found time to pay off some technical debt and update the site. Now that this has been done, it's easier to progress again.
 
@@ -64,7 +64,7 @@ I think we'll find ways to alleviate this problem. We will still have boilerplat
 
 Perhaps a tool like [kotatsu](https://github.com/Yomguithereal/kotatsu) or [nwb](https://github.com/insin/nwb) will grow popular and solve the problem once and for all. I have a little idea of my own in the form of [webpack-presets](https://github.com/survivejs/webpack-presets) (think Babel presets but for Webpack). There's definitely room for innovation in this space.
 
-Thinking outside of React, perhaps we will end up with [better ways of sharing components](../towards-common-components) as I discussed earlier. It doesn't feel particularly smart to re-invent the wheel for every single ecosystem. We should be able to share more. Perhaps we will see more convergence as the web platform matures and we can integrate the most important ideas to it. The less layers we need on top of it, the better.
+Thinking outside of React, perhaps we will end up with [better ways of sharing components](../../blog/towards-common-components) as I discussed earlier. It doesn't feel particularly smart to re-invent the wheel for every single ecosystem. We should be able to share more. Perhaps we will see more convergence as the web platform matures and we can integrate the most important ideas to it. The less layers we need on top of it, the better.
 
 ## Who should I interview next?
 
