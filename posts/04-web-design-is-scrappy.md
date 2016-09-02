@@ -18,7 +18,7 @@ The design is scrappy in sense that I integrated ideas from various sources. Som
 
 Besides asking for feedback from friends and sometimes total strangers I used a couple of services with varying results. Out of the services [criticue](http://www.criticue.com/) worked the best for me. Often it's the negative feedback that helps you the most. Criticue helped me to prune out the worst mishaps.
 
-As I had good experiences of [Feedback roulette](http://feedbackroulette.com/) in the past I set it up too. Unfortunately I have yet to receive single useful round of feedback even though I have a single credit for testing.
+As I had good experiences of Feedback roulette (defunct now) in the past I set it up too. Unfortunately I have yet to receive single useful round of feedback even though I have a single credit for testing.
 
 [Five Second Test](http://fivesecondtest.com/) was useful for getting answers to specific design issues. I didn't use it a lot, though, but I can see its value. The response times were adequate as well.
 
