@@ -45,7 +45,7 @@ Given I'm a little stronger on the writing side of things, I put some conscious 
 
 ### Webpack – Bundling for Fun and Profit
 
-[CodersClan](https://www.codersclan.net/) is a little service meant for getting small coding tasks done. It fits somewhere between Fiverr and those larger freelancing sites. I decided to give them a taste of Webpack. This is what [Webpack - Bundling for Fun and Profit](http://blog.codersclan.net/webpack-bundling-for-fun-and-profit-2/) achieves.
+[CodersClan](https://www.codersclan.net/) is a little service meant for getting small coding tasks done. It fits somewhere between Fiverr and those larger freelancing sites. I decided to give them a taste of Webpack. This is what [Webpack - Bundling for Fun and Profit](https://blog-admin.codersclan.com/webpack-bundling-for-fun-and-profit-2/) achieves.
 
 If you have read my book or understand the basics of Webpack, there's nothing new here. It is an entry level post after all.
 
