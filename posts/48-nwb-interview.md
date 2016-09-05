@@ -5,7 +5,7 @@ headerImage: '/assets/img/clock.jpg'
 keywords: ['interview', 'react', 'boilerplate']
 ---
 
-Boilerplate code is perhaps one of the leading causes of JavaScript fatigue. You often have to go through certain motions to set up a project or maintain a boilerplate of your own. In [the previous interview about kotatsu](../../blog/kotatsu-interview) we saw one possible solution.
+Boilerplate code is perhaps one of the leading causes of JavaScript fatigue. You often have to go through certain motions to set up a project or maintain a boilerplate of your own. In [the previous interview about kotatsu](./kotatsu-interview) we saw one possible solution.
 
 [nwb](https://github.com/insin/nwb) is another similar project with its own ideas. To understand better what it's about, I am interviewing the author of the project, [Jonny Buchanan](https://twitter.com/jbscript).
 

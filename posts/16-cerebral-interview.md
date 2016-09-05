@@ -42,7 +42,7 @@ No matter what you call your architecture it has three main layers. A layer to p
 
 What I realized is that we often do this with a single function. We get some user input and call a function that does one or more state updates. This is fine if you just want to increase/decrease a counter. It is not so nice if you want to handle more than one HTTP response and do other conditionals.
 
-It is difficult to understand the flow of an application reading implementation details. So I wanted to express the state changes of my app without having to dive into implementation details. I also wanted to be able to analyze this flow to create developer tools. Reading your [interview with Dan Abramov](../../blog/redux-interview) I can totally relate to how Redux got started. With Cerebral it is the signals the makes this possible.
+It is difficult to understand the flow of an application reading implementation details. So I wanted to express the state changes of my app without having to dive into implementation details. I also wanted to be able to analyze this flow to create developer tools. Reading your [interview with Dan Abramov](./redux-interview) I can totally relate to how Redux got started. With Cerebral it is the signals the makes this possible.
 
 Signals is a way to express state changes in your application using pure functions. These pure functions, called actions, are composed into a signal. This makes a signal declarative. It is almost like reading a sentence and it can be complex without being hard to read and reason about. But it is also functional as these actions are just functions. So for example factories is an important part of expressing your state flow.
 

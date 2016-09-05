@@ -7,7 +7,7 @@ keywords: ['react']
 
 If you [try searching GitHub for React boilerplates](https://github.com/search?utf8=%E2%9C%93&q=react+boilerplate), you'll find over thousand results. Nothing is harder than to agree on a standard boilerplate. As a result we have many to choose from.
 
-Given I like to author React components, such as [Reactabular](http://reactabular.js.org/), I've developed a little boilerplate myself. [survivejs/react-component-boilerplate](https://survivejs.github.io/react-component-boilerplate/) incorporates a large amount of good practices. I'll go through some of them next. I cover many of them [at the book](../../webpack_react/authoring_libraries/) but it doesn't hurt to dig deeper.
+Given I like to author React components, such as [Reactabular](http://reactabular.js.org/), I've developed a little boilerplate myself. [survivejs/react-component-boilerplate](https://survivejs.github.io/react-component-boilerplate/) incorporates a large amount of good practices. I'll go through some of them next. I cover many of them [at the book](..webpack_react/authoring_libraries/) but it doesn't hurt to dig deeper.
 
 ## Testing
 
@@ -17,7 +17,7 @@ Not surprisingly this is where most of the complexity of my boilerplate lies. Th
 
 My earlier setup relied on Facebook's [Jest](https://facebook.github.io/jest/). Even though it's easier to hook it up, I find the current approach more developer friendly. I never could get into grips with Jest's auto-mocking behavior and performance was an issue even with small libraries. It is possible the situation will change but for now I'm sticking with Mocha myself. Keep an eye on Jest, though.
 
-Linting is handled through [ESLint](http://eslint.org/). It's an amazing tool and will contribute towards the quality and consistency of your code. Read [my chapter about linting](../../webpack_react/linting_in_webpack/) to get into it. There's *npm run lint* and Webpack triggers it as a pre-loader. This way I get linting warnings and errors during develop. In addition I have my editor set up to show them interactively.
+Linting is handled through [ESLint](http://eslint.org/). It's an amazing tool and will contribute towards the quality and consistency of your code. Read [my chapter about linting](..webpack_react/linting_in_webpack/) to get into it. There's *npm run lint* and Webpack triggers it as a pre-loader. This way I get linting warnings and errors during develop. In addition I have my editor set up to show them interactively.
 
 ## Handling Versions
 

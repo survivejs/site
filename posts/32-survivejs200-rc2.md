@@ -5,7 +5,7 @@ headerImage: '/assets/img/winter_sun2.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-Not a lot has happened since the previous [release candidate](../../blog/survivejs200-rc1). The biggest change has to do with a little bug that the recent release of Babel 6.4 revealed. All property initializer based declarations were missing a semicolon as Babel treated them in a too lax way before. This has been fixed in this release candidate.
+Not a lot has happened since the previous [release candidate](./survivejs200-rc1). The biggest change has to do with a little bug that the recent release of Babel 6.4 revealed. All property initializer based declarations were missing a semicolon as Babel treated them in a too lax way before. This has been fixed in this release candidate.
 
 ## Overview of the Situation
 

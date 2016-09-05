@@ -5,7 +5,7 @@ headerImage: '/assets/img/types.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-You could say a lot has happened since [the previous release](../../blog/survivejs-19). [React 0.14](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) came out mere hours after it. React DnD gained 0.14 compatibility in its 2.0 release. Node.js reached [5.0.0](https://nodejs.org/en/blog/release/v5.0.0/) (v4 is LTS, supported for four years). And a couple of days ago [Babel 6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0) was released. In addition [Webpack 2](https://github.com/webpack/webpack/pull/861) is in sight.
+You could say a lot has happened since [the previous release](./survivejs-19). [React 0.14](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html) came out mere hours after it. React DnD gained 0.14 compatibility in its 2.0 release. Node.js reached [5.0.0](https://nodejs.org/en/blog/release/v5.0.0/) (v4 is LTS, supported for four years). And a couple of days ago [Babel 6.0.0](https://babeljs.io/blog/2015/10/29/6.0.0) was released. In addition [Webpack 2](https://github.com/webpack/webpack/pull/861) is in sight.
 
 The purpose of this release is to take some of these changes into account. Most importantly it introduces initial support for React 0.14. Babel hasn't been updated to the newest version yet given some tooling the book relies upon needs to catch up. The book doesn't take advantage of the function based component syntax because of the same reason. As the tooling matures, I'll perform the changes needed.
 

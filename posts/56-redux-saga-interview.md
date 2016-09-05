@@ -7,7 +7,7 @@ keywords: ['interview', 'react', 'redux']
 
 When developing front-ends, handling asynchronous behavior is always bit of a challenge. [Yassine Elouafi](https://twitter.com/YassineElouafi2)'s [redux-saga](https://www.npmjs.com/package/redux-saga) provides one solution to this problem. Read on to learn more about sagas and **redux-saga** in particular.
 
-T> Check out [the earlier interview about Redux](../../blog/redux-interview) if you haven't dug into [Redux](http://redux.js.org/) just yet.
+T> Check out [the earlier interview about Redux](./redux-interview) if you haven't dug into [Redux](http://redux.js.org/) just yet.
 
 ### Can you tell a bit about yourself?
 

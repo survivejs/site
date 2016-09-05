@@ -5,9 +5,9 @@ headerImage: '/assets/img/trees.jpg'
 keywords: ['release-notes', 'webpack']
 ---
 
-Compared to [the previous release](../../blog/survivejs-webpack-120) this is a conservative release. There are certain bug fixes and content improvements, but no new chapters. The focus was on pushing the current content further based on feedback.
+Compared to [the previous release](./survivejs-webpack-120) this is a conservative release. There are certain bug fixes and content improvements, but no new chapters. The focus was on pushing the current content further based on feedback.
 
-I am very happy that [the book split has been completed now](../../blog/survivejs-react-253). That was a big undertaking, but well worth it as it's easier to move forward now.
+I am very happy that [the book split has been completed now](./survivejs-react-253). That was a big undertaking, but well worth it as it's easier to move forward now.
 
 ## Overview of the Situation
 
@@ -89,7 +89,7 @@ Special thanks to David Lee, Steve Schwartz, and Jesús Rodríguez Rodríguez fo
 
 ## What Next?
 
-I'll do a pass on [the React book](../../react/introduction) next and then continue plowing through my TODO list for this one. There are always topics to cover and you can affect the direction of the book.
+I'll do a pass on [the React book](/react/introduction) next and then continue plowing through my TODO list for this one. There are always topics to cover and you can affect the direction of the book.
 
 ## Conclusion
 

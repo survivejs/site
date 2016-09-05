@@ -5,7 +5,7 @@ headerImage: '/assets/img/texture.jpg'
 keywords: ['release-notes', 'webpack']
 ---
 
-Compared to [the first release](../../blog/survivejs-webpack-100) a couple of weeks ago, this version has matured quite a bit. I've been reviewing the content with [my editor](http://angular-tips.com/) (thanks Jesús!) and that has lead to some nice insights. Our work is still in progress and so far we've combed through only a couple of the first chapters. The work will continue in the coming weeks.
+Compared to [the first release](./survivejs-webpack-100) a couple of weeks ago, this version has matured quite a bit. I've been reviewing the content with [my editor](http://angular-tips.com/) (thanks Jesús!) and that has lead to some nice insights. Our work is still in progress and so far we've combed through only a couple of the first chapters. The work will continue in the coming weeks.
 
 Overall we are going to a good direction with this book. The effort has forced me to understand Webpack on a deeper level. That's a good thing. I expect `1.2.0` will improve the situation further as I can cover Webpack in greater detail. The book structure seems solid and it's easy to grow content on top of it.
 

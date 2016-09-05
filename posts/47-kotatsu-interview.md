@@ -7,7 +7,7 @@ keywords: ['interview', 'react', 'boilerplate']
 
 npm alone has more than three thousand JavaScript boilerplates. Often it's easier to maintain your own than to use one designed by someone else. Everyone has their own preferences. At best boilerplates work as inspiration for your own work. The question is, can the amount of boilerplate be reduced?
 
-Guillaume Plique thinks so. You might remember him from the [Baobab interview](../../blog/baobab-interview). If not, look that up if you want to know more about him. Let's let him tell us more about a tool known as [kotatsu](https://github.com/Yomguithereal/kotatsu) and his ideas behind it.
+Guillaume Plique thinks so. You might remember him from the [Baobab interview](./baobab-interview). If not, look that up if you want to know more about him. Let's let him tell us more about a tool known as [kotatsu](https://github.com/Yomguithereal/kotatsu) and his ideas behind it.
 
 ## How would you describe *kotatsu* to someone who has never heard of it?
 

@@ -5,9 +5,9 @@ headerImage: '/assets/img/bell.jpg'
 keywords: ['release-notes', 'webpack']
 ---
 
-As I've been working towards splitting [the first book](../../react/introduction), I realized I must do one more release of this Webpack one before I can complete it. That's what the current release, `1.2.0`, is about. I've moved certain content there (mainly linting, npm related) and done assorted tweaks based on feedback.
+As I've been working towards splitting [the first book](/react/introduction), I realized I must do one more release of this Webpack one before I can complete it. That's what the current release, `1.2.0`, is about. I've moved certain content there (mainly linting, npm related) and done assorted tweaks based on feedback.
 
-Compared to [the previous release](../../blog/survivejs-webpack-110) we have something more mature together now. There are still improvements in store, but you have to take one step at a time.
+Compared to [the previous release](./survivejs-webpack-110) we have something more mature together now. There are still improvements in store, but you have to take one step at a time.
 
 Getting the split done successfully is my next major goal with this effort. Completing that will take a lot of pressure out of my shoulders and allow new content to be developed more easily.
 

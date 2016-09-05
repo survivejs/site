@@ -5,7 +5,7 @@ headerImage: '/assets/img/red.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-Compared to [1.8.0](../../blog/survivejs-18), `1.9.0` can be seen as a more conservative release. There are plenty of smaller fixes and even some new content too. I decided to fix the chapter structure to the current. I rather provide less but better content. This also helps to keep the cost of a paper version down.
+Compared to [1.8.0](./survivejs-18), `1.9.0` can be seen as a more conservative release. There are plenty of smaller fixes and even some new content too. I decided to fix the chapter structure to the current. I rather provide less but better content. This also helps to keep the cost of a paper version down.
 
 ## Towards `2.0.0`
 

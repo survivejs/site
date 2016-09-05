@@ -5,9 +5,9 @@ headerImage: '/assets/img/field.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-It has been a while since [the previous release](../../blog/survivejs200) and quite a bit has happened. As you might have noticed, there's actually [a new book about Webpack](../../blog/survivejs-webpack-100) out there now. The idea is that I will split this one in two.
+It has been a while since [the previous release](./survivejs200) and quite a bit has happened. As you might have noticed, there's actually [a new book about Webpack](./survivejs-webpack-100) out there now. The idea is that I will split this one in two.
 
-This book will continue as something React focused while I'll push all the Webpack bits to the other one. All current readers will receive a free coupon to the Webpack book once I complete this transition. To get a preview, check out [the online version](../../webpack/introduction).
+This book will continue as something React focused while I'll push all the Webpack bits to the other one. All current readers will receive a free coupon to the Webpack book once I complete this transition. To get a preview, check out [the online version](/webpack/introduction).
 
 > A part of the income (around ~30%) goes to Tobias Koppers, the author of Webpack, to support its development. That's the least I can do to support his efforts.
 
