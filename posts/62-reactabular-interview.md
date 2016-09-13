@@ -162,7 +162,7 @@ In short, don't bite too much at once. Patience is gold.
 
 When it comes to motivation, find projects that are interesting to you. Sometimes getting to your goal might not be that easy, but that's when you learn the most. If you are doing something you find challenging, the chances are that you are learning.
 
-I bet when most of us look to our old projects, we find a lot of room for improvement. Even within a year you'll change a lot as a developer as you learn more about the field. Technological advancement makes sure it newer grows old.
+I bet when most of us look to our old projects, we find a lot of room for improvement. Even within a year you'll change a lot as a developer as you learn more about the field. Technological advancement makes sure it never grows old.
 
 ## Who should I interview next?
 
