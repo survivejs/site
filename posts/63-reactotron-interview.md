@@ -1,5 +1,5 @@
 ---
-title: 'Reactotron - A CLI and OS X app for inspecting your React JS and React Native apps - Interview with Steve Kellock'
+title: 'Reactotron - A CLI and OS X App for Inspecting - Interview with Steve Kellock'
 date: 2016-09-19
 headerImage: '/assets/img/glow.jpg'
 keywords: ['interview', 'react']
