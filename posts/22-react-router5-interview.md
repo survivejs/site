@@ -2,7 +2,7 @@
 title: 'react-router5 - Routing Alternative for React - Interview with Thomas Roch'
 date: 2015-11-09
 headerImage: '/assets/img/route.jpg'
-keywords: ['interview', 'react']
+keywords: ['interview', 'react', 'routing']
 ---
 
 When people ask about what routing solution to use with React, they often get pointed at [react-router](https://github.com/reactjs/react-router). It is a powerful solution and used by many so it can make sense. That doesn't mean it's the only alternative, though.
