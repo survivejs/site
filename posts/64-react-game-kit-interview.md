@@ -94,6 +94,4 @@ Hmmm... Good question. I'd recommend:
 
 ## Conclusion
 
-TODO: I'll fill this up, thank, and link. Feel free to add resources here.
-
-Thanks for the interview Ken!
+Thanks for the interview Ken! Check out [react-game-kit](https://github.com/FormidableLabs/react-game-kit) on GitHub to learn more.
