@@ -88,7 +88,7 @@ If you slow down and write a config out by hand while perusing the API, webpack 
 Hmmm... Good question. I'd recommend:
 
 * Sunil Pai - He builds really cool stuff and like myself, loves to make a mockery of JSX. Also wrote [glamor](https://github.com/threepointone/glamor), which is pretty dope.
-* Nikilesh Sigtapu - This dude is the smartest guy I know. He builds the kind of stuff I would build if I went to college. He also makes magic happen at [ExponentJS](https://getexponent.com/).
+* Nikhilesh Sigtapu - This dude is the smartest guy I know. He builds the kind of stuff I would build if I went to college. He also makes magic happen at [ExponentJS](https://getexponent.com/).
 * Leland Richardson - Dude is a beast. Brought us hit records such as [react-native-maps](https://github.com/airbnb/react-native-maps) and [Enzyme](https://github.com/airbnb/enzyme), and has this chill new project [redux-entity](https://github.com/lelandrichardson/redux-entity).
 * Safia Abdalla - She is the master of all things data, and works on [Nteract](https://github.com/nteract/nteract), which is a really cool interactive notebook built in React on Electron.
 
