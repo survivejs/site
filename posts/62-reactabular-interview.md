@@ -174,4 +174,8 @@ I hope you find [Reactabular](http://reactabular.js.org/) useful for your projec
 
 Given the project has been arranged as a monorepo, it might look a little different than what you are used to. The approach is worth understanding and I believe it might change the way we think about structuring applications even instead of just npm packages.
 
-To understand the design decisions I took with Reactabular, check out [my slides on React API design](https://survivejs.github.io/react-api-design/). A video is due later.
+To understand the design decisions I took with Reactabular, check out [my slides on React API design](https://survivejs.github.io/react-api-design/).
+
+Here's a presentation I gave about the topic:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nEn5k_HXeNc" frameborder="0" allowfullscreen></iframe>
