@@ -1,8 +1,9 @@
 import React from 'react';
 import GithubCorner from 'react-github-corner';
 import Footer from '../components/Footer.jsx';
+import Algolia from '../components/Algolia.jsx';
 import Gitter from '../components/Gitter.jsx';
-import Body from 'antwar-helpers/layouts/Body';
+import BodyTemplate from './BodyTemplate.jsx';
 import Navigation from 'antwar-helpers/components/Navigation';
 import RSS from 'antwar-helpers/components/RSS';
 
@@ -14,7 +15,7 @@ export default React.createClass({
     const pathname = props.location.pathname;
 
     return (
-      <Body head={<RSS href="/atom.xml" />} {...props}>
+      <BodyTemplate head={<RSS href="/atom.xml" />} {...props}>
         {props.children}
 
         {pathname !== '/' ? this.renderNavigation(props, section.name) : null}
@@ -23,7 +24,9 @@ export default React.createClass({
         <Footer {...props} />
 
         <GitterChat sectionName={section.name} />
-      </Body>
+
+        {pathname !== '/' ? this.renderSearch(section.name) : null}
+      </BodyTemplate>
     );
   },
   renderNavigation(props, sectionName) {
@@ -67,6 +70,30 @@ export default React.createClass({
         height={80}
         direction="right"
         target="_blank"
+      />
+    );
+  },
+  renderSearch(sectionName) {
+    let apiKey = null;
+    let indexName = null;
+
+    if (sectionName === 'react') {
+      apiKey = '7a7d80ba370ebaf7a9afa96ad380a1e1';
+      indexName = 'survivejs_react';
+    }
+    else if (sectionName === 'webpack') {
+      apiKey = '1182e3806d62e921613b8dc9c7a22ef3';
+      indexName = 'survivejs_webpack'
+    }
+    else {
+      return null;
+    }
+
+    return (
+      <Algolia
+        apiKey={apiKey}
+        indexName={indexName}
+        inputSelector="#search"
       />
     );
   }

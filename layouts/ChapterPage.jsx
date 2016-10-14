@@ -33,8 +33,14 @@ export default React.createClass({
         }
 
         <div className="toc-nav__wrapper">
+          <h4 className="search-nav--header">Search</h4>
+
+          <input id="search" />
+
           <h4 className="toc-nav--header">Table of Contents</h4>
+
           <Toc sectionPages={() => section.pages().reverse()} page={page} />
+
           {this.renderResources(resources)}
           {this.renderBuy(section.name)}
         </div>
