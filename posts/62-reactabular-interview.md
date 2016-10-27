@@ -130,7 +130,7 @@ There are also hooks for customizing rendering per row (`Table.Body.onRow` prop)
 
 ## How does *Reactabular* differ from the other solutions?
 
-When I started developing Reactabular in early 2015 I found the existing solutions too monolithic. I gravitated towards the idea of a column definition early on. I would say the work done during this Summer helped to make the ideas shine. I would say the emphasis on keeping the core decoupled and extensible is the thing that sets Reactabular apart in good and bad.
+When I started developing Reactabular in early 2015 I found the existing solutions too monolithic. I gravitated towards the idea of a column definition early on. I would say the work done during this Summer helped to make the ideas shine. The emphasis on keeping the core decoupled and extensible is the thing that sets Reactabular apart in good and bad.
 
 I learned a lot in the process and became a great fan of [monorepos](https://medium.com/@bebraw/the-case-for-monorepos-907c1361708a). I also picked up a few React tricks along the way. All of this is good as it will lead to stronger content.
 
