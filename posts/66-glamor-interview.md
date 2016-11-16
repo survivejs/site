@@ -11,7 +11,7 @@ This is something that was considered an anti-pattern before React, but as React
 
 I've [discussed various approaches](/react/advanced-techniques/styling-react/) myself. Each solve similar problems in different ways. Today I'm interviewing [Sunil Pai](https://twitter.com/threepointone), the author of an inline CSS solution known as Glamor. Read on to learn more.
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">

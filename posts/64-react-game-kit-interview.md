@@ -9,7 +9,7 @@ What's more fun than making applications with React? Making games of course! I r
 
 Today I'm interviewing [Ken Wheeler](https://twitter.com/ken_wheeler) about [react-game-kit](https://github.com/FormidableLabs/react-game-kit). You might recognize the name from projects such as [spectacle](https://github.com/FormidableLabs/spectacle), [react-music](https://github.com/FormidableLabs/react-music), or [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard).
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">

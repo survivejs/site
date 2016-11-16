@@ -11,7 +11,7 @@ Sometimes this leads to a better standard as we saw with ES2015 when it adopted 
 
 To get a better idea of the topic, I'm interviewing [Phil Freeman](https://twitter.com/paf31), the author of [PureScript](http://www.purescript.org/).
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">

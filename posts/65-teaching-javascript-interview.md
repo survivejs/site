@@ -7,7 +7,7 @@ keywords: ['interview', 'javascript']
 
 I have chosen one approach when it comes to teaching JavaScript and related topics. Books are just a way amongst many others. Today I'm interviewing another professional, [Bianca Gandolfo](https://twitter.com/BiancaGando), about the topic. Let's see what she thinks about teaching JavaScript.
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">

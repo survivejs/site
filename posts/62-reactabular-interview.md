@@ -11,7 +11,7 @@ When it comes to React, there are a few established alternatives out there. Cons
 
 Today I'm going to discuss an alternative which I developed during the Summer. The project actually goes way back, but a client made this work possible. Read on to learn what makes [Reactabular](http://reactabular.js.org/) different.
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">

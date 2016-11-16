@@ -7,7 +7,7 @@ keywords: ['interview', 'react']
 
 If there's one thing that has set React community apart, it's the focus on developer experience (DX). Historically developer tools haven't been the greatest, but this is slowly and surely changing. Reactotron by [Steve Kellock](https://twitter.com/skellock) is a good example of this trend. Read on to learn more.
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">

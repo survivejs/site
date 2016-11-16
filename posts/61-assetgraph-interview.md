@@ -9,7 +9,7 @@ If you have written a web application or site, you have had to deal with various
 
 Today I'm interviewing [Peter Müller](https://twitter.com/_munter_), the author of [AssetGraph](https://github.com/assetgraph/assetgraph), a tool fitting this category. Read on to learn more about the problem and how the tool solves it in a rather unique way.
 
-### Can you tell a bit about yourself?
+## Can you tell a bit about yourself?
 
 <p>
 <span class="author">
