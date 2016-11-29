@@ -47,6 +47,10 @@ export default React.createClass({
 
         <div className="chapter">
           <div className="post__content">
+            <a href="http://www.reactindiebundle.com/" target="_blank">
+              <img className="rib" src="/assets/img/rib.jpg" alt="React Indie Bundle" width={728} height={90} />
+            </a>
+
             <LatestPost sectionPages={section.pages} />
 
             {this.renderPostMeta(page)}
