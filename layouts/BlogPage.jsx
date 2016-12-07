@@ -49,10 +49,6 @@ export default React.createClass({
               <span className="draft-text">Draft</span> :
               null
             }
-            <a href="http://www.reactindiebundle.com/" target="_blank">
-              <img className="rib" src="/assets/img/rib.jpg" alt="React Indie Bundle" width={728} height={90} />
-            </a>
-
             <div dangerouslySetInnerHTML={{__html: page.content}} />
             {page.headerExtra ?
               <div className="header-extra"
