@@ -92,7 +92,7 @@ Thankfully, that mentality has changed since then and now people are starting to
 
 ## What next?
 
-The focus for me and the rest of the Inferno team is to get 1.0 released before Christmas (along with the website). I have some big plans for 2017, but it's a bit too early to announce them right now :)
+The focus for me and the rest of the Inferno team is to get 1.0 released before Christmas (along with the website). I have some big plans for 2017, but it's a bit too early to announce them right now. :)
 
 ## What does the future look like for *Inferno* and web development in general? Can you see any particular trends?
 
