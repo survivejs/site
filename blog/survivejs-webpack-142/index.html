@@ -1,0 +1,126 @@
+<html lang="en"><head><title>SurviveJS - SurviveJS - Webpack - v1.4.2</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+
+Alright, here we go again. It has been a while since the previous release and it&#x27;s time for a big …"/><meta name="keywords" content="release-notes,webpack"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="post__wrapper"><div class="header-image" style="background-image:url(/assets/img/tunnel.jpg);"></div><h1 class="post__heading">SurviveJS - Webpack - v1.4.2</h1><div class="toc-nav__wrapper"><div><div><h4 class="toc-nav--header">Release Notes</h4><ul class="toc-nav"><li class=""><span class="toc-nav__link toc-nav__link--current ">SurviveJS - Webpack - v1.4.2</span></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-131">SurviveJS - Webpack - v1.3.1</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-react-253">SurviveJS - React - v2.5.3</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-120">SurviveJS - Webpack - v1.2.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-110">SurviveJS - Webpack - v1.1.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs210">SurviveJS - Webpack and React - v2.1.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-100">SurviveJS - Webpack - v1.0.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200">SurviveJS - Webpack and React - v2.0.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200-rc4">SurviveJS - Webpack and React - v2.0.0-rc4</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200-rc3">SurviveJS - Webpack and React - v2.0.0-rc3</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200-rc2">SurviveJS - Webpack and React - v2.0.0-rc2</a></li></ul></div><div><h4 class="toc-nav--header">Webpack</h4><ul class="toc-nav"><li class=""><span class="toc-nav__link toc-nav__link--current ">SurviveJS - Webpack - v1.4.2</span></li><li class=""><a class="toc-nav__link " href="/blog/webpack-merge-interview">webpack-merge - Taming Webpack Configuration - Interview with Juho Vepsäläinen</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-131">SurviveJS - Webpack - v1.3.1</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-120">SurviveJS - Webpack - v1.2.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-110">SurviveJS - Webpack - v1.1.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs210">SurviveJS - Webpack and React - v2.1.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs-webpack-100">SurviveJS - Webpack - v1.0.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200">SurviveJS - Webpack and React - v2.0.0</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200-rc4">SurviveJS - Webpack and React - v2.0.0-rc4</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200-rc3">SurviveJS - Webpack and React - v2.0.0-rc3</a></li><li class=""><a class="toc-nav__link " href="/blog/survivejs200-rc2">SurviveJS - Webpack and React - v2.0.0-rc2</a></li></ul></div></div></div><div class="post"><div class="post__content"><div><p>Alright, here we go again. It has been a while since <a href="./survivejs-webpack-131">the previous release</a> and it&#39;s time for a big Winter update!</p>
+<p>Quite a bit has happened since. I spent most of the intermediate time in consulting and training mode. Since I became a part of webpack core team, I&#39;ve been pushing things forward in my own way. This has meant coordinating efforts around <a href="https://webpack.js.org/">the new site of webpack</a> and developing certain technology related to it.</p>
+<p>We also launched something known as <a href="https://opencollective.com/webpack">open collective for webpack</a>. This makes it possible for individuals and companies to support the project in form of donations. The overall theme of this year has been in making webpack more sustainable as a project and scaling it from one person to many. By the looks of it we are actually succeeding in this goal.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>You can get a better idea of the type of training I have been doing at <a href="https://presentations.survivejs.com/">my presentation site</a>. See especially <a href="http://presentations.survivejs.com/advanced-webpack/">my slides on advanced webpack</a> as those complement the book material well. It probably goes without saying, but if you are interested in training on these topics, you know who to poke.</blockquote><h2 class="header"><a class="header-anchor" href="#overview-of-the-situation" id="overview-of-the-situation"></a><span class="text">Overview of the Situation</span><a class="header-anchor-select" href="#overview-of-the-situation">#</a></h2>
+<p>This time around I focused especially on getting the book up to date with upcoming webpack 2. The book uses webpack 2 syntax now. In addition, I went through quite a few issues I have on my list. All of this has translated into a nice list of improvements.</p>
+<p>There is one new chapter that was gained through splitting <em>Separating CSS</em> into two shorter ones. The existing ones should be better than before as well. Thanks to the changes introduced with webpack 2, I could simply drop a part of the content.</p>
+<p>Webpack 2 performs validation and simplifies environment handling greatly. Also the configuration format is a little neater in certain parts although there is still work left for webpack 3. I believe we can improve the way you configure webpack with little effort.</p>
+<p>I still have quite a few issues on my list. This includes a couple of chapters and further improvements to the current content. If you have specific ideas, <a href="https://github.com/survivejs/webpack/issues">open an issue</a>. That will give me a better idea on what kind of content to develop for the book.</p>
+<h2 class="header"><a class="header-anchor" href="#book-improvements-1-4-2-" id="book-improvements-1-4-2-"></a><span class="text">Book Improvements - <code>1.4.2</code></span><a class="header-anchor-select" href="#book-improvements-1-4-2-">#</a></h2>
+<p>In total 192 commits went to the book since the last release. You can find the important changes below. See GitHub for <a href="https://github.com/survivejs/webpack/compare/v1.3.0...v1.4.2">all changes</a>. Remember especially the &quot;Files changed&quot; tab as it gives you a good overview of what&#39;s happening with the book.</p>
+<h2 class="header"><a class="header-anchor" href="#introduction" id="introduction"></a><span class="text">Introduction</span><a class="header-anchor-select" href="#introduction">#</a></h2>
+<ul>
+<li>Rewrote for clarity, mostly the same.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#webpack-compared" id="webpack-compared"></a><span class="text">Webpack Compared</span><a class="header-anchor-select" href="#webpack-compared">#</a></h2>
+<ul>
+<li>Added more upcoming tools.</li>
+<li>Expanded on core ideas of webpack.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#developing-with-webpack" id="developing-with-webpack"></a><span class="text">Developing with Webpack</span><a class="header-anchor-select" href="#developing-with-webpack">#</a></h2>
+<h3 class="header"><a class="header-anchor" href="#getting-started" id="getting-started"></a><span class="text">Getting Started</span><a class="header-anchor-select" href="#getting-started">#</a></h3>
+<ul>
+<li>Bumped to webpack 2 beta. This applies to other content too.</li>
+<li>Noted that entries have to resolve against files. Directories won&#39;t work unless they resolve to <em>index.js</em>.</li>
+<li>Mentioned plugins that work well with <em>html-webpack-plugin</em>.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#splitting-configuration" id="splitting-configuration"></a><span class="text">Splitting Configuration</span><a class="header-anchor-select" href="#splitting-configuration">#</a></h3>
+<ul>
+<li>Explained <em>webpack-merge</em> in greater detail so it&#39;s less of a black box.</li>
+<li>Simplified environment passing to benefit from webpack 2 <code>--env</code>.</li>
+<li>Explained why configuration composition is a good thing.</li>
+<li>Renamed <em>lib/parts.js</em> as <em>webpack.parts.js</em>. This feels more natural way to handle it.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#automatic-browser-refresh" id="automatic-browser-refresh"></a><span class="text">Automatic Browser Refresh</span><a class="header-anchor-select" href="#automatic-browser-refresh">#</a></h3>
+<ul>
+<li>Rewrote for clarity.</li>
+<li>Disabled <code>multiStep</code> option of <code>HotModuleReplacementPlugin</code> as that doesn&#39;t work yet with webpack 2 and <em>html-webpack-plugin</em>.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#enabling-sourcemaps" id="enabling-sourcemaps"></a><span class="text">Enabling Sourcemaps</span><a class="header-anchor-select" href="#enabling-sourcemaps">#</a></h3>
+<ul>
+<li>Explained the difference between inline and separate sourcemaps. There&#39;s still work to do, but it&#39;s a little better now.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#building-with-webpack" id="building-with-webpack"></a><span class="text">Building with Webpack</span><a class="header-anchor-select" href="#building-with-webpack">#</a></h2>
+<h3 class="header"><a class="header-anchor" href="#minifying-build" id="minifying-build"></a><span class="text">Minifying Build</span><a class="header-anchor-select" href="#minifying-build">#</a></h3>
+<ul>
+<li>Mentioned UglifyJS alternatives.</li>
+<li>Mentioned gotchas related to minifying CSS.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#setting-environment-variables" id="setting-environment-variables"></a><span class="text">Setting Environment Variables</span><a class="header-anchor-select" href="#setting-environment-variables">#</a></h3>
+<ul>
+<li>Rewrote the introduction so it&#39;s easier to see why <code>DefinePlugin</code> is valuable.</li>
+<li>Mentioned <code>webpack.EnvironmentPlugin</code>.</li>
+<li>Mentioned <a href="https://www.npmjs.com/package/compression-webpack-plugin">compression-webpack-plugin</a> as that&#39;s handy for generating gzips.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#splitting-bundles" id="splitting-bundles"></a><span class="text">Splitting Bundles</span><a class="header-anchor-select" href="#splitting-bundles">#</a></h3>
+<ul>
+<li>Mentioned about <strong>code splitting</strong> and explained the difference.</li>
+<li>Added an alternative technique for figuring out which dependencies should go to the vendor bundle.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#adding-hashes-to-filenames" id="adding-hashes-to-filenames"></a><span class="text">Adding Hashes to Filenames</span><a class="header-anchor-select" href="#adding-hashes-to-filenames">#</a></h3>
+<ul>
+<li>Mentioned hash slicing trick (<code>[chunkhash:8]</code>).</li>
+<li>Added a concrete example showing how to use placeholders.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#separating-css" id="separating-css"></a><span class="text">Separating CSS</span><a class="header-anchor-select" href="#separating-css">#</a></h3>
+<ul>
+<li>Mentioned that you should <strong>not</strong> use <code>ExtractTextPlugin</code> for development. It&#39;s not compatible with HMR yet, although there&#39;s a PR in progress.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#eliminating-unused-css" id="eliminating-unused-css"></a><span class="text">Eliminating Unused CSS</span><a class="header-anchor-select" href="#eliminating-unused-css">#</a></h3>
+<ul>
+<li>This chapter was a part of <em>Separating CSS</em> earlier. Now it is a chapter of its own.</li>
+<li>There was a little glitch in the approach that made it to match against <em>node_modules</em>. This has been fixed and it gives very compact results now.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#analyzing-build-statistics" id="analyzing-build-statistics"></a><span class="text">Analyzing Build Statistics</span><a class="header-anchor-select" href="#analyzing-build-statistics">#</a></h3>
+<ul>
+<li>Simplified greatly thanks to webpack 2 <code>--env</code>.</li>
+<li>Added more analysis tools.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#loading-assets" id="loading-assets"></a><span class="text">Loading Assets</span><a class="header-anchor-select" href="#loading-assets">#</a></h2>
+<h3 class="header"><a class="header-anchor" href="#loader-definitions" id="loader-definitions"></a><span class="text">Loader Definitions</span><a class="header-anchor-select" href="#loader-definitions">#</a></h3>
+<ul>
+<li>Rewrote for clarity.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#loading-images" id="loading-images"></a><span class="text">Loading Images</span><a class="header-anchor-select" href="#loading-images">#</a></h3>
+<ul>
+<li>Explained in greater detail.</li>
+<li>Added more techniques.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#loading-fonts" id="loading-fonts"></a><span class="text">Loading Fonts</span><a class="header-anchor-select" href="#loading-fonts">#</a></h3>
+<ul>
+<li>Added more techniques.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#advanced-techniques" id="advanced-techniques"></a><span class="text">Advanced Techniques</span><a class="header-anchor-select" href="#advanced-techniques">#</a></h2>
+<h3 class="header"><a class="header-anchor" href="#understanding-chunks" id="understanding-chunks"></a><span class="text">Understanding Chunks</span><a class="header-anchor-select" href="#understanding-chunks">#</a></h3>
+<ul>
+<li>Rewrote using webpack 2 <a href="https://github.com/tc39/proposal-dynamic-import">dynamic imports</a>. This simplified the implementation somewhat.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#linting" id="linting"></a><span class="text">Linting</span><a class="header-anchor-select" href="#linting">#</a></h3>
+<ul>
+<li>Mentioned <code>eslint --init</code>.</li>
+<li>Added more techniques.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#authoring-packages" id="authoring-packages"></a><span class="text">Authoring Packages</span><a class="header-anchor-select" href="#authoring-packages">#</a></h3>
+<ul>
+<li>Rewrote to reflect the current situation. More tools and techniques.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#configuring-react" id="configuring-react"></a><span class="text">Configuring React</span><a class="header-anchor-select" href="#configuring-react">#</a></h3>
+<ul>
+<li>Mentioned <a href="https://www.npmjs.com/package/create-react-app">create-react-app</a>.</li>
+<li>Added Babel related presets and plugins that are useful with React.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What Next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>
+<p>I have next two weeks to dedicate to this work. It is quite possible we will see an intermediate release or two before 2.0. But at least now we are in sync with webpack so that&#39;s great!</p>
+<p>After 2.0, I can give the React book a big refresh.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>Given webpack 2 isn&#39;t actually out yet, there still may be some rough edges. I&#39;ve tried to annotate these as well as I can, but there still may be something. I&#39;ll fix potential issues in the next release.</p>
+<p>If you want to support the development of the book, <a href="https://leanpub.com/survivejs-webpack">pick up a copy at Leanpub</a>. A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. This is my way of supporting his work given mine builds on top of his. Literally most of the income goes to webpack developers now!</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>You can <a href="https://opencollective.com/webpack">support webpack through open collective</a> too.</blockquote></div><time datetime="2016-12-19T00:00:00.000Z" class="post__moment">19 Dec 2016</time><div class="post__author"><span>Published by Juho <a href="https://twitter.com/bebraw" class="twitter">@bebraw</a> Vepsäläinen</span></div><div class="social-links"><blockquote class="tip">If you enjoyed this blog post, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev" style="width:100%;"><div class="new-prevnext__bg" style="background-image:url(/assets/img/inferno.jpg);"></div><span class="new-prevnext__info">Previous post</span><a class="new-prevnext__link" href="/blog/inferno-interview">Inferno - Blazing fast, React-like UI library - Interview with Dominic Gannaway</a></div></div><div id="disqus_thread"></div></div></div><div><a class="previous-page" title="Inferno - Blazing fast, React-like UI library - Interview with Dominic Gannaway" href="/blog/inferno-interview"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/react/introduction/">Read the React book</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs-react">Buy the ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><a href="https://github.com/survivejs/site" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="position:absolute;top:0;fill:#000;right:0;"><path class="octo-banner" d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"></path><path class="octo-arm" d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16" style="-webkit-transform-origin:130px 106px;transform-origin:130px 106px;"></path><path class="octo-body" d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"></path></svg></a><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs-webpack-142">SurviveJS - Webpack - v1.4.2</a></li><li><a class="blog-teaser" href="/blog/inferno-interview">Inferno - Blazing fast, React-like UI library - Interview with Dominic Gannaway</a></li><li><a class="blog-teaser" href="/blog/svelte-interview">Svelte - The magical disappearing UI framework - Interview with Rich Harris</a></li><li><a class="blog-teaser" href="/blog/webpack-merge-interview">webpack-merge - Taming Webpack Configuration - Interview with Juho Vepsäläinen</a></li><li><a class="blog-teaser" href="/blog/starratio-interview">StarRatio - Compare JavaScript Projects - Interview with Dmitry Zaets</a></li><li><a class="blog-teaser" href="/blog/redom-interview">RE:DOM - Tiny but Super Fast DOM Library - Interview with Juha Lindstedt</a></li><li><a class="blog-teaser" href="/blog/glamor-interview">Glamor - Inline CSS for React et al - Interview with Sunil Pai</a></li><li><a class="blog-teaser" href="/blog/teaching-javascript-interview">Teaching JavaScript - Interview with Bianca Gandolfo</a></li><li><a class="blog-teaser" href="/blog/react-game-kit-interview">react-game-kit - Make games with React - Interview with Ken Wheeler</a></li><li><a class="blog-teaser" href="/blog/reactotron-interview">Reactotron - A CLI and OS X App for Inspecting - Interview with Steve Kellock</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+            ((window.gitter = {}).chat = {}).options = {
+              showChatByDefault: false,
+              activationElement: '.gitter-open-chat-button',
+              room: 'survivejs/react'
+            };
+          </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></main></body></html>
