@@ -2,7 +2,7 @@
 title: 'Glamor - Inline CSS for React et al - Interview with Sunil Pai'
 date: 2016-10-17
 headerImage: '/assets/img/glamor.jpg'
-keywords: ['interview', 'react']
+keywords: ['interview', 'react', 'styling']
 ---
 
 If you ask multiple React developers their styling approaches, you will also get multiple different answers. One trend is clear, though, the movement towards inline styling.
