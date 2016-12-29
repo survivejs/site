@@ -7,7 +7,7 @@ keywords: ['interview', 'react', 'styling']
 
 Styling is one of those topics that's under flux. My [React styling chapter](/react/advanced-techniques/styling-react/) alone covers quite a few approaches and [Michele Bertoli's list](https://github.com/MicheleBertoli/css-in-js) has a lot more.
 
-There was [an interview on glamor](/blog/glamor-interview) earlier. It's time to continue on the theme and check out a solution known as [Styletron](https://github.com/rtsao/styletron) by [Ryan Tsao](https://twitter.com/rtsao).
+There was [an interview on glamor](/blog/glamor-interview) earlier. It's time to continue on the theme and check out a solution known as [Styletron](http://styletron.js.org/) by [Ryan Tsao](https://twitter.com/rtsao).
 
 ## Can you tell a bit about yourself?
 
