@@ -15,6 +15,14 @@ module.exports = [
     "image": "hoodie.jpg",
     "type": "intro"
   },
+  /* why webpack */
+  {
+    "author": "epicantus",
+    "source": "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
+    "license": "Public Domain",
+    "image": "structure.jpg",
+    "type": "intro"
+  },
 
   /* Developing with Webpack */
   {
