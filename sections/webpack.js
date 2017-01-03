@@ -68,7 +68,24 @@ module.exports = function webpack(headers) {
     },
     redirects: {
       'developing-with-webpack/setting-up-npm-install-webpack-plugin': 'introduction',
-      'developing-with-webpack/optimizing-development': 'advanced-techniques/configuring-react'
+      'developing-with-webpack/optimizing-development': 'optimizing-build',
+      'developing-with-webpack/refreshing-css': 'developing-with-webpack/automatic-browser-refresh',
+      'developing-with-webpack/enabling-sourcemaps': 'building-with-webpack/enabling-sourcemaps',
+      'building-with-webpack/minifying-build': 'optimizing-build/minifying',
+      'building-with-webpack/setting-environment-variables': 'optimizing-build/setting-environment-variables',
+      'building-with-webpack/adding-hashes-to-filenames': 'optimizing-build/adding-hashes-to-filenames',
+      'building-with-webpack/separating-css': 'handling-styles/separating-css',
+      'building-with-webpack/eliminating-unused-css': 'handling-styles/eliminating-unused-css',
+      'building-with-webpack/analyzing-build-statistics': 'optimizing-build/analyzing-build-statistics',
+      'loading-assets': 'understanding-loaders',
+      'loading-assets/formats-supported': 'understanding-loaders/loader-definitions',
+      'loading-assets/loader-definitions': 'understanding-loaders/loader-definitions',
+      'loading-assets/loading-styles': 'handling-styles/loading',
+      'loading-assets/loading-images': 'understanding-loaders/loading-images',
+      'loading-assets/loading-fonts': 'understanding-loaders/loading-fonts',
+      'advanced-techniques/understanding-chunks': 'building-with-webpack/splitting-bundles',
+      'advanced-techniques/linting-in-webpack': 'developing-with-webpack/linting',
+      'advanced-techniques/writing-loaders': 'understanding-loaders/writing-loaders'
     }
   };
 };
