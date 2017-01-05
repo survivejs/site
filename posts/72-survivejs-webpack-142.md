@@ -5,7 +5,7 @@ headerImage: '/assets/img/tunnel.jpg'
 keywords: ['release-notes', 'webpack']
 ---
 
-Alright, here we go again. It has been a while since [the previous release](./survivejs-webpack-131) and it's time for a big Winter update!
+Alright, here we go again. It has been a while since [the previous release](../survivejs-webpack-131) and it's time for a big Winter update!
 
 Quite a bit has happened since. I spent most of the intermediate time in consulting and training mode. Since I became a part of webpack core team, I've been pushing things forward in my own way. This has meant coordinating efforts around [the new site of webpack](https://webpack.js.org/) and developing certain technology related to it.
 
