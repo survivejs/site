@@ -15,7 +15,7 @@ You could say the last few weeks were intense. As usual, I started working throu
 
 I've noticed my sweet spot for a chapter length is between 1-3k words and I've structured the book accordingly. So the chapters are shorter, but also more focused. And they have been split over more parts.
 
-I want to give my special thanks to [Artem Sapegin](https://twitter.com/sapegin) for motivating quite a few changes. I take feedback seriously and it's motivating to push the book forward especially as you see it going forward.
+I want to give my special thanks to [Artem Sapegin](https://twitter.com/sapegin) for motivating quite a few changes. I take feedback seriously and it's great to push the book forward especially as you see it going improving.
 
 There's still work left to do, but now that the structure feels solid enough, I can focus more and more on content instead of editing.
 
