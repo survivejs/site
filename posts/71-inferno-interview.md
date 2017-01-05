@@ -7,7 +7,7 @@ keywords: ['interview', 'react']
 
 One of the cool things about React is that it managed to pull a lot of people into the component world. Even though there was initial resistance, the ideas seem to have stuck. Maybe the question is, what next?
 
-[Inferno](https://github.com/trueadm/inferno), a blazing fast React-like UI library by [Dominic Gannaway](https://twitter.com/trueadm) might be one of the answers.
+[Inferno](https://infernojs.org/), a blazing fast React-like UI library by [Dominic Gannaway](https://twitter.com/trueadm) might be one of the answers.
 
 ## Can you tell a bit about yourself?
 
@@ -114,4 +114,4 @@ I'd like to say a big thank you to the team behind making Inferno awesome. [Samp
 
 Thanks for the interview Dominic! If there's one thing that sets Inferno apart from my point of view, it's how it expands function based components through a beautifully designed hook system. That solves a major pain point for me even if it's not standard React code.
 
-You should check out [Inferno on GitHub](https://github.com/trueadm/inferno/) to learn more about the project and those hooks. Maybe 2017 is the big year for Inferno.
+You should check out [the official site](https://infernojs.org/) and [Inferno on GitHub](https://github.com/trueadm/inferno/) to learn more about the project and those hooks. Maybe 2017 is the big year for Inferno.
