@@ -13,7 +13,7 @@ Web applications have the tendency to grow big as features are developed. This c
 <pre><code class="lang-javascript">require<span class="token punctuation" >.</span><span class="token function" >ensure</span><span class="token punctuation" >(</span>
   <span class="token comment" spellcheck="true">// Modules to load, but not execute yet</span>
   <span class="token punctuation" >[</span><span class="token string" >'./load-earlier'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >(</span>require<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
     <span class="token keyword" >const</span> loadEarlier <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./load-earlier'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 
     <span class="token comment" spellcheck="true">// Load later on demand and include to the same chunk</span>
@@ -25,6 +25,22 @@ Web applications have the tendency to grow big as features are developed. This c
 <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>As you can see, <code>require.ensure</code> definition is more powerful. The gotcha is that it doesn&#39;t support error handling. Often you can achieve what you want through a dynamic <code>import</code>, but it&#39;s good to know this form exists as well.</p>
+<p>The example above could be rewritten using a webpack specific function known as <code>require.include</code>:</p>
+<pre><code>require.ensure<span class="token punctuation" >(</span>
+  <span class="token punctuation" >[</span><span class="token punctuation" >]</span>,
+  <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+    require.include<span class="token punctuation" >(</span><span class="token string" >'./load-earlier'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    const loadEarlier <span class="token operator" >=</span> require<span class="token punctuation" >(</span><span class="token string" >'./load-earlier'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    // Load later on demand and include to the same chunk
+    const module1 <span class="token operator" >=</span> require<span class="token punctuation" >(</span><span class="token string" >'./module1'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    const module2 <span class="token operator" >=</span> require<span class="token punctuation" >(</span><span class="token string" >'./module2'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    <span class="token punctuation" >..</span>.
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre><p>If you had nested <code>require.ensure</code> definitions, you could pull a module to the parent chunk using either syntax.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The formats respect <code>output.publicPath</code> option. You can also use <code>output.chunkFilename</code> to shape where they output. Example: <code>chunkFilename: &#39;scripts/[name].js&#39;</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#tweaking-eslint" id="tweaking-eslint"></a><span class="text">Tweaking ESLint</span><a class="header-anchor-select" href="#tweaking-eslint">#</a></h3>
 <p>Given ESLint supports only standard ES6 out of the box, it requires some tweaking to work with dynamic imports. Install <em>babel-eslint</em> parser first:</p>
 <pre><code class="lang-bash">npm i babel-eslint -D
