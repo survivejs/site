@@ -115,7 +115,7 @@ Child html-webpack-plugin <span class="token keyword" >for</span> <span class="t
 <li><code>Time: 390ms</code> - Time it took to execute the build.</li>
 <li><code>app.js     3.06 kB  0[emitted]  app</code> - Name of the generated asset, size, the ids of the <strong>chunks</strong> into which it is related, status information telling how it was generated, name of the chunk.</li>
 <li><code>index.html  180 bytes  [emitted]</code> - Another generated asset that was emitted by the process.</li>
-<li><code>[0] ./app/component.js 135 bytes {0} [built]</code> - The id of the generated asset, name, size, entry chunk id, the way it was generated.</li>
+<li><code>[0] ./app/component.js 135 bytes {0} [built]</code> - The id of the entry asset, name, size, entry chunk id, the way it was generated.</li>
 <li><code>Child html-webpack-plugin for &quot;index.html&quot;:</code> - This is plugin related output. In this case <em>html-webpack-plugin</em> is doing output of its own.</li>
 </ul>
 <p>Examine the output below <code>build/</code>. If you look closely, you can see the same ids within the source. To see the application running, open the <code>build/index.html</code> file directly through a browser. On macOS <code>open ./build/index.html</code> works.</p>
@@ -127,6 +127,7 @@ Child html-webpack-plugin <span class="token keyword" >for</span> <span class="t
 <li><a href="https://www.npmjs.com/package/script-ext-html-webpack-plugin">script-ext-html-webpack-plugin</a> gives you more control over script tags and allows you to tune script loading further.</li>
 <li><a href="https://www.npmjs.com/package/html-webpack-cdn-plugin">html-webpack-cdn-plugin</a> makes it easier to use popular open source CDNs with it.</li>
 <li><a href="https://www.npmjs.com/package/multipage-webpack-plugin">multipage-webpack-plugin</a> builds on top of <em>html-webpack-plugin</em> and makes it easier to manage multi-page configurations.</li>
+<li><a href="https://www.npmjs.com/package/resource-hints-webpack-plugin">resource-hints-webpack-plugin</a> adds <a href="https://www.w3.org/TR/resource-hints/">resource hints</a> to your HTML files to speed up loading time.</li>
 </ul>
 <h2 class="header"><a class="header-anchor" href="#adding-a-build-shortcut" id="adding-a-build-shortcut"></a><span class="text">Adding a Build Shortcut</span><a class="header-anchor-select" href="#adding-a-build-shortcut">#</a></h2>
 <p>Given executing <code>node_modules/.bin/webpack</code> is a little verbose, we should do something about it. npm and <em>package.json</em> double as a task runner with some configuration. Adjust it as follows:</p>

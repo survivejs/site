@@ -143,7 +143,32 @@ req<span class="token punctuation" >.</span>id<span class="token punctuation" >;
 </code></pre>
 <p>This information is enough for generating an entire site. And this is exactly what I&#39;ve done with <a href="https://github.com/antwarjs/antwar">Antwar</a>. You can find a more elaborate example in that static site generator.</p>
 <p>The technique can be useful for other purposes, such as testing or adding files for webpack to watch. In that case you would set up a <code>require.context</code> within a file which you then point to through a webpack <code>entry</code>.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>Note that webpack will also turn statements written in the form <code>require(&#39;./pages/&#39; + pageName + &#39;.md&#39;)</code> into the <code>require.context</code> format!</blockquote><h2 class="header"><a class="header-anchor" href="#dynamic-paths-with-a-dynamic-import-" id="dynamic-paths-with-a-dynamic-import-"></a><span class="text">Dynamic Paths with a Dynamic <code>import</code></span><a class="header-anchor-select" href="#dynamic-paths-with-a-dynamic-import-">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Note that webpack will also turn statements written in the form <code>require(&#39;./pages/&#39; + pageName + &#39;.md&#39;)</code> into the <code>require.context</code> format!</blockquote><h2 class="header"><a class="header-anchor" href="#combining-multiple-require-context-s" id="combining-multiple-require-context-s"></a><span class="text">Combining Multiple <code>require.context</code>s</span><a class="header-anchor-select" href="#combining-multiple-require-context-s">#</a></h2>
+<p>Sometimes you might need to combine multiple separate <code>require.context</code>s into one. This can be done by wrapping them behind a similar API like this:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> <span class="token punctuation" >{</span> concat<span class="token punctuation" >,</span> uniq <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'lodash'</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >function</span> <span class="token function" >combineContexts</span><span class="token punctuation" >(</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>contexts<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >function</span> <span class="token function" >webpackContext</span><span class="token punctuation" >(</span>req<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Find the first match and execute</span>
+    <span class="token keyword" >const</span> matches <span class="token operator" >=</span> contexts<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>
+      context <span class="token operator" >=</span><span class="token operator" >></span> context<span class="token punctuation" >.</span><span class="token function" >keys</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >indexOf</span><span class="token punctuation" >(</span>req<span class="token punctuation" >)</span> <span class="token operator" >>=</span> <span class="token number" >0</span> <span class="token operator" >&amp;&amp;</span> context
+    <span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>a <span class="token operator" >=</span><span class="token operator" >></span> a<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    <span class="token keyword" >return</span> matches<span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >]</span> <span class="token operator" >&amp;&amp;</span> matches<span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >]</span><span class="token punctuation" >(</span>req<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+  webpackContext<span class="token punctuation" >.</span>keys <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >uniq</span><span class="token punctuation" >(</span>
+    concat<span class="token punctuation" >.</span><span class="token function" >apply</span><span class="token punctuation" >(</span>
+      <span class="token keyword" >null</span><span class="token punctuation" >,</span>
+      contexts<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>
+        context <span class="token operator" >=</span><span class="token operator" >></span> context<span class="token punctuation" >.</span><span class="token function" >keys</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+      <span class="token punctuation" >)</span>
+    <span class="token punctuation" >)</span>
+  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+  <span class="token keyword" >return</span> webpackContext<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#dynamic-paths-with-a-dynamic-import-" id="dynamic-paths-with-a-dynamic-import-"></a><span class="text">Dynamic Paths with a Dynamic <code>import</code></span><a class="header-anchor-select" href="#dynamic-paths-with-a-dynamic-import-">#</a></h2>
 <p>The same idea works with dynamic <code>import</code>. Instead of passing an absolute path, you can pass a partial one. Webpack will set up a context internally. Here&#39;s a brief example:</p>
 <pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// Set up a target or derive this somehow</span>
 <span class="token keyword" >const</span> target <span class="token operator" >=</span> <span class="token string" >'demo.json'</span><span class="token punctuation" >;</span>
