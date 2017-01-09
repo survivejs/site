@@ -32,10 +32,11 @@ vendor.js.map     167 kB       2  <span class="token punctuation" >[</span>emitt
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
 <div class="leanpub-insert">
-exports<span class="token punctuation" >.</span>minify <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+exports<span class="token punctuation" >.</span>minifyJavaScript <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>sourceMap<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
     plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
       <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>UglifyJsPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        sourceMap<span class="token punctuation" >:</span> sourceMap<span class="token punctuation" >,</span>
         compress<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
           warnings<span class="token punctuation" >:</span> <span class="token boolean" >false</span>
         <span class="token punctuation" >}</span>
@@ -61,7 +62,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
       <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
       parts<span class="token punctuation" >.</span><span class="token function" >loadJavaScript</span><span class="token punctuation" >(</span>PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-      parts<span class="token punctuation" >.</span><span class="token function" >minifyJavaScript</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      parts<span class="token punctuation" >.</span><span class="token function" >minifyJavaScript</span><span class="token punctuation" >(</span><span class="token string" >'source-map'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
       <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
     <span class="token punctuation" >)</span><span class="token punctuation" >;</span>

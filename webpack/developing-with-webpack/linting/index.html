@@ -92,7 +92,7 @@ build/
 </code></pre>
 <p>If you see more, fix them. We&#39;ll fix this one when we add more configuration in place.</p>
 <p>Beyond vanilla JSON, ESLint supports other formats, such as JavaScript or YAML. If you want to use a different format, name the file accordingly. I.e., <em>.eslintrc.yaml</em> would expect YAML. See the <a href="http://eslint.org/docs/user-guide/configuring#configuration-file-formats">documentation</a> for further details.</p>
-<h3 class="header"><a class="header-anchor" href="#connecting-eslint-with-webpack" id="connecting-eslint-with-webpack"></a><span class="text">Connecting ESLint with Webpack</span><a class="header-anchor-select" href="#connecting-eslint-with-webpack">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>When ESLint gives errors, npm will show a long <code>ELIFECYCLE error</code> error block of its own. It is possible to disable that using the <code>silent</code> flag like this: <code>npm run test:lint --silent</code> or a shortcut <code>npm run test:lint -s</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>This is a good time to try ESLint autofixing. You can run like this: <code>node_modules/.bin/eslint . --fix</code>. Check the exact location of the local ESLint through <code>npm bin</code>. Another alternative would be to push it behind a <em>package.json</em> script. Autofix won&#39;t be able to repair each error, but it can fix a lot. And as time goes by and ESLint improves, it is able to perform more work.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-eslint-with-webpack" id="connecting-eslint-with-webpack"></a><span class="text">Connecting ESLint with Webpack</span><a class="header-anchor-select" href="#connecting-eslint-with-webpack">#</a></h3>
 <p>We can make Webpack emit ESLint messages for us by using <a href="https://www.npmjs.com/package/eslint-loader">eslint-loader</a>. As the first step execute</p>
 <pre><code class="lang-bash">npm i eslint-loader --save-dev
 </code></pre>
@@ -117,7 +117,9 @@ exports<span class="token punctuation" >.</span>lintJavaScript <span class="toke
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>
   <span class="token punctuation" >{</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app
@@ -139,6 +141,12 @@ exports<span class="token punctuation" >.</span>lintJavaScript <span class="toke
   parts<span class="token punctuation" >.</span><span class="token function" >lintJavaScript</span><span class="token punctuation" >(</span>PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >)</span>
 </div>
 <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you execute <code>npm start</code> now and break some linting rule while developing, you should see that in the terminal output. The same should happen when you build the project.</p>
 <blockquote class="warning"><i class="icon-attention"></i>Note that the webpack configuration lints only the application code. If you want to lint webpack configuration itself, execute <code>npm run test:lint</code> separately.</blockquote><h3 class="header"><a class="header-anchor" href="#eslint-tips" id="eslint-tips"></a><span class="text">ESLint Tips</span><a class="header-anchor-select" href="#eslint-tips">#</a></h3>
