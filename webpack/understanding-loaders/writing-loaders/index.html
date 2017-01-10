@@ -41,7 +41,7 @@ The official documentat…"/><meta name="keywords" content="webpack,react,javasc
 
 <span class="token comment" spellcheck="true">// Mock loader context (`this`) so that we have an environment</span>
 <span class="token comment" spellcheck="true">// that's close enough to Webpack in order to avoid crashes</span>
-<span class="token comment" spellcheck="true">// during testing. Alternatively we could code defensively</span>
+<span class="token comment" spellcheck="true">// during testing. Alternatively, we could code defensively</span>
 <span class="token comment" spellcheck="true">// and protect against the missing data.</span>
 <span class="token keyword" >const</span> webpackContext <span class="token operator" >=</span> <span class="token punctuation" >{</span>
   cacheable<span class="token punctuation" >:</span> noop<span class="token punctuation" >,</span>
@@ -85,7 +85,7 @@ The official documentat…"/><meta name="keywords" content="webpack,react,javasc
 <span class="token keyword" >function</span> <span class="token function" >noop</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
 </code></pre>
 <p>Even though I&#39;m not a great fan of mocking, it works well enough for a case like this. The biggest fear is that webpack API changes at some point. This would mean my test code would break and I would have to rewrite a large part of it.</p>
-<p>It could be interesting to run the tests through webpack itself to avoid mocking. In this approach you wouldn&#39;t have to worry about the test facing parts so much and it would be more about capturing output for the given input.</p>
+<p>It could be interesting to run the tests through webpack itself to avoid mocking. In this approach, you wouldn&#39;t have to worry about the test facing parts so much and it would be more about capturing output for the given input.</p>
 <p>The problem is that this would add a significant overhead to the tests and bring problems of its own as you would have to figure out more effective ways to execute them.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Webpack loaders can be run standalone through <a href="https://www.npmjs.com/package/loader-runner">loader-runner</a>. Using <em>loader-runner</em> would be one way to avoid mocking.</blockquote><h2 class="header"><a class="header-anchor" href="#implementing-a-loader" id="implementing-a-loader"></a><span class="text">Implementing a Loader</span><a class="header-anchor-select" href="#implementing-a-loader">#</a></h2>
 <p>The loader implementation itself isn&#39;t entirely trivial due to the amount of functionality within it. I ended up using <a href="https://www.npmjs.org/package/cheerio">cheerio</a> to apply <em>highlight.js</em> on the code portions of the passed HTML. Cheerio provides an API resembling jQuery making it ideal for small tasks, such as this.</p>

@@ -56,7 +56,7 @@ Use --help to display the CLI options.
 document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >appendChild</span><span class="token punctuation" >(</span><span class="token function" >component</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#setting-up-webpack-configuration" id="setting-up-webpack-configuration"></a><span class="text">Setting Up Webpack Configuration</span><a class="header-anchor-select" href="#setting-up-webpack-configuration">#</a></h2>
-<p>We&#39;ll need to tell webpack how to deal with the assets we just set up. For this purpose we&#39;ll develop a <em>webpack.config.js</em> file. Webpack and its development server will be able to discover this file through convention.</p>
+<p>We&#39;ll need to tell webpack how to deal with the assets we just set up. For this purpose, we&#39;ll develop a <em>webpack.config.js</em> file. Webpack and its development server will be able to discover this file through convention.</p>
 <p>To keep things simple to maintain, we&#39;ll be using <a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a> to generate an <em>index.html</em> for our application. <em>html-webpack-plugin</em> wires up the generated assets with it. Install it to the project:</p>
 <pre><code class="lang-bash">npm i html-webpack-plugin --save-dev
 </code></pre>
@@ -138,7 +138,7 @@ Child html-webpack-plugin <span class="token keyword" >for</span> <span class="t
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 ...
 </code></pre>
-<p>Run <code>npm run build</code>. As a result you should get the same output as before.</p>
+<p>Run <code>npm run build</code>. As a result, you should get the same output as before.</p>
 <p>You can execute these scripts through <em>npm run</em>. If you run it as is, it will give you the listing of available scripts.</p>
 <p>This works because npm adds <em>node_modules/.bin</em> temporarily to the path. As a result, rather than having to write <code>&quot;build&quot;: &quot;node_modules/.bin/webpack&quot;</code>, we can do just <code>&quot;build&quot;: &quot;webpack&quot;</code>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>There are shortcuts like <em>npm start</em> and <em>npm test</em>. We can run these directly without <em>npm run</em> although that will work too. For those in hurry, you can use <em>npm t</em> to run your tests.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>It is possible to execute <em>npm run</em> anywhere within the project. It doesn&#39;t have to be run in the project root in order to work. npm will figure out the project root for you.</blockquote><h2 class="header"><a class="header-anchor" href="#useful-plugins-for-development" id="useful-plugins-for-development"></a><span class="text">Useful Plugins for Development</span><a class="header-anchor-select" href="#useful-plugins-for-development">#</a></h2>
@@ -147,7 +147,7 @@ Child html-webpack-plugin <span class="token keyword" >for</span> <span class="t
 <li><a href="https://www.npmjs.com/package/case-sensitive-paths-webpack-plugin">case-sensitive-paths-webpack-plugin</a> has been designed to avoid issues with mixed path naming. A path that is valid on macOS, might not be that on Windows. If you work in a mixed environment, this plugin can be handy.</li>
 <li><a href="https://www.npmjs.com/package/npm-install-webpack-plugin">npm-install-webpack-plugin</a> allows webpack to install and wire the installed packages with your <em>package.json</em> as you import new packages to your project. It&#39;s almost magical this way.</li>
 <li><a href="https://www.npmjs.com/package/system-bell-webpack-plugin">system-bell-webpack-plugin</a> rings the system bell on failure instead of letting webpack fail silently.</li>
-<li><a href="https://www.npmjs.com/package/friendly-errors-webpack-plugin">friendly-errors-webpack-plugin</a> improves on error reporting of webpack. It captures common errors and displays them in a more friendly manner, hence the name.</li>
+<li><a href="https://www.npmjs.com/package/friendly-errors-webpack-plugin">friendly-errors-webpack-plugin</a> improves on error reporting of webpack. It captures common errors and displays them in a friendlier manner, hence the name.</li>
 <li><a href="https://www.npmjs.com/package/nyan-progress-webpack-plugin">nyan-progress-webpack-plugin</a> can be used to get tidier output during the build process. Take care with Continuous Integration (CI) systems like Travis, though, as they might clobber the output. Webpack provides <code>webpack.ProgressPlugin</code> for the same purpose. No nyan there, though.</li>
 <li><a href="https://www.npmjs.com/package/webpack-dashboard">webpack-dashboard</a> gives an entire terminal based dashboard over the standard webpack output. If you prefer clear visual output, this one will come in handy.</li>
 </ul>

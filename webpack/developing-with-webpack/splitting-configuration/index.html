@@ -48,7 +48,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
   <span class="token keyword" >return</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>common<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>After this change our build should behave exactly the same way as before. This time, however, we have room for expansion at <code>merge</code> as we can branch there based on <code>env</code>.</p>
+<p>After this change our build should behave the same way as before. This time, however, we have room for expansion at <code>merge</code> as we can branch there based on <code>env</code>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Webpack 2 validates the configuration by default. If you make an obvious mistake, it will let you know. Earlier it was useful to set up a solution known as <a href="https://www.npmjs.com/package/webpack-validator">webpack-validator</a>, but that&#39;s not needed anymore.</blockquote><h2 class="header"><a class="header-anchor" href="#passing-env-from-webpack" id="passing-env-from-webpack"></a><span class="text">Passing <code>env</code> from Webpack</span><a class="header-anchor-select" href="#passing-env-from-webpack">#</a></h2>
 <p>Given our setup relies on <code>env</code>, we should pass it:</p>
 <p><strong>package.json</strong></p>

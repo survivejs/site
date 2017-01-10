@@ -46,7 +46,7 @@ index.html  218 bytes          <span class="token punctuation" >[</span>emitted<
 </code></pre>
 <p>As you can see, the size of the CSS file grew quite a bit. This is something we&#39;ll fix next with PurifyCSS.</p>
 <h2 class="header"><a class="header-anchor" href="#enabling-purifycss" id="enabling-purifycss"></a><span class="text">Enabling PurifyCSS</span><a class="header-anchor-select" href="#enabling-purifycss">#</a></h2>
-<p>Using PurifyCSS can lead to great savings. In their example they purify and minify Bootstrap (140 kB) in an application using ~40% of its selectors to mere ~35 kB. That&#39;s a big difference.</p>
+<p>Using PurifyCSS can lead to great savings. In their example, they purify and minify Bootstrap (140 kB) in an application using ~40% of its selectors to mere ~35 kB. That&#39;s a big difference.</p>
 <p>Webpack plugin known as <a href="https://www.npmjs.com/package/purifycss-webpack-plugin">purifycss-webpack-plugin</a> allows us to achieve results like this. It is preferable to use the <code>ExtractTextPlugin</code> with it. Install it first:</p>
 <pre><code class="lang-bash">npm i purifycss-webpack-plugin --save-dev
 </code></pre>
@@ -85,7 +85,7 @@ exports<span class="token punctuation" >.</span>purifyCSS <span class="token ope
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </div>
 </code></pre>
-<p>Next we need to connect this part to our configuration. It is important the plugin is used <em>after</em> the <code>ExtractTextPlugin</code> as otherwise it won&#39;t work!</p>
+<p>Next, we have to connect this part to our configuration. It is important the plugin is used <em>after</em> the <code>ExtractTextPlugin</code> as otherwise it won&#39;t work!</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
