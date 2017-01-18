@@ -36,14 +36,6 @@ module.exports = [
     "image": "jumper.jpg",
     "type": "chapter"
   },
-  /* Splitting Configuration */
-  {
-    "author": "stevepb",
-    "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
-    "license": "Public Domain",
-    "image": "axe.jpg",
-    "type": "chapter"
-  },
   /* Automatic Browser Refresh */
   {
     "author": "PublicDomainPictures",
@@ -66,6 +58,14 @@ module.exports = [
     "source": "https://www.flickr.com/photos/16324044@N00/10833734686",
     "license": "CC BY-NC-SA",
     "image": "lint.jpg",
+    "type": "chapter"
+  },
+  /* Splitting Configuration */
+  {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
+    "license": "Public Domain",
+    "image": "axe.jpg",
     "type": "chapter"
   },
 
