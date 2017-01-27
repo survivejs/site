@@ -71,6 +71,7 @@ module.exports = function webpack(headers) {
       'developing-with-webpack/optimizing-development': 'optimizing-build',
       'developing-with-webpack/refreshing-css': 'developing-with-webpack/automatic-browser-refresh',
       'developing-with-webpack/enabling-sourcemaps': 'building-with-webpack/enabling-sourcemaps',
+      'developing-with-webpack/splitting-configuration': 'developing-with-webpack/composing-configuration',
       'building-with-webpack/minifying-build': 'optimizing-build/minifying',
       'building-with-webpack/setting-environment-variables': 'optimizing-build/setting-environment-variables',
       'building-with-webpack/adding-hashes-to-filenames': 'optimizing-build/adding-hashes-to-filenames',
