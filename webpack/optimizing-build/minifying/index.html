@@ -126,6 +126,26 @@ vendor.js.map     343 kB       2  <span class="token punctuation" >[</span>emitt
 </div>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token comment" spellcheck="true">// HMR interface</span>
+<span class="token keyword" >if</span><span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// Capture hot update</span>
+  module<span class="token punctuation" >.</span>hot<span class="token punctuation" >.</span><span class="token function" >accept</span><span class="token punctuation" >(</span><span class="token string" >'./component'</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    <span class="token comment" spellcheck="true">// We have to go through CommonJS here and capture the</span>
+    <span class="token comment" spellcheck="true">// default export explicitly!</span>
+    <span class="token keyword" >const</span> nextComponent <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./component'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token keyword" >default</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token keyword" >const</span> nextComponent <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./component'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >component</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+    <span class="token comment" spellcheck="true">// Replace old content with the hot loaded one</span>
+    document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >replaceChild</span><span class="token punctuation" >(</span>nextComponent<span class="token punctuation" >,</span> demoComponent<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+    demoComponent <span class="token operator" >=</span> nextComponent<span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 </code></pre>
 <p>If you build the project again (<code>npm run build</code>), the vendor bundle should remain exactly the same while the application bundle changes due to the different kind of import. Webpack should pick up the unused code and shake it out of the project.</p>
 <p>The same idea works with dependencies that use the ES6 module definition. Given the related packaging standards are still emerging, it is possible you may have to be careful when consuming such packages. Webpack will try to resolve <em>package.json</em> <code>module</code> field for this purpose. See the <em>Consuming Packages</em> chapter for related techniques.</p>
