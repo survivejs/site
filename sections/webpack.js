@@ -77,6 +77,7 @@ module.exports = function webpack(headers) {
       'building-with-webpack/separating-css': 'handling-styles/separating-css',
       'building-with-webpack/eliminating-unused-css': 'handling-styles/eliminating-unused-css',
       'building-with-webpack/analyzing-build-statistics': 'optimizing-build/analyzing-build-statistics',
+      'building-with-webpack/hosting-on-github-pages/': 'appendices/deploying',
       'loading-assets': 'understanding-loaders',
       'loading-assets/formats-supported': 'understanding-loaders/loader-definitions',
       'loading-assets/loader-definitions': 'understanding-loaders/loader-definitions',
@@ -85,7 +86,7 @@ module.exports = function webpack(headers) {
       'loading-assets/loading-fonts': 'understanding-loaders/loading-fonts',
       'advanced-techniques/understanding-chunks': 'building-with-webpack/splitting-bundles',
       'advanced-techniques/linting-in-webpack': 'developing-with-webpack/linting',
-      'advanced-techniques/writing-loaders': 'understanding-loaders/writing-loaders'
+      'advanced-techniques/writing-loaders': 'understanding-loaders/writing-loaders',
     }
   };
 };

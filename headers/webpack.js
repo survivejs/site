@@ -197,14 +197,6 @@ module.exports = [
     "image": "cleaning.jpg",
     "type": "chapter"
   },
-  /* Hosting on GitHub Pages */
-  {
-    "author": "Acid Pix",
-    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
-    "license": "CC BY",
-    "image": "boots.jpg",
-    "type": "chapter"
-  },
 
   /* Optimizing Build */
   {
@@ -318,6 +310,14 @@ module.exports = [
     "source": "https://pixabay.com/en/font-lead-set-book-printing-705667/",
     "license": "Public Domain",
     "image": "language.jpg",
+    "type": "chapter"
+  },
+  /* Deploying */
+  {
+    "author": "Acid Pix",
+    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
+    "license": "CC BY",
+    "image": "boots.jpg",
     "type": "chapter"
   }
 ];
