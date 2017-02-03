@@ -72,7 +72,9 @@ module.exports = {
       return siteName;
     }
 
-    return siteName + ' - ' + pageTitle;
+    // No need for site title at page titles
+    return pageTitle || siteName;
+    //return siteName + ' - ' + pageTitle;
   },
   plugins: [
     rssPlugin({
