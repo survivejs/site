@@ -70,7 +70,7 @@ module.exports = function webpack(headers) {
       'developing-with-webpack/setting-up-npm-install-webpack-plugin': 'introduction',
       'developing-with-webpack/optimizing-development': 'optimizing-build',
       'developing-with-webpack/refreshing-css': 'developing-with-webpack/automatic-browser-refresh',
-      'developing-with-webpack/enabling-sourcemaps': 'building-with-webpack/enabling-sourcemaps',
+      'developing-with-webpack/enabling-sourcemaps': 'building-with-webpack/source-maps',
       'developing-with-webpack/splitting-configuration': 'developing-with-webpack/composing-configuration',
       'building-with-webpack/minifying-build': 'optimizing-build/minifying',
       'building-with-webpack/setting-environment-variables': 'optimizing-build/setting-environment-variables',
@@ -79,15 +79,18 @@ module.exports = function webpack(headers) {
       'building-with-webpack/eliminating-unused-css': 'handling-styles/eliminating-unused-css',
       'building-with-webpack/analyzing-build-statistics': 'optimizing-build/analyzing-build-statistics',
       'building-with-webpack/hosting-on-github-pages/': 'appendices/deploying',
+      'building-with-webpack/enabling-sourcemaps': 'building-with-webpack/source-maps',
       'loading-assets': 'understanding-loaders',
       'loading-assets/formats-supported': 'understanding-loaders/loader-definitions',
       'loading-assets/loader-definitions': 'understanding-loaders/loader-definitions',
       'loading-assets/loading-styles': 'handling-styles/loading',
       'loading-assets/loading-images': 'understanding-loaders/loading-images',
       'loading-assets/loading-fonts': 'understanding-loaders/loading-fonts',
+      'understanding-loaders/writing-loaders': 'extending-webpack/loaders',
       'advanced-techniques/understanding-chunks': 'building-with-webpack/splitting-bundles',
       'advanced-techniques/linting-in-webpack': 'developing-with-webpack/linting',
       'advanced-techniques/writing-loaders': 'understanding-loaders/writing-loaders',
+      'appendices/configuring-hmr-with-react/': 'advanced-techniques/configuring-react',
     }
   };
 };
