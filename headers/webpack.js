@@ -60,7 +60,7 @@ module.exports = [
     "image": "lint.jpg",
     "type": "chapter"
   },
-  /* Splitting Configuration */
+  /* Composing Configuration */
   {
     "author": "stevepb",
     "source": "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
@@ -69,7 +69,7 @@ module.exports = [
     "type": "chapter"
   },
 
-  /* Handling Styling */
+  /* Handling Styles */
   {
     "author": "Philip Brown",
     "source": "https://www.flickr.com/photos/67478016@N00/379064899",
@@ -140,14 +140,6 @@ module.exports = [
     "image": "typing.jpg",
     "type": "chapter"
   },
-  /* Writing Loaders */
-  {
-    "author": "jannebjo",
-    "source": "https://pixabay.com/en/volvo-wheel-loaders-machine-906771/",
-    "license": "Public Domain",
-    "image": "loader.jpg",
-    "type": "chapter"
-  },
 
   /* Building with Webpack */
   {
@@ -157,7 +149,7 @@ module.exports = [
     "image": "machine.jpg",
     "type": "part"
   },
-  /* Enabling Sourcemaps */
+  /* Source maps */
   {
     "author": "Efraimstochter",
     "source": "https://pixabay.com/en/wheels-machine-installation-art-784865/",
@@ -181,7 +173,7 @@ module.exports = [
     "image": "nuts.jpg",
     "type": "chapter"
   },
-  /* Processing with Babel*/
+  /* Processing with Babel */
   {
     "author": "Tama66",
     "source": "https://pixabay.com/en/tower-factory-headframe-threatening-1897536/",
@@ -230,6 +222,14 @@ module.exports = [
     "image": "hash.jpg",
     "type": "chapter"
   },
+  /* Separating Manifest */
+  {
+    "author": "cocoparisienne",
+    "source": "https://pixabay.com/en/texture-handwriting-s%C3%BCtterlin-1362879/",
+    "license": "Public Domain",
+    "image": "paper.jpg",
+    "type": "chapter"
+  },
   /* Analyzing Build Statistics */
   {
     "author": "jpj2000nl",
@@ -272,6 +272,31 @@ module.exports = [
     "type": "chapter"
   },
 
+  /* Extending Webpack */
+  {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/lens-extender-teleconverter-469798/",
+    "license": "Public Domain",
+    "image": "lens.jpg",
+    "type": "part"
+  },
+  /* Writing Loaders */
+  {
+    "author": "jannebjo",
+    "source": "https://pixabay.com/en/volvo-wheel-loaders-machine-906771/",
+    "license": "Public Domain",
+    "image": "loader.jpg",
+    "type": "chapter"
+  },
+  /* Writing Plugins */
+  {
+    "author": "qimono",
+    "source": "https://pixabay.com/en/plug-connection-technology-1859827/",
+    "license": "Public Domain",
+    "image": "plug.jpg",
+    "type": "chapter"
+  },
+
   /* Appendices */
   {
     "author": "forwimuwi73",
@@ -286,14 +311,6 @@ module.exports = [
     "source": "https://pixabay.com/en/adventure-compass-hand-macro-1850673/",
     "license": "Public Domain",
     "image": "compass.jpg",
-    "type": "chapter"
-  },
-  /* Configuring HMR with React */
-  {
-    "author": "DanielBrachlow",
-    "source": "https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/",
-    "license": "Public Domain",
-    "image": "inferno.jpg",
     "type": "chapter"
   },
   /* Writing ESLint Plugins */
