@@ -68,10 +68,6 @@ module.exports = {
   pageTitle: function(config, pageTitle) {
     var siteName = config.name;
 
-    if(pageTitle === 'index') {
-      return siteName;
-    }
-
     // No need for site title at page titles
     return pageTitle || siteName;
     //return siteName + ' - ' + pageTitle;

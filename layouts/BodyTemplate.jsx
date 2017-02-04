@@ -52,9 +52,5 @@ function getPageTitle(config, sectionTitle, pageTitle, separator) {
   var title = pageTitle || sectionTitle || '';
   var siteTitle = config.title || '';
 
-  if(title) {
-    return siteTitle + separator + title;
-  }
-
-  return siteTitle;
+  return title || siteTitle;
 }
