@@ -206,6 +206,14 @@ module.exports = [
     "image": "skinny.jpg",
     "type": "chapter"
   },
+  /* Tree Shaking */
+  {
+    "author": "Juho Vepsäläinen",
+    "source": "https://500px.com/photo/158267335/pines-lots-of-pines-by-juho-veps%C3%A4l%C3%A4inen",
+    "license": "CC BY-SA",
+    "image": "trees.jpg",
+    "type": "chapter"
+  },
   /* Setting Environment Variables */
   {
     "author": "cocoparisienne",
