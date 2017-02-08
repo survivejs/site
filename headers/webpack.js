@@ -91,6 +91,14 @@ module.exports = [
     "image": "taxi.jpg",
     "type": "chapter"
   },
+  /* Autoprefixing */
+  {
+    "author": "blickpixel",
+    "source": "https://pixabay.com/en/cube-game-cube-instantaneous-speed-568191/",
+    "license": "Public Domain",
+    "image": "cubes.jpg",
+    "type": "chapter"
+  },
   /* Eliminating Unused CSS */
   {
     "author": "heikografie",
@@ -187,6 +195,14 @@ module.exports = [
     "source": "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
     "license": "Public Domain",
     "image": "cleaning.jpg",
+    "type": "chapter"
+  },
+  /* Attaching Revision */
+  {
+    "author": "PIRO4D",
+    "source": "https://pixabay.com/en/sparlampe-energy-saving-bulbs-pear-1924223/",
+    "license": "Public Domain",
+    "image": "lamps.jpg",
     "type": "chapter"
   },
 
@@ -344,5 +360,13 @@ module.exports = [
     "license": "CC BY",
     "image": "boots.jpg",
     "type": "chapter"
-  }
+  },
+  /* Dynamic loading */
+  {
+    "author": "wongpear",
+    "source": "https://pixabay.com/en/microphone-mic-dynamic-audio-398738/",
+    "license": "Public Domain",
+    "image": "microphone.jpg",
+    "type": "chapter"
+  },
 ];
