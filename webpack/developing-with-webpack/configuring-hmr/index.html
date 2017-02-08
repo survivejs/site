@@ -1,8 +1,8 @@
 <html lang="en"><head><title>Configuring Hot Module Replacement</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 Hot Module Replacement (HMR) builds on top the WDS. It enables an interface that makes it possible to swap modules live. For example, style-loader can update your CSS without forcing a refresh. It is easy to perform HMR with CSS, as it doesn&#x27;t contain any application state.
 
-HMR is possible with Ja…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/inferno.jpg);"></div><h1 class="post__heading">Configuring Hot Module Replacement</h1><div class="header-extra"><a href="https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/">DanielBrachlow (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/webpack-compared">Webpack Compared</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/why-webpack">Why Webpack?</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing-with-webpack">Developing with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Configuring Hot Module Replacement</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/linting">Linting JavaScript</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/composing-configuration">Composing Configuration</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/handling-styles">Handling Styles with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/loading">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/separating-css">Separating CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/eliminating-unused-css">Eliminating Unused CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/linting">Linting CSS</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/understanding-loaders">Understanding Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loader-definitions">Loader Definitions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-images">Loading Images</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-fonts">Loading Fonts</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building-with-webpack">Building with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/source-maps">Source Maps</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/code-splitting">Code Splitting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/processing-with-babel">Processing with Babel</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/optimizing-build">Optimizing the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/minifying">Minifying the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/tree-shaking">Tree Shaking</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/setting-environment-variables">Setting Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/separating-manifest">Separating a Manifest</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/consuming-packages">Consuming Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/authoring-packages">Authoring Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/configuring-react">Configuring React</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/extending-webpack">Extending Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/loaders">Extending Webpack with Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/plugins">Extending Webpack with Plugins</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/searching-with-react">Searching with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/writing-eslint-plugins">Writing ESLint Plugins</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/customizing-eslint">Customizing ESLint</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/deploying">Deploying Applications</a></li></ul><div><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-webpack-170">SurviveJS - Webpack - v1.7.0</a></blockquote><div class="chapter-content"><p><strong>Hot Module Replacement</strong> (HMR) builds on top the WDS. It enables an interface that makes it possible to swap modules live. For example, <em>style-loader</em> can update your CSS without forcing a refresh. It is easy to perform HMR with CSS, as it doesn&#39;t contain any application state.</p>
-<p>HMR is possible with JavaScript too, but due to the state we have in our applications, it&#39;s harder. In the <em>Configuring Hot Module Replacement for React</em> appendix, we discuss how to set it up with React. You can use the same idea elsewhere as well.</p>
+HMR is possible with Ja…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/inferno.jpg);"></div><h1 class="post__heading">Configuring Hot Module Replacement</h1><div class="header-extra"><a href="https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/">DanielBrachlow (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/webpack-compared">Webpack Compared</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/why-webpack">Why Webpack?</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing-with-webpack">Developing with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Configuring Hot Module Replacement</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/linting">Linting JavaScript</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/composing-configuration">Composing Configuration</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/handling-styles">Handling Styles with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/loading">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/separating-css">Separating CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/autoprefixing">Autoprefixing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/eliminating-unused-css">Eliminating Unused CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/linting">Linting CSS</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/understanding-loaders">Understanding Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loader-definitions">Loader Definitions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-images">Loading Images</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-fonts">Loading Fonts</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building-with-webpack">Building with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/source-maps">Source Maps</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/processing-with-babel">Processing with Babel</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/code-splitting">Code Splitting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/attaching-revision">Attaching Revision to the Build</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/optimizing-build">Optimizing the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/minifying">Minifying the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/tree-shaking">Tree Shaking</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/setting-environment-variables">Setting Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/separating-manifest">Separating a Manifest</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/consuming-packages">Consuming Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/authoring-packages">Authoring Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/configuring-react">Configuring React</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/extending-webpack">Extending Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/loaders">Extending Webpack with Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/plugins">Extending Webpack with Plugins</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/searching-with-react">Searching with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/writing-eslint-plugins">Writing ESLint Plugins</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/customizing-eslint">Customizing ESLint</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/deploying">Deploying Applications</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/dynamic-loading">Dynamic Loading</a></li></ul><div><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-webpack-170">SurviveJS - Webpack - v1.7.0</a></blockquote><div class="chapter-content"><p><strong>Hot Module Replacement</strong> (HMR) builds on top the WDS. It enables an interface that makes it possible to swap modules live. For example, <em>style-loader</em> can update your CSS without forcing a refresh. It is easy to perform HMR with CSS, as it doesn&#39;t contain any application state.</p>
+<p>HMR is possible with JavaScript too, but due to the state we have in our applications, it&#39;s harder. In the <em>Configuring Hot Module Replacement for React</em> appendix, we discuss how to set it up with React. You can use the same idea elsewhere as well. Vue and <a href="https://www.npmjs.com/package/vue-hot-reload-api">vue-hot-reload-api</a> is a good example.</p>
 <p>We could use <code>webpack-dev-server --hot</code> to achieve this from the CLI. <code>--hot</code> enables the HMR portion from webpack through a specific plugin designed for this purpose and writes an entry pointing to a JavaScript file related to it. Another option is to go through webpack configuration as that provides more flexibility.</p>
 <h2 class="header"><a class="header-anchor" href="#defining-configuration-for-hmr" id="defining-configuration-for-hmr"></a><span class="text">Defining Configuration for HMR</span><a class="header-anchor-select" href="#defining-configuration-for-hmr">#</a></h2>
 <p>If you set up WDS through webpack configuration, you have to attach WDS specific options to a <code>devServer</code> field and enable <code>HotModuleReplacementPlugin</code>. In addition we need to combine the new configuration with the old one so that it doesn&#39;t get applied to the production build as HMR doesn&#39;t have any value there. Consider the basic setup below:</p>
@@ -23,34 +23,49 @@ HMR is possible with Ja…"/><meta name="keywords" content="webpack,react,javasc
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
 <div class="leanpub-insert">
-<span class="token keyword" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Enable history API fallback so HTML5 History API based</span>
-    <span class="token comment" spellcheck="true">// routing works. This is a good default that will come</span>
-    <span class="token comment" spellcheck="true">// in handy in more complicated setups.</span>
-    historyApiFallback<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+<span class="token keyword" >function</span> <span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> common<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 
-    <span class="token comment" spellcheck="true">// Don't refresh if hot loading fails. If you want</span>
-    <span class="token comment" spellcheck="true">// refresh behavior, set hot: true instead.</span>
-    hotOnly<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+<span class="token keyword" >function</span> <span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> config <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+    devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      <span class="token comment" spellcheck="true">// Enable history API fallback so HTML5 History API based</span>
+      <span class="token comment" spellcheck="true">// routing works. This is a good default that will come</span>
+      <span class="token comment" spellcheck="true">// in handy in more complicated setups.</span>
+      historyApiFallback<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
 
-    <span class="token comment" spellcheck="true">// Display only errors to reduce the amount of output.</span>
-    stats<span class="token punctuation" >:</span> <span class="token string" >'errors-only'</span><span class="token punctuation" >,</span>
+      <span class="token comment" spellcheck="true">// Don't refresh if hot loading fails. If you want</span>
+      <span class="token comment" spellcheck="true">// refresh behavior, set hot: true instead.</span>
+      hotOnly<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
 
-    <span class="token comment" spellcheck="true">// Parse host and port from env to allow customization.</span>
-    <span class="token comment" spellcheck="true">//</span>
-    <span class="token comment" spellcheck="true">// If you use Vagrant or Cloud9, set</span>
-    <span class="token comment" spellcheck="true">// host: options.host || '0.0.0.0';</span>
-    <span class="token comment" spellcheck="true">//</span>
-    <span class="token comment" spellcheck="true">// 0.0.0.0 is available to all network devices</span>
-    <span class="token comment" spellcheck="true">// unlike default `localhost`.</span>
-    host<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>HOST<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Defaults to `localhost`</span>
-    port<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>PORT<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Defaults to 8080</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+      <span class="token comment" spellcheck="true">// Display only errors to reduce the amount of output.</span>
+      stats<span class="token punctuation" >:</span> <span class="token string" >'errors-only'</span><span class="token punctuation" >,</span>
+
+      <span class="token comment" spellcheck="true">// Parse host and port from env to allow customization.</span>
+      <span class="token comment" spellcheck="true">//</span>
+      <span class="token comment" spellcheck="true">// If you use Docker, Vagrant or Cloud9, set</span>
+      <span class="token comment" spellcheck="true">// host: options.host || '0.0.0.0';</span>
+      <span class="token comment" spellcheck="true">//</span>
+      <span class="token comment" spellcheck="true">// 0.0.0.0 is available to all network devices</span>
+      <span class="token comment" spellcheck="true">// unlike default `localhost`.</span>
+      host<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>HOST<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Defaults to `localhost`</span>
+      port<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>PORT<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Defaults to 8080</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+  <span class="token keyword" >return</span> Object<span class="token punctuation" >.</span><span class="token function" >assign</span><span class="token punctuation" >(</span>
+    <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    common<span class="token punctuation" >,</span>
+    config<span class="token punctuation" >,</span>
+    <span class="token punctuation" >{</span>
+      plugins<span class="token punctuation" >:</span> common<span class="token punctuation" >.</span>plugins<span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span>config<span class="token punctuation" >.</span>plugins<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
 </div>
 
 module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
@@ -61,17 +76,10 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 </div>
 <div class="leanpub-insert">
   <span class="token keyword" >if</span> <span class="token punctuation" >(</span>env <span class="token operator" >===</span> <span class="token string" >'production'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >return</span> common<span class="token punctuation" >;</span>
+    <span class="token keyword" >return</span> <span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
 
-  <span class="token keyword" >return</span> Object<span class="token punctuation" >.</span><span class="token function" >assign</span><span class="token punctuation" >(</span>
-    <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    common<span class="token punctuation" >,</span>
-    developmentConfig<span class="token punctuation" >,</span>
-    <span class="token punctuation" >{</span>
-      plugins<span class="token punctuation" >:</span> common<span class="token punctuation" >.</span>plugins<span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span>developmentConfig<span class="token punctuation" >.</span>plugins<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token keyword" >return</span> <span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </div>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
@@ -82,22 +90,26 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>You can access the application alternately through <strong><a href="http://localhost:8080/webpack-dev-server/">http://localhost:8080/webpack-dev-server/</a></strong> instead of the root. It will provide status information within the browser itself at the top of the application. If your application relies on WebSockets and you use WDS proxying, you&#39;ll need to use this specific url: otherwise, WDS logic will interfere.</p>
 <blockquote class="warning"><i class="icon-attention"></i><em>webpack-dev-server</em> can be picky about paths. If the given <code>include</code> paths don&#39;t match the system casing exactly, this can cause it to fail to work. Webpack <a href="https://github.com/webpack/webpack/issues/675">issue #675</a> discusses this in more detail.</blockquote><blockquote class="warning"><i class="icon-attention"></i>You should <strong>not</strong> enable HMR for your production configuration. It will likely work, but having the capability enabled there won&#39;t do any good and it will make your bundles bigger than they should be.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/dotenv">dotenv</a> allows you to define environment variables through a <em>.env</em> file. This can be somewhat convenient during development and allows you to control the host and port setting of our setup easily.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>If you want to open a browser tab directly after running the server, set <code>devServer.open: true</code>. You can also achieve the same result through the CLI by using <code>webpack-dev-server --open</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#making-the-module-ids-more-debuggable" id="making-the-module-ids-more-debuggable"></a><span class="text">Making the Module Ids More Debuggable</span><a class="header-anchor-select" href="#making-the-module-ids-more-debuggable">#</a></h2>
 <p>When webpack generates a bundle, it needs to tell different modules apart. By default, it uses numbers for this purpose. The problem is that this makes it difficult to debug the code if you must inspect the resulting code. It can also lead to issues with hashing behavior.</p>
-<p>To overcome this problem, it is a good idea to use an alternative module id scheme. As it happens, webpack provides a plugin that&#39;s ideal for debugging. This plugin, <code>NamedModulesPlugin</code>, emits module paths over numeric ids. This information is useful for development.</p>
+<p>To overcome this problem, it is a good idea to use an alternative module ID scheme. As it happens, webpack provides a plugin that&#39;s ideal for debugging. This plugin, <code>NamedModulesPlugin</code>, emits module paths over numeric IDs. This information is useful for development.</p>
 <p>You can enable this better behavior as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token keyword" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<span class="token keyword" >function</span> <span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> config <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+    devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>NamedModulesPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>NamedModulesPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
@@ -140,35 +152,39 @@ document<span class="token punctuation" >.</span>body<span class="token punctuat
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
+<span class="token keyword" >function</span> <span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> config <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+    devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token keyword" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
 <div class="leanpub-insert">
-    watchOptions<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      <span class="token comment" spellcheck="true">// Delay the rebuild after the first change</span>
-      aggregateTimeout<span class="token punctuation" >:</span> <span class="token number" >300</span><span class="token punctuation" >,</span>
-      <span class="token comment" spellcheck="true">// Poll using interval (in ms, accepts boolean too)</span>
-      poll<span class="token punctuation" >:</span> <span class="token number" >1000</span><span class="token punctuation" >,</span>
+      watchOptions<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+        <span class="token comment" spellcheck="true">// Delay the rebuild after the first change</span>
+        aggregateTimeout<span class="token punctuation" >:</span> <span class="token number" >300</span><span class="token punctuation" >,</span>
+        <span class="token comment" spellcheck="true">// Poll using interval (in ms, accepts boolean too)</span>
+        poll<span class="token punctuation" >:</span> <span class="token number" >1000</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
     <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-</div>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <div class="leanpub-insert">
-    <span class="token comment" spellcheck="true">// ignore node_modules so CPU usage with poll watching drops significantly</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>WatchIgnorePlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-      path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'node_modules'</span><span class="token punctuation" >)</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token comment" spellcheck="true">// ignore node_modules so CPU usage with poll watching drops significantly</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>WatchIgnorePlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+        path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'node_modules'</span><span class="token punctuation" >)</span>
+      <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <p>Given this setup polls the file system, it is more resource intensive. It&#39;s worth giving a go if the default doesn&#39;t work, though.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>There are more details in <em>webpack-dev-server</em> issue <a href="https://github.com/webpack/webpack-dev-server/issues/155">#155</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-wds-entry-points-manually" id="setting-wds-entry-points-manually"></a><span class="text">Setting WDS Entry Points Manually</span><a class="header-anchor-select" href="#setting-wds-entry-points-manually">#</a></h2>
-<p>In the setup above, the WDS-related entries were injected automatically. Assuming you are using WDS through Node.js, you would have to set them yourself as the Node.js API doesn&#39;t support injecting. The example below illustrates how you might achieve this:</p>
+<p>In the setup above, the WDS-related entries were injected automatically. Assuming you are using WDS through Node, you would have to set them yourself as the Node API doesn&#39;t support injecting. The example below illustrates how you might achieve this:</p>
 <pre><code class="lang-javascript">entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
   hmr<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
     <span class="token comment" spellcheck="true">// Include the client code.</span>
@@ -185,7 +201,25 @@ document<span class="token punctuation" >.</span>body<span class="token punctuat
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<h2 class="header"><a class="header-anchor" href="#other-features-of-webpack-dev-server-" id="other-features-of-webpack-dev-server-"></a><span class="text">Other Features of <em>webpack-dev-server</em></span><a class="header-anchor-select" href="#other-features-of-webpack-dev-server-">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#configuring-hmr-with-redux" id="configuring-hmr-with-redux"></a><span class="text">Configuring HMR with Redux</span><a class="header-anchor-select" href="#configuring-hmr-with-redux">#</a></h2>
+<p><a href="http://redux.js.org/">Redux</a> is a popular state management library designed HMR in mind. To configure Redux reducers to support HMR, you have to implement the protocol as above:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span> <span class="token function" >configureStore</span><span class="token punctuation" >(</span>initialState<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> store <span class="token operator" >=</span> <span class="token function" >createStoreWithMiddleware</span><span class="token punctuation" >(</span>rootReducer<span class="token punctuation" >,</span> initialState<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+  <span class="token keyword" >if</span><span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Enable webpack hot module replacement for reducers</span>
+    module<span class="token punctuation" >.</span>hot<span class="token punctuation" >.</span><span class="token function" >accept</span><span class="token punctuation" >(</span>
+      <span class="token string" >'../reducers'</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> store<span class="token punctuation" >.</span><span class="token function" >replaceReducer</span><span class="token punctuation" >(</span>reducers<span class="token punctuation" >)</span>
+    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+
+  <span class="token keyword" >return</span> store<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<blockquote class="tip"><i class="icon-attention-circled"></i>You can find <a href="https://github.com/survivejs-demos/redux-demo">a full implementation of the idea online</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#other-features-of-webpack-dev-server-" id="other-features-of-webpack-dev-server-"></a><span class="text">Other Features of <em>webpack-dev-server</em></span><a class="header-anchor-select" href="#other-features-of-webpack-dev-server-">#</a></h2>
 <p>WDS provides quite a bit of functionality beyond what was covered above. There are two important fields that you should be aware of:</p>
 <ul>
 <li><code>devServer.contentBase</code> - Assuming you don&#39;t generate <em>index.html</em> dynamically like in this setup and rather prefer to maintain it yourself in some directory, you&#39;ll need to point WDS to it. <code>contentBase</code> accepts either a path (e.g., <code>&#39;build&#39;</code>) or an array of paths (e.g., <code>[&#39;build&#39;, &#39;images&#39;]</code>). This defaults to the project root.</li>

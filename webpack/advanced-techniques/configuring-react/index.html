@@ -1,51 +1,34 @@
 <html lang="en"><head><title>Configuring React</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
 Facebook&#x27;s React is a popular alternative for developing web applications. Even if you don&#x27;t use it, it can be valuable to understand how to configure it.
 
-I will discuss a couple of common ways first and then show you how to integrate React to the book project. You will also see how to enable hot …"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/panel.jpg);"></div><h1 class="post__heading">Configuring React</h1><div class="header-extra"><a href="https://pixabay.com/en/event-technology-light-panel-644537/">Marko Heinrich (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/webpack-compared">Webpack Compared</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/why-webpack">Why Webpack?</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing-with-webpack">Developing with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/configuring-hmr">Configuring Hot Module Replacement</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/linting">Linting JavaScript</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/composing-configuration">Composing Configuration</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/handling-styles">Handling Styles with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/loading">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/separating-css">Separating CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/eliminating-unused-css">Eliminating Unused CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/linting">Linting CSS</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/understanding-loaders">Understanding Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loader-definitions">Loader Definitions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-images">Loading Images</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-fonts">Loading Fonts</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building-with-webpack">Building with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/source-maps">Source Maps</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/code-splitting">Code Splitting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/processing-with-babel">Processing with Babel</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/optimizing-build">Optimizing the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/minifying">Minifying the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/tree-shaking">Tree Shaking</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/setting-environment-variables">Setting Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/separating-manifest">Separating a Manifest</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/consuming-packages">Consuming Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/authoring-packages">Authoring Packages</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Configuring React</span></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/extending-webpack">Extending Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/loaders">Extending Webpack with Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/plugins">Extending Webpack with Plugins</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/searching-with-react">Searching with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/writing-eslint-plugins">Writing ESLint Plugins</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/customizing-eslint">Customizing ESLint</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/deploying">Deploying Applications</a></li></ul><div><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-webpack-170">SurviveJS - Webpack - v1.7.0</a></blockquote><div class="chapter-content"><p>Facebook&#39;s <a href="https://facebook.github.io/react/">React</a> is a popular alternative for developing web applications. Even if you don&#39;t use it, it can be valuable to understand how to configure it.</p>
-<p>I will discuss a couple of common ways first and then show you how to integrate React to the book project. You will also see how to enable hot module replacement with React using <em>react-hot-loader</em> 3 then. I will discuss more specific techniques, such as code splitting in React, after that.</p>
+"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/panel.jpg);"></div><h1 class="post__heading">Configuring React</h1><div class="header-extra"><a href="https://pixabay.com/en/event-technology-light-panel-644537/">Marko Heinrich (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/webpack-compared">Webpack Compared</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/why-webpack">Why Webpack?</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing-with-webpack">Developing with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/configuring-hmr">Configuring Hot Module Replacement</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/linting">Linting JavaScript</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing-with-webpack/composing-configuration">Composing Configuration</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/handling-styles">Handling Styles with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/loading">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/separating-css">Separating CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/autoprefixing">Autoprefixing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/eliminating-unused-css">Eliminating Unused CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/handling-styles/linting">Linting CSS</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/understanding-loaders">Understanding Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loader-definitions">Loader Definitions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-images">Loading Images</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/understanding-loaders/loading-fonts">Loading Fonts</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building-with-webpack">Building with Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/source-maps">Source Maps</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/splitting-bundles">Splitting Bundles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/processing-with-babel">Processing with Babel</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/code-splitting">Code Splitting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/cleaning-build">Cleaning the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building-with-webpack/attaching-revision">Attaching Revision to the Build</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/optimizing-build">Optimizing the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/minifying">Minifying the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/tree-shaking">Tree Shaking</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/setting-environment-variables">Setting Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/separating-manifest">Separating a Manifest</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing-build/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/advanced-techniques">Advanced Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/consuming-packages">Consuming Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/advanced-techniques/authoring-packages">Authoring Packages</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Configuring React</span></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/extending-webpack">Extending Webpack</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/loaders">Extending Webpack with Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending-webpack/plugins">Extending Webpack with Plugins</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/searching-with-react">Searching with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/writing-eslint-plugins">Writing ESLint Plugins</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/customizing-eslint">Customizing ESLint</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/deploying">Deploying Applications</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/dynamic-loading">Dynamic Loading</a></li></ul><div><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-webpack-170">SurviveJS - Webpack - v1.7.0</a></blockquote><div class="chapter-content"><p>Facebook&#39;s <a href="https://facebook.github.io/react/">React</a> is a popular alternative for developing web applications. Even if you don&#39;t use it, it can be valuable to understand how to configure it.</p>
 <h2 class="header"><a class="header-anchor" href="#get-started-fast-with-create-react-app-" id="get-started-fast-with-create-react-app-"></a><span class="text">Get Started Fast with <em>create-react-app</em></span><a class="header-anchor-select" href="#get-started-fast-with-create-react-app-">#</a></h2>
 <p>The fastest way to get started with webpack and React is to use <a href="https://www.npmjs.com/package/create-react-app">create-react-app</a>. It encapsulates a lot of best practices and it is particularly useful if you want to get started with a little project fast with minimal setup.</p>
 <p>One of the main attractions of <em>create-react-app</em> is a feature known as <em>ejecting</em>. This means that instead of treating it as a project dependency, you&#39;ll get a full webpack setup out of it.</p>
 <p>There&#39;s a gotcha, though. After you eject, you cannot go back to the dependency-based model, and you will have to maintain the resulting setup yourself.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-babel-with-react" id="setting-up-babel-with-react"></a><span class="text">Setting Up Babel with React</span><a class="header-anchor-select" href="#setting-up-babel-with-react">#</a></h2>
 <p>The <em>Processing with Babel</em> chapter covers the essentials of using Babel with webpack. There&#39;s some React specific setup you should perform, though. Given most of React projects rely on <a href="https://facebook.github.io/jsx/">JSX</a> format, you will have to enable it through Babel.</p>
-<p>JSX is a superset of JavaScript that allows you to mix XMLish syntax with JavaScript. A lot of people find this convenient as they get something that resembles what they know already while they can use the power of JavaScript.</p>
-<p>Some React developers prefer to attach type annotations to their code using the <a href="http://flowtype.org/">Flow</a> language extension. The technology fits React well, but it&#39;s not restricted to it. <a href="http://www.typescriptlang.org/">TypeScript</a> is another alternative. Both work with JSX.</p>
-<h3 class="header"><a class="header-anchor" href="#configuring-with-webpack" id="configuring-with-webpack"></a><span class="text">Configuring with Webpack</span><a class="header-anchor-select" href="#configuring-with-webpack">#</a></h3>
-<p>Babel allows us to use JSX with React easily. Some people prefer to name their React components containing JSX using the <code>.jsx</code> suffix. Webpack can be configured to work with this convention. The benefit of doing this is that then your editor will be able to pick up the right syntax based on the file name alone. Another option is to configure the editor to use JSX syntax for <code>.js</code> files as it&#39;s a superset of JavaScript.</p>
-<p>Webpack provides <a href="https://webpack.js.org/guides/migrating/#resolve-extensions">resolve.extensions</a> field that can be used for configuring its extension lookup. If you want to allow imports like <code>import Button from &#39;./Button&#39;;</code> while naming the file as <em>Button.jsx</em>, set it up as follows:</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  resolve<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    extensions<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'.js'</span><span class="token punctuation" >,</span> <span class="token string" >'.jsx'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-</code></pre>
-<p>The loader configuration is straightforward as well. Instead of matching against <code>/\.js$/</code>, we can expand it to include <code>.jsx</code> extension through <code>/\.(js|jsx)$/</code>.</p>
-<blockquote class="warning"><i class="icon-attention"></i>In webpack 1 you had to use <code>extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.jsx&#39;]</code> to match files without an extension too. This isn&#39;t needed in webpack 2.</blockquote><h3 class="header"><a class="header-anchor" href="#configuring-with-babel" id="configuring-with-babel"></a><span class="text">Configuring with Babel</span><a class="header-anchor-select" href="#configuring-with-babel">#</a></h3>
-<p>To enable JSX with Babel, an additional preset is required. Install it:</p>
+<p>To get React, and particularly JSX, work with Babel, you should set up the preset:</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> babel-preset-react --save-dev
 </code></pre>
-<p>You also have to connect the preset with Babel configuration. Here&#39;s the rough idea:</p>
+<p>You also have to connect the preset with Babel configuration:</p>
 <p><strong>.babelrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"plugins"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"syntax-dynamic-import"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
   <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
+<div class="leanpub-insert">
+    <span class="token string" >"react"</span><span class="token punctuation" >,</span>
+</div>
     <span class="token punctuation" >[</span>
       <span class="token string" >"es2015"</span><span class="token punctuation" >,</span>
       <span class="token punctuation" >{</span>
         <span class="token property" >"modules"</span><span class="token operator" >:</span> <span class="token boolean" >false</span>
       <span class="token punctuation" >}</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    <span class="token string" >"react"</span>
+    <span class="token punctuation" >]</span>
   <span class="token punctuation" >]</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<h3 class="header"><a class="header-anchor" href="#configuring-with-eslint" id="configuring-with-eslint"></a><span class="text">Configuring with ESLint</span><a class="header-anchor-select" href="#configuring-with-eslint">#</a></h3>
+<h2 class="header"><a class="header-anchor" href="#configuring-react-with-eslint" id="configuring-react-with-eslint"></a><span class="text">Configuring React with ESLint</span><a class="header-anchor-select" href="#configuring-react-with-eslint">#</a></h2>
 <p>Using React with ESLint and JSX requires some extra work as well. <a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a> does a part of the work, but also some ESLint configuration is needed.</p>
 <p>Install <em>eslint-plugin-react</em> to get started:</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> eslint-plugin-react --save-dev
@@ -53,57 +36,153 @@ I will discuss a couple of common ways first and then show you how to integrate 
 <p>The suggested minimum configuration is as follows:</p>
 <p><strong>.eslintrc.js</strong></p>
 <pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Enable starter rules</span>
+  <span class="token string" >"env"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    <span class="token string" >"browser"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token string" >"commonjs"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token string" >"es6"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token string" >"node"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<div class="leanpub-delete">
+  <span class="token string" >"extends"</span><span class="token punctuation" >:</span> <span class="token string" >"eslint:recommended"</span><span class="token punctuation" >,</span>
+</div>
+<div class="leanpub-insert">
   <span class="token string" >"extends"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"eslint:recommended"</span><span class="token punctuation" >,</span> <span class="token string" >"plugin:react/recommended"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-  <span class="token comment" spellcheck="true">// Enable babel-eslint if you rely on custom Babel features.</span>
-  <span class="token comment" spellcheck="true">// Not needed if you rely on standard ES6 features alone.</span>
+</div>
   <span class="token string" >"parser"</span><span class="token punctuation" >:</span> <span class="token string" >"babel-eslint"</span><span class="token punctuation" >,</span>
   <span class="token string" >"parserOptions"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     <span class="token string" >"sourceType"</span><span class="token punctuation" >:</span> <span class="token string" >"module"</span><span class="token punctuation" >,</span>
     <span class="token string" >"allowImportExportEverywhere"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+<div class="leanpub-insert">
     <span class="token comment" spellcheck="true">// Enable JSX</span>
     <span class="token string" >"ecmaFeatures"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       <span class="token string" >"jsx"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token comment" spellcheck="true">// Enable eslint-plugin-react</span>
+<div class="leanpub-insert">
   <span class="token string" >"plugins"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
     <span class="token string" >"react"</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+</div>
   <span class="token string" >"rules"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+    <span class="token string" >"comma-dangle"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"error"</span><span class="token punctuation" >,</span> <span class="token string" >"always-multiline"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token string" >"indent"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"error"</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token string" >"linebreak-style"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"error"</span><span class="token punctuation" >,</span> <span class="token string" >"unix"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token string" >"quotes"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"error"</span><span class="token punctuation" >,</span> <span class="token string" >"single"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token string" >"semi"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"error"</span><span class="token punctuation" >,</span> <span class="token string" >"always"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token string" >"no-unused-vars"</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"warn"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token string" >"no-console"</span><span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>You can enable more specific rules based on your liking, but the <code>plugin:react/recommended</code> gives a good starting point. It is important to remember to enable JSX at the <code>parseOptions</code> as well.</p>
-<h2 class="header"><a class="header-anchor" href="#rendering-a-react-application" id="rendering-a-react-application"></a><span class="text">Rendering a React Application</span><a class="header-anchor-select" href="#rendering-a-react-application">#</a></h2>
+<p>You can enable more specific rules based on your liking, but the <code>plugin:react/recommended</code> gives a good starting point. It is important to remember to enable JSX at the <code>parserOptions</code> as well.</p>
+<h2 class="header"><a class="header-anchor" href="#setting-up-a-stub-for-react-demo" id="setting-up-a-stub-for-react-demo"></a><span class="text">Setting Up a Stub for React Demo</span><a class="header-anchor-select" href="#setting-up-a-stub-for-react-demo">#</a></h2>
 <p>To get a simple React application running, you&#39;ll need to mount it to a DOM element first. <a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a> can come in handy here. It can be combined with <a href="https://www.npmjs.com/package/html-webpack-template">html-webpack-template</a> or <a href="https://www.npmjs.com/package/html-webpack-template-pug">html-webpack-template-pug</a> for more advanced functionality. You can also provide a custom template of your own to it.</p>
-<p>Consider the following example:</p>
+<p>Install the template first:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> html-webpack-template --save-dev
+</code></pre>
+<p>To retain the existing demonstration in place, it is possible to generate a page for both the original demonstration and the new one. This is possible by running webpack in <em>multi-compiler mode</em> and splitting up the configuration per page. Adjust as follows:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'html-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
 <span class="token keyword" >const</span> HtmlWebpackTemplate <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'html-webpack-template'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      template<span class="token punctuation" >:</span> HtmlWebpackTemplate<span class="token punctuation" >,</span>
-      title<span class="token punctuation" >:</span> <span class="token string" >'Webpack demo'</span><span class="token punctuation" >,</span>
-      appMountId<span class="token punctuation" >:</span> <span class="token string" >'app'</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Generate #app where to mount</span>
-      mobile<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Scale page on mobile</span>
-      inject<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// html-webpack-template requires this to work</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+<span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<div class="leanpub-insert">
+  reactDemo<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >,</span> <span class="token string" >'react'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+  build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >'build'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+  <span class="token punctuation" >{</span>
+<div class="leanpub-delete">
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        title<span class="token punctuation" >:</span> <span class="token string" >'Webpack demo'</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<div class="leanpub-insert">
+<span class="token keyword" >function</span> <span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        title<span class="token punctuation" >:</span> <span class="token string" >'Webpack demo'</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+
+<span class="token keyword" >function</span> <span class="token function" >react</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      react<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>reactDemo<span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        template<span class="token punctuation" >:</span> HtmlWebpackTemplate<span class="token punctuation" >,</span>
+        title<span class="token punctuation" >:</span> <span class="token string" >'React demo'</span><span class="token punctuation" >,</span>
+        filename<span class="token punctuation" >:</span> <span class="token string" >'react/index.html'</span><span class="token punctuation" >,</span>
+        appMountId<span class="token punctuation" >:</span> <span class="token string" >'app'</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Generate #app where to mount</span>
+        mobile<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Scale page on mobile</span>
+        inject<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// html-webpack-template needs this to work</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</div>
+
+<div class="leanpub-delete">
+module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>env <span class="token operator" >===</span> <span class="token string" >'production'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >return</span> <span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+
+  <span class="token keyword" >return</span> <span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>env <span class="token operator" >===</span> <span class="token string" >'production'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >return</span> <span class="token punctuation" >[</span>
+      <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >react</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+
+  <span class="token keyword" >return</span> <span class="token punctuation" >[</span>
+    <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >react</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</div>
 </code></pre>
-<p>Now that there&#39;s a template and a DOM element for where to render, React needs to be told to render there:</p>
-<p><strong>app/index.js</strong></p>
+<p>The new entry will look up for <em>app/react.js</em>. To prove that the setup works, write a stub file like this:</p>
+<p><strong>app/react.js</strong></p>
+<pre><code class="lang-javascript">console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'react demo'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>If you run the application now (<code>npm start</code>) and navigate to <code>http://localhost:8080/react</code>, you should see a blank page and corresponding message at the browser console.</p>
+<p><img src="/webpack/images/react-stub.png" alt="A stub for React demo"></p>
+<h2 class="header"><a class="header-anchor" href="#connecting-react-with-the-project" id="connecting-react-with-the-project"></a><span class="text">Connecting React with the Project</span><a class="header-anchor-select" href="#connecting-react-with-the-project">#</a></h2>
+<p>To make sure the project has the dependencies in place, install React and <a href="https://www.npmjs.com/package/react-dom">react-dom</a>. The latter package is needed to render the application to the DOM.</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> react react-dom --save
+</code></pre>
+<p>Everything should be set up for rendering dummy data now:</p>
+<p><strong>app/react.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> ReactDOM <span class="token keyword" >from</span> <span class="token string" >'react-dom'</span><span class="token punctuation" >;</span>
 
@@ -112,13 +191,8 @@ ReactDOM<span class="token punctuation" >.</span><span class="token function" >r
   document<span class="token punctuation" >.</span><span class="token function" >getElementById</span><span class="token punctuation" >(</span><span class="token string" >'app'</span><span class="token punctuation" >)</span>
 <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>It would be possible to extend the application from here. Depending on your tastes, you might want to name the file as <em>index.jsx</em> instead, but sticking with <em>index.js</em> can be acceptable too.</p>
-<h2 class="header"><a class="header-anchor" href="#connecting-react-with-the-project" id="connecting-react-with-the-project"></a><span class="text">Connecting React with the Project</span><a class="header-anchor-select" href="#connecting-react-with-the-project">#</a></h2>
-<p>Follow the instructions above to attach Babel and ESLint to the project. Especially installing <em>babel-preset-react</em>, <em>eslint-plugin-react</em>, and altering <em>.babelrc</em> and <em>.eslintrc.js</em> is important.</p>
-<p>Webpack configuration needs some work as well given we need that mounting point for the application. Adjust the configuration as above and make sure you include <em>html-webpack-template</em> to the project.</p>
-<p>Given the project contains only React, you have to install <em>react-dom</em> to it (<code>npm install react-dom --save</code>). That will be needed for rendering the application to the DOM.</p>
-<p>The application should run the same way as before after these steps and it&#39;s ready for further work.</p>
-<h2 class="header"><a class="header-anchor" href="#configuring-hot-module-replacement-with-react" id="configuring-hot-module-replacement-with-react"></a><span class="text">Configuring Hot Module Replacement with React</span><a class="header-anchor-select" href="#configuring-hot-module-replacement-with-react">#</a></h2>
+<p>Even though we have a basic React application running now, it&#39;s a little difficult to develop. If you try to modify the code, you will notice that webpack will give a warning familiar from the <em>Configuring Hot Module Replacement</em> chapter. To improve the developer experience, we have to implement the hot replacement interface.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you get a linting warning like <code>warning  &#39;React&#39; is defined but never used  no-unused-vars</code>, make sure the ESLint React plugin has been enabled and its default preset is in use.</blockquote><h2 class="header"><a class="header-anchor" href="#configuring-hot-module-replacement-with-react" id="configuring-hot-module-replacement-with-react"></a><span class="text">Configuring Hot Module Replacement with React</span><a class="header-anchor-select" href="#configuring-hot-module-replacement-with-react">#</a></h2>
 <p>Hot module replacement was one of the initial selling points of webpack and React. It relies on the <a href="https://www.npmjs.com/package/react-hot-loader">react-hot-loader</a> package. The simplest way to enable it is to use a now deprecated <a href="https://www.npmjs.com/package/babel-preset-react-hmre">babel-preset-react-hmre</a>. It works still, but there&#39;s another way.</p>
 <p>At the time of writing <em>react-hot-loader</em> version 3 is in beta. The setup is more complicated than using a preset, but this is the way to go at the moment. It requires changes to three places: Babel configuration, webpack configuration, and application. I&#39;ll cover these next.</p>
 <p>To get started, install the upcoming version of <em>react-hot-loader</em>:</p>
@@ -137,15 +211,7 @@ ReactDOM<span class="token punctuation" >.</span><span class="token function" >r
     <span class="token string" >"react-hot-loader/babel"</span>
   <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
-    <span class="token punctuation" >[</span>
-      <span class="token string" >"es2015"</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >{</span>
-        <span class="token property" >"modules"</span><span class="token operator" >:</span> <span class="token boolean" >false</span>
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    <span class="token string" >"react"</span>
-  <span class="token punctuation" >]</span>
+  ...
 <span class="token punctuation" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#setting-up-webpack" id="setting-up-webpack"></a><span class="text">Setting Up Webpack</span><a class="header-anchor-select" href="#setting-up-webpack">#</a></h3>
@@ -153,33 +219,43 @@ ReactDOM<span class="token punctuation" >.</span><span class="token function" >r
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-  <span class="token keyword" >return</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-    common<span class="token punctuation" >,</span>
-    <span class="token punctuation" >{</span>
 <div class="leanpub-insert">
-      entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-        <span class="token comment" spellcheck="true">// react-hot-loader has to run before app!</span>
-        app<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react-hot-loader/patch'</span><span class="token punctuation" >,</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-</div>
-      <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token keyword" >function</span> <span class="token function" >reactDevelopment</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      <span class="token comment" spellcheck="true">// react-hot-loader has to run before demo!</span>
+      react<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react-hot-loader/patch'</span><span class="token punctuation" >,</span> PATHS<span class="token punctuation" >.</span>reactDemo<span class="token punctuation" >]</span><span class="token punctuation" >,</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</div>
+
+module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>env<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>env <span class="token operator" >===</span> <span class="token string" >'production'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token keyword" >return</span> <span class="token punctuation" >[</span>
+      <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >production</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >react</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+
+  <span class="token keyword" >return</span> <span class="token punctuation" >[</span>
+    <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<div class="leanpub-delete">
+    <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >react</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+<div class="leanpub-insert">
+    <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token function" >development</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >react</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token function" >reactDevelopment</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >]</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
+<p>There is still patching to do as we have to make the application side aware of hot loading.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can include <code>react-dom</code> entries at <code>parts.extractBundles</code> to push it to the vendor bundle assuming you refer to packages by their name.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-the-application" id="setting-up-the-application"></a><span class="text">Setting Up the Application</span><a class="header-anchor-select" href="#setting-up-the-application">#</a></h3>
 <p>Compared to the earlier implementation, the basic idea is the same on application side. This time, however, <code>AppContainer</code> provided by <em>react-hot-loader</em> has to be used. It performs the patching during development. To attach it to the application, adjust as follows:</p>
-<p><strong>app/index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token string" >'font-awesome/css/font-awesome.css'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token string" >'purecss'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token string" >'./main.css'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<p><strong>app/react.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> ReactDOM <span class="token keyword" >from</span> <span class="token string" >'react-dom'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> Component <span class="token keyword" >from</span> <span class="token string" >'./component'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> Counter <span class="token keyword" >from</span> <span class="token string" >'./counter'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >import</span> <span class="token punctuation" >{</span> AppContainer <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react-hot-loader'</span><span class="token punctuation" >;</span>
 
 <span class="token keyword" >const</span> render <span class="token operator" >=</span> App <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
@@ -189,14 +265,14 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
   <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
-<span class="token function" >render</span><span class="token punctuation" >(</span>Component<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token function" >render</span><span class="token punctuation" >(</span>Counter<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 
 <span class="token keyword" >if</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  module<span class="token punctuation" >.</span>hot<span class="token punctuation" >.</span><span class="token function" >accept</span><span class="token punctuation" >(</span><span class="token string" >'./component'</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >render</span><span class="token punctuation" >(</span>Component<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  module<span class="token punctuation" >.</span>hot<span class="token punctuation" >.</span><span class="token function" >accept</span><span class="token punctuation" >(</span><span class="token string" >'./counter'</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >render</span><span class="token punctuation" >(</span>Counter<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>To truly test the setup, a component is needed as well. In this case it&#39;s going to be a little counter so you can see how the hot replacement mechanism maintains the state:</p>
-<p><strong>app/component.js</strong></p>
+<p><strong>app/counter.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 
 <span class="token keyword" >class</span> <span class="token class-name" >Counter</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
@@ -211,7 +287,9 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
         <span class="token operator" >&lt;</span>span className<span class="token operator" >=</span><span class="token string" >"fa fa-hand-spock-o fa-1g"</span><span class="token operator" >></span>
           Amount<span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>amount<span class="token punctuation" >}</span>
         <span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span>addOne<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Add one<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span>addOne<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>
+          Add one
+        <span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
       <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
     <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
   <span class="token punctuation" >}</span>
@@ -270,26 +348,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <li><a href="https://github.com/thejameskyle/babel-react-optimize">babel-react-optimize</a> implements a variety of React specific optimizations you may want to experiment with.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-transform-react-remove-prop-types">babel-plugin-transform-react-remove-prop-types</a> allows you to remove <code>propType</code> related code from your production build. It also allows component authors to generate code that&#39;s wrapped so that setting environment at <code>DefinePlugin</code> can kick in as discussed in the book.</li>
 </ul>
-<h2 class="header"><a class="header-anchor" href="#configuring-hmr-with-redux" id="configuring-hmr-with-redux"></a><span class="text">Configuring HMR with Redux</span><a class="header-anchor-select" href="#configuring-hmr-with-redux">#</a></h2>
-<p>In order to configure Redux reducers to support hot replacement, we need to implement webpack&#39;s hot module replacement protocol as before. To give you a rough implementation, consider the code below:</p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span> <span class="token function" >configureStore</span><span class="token punctuation" >(</span>initialState<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> store <span class="token operator" >=</span> <span class="token function" >createStoreWithMiddleware</span><span class="token punctuation" >(</span>rootReducer<span class="token punctuation" >,</span> initialState<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-  <span class="token keyword" >if</span><span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Enable webpack hot module replacement for reducers</span>
-    module<span class="token punctuation" >.</span>hot<span class="token punctuation" >.</span><span class="token function" >accept</span><span class="token punctuation" >(</span>
-      <span class="token string" >'../reducers'</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> store<span class="token punctuation" >.</span><span class="token function" >replaceReducer</span><span class="token punctuation" >(</span>reducers<span class="token punctuation" >)</span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-
-  <span class="token keyword" >return</span> store<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
-</code></pre>
-<p>The code doesn&#39;t do that much. It just waits for a change and then patches the code. The feasibility of patching depends on the underlying architecture. For a system like Redux, it is simple as it was designed to be patched. It might be harder to pull off for something else.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>You can find <a href="https://github.com/survivejs-demos/redux-demo">a full implementation of the idea online</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#using-react-lite-instead-of-react-for-production" id="using-react-lite-instead-of-react-for-production"></a><span class="text">Using <em>react-lite</em> Instead of React for Production</span><a class="header-anchor-select" href="#using-react-lite-instead-of-react-for-production">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#using-react-lite-instead-of-react-for-production" id="using-react-lite-instead-of-react-for-production"></a><span class="text">Using <em>react-lite</em> Instead of React for Production</span><a class="header-anchor-select" href="#using-react-lite-instead-of-react-for-production">#</a></h2>
 <p>React is quite heavy library even though the API is quite small considering. There are light alternatives, such as <a href="https://www.npmjs.com/package/preact">Preact</a> and <a href="https://www.npmjs.com/package/react-lite">react-lite</a>. react-lite implements React&#39;s API apart from features like <code>propTypes</code> and server side rendering.</p>
 <p>You lose out in debugging capabilities, but gain far smaller size. Preact implements a smaller subset of features and it&#39;s even smaller than react-lite. Interestingly <a href="https://www.npmjs.com/package/preact-compat">preact-compat</a> provides support for <code>propTypes</code> and bridges the gap between vanilla React and Preact somewhat.</p>
 <p>Using react-lite or Preact in production instead of React can save around 100 kB minified code. Depending on your application, this can be a saving worth pursuing. Fortunately integrating react-lite is simple. It takes only a few lines of configuration to pull off.</p>
@@ -319,7 +378,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>After this, you should be able to access <code>React</code> through a console. To make it possible to access the performance utilities, we need to do one more step. Add the following to the entry point of your application to enable <code>React.Perf</code> during development:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >if</span><span class="token punctuation" >(</span>process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>NODE_ENV <span class="token operator" >!==</span> <span class="token string" >'production'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-javascript"><span class="token keyword" >if</span> <span class="token punctuation" >(</span>process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>NODE_ENV <span class="token operator" >!==</span> <span class="token string" >'production'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   React<span class="token punctuation" >.</span>Perf <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'react-addons-perf'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
@@ -368,55 +427,23 @@ exports<span class="token punctuation" >.</span>dontParse <span class="token ope
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <p>If you try developing your application now, it should be at least a little bit faster to rebuild. The technique can be useful for production usage as well as you avoid some processing then.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i><code>module.noParse</code> also accepts a regular expression. If we wanted to ignore all <code>*.min.js</code> files for instance, we could set it to <code>/\.min\.js/</code>. That can be a more generic way to solve the problem in some cases.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Note that aliasing works also with loaders through <a href="https://webpack.js.org/configuration/resolve/#resolveloader">resolveLoader.alias</a>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Not all modules support <code>module.noParse</code>, the files included by deps array should have no call to <code>require</code>, <code>define</code> or similar, or you will get an error when the app runs: <code>Uncaught ReferenceError: require is not defined</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#code-splitting-with-react" id="code-splitting-with-react"></a><span class="text">Code Splitting with React</span><a class="header-anchor-select" href="#code-splitting-with-react">#</a></h2>
-<p>The splitting pattern discussed in the <em>Code Splitting</em> chapter can be wrapped into a React component. Airbnb uses the following solution <a href="https://gist.github.com/lencioni/643a78712337d255f5c031bfc81ca4cf">as described by Joe Lencioni</a>:</p>
-<pre><code class="lang-jsx"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<blockquote class="tip"><i class="icon-attention-circled"></i><code>module.noParse</code> also accepts a regular expression. If we wanted to ignore all <code>*.min.js</code> files for instance, we could set it to <code>/\.min\.js/</code>. That can be a more generic way to solve the problem in some cases.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Note that aliasing works also with loaders through <a href="https://webpack.js.org/configuration/resolve/#resolveloader">resolveLoader.alias</a>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Not all modules support <code>module.noParse</code>, the files included by deps array should have no call to <code>require</code>, <code>define</code> or similar, or you will get an error when the app runs: <code>Uncaught ReferenceError: require is not defined</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#configuring-webpack-to-work-with-jsx" id="configuring-webpack-to-work-with-jsx"></a><span class="text">Configuring Webpack to Work with JSX</span><a class="header-anchor-select" href="#configuring-webpack-to-work-with-jsx">#</a></h2>
+<p>Some people prefer to name their React components containing JSX using the <code>.jsx</code> suffix. Webpack can be configured to work with this convention. The benefit of doing this is that then your editor will be able to pick up the right syntax based on the file name alone. Another option is to configure the editor to use JSX syntax for <code>.js</code> files as it&#39;s a superset of JavaScript.</p>
+<p>Webpack provides <a href="https://webpack.js.org/guides/migrating/#resolve-extensions">resolve.extensions</a> field that can be used for configuring its extension lookup. If you want to allow imports like <code>import Button from &#39;./Button&#39;;</code> while naming the file as <em>Button.jsx</em>, set it up as follows:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-<span class="token comment" spellcheck="true">// Somewhere in code</span>
-<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>AsyncComponent</span> <span class="token attr-name" >loader</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token string" >'./SomeComponent'</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span></span> <span class="token punctuation" >/></span></span>
-
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-
-<span class="token comment" spellcheck="true">// React wrapper for loading</span>
-<span class="token keyword" >class</span> <span class="token class-name" >AsyncComponent</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-      Component<span class="token punctuation" >:</span> <span class="token keyword" >null</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-
-  <span class="token function" >componentDidMount</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Load the component now</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span><span class="token function" >loader</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation" >(</span>Component <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> Component <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> Component <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> Placeholder <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
-
-    <span class="token keyword" >if</span> <span class="token punctuation" >(</span>Component<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>Component <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span>
-
-    <span class="token keyword" >return</span> <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Placeholder</span><span class="token punctuation" >></span></span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
-
-AsyncComponent<span class="token punctuation" >.</span>propTypes <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// A loader is a function that should return a Promise.</span>
-  loader<span class="token punctuation" >:</span> PropTypes<span class="token punctuation" >.</span>func<span class="token punctuation" >.</span>isRequired<span class="token punctuation" >,</span>
-
-  <span class="token comment" spellcheck="true">// A placeholder to render while waiting completion.</span>
-  Placeholder<span class="token punctuation" >:</span> PropTypes<span class="token punctuation" >.</span>node<span class="token punctuation" >.</span>isRequired
+<span class="token keyword" >const</span> common <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  resolve<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    extensions<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'.js'</span><span class="token punctuation" >,</span> <span class="token string" >'.jsx'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
-<h2 class="header"><a class="header-anchor" href="#maintaining-components" id="maintaining-components"></a><span class="text">Maintaining Components</span><a class="header-anchor-select" href="#maintaining-components">#</a></h2>
+<p>The loader configuration is straightforward as well. Instead of matching against <code>/\.js$/</code>, we can expand it to include <code>.jsx</code> extension through <code>/\.(js|jsx)$/</code>. Another option would be to write <code>/\.jsx?$/</code>, but I find the explicit alternative more readable.</p>
+<blockquote class="warning"><i class="icon-attention"></i>In webpack 1 you had to use <code>extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.jsx&#39;]</code> to match files without an extension too. This isn&#39;t needed in webpack 2.</blockquote><h2 class="header"><a class="header-anchor" href="#maintaining-components" id="maintaining-components"></a><span class="text">Maintaining Components</span><a class="header-anchor-select" href="#maintaining-components">#</a></h2>
 <p>One way to structure React projects is to push components to directories which expose their code through a <em>index.js</em> file. Often that&#39;s just boilerplate code which you have to add for webpack to resolve correctly. <a href="https://www.npmjs.com/package/component-directory-webpack-plugin">component-directory-webpack-plugin</a> has been designed to alleviate this problem and it allows you to skip <em>index.js</em> while performing lookups based on a naming convention.</p>
 <p><a href="https://www.npmjs.com/package/create-index">create-index</a> provides a different way to solve the same problem. It literally generates those boilerplate <em>index.js</em> files to your project and keeps them up to date.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
