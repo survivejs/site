@@ -44,11 +44,10 @@ After this chapter, you should be able to sort notes within a lane and drag them
 <div class="leanpub-insert">
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >compose</span><span class="token punctuation" >(</span>
   <span class="token function" >DragDropContext</span><span class="token punctuation" >(</span>HTML5Backend<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    lanes
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    LaneActions
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+  <span class="token function" >connect</span><span class="token punctuation" >(</span>
+    <span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>lanes<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >{</span>LaneActions<span class="token punctuation" >}</span>
+  <span class="token punctuation" >)</span>
 <span class="token punctuation" >)</span><span class="token punctuation" >(</span>App<span class="token punctuation" >)</span>
 </div>
 </code></pre>
@@ -184,7 +183,7 @@ After this chapter, you should be able to sort notes within a lane and drag them
   children<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props
 </div>
 <div class="leanpub-insert">
-  oMove<span class="token punctuation" >,</span> id<span class="token punctuation" >,</span> children<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props
+  onMove<span class="token punctuation" >,</span> id<span class="token punctuation" >,</span> children<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props
 </div>
 <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
   <span class="token keyword" >return</span> <span class="token function" >compose</span><span class="token punctuation" >(</span>connectDragSource<span class="token punctuation" >,</span> connectDropTarget<span class="token punctuation" >)</span><span class="token punctuation" >(</span>
@@ -403,7 +402,7 @@ After this chapter, you should be able to sort notes within a lane and drag them
 <span class="token keyword" >const</span> Note <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
 <div class="leanpub-delete">
   connectDragSource<span class="token punctuation" >,</span> connectDropTarget<span class="token punctuation" >,</span>
-  oMove<span class="token punctuation" >,</span> id<span class="token punctuation" >,</span> children<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props
+  onMove<span class="token punctuation" >,</span> id<span class="token punctuation" >,</span> children<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props
 </div>
 <div class="leanpub-insert">
   connectDragSource<span class="token punctuation" >,</span> connectDropTarget<span class="token punctuation" >,</span> isDragging<span class="token punctuation" >,</span>

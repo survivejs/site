@@ -52,8 +52,8 @@ You can get pretty far by keeping everything in components. That&#x27;s an entir
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> alt<span class="token punctuation" >;</span>
 </code></pre>
-<p>Webpack caches the modules so the next time you import Alt from somewhere, it will return the same instance again.</p>
-<h3 class="header"><a class="header-anchor" href="#connecting-alt-with-views" id="connecting-alt-with-views"></a><span class="text">Connecting Alt with Views</span><a class="header-anchor-select" href="#connecting-alt-with-views">#</a></h3>
+<p>This is a standard way to implement <em>singletons</em> using ES6 syntax. It caches the modules so the next time you import Alt from somewhere, it will return the same instance again.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Note that <code>alt.js</code> should go below <code>app/libs</code>, not project root <code>libs</code>!</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The singleton pattern guarantees that there can be only one instance. That is exactly the behavior we want here.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-alt-with-views" id="connecting-alt-with-views"></a><span class="text">Connecting Alt with Views</span><a class="header-anchor-select" href="#connecting-alt-with-views">#</a></h3>
 <p>Normally state management solutions provide two parts you can use to connect them with a React application. These are a <code>Provider</code> component and a <code>connect</code> higher order function (function returning function generating a component). The <code>Provider</code> sets up a React <a href="https://facebook.github.io/react/docs/context.html">context</a>.</p>
 <p>Context is an advanced feature that can be used to pass data through a component hierarchy implicitly without going through props. The <code>connect</code> function uses the context to dig the data we want and then passes it to a component.</p>
 <p>It is possible to use a <code>connect</code> through function invocation or a decorator as we&#39;ll see soon. The <em>Understanding Decorators</em> appendix digs deeper into the pattern.</p>
@@ -70,7 +70,7 @@ You can get pretty far by keeping everything in components. That&#x27;s an entir
   module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./Provider.dev'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>We also need the files the index is pointing at. The first part is easy. We&#39;ll need to point to our Alt instance there, connect it with a component known as <code>AltContainer</code>, and then render out application within it. That&#39;s where <code>props.children</code> comes in. It&#39;s the same idea as before.</p>
+<p>We also need the files the index is pointing at. The first part is easy. We&#39;ll need to point to our Alt instance there, connect it with a component known as <code>AltContainer</code>, and then render our application within it. That&#39;s where <code>props.children</code> comes in. It&#39;s the same idea as before.</p>
 <p><code>AltContainer</code> will enable us to connect the data of our application at component level when we implement <code>connect</code>. To get to the point, here&#39;s the production level implementation:</p>
 <p><strong>app/components/Provider/Provider.prod.jsx</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>

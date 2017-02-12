@@ -39,8 +39,8 @@ Now that we have a nice development setup, we can actually get some work done. O
 </code></pre>
 <p>We are using various important features of JSX in the snippet above. I have annotated the difficult parts below:</p>
 <ul>
-<li><code>&lt;ul&gt;{notes.map(note =&gt; ...}&lt;/ul&gt;</code> - <code>{}</code>&#39;s allow us to mix JavaScript syntax within JSX. <code>map</code> returns a list of <code>li</code> elements for React to render.</li>
-<li><code>&lt;li key={note.id}&gt;{note.task}&lt;/li&gt;</code> - In order to tell React in which order to render the elements, we use the <code>key</code> property. It is important that this is unique or else React won&#39;t be able to figure out the correct order in which to render. If not set, React will give a warning. See <a href="https://facebook.github.io/react/docs/multiple-components.html">Multiple Components</a> for more information.</li>
+<li><code>&lt;ul&gt;{notes.map(note =&gt; ...)}&lt;/ul&gt;</code> - <code>{}</code>&#39;s allow us to mix JavaScript syntax within JSX. <code>map</code> returns a list of <code>li</code> elements for React to render.</li>
+<li><code>&lt;li key={note.id}&gt;{note.task}&lt;/li&gt;</code> - In order to tell React which items have been changed, added, or removed, we use the <code>key</code> property. It is important that this is unique or else React won&#39;t be able to figure out the correct order in which to render. If not set, React will give a warning. See <a href="https://facebook.github.io/react/docs/lists-and-keys.html#rendering-multiple-components">Multiple Components</a> for more information.</li>
 </ul>
 <p>We also need to refer to the component from the entry point of our application:</p>
 <p><strong>app/index.jsx</strong></p>
@@ -332,7 +332,7 @@ ReactDOM<span class="token punctuation" >.</span><span class="token function" >r
 </div>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>Given we are binding to an instance here, the hot loading setup cannot pick up the change. To try out the new feature, refresh the browser and try clicking the <code>+</code> button. You should seem something:</p>
+<p>Given we are binding to an instance here, the hot loading setup cannot pick up the change. To try out the new feature, refresh the browser and try clicking the <code>+</code> button. You should see something:</p>
 <p><img src="/react/images/react_05.png" alt="Notes with a plus"></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If we were operating with a back-end, we would trigger a query here and capture the id from the response. For now it&#39;s enough to just generate an entry and a custom id.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>You could use <code>this.setState({notes: [...this.state.notes, {id: uuid.v4(), task: &#39;New task&#39;}]})</code> to achieve the same result. This <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">spread operator</a> can be used with function parameters as well. See the <em>Language Features</em> appendix for more information.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Using <a href="https://www.npmjs.com/package/autobind-decorator">autobind-decorator</a> would be a valid alternative for property initializers. In this case we would use <code>@autobind</code> annotation either on class or method level. To learn more about decorators, read the <em>Understanding Decorators</em> appendix.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Even though we have a rough application together now, we are still missing two crucial features: editing and deleting notes. It&#39;s a good time to focus on those next. Let&#39;s do deletion first and handle editing after that.</p>

@@ -13,23 +13,25 @@ Hot loading allows Webpack to patch the code running in the browser without a fu
 <p>This will create a new directory, <em>kanban-app</em>. Inside it you can find everything we need to get ahead. As the boilerplate can change between book versions, I recommend you check out the version specific of it:</p>
 <pre><code class="lang-bash"><span class="token function" >cd</span> kanban-app
 <span class="token function" >git</span> checkout v2.5.6
-<span class="token function" >rm</span> -rf .git
-<span class="token function" >git</span> init
-<span class="token function" >git</span> add <span class="token keyword" >.</span>
-<span class="token function" >git</span> commit -am <span class="token string" >"Initial commit"</span>
 </code></pre>
-<p>After this process you have a fresh project to work against.</p>
 <p>The repository contains a small seed application that shows <code>Hello World!</code> and basic Webpack configuration. To get the seed application dependencies installed, execute</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span>
 </code></pre>
 <p>Upon completion you should see a <code>node_modules/</code> directory containing the project dependencies.</p>
+<h3 class="header"><a class="header-anchor" href="#create-a-fresh-git-repository-for-your-project" id="create-a-fresh-git-repository-for-your-project"></a><span class="text">Create a Fresh Git Repository for Your Project</span><a class="header-anchor-select" href="#create-a-fresh-git-repository-for-your-project">#</a></h3>
+<p>Your freshly checked out project includes the history of the the  <code>react-boilerplate</code> project. That history is not really relevant to your new project, so now is a good time to clear the git history, and start a fresh repository. This new repository will reflect the evolution of your project. In your initial commit, you may want to mention the baseline version of the boilerplate.</p>
+<pre><code><span class="token function" >rm</span> -rf .git
+<span class="token function" >git</span> init
+<span class="token function" >git</span> add <span class="token keyword" >.</span>
+<span class="token function" >git</span> commit -am <span class="token string" >"New project based on react-boilerplate (v2.5.6)"</span>
+</code></pre><p>After this process you have a fresh project to work against.</p>
 <h2 class="header"><a class="header-anchor" href="#running-the-project" id="running-the-project"></a><span class="text">Running the Project</span><a class="header-anchor-select" href="#running-the-project">#</a></h2>
 <p>To get the project running, execute <code>npm start</code>. You should see something like this at the terminal if everything went right:</p>
 <pre><code class="lang-bash"><span class="token operator" >></span> webpack-dev-server
 
 http://localhost:8080/
 webpack result is served from /
-content is served from /Users/juhovepsalainen/Projects/tmp/kanban-app
+content is served from <span class="token punctuation" >..</span>./kanban-app
 404s will fallback to /index.html
 Child html-webpack-plugin <span class="token keyword" >for</span> <span class="token string" >"index.html"</span><span class="token keyword" >:</span>
 
@@ -40,12 +42,12 @@ webpack: bundle is now VALID.
 <p><img src="/react/images/hello_01.png" alt="Hello world"></p>
 <p>You can try modifying the source to see how hot loading works.</p>
 <p>I&#39;ll discuss the boilerplate in greater detail next so you know how it works. I&#39;ll also cover the language features we are going to use briefly.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>In case you want to start with a fresh Git history, this would be a good point to remove <code>.git</code> directory (<code>rm -rf .git</code>) and initialize the project again (<code>git init &amp;&amp; git add . &amp;&amp; git commit -am &quot;Initial commit&quot;</code>).</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The techniques used by the boilerplate are covered in greater detail at <a href="http://survivejs.com/webpack/introduction/">SurviveJS - Webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#boilerplate-npm-scripts-" id="boilerplate-npm-scripts-"></a><span class="text">Boilerplate npm <code>scripts</code></span><a class="header-anchor-select" href="#boilerplate-npm-scripts-">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The techniques used by the boilerplate are covered in greater detail at <a href="http://survivejs.com/webpack/introduction/">SurviveJS - Webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#boilerplate-npm-scripts-" id="boilerplate-npm-scripts-"></a><span class="text">Boilerplate npm <code>scripts</code></span><a class="header-anchor-select" href="#boilerplate-npm-scripts-">#</a></h2>
 <p>Our boilerplate is able to generate a production grade build with hashing. There&#39;s also a deployment related target so that you can show your project to other people through <a href="https://pages.github.com/">GitHub Pages</a>. I&#39;ve listed all of the <code>scripts</code> below:</p>
 <ul>
 <li><code>npm run start</code> (or <code>npm start</code>) - Starts the project in the development mode. Surf to <code>localhost:8080</code> in your browser to see it running.</li>
 <li><code>npm run build</code> - Generates a production build below <code>build/</code>. You can open the generated <em>index.html</em> through the browser to examine the result.</li>
-<li><code>npm run deploy</code> - Deploys the contents of <code>build/</code> to the <em>gh-pages</em> branch of your project and pushes it to GitHub. You can access the project below <code>&lt;user&gt;.github.io/&lt;project&gt;</code> after that. Before this can work correctly, you should set <code>publicName</code> at <em>webpack.config.js</em> to match your project name on GitHub.</li>
+<li><code>npm run deploy</code> - Deploys the contents of <code>build/</code> to the <em>gh-pages</em> branch of your project and pushes it to GitHub. You can access the project below <code>&lt;user&gt;.github.io/&lt;project&gt;</code> after that. Before this can work correctly, you should set <code>publicPath</code> at <em>webpack.config.js</em> to match your project name on GitHub.</li>
 <li><code>npm run stats</code> - Generates statistics (<em>stats.json</em>) about the project. You can <a href="http://survivejs.com/webpack/building-with-webpack/analyzing-build-statistics/">analyze the build output</a> further.</li>
 <li><code>npm run test</code> (or <code>npm test</code>) - Executes project tests. The <em>Testing React</em> chapter digs deeper into the topic. In fact, writing tests against your components can be a good way to learn to understand React better.</li>
 <li><code>npm run test:tdd</code> - Executes project tests in TDD mode. This means it will watch for changes and run the tests when changes are detected allowing you to develop fast without having to run the tests manually.</li>
@@ -68,7 +70,7 @@ webpack: bundle is now VALID.
 <ul>
 <li><a href="https://github.com/jeffmo/es-class-static-properties-and-fields">Property initializers</a> - Example: <code>addNote = (e) =&gt; {</code>. This binds the <code>addNote</code> method to an instance automatically. The feature makes more sense as we get to use it.</li>
 <li><a href="https://github.com/wycats/javascript-decorators">Decorators</a> - Example: <code>@DragDropContext(HTML5Backend)</code>. These annotations allow us to attach functionality to classes and their methods.</li>
-<li><a href="https://github.com/sebmarkbage/ecmascript-rest-spread">Object rest/spread</a> - Example: <code>`const {a, b, ...props} = this.props</code>. This syntax allows us to easily extract specific properties from an object.</li>
+<li><a href="https://github.com/sebmarkbage/ecmascript-rest-spread">Object rest/spread</a> - Example: <code>const {a, b, ...props} = this.props</code>. This syntax allows us to easily extract specific properties from an object.</li>
 </ul>
 <p>In order to make it easier to set up the features, I created <a href="https://github.com/survivejs/babel-preset-survivejs-kanban">a specific preset</a>. It also contains <a href="https://www.npmjs.com/package/babel-plugin-transform-object-assign">babel-plugin-transform-object-assign</a> and <a href="https://www.npmjs.com/package/babel-plugin-array-includes">babel-plugin-array-includes</a> plugins. The former allows us to use <code>Object.assign</code> while the latter provides <code>Array.includes</code> without having to worry about shimming these for older environments.</p>
 <p>A preset is simply a npm module exporting Babel configuration. Maintaining presets like this can be useful especially if you want to share the same set of functionality across multiple projects.</p>
