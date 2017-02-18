@@ -1,0 +1,256 @@
+<html lang="en"><head><title>Loading Fonts</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+Loading fonts is a tough problem. Normally you have up to four font formats to worry about, each for a certain browser. You have a couple of strategies to consider.
+
+"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/typing.jpg);"></div><h1 class="post__heading">Loading Fonts</h1><div class="header-extra"><a href="https://www.flickr.com/photos/10832246@N06/2925254789/">Markus Mayer (CC BY-NC-ND)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/compared">Webpack Compared</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/why-webpack">Why Webpack?</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing">Developing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/configuring-hmr">Configuring Hot Module Replacement</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/linting">Linting JavaScript</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/composing-configuration">Composing Configuration</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/styling">Styling</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/loading">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/separating-css">Separating CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/autoprefixing">Autoprefixing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/eliminating-unused-css">Eliminating Unused CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/linting">Linting CSS</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/loading">Loading</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/loader-definitions">Loader Definitions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/images">Loading Images</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Loading Fonts</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/javascript">Loading JavaScript</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building">Building</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/source-maps">Source Maps</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/splitting-bundles">Splitting Bundles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/code-splitting">Code Splitting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/tidying-up">Tidying Up</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/optimizing">Optimizing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/minifying">Minifying the Build</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/tree-shaking">Tree Shaking</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/setting-environment-variables">Setting Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/separating-manifest">Separating a Manifest</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/performance">Performance</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/output">Output</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/targets">Build Targets</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/library-output">Library Output</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/multiple-pages">Multiple Pages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/server-side-rendering">Server Side Rendering</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/packages">Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/packages/consuming">Consuming Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/packages/authoring">Authoring Packages</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/extending">Extending</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending/loaders">Extending Webpack with Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending/plugins">Extending Webpack with Plugins</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/searching-with-react">Searching with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/hmr-with-react">Hot Module Replacement with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/customizing-eslint">Customizing ESLint</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/deploying">Deploying Applications</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/dynamic-loading">Dynamic Loading</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/using-web-workers">Using Web Workers</a></li></ul><div><div class="buy-container"><a href="/webpack/introduction"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/survivejs-webpack-18">SurviveJS - Webpack - v1.8</a></blockquote><div class="chapter-content"><p>Loading fonts is a tough problem. Normally you have up to four font formats to worry about, each for a certain browser. You have a couple of strategies to consider.</p>
+<h2 class="header"><a class="header-anchor" href="#choosing-one-format" id="choosing-one-format"></a><span class="text">Choosing One Format</span><a class="header-anchor-select" href="#choosing-one-format">#</a></h2>
+<p>Depending on your project requirements, you might be able to get away with less formats. If you exclude Opera Mini, all browsers support the <em>.woff</em> format. The render result may differ depending on the browser so you might want to experiment here.</p>
+<p>If we go with one format, we can use a similar setup as for images and rely on both <em>file-loader</em> and <em>url-loader</em> while using the limit option:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff$/</span><span class="token punctuation" >,</span>
+  loader<span class="token punctuation" >:</span> <span class="token string" >'url-loader'</span><span class="token punctuation" >,</span>
+  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>A more elaborate way to achieve a similar result would be to use:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// Match woff2 in addition to patterns like .woff?v=1.1.1.</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff2?(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
+  loader<span class="token punctuation" >:</span> <span class="token string" >'url-loader'</span><span class="token punctuation" >,</span>
+  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+    mimetype<span class="token punctuation" >:</span> <span class="token string" >'application/font-woff'</span><span class="token punctuation" >,</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'./fonts/[hash].[ext]'</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#supporting-multiple-formats" id="supporting-multiple-formats"></a><span class="text">Supporting Multiple Formats</span><a class="header-anchor-select" href="#supporting-multiple-formats">#</a></h2>
+<p>In case we want to make sure our site looks good on a maximum amount of browsers, we might as well use <em>file-loader</em> and forget about inlining. Again, it&#39;s a trade-off as we get extra requests, but perhaps it&#39;s the right move. Here we could end up with a loader configuration like this:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff2?$/</span><span class="token punctuation" >,</span>
+  <span class="token comment" spellcheck="true">// Inline small woff files and output them below font/.</span>
+  <span class="token comment" spellcheck="true">// Set mimetype just in case.</span>
+  loader<span class="token punctuation" >:</span> <span class="token string" >'url-loader'</span><span class="token punctuation" >,</span>
+  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'fonts/[hash].[ext]'</span><span class="token punctuation" >,</span>
+    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+    mimetype<span class="token punctuation" >:</span> <span class="token string" >'application/font-woff'</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(ttf|svg|eot)$/</span><span class="token punctuation" >,</span>
+  loader<span class="token punctuation" >:</span> <span class="token string" >'file-loader'</span><span class="token punctuation" >,</span>
+  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'fonts/[hash].[ext]'</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>Note that the way you write your CSS definition matters. Assuming we are going to inline the WOFF format, we should have it first like this in your CSS:</p>
+<pre><code class="lang-css"><span class="token atrule" ><span class="token rule" >@font-face</span></span> <span class="token punctuation" >{</span>
+  <span class="token property" >font-family</span><span class="token punctuation" >:</span> <span class="token string" >'myfontfamily'</span><span class="token punctuation" >;</span>
+  <span class="token property" >src</span><span class="token punctuation" >:</span> <span class="token url" >url('myfontfile.woff')</span> <span class="token function" >format</span><span class="token punctuation" >(</span><span class="token string" >'woff'</span><span class="token punctuation" >)</span>,
+    <span class="token url" >url('myfontfile.ttf')</span> <span class="token function" >format</span><span class="token punctuation" >(</span><span class="token string" >'truetype'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token comment" spellcheck="true">/* Other formats as you see fit */</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>This way the browser will try to consume the inlined font before loading remote alternatives.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://developer.mozilla.org/en/docs/Web/CSS/@font-face">MDN discusses the font-family rule</a> in greater detail.</blockquote><h2 class="header"><a class="header-anchor" href="#generating-font-files-based-on-svgs" id="generating-font-files-based-on-svgs"></a><span class="text">Generating Font Files Based on SVGs</span><a class="header-anchor-select" href="#generating-font-files-based-on-svgs">#</a></h2>
+<p>Sometimes you might have a bunch of SVG files that would be nice to bundle as font files of their own. The setup is a little involved, but <a href="https://www.npmjs.com/package/fontgen-loader">fontgen-loader</a> achieves this.</p>
+<h2 class="header"><a class="header-anchor" href="#manipulating-file-loader-output-path-and-publicpath-" id="manipulating-file-loader-output-path-and-publicpath-"></a><span class="text">Manipulating <code>file-loader</code> Output Path and <code>publicPath</code></span><a class="header-anchor-select" href="#manipulating-file-loader-output-path-and-publicpath-">#</a></h2>
+<p>As discussed above and in <a href="https://github.com/webpack/file-loader/issues/32#issuecomment-250622904">webpack issue tracker</a>, <em>file-loader</em> allows shaping the output. This way you can output your fonts below <code>fonts/</code>, images below <code>images/</code>, and so on over using the root.</p>
+<p>Furthermore, it&#39;s possible to manipulate <code>publicPath</code> and override the default per loader definition. The following example illustrates these techniques together:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
+  <span class="token comment" spellcheck="true">// Match woff2 in addition to patterns like .woff?v=1.1.1.</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff2?(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
+  loader<span class="token punctuation" >:</span> <span class="token string" >'url-loader'</span><span class="token punctuation" >,</span>
+  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+    mimetype<span class="token punctuation" >:</span> <span class="token string" >'application/font-woff'</span><span class="token punctuation" >,</span>
+    <span class="token comment" spellcheck="true">// Output below the fonts directory</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'./fonts/[hash].[ext]'</span><span class="token punctuation" >,</span>
+    <span class="token comment" spellcheck="true">// Tweak publicPath to fix CSS lookups to take</span>
+    <span class="token comment" spellcheck="true">// the directory into account.</span>
+    publicPath<span class="token punctuation" >:</span> <span class="token string" >'../'</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#using-font-awesome" id="using-font-awesome"></a><span class="text">Using Font Awesome</span><a class="header-anchor-select" href="#using-font-awesome">#</a></h2>
+<p>The ideas above can be applied with <a href="https://www.npmjs.com/package/font-awesome">Font Awesome</a>. It&#39;s a collection of high quality font icons you can refer to using a CSS classes.</p>
+<h3 class="header"><a class="header-anchor" href="#integrating-font-awesome-to-the-project" id="integrating-font-awesome-to-the-project"></a><span class="text">Integrating Font Awesome to the Project</span><a class="header-anchor-select" href="#integrating-font-awesome-to-the-project">#</a></h3>
+<p>To integrate Font Awesome to the book project, install it first:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> font-awesome --save
+</code></pre>
+<p>Given Font Awesome doesn&#39;t define a <code>main</code> field in its <em>package.json</em> file, we&#39;ll need to point to it through a direct path instead of package name alone.</p>
+<p>Refer to Font Awesome as follows:</p>
+<p><strong>app/index.js</strong></p>
+<pre><code class="lang-javascript"><div class="leanpub-insert">
+<span class="token keyword" >import</span> <span class="token string" >'font-awesome/css/font-awesome.css'</span><span class="token punctuation" >;</span>
+</div>
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>import</code> could be cleaned up as <code>import &#39;font-awesome&#39;</code> by setting up a <code>resolve.alias</code>. The <em>Consuming Packages</em> chapter discusses this idea in greater detail.</blockquote><p>If you run the project now (<code>npm start</code>), webpack should give a long list of errors like this:</p>
+<pre><code class="lang-bash">ERROR <span class="token keyword" >in</span> ./~/font-awesome/fonts/fontawesome-webfont.woff2?v<span class="token operator" >=</span>4.7.0
+Module parse failed: <span class="token punctuation" >..</span>./node_modules/font-awesome/fonts/fontawesome-webfont.woff2?v<span class="token operator" >=</span>4.7.0 Unexpected character <span class="token string" >''</span> <span class="token punctuation" >(</span>1:4<span class="token punctuation" >)</span>
+You may need an appropriate loader to handle this <span class="token function" >file</span> type.
+<span class="token punctuation" >(</span>Source code omitted <span class="token keyword" >for</span> this binary file<span class="token punctuation" >)</span>
+ @ ./~/css-loader<span class="token operator" >!</span>./~/font-awesome/css/font-awesome.css 6:479-532
+ @ ./~/font-awesome/css/font-awesome.css
+ @ ./app/index.js
+ @ multi <span class="token punctuation" >(</span>webpack<span class="token punctuation" >)</span>-dev-server/client?http://localhost:8080 webpack/hot/only-dev-server react-hot-loader/patch ./app
+</code></pre>
+<h3 class="header"><a class="header-anchor" href="#implementing-webpack-configuration" id="implementing-webpack-configuration"></a><span class="text">Implementing Webpack Configuration</span><a class="header-anchor-select" href="#implementing-webpack-configuration">#</a></h3>
+<p>This is expected as we haven&#39;t configured loaders for any of Font Awesome fonts yet and webpack doesn&#39;t know what to do with the files in question. To match the files and map them through <em>file-loader</em>, attach the following snippet to the project:</p>
+<p><strong>webpack.parts.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+exports<span class="token punctuation" >.</span>loadFonts <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> include<span class="token punctuation" >,</span> exclude<span class="token punctuation" >,</span> options <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
+    module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      rules<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+        <span class="token punctuation" >{</span>
+          <span class="token comment" spellcheck="true">// Capture eot, ttf, svg, woff, and woff2</span>
+          test<span class="token punctuation" >:</span> <span class="token regex" >/\.(woff2?|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
+          include<span class="token punctuation" >,</span>
+          exclude<span class="token punctuation" >,</span>
+
+          use<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+            loader<span class="token punctuation" >:</span> <span class="token string" >'file-loader'</span><span class="token punctuation" >,</span>
+            options<span class="token punctuation" >,</span>
+          <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+        <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>The idea is the same as for loading images. This time around we match font files. If you wanted, you could refactor the commonality to a function to share between the two.</p>
+<p>We still need to connect the above with the main configuration:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
+  parts<span class="token punctuation" >.</span><span class="token function" >loadFonts</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'[name].[ext]'</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+</code></pre>
+<p>If you run the project again (<code>npm start</code>), it should run without any errors. To see Font Awesome in action, adjust the application as follows:</p>
+<p><strong>app/component.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span> <span class="token punctuation" >(</span>text <span class="token operator" >=</span> <span class="token string" >'Hello world'</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >const</span> element <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >'div'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<div class="leanpub-delete">
+  element<span class="token punctuation" >.</span>className <span class="token operator" >=</span> <span class="token string" >'pure-button'</span><span class="token punctuation" >;</span>
+</div>
+<div class="leanpub-insert">
+  element<span class="token punctuation" >.</span>className <span class="token operator" >=</span> <span class="token string" >'fa fa-hand-spock-o fa-1g'</span><span class="token punctuation" >;</span>
+</div>
+  element<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> text<span class="token punctuation" >;</span>
+
+  <span class="token keyword" >return</span> element<span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>If you build the application (<code>npm run build</code>), you should see that it processed as expected while Font Awesome assets were included.</p>
+<pre><code class="lang-bash">Hash: 540d34dcccc83368dabf
+Version: webpack 2.2.1
+Time: 2481ms
+                    Asset       Size  Chunks                    Chunk Names
+  fontawesome-webfont.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  fontawesome-webfont.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  <span class="token punctuation" >[</span>big<span class="token punctuation" >]</span>
+  fontawesome-webfont.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+fontawesome-webfont.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+ fontawesome-webfont.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+                 logo.png      77 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+                   app.js    4.56 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+                  app.css    3.85 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+               index.html  218 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/component.js 198 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>1<span class="token punctuation" >]</span> ./~/font-awesome/css/font-awesome.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.
+</code></pre>
+<p>Note that the SVG file included in Font Awesome has been marked as <code>[big]</code>. It is beyond the performance budget defaults set by webpack. The topic is discussed in greater detail at the <em>Minifying the Build</em> chapter.</p>
+<h3 class="header"><a class="header-anchor" href="#disabling-svg-font-loading" id="disabling-svg-font-loading"></a><span class="text">Disabling SVG Font Loading</span><a class="header-anchor-select" href="#disabling-svg-font-loading">#</a></h3>
+<p>In order to drop the big SVG file and disable SVG loading, it is possible to capture SVG <code>import</code> and then rewrite the module as a <code>null</code> by using the <a href="https://www.npmjs.com/package/null-loader">null-loader</a>. This will get rid of the big file. To get started, install the loader first:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> null-loader --save-dev
+</code></pre>
+<p>Then, to disable SVG loading, capture it first through a <code>test</code> and push the match through the <em>null-loader</em>. Here&#39;s the idea:</p>
+<p><strong>webpack.parts.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+exports<span class="token punctuation" >.</span>ignore <span class="token operator" >=</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> test<span class="token punctuation" >,</span> include<span class="token punctuation" >,</span> exclude <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
+    module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      rules<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+        <span class="token punctuation" >{</span>
+          test<span class="token punctuation" >,</span>
+          include<span class="token punctuation" >,</span>
+          exclude<span class="token punctuation" >,</span>
+
+          use<span class="token punctuation" >:</span> <span class="token string" >'null-loader'</span><span class="token punctuation" >,</span>
+        <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>To connect this with the configuration, adjust as follows:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
+  parts<span class="token punctuation" >.</span><span class="token function" >ignore</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+    test<span class="token punctuation" >:</span> <span class="token regex" >/\.svg(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
+    include<span class="token punctuation" >:</span> <span class="token regex" >/font-awesome/</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>If you build the project (<code>npm run build</code>), the output should be a little tidier:</p>
+<pre><code class="lang-bash">Hash: 71169d0797a7271e19ba
+Version: webpack 2.2.1
+Time: 2301ms
+                    Asset       Size  Chunks             Chunk Names
+  fontawesome-webfont.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  fontawesome-webfont.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+fontawesome-webfont.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+ fontawesome-webfont.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  fontawesome-webfont.svg   22 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+                 logo.png      77 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+                   app.js    4.56 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+                  app.css    3.85 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+               index.html  218 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/component.js 198 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>1<span class="token punctuation" >]</span> ./~/font-awesome/css/font-awesome.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.
+</code></pre>
+<p>If you examine <em>fontawesome-webfont.svg</em>, it should contain <code>// empty (null-loader)</code> kind of comment. It is important that the <code>ignore</code> part gets evaluated before the font definition. Reverse order would break the font loading.</p>
+<p>The solution above is generic and it should work with other libraries as well. The problematic aspect about the approach is that Font Awesome still included fonts you are not using. <a href="https://www.npmjs.com/package/font-awesome-loader">font-awesome-loader</a> allows more customization.</p>
+<p>Font Awesome 5 will improve the situation further. If you want full control over which fonts you are using, <a href="https://github.com/FortAwesome/Font-Awesome/wiki/Customize-Font-Awesome">Font Awesome wiki</a> points to available online services.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>Loading fonts is similar to loading other assets. Here we have extra concerns to consider. We need to consider the browsers we want to support and choose the loading strategy based on that.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/old_camera.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack/loading/images">Loading Images</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/babel.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack/loading/javascript">Loading JavaScript</a></div></div><blockquote class="tip"><p>This book is <a href="https://leanpub.com/survivejs-webpack">available through Leanpub</a>. By purchasing the book you support the development of further content. A part of profit (~30%) goes to Tobias Koppers, the author of Webpack.</p></blockquote><div id="disqus_thread"></div></div></div><div><a class="next-page" title="Loading JavaScript" href="/webpack/loading/javascript"><i class="icon-right-open"></i></a><a class="previous-page" title="Loading Images" href="/webpack/loading/images"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs-webpack">Buy the ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><a href="https://github.com/survivejs/webpack" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="position:absolute;top:0;fill:#000;right:0;"><path class="octo-banner" d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"></path><path class="octo-arm" d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16" style="-webkit-transform-origin:130px 106px;transform-origin:130px 106px;"></path><path class="octo-body" d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"></path></svg></a><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank">GitHub</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/survivejs-webpack-18">SurviveJS - Webpack - v1.8</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-170">SurviveJS - Webpack - v1.7.0</a></li><li><a class="blog-teaser" href="/blog/unexpected-interview">Unexpected - The Extensible BDD Assertion Toolkit - Interview with Sune Simonsen</a></li><li><a class="blog-teaser" href="/blog/ajv-interview">ajv - The Fastest JSON Schema Validator - Interview with Evgeny Poberezkin</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-160">SurviveJS - Webpack - v1.6.0</a></li><li><a class="blog-teaser" href="/blog/isomorphic-webpack-interview">isomorphic-webpack - Universal module consumption using webpack - Interview with Gajus Kuizinas</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-150">SurviveJS - Webpack - v1.5.0</a></li><li><a class="blog-teaser" href="/blog/styletron-interview">Styletron - Universal, high-performance JavaScript styles - Interview with Ryan Tsao</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-142">SurviveJS - Webpack - v1.4.2</a></li><li><a class="blog-teaser" href="/blog/inferno-interview">Inferno - Blazing fast, React-like UI library - Interview with Dominic Gannaway</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+            ((window.gitter = {}).chat = {}).options = {
+              showChatByDefault: false,
+              activationElement: '.gitter-open-chat-button',
+              room: 'survivejs/webpack'
+            };
+          </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div><div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript">
+            docsearch({
+              apiKey: '1182e3806d62e921613b8dc9c7a22ef3',
+              indexName: 'survivejs_webpack',
+              inputSelector: '#search',
+              debug: false
+            });
+          </script></div></main></body></html>
