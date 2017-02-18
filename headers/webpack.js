@@ -24,7 +24,7 @@ module.exports = [
     "type": "intro"
   },
 
-  /* Developing with Webpack */
+  /* Developing */
   {
     "license": "Public Domain",
     "image": "shape_sorter.jpg",
@@ -69,7 +69,7 @@ module.exports = [
     "type": "chapter"
   },
 
-  /* Handling Styles */
+  /* Styling */
   {
     "author": "Philip Brown",
     "source": "https://www.flickr.com/photos/67478016@N00/379064899",
@@ -116,7 +116,7 @@ module.exports = [
     "type": "chapter"
   },
 
-  /* Understanding Loaders */
+  /* Loading */
   {
     "author": "condesign",
     "source": "https://pixabay.com/en/camera-photos-photograph-514992/",
@@ -148,8 +148,16 @@ module.exports = [
     "image": "typing.jpg",
     "type": "chapter"
   },
+  /* Loading JavaScript */
+  {
+    "author": "Tama66",
+    "source": "https://pixabay.com/en/tower-factory-headframe-threatening-1897536/",
+    "license": "Public Domain",
+    "image": "babel.jpg",
+    "type": "chapter"
+  },
 
-  /* Building with Webpack */
+  /* Building */
   {
     "author": "werner22brigitte",
     "source": "https://pixabay.com/en/rusty-metal-old-machine-185531/",
@@ -181,15 +189,7 @@ module.exports = [
     "image": "nuts.jpg",
     "type": "chapter"
   },
-  /* Processing with Babel */
-  {
-    "author": "Tama66",
-    "source": "https://pixabay.com/en/tower-factory-headframe-threatening-1897536/",
-    "license": "Public Domain",
-    "image": "babel.jpg",
-    "type": "chapter"
-  },
-  /* Cleaning Build */
+  /* Tidying Up */
   {
     "author": "jarmoluk",
     "source": "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
@@ -197,16 +197,8 @@ module.exports = [
     "image": "cleaning.jpg",
     "type": "chapter"
   },
-  /* Attaching Revision */
-  {
-    "author": "PIRO4D",
-    "source": "https://pixabay.com/en/sparlampe-energy-saving-bulbs-pear-1924223/",
-    "license": "Public Domain",
-    "image": "lamps.jpg",
-    "type": "chapter"
-  },
 
-  /* Optimizing Build */
+  /* Optimizing */
   {
     "author": "jarmoluk",
     "source": "https://pixabay.com/en/electric-electricity-building-1080584/",
@@ -214,7 +206,7 @@ module.exports = [
     "image": "production.jpg",
     "type": "part"
   },
-  /* Minifying Build */
+  /* Minifying */
   {
     "author": "BreaLeaDesigns",
     "source": "https://pixabay.com/en/austin-tx-sign-texas-downtown-713746/",
@@ -262,8 +254,57 @@ module.exports = [
     "image": "caliper.jpg",
     "type": "chapter"
   },
+  /* Performance */
+  {
+    "author": "smarko",
+    "source": "https://pixabay.com/en/car-supercar-gt-ford-speed-power-1376190/",
+    "license": "Public Domain",
+    "image": "car.jpg",
+    "type": "chapter"
+  },
 
-  /* Advanced Techniques */
+  /* Output */
+  {
+    "author": "ugorgonzola",
+    "source": "https://pixabay.com/en/output-light-neon-660017/",
+    "license": "Public Domain",
+    "image": "exit.jpg",
+    "type": "part"
+  },
+  /* Targets */
+  {
+    "author": "DS-Foto",
+    "source": "https://pixabay.com/en/darts-target-bull-s-eye-delivering-673229/",
+    "license": "Public Domain",
+    "image": "darts.jpg",
+    "type": "chapter"
+  },
+  /* Library output */
+  {
+    "author": "Duke University Archives",
+    "source": "https://www.flickr.com/photos/19219926@N04/3707001321",
+    "license": "CC BY-NC-SA",
+    "image": "library.jpg",
+    "type": "chapter"
+  },
+  /* Multiple pages */
+  {
+    "author": "stevepb",
+    "source": "https://pixabay.com/en/newspaper-news-media-spectacles-412452/",
+    "license": "Public Domain",
+    "image": "newspaper.jpg",
+    "type": "chapter"
+  },
+  /* Server Side Rendering */
+  {
+    "author": "heladodementa",
+    "source": "https://pixabay.com/en/technology-servers-server-1587673/",
+    "license": "Public Domain",
+    "image": "server.jpg",
+    "type": "chapter"
+  },
+
+  /* Packages */
   {
     "author": "NASA",
     "source": "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
@@ -287,16 +328,8 @@ module.exports = [
     "image": "library.jpg",
     "type": "chapter"
   },
-  /* Configuring React */
-  {
-    "author": "Marko Heinrich",
-    "source": "https://pixabay.com/en/event-technology-light-panel-644537/",
-    "license": "Public Domain",
-    "image": "panel.jpg",
-    "type": "chapter"
-  },
 
-  /* Extending Webpack */
+  /* Extending */
   {
     "author": "stevepb",
     "source": "https://pixabay.com/en/lens-extender-teleconverter-469798/",
@@ -337,12 +370,12 @@ module.exports = [
     "image": "compass.jpg",
     "type": "chapter"
   },
-  /* Writing ESLint Plugins */
+  /* HMR with React */
   {
-    "author": "Ana_J",
-    "source": "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
+    "author": "Marko Heinrich",
+    "source": "https://pixabay.com/en/event-technology-light-panel-644537/",
     "license": "Public Domain",
-    "image": "decorators.jpg",
+    "image": "panel.jpg",
     "type": "chapter"
   },
   /* Customizing ESLint */
@@ -367,6 +400,14 @@ module.exports = [
     "source": "https://pixabay.com/en/microphone-mic-dynamic-audio-398738/",
     "license": "Public Domain",
     "image": "microphone.jpg",
+    "type": "chapter"
+  },
+  /* Using Web Workers */
+  {
+    "author": "PollyDot",
+    "source": "https://pixabay.com/en/honey-bees-bees-hive-bee-hive-401238/",
+    "license": "Public Domain",
+    "image": "workers.jpg",
     "type": "chapter"
   },
 ];
