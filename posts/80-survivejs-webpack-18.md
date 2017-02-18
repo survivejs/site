@@ -1,5 +1,5 @@
 ---
-title: 'SurviveJS - Webpack - v1.8.0'
+title: 'SurviveJS - Webpack - v1.8'
 date: 2017-02-18
 headerImage: '/assets/img/bubble.jpg'
 keywords: ['release-notes', 'webpack']
@@ -19,7 +19,7 @@ The structure of the book evolved further and I took great care in figuring out 
 
 T> If you have found the content useful, this would be a good time to contribute a testimonial. A sentence or two would go a long way. Contact me the way you see the most fitting. You can find a couple of channels at the site footer.
 
-## Book Improvements - `1.8.0`
+## Book Improvements - `1.8`
 
 I continued the habit of silent releases and did a couple before I realized the book has moved too far content-wise to warrant one. But I'll likely continue with this habit yet again.
 
@@ -29,7 +29,7 @@ The configuration style evolved yet again to accommodate for multi-page setups b
 
 You will find numerous smaller improvements. In addition to new content, the language of the book was improved. I introduced certain level of linting to my workflow and will continue to work on this as the major milestone gets closer.
 
-In total 350 commits went to the book since the last release. You can find the [changes at GitHub](https://github.com/survivejs/webpack/compare/v1.7.0...v1.8.0). Remember especially the "Files changed" tab as it gives you a good overview of what's happening with the book.
+In total 353 commits went to the book since the last release. You can find the [changes at GitHub](https://github.com/survivejs/webpack/compare/v1.7.0...v1.8.1). Remember especially the "Files changed" tab as it gives you a good overview of what's happening with the book.
 
 ## What Next?
 
