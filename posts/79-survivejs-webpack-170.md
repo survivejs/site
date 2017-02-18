@@ -21,7 +21,6 @@ There will be at least a 1.8 version before the book reaches paper, but the end 
 
 Note that webpack 2 is considered stable now and you don't need `@beta` specifier with it when installing. Only [extract-text-webpack-plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) remains in release candidate mode. If you want to help with it, check out the issue tracker and especially the milestones. It has to reach a final release before I can push the paper book out there.
 
-
 T> If you have found the content useful, this would be a good time to contribute a testimonial. A sentence or two would go a long way. Contact me the way you see the most fitting. You can find a couple of channels at the site footer.
 
 ## Book Improvements - `1.7.0`
@@ -112,8 +111,6 @@ You will find numerous smaller improvements in the book and it should flow bette
 ### Adding Hashes to Filenames
 
 * Split into two chapters. Manifest has a chapter of its own now.
-
-
 
 ## Extending Webpack
 
