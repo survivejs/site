@@ -410,4 +410,12 @@ module.exports = [
     "image": "workers.jpg",
     "type": "chapter"
   },
+  /* i18n */
+  {
+    "author": "geralt",
+    "source": "https://pixabay.com/en/globe-earth-world-globalization-895580/",
+    "license": "Public Domain",
+    "image": "globe.jpg",
+    "type": "chapter"
+  },
 ];
