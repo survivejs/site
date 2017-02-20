@@ -29,7 +29,7 @@ Even though the application looks simple, it's complex enough to illustrate pote
 Psst. <a href="/demos/implementing-kanban/drag-and-drop" target="_blank">You can try out the application online.</a>
 </blockquote>
 
-The book is based on a [boilerplate](https://github.com/survivejs/react-boilerplate). If you want to understand the techniques used in the boilerplate itself, check out the Webpack book (scroll down to learn more). This book is all about React.
+The book is based on a [boilerplate](https://github.com/survivejs/react-boilerplate). If you want to understand the techniques used in the boilerplate itself, check out the webpack book (scroll down to learn more). This book is all about React.
 
 While implementing the Kanban step by step, you will pick up basic ideas of how to compose your application, how to manage data related concerns, how to style your application, how to implement drag and drop. Those are just few topics of the many covered.
 
@@ -106,8 +106,6 @@ I expect you know Node.js and JavaScript on a basic level. The book doesn't use 
 
 The book version is still available. Obviously it is out of sync with the current books. But it is there if you want it. The eventual plan is to do Amazon editions of the new books as well.
 
-If you bought the paper version before June 2016, get in touch and I'll hook you up with the digital versions of the book. This way you get up to date information.
-
 <p>
 <a class='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X'>Buy at Amazon</a>
 </p>
@@ -121,9 +119,7 @@ If you bought the paper version before June 2016, get in touch and I'll hook you
 Juho Vepsäläinen has been dealing with the web since the 90s. He is behind [jswiki](https://github.com/bebraw/jswiki) and [jster.net](http://jster.net/). He is also a core member of webpack.
 </p>
 
-He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](http://reactabular.js.org/) in addition to many other libraries.
-
-He started the SurviveJS effort early 2015 and has been pushing it forward ever since!
+He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](http://reactabular.js.org/) in addition to many other libraries. The SurviveJS effort started early 2015 and has expanded since.
 
 * [@bebraw](https://twitter.com/bebraw)
 * [Personal blog](http://nixtu.info)

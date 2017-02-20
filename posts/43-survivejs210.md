@@ -5,11 +5,11 @@ headerImage: '/assets/img/field.jpg'
 keywords: ['release-notes', 'webpack', 'react']
 ---
 
-It has been a while since [the previous release](./survivejs200) and quite a bit has happened. As you might have noticed, there's actually [a new book about Webpack](./survivejs-webpack-100) out there now. The idea is that I will split this one in two.
+It has been a while since [the previous release](./survivejs200) and quite a bit has happened. As you might have noticed, there's actually [a new book about webpack](./survivejs-webpack-100) out there now. The idea is that I will split this one in two.
 
-This book will continue as something React focused while I'll push all the Webpack bits to the other one. All current readers will receive a free coupon to the Webpack book once I complete this transition. To get a preview, check out [the online version](/webpack/introduction).
+This book will continue as something React focused while I'll push all the webpack bits to the other one. All current readers will receive a free coupon to the webpack book once I complete this transition. To get a preview, check out [the online version](/webpack/introduction).
 
-> A part of the income (around ~30%) goes to Tobias Koppers, the author of Webpack, to support its development. That's the least I can do to support his efforts.
+> A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack, to support its development. That's the least I can do to support his efforts.
 
 This release, 2.1, can be considered a bug fix release. There isn't any major new content. In fact, I dropped the [JSCS](http://jscs.info/) section as it was announced that the project has reached end of life. The core team will join [ESLint](http://eslint.org/) efforts.
 
@@ -17,9 +17,9 @@ This release, 2.1, can be considered a bug fix release. There isn't any major ne
 
 Even though getting this release out there took longer than I would have liked, I feel we are on the right track. I've managed to take care of certain necessary things, such as setting up a proper business entity (waiting for the government now). I even got a nomination for [an award](http://www.bluearrowawards.com/), but I have no high hopes for that of course.
 
-Splitting the book will allow me to provide more focused content. I got into touch with my old editor and we'll be working especially on the Webpack book to push it further. During the week I actually discovered [a neater way to structure Webpack configuration](https://github.com/survivejs-demos/webpack-demo/tree/dev).
+Splitting the book will allow me to provide more focused content. I got into touch with my old editor and we'll be working especially on the webpack book to push it further. During the week I actually discovered [a neater way to structure webpack configuration](https://github.com/survivejs-demos/webpack-demo/tree/dev).
 
-The solution relies on [webpack-merge](https://www.npmjs.com/package/webpack-merge), a tool I developed earlier for the purposes of this book. The approach allows you to split your configuration into easily reusable functions. The next version of the Webpack book will cover it in detail.
+The solution relies on [webpack-merge](https://www.npmjs.com/package/webpack-merge), a tool I developed earlier for the purposes of this book. The approach allows you to split your configuration into easily reusable functions. The next version of the webpack book will cover it in detail.
 
 I have agreed to a training day at May. This will give me a good excuse to research further. Particularly Redux will receive attention. During the past few weeks I've spent a lot of time with it so I know the pros/cons and related patterns quite well now. This will pay off in the coming weeks.
 
@@ -119,7 +119,7 @@ Even though I have managed to tackle some of my goals, there is still work left.
 
 I still have improvements planned. I've listed these based on priority:
 
-* Complete the book split. I'll drop the Webpack bits from this book and provide you a boilerplate instead. This means the readers get faster to the React bits. This decreases the weight of the book somewhat and makes room for more goodies and growth.
+* Complete the book split. I'll drop the webpack bits from this book and provide you a boilerplate instead. This means the readers get faster to the React bits. This decreases the weight of the book somewhat and makes room for more goodies and growth.
 * Port book content to Redux. I have prepared both [vanilla and Immutable.js versions of Kanban](https://github.com/survivejs-demos/redux-demo) to prepare for this.
 * Write **async** appendix. This would show how to deal with asynchronous concerns through Alt. It's a common problem and worth covering.
 

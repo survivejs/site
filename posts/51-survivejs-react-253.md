@@ -5,7 +5,7 @@ headerImage: '/assets/img/serene.jpg'
 keywords: ['release-notes', 'react']
 ---
 
-It has been a while since [the previous release](./survivejs210) and a lot has happened. In addition to ramping up my consulting and [training](https://survivejs.github.io/training) business, I managed to publish a [book on Webpack](/webpack/introduction). That was the first part of my planned split. This is the second.
+It has been a while since [the previous release](./survivejs210) and a lot has happened. In addition to ramping up my consulting and [training](https://survivejs.github.io/training) business, I managed to publish a [book on webpack](/webpack/introduction). That was the first part of my planned split. This is the second.
 
 From now on we'll continue with two books - "SurviveJS - Webpack" and "SurviveJS - React". I am a lot more comfortable with this setup as now it's easier to focus and we can cover more advanced topics. In short, the effort is more manageable now.
 
@@ -13,7 +13,7 @@ T> To reward my current Leanpub readers, you will receive the Leanpub version of
 
 ## Overview of the Situation
 
-This release, 2.5, is easily the biggest I've done in a while. Just extracting the Webpack portions wasn't enough. I felt the book needed polish. As a result I ended up rewriting a significant portion of it. It took time but I'm happy with the outcome.
+This release, 2.5, is easily the biggest I've done in a while. Just extracting the webpack portions wasn't enough. I felt the book needed polish. As a result I ended up rewriting a significant portion of it. It took time but I'm happy with the outcome.
 
 The book consists of smaller, more focused chapters now. This brings down the difficulty while allowing me to cover different dimensions of React in greater detail. The rework enables me to develop further content easier than the old one. You can see this also in the application architecture.
 
@@ -29,7 +29,7 @@ T> If you were following an old version through the web, remember that you can f
 
 ## Getting Started
 
-This part replaces the earlier *Setting Up Webpack* chapter. Rather than stepping you through how to develop your own Webpack configuration, you will start from a [small boilerplate](https://github.com/survivejs/react-boilerplate) instead. [The Webpack book](..webpack/introduction) covers the techniques used there in detail.
+This part replaces the earlier *Setting Up Webpack* chapter. Rather than stepping you through how to develop your own webpack configuration, you will start from a [small boilerplate](https://github.com/survivejs/react-boilerplate) instead. [The webpack book](..webpack/introduction) covers the techniques used there in detail.
 
 ### Introduction to React
 
@@ -107,7 +107,7 @@ TypeScript might deserve more attention in the future. Especially the upcoming 2
 
 ### Styling React
 
-Not a lot happened here. I removed Webpack references but nothing drastic happened.
+Not a lot happened here. I removed webpack references but nothing drastic happened.
 
 ### Structuring React Projects
 

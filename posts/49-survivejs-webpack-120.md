@@ -5,7 +5,7 @@ headerImage: '/assets/img/bell.jpg'
 keywords: ['release-notes', 'webpack']
 ---
 
-As I've been working towards splitting [the first book](/react/introduction), I realized I must do one more release of this Webpack one before I can complete it. That's what the current release, `1.2.0`, is about. I've moved certain content there (mainly linting, npm related) and done assorted tweaks based on feedback.
+As I've been working towards splitting [the first book](/react/introduction), I realized I must do one more release of this webpack one before I can complete it. That's what the current release, `1.2.0`, is about. I've moved certain content there (mainly linting, npm related) and done assorted tweaks based on feedback.
 
 Compared to [the previous release](./survivejs-webpack-110) we have something more mature together now. There are still improvements in store, but you have to take one step at a time.
 
@@ -15,7 +15,7 @@ Getting the split done successfully is my next major goal with this effort. Comp
 
 ## Overview of the Situation
 
-In addition to pushing the book content further, I spent some time contributing to [webpack-validator](https://www.npmjs.com/package/webpack-validator). The tool is growing nicely. There's still a lot to do, but it's progressing nicely. The biggest advantage of having this kind of shell around Webpack is that it is able to catch issues early while saving your valuable time.
+In addition to pushing the book content further, I spent some time contributing to [webpack-validator](https://www.npmjs.com/package/webpack-validator). The tool is growing nicely. There's still a lot to do, but it's progressing nicely. The biggest advantage of having this kind of shell around webpack is that it is able to catch issues early while saving your valuable time.
 
 The development of the [training slides](https://survivejs.github.io/training/) took serious effort, but fortunately now that's done, I don't have to worry about slides so much anymore should I get training requests. The initial set can be developed further and perhaps turned into something greater, but more on this later.
 
@@ -63,7 +63,7 @@ In total 36 commits went to the book since the last release. You can find the im
 
 ## Loading Assets
 
-* Mentioned [babel-plugin-webpack-loaders](https://www.npmjs.com/package/babel-plugin-webpack-loaders). Sometimes you might get away without using Webpack. Less work means more speed. *babel-plugin-webpack-loaders* is particularly useful if you want to do server side rendering without getting Webpack involved in the process.
+* Mentioned [babel-plugin-webpack-loaders](https://www.npmjs.com/package/babel-plugin-webpack-loaders). Sometimes you might get away without using webpack. Less work means more speed. *babel-plugin-webpack-loaders* is particularly useful if you want to do server side rendering without getting webpack involved in the process.
 
 ## Advanced Techniques
 
@@ -87,4 +87,4 @@ Even though this isn't a huge release, it's a solid step towards something nicer
 
 As stated earlier, my next goal is to finish the split. It's good to have this side of the fence in a good shape so we can get the other part across it as well. If you bought the original React/Webpack book, you'll get access to the digital version of this one then. The pricing model will change then (total value goes up) as I like to thank my early supporters.
 
-Of course if you want to support the development of the book, [pick up a copy at Leanpub](https://leanpub.com/survivejs-webpack). You can still gift the coupon to a friend. A part of the income (around ~30%) goes to Tobias Koppers, the author of Webpack. This is my way of supporting his work given mine builds on top of his.
+Of course if you want to support the development of the book, [pick up a copy at Leanpub](https://leanpub.com/survivejs-webpack). You can still gift the coupon to a friend. A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. This is my way of supporting his work given mine builds on top of his.

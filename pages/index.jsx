@@ -33,7 +33,7 @@ const Index = React.createClass({
               <div className='front-button-wrapper'>
                 <div className='read-free-note'>There are also free versions available!</div>
                 <span className='read-free'>
-                  <a href='/react/introduction'>Read the free version of the React book</a> or <a href='/webpack/introduction'>read the free version of the Webpack book</a>
+                  <a href='/react/introduction'>Read the free version of the React book</a> or <a href='/webpack/introduction'>read the free version of the webpack book</a>
                 </span>
               </div>
             </div>
