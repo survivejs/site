@@ -15,7 +15,7 @@ module.exports = [
     "image": "hoodie.jpg",
     "type": "intro"
   },
-  /* why webpack */
+  /* what is webpack */
   {
     "author": "epicantus",
     "source": "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
