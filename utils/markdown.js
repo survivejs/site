@@ -12,6 +12,20 @@ module.exports = function(section) {
     return '<img src="' + section + href + '" alt="' + text + '">';
   };
 
+  renderer.em = function(text) {
+    var webpackBook = require('./webpack-book');
+
+    // Perform a lookup against webpack book chapter definition to figure
+    // out whether to link or not
+    const match = webpackBook[text];
+
+    if (match) {
+      return '<a href="' + match.url + '">' + text + '</a>';
+    }
+
+    return '<em>' + text + '</em>';
+  };
+
   // patch ids (this.options.headerPrefix can be undefined!)
   renderer.heading = function(text, level, raw) {
     var id = raw.toLowerCase().replace(/[^\w]+/g, '-');
