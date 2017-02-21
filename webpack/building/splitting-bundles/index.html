@@ -6,8 +6,8 @@ It would be better to download only the changed portion. If the vendor dependenc
 <h2 class="header"><a class="header-anchor" href="#the-idea-of-bundle-splitting" id="the-idea-of-bundle-splitting"></a><span class="text">The Idea of Bundle Splitting</span><a class="header-anchor-select" href="#the-idea-of-bundle-splitting">#</a></h2>
 <p>Using bundle splitting, we can push the vendor dependencies to a bundle of their own and benefit from client level caching. We can do this in such a way that the whole size of the application remains the same. Given there are more requests to perform, there&#39;s a slight overhead. But the benefit of caching makes up for this cost.</p>
 <p>To give you a simple example, instead of having <em>app.js</em> (100 kB), we could end up with <em>app.js</em> (10 kB) and <em>vendor.js</em> (90 kB). Now changes made to the application are cheap for the clients that have already used the application earlier.</p>
-<p>Caching comes with its own problems. One of those is cache invalidation. We&#39;ll discuss a potential approach related to that in the <em>Adding Hashes to Filenames</em> chapter.</p>
-<p>Bundle splitting isn&#39;t the only way out. The <em>Code Splitting</em> chapter discusses another, more granular way.</p>
+<p>Caching comes with its own problems. One of those is cache invalidation. We&#39;ll discuss a potential approach related to that in the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</p>
+<p>Bundle splitting isn&#39;t the only way out. The <a href="/webpack/building/code-splitting">Code Splitting</a> chapter discusses another, more granular way.</p>
 <h2 class="header"><a class="header-anchor" href="#adding-something-to-split" id="adding-something-to-split"></a><span class="text">Adding Something to Split</span><a class="header-anchor-select" href="#adding-something-to-split">#</a></h2>
 <p>Given there&#39;s not much to split into the vendor bundle yet, we should add something there. Add React to the project first:</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> react --save
@@ -308,7 +308,7 @@ exports<span class="token punctuation" >.</span>extractBundles <span class="toke
   <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<p>It is possible to get good caching behavior with these plugins if a webpack <strong>records</strong> are used. The idea is discussed in detail in the <em>Adding Hashes to Filenames</em> chapter.</p>
+<p>It is possible to get good caching behavior with these plugins if a webpack <strong>records</strong> are used. The idea is discussed in detail in the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Tobias Koppers discusses <a href="https://medium.com/webpack/webpack-http-2-7083ec3f3ce6">aggressive merging in detail at the official blog of webpack</a>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><code>webpack.optimize.LimitChunkCountPlugin</code> and <code>webpack.optimize.MinChunkSizePlugin</code> give further control over chunk size.</blockquote><h2 class="header"><a class="header-anchor" href="#chunk-types-in-webpack" id="chunk-types-in-webpack"></a><span class="text">Chunk Types in Webpack</span><a class="header-anchor-select" href="#chunk-types-in-webpack">#</a></h2>
 <p>In the example above, we used different types of webpack chunks. Webpack treats chunks in three types:</p>
 <ul>

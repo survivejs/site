@@ -11,7 +11,7 @@ The current solution doesn&#x27;t allow us to cache CSS. In some cases, we might
 <pre><code class="lang-bash">npm <span class="token function" >install</span> extract-text-webpack-plugin@beta --save-dev
 </code></pre>
 <p><code>ExtractTextPlugin</code> includes a loader, <code>ExtractTextPlugin.extract</code> that marks the assets to be extracted. Then a plugin will perform its work based on this annotation.</p>
-<p><code>ExtractTextPlugin.extract</code> accepts <code>use</code> and <code>fallback</code> definitions. <code>ExtractTextPlugin</code> processes content through <code>use</code> only from <strong>initial chunks</strong> by default and it uses <code>fallback</code> for the rest. This means it won&#39;t touch any split bundles unless <code>allChunks: true</code> is set true. The <em>Splitting Bundles</em> chapter digs into greater detail.</p>
+<p><code>ExtractTextPlugin.extract</code> accepts <code>use</code> and <code>fallback</code> definitions. <code>ExtractTextPlugin</code> processes content through <code>use</code> only from <strong>initial chunks</strong> by default and it uses <code>fallback</code> for the rest. This means it won&#39;t touch any split bundles unless <code>allChunks: true</code> is set true. The <a href="/webpack/building/splitting-bundles">Splitting Bundles</a> chapter digs into greater detail.</p>
 <p>It is important to note that if you wanted to extract CSS from a more involved format, like Sass, you would have to pass multiple loaders to the <code>use</code> option. Both <code>use</code> and <code>fallback</code> accept a loader (string), a loader definition, or an array of loader definitions.</p>
 <p>The idea looks like this:</p>
 <p><strong>webpack.parts.js</strong></p>
@@ -47,7 +47,7 @@ exports<span class="token punctuation" >.</span>extractCSS <span class="token op
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </div>
 </code></pre>
-<p>That <code>[name]</code> placeholder will use the name of the entry where the CSS is referred to. Placeholders and the overall idea are discussed in detail at the <em>Adding Hashes to Filenames</em> chapter.</p>
+<p>That <code>[name]</code> placeholder will use the name of the entry where the CSS is referred to. Placeholders and the overall idea are discussed in detail at the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you wanted to output the resulting file to a specific directory, you could do it like this: <code>new ExtractTextPlugin(&#39;styles/[name].css&#39;)</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-with-configuration" id="connecting-with-configuration"></a><span class="text">Connecting with Configuration</span><a class="header-anchor-select" href="#connecting-with-configuration">#</a></h3>
 <p>Connect the function with our configuration as below:</p>
 <p><strong>webpack.config.js</strong></p>
@@ -78,7 +78,7 @@ exports<span class="token punctuation" >.</span>extractCSS <span class="token op
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <p>Using this setup, we can still benefit from the HMR during development. For a production build, we generate a separate CSS, though. <em>html-webpack-plugin</em> will pick it up automatically and inject it into our <code>index.html</code>.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you are using CSS Modules, remember to tweak <code>use</code> accordingly as discussed in the <em>Loading Styles</em> chapter.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you are using CSS Modules, remember to tweak <code>use</code> accordingly as discussed in the <a href="/webpack/styling/loading">Loading Styles</a> chapter.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
 <pre><code class="lang-bash">Hash: 57e54590377069688806
 Version: webpack 2.2.1
 Time: 952ms

@@ -75,7 +75,7 @@ Despite this, it is a …"/><meta name="keywords" content="webpack,react,javascr
 <pre><code class="lang-bash">npm <span class="token function" >install</span> eslint-loader --save-dev
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>Note that <em>eslint-loader</em> will use a globally installed version of ESLint unless you have one included with the project itself. Make sure you have ESLint as a development dependency to avoid strange behavior.</blockquote><p>The loader needs some wiring to work. We&#39;ll discuss loaders in detail at the <em>Understanding Loaders</em> part, but the basic idea is simple. A loader is connected to webpack through a rule that contains preconditions related to it and a reference to the loader itself.</p>
-<p>In this case we&#39;ll ensure that ESLint gets executed before anything else using the <code>enforce</code> field. It allows us to guarantee that linting happens before any other processing. The idea is discussed in detail at the <em>Loader Definitions</em> chapter.</p>
+<p>In this case we&#39;ll ensure that ESLint gets executed before anything else using the <code>enforce</code> field. It allows us to guarantee that linting happens before any other processing. The idea is discussed in detail at the <a href="/webpack/loading/loader-definitions">Loader Definitions</a> chapter.</p>
 <p>To add linting to the project, adjust the configuration as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
@@ -155,7 +155,7 @@ Despite this, it is a …"/><meta name="keywords" content="webpack,react,javascr
 <li>ESLint supports ES6 features through configuration. You will have to specify the features to use through the <a href="http://eslint.org/docs/user-guide/configuring.html#specifying-language-options">ecmaFeatures</a> property.</li>
 <li>There are useful plugins, such as <a href="https://www.npmjs.com/package/eslint-plugin-node">eslint-plugin-node</a>, <a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a>, <a href="https://www.npmjs.com/package/eslint-plugin-promise">eslint-plugin-promise</a>, <a href="https://www.npmjs.com/package/eslint-plugin-compat">eslint-plugin-compat</a>, and <a href="https://www.npmjs.com/package/eslint-plugin-import">eslint-plugin-import</a>, that you might want to consider integrating to your project.</li>
 <li>Most IDEs and editors have good ESLint integration so you can spot issues as you develop. This applies to other linting tools as well.</li>
-<li>To learn about ESLint customizations options and how to write an ESLint plugin, check out the <em>Customizing ESLint</em> appendix.</li>
+<li>To learn about ESLint customizations options and how to write an ESLint plugin, check out the <a href="/webpack/appendices/customizing-eslint">Customizing ESLint</a> appendix.</li>
 </ul>
 <h2 class="header"><a class="header-anchor" href="#webpack-and-jshint" id="webpack-and-jshint"></a><span class="text">Webpack and JSHint</span><a class="header-anchor-select" href="#webpack-and-jshint">#</a></h2>
 <p>No JSLint specific loader exists for webpack yet. Fortunately, there&#39;s one for JSHint. You could set it up on a legacy project easily. The key is in configuring <a href="https://www.npmjs.com/package/jshint-loader">jshint-loader</a>.</p>
