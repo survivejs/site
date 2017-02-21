@@ -130,6 +130,7 @@ module.exports = function webpack(headers) {
       'advanced-techniques/configuring-react': 'output/server-side-rendering/',
       'appendices/configuring-hmr-with-react/': 'appendices/hmr-with-react/',
       'appendices/writing-eslint-plugins/': 'appendices/customizing-eslint/',
+      'why-webpack': 'what-is-webpack/',
     }
   };
 };
