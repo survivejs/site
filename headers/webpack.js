@@ -304,6 +304,55 @@ module.exports = [
     "type": "chapter"
   },
 
+  /* Techniques */
+  {
+    "author": "Ana_J",
+    "source": "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
+    "license": "Public Domain",
+    "image": "decorators.jpg",
+    "type": "part"
+  },
+  /* Dynamic loading */
+  {
+    "author": "wongpear",
+    "source": "https://pixabay.com/en/microphone-mic-dynamic-audio-398738/",
+    "license": "Public Domain",
+    "image": "microphone.jpg",
+    "type": "chapter"
+  },
+  /* Web Workers */
+  {
+    "author": "PollyDot",
+    "source": "https://pixabay.com/en/honey-bees-bees-hive-bee-hive-401238/",
+    "license": "Public Domain",
+    "image": "workers.jpg",
+    "type": "chapter"
+  },
+  /* i18n */
+  {
+    "author": "geralt",
+    "source": "https://pixabay.com/en/globe-earth-world-globalization-895580/",
+    "license": "Public Domain",
+    "image": "globe.jpg",
+    "type": "chapter"
+  },
+  /* Testing */
+  {
+    "author": "skeeze",
+    "source": "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
+    "license": "Public Domain",
+    "image": "testing.jpg",
+    "type": "chapter"
+  },
+  /* Deploying */
+  {
+    "author": "Acid Pix",
+    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
+    "license": "CC BY",
+    "image": "boots.jpg",
+    "type": "chapter"
+  },
+
   /* Packages */
   {
     "author": "NASA",
@@ -386,36 +435,12 @@ module.exports = [
     "image": "language.jpg",
     "type": "chapter"
   },
-  /* Deploying */
+  /* Troubleshooting */
   {
-    "author": "Acid Pix",
-    "source": "https://www.flickr.com/photos/7870246@N03/481256246",
-    "license": "CC BY",
-    "image": "boots.jpg",
-    "type": "chapter"
-  },
-  /* Dynamic loading */
-  {
-    "author": "wongpear",
-    "source": "https://pixabay.com/en/microphone-mic-dynamic-audio-398738/",
+    "author": "Edvard Munch",
+    "source": "https://www.artsy.net/artwork/edvard-munch-the-scream",
     "license": "Public Domain",
-    "image": "microphone.jpg",
-    "type": "chapter"
-  },
-  /* Using Web Workers */
-  {
-    "author": "PollyDot",
-    "source": "https://pixabay.com/en/honey-bees-bees-hive-bee-hive-401238/",
-    "license": "Public Domain",
-    "image": "workers.jpg",
-    "type": "chapter"
-  },
-  /* i18n */
-  {
-    "author": "geralt",
-    "source": "https://pixabay.com/en/globe-earth-world-globalization-895580/",
-    "license": "Public Domain",
-    "image": "globe.jpg",
+    "image": "scream.jpg",
     "type": "chapter"
   },
 ];
