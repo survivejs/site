@@ -67,7 +67,8 @@ module.exports = function webpack(headers) {
       }
     },
     redirects: {
-      'webpack-compared': 'compared/',
+      'webpack-compared': 'appendices/comparison/',
+      'compared': 'appendices/comparison/',
       'developing-with-webpack': 'developing/',
       'developing-with-webpack/setting-up-npm-install-webpack-plugin': 'introduction/',
       'developing-with-webpack/optimizing-development': 'optimizing-build/',
