@@ -1,5 +1,21 @@
 module.exports = [
-  /* introduction */
+  /* Foreword */
+  {
+    "author": "MarkoGrothe",
+    "source": "https://pixabay.com/en/back-light-dandelion-sun-nature-1701549/",
+    "license": "Public Domain",
+    "image": "dandelion.jpg",
+    "type": "intro"
+  },
+  /* Preface */
+  {
+    "author": "geralt",
+    "source": "https://pixabay.com/en/road-start-beginning-intention-1668916/",
+    "license": "Public Domain",
+    "image": "road.jpg",
+    "type": "intro"
+  },
+  /* Introduction */
   {
     "author": "James Jordan",
     "source": "https://www.flickr.com/photos/69826987@N00/1501451576",
@@ -7,15 +23,7 @@ module.exports = [
     "image": "journey.jpg",
     "type": "intro"
   },
-  /* webpack compared */
-  {
-    "author": "Unsplash",
-    "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
-    "license": "Public Domain",
-    "image": "hoodie.jpg",
-    "type": "intro"
-  },
-  /* what is webpack */
+  /* What is webpack */
   {
     "author": "epicantus",
     "source": "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
@@ -403,6 +411,15 @@ module.exports = [
     "type": "chapter"
   },
 
+  /* Conclusion */
+  {
+    "author": "Noel_Bauza",
+    "source": "https://pixabay.com/en/snow-sunset-hiking-cold-1185474/",
+    "license": "Public Domain",
+    "image": "hike.jpg",
+    "type": "part"
+  },
+
   /* Appendices */
   {
     "author": "forwimuwi73",
@@ -410,6 +427,14 @@ module.exports = [
     "license": "Public Domain",
     "image": "peanuts.jpg",
     "type": "part"
+  },
+  /* Comparison */
+  {
+    "author": "Unsplash",
+    "source": "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
+    "license": "Public Domain",
+    "image": "hoodie.jpg",
+    "type": "chapter"
   },
   /* Searching with React */
   {
