@@ -468,4 +468,12 @@ module.exports = [
     "image": "scream.jpg",
     "type": "chapter"
   },
+  /* Glossary */
+  {
+    "author": "diannehope14",
+    "source": "https://pixabay.com/en/collaboration-collaborator-book-1106196/",
+    "license": "Public Domain",
+    "image": "glossary.jpg",
+    "type": "chapter"
+  },
 ];
