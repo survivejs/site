@@ -3,12 +3,12 @@ The easiest way to make HTTP/1 application slow is to load a lot of small assets
 <p>Webpack allows you to inline assets by using <a href="https://www.npmjs.com/package/url-loader">url-loader</a>. It will output your images as base64 strings within your JavaScript bundles. The process will decrease the number of requests needed while growing the bundle size. It is enough to use <em>url-loader</em> during development. You may want to consider other alternatives for the production build, though.</p>
 <p>Webpack gives control over the inlining process and can defer loading to <a href="https://www.npmjs.com/package/file-loader">file-loader</a>. <em>file-loader</em> outputs image files and returns paths to them instead of inlining. This technique works with other assets types, such as fonts, as we will see in the later chapters.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-url-loader-" id="setting-up-url-loader-"></a><span class="text">Setting Up <em>url-loader</em></span><a class="header-anchor-select" href="#setting-up-url-loader-">#</a></h2>
-<p><em>url-loader</em> is a good starting point and it&#39;s the perfect option for development purposes, as you don&#39;t have to care about the size of the resulting bundle. It comes with a <em>limit</em> option that can be used to defer image generation to <em>file-loader</em> after a certain limit is reached. This way you can inline small files to your JavaScript bundles while generating separate files for the bigger ones.</p>
+<p><em>url-loader</em> is a good starting point and it’s the perfect option for development purposes, as you don’t have to care about the size of the resulting bundle. It comes with a <em>limit</em> option that can be used to defer image generation to <em>file-loader</em> after a certain limit is reached. This way you can inline small files to your JavaScript bundles while generating separate files for the bigger ones.</p>
 <p>If you use the limit option, you will need to install both <em>url-loader</em> and <em>file-loader</em> to your project. Assuming you have configured your styles correctly, webpack will resolve any <code>url()</code> statements your styling might have. You can point to the image assets through your JavaScript code as well.</p>
 <p>It is important to note that if the limit option is used, <em>url-loader</em> will pass possible additional options to <em>file-loader</em> making it possible to configure its behavior further.</p>
-<p>To load <em>.jpg</em> and <em>.png</em> files while inlining files below 25kB, we would set up a loader like this:</p>
+<p>To load <em>.jpg</em>, <em>.png</em>, and <em>.svg</em> files while inlining files below 25kB, we would set up a loader like this:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png)$/</span><span class="token punctuation" >,</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png|svg)$/</span><span class="token punctuation" >,</span>
   loader<span class="token punctuation" >:</span> <span class="token string" >'url-loader'</span><span class="token punctuation" >,</span>
   options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     limit<span class="token punctuation" >:</span> <span class="token number" >25000</span><span class="token punctuation" >,</span>
@@ -16,16 +16,16 @@ The easiest way to make HTTP/1 application slow is to load a lot of small assets
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#setting-up-file-loader-" id="setting-up-file-loader-"></a><span class="text">Setting Up <em>file-loader</em></span><a class="header-anchor-select" href="#setting-up-file-loader-">#</a></h2>
-<p>If you want to skip inlining altogether, you can use <em>file-loader</em> directly. The following setup customizes the resulting filename. By default, <em>file-loader</em> returns the MD5 hash of the file&#39;s contents with the original extension:</p>
+<p>If you want to skip inlining altogether, you can use <em>file-loader</em> directly. The following setup customizes the resulting filename. By default, <em>file-loader</em> returns the MD5 hash of the file’s contents with the original extension:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png)$/</span><span class="token punctuation" >,</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png|svg)$/</span><span class="token punctuation" >,</span>
   loader<span class="token punctuation" >:</span> <span class="token string" >'file-loader'</span><span class="token punctuation" >,</span>
   options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     name<span class="token punctuation" >:</span> <span class="token string" >'[path][name].[hash].[ext]'</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to output your images below a particular directory, set it up like this: <code>name: &#39;./images/[hash].[ext]&#39;</code>. Adjust to your liking.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Be careful not to apply both loaders on images at the same time! Use the <code>include</code> field for further control if <em>url-loader</em> <code>limit</code> isn&#39;t enough.</blockquote><h2 class="header"><a class="header-anchor" href="#integrating-images-to-the-project" id="integrating-images-to-the-project"></a><span class="text">Integrating Images to the Project</span><a class="header-anchor-select" href="#integrating-images-to-the-project">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to output your images below a particular directory, set it up like this: <code>name: &#39;./images/[hash].[ext]&#39;</code>. Adjust to your liking.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Be careful not to apply both loaders on images at the same time! Use the <code>include</code> field for further control if <em>url-loader</em> <code>limit</code> isn’t enough.</blockquote><h2 class="header"><a class="header-anchor" href="#integrating-images-to-the-project" id="integrating-images-to-the-project"></a><span class="text">Integrating Images to the Project</span><a class="header-anchor-select" href="#integrating-images-to-the-project">#</a></h2>
 <p>The ideas above can be wrapped in a small helper that can be incorporated into the book project. To get started, install the dependencies:</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> file-loader url-loader --save-dev
 </code></pre>
@@ -38,7 +38,7 @@ exports<span class="token punctuation" >.</span>loadImages <span class="token op
     module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       rules<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
         <span class="token punctuation" >{</span>
-          test<span class="token punctuation" >:</span> <span class="token regex" >/\.(png|jpg)$/</span><span class="token punctuation" >,</span>
+          test<span class="token punctuation" >:</span> <span class="token regex" >/\.(png|jpg|svg)$/</span><span class="token punctuation" >,</span>
           include<span class="token punctuation" >,</span>
           exclude<span class="token punctuation" >,</span>
 
@@ -52,7 +52,7 @@ exports<span class="token punctuation" >.</span>loadImages <span class="token op
   <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>To attach it to the configuration, adjust as follows. We&#39;ll default to <em>url-loader</em> during development and use both <em>url-loader</em> and <em>file-loader</em> in production to maintain smaller bundle sizes. <em>url-loader</em> uses <em>file-loader</em> implicitly when <code>limit</code> is set and both have to be installed for the setup to work.</p>
+<p>To attach it to the configuration, adjust as follows. We’ll default to <em>url-loader</em> during development and use both <em>url-loader</em> and <em>file-loader</em> in production to maintain smaller bundle sizes. <em>url-loader</em> uses <em>file-loader</em> implicitly when <code>limit</code> is set and both have to be installed for the setup to work.</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
@@ -62,7 +62,7 @@ exports<span class="token punctuation" >.</span>loadImages <span class="token op
   parts<span class="token punctuation" >.</span><span class="token function" >loadImages</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
     options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       limit<span class="token punctuation" >:</span> <span class="token number" >15000</span><span class="token punctuation" >,</span>
-      name<span class="token punctuation" >:</span> <span class="token string" >'[hash:8].[ext]'</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'[name].[ext]'</span><span class="token punctuation" >,</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
@@ -112,7 +112,7 @@ exports<span class="token punctuation" >.</span>loadImages <span class="token op
 <h2 class="header"><a class="header-anchor" href="#utilizing-srcset-" id="utilizing-srcset-"></a><span class="text">Utilizing <code>srcset</code></span><a class="header-anchor-select" href="#utilizing-srcset-">#</a></h2>
 <p><a href="https://www.npmjs.com/package/resize-image-loader">resize-image-loader</a> and <a href="https://www.npmjs.com/package/responsive-loader">responsive-loader</a> allow you to generate <code>srcset</code> compatible collections of images making them useful with modern browsers. <code>srcset</code> gives more control to the browsers over what images to load and when resulting in higher performance.</p>
 <h2 class="header"><a class="header-anchor" href="#referencing-to-images" id="referencing-to-images"></a><span class="text">Referencing to Images</span><a class="header-anchor-select" href="#referencing-to-images">#</a></h2>
-<p>Webpack can pick up images from stylesheets through <code>@import</code> and <code>url()</code> assuming <em>css-loader</em> has been configured. You can also refer to your images within code. In this case, you&#39;ll have to import the files explicitly:</p>
+<p>Webpack can pick up images from stylesheets through <code>@import</code> and <code>url()</code> assuming <em>css-loader</em> has been configured. You can also refer to your images within code. In this case, you’ll have to import the files explicitly:</p>
 <pre><code class="lang-javascript"><span class="token keyword" >const</span> src <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'./avatar.png'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 
 <span class="token comment" spellcheck="true">// Use the image in your code somehow now</span>
@@ -125,16 +125,16 @@ exports<span class="token punctuation" >.</span>loadImages <span class="token op
   <span class="token operator" >&lt;</span>img src<span class="token operator" >=</span><span class="token string" >"avatar.png"</span> <span class="token operator" >/</span><span class="token operator" >></span>
 <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>It is also possible to set up dynamic imports as discussed in the <a href="/webpack/building/code-splitting">Code Splitting</a> chapter. Here&#39;s a small example:</p>
+<p>It is also possible to set up dynamic imports as discussed in the <a href="/webpack/building/code-splitting">Code Splitting</a> chapter. Here’s a small example:</p>
 <pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// The name of the avatar is received from somewhere</span>
 <span class="token keyword" >const</span> src <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token template-string" ><span class="token string" >`./avatars/</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>avatar<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#getting-image-dimensions" id="getting-image-dimensions"></a><span class="text">Getting Image Dimensions</span><a class="header-anchor-select" href="#getting-image-dimensions">#</a></h2>
-<p>Sometimes getting the only reference to an image isn&#39;t enough. <a href="https://www.npmjs.com/package/image-size-loader">image-size-loader</a> emits image dimensions, type, and size in addition to the reference to the image itself.</p>
+<p>Sometimes getting the only reference to an image isn’t enough. <a href="https://www.npmjs.com/package/image-size-loader">image-size-loader</a> emits image dimensions, type, and size in addition to the reference to the image itself.</p>
 <h2 class="header"><a class="header-anchor" href="#loading-sprites" id="loading-sprites"></a><span class="text">Loading Sprites</span><a class="header-anchor-select" href="#loading-sprites">#</a></h2>
-<p><strong>Spriting</strong> technique allows you to combine multiple smaller images into a single image. It has been used for games to describe animations and it&#39;s useful for web development as well as you avoid request overhead.</p>
+<p><strong>Spriting</strong> technique allows you to combine multiple smaller images into a single image. It has been used for games to describe animations and it’s useful for web development as well as you avoid request overhead.</p>
 <p><a href="https://www.npmjs.com/package/webpack-spritesmith">webpack-spritesmith</a> converts provided images into a sprite sheet and Sass/Less/Stylus mixins. You have to set up a <code>SpritesmithPlugin</code>, point it to target images, and set the name of the generated mixin. After that, your styling can pick it up like this:</p>
 <pre><code class="lang-sass"><span class="token atrule-line" ><span class="token atrule" >@import</span> '~sprite.sass';</span>
 
@@ -149,7 +149,7 @@ exports<span class="token punctuation" >.</span>loadImages <span class="token op
 <h2 class="header"><a class="header-anchor" href="#loading-images-dynamically" id="loading-images-dynamically"></a><span class="text">Loading Images Dynamically</span><a class="header-anchor-select" href="#loading-images-dynamically">#</a></h2>
 <p>Sometimes you might want to load an image dynamically based on a condition. This is where code splitting techniques can come in handy. They still assume the files exist in the file system. See the <a href="/webpack/building/code-splitting">Code Splitting</a> chapter for further information.</p>
 <h2 class="header"><a class="header-anchor" href="#images-and-css-loader-source-map-gotcha" id="images-and-css-loader-source-map-gotcha"></a><span class="text">Images and <em>css-loader</em> Source Map Gotcha</span><a class="header-anchor-select" href="#images-and-css-loader-source-map-gotcha">#</a></h2>
-<p>If you are using images and <em>css-loader</em> with the <code>sourceMap</code> option enabled, it is important that you will set <code>output.publicPath</code> to an absolute value pointing to your development server. Otherwise, images won&#39;t show up. See <a href="https://github.com/webpack/style-loader/issues/55">the relevant webpack issue</a> for further explanation.</p>
+<p>If you are using images and <em>css-loader</em> with the <code>sourceMap</code> option enabled, it is important that you will set <code>output.publicPath</code> to an absolute value pointing to your development server. Otherwise, images won’t show up. See <a href="https://github.com/webpack/style-loader/issues/55">the relevant webpack issue</a> for further explanation.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Webpack allows you to inline images within your bundles when needed. Figuring out proper inlining limits for your images might take some experimentation. You have to balance between bundle sizes and the number of requests.</p>
 <p>To recap:</p>

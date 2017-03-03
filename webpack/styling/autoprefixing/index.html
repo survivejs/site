@@ -54,13 +54,13 @@ exports<span class="token punctuation" >.</span>autoprefix <span class="token op
   <span class="token property" >display</span><span class="token punctuation" >:</span> flex<span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>As you can see, autoprefixing expands the rules, so we don&#39;t have to remember to do that.</p>
+<p>As you can see, autoprefixing expands the rules, so we don’t have to remember to do that.</p>
 <p>If you know what browsers you support, it is possible to set up a <a href="https://www.npmjs.com/package/browserslist">browserslist</a> file. Different tools pick up this definition, <em>autoprefixer</em> included. Consider the example below where we select only specific browsers:</p>
 <p><strong>browserslist</strong></p>
 <pre><code><span class="token operator" >></span> 1% <span class="token comment" spellcheck="true"># Browser usage over 1%</span>
 Last 2 versions <span class="token comment" spellcheck="true"># Last two versions too</span>
 IE 8 <span class="token comment" spellcheck="true"># And IE 8</span>
-</code></pre><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+</code></pre><blockquote class="warning"><i class="icon-attention"></i>It is important to note that <em>browserslist</em> rules are evaluated as <strong>or</strong>. If any of the rules matches, then the given browser will be supported by the definition!</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Autoprefixing is a convenient technique as it decreases the amount of work needed while crafting CSS. You can maintain minimum browser requirements within a <em>browserslist</em> file. The tooling can then use that information to generate optimal output.</p>
 <p>To recap:</p>
 <ul>

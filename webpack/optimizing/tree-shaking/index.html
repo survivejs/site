@@ -27,12 +27,24 @@ Tree shaking is a feature enabled by the ES6 module definition. The idea is that
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
-<p>If you build the project again (<code>npm run build</code>) and examine the build result (<em>build/app.js</em>), it should contain <code>console.log(&#39;bake&#39;)</code>, but miss <code>console.log(&#39;shake&#39;)</code>. That&#39;s tree shaking in action.</p>
+<p>If you build the project again (<code>npm run build</code>) and examine the build result (<em>build/app.js</em>), it should contain <code>console.log(&#39;bake&#39;)</code>, but miss <code>console.log(&#39;shake&#39;)</code>. That’s tree shaking in action.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to see which parts of the code tree shaking affects, enable warnings at the <code>UglifyJsPlugin</code>. In addition to other messages, you should see lines like <code>Dropping unused variable treeShakingDemo [./app/component.js:17,6]</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>There is a CSS Modules related tree shaking proof of concept at <a href="https://github.com/simlrh/dead-css-loader">dead-css-loader</a>. The technique becomes like more useful in the future as projects like this become stable.</blockquote><h2 class="header"><a class="header-anchor" href="#tree-shaking-on-package-level" id="tree-shaking-on-package-level"></a><span class="text">Tree Shaking on Package Level</span><a class="header-anchor-select" href="#tree-shaking-on-package-level">#</a></h2>
 <p>The same idea works with dependencies that use the ES6 module definition. Given the related packaging standards are still emerging, it is possible you may have to be careful when consuming such packages. Webpack will try to resolve <em>package.json</em> <code>module</code> field for this purpose.</p>
-<p>For tools like webpack to allow tree shake npm packages, you should generate a build that has transpiled everything else except the ES6 module definitions and then point to it through <em>package.json</em> <code>module</code> field. See the <a href="/webpack/loading/javascript">Loading JavaScript</a> chapter for the minimal Babel setup.</p>
-<p>The <a href="/webpack/packages/consuming">Consuming Packages</a> and <a href="/webpack/packages/authoring">Authoring Packages</a> chapters contain further techniques that may come in handy.</p>
-<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>For tools like webpack to allow tree shake npm packages, you should generate a build that has transpiled everything else except the ES6 module definitions and then point to it through <em>package.json</em> <code>module</code> field.</p>
+<p>In Babel terms, you will need <a href="https://www.npmjs.com/package/babel-preset-es2015">babel-preset-es2015</a> configured so that it process everything else except for ES6 module definitions:</p>
+<p><strong>.babelrc</strong></p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
+    <span class="token punctuation" >[</span>
+      <span class="token string" >"es2015"</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >{</span>
+        <span class="token property" >"modules"</span><span class="token operator" >:</span> <span class="token boolean" >false</span>
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >]</span>
+  <span class="token punctuation" >]</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/webpack/packages/consuming">Consuming Packages</a> and <a href="/webpack/packages/authoring">Authoring Packages</a> chapters contain further techniques that may come in handy.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Tree shaking is a potentially powerful technique. For the source to benefit from tree shaking, npm packages have to be implemented using the ES6 module syntax, and they have to expose the ES6 version through <em>package.json</em> <code>module</code> field tools like webpack can pick up.</p>
 <p>To recap:</p>
 <ul>

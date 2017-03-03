@@ -25,69 +25,39 @@ When webpack writes bundles, it maintains a manifest as well. You can find it in
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><code>minChunks</code> is optional in this case. Passing <code>Infinity</code> to it tells webpack <strong>not</strong> to move any modules to the resulting bundle.</blockquote><p>If you build the project now (<code>npm run build</code>), you should see something like this:</p>
-<pre><code class="lang-bash">Hash: 02314843647ee4f50d46
+<pre><code class="lang-bash">Hash: 73f8c0d53361c3a81ea6
 Version: webpack 2.2.1
-Time: 3628ms
+Time: 4071ms
                    Asset       Size  Chunks             Chunk Names
-         app.801b7672.js  882 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-    <span class="token punctuation" >..</span>.font.11ec0064.svg   22 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+         app.801b7672.js  865 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+    <span class="token punctuation" >..</span>.font.912ec66d.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
     <span class="token punctuation" >..</span>.font.674f50d2.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
    <span class="token punctuation" >..</span>.font.fee66e71.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
   <span class="token punctuation" >..</span>.font.af7ae505.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-       logo.9a0d8fb8.png    17.6 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-           0.a749f8b7.js  199 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-      vendor.f80a9a7b.js    23.7 kB    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+       logo.85011118.png      77 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+           0.e7c9bce9.js  432 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+      vendor.c4ac6d53.js    23.4 kB    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
     <span class="token punctuation" >..</span>.font.b06871f2.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-    manifest.fddd3c23.js    1.52 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-        app.4d491c24.css    1.88 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-       0.a749f8b7.js.map  812 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  vendor.f80a9a7b.js.map     274 kB    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-     app.801b7672.js.map    6.56 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-    app.4d491c24.css.map   93 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-manifest.fddd3c23.js.map    14.2 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-                        index.html  368 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<div class="leanpub-insert">
+    manifest.95266dc7.js    1.51 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+</div>
+        app.bf4d156d.css    2.54 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+       0.e7c9bce9.js.map    2.08 kB    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  vendor.c4ac6d53.js.map     129 kB    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
+     app.801b7672.js.map    2.34 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+    app.bf4d156d.css.map   93 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+<div class="leanpub-insert">
+manifest.95266dc7.js.map    5.77 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+</div>
+              index.html  368 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
 <span class="token punctuation" >[</span>1Q41<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
 <span class="token punctuation" >[</span>2twT<span class="token punctuation" >]</span> ./app/index.js 557 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
 <span class="token punctuation" >[</span>5W1q<span class="token punctuation" >]</span> ./~/font-awesome/css/font-awesome.css 41 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
 <span class="token punctuation" >..</span>.
 </code></pre>
-<p>This change gave us a separate file that contains the manifest. In the output above it has been marked with <code>manifest</code> chunk name. Because we are using <em>html-webpack-plugin</em>, we don&#39;t have to worry about loading the manifest ourselves as the plugin adds a reference to <em>index.html</em> for us.</p>
+<p>This change gave us a separate file that contains the manifest. In the output above it has been marked with <code>manifest</code> chunk name. Because we are using <em>html-webpack-plugin</em>, we don’t have to worry about loading the manifest ourselves as the plugin adds a reference to <em>index.html</em> for us.</p>
 <p>Plugins, such as <a href="https://www.npmjs.com/package/inline-manifest-webpack-plugin">inline-manifest-webpack-plugin</a> and <a href="https://www.npmjs.com/package/html-webpack-inline-chunk-plugin">html-webpack-inline-chunk-plugin</a>, <a href="https://www.npmjs.com/package/assets-webpack-plugin">assets-webpack-plugin</a>, work with <em>html-webpack-plugin</em> and allow you to write the manifest within <em>index.html</em> in order to avoid a request.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>To get a better idea of the manifest contents, comment out <code>parts.minify()</code> and examine the resulting manifest. You should see something familiar there.</blockquote><p>Try adjusting <em>app/index.js</em> and see how the hashes change. This time around it should <strong>not</strong> invalidate the vendor bundle, and only the manifest and app bundle names should be different like this:</p>
-<pre><code class="lang-bash">Hash: 3c7635d30cf399aa8e12
-Version: webpack 2.2.1
-Time: 3783ms
-                   Asset       Size  Chunks             Chunk Names
-<div class="leanpub-insert">
-         app.48532ac8.js  901 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-</div>
-    <span class="token punctuation" >..</span>.font.11ec0064.svg   22 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-    <span class="token punctuation" >..</span>.font.674f50d2.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >..</span>.font.fee66e71.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >..</span>.font.af7ae505.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-       logo.9a0d8fb8.png    17.6 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-           0.a749f8b7.js  199 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-      vendor.f80a9a7b.js    23.7 kB    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-    <span class="token punctuation" >..</span>.font.b06871f2.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<div class="leanpub-insert">
-    manifest.03cc5a22.js    1.52 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-</div>
-        app.4d491c24.css    1.88 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-       0.a749f8b7.js.map  812 bytes    0, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  vendor.f80a9a7b.js.map     274 kB    1, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-<div class="leanpub-insert">
-     app.48532ac8.js.map    6.62 kB    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-</div>
-    app.4d491c24.css.map   93 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-<div class="leanpub-insert">
-manifest.03cc5a22.js.map    14.2 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
-</div>
-            index.html  368 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>1Q41<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>2twT<span class="token punctuation" >]</span> ./app/index.js 578 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>5W1q<span class="token punctuation" >]</span> ./~/font-awesome/css/font-awesome.css 41 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
-</code></pre>
+<blockquote class="tip"><i class="icon-attention-circled"></i>To get a better idea of the manifest contents, comment out <code>parts.minify()</code> and examine the resulting manifest. You should see something familiar there.</blockquote><p>Try adjusting <em>app/index.js</em> and see how the hashes change. This time around it should <strong>not</strong> invalidate the vendor bundle, and only the manifest and app bundle names should become different.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>In order to integrate with asset pipelines, you can consider using plugins like <a href="https://www.npmjs.com/package/chunk-manifest-webpack-plugin">chunk-manifest-webpack-plugin</a>, <a href="https://www.npmjs.com/package/webpack-manifest-plugin">webpack-manifest-plugin</a>, <a href="https://www.npmjs.com/package/webpack-assets-manifest">webpack-assets-manifest</a>, or <a href="https://www.npmjs.com/package/webpack-rails-manifest-plugin">webpack-rails-manifest-plugin</a>. These solutions emit JSON that maps the original asset path to the new one.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>One more way to improve the build further would be to load popular dependencies, such as React, through a CDN. That would decrease the size of the vendor bundle even further while adding an external dependency on the project. The idea is that if the user has hit the CDN earlier, caching can kick in like here.</blockquote><h2 class="header"><a class="header-anchor" href="#using-records" id="using-records"></a><span class="text">Using Records</span><a class="header-anchor-select" href="#using-records">#</a></h2>
 <p>As mentioned in the <a href="/webpack/building/splitting-bundles">Splitting Bundles</a> chapter, plugins such as <code>AggressiveSplittingPlugin</code> use <strong>records</strong> to implement caching. The approaches discussed above are still valid, but records go one step further.</p>
 <p>Records are used for storing module IDs across separate builds. The problem is that you need to store this file some way. If you build locally, one option is to include it to your version control.</p>
