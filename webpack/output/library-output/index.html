@@ -213,7 +213,7 @@ The library target is controlled through the output.libraryTarget field. output.
 </code></pre>
 <p>In short, <code>output.library</code> maps to the JSONP function name. The idea is that you could load a file like this across domains and have it call the named function. Specific APIs implement the pattern although there is no official standard for it.</p>
 <h2 class="header"><a class="header-anchor" href="#systemjs" id="systemjs"></a><span class="text">SystemJS</span><a class="header-anchor-select" href="#systemjs">#</a></h2>
-<p><a href="https://github.com/systemjs/systemjs">SystemJS</a> is an emerging standard that’s starting to get more attention. <a href="https://www.npmjs.com/package/webpack-system-register">webpack-system-register</a> plugin allows you to wrap your output in a <code>System.register</code> call making it compatible with the scheme.</p>
+<p><a href="https://www.npmjs.com/package/systemjs">SystemJS</a> is an emerging standard that’s starting to get more attention. <a href="https://www.npmjs.com/package/webpack-system-register">webpack-system-register</a> plugin allows you to wrap your output in a <code>System.register</code> call making it compatible with the scheme.</p>
 <p>If you want to support SystemJS this way, set up another build target where to generate a bundle for it.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Webpack supports a large variety of library output formats. <code>umd</code> is the most useful for a package author. The rest are more specialized and require specific use cases to be valuable.</p>
