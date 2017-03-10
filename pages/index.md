@@ -116,10 +116,8 @@ The book version is still available. Obviously it is out of sync with the curren
 
 <p>
 <img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200' alt='Juho Vepsäläinen' class='author-photo' width='100' height='100' />
-Juho Vepsäläinen has been dealing with the web since the 90s. He is behind [jswiki](https://github.com/bebraw/jswiki) and [jster.net](http://jster.net/). He is also a core member of webpack.
+Juho Vepsäläinen is behind the SurviveJS effort and he is a core member of webpack. In addition to Reactabular, a table library, he has been active in the open source scene for a decade and his past includes projects like Blender.
 </p>
-
-He has developed [colorjoe](https://github.com/bebraw/colorjoe) and [reactabular](http://reactabular.js.org/) in addition to many other libraries. The SurviveJS effort started early 2015 and has expanded since.
 
 * [@bebraw](https://twitter.com/bebraw)
 * [Personal blog](http://nixtu.info)
