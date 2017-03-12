@@ -84,6 +84,10 @@ function RelatedPosts({page, posts, headers}) {
   return (
     <div>
       {_.map(posts, (pages, name) => {
+        if (pages.length < 2) {
+          return <div key={`related-posts-${name}`} />;
+        }
+
         return (
           <div key={`related-posts-${name}`}>
             <h4 className="toc-nav--header">{headers[name] || titleCase(name)}</h4>
