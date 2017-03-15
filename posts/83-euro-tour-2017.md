@@ -13,10 +13,10 @@ Note that I have time especially during the weeks at Norway and Germany. This is
 
 I've listed the tour dates below with registration where possible. The list will be updated as I have more information available.
 
-## 23-24.4 - Helsinki, Finland
+## 23-24.3 - Helsinki, Finland
 
-* 23.4 - [React Helsinki](https://meetabit.com/communities/react-helsinki) - "Re-imagining webpack documentation site" - 20 mins + QA, first go!
-* 24.4 - [wwweeklies](http://wwweeklies.com/) - "Webpack - From Apprentice to Master" - 45 mins + QA, from basic to advanced topics fast.
+* 23.3 - [React Helsinki](https://meetabit.com/communities/react-helsinki) - "Re-imagining webpack documentation site" - 20 mins + QA, first go!
+* 24.3 - [wwweeklies](http://wwweeklies.com/) - "Webpack - From Apprentice to Master" - 45 mins + QA, from basic to advanced topics fast.
 
 ## 1-9.4 - Norway, Oslo
 
