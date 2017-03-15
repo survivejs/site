@@ -45,7 +45,7 @@ SurviveJS is a community driven effort. There's a [free edition](/react/introduc
 
 ### Getting the Book
 
-Even though SurviveJS is community driven, the effort still needs to be funded somehow. This is the reason why Leanpub/Amazon buyers get access to exclusive content. Currently this means bonus chapters on typing and testing. The Leanpub version comes in pdf, epub, and mobi formats (no DRM).
+Even though SurviveJS is community driven, the effort still needs to be funded somehow. This is the reason why Leanpub buyers get access to exclusive content. Currently this means bonus chapters on typing and testing. The Leanpub version comes in pdf, epub, and mobi formats (no DRM).
 
 The income goes back to pushing the effort further. The goal here is not to make the maximum amount of money. It's about giving back to the community given the community enables all this. And as you enable the effort, you get more material. Fair deal!
 
@@ -94,20 +94,6 @@ I expect you know Node.js and JavaScript on a basic level. The book doesn't use 
 
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
-</p>
-
-## SurviveJS - Webpack and React - Amazon Edition
-
-<p>
-  <img class='front-cover' src='assets/img/webpack_react_small.png' width='255' height='329' />
-
-  The original book that started this all culminated in an [Amazon edition](http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X). It was my way of pushing the book quality forward as a printed edition has low tolerance for mistakes.
-</p>
-
-The book version is still available. Obviously it is out of sync with the current books. But it is there if you want it. The eventual plan is to do Amazon editions of the new books as well.
-
-<p>
-<a class='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X'>Buy at Amazon</a>
 </p>
 
 > You don't have to be alone in your journey. Community support is available through [gitter](https://gitter.im/survivejs). You can also [contact me directly](mailto:info@survivejs.com).

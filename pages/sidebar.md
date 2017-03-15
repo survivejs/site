@@ -1,6 +1,5 @@
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-react'>Buy at Leanpub</a>
-<a class='btn btn--normal btn--buy' href='http://www.amazon.com/SurviveJS-Webpack-React-apprentice-master/dp/152391050X/'>Buy at Amazon</a>
 </p>
 
 * 45 day money back guarantee
@@ -8,7 +7,6 @@
 * 2000+ readers
 * Future updates for free
 * Digital version - min. $19.99 + VAT
-* Paperback - $29.99
 
 ## About Author
 
