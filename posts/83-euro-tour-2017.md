@@ -27,16 +27,13 @@ I've listed the tour dates below with registration where possible. The list will
 * 11.4 - [NewStore](https://www.meetup.com/NewStore/) - "Webpack - From Apprentice to Journeyman" - 45 mins + QA, Register at [Eventbrite](https://www.eventbrite.de/e/webpack-from-apprentice-to-journeyman-with-juho-vepsalainen-tickets-32719397599) or see the [Meetup](https://www.meetup.com/NewStore/events/238314252/) page for more information.
 * 18.4 - Reactive Roadshow - ???
 
-## 19-26.4 - Czech Republic
+## 19-27.4 - Czech Republic and Slovakia
 
 * 19.4 - Prague - Reactive Roadshow - ???
 * 20.4 - Hradec Králové - Reactive Roadshow - ???
-* 25.4 - Brno - Reactive Roadshow - ???
-
-## 26-27.4 - Slovakia
-
-* 26.4 - Bratislava - Reactive Roadshow - ???
-* 27.4 - Košice - Reactive Roadshow - ???
+* 24.4 - Košice - Reactive Roadshow - ???
+* 25.4 - Bratislava - Reactive Roadshow - ???
+* 26.4 - Brno - Reactive Roadshow - ???
 
 ## Conclusion
 
