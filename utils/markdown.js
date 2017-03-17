@@ -8,6 +8,15 @@ module.exports = function(section) {
 
   var renderer = new marked.Renderer();
 
+  renderer.paragraph = function(text) {
+    // Skip pagebreaks
+    if (text === '{pagebreak}') {
+      return '';
+    }
+
+    return '<p>' + text + '</p>\n';
+  };
+
   renderer.image = function(href, title, text) {
     return '<img src="' + section + href + '" alt="' + text + '">';
   };

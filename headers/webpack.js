@@ -52,14 +52,6 @@ module.exports = [
     "image": "splash.jpg",
     "type": "chapter"
   },
-  /* Configuring HMR */
-  {
-    "author": "DanielBrachlow",
-    "source": "https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/",
-    "license": "Public Domain",
-    "image": "inferno.jpg",
-    "type": "chapter"
-  },
   /* Linting */
   {
     "author": "Eva the Weaver",
@@ -436,12 +428,12 @@ module.exports = [
     "image": "hoodie.jpg",
     "type": "chapter"
   },
-  /* Searching with React */
+  /* Configuring HMR */
   {
-    "author": "Pexels",
-    "source": "https://pixabay.com/en/adventure-compass-hand-macro-1850673/",
+    "author": "DanielBrachlow",
+    "source": "https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/",
     "license": "Public Domain",
-    "image": "compass.jpg",
+    "image": "inferno.jpg",
     "type": "chapter"
   },
   /* HMR with React */
@@ -458,6 +450,14 @@ module.exports = [
     "source": "https://pixabay.com/en/font-lead-set-book-printing-705667/",
     "license": "Public Domain",
     "image": "language.jpg",
+    "type": "chapter"
+  },
+  /* Searching with React */
+  {
+    "author": "Pexels",
+    "source": "https://pixabay.com/en/adventure-compass-hand-macro-1850673/",
+    "license": "Public Domain",
+    "image": "compass.jpg",
     "type": "chapter"
   },
   /* Troubleshooting */
