@@ -23,7 +23,7 @@ Special thanks to David Lee, Steve Schwartz, and Jesús Rodríguez Rodríguez fo
 
 ## Webpack Compared
 
-* Added a section for [Brunch](http://brunch.io/). It's an interesting alternative to Webpack and worth covering. There's even a [HMR runtime](https://github.com/brunch/hmr-brunch) available for it.
+* Added a section for [Brunch](http://brunch.io/). It's an interesting alternative to webpack and worth covering. There's even a [HMR runtime](https://github.com/brunch/hmr-brunch) available for it.
 
 ## Developing with Webpack
 
@@ -95,4 +95,4 @@ I'll do a pass on [the React book](/react/introduction) next and then continue p
 
 Even though this is another small release, it's a step ahead. Keep up providing feedback and I'll integrate as well as I can.
 
-If you want to support the development of the book, [pick up a copy at Leanpub](https://leanpub.com/survivejs-webpack). A part of the income (around ~30%) goes to Tobias Koppers, the author of Webpack. This is my way of supporting his work given mine builds on top of his.
+If you want to support the development of the book, [pick up a copy at Leanpub](https://leanpub.com/survivejs-webpack). A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. This is my way of supporting his work given mine builds on top of his.

@@ -5,7 +5,7 @@
 Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly.
 </p>
 
-Combined with [Webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands. The SurviveJS effort consists of two books that help you to adopt these technologies. They are available as [a bundle](https://leanpub.com/b/survivejs-webpack-react).
+Combined with [webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands. The SurviveJS effort consists of two books that help you to adopt these technologies. They are available as [a bundle](https://leanpub.com/b/survivejs-webpack-react).
 
 <p>
   <img class='front-cover' src='assets/img/react_title_page_small.png' width='255' height='329' />
@@ -73,18 +73,18 @@ If you get stuck, remember to check out the [Gitter chat](https://gitter.im/surv
 <p>
   <img class='front-cover' src='assets/img/webpack_title_page_small.png' width='255' height='329' />
 
-  Originally **SurviveJS - Webpack** was a part of the original book. Eventually I realized [Webpack](https://webpack.github.io/), the bundling tool, deserves a book of its own. This is that book.
+  Originally **SurviveJS - Webpack** was a part of the original book. Eventually I realized [webpack](https://webpack.github.io/), the bundling tool, deserves a book of its own. This is that book.
 </p>
 
-Just like the first book, this has evolved organically as well. The early part of the book explains why Webpack is needed, shows you how to develop Webpack configuration of your own step by step, and then moves onto more advanced topics.
+Just like the first book, this has evolved organically as well. The early part of the book explains why webpack is needed, shows you how to develop webpack configuration of your own step by step, and then moves onto more advanced topics.
 
 I chose an approach that allows me to discuss one technique at a time. This makes the book handy for reference.
 
-The book covers actually more than just Webpack. You will learn also about the surrounding ecosystem. This means you will learn to improve the quality of your code using tools such as [ESLint](http://eslint.org/). There are also React specific tips given this book originates from the first one.
+The book covers actually more than just webpack. You will learn also about the surrounding ecosystem. This means you will learn to improve the quality of your code using tools such as [ESLint](http://eslint.org/). There are also React specific tips given this book originates from the first one.
 
 ### Getting the Book
 
-Just like the React one, there's a [free edition](/webpack/introduction) available. You can support the effort by [purchasing a digital copy of the book](https://leanpub.com/survivejs-webpack). About a third of the income goes to Tobias Koppers, the author of Webpack. This is my way of saying thanks and supporting his effort.
+Just like the React one, there's a [free edition](/webpack/introduction) available. You can support the effort by [purchasing a digital copy of the book](https://leanpub.com/survivejs-webpack). About a third of the income goes to Tobias Koppers, the author of webpack. This is my way of saying thanks and supporting his effort.
 
 There's also a [Gitter chat](https://gitter.im/survivejs/webpack). You can [check out the project at GitHub](https://github.com/survivejs/webpack) as well.
 

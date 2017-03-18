@@ -7,7 +7,7 @@ keywords: ['release-notes', 'webpack']
 
 Compared to [the first release](./survivejs-webpack-100) a couple of weeks ago, this version has matured quite a bit. I've been reviewing the content with [my editor](http://angular-tips.com/) (thanks Jesús!) and that has lead to some nice insights. Our work is still in progress and so far we've combed through only a couple of the first chapters. The work will continue in the coming weeks.
 
-Overall we are going to a good direction with this book. The effort has forced me to understand Webpack on a deeper level. That's a good thing. I expect `1.2.0` will improve the situation further as I can cover Webpack in greater detail. The book structure seems solid and it's easy to grow content on top of it.
+Overall we are going to a good direction with this book. The effort has forced me to understand webpack on a deeper level. That's a good thing. I expect `1.2.0` will improve the situation further as I can cover webpack in greater detail. The book structure seems solid and it's easy to grow content on top of it.
 
 ## Overview of the Situation
 
@@ -15,7 +15,7 @@ Perhaps the biggest technical improvement this time around is the introduction o
 
 This way *webpack.config.js* can remain simpler while we get configuration code that can be shared across multiple projects and even published to npm. It's also easier for me to explain what's going on this way.
 
-This change was motivated by a tool known as [webpack-validator](https://www.npmjs.com/package/webpack-validator). It checks your Webpack configuration against a schema and it is able to point out configuration issues during development. This is valuable as the errors Webpack emits aren't always the easiest to understand. Using a little tool like this takes some pain out of the process.
+This change was motivated by a tool known as [webpack-validator](https://www.npmjs.com/package/webpack-validator). It checks your webpack configuration against a schema and it is able to point out configuration issues during development. This is valuable as the errors webpack emits aren't always the easiest to understand. Using a little tool like this takes some pain out of the process.
 
 There are numerous other improvements as well, but read on to learn more about those. I feel the book is evolving to a good direction although there is still a lot of work left. I'll focus on the React book next so I can finally get the promised split done.
 
@@ -101,4 +101,4 @@ I feel this release took the book a notch further. I still have plenty of topics
 
 I'll do a little pass on the React book next to finish the split. If you have bought it already, you'll receive a free coupon to this one then to thank you for your support.
 
-Of course if you want to support the development of the book, [pick up a copy at Leanpub](https://leanpub.com/survivejs-webpack). You can still gift the coupon to a friend. A part of the income (around ~30%) goes to Tobias Koppers, the author of Webpack. This is my way of supporting his work given mine builds on top of his.
+Of course if you want to support the development of the book, [pick up a copy at Leanpub](https://leanpub.com/survivejs-webpack). You can still gift the coupon to a friend. A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. This is my way of supporting his work given mine builds on top of his.
