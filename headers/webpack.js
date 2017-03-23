@@ -279,6 +279,14 @@ module.exports = [
     "image": "darts.jpg",
     "type": "chapter"
   },
+  /* Bundling libraries */
+  {
+    "author": "jarmoluk",
+    "source": "https://pixabay.com/en/old-books-book-old-library-436498/",
+    "license": "Public Domain",
+    "image": "books.jpg",
+    "type": "chapter"
+  },
   /* Library output */
   {
     "author": "Duke University Archives",
@@ -369,12 +377,28 @@ module.exports = [
     "image": "chunks.jpg",
     "type": "chapter"
   },
+  /* Package Consuming Techniques */
+  {
+    "author": "Foundry",
+    "source": "https://pixabay.com/en/food-waffle-dessert-honey-863484/",
+    "license": "Public Domain",
+    "image": "food.jpg",
+    "type": "chapter"
+  },
   /* Authoring Packages */
   {
     "author": "Duke University Archives",
     "source": "https://www.flickr.com/photos/19219926@N04/3707001321",
     "license": "CC BY-NC-SA",
     "image": "library.jpg",
+    "type": "chapter"
+  },
+  /* Package Authoring Techniques */
+  {
+    "author": "KoalaParkLaundromat",
+    "source": "https://pixabay.com/en/letters-typewriter-vintage-hipster-1161946/",
+    "license": "Public Domain",
+    "image": "keyboard.jpg",
     "type": "chapter"
   },
 
