@@ -75,7 +75,7 @@ You can support creation of new content by [purchasing a digital copy of the boo
 
 <p>
 <img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200' alt='Juho Vepsäläinen' class='author-photo' width='100' height='100' />
-Juho Vepsäläinen is behind the SurviveJS effort and he is a core member of webpack. In addition to [Reactabular](https://reactabular.js.org/), a table library, he has been active in the open source scene for a decade and his past includes projects like Blender.
+Juho Vepsäläinen is behind the SurviveJS effort, and he is a core member of webpack. In addition to [Reactabular](https://reactabular.js.org/), a table library, he has been active in the open source scene for a decade, and his past includes projects like Blender.
 </p>
 
 * [@bebraw](https://twitter.com/bebraw)
