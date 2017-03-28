@@ -3,7 +3,7 @@ var _common = require('./_common');
 
 module.exports = function webpack(headers) {
   return {
-    title: 'Table of Contents',
+    title: 'SurviveJS - Webpack',
     path: function() {
       return require.context('json!yaml-frontmatter!../../webpack/manuscript', true, /^\.\/.*\.md$/);
     },
