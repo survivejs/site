@@ -1,8 +1,18 @@
-## What Will I Learn
+## SurviveJS - Webpack
+
+<p>
+  <img class='front-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
+
+  **SurviveJS - Webpack** is meant for beginner to intermediate users of [webpack](https://webpack.github.io/). Webpack is a powerful bundler that can simplify the creation of complex web application.
+</p>
+
+I designed this book to help you get up to speed with the tool. The book project started early 2015 from a small wiki effort and has since evolved into a complete guide to webpack.
+
+During this process I have become a core developer of webpack while learning a lot about it. In this book I share what I have learned during these years with you.
 
 Webpack, a module bundler, is a powerful tool that helps you to develop complex web applications. It enables techniques, such as **code splitting**. You could say it solves the fundamental problem of web development and it has allowed developers to reach new levels of productivity.
 
-I designed this book to help you get up to speed with the tool. The book project started early 2015 from a small wiki effort and has since evolved into a complete guide to webpack. During this process I have become a core developer of webpack while learning a lot about it. In this book I share what I have learned during these years with you.
+## What Will I Learn
 
 The book would not have been possible without constant feedback by the community around the book. It has been developed to contain solutions to most bundling related problems you might encounter. You can see the book as a complement to the [official documentation](https://webpack.js.org/) which I helped to create. By reading the book, you will develop [an extensive configuration](https://github.com/survivejs-demos/webpack-demo) you understand.
 
