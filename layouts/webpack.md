@@ -3,7 +3,7 @@
 <p>
   <img class='front-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
 
-  **SurviveJS - Webpack** is meant for beginner to intermediate users of [webpack](https://webpack.github.io/). Webpack is a powerful bundler that can simplify the creation of complex web application.
+  **SurviveJS - Webpack** is meant for beginner to intermediate users of [webpack](https://webpack.github.io/). Webpack is a powerful bundler that can simplify the creation of complex web applications.
 </p>
 
 I designed this book to help you get up to speed with the tool. The book project started early 2015 from a small wiki effort and has since evolved into a complete guide to webpack.
