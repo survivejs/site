@@ -45,7 +45,7 @@ export default React.createClass({
             />
 
           <Testimonial
-            text='Briliant! A must have if you want to to learn webpack but also if need an updated reference guide. I always use it as a reference guide when I develop. '
+            text='Brilliant! A must have if you want to to learn webpack but also if need an updated reference guide. I always use it as a reference guide when I develop. '
             image={'/assets/img/testimonials/andrea.png'}
             name='Andrea Chiumenti'
             title='CEO, Red Software Systems'
