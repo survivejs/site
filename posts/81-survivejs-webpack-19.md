@@ -9,7 +9,7 @@ If [the previous release](../survivejs-webpack-18) was a big step, this is anoth
 
 I consider the current release content complete. Only final tweaking and tuning remain.
 
-T> If you aren't interested in what has changed, [skip straight to the book](/webpack/introduction).
+T> If you aren't interested in what has changed, [skip straight to the book](/webpack/preface).
 
 ## Overview of the Situation
 

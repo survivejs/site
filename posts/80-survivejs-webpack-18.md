@@ -7,7 +7,7 @@ keywords: ['release-notes', 'webpack']
 
 Compared to [the previous release](../survivejs-webpack-170) this one has gained more weight. The PDF version of the book is close to 400 pages due to new content and enhancements. There is still one chapter and two appendices to write, but the finish line is close!
 
-T> If you aren't interested in what has changed, [skip straight to the book](/webpack/introduction).
+T> If you aren't interested in what has changed, [skip straight to the book](/webpack/preface).
 
 ## Overview of the Situation
 

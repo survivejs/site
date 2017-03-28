@@ -60,7 +60,7 @@ module.exports = function webpack(headers) {
     },
     layouts: {
       index: function() {
-        return require('../layouts/ChapterIndex.jsx').default;
+        return require('../layouts/WebpackIndex.jsx').default;
       },
       page: function() {
         return require('../layouts/ChapterPage.jsx').default;

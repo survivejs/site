@@ -11,7 +11,7 @@ Given this is the very first edition, you can expect some rough spots. Some inte
 
 ## Release Notes
 
-* There's an [online edition](/webpack/introduction). It contains the same content as the commercial version. I am just experimenting with a little different model here for a change to see how it goes.
+* There's an [online edition](/webpack/preface). It contains the same content as the commercial version. I am just experimenting with a little different model here for a change to see how it goes.
 * If you have bought "SurviveJS - Webpack and React", you will receive this book for free once I complete the split. That book will become simply "SurviveJS - React". This will give me room to develop more React specific content.
 * A part of this books profit (around ~30%) will go to Tobias Koppers, the author of webpack. This book simply wouldn't be possible without him so he more than deserves a cut.
 * Feedback is welcome. Prefer [the GitHub issue tracker](https://github.com/survivejs/webpack/issues) for that. You can reach me other ways too. I am particularly interested in what sort of content to develop.

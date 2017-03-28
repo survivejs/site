@@ -7,7 +7,7 @@ keywords: ['release-notes', 'webpack', 'react']
 
 It has been a while since [the previous release](./survivejs200) and quite a bit has happened. As you might have noticed, there's actually [a new book about webpack](./survivejs-webpack-100) out there now. The idea is that I will split this one in two.
 
-This book will continue as something React focused while I'll push all the webpack bits to the other one. All current readers will receive a free coupon to the webpack book once I complete this transition. To get a preview, check out [the online version](/webpack/introduction).
+This book will continue as something React focused while I'll push all the webpack bits to the other one. All current readers will receive a free coupon to the webpack book once I complete this transition. To get a preview, check out [the online version](/webpack/preface).
 
 > A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack, to support its development. That's the least I can do to support his efforts.
 

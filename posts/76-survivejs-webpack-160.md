@@ -9,7 +9,7 @@ You might have noticed that [webpack 2 reached a final release](https://medium.c
 
 Compared to [the previous release](../survivejs-webpack-150) this one feels more solid and should be a little easier to approach. A lot of grammatical issues were eliminated in addition to other tweaks. This work is a part of the hardening required for a paper release.
 
-T> If you aren't interested in what has changed, [skip straight to the book](/webpack/introduction).
+T> If you aren't interested in what has changed, [skip straight to the book](/webpack/preface).
 
 ## Overview of the Situation
 

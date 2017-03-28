@@ -7,7 +7,7 @@ keywords: ['release-notes', 'webpack']
 
 New year, new chance to write. [The previous release](../survivejs-webpack-142) put the writing gear back on and it's time to continue. This time around there are quite a big changes in the content and it's starting to feel more and more something worth publishing in a paper format.
 
-T> If you aren't interested in what has changed, [skip straight to the book](/webpack/introduction).
+T> If you aren't interested in what has changed, [skip straight to the book](/webpack/preface).
 
 ## Overview of the Situation
 

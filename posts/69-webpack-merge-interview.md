@@ -114,7 +114,7 @@ The rewrite was possible thanks to extensive tests in place. I've tested *webpac
 
 There are quite a few solutions for managing webpack configuration. Just to mention a few, consider [webpack-config](https://www.npmjs.com/package/webpack-config) or [easy-webpack](https://www.npmjs.com/package/@easy-webpack/core). Using lodash `merge` is one option, but for the reasons outlined above I don't consider as a good long term way to handle it.
 
-Compared to the other options, *webpack-merge* comes with a tiny API surface. There's not a lot to remember once you understand how it works. Composition allows you to begin to model fragments of configuration as you like and find the abstractions that make sense for you. Andy Wermke did something like this in [webpack-blocks](https://github.com/andywer/webpack-blocks) and I discuss one approach in my [webpack book](/webpack/introduction).
+Compared to the other options, *webpack-merge* comes with a tiny API surface. There's not a lot to remember once you understand how it works. Composition allows you to begin to model fragments of configuration as you like and find the abstractions that make sense for you. Andy Wermke did something like this in [webpack-blocks](https://github.com/andywer/webpack-blocks) and I discuss one approach in my [webpack book](/webpack/preface).
 
 A while ago I spent time with a client refactoring their webpack configuration to run through *webpack-merge* and once we were done, the difference was quite immense. A large amount of duplication was gone and we had something together that was possible to share across their projects.
 

@@ -6,19 +6,19 @@
   **SurviveJS - Webpack** is meant for beginner to intermediate users of [webpack](https://webpack.github.io/). Webpack is a powerful bundler that can simplify the creation of complex web application.
 </p>
 
-The book begins from the core concepts and covers a wide range of techniques most of which are useful beyond webpack. You will learn how develop, build, optimize, and to extend webpack to suit your purposes.
+The book begins with a foreword by Tobias Koppers, the author of the tool. After that you will learn what makes webpack tick and develop [an extensive configuration](https://github.com/survivejs-demos/webpack-demo) you understand. During this process you will learn how to develop, build, optimize, and extend webpack.
 
-The book consists of a tutorial during which you develop [an extensive configuration](https://github.com/survivejs-demos/webpack-demo) that you understand. In addition, the book covers a wide variety of specific techniques to apply in its 45 chapters and seven appendices. Each chapter of the book as a short summary to encourage quick skimming.
+In addition, the book covers a wide variety of specific techniques to apply in its 45 chapters and seven appendices. Each chapter of the book as a short summary to encourage quick skimming.
 
 The book covers more than just webpack. You will learn to improve the quality of your code using tools such as [ESLint](http://eslint.org/). There are also React specific tips and a lot more.
 
 ### Getting the Book
 
-The easiest way to get started with the material is to check out [the free online edition](/webpack/introduction) available. If you like it, [purchase a digital copy of the book](https://leanpub.com/survivejs-webpack). The digital edition comes in three formats (epub/mobi/pdf) and makes you eligible for future updates.
+The easiest way to get started with the material is to check out [the free online edition](/webpack). If you like it, [purchase a digital copy of the book](https://leanpub.com/survivejs-webpack). The digital edition comes in three formats (epub/mobi/pdf) and makes you eligible for future updates.
 
-About a third of the income goes to Tobias Koppers, the author of webpack. This is my way of saying thanks and supporting his effort. Since I'm a webpack core developer as well, you help me to spend more time on the project too.
+A third of the income goes to Tobias. This is my way of saying thanks and supporting his effort. Since I'm a webpack core developer as well, you help me to spend more time on the project too.
 
-> There's a [Gitter chat](https://gitter.im/survivejs/webpack) for support. You can [check out the project at GitHub](https://github.com/survivejs/webpack) as well.
+> There's a [Gitter chat](https://gitter.im/survivejs/webpack) for support. You can [check out the project at GitHub](https://github.com/survivejs/webpack) and [support webpack directly through Open Collective](https://opencollective.com/webpack).
 
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>

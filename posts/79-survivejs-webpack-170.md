@@ -9,7 +9,7 @@ Compared to [the previous release](../survivejs-webpack-160) we've proceeded a s
 
 It will likely take at least one more release till we get to the magical 2.0 release that should become available in paper as well.
 
-T> If you aren't interested in what has changed, [skip straight to the book](/webpack/introduction).
+T> If you aren't interested in what has changed, [skip straight to the book](/webpack/preface).
 
 ## Overview of the Situation
 

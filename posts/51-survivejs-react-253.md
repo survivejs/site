@@ -5,7 +5,7 @@ headerImage: '/assets/img/serene.jpg'
 keywords: ['release-notes', 'react']
 ---
 
-It has been a while since [the previous release](./survivejs210) and a lot has happened. In addition to ramping up my consulting and [training](https://survivejs.github.io/training) business, I managed to publish a [book on webpack](/webpack/introduction). That was the first part of my planned split. This is the second.
+It has been a while since [the previous release](./survivejs210) and a lot has happened. In addition to ramping up my consulting and [training](https://survivejs.github.io/training) business, I managed to publish a [book on webpack](/webpack/preface). That was the first part of my planned split. This is the second.
 
 From now on we'll continue with two books - "SurviveJS - Webpack" and "SurviveJS - React". I am a lot more comfortable with this setup as now it's easier to focus and we can cover more advanced topics. In short, the effort is more manageable now.
 
@@ -29,7 +29,7 @@ T> If you were following an old version through the web, remember that you can f
 
 ## Getting Started
 
-This part replaces the earlier *Setting Up Webpack* chapter. Rather than stepping you through how to develop your own webpack configuration, you will start from a [small boilerplate](https://github.com/survivejs/react-boilerplate) instead. [The webpack book](..webpack/introduction) covers the techniques used there in detail.
+This part replaces the earlier *Setting Up Webpack* chapter. Rather than stepping you through how to develop your own webpack configuration, you will start from a [small boilerplate](https://github.com/survivejs/react-boilerplate) instead. [The webpack book](..webpack/preface) covers the techniques used there in detail.
 
 ### Introduction to React
 

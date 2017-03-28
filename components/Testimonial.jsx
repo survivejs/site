@@ -6,13 +6,17 @@ export default React.createClass({
     return (
       <div className='testimonial'>
         <div className='text-wrapper'>
-          <span className='text'>{this.props.text}</span>
+          <div className='text'>{this.props.text}</div>
         </div>
-        <div className='photo-wrapper'>
-          <a href={this.props.url} target='_blank'>
+
+        {this.props.image && <div className='photo-wrapper'>
+          {this.props.url ? <a href={this.props.url} target='_blank'>
             <img className='photo' src={this.props.image} alt={this.props.name} />
-          </a>
-        </div>
+          </a> :
+            <img className='photo' src={this.props.image} alt={this.props.name} />
+          }
+        </div>}
+
         <div className='name-wrapper'>
           <span className='name'>{this.props.name}</span>
         </div>
