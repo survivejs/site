@@ -10,7 +10,7 @@ If you happen to know webpack well already, there is still something there for y
 
 The book covers more than just webpack. Even if you don't use webpack or aren't interested in it, you may still want to review the book for the techniques covered alone as you can adapt them to your workflow.
 
-### Getting the Book
+## Getting the Book
 
 The easiest way to get started with the material is to check out [the free online edition](/webpack/foreword). If you like it, [purchase a digital copy of the book](https://leanpub.com/survivejs-webpack). The digital edition comes in three formats (epub/mobi/pdf) and makes you eligible for future updates.
 
