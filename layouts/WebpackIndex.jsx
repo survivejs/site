@@ -82,7 +82,7 @@ export default React.createClass({
 </div>
 }
             name='Julien Castelain'
-            title='Software Engineer at Liferay'
+            title='Software Engineer, Liferay'
             />
         </div>
 
