@@ -109,7 +109,12 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
   <span class="token keyword" >return</span> <span class="token template-string" ><span class="token string" >`export default </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>path<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>Webpack provides two additional <code>emit</code> methods: <code>this.emitWarning</code> and <code>this.emitError</code>. Both accept a string and can be used to tell the user something unexpected happened. They should be used over <code>console</code> based alternatives. As with <code>this.emitFile</code>, you have to mock them for <em>loader-runner</em> to work.</p>
+<p>Webpack provides two additional <code>emit</code> methods:</p>
+<ul>
+<li><code>this.emitWarning(&lt;string&gt;)</code></li>
+<li><code>this.emitError(&lt;string&gt;)</code></li>
+</ul>
+<p>These calls should be used over <code>console</code> based alternatives. As with <code>this.emitFile</code>, you have to mock them for <em>loader-runner</em> to work.</p>
 <p>The next question is, how to pass file name to the loader.</p>
 <h2 class="header"><a class="header-anchor" href="#passing-options-to-loaders" id="passing-options-to-loaders"></a><span class="text">Passing Options to Loaders</span><a class="header-anchor-select" href="#passing-options-to-loaders">#</a></h2>
 <p>To demonstrate passing options, the runner needs a small tweak:</p>
