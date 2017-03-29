@@ -59,7 +59,15 @@ export default React.createClass({
             title='Senior Software Engineer, Google'
             url='https://www.google.com/'
             />
+        </div>
 
+        <div className='post post--front'>
+          <section className='post__content'>
+            <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./webpack.md')}} />
+          </section>
+        </div>
+
+        <div className='front__testimonials'>
           <Testimonial
             text='Webpack is powerful but configuring it can be painful. Same goes with React. There are so many ways of configuring React with asset compilation, minification etc that it is easy to get lost. This book provides practical tips on how to proceed.'
             image={'/assets/img/testimonials/raj.jpg'}
@@ -84,12 +92,6 @@ export default React.createClass({
             name='Julien Castelain'
             title='Software Engineer, Liferay'
             />
-        </div>
-
-        <div className='post post--front'>
-          <section className='post__content'>
-            <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./webpack.md')}} />
-          </section>
         </div>
       </div>
     );
