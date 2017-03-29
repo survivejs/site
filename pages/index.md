@@ -26,6 +26,8 @@ A third of the income goes to Tobias. This is my way of saying thanks and suppor
 <a class='btn btn--normal btn--buy' href='https://www.amazon.com/dp/B06XWZZGBS'>Buy for Kindle</a>
 </p>
 
+> A special signature edition will happen if there is enough interest. [I want one!](https://survivejs.typeform.com/to/LUQK0T).
+
 ## SurviveJS - React
 
 <p>
