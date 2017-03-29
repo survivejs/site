@@ -59,7 +59,7 @@ export default React.createClass({
 
             <blockquote className="tip">
               {section.name === 'webpack' ?
-              <p>This book is <a href="https://leanpub.com/survivejs-webpack">available through Leanpub</a>. By purchasing the book you support the development of further content. A part of profit (~30%) goes to Tobias Koppers, the author of webpack.</p> :
+              <p>This book is available through <a href="https://leanpub.com/survivejs-webpack">Leanpub (digital)</a>, <a href="https://www.amazon.com/dp/9526868803">Amazon (paperback)</a>, and <a href="https://www.amazon.com/dp/B06XWZZGBS">Kindle (digital)</a>. By purchasing the book you support the development of further content. A part of profit (~30%) goes to Tobias Koppers, the author of webpack.</p> :
               <p>This book is <a href="https://leanpub.com/survivejs-react">available through Leanpub</a>. By purchasing the book you support the development of further content.</p>
               }
             </blockquote>
