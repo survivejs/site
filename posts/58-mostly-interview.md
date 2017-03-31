@@ -2,7 +2,7 @@
 title: 'Mostly Adequate Guide to Functional Programming - Interview with Brian Lonsdorf'
 date: 2016-08-01
 headerImage: '/assets/img/mostly.jpg'
-keywords: ['interview']
+keywords: ['interview', 'functional programming']
 ---
 
 You might have heard about [Mostly Adequate Guide to Functional Programming (in JavaScript)](https://github.com/MostlyAdequate/mostly-adequate-guide) by [Brian Lonsdorf](https://twitter.com/drboolean). It's one of the better known free books discussing JavaScript.
