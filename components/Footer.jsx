@@ -28,6 +28,9 @@ export default React.createClass({
                   <a href='https://github.com/survivejs' target='_blank'>GitHub</a>
                 </li>
                 <li>
+                  <a href='https://presentations.survivejs.com' target='_blank'>Presentations</a>
+                </li>
+                <li>
                   <a href='/atom.xml' target='_blank'>Blog RSS</a>
                 </li>
                 <li>
