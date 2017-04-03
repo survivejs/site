@@ -166,7 +166,7 @@ Read the API of another language than JavaScript as this could help you better u
 
 ## Who should I interview next?
 
-[Dave Brotherstone](https://github.com/bruderstein), the author of **Unexpected-react** library and founder of ReactJS meetup in Hamburg. He is one of the reasons why I made the switch from Angular 1.X to React.
+[Dave Brotherstone](https://github.com/bruderstein), the author of [unexpected-react](https://www.npmjs.com/package/unexpected-react) and founder of ReactJS meetup in Hamburg. He is one of the reasons why I made the switch from Angular 1.X to React.
 
 ## Any last remarks?
 
