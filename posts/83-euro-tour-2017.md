@@ -29,11 +29,11 @@ I've listed the tour dates below with registration where possible. The list will
 
 ## 19-26.4 - Czech Republic and Slovakia
 
-* 19.4 - Prague - Reactive Roadshow - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
-* 20.4 - Hradec Králové - Reactive Roadshow - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
+* 19.4 - [Prague - Reactive Roadshow](https://www.facebook.com/events/419425221744852/) - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
+* 20.4 - [Hradec Králové - Reactive Roadshow](https://www.facebook.com/events/1868848770041251/) - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
 * 24.4 - Košice - Reactive Roadshow - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
 * 25.4 - Bratislava - Reactive Roadshow - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
-* 26.4 - Brno - Reactive Roadshow - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
+* 26.4 - [Brno - Reactive Roadshow](https://www.facebook.com/events/1863697743885500/) - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
 
 ## 27.4 - Austria
 
