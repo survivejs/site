@@ -127,7 +127,7 @@ module.exports = function webpack(headers) {
       'advanced-techniques': 'packages/',
       'advanced-techniques/consuming-packages': 'packages/consuming/',
       'advanced-techniques/authoring-packages': 'packages/authoring/',
-      'advanced-techniques/understanding-chunks': 'building/splitting-bundles/',
+      'advanced-techniques/understanding-chunks': 'building/bundle-splitting/',
       'advanced-techniques/linting-in-webpack': 'developing/linting/',
       'advanced-techniques/writing-loaders': 'extending/loaders/',
       'advanced-techniques/configuring-react': 'output/server-side-rendering/',
@@ -139,6 +139,7 @@ module.exports = function webpack(headers) {
       'appendices/deploying/': 'techniques/deploying/',
       'appendices/configuring-hmr/': 'appendices/hmr/',
       'why-webpack': 'what-is-webpack/',
+      'building/splitting-bundles': 'building/bundle-splitting/',
     }
   };
 };
