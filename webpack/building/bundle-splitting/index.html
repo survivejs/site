@@ -1,0 +1,355 @@
+<html lang="en"><head><title>Bundle Splitting</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/><meta name="description" content="
+Currently, the production version of the application is a single JavaScript file. If the application is changed, the client must download vendor dependencies as well.
+
+It would be better to download only the changed portion. If the vendor dependencies change, then the client should fetch only the v…"/><meta name="keywords" content="webpack,react,javascript,programming,web development"/><link rel="icon" type="image/png" href="/assets/img/favicon.png"/><link rel="alternate" type="application/atom+xml" href="/atom.xml"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"/><link rel="stylesheet" href="/assets/main.css"/></head><body><main role="main"><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/assets/img/chapters/bundle.jpg);"></div><h1 class="post__heading">Bundle Splitting</h1><div class="header-extra"><a href="https://pixabay.com/en/books-student-study-education-1012088/">stevepb (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/foreword">Foreword</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/preface">Preface</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/introduction">Introduction</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/webpack/what-is-webpack">What is Webpack</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/developing">Developing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/getting-started">Getting Started</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/automatic-browser-refresh">Automatic Browser Refresh</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/linting">Linting JavaScript</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/developing/composing-configuration">Composing Configuration</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/styling">Styling</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/loading">Loading Styles</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/separating-css">Separating CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/autoprefixing">Autoprefixing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/eliminating-unused-css">Eliminating Unused CSS</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/styling/linting">Linting CSS</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/loading">Loading Assets</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/loader-definitions">Loader Definitions</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/images">Loading Images</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/fonts">Loading Fonts</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/loading/javascript">Loading JavaScript</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/building">Building</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/source-maps">Source Maps</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Bundle Splitting</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/code-splitting">Code Splitting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/building/tidying-up">Tidying Up</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/optimizing">Optimizing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/minifying">Minifying</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/tree-shaking">Tree Shaking</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/environment-variables">Environment Variables</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/separating-manifest">Separating a Manifest</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/analyzing-build-statistics">Analyzing Build Statistics</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/optimizing/performance">Performance</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/output">Output</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/targets">Build Targets</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/bundling-libraries">Bundling Libraries</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/library-output">Library Output</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/multiple-pages">Multiple Pages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/output/server-side-rendering">Server Side Rendering</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/techniques">Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/techniques/dynamic-loading">Dynamic Loading</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/techniques/web-workers">Web Workers</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/techniques/i18n">Internationalization</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/techniques/testing">Testing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/techniques/deploying">Deploying Applications</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/packages">Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/packages/consuming">Consuming Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/packages/consuming-techniques">Package Consuming Techniques</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/packages/authoring">Authoring Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/packages/authoring-techniques">Package Authoring Techniques</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/extending">Extending</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending/loaders">Extending with Loaders</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/extending/plugins">Extending with Plugins</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/conclusion">Conclusion</a></li><li class="toc-part"><a class="toc-nav__link part" href="/webpack/appendices">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/comparison">Comparison of Build Tools</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/hmr">Hot Module Replacement</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/hmr-with-react">Hot Module Replacement with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/customizing-eslint">Customizing ESLint</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/searching-with-react">Searching with React</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/troubleshooting">Troubleshooting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/webpack/appendices/glossary">Glossary</a></li></ul><div><div class="buy-container"><a href="/webpack/foreword"><img class="sidebar-cover" src="/assets/img/webpack_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a><a class="btn btn--normal btn--buy" href="https://www.amazon.com/dp/9526868803/">Buy at Amazon</a><a class="btn btn--normal btn--buy" href="https://www.amazon.com/dp/B06XWZZGBS">Buy for Kindle</a><a class="btn btn--normal btn--buy" href="https://survivejs.typeform.com/to/LUQK0T">Buy Signed LE</a></p></div><h3>See also</h3><div class="buy-container"><a href="/react/introduction"><img class="sidebar-cover" src="/assets/img/react_title_page_small.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div></div></div><div class="chapter"><div class="post__content"><blockquote class="latestpost tip"><div>From the blog:</div><a class="latestpost-link" href="/blog/rambda-interview">Rambda - Faster and Smaller Alternative to Ramda - Interview with Dejan Toteff</a></blockquote><div class="chapter-content"><p>Currently, the production version of the application is a single JavaScript file. If the application is changed, the client must download vendor dependencies as well.</p>
+<p>It would be better to download only the changed portion. If the vendor dependencies change, then the client should fetch only the vendor dependencies. The same goes for actual application code. <strong>Bundle splitting</strong> can be achieved using <code>CommonsChunkPlugin</code>.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>To invalidate the bundles properly, you have to attach hashes to the generated bundles as discussed in the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#the-idea-of-bundle-splitting" id="the-idea-of-bundle-splitting"></a><span class="text">The Idea of Bundle Splitting</span><a class="header-anchor-select" href="#the-idea-of-bundle-splitting">#</a></h2>
+<p>With bundle splitting, you can push the vendor dependencies to a bundle of their own and benefit from client level caching. This can be done in such a way that the whole size of the application remains the same. Given there are more requests to perform, there&#39;s a slight overhead. But the benefit of caching makes up for this cost.</p>
+<p>To give you a quick example, instead of having <em>app.js</em> (100 kB), you could end up with <em>app.js</em> (10 kB) and <em>vendor.js</em> (90 kB). Now changes made to the application are cheap for the clients that have already used the application earlier.</p>
+<p>Caching comes with its problems. One of those is cache invalidation. A potential approach related to that is discussed in the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</p>
+<p>Bundle splitting isn&#39;t the only way out. The <a href="/webpack/building/code-splitting">Code Splitting</a> chapter discusses another, more granular way.</p>
+<h2 class="header"><a class="header-anchor" href="#adding-something-to-split" id="adding-something-to-split"></a><span class="text">Adding Something to Split</span><a class="header-anchor-select" href="#adding-something-to-split">#</a></h2>
+<p>Given there&#39;s not much to split into the vendor bundle yet, you should add something there. Add React to the project first:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> react --save
+</code></pre>
+<p>Then make the project depend on it:</p>
+<p><strong>app/index.js</strong></p>
+<pre><code><div class="leanpub-insert">
+<span class="token function" >import</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+</div>
+<span class="token punctuation" >..</span>.
+</code></pre><p>Execute <code>npm run build</code> to get a baseline build. You should end up with something as below:</p>
+<pre><code class="lang-bash">Hash: 2db5a05e02ac73897fd4
+Version: webpack 2.2.1
+Time: 2864ms
+        Asset       Size  Chunks                    Chunk Names
+     logo.png      77 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.font.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+ <span class="token punctuation" >..</span>.font.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  <span class="token punctuation" >[</span>big<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<div class="leanpub-insert">
+       app.js     140 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+</div>
+      app.css    3.89 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+   app.js.map     165 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+  app.css.map   84 bytes       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+   index.html  218 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./~/process/browser.js 5.3 kB <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> ./~/react/lib/ReactElement.js 11.2 kB <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+  <span class="token punctuation" >[</span>18<span class="token punctuation" >]</span> ./app/component.js 272 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.
+</code></pre>
+<p>As you can see, <em>app.js</em> is big. That is something to fix next.</p>
+<h2 class="header"><a class="header-anchor" href="#setting-up-a-vendor-bundle" id="setting-up-a-vendor-bundle"></a><span class="text">Setting Up a <code>vendor</code> Bundle</span><a class="header-anchor-select" href="#setting-up-a-vendor-bundle">#</a></h2>
+<p>So far, the project has only a single entry named as <code>app</code>. The configuration tells webpack to traverse dependencies starting from the <code>app</code> entry directory and then to output the resulting bundle below the <code>build</code> directory using the entry name and <code>.js</code> extension.</p>
+<p>To improve the situation, you can define a <code>vendor</code> entry containing React by matching the dependency name. It&#39;s possible to generate this information automatically as discussed at the end of this chapter, but a static array is enough to illustrate the basic idea. Change the code:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<div class="leanpub-insert">
+  <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      vendor<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>You have two separate entries, or <strong>entry chunks</strong>, now. <code>[name].js</code> of the existing <code>output.path</code> the configuration kicks in based on the entry name. If you try to generate a build now (<code>npm run build</code>), you should see something along this:</p>
+<pre><code class="lang-bash">Hash: ebf1b976090ff95e4fcd
+Version: webpack 2.2.1
+Time: 2814ms
+        Asset       Size  Chunks                    Chunk Names
+<div class="leanpub-insert">
+       app.js     140 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+</div>
+  <span class="token punctuation" >..</span>.font.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.font.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+ <span class="token punctuation" >..</span>.font.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  <span class="token punctuation" >[</span>big<span class="token punctuation" >]</span>
+     logo.png      77 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<div class="leanpub-insert">
+    vendor.js     138 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         vendor
+</div>
+      app.css    3.89 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+   app.js.map     165 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+  app.css.map   84 bytes       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+vendor.js.map     164 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         vendor
+   index.html  274 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> ./~/react/lib/ReactElement.js 11.2 kB <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+  <span class="token punctuation" >[</span>18<span class="token punctuation" >]</span> ./~/react/react.js 56 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+  <span class="token punctuation" >[</span>21<span class="token punctuation" >]</span> ./~/react/lib/React.js 2.69 kB <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.
+</code></pre>
+<p><em>app.js</em> and <em>vendor.js</em> have separate chunk IDs right now given they are entry chunks of their own. The output size is off, though. Intuitively <em>app.js</em> should be smaller to attain the goal with this build.</p>
+<p>If you examine the resulting bundle, you can see that it contains React given that&#39;s how the default definition works. Webpack pulls the related dependencies to a bundle by default as illustrated by the image below:</p>
+<p><img src="/webpack/images/bundle_01.png" alt="Separate app and vendor bundles"></p>
+<p><code>CommonsChunkPlugin</code> is a webpack plugin that allows to alter this default behavior.</p>
+<blockquote class="warning"><i class="icon-attention"></i>This step can fail on Windows due to letter casing. Instead of <code>c:\</code> you have to force your terminal to read <code>C:\</code>. There&#39;s more information in the <a href="https://github.com/webpack/webpack/issues/2362">related webpack issue</a>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Webpack doesn&#39;t allow referring to entry files within entries. If you inadvertently do this, webpack complains loudly. Consider refactoring the module structure of your code to eliminate the situation.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-commonschunkplugin-" id="setting-up-commonschunkplugin-"></a><span class="text">Setting Up <code>CommonsChunkPlugin</code></span><a class="header-anchor-select" href="#setting-up-commonschunkplugin-">#</a></h2>
+<p><a href="https://webpack.js.org/guides/code-splitting-libraries/#commonschunkplugin">CommonsChunkPlugin</a> is a powerful and complex plugin. In this case, the target is clear. You have to tell it to extract vendor related code to a bundle of its own. Before abstraction, implement it:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><div class="leanpub-insert">
+<span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+  <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      vendor<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<div class="leanpub-insert">
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        name<span class="token punctuation" >:</span> <span class="token string" >'vendor'</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>The configuration tells the plugin to extract React to a bundle named <code>vendor</code>.</p>
+<p>If you execute the build now using <code>npm run build</code>, you should see something along this:</p>
+<pre><code class="lang-bash">Hash: af634c8857c0ffb5c5e0
+Version: webpack 2.2.1
+Time: 2790ms
+        Asset       Size  Chunks                    Chunk Names
+<div class="leanpub-insert">
+       app.js    2.15 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+</div>
+  <span class="token punctuation" >..</span>.font.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.font.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+ <span class="token punctuation" >..</span>.font.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  <span class="token punctuation" >[</span>big<span class="token punctuation" >]</span>
+     logo.png      77 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+  <span class="token punctuation" >..</span>.font.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+<div class="leanpub-insert">
+    vendor.js     141 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         vendor
+</div>
+      app.css    3.89 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+   app.js.map    1.67 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+  app.css.map   84 bytes       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
+vendor.js.map     167 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         vendor
+   index.html  274 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./~/process/browser.js 5.3 kB <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> ./~/react/lib/ReactElement.js 11.2 kB <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+   <span class="token punctuation" >[</span>7<span class="token punctuation" >]</span> ./~/react/react.js 56 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+<span class="token punctuation" >..</span>.
+</code></pre>
+<p>Now the bundles look the way they should. The image below illustrates the current situation.</p>
+<p><img src="/webpack/images/bundle_02.png" alt="App and vendor bundles after applying `CommonsChunkPlugin`"></p>
+<p>If the vendor entry contained extra dependencies (white on the image), the setup would pull those into the project as well. Resolving this problem is possible by examining which packages are being used in the project using the <code>minChunks</code> parameter of the <code>CommonsChunksPlugin</code>. But before that, let&#39;s abstract the solution a bit.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The technique could be implemented only for <code>productionConfig</code>. It&#39;s sensible to maintain it at <code>commonConfig</code> as it improved performance.</blockquote><h2 class="header"><a class="header-anchor" href="#abstracting-bundle-extraction" id="abstracting-bundle-extraction"></a><span class="text">Abstracting Bundle Extraction</span><a class="header-anchor-select" href="#abstracting-bundle-extraction">#</a></h2>
+<p>The following code combines the <code>entry</code> idea above with a basic <code>CommonsChunkPlugin</code> setup. It has been designed so that it&#39;s possible to access advanced features of <code>CommonsChunkPlugin</code> while allowing you to define multiple splits through it:</p>
+<p><strong>webpack.parts.js</strong></p>
+<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
+<span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<div class="leanpub-insert">
+exports<span class="token punctuation" >.</span>extractBundles <span class="token operator" >=</span> <span class="token punctuation" >(</span>bundles<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+  plugins<span class="token punctuation" >:</span> bundles<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>bundle<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span>bundle<span class="token punctuation" >)</span>
+  <span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+</code></pre>
+<p>Given the function handles the entry, you can drop the <code>vendor</code>-related configuration and use the function instead:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><div class="leanpub-delete">
+<span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+  <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      vendor<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<div class="leanpub-delete">
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+      <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        name<span class="token punctuation" >:</span> <span class="token string" >'vendor'</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<div class="leanpub-insert">
+  parts<span class="token punctuation" >.</span><span class="token function" >extractBundles</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+    <span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'vendor'</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>Everything should work the same way as earlier. This time around, however, it&#39;s more convenient to work with the plugin. You still have access to its functionality as before, but with a smaller amount of code.</p>
+<p>To pick React to the vendor build automatically based on usage, you have to drop the <code>entries</code> option and adjust the setup so that it picks up JavaScript files from <em>node_modules</em> to the vendor bundle.</p>
+<h2 class="header"><a class="header-anchor" href="#loading-dependencies-to-a-vendor-bundle-automatically" id="loading-dependencies-to-a-vendor-bundle-automatically"></a><span class="text">Loading <code>dependencies</code> to a <code>vendor</code> Bundle Automatically</span><a class="header-anchor-select" href="#loading-dependencies-to-a-vendor-bundle-automatically">#</a></h2>
+<p><code>CommonsChunkPlugin</code> gives control over its behavior through its <code>minChunks</code> options. In addition to a number and certain other values, <code>minChunks</code> accepts a function with a signature <code>(module, count)</code>. The first parameter contains a lot of information about the matches module and allows to deduce which modules are used by the project. The second one tells how many times a particular module has been imported into the project.</p>
+<p>The most important <code>module</code> properties have been listed below. These assume an import like <code>import &#39;purecss&#39;;</code> and <code>ExtractTextPlugin</code>:</p>
+<ul>
+<li><code>resource</code> represents the path of the full path of the resource being imported. Example: <code>.../webpack-demo/node_modules/purecss/build/pure-min.css</code>.</li>
+<li><code>context</code> returns the path to the directory in which the resource is. Example: <code>.../webpack-demo/node_modules/purecss/build</code>.</li>
+<li><code>rawRequest</code> contains the whole unresolved request. Example: <code>!!../../css-loader/index.js!.../pure-min.css</code>.</li>
+<li><code>userRequest</code> is a version of the request that has been resolved to a query. Example: <code>.../node_modules/css-loader/index.js!.../pure-min.css</code>.</li>
+<li><code>chunks</code> tells in which chunks the module is contained. Check <code>chunks.length</code> to tell how many times webpack has included it to control output on the chunk level.</li>
+</ul>
+<p>Particularly <code>resource</code> and <code>userRequest</code> can return the same value if you are operating with imports that aren&#39;t being processed in any way. In the example above, <code>ExtractTextPlugin</code> caused a difference between the values.</p>
+<p>To capture only JavaScript files from <em>node_modules</em>, you should perform a check against each request using the <code>resource</code> since it contains the needed information:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<div class="leanpub-delete">
+  <span class="token punctuation" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+      vendor<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >extractBundles</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+    <span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'vendor'</span><span class="token punctuation" >,</span>
+<div class="leanpub-insert">
+      minChunks<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> resource <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
+        resource <span class="token operator" >&amp;&amp;</span>
+        resource<span class="token punctuation" >.</span><span class="token function" >indexOf</span><span class="token punctuation" >(</span><span class="token string" >'node_modules'</span><span class="token punctuation" >)</span> <span class="token operator" >>=</span> <span class="token number" >0</span> <span class="token operator" >&amp;&amp;</span>
+        resource<span class="token punctuation" >.</span><span class="token function" >match</span><span class="token punctuation" >(</span><span class="token regex" >/\.js$/</span><span class="token punctuation" >)</span>
+      <span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</div>
+    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>The build result should remain the same. This time, however, webpack pulls only dependencies that are used in the project, and you don&#39;t have to maintain the list anymore.</p>
+<h2 class="header"><a class="header-anchor" href="#performing-a-more-granular-split" id="performing-a-more-granular-split"></a><span class="text">Performing a More Granular Split</span><a class="header-anchor-select" href="#performing-a-more-granular-split">#</a></h2>
+<p>Sometimes having only an app and a vendor bundle isn&#39;t enough. Especially when your application grows and gains more entry points, you could split the vendor bundle into multiples ones per each entry. <code>CommonsChunkPlugin</code> operates against all entry chunks by default. This behavior can be constrained through the <code>chunks</code> option for more granular control.</p>
+<p>Consider <a href="https://github.com/webpack/webpack/issues/2855#issuecomment-239606760">the example adapted from a GitHub comment</a> below where chunks are extracted from <code>login</code> and <code>app</code> entries:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> config <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'login'</span><span class="token punctuation" >,</span>
+      chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'login'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+      minChunks<span class="token punctuation" >:</span> isVendor<span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'vendor'</span><span class="token punctuation" >,</span>
+      chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'app'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+      minChunks<span class="token punctuation" >:</span> isVendor<span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token comment" spellcheck="true">// Extract chunks common to both app and login</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >'common'</span><span class="token punctuation" >,</span>
+      chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'login'</span><span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+      minChunks<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >,</span> count<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+        <span class="token keyword" >return</span> count <span class="token operator" >>=</span> <span class="token number" >2</span> <span class="token operator" >&amp;&amp;</span> <span class="token function" >isVendor</span><span class="token punctuation" >(</span>module<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >function</span> <span class="token function" >isVendor</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> resource <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >return</span> resource <span class="token operator" >&amp;&amp;</span>
+    resource<span class="token punctuation" >.</span><span class="token function" >indexOf</span><span class="token punctuation" >(</span><span class="token string" >'node_modules'</span><span class="token punctuation" >)</span> <span class="token operator" >>=</span> <span class="token number" >0</span> <span class="token operator" >&amp;&amp;</span>
+    resource<span class="token punctuation" >.</span><span class="token function" >match</span><span class="token punctuation" >(</span><span class="token regex" >/\.js$/</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>The same code would look as below using the <code>parts.extractBundles</code> abstraction:</p>
+<pre><code class="lang-javascript">parts<span class="token punctuation" >.</span><span class="token function" >extractBundles</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+  <span class="token punctuation" >{</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'login'</span><span class="token punctuation" >,</span>
+    chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'login'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    minChunks<span class="token punctuation" >:</span> isVendor<span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >{</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'vendor'</span><span class="token punctuation" >,</span>
+    chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'app'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    minChunks<span class="token punctuation" >:</span> isVendor<span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >{</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'common'</span><span class="token punctuation" >,</span>
+    chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'login'</span><span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    minChunks<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >,</span> count<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
+      count <span class="token operator" >>=</span> <span class="token number" >2</span> <span class="token operator" >&amp;&amp;</span> <span class="token function" >isVendor</span><span class="token punctuation" >(</span>module<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+</code></pre>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>chunks</code> option refers to the entry chunks of your configuration.</blockquote><h2 class="header"><a class="header-anchor" href="#-commonschunkplugin-children-and-async-flags" id="-commonschunkplugin-children-and-async-flags"></a><span class="text"><code>CommonsChunkPlugin</code> <code>children</code> and <code>async</code> Flags</span><a class="header-anchor-select" href="#-commonschunkplugin-children-and-async-flags">#</a></h2>
+<p><code>CommonsChunkPlugin</code> provides more control through <code>children</code> and <code>async</code> flags:</p>
+<ul>
+<li><code>children</code> - If <code>children</code> is set to <code>true</code>, webpack detects which modules are the same in the resulting bundles and push them to the parent bundle.</li>
+<li><code>async</code> - The idea is the same if <code>async</code> is set to <code>true</code>. In this case, webpack generates a separate bundle with the commonalities and load it asynchronously from the parent. You can pass a string to <code>async</code> option to name the output bundle. The idea is the same as for <a href="/webpack/building/code-splitting">Code Splitting</a> as you will see in the next chapter.</li>
+</ul>
+<p>The image below shows the difference compared to the default. The top circles represent the parent bundles. The way <code>B</code> is treated depends on the chosen option:</p>
+<p><img src="/webpack/images/commonschunk.png" alt="`CommonsChunkPlugin` children and async"></p>
+<blockquote class="tip"><i class="icon-attention-circled"></i><code>children</code> and <code>async</code> can be used together if you are using <a href="/webpack/building/code-splitting">Code Splitting</a> and want to extract commonalities.</blockquote><blockquote class="warning"><i class="icon-attention"></i>The <code>children</code> behavior applies only to immediate children. The algorithm is not applied recursively. <a href="https://github.com/webpack/webpack/issues/3981">Webpack issue 3981</a> explains this in detail.</blockquote><h2 class="header"><a class="header-anchor" href="#splitting-and-merging-chunks" id="splitting-and-merging-chunks"></a><span class="text">Splitting and Merging Chunks</span><a class="header-anchor-select" href="#splitting-and-merging-chunks">#</a></h2>
+<p>Webpack provides more control over the generated chunks by providing two plugins: <code>AggressiveSplittingPlugin</code> and <code>AggressiveMergingPlugin</code>. The former allows you to emit more and smaller bundles. The behavior is handy with HTTP/2 due to the way the new standard works.</p>
+<p>Here&#39;s the basic idea of aggressive splitting:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>AggressiveSplittingPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        minSize<span class="token punctuation" >:</span> <span class="token number" >10000</span><span class="token punctuation" >,</span>
+        maxSize<span class="token punctuation" >:</span> <span class="token number" >30000</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>There&#39;s a trade-off as you lose out in caching if you split to multiple small bundles. You also get request overhead in HTTP/1 environment. For now, the approach doesn&#39;t work when <code>HtmlWebpackPlugin</code> is enabled due to <a href="https://github.com/ampedandwired/html-webpack-plugin/issues/446">a bug in the plugin</a>.</p>
+<p>The aggressive merging plugin works the opposite way and allows you to combine too small bundles into bigger ones:</p>
+<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >AggressiveMergingPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
+        minSizeReduce<span class="token punctuation" >:</span> <span class="token number" >2</span><span class="token punctuation" >,</span>
+        moveToParents<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>It&#39;s possible to get good caching behavior with these plugins if a webpack <strong>records</strong> are used. The idea is discussed in detail in the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Tobias Koppers discusses <a href="https://medium.com/webpack/webpack-http-2-7083ec3f3ce6">aggressive merging in detail at the official blog of webpack</a>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><code>webpack.optimize.LimitChunkCountPlugin</code> and <code>webpack.optimize.MinChunkSizePlugin</code> give further control over chunk size.</blockquote><h2 class="header"><a class="header-anchor" href="#chunk-types-in-webpack" id="chunk-types-in-webpack"></a><span class="text">Chunk Types in Webpack</span><a class="header-anchor-select" href="#chunk-types-in-webpack">#</a></h2>
+<p>In the example above, you used different types of webpack chunks. Webpack treats chunks in three types:</p>
+<ul>
+<li><strong>Entry chunks</strong> - Entry chunks contain webpack runtime and modules it then loads.</li>
+<li><strong>Normal chunks</strong> - Normal chunks <strong>don&#39;t</strong> contain webpack runtime. Instead, these can be loaded dynamically while the application is running. A suitable wrapper (JSONP for example) is generated for these. You generate a normal chunk in the next chapter as you set up code splitting.</li>
+<li><strong>Initial chunks</strong> - Initial chunks are normal chunks that count towards initial loading time of the application and are generated by the <code>CommonsChunkPlugin</code>. As a user, you don&#39;t have to care about these. It&#39;s the split between entry chunks and normal chunks that is important.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>The situation is better now compared to the earlier. Note how small <code>app</code> bundle compared to the <code>vendor</code> bundle. To benefit from this split, you set up caching in the next part of this book in the <a href="/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</a> chapter.</p>
+<p>To recap:</p>
+<ul>
+<li>Webpack allows you to split bundles from configuration entries through the <code>CommonsChunkPlugin</code>.</li>
+<li>The most basic use case for <code>CommonsChunkPlugin</code> is to extract so-called <strong>vendor bundle</strong>.</li>
+<li>A vendor bundle contains the third party code of your project. The vendor dependencies can be detected by inspecting where the modules are imported. If they come from the <em>node_modules</em> directory, they can be split automatically through a <code>minChunks</code> rule.</li>
+<li><code>CommonsChunkPlugin</code> provides control over the splitting process. You can control the position of shared modules through its <code>async</code> and <code>children</code> flags. <code>async</code> extracts shared modules to an asynchronously loaded bundle while <code>children</code> pushes the shared modules to the parent bundle.</li>
+<li>The <code>chunks</code> option of <code>CommonsChunkPlugin</code> allows you to control where the plugin is performing splitting. The option gives more granular control, especially in more complex setups.</li>
+<li>Webpack offers more control over chunking through specific plugins, such as <code>AggressiveSplittingPlugin</code> and <code>AggressiveMergingPlugin</code>. Particularly the splitting plugin can be handy in HTTP/2 oriented setups.</li>
+<li>Internally webpack relies on three chunk types: entry, normal, and initial chunks. <code>CommonsChunkPlugin</code> flags modules using these types.</li>
+</ul>
+<p>In the next chapter, you&#39;ll learn about code splitting and loading code on demand.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this chapter, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/wheels.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/webpack/building/source-maps">Source Maps</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/assets/img/chapters/nuts.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/webpack/building/code-splitting">Code Splitting</a></div></div><blockquote class="tip"><p>This book is available through <a href="https://leanpub.com/survivejs-webpack">Leanpub (digital)</a>, <a href="https://www.amazon.com/dp/9526868803">Amazon (paperback)</a>, and <a href="https://www.amazon.com/dp/B06XWZZGBS">Kindle (digital)</a>. By purchasing the book you support the development of further content. A part of profit (~30%) goes to Tobias Koppers, the author of webpack.</p></blockquote><div id="disqus_thread"></div></div></div><div><a class="next-page" title="Code Splitting" href="/webpack/building/code-splitting"><i class="icon-right-open"></i></a><a class="previous-page" title="Source Maps" href="/webpack/building/source-maps"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a class="" href="/">Home</a></div><div class="nav__link"><a class="" href="/blog">Read the blog</a></div><div class="nav__link"><a class="" href="https://leanpub.com/survivejs-webpack">Buy the ebook</a></div><div class="nav__link"><a class="" href=""></a></div><div class="nav__link"><a class="" href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><a href="https://github.com/survivejs/webpack" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="position:absolute;top:0;fill:#000;right:0;"><path class="octo-banner" d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"></path><path class="octo-arm" d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16" style="-webkit-transform-origin:130px 106px;transform-origin:130px 106px;"></path><path class="octo-body" d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"></path></svg></a><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank">GitHub</a></li><li><a href="https://presentations.survivejs.com" target="_blank">Presentations</a></li><li><a href="/atom.xml" target="_blank">Blog RSS</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/rambda-interview">Rambda - Faster and Smaller Alternative to Ramda - Interview with Dejan Toteff</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-20">SurviveJS - Webpack - v2.0</a></li><li><a class="blog-teaser" href="/blog/hyperapp-interview">hyperapp - Tiny Library for Frontend Applications - Interview with Jorge Bucaran</a></li><li><a class="blog-teaser" href="/blog/euro-tour-2017">SurviveJS Euro Tour 2017</a></li><li><a class="blog-teaser" href="/blog/code-quality-interview">Code Quality - Interview with João Caxaria</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-19">SurviveJS - Webpack - v1.9</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-18">SurviveJS - Webpack - v1.8</a></li><li><a class="blog-teaser" href="/blog/survivejs-webpack-170">SurviveJS - Webpack - v1.7.0</a></li><li><a class="blog-teaser" href="/blog/unexpected-interview">Unexpected - The Extensible BDD Assertion Toolkit - Interview with Sune Simonsen</a></li><li><a class="blog-teaser" href="/blog/ajv-interview">ajv - The Fastest JSON Schema Validator - Interview with Evgeny Poberezkin</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+            ((window.gitter = {}).chat = {}).options = {
+              showChatByDefault: false,
+              activationElement: '.gitter-open-chat-button',
+              room: 'survivejs/webpack'
+            };
+          </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div><div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript">
+            docsearch({
+              apiKey: '1182e3806d62e921613b8dc9c7a22ef3',
+              indexName: 'survivejs_webpack',
+              inputSelector: '#search',
+              debug: false
+            });
+          </script></div></main></body></html>
