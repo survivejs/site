@@ -20,7 +20,7 @@ I've listed the tour dates below with registration where possible. The list will
 
 ## 1-9.4 - Norway, Oslo
 
-* 3.4 - [ReactJS Norway](https://www.meetup.com/ReactJS-Oslo-Meetup/events/238536172/) - [Re-imagining Webpack](https://presentations.survivejs.com/re-imagining-webpack/) - 20 mins + QA, second go!
+* ~~3.4 - [ReactJS Norway](https://www.meetup.com/ReactJS-Oslo-Meetup/events/238536172/)~~ - [Re-imagining Webpack](https://presentations.survivejs.com/re-imagining-webpack/) - 20 mins + QA, second go!
 
 ## 9-19.4 - Berlin, Germany
 
