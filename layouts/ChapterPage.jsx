@@ -154,6 +154,7 @@ const BuyWebpack = () => (
       <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
       <a className='btn btn--normal btn--buy' href='https://www.amazon.com/dp/9526868803/'>Buy at Amazon</a>
       <a className='btn btn--normal btn--buy' href='https://www.amazon.com/dp/B06XWZZGBS'>Buy for Kindle</a>
+      <a className='btn btn--normal btn--buy' href='https://survivejs.typeform.com/to/LUQK0T'>Buy Signed LE</a>
     </p>
   </div>
 );
