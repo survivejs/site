@@ -11,19 +11,23 @@ Internationalization (i18n) is a big topic by itself. The broadest definition ha
 </ul>
 <p>To illustrate the setup, <em>i18n-webpack-plugin</em> is a good starting point.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-project" id="setting-up-a-project"></a><span class="text">Setting Up a Project</span><a class="header-anchor-select" href="#setting-up-a-project">#</a></h2>
-<p>To prove that translation works, there should be an entry point that has something to replace:</p>
+<p>To prove that translation works, set up something to replace:</p>
+<p><strong>app/i18n.js</strong></p>
 <pre><code class="lang-javascript">console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token function" >__</span><span class="token punctuation" >(</span><span class="token string" >'Hello world'</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>To translate that into Finnish, set up a definition:</p>
 <p><strong>languages/fi.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  "Hello world"<span class="token operator" >:</span> <span class="token string" >"Terve maailma"</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation" >{</span> "Hello world"<span class="token operator" >:</span> <span class="token string" >"Terve maailma"</span> <span class="token punctuation" >}</span>
 </code></pre>
 <p>To make ESLint aware of the global <code>__</code> function, you should add it to your linting rules:</p>
-<pre><code class="lang-javascript"><span class="token string" >"globals"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-  <span class="token string" >"__"</span><span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<p><strong>.eslintrc.js</strong></p>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  globals<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+    __<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The next step is to glue the files together using webpack.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-i18nwebpackplugin-" id="setting-up-i18nwebpackplugin-"></a><span class="text">Setting Up <code>I18nWebpackPlugin</code></span><a class="header-anchor-select" href="#setting-up-i18nwebpackplugin-">#</a></h2>
@@ -69,6 +73,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
   "build<span class="token operator" >:</span>i18n"<span class="token operator" >:</span> <span class="token string" >"webpack --config webpack.i18n.js"</span><span class="token punctuation" >,</span>
+  ...
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>If you build now (<code>npm run build:i18n</code>), you should end up with a new directory containing two translated files. If you examine them, you should see webpack bootstrap and the translated code in each.</p>
