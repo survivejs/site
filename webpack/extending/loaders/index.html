@@ -178,7 +178,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>To get most out of loaders you have to connect them with webpack. To achieve this, you can go through imports:</p>
 <p><strong>app/component.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword" >import</span> demo <span class="token keyword" >from</span> <span class="token string" >'!../loaders/demo-loader?name=foo!./main.css'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> <span class="token string" >'!../loaders/demo-loader?name=foo!./main.css'</span><span class="token punctuation" >;</span>
 </div>
 </code></pre>
 <p>Given the definition is verbose, the loader can be aliased:</p>
@@ -201,10 +201,10 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 </code></pre>
 <p>With this change the import can be simplified:</p>
 <pre><code class="lang-javascript"><div class="leanpub-delete">
-<span class="token keyword" >import</span> demo <span class="token keyword" >from</span> <span class="token string" >'!../loaders/demo-loader?name=foo!./main.css'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> <span class="token string" >'!../loaders/demo-loader?name=foo!./main.css'</span><span class="token punctuation" >;</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword" >import</span> demo <span class="token keyword" >from</span> <span class="token string" >'!demo-loader?name=foo!./main.css'</span><span class="token punctuation" >;</span>
+<span class="token keyword" >import</span> <span class="token string" >'!demo-loader?name=foo!./main.css'</span><span class="token punctuation" >;</span>
 </div>
 </code></pre>
 <p>You could also handle the loader definition through <code>rules</code>. Once the loader is stable enough, set up a project based on <em>webpack-defaults</em>, push the logic there, and begin to consume the loader as a package.</p>
