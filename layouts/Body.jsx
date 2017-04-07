@@ -37,8 +37,8 @@ export default React.createClass({
           url: '/',
         },
         {
-          title: sectionName === 'blog' ? 'Read the React book' : 'Read the blog',
-          url: sectionName === 'blog' ? '/react/introduction/' : '/blog',
+          title: sectionName === 'blog' ? 'Read the webpack book' : 'Read the blog',
+          url: sectionName === 'blog' ? '/webpack/foreword/' : '/blog/',
         },
         {
           title: 'Buy the ebook',
