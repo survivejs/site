@@ -89,6 +89,7 @@ export default React.createClass({
 <p>After a detailed introduction, you'll start working on a webpack project that provides all you need to push your app to production. Highly recommended.</p>
 </div>
 }
+            image={'/assets/img/testimonials/julien.jpg'}
             name='Julien Castelain'
             title='Software Engineer, Liferay'
             />
