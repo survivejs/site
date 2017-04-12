@@ -18,13 +18,13 @@ I've listed the tour dates below with registration where possible. The list will
 * ~~23.3 - [React Helsinki](https://meetabit.com/communities/react-helsinki)~~ - [Re-imagining Webpack](https://presentations.survivejs.com/re-imagining-webpack/) - 20 mins + QA, first go!
 * ~~24.3 - [wwweeklies](http://wwweeklies.com/)~~ - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 45 mins + QA, from basic to advanced topics fast.
 
-## 1-9.4 - Norway, Oslo
+## ~~1-9.4 - Norway, Oslo~~
 
 * ~~3.4 - [ReactJS Norway](https://www.meetup.com/ReactJS-Oslo-Meetup/events/238536172/)~~ - [Re-imagining Webpack](https://presentations.survivejs.com/re-imagining-webpack/) - 20 mins + QA, second go!
 
 ## 9-19.4 - Germany
 
-* 11.4 - [Berlin - NewStore](https://www.meetup.com/NewStore/) - [Webpack - From Apprentice to Journeyman](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 45 mins + QA, Register at [Eventbrite](https://www.eventbrite.de/e/webpack-from-apprentice-to-journeyman-with-juho-vepsalainen-tickets-32719397599) or see the [Meetup](https://www.meetup.com/NewStore/events/238314252/) page for more information.
+* ~~11.4 - [Berlin - NewStore](https://www.meetup.com/NewStore/)~~ - [Webpack - From Apprentice to Journeyman](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 45 mins + QA, Register at [Eventbrite](https://www.eventbrite.de/e/webpack-from-apprentice-to-journeyman-with-juho-vepsalainen-tickets-32719397599) or see the [Meetup](https://www.meetup.com/NewStore/events/238314252/) page for more information.
 * 14.4 - [Cologne - CologneJS](https://www.meetup.com/Cologne-js/events/238980913/) - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 4h (with breaks!) + QA
 * 18.4 - [Berlin - Reactive Roadshow](https://www.facebook.com/events/404484116586415/) - [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) - 90 mins + QA
 
