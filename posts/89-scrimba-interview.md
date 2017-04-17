@@ -1,6 +1,6 @@
 ---
 title: 'Scrimba - Interactive Screencasts Created in an Instant - Interview with Per Harald Borgen'
-date: 2017-04-10
+date: 2017-04-17
 headerImage: '/assets/img/pawns.jpg'
 keywords: ['interview']
 ---
