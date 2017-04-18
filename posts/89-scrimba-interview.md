@@ -7,7 +7,7 @@ keywords: ['interview']
 
 YouTube and the web are filled with screencasts. They provide a great way to learn difficult concepts as you can see in practice how something specific is done. This is the way I learned to use Blender, a 3D suite, in the past. It all made sense after I saw how to use the application.
 
-When it comes to coding, the challenge is that you have to literally type it all out yourself if you want to replicate the results. [Per Harald Borgen](https://twitter.com/perborgen) has developed a solution that could change all this.
+When it comes to coding, the challenge is that you have to literally type it all out yourself if you want to replicate the results. Scrimba has developed a solution that could change all this. [Per Harald Borgen](https://twitter.com/perborgen) can tell more about it.
 
 ## Can you tell a bit about yourself?
 
