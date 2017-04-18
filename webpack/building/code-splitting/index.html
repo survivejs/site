@@ -11,8 +11,13 @@ Even though splitting bundles can help a notch, th…"/><meta name="keywords" co
 <h3 class="header"><a class="header-anchor" href="#dynamic-import-" id="dynamic-import-"></a><span class="text">Dynamic <code>import</code></span><a class="header-anchor-select" href="#dynamic-import-">#</a></h3>
 <p>The <a href="https://github.com/tc39/proposal-dynamic-import">dynamic <code>import</code> syntax</a> isn&#39;t in the official language specification yet. To use it, minor tweaks are needed especially at ESLint and Babel.</p>
 <p>Dynamic imports are defined as <code>Promise</code>s:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token string" >'./module'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>module<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token keyword" >catch</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>error<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token comment" spellcheck="true">/* webpackChunkName: "optional-name" */</span> <span class="token string" >'./module'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation" >(</span>
+  module <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >}</span>
+<span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token keyword" >catch</span><span class="token punctuation" >(</span>
+  error <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >}</span>
+<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
+<p>The optional name allows you to pull multiple split points into a single bundle. As long as they have the same name, they will be grouped together. Each split point generates a separate bundle by default.</p>
 <p>The interface allows composition, and you could load multiple resources in parallel:</p>
 <pre><code class="lang-javascript">Promise<span class="token punctuation" >.</span><span class="token function" >all</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
   <span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token string" >'lunr'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
@@ -24,7 +29,7 @@ Even though splitting bundles can help a notch, th…"/><meta name="keywords" co
   <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>This creates separate chunks to a request. If you wanted only one, you would have to define an intermediate module to <code>import</code>.</p>
+<p>This creates separate bundles to request. If you wanted only one, you would have to use naming or define an intermediate module to <code>import</code>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Webpack provided support for <code>System.import</code> in the early versions of webpack 2 and it still does. The functionality has been deprecated and gets removed in webpack 3. Until then, you can use the functionality interchangeably.</blockquote><blockquote class="warning"><i class="icon-attention"></i>The syntax works only with JavaScript after configured the right way. If you use another environment, you have to use alternatives covered in the following sections.</blockquote><h3 class="header"><a class="header-anchor" href="#-require-ensure-" id="-require-ensure-"></a><span class="text"><code>require.ensure</code></span><a class="header-anchor-select" href="#-require-ensure-">#</a></h3>
 <p><a href="https://webpack.js.org/guides/code-splitting-require/#require-ensure-">require.ensure</a> provides an alternate way:</p>
 <pre><code class="lang-javascript">require<span class="token punctuation" >.</span><span class="token function" >ensure</span><span class="token punctuation" >(</span>
@@ -39,11 +44,11 @@ Even though splitting bundles can help a notch, th…"/><meta name="keywords" co
 
     <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token string" >'optional name'</span>
+  err <span class="token operator" >=</span><span class="token operator" >></span> console<span class="token punctuation" >.</span><span class="token function" >error</span><span class="token punctuation" >(</span>err<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token string" >'optional-name'</span>
 <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>As you can see, <code>require.ensure</code> definition is more powerful. The problem is that it doesn&#39;t support error handling. Often you can achieve what you want through a dynamic <code>import</code>, but it&#39;s good to know this form exists as well.</p>
-<p><code>require.ensure</code> supports naming. <code>require.ensure</code> blocks that have the same name are pulled into the same output bundle. <a href="https://github.com/webpack/webpack/tree/master/examples/named-chunks">The official example</a> shows the output in detail.</p>
+<p>Often you can achieve what you want through a dynamic <code>import</code>, but it&#39;s good to know this alternate form exists as well. <code>require.ensure</code> supports naming as well and <a href="https://github.com/webpack/webpack/tree/master/examples/named-chunks">the official example</a> shows the output in detail.</p>
 <blockquote class="warning"><i class="icon-attention"></i><code>require.ensure</code> relies on <code>Promise</code>s internally. If you use <code>require.ensure</code> with older browsers, remember to shim <code>Promise</code> using a polyfill such as <a href="https://www.npmjs.com/package/es6-promise">es6-promise</a>.</blockquote><h3 class="header"><a class="header-anchor" href="#-require-include-" id="-require-include-"></a><span class="text"><code>require.include</code></span><a class="header-anchor-select" href="#-require-include-">#</a></h3>
 <p>The example above could be rewritten using webpack particular <code>require.include</code>:</p>
 <pre><code class="lang-javascript">require<span class="token punctuation" >.</span><span class="token function" >ensure</span><span class="token punctuation" >(</span>
@@ -243,7 +248,7 @@ AsyncComponent<span class="token punctuation" >.</span>propTypes <span class="to
 <ul>
 <li><strong>Code splitting</strong> comes with extra effort as you have to decide what to split and where. Often, you find good split points within a router. Or you notice that specific functionality is required only when a particular feature is used. Charting is a good example of this.</li>
 <li>To use dynamic <code>import</code> syntax, both Babel and ESLint require careful tweaks. Webpack supports the syntax ouf of the box.</li>
-<li>Dynamic <code>import</code> provides less functionality than <code>require.ensure</code>. While it&#39;s possible to handle errors with it, features like naming are available for <code>require.ensure</code> only.</li>
+<li>Use naming to pull separate split points into the same bundles.</li>
 <li>The techniques can be used within modern frameworks and libraries like React. You can wrap related logic to a specific component that handles the loading process in a user-friendly manner.</li>
 </ul>
 <p>You&#39;ll learn to tidy up the build in the next chapter.</p>

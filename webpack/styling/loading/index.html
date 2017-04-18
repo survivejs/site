@@ -8,7 +8,7 @@ Webpack doesn&#x27;t handle styling out of the box and you will have to use load
 <p>To get started, invoke</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> css-loader style-loader --save-dev
 </code></pre>
-<p>Now let&#39;s make sure webpack is aware of them. Configure as follows:</p>
+<p>Now let&#39;s make sure webpack is aware of them. Add a new function at the end of the part definition:</p>
 <p><strong>webpack.parts.js</strong></p>
 <pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>loadCSS <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> include<span class="token punctuation" >,</span> exclude <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
   module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
@@ -54,12 +54,14 @@ Webpack doesn&#x27;t handle styling out of the box and you will have to use load
 <p><img src="/webpack/images/hello_02.png" alt="Hello cornsilk world"></p>
 <h2 class="header"><a class="header-anchor" href="#understanding-css-scoping-and-css-modules" id="understanding-css-scoping-and-css-modules"></a><span class="text">Understanding CSS Scoping and CSS Modules</span><a class="header-anchor-select" href="#understanding-css-scoping-and-css-modules">#</a></h2>
 <p>Perhaps the biggest challenge of CSS is that all rules exist within <strong>global scope</strong>, meaning that two classes with the same name will collide. The limitation is inherent to the CSS specification but projects have workarounds for the issue. <a href="https://github.com/css-modules/css-modules">CSS Modules</a> introduces <strong>local scope</strong> for every module by making every class declared within unique by including a hash in their name that is globally unique to the module.</p>
-<p>Webpack&#39;s <em>css-loader</em> supports CSS Modules. You can enable it through a loader definition:</p>
+<p>Webpack&#39;s <em>css-loader</em> supports CSS Modules. You can enable it through a loader definition as above while enabling the support:</p>
 <pre><code class="lang-javascript"><span class="token punctuation" >{</span>
   loader<span class="token punctuation" >:</span> <span class="token string" >'css-loader'</span><span class="token punctuation" >,</span>
+<div class="leanpub-insert">
   options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     modules<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</div>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>After this change, your class definitions remain local to the files. In case you want global class definitions, you need to wrap them within <code>:global(.redButton) { ... }</code> kind of declarations.</p>

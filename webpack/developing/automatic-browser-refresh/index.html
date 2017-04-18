@@ -28,7 +28,7 @@ Tools, such as LiveReload or Browsersync, allow to refresh the browser as you de
 </div>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<p>If you execute either <em>npm run start</em> or <em>npm start</em> now, you should see something in the terminal:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>WDS picks up configuration like webpack itself. The same rules apply.</blockquote><p>If you execute either <em>npm run start</em> or <em>npm start</em> now, you should see something in the terminal:</p>
 <pre><code class="lang-bash"><span class="token operator" >></span> webpack-dev-server --env development
 
 Project is running at http://localhost:8080/
@@ -46,8 +46,9 @@ webpack: bundle is now VALID.
 <p>The server is running and if you open <code>http://localhost:8080/</code> at your browser, you should see something familiar:</p>
 <p><img src="/webpack/images/hello_01.png" alt="Hello world"></p>
 <p>If you try modifying the code, you should see output in your terminal. The browser should also perform a hard refresh on change.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>WDS tries to run in another port in case the default one is being used. See the terminal output to figure out where it ends up running. You can debug the situation with a command like <code>netstat -na | grep 8080</code>. If something is running on the port 8080, it should display a message. The exact command depends on the platform.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>If you want to open a browser tab directly after running the server, set <code>devServer.open: true</code>. You can also achieve the same result through the CLI by using <code>webpack-dev-server --open</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#verifying-that-env-works" id="verifying-that-env-works"></a><span class="text">Verifying that <code>--env</code> Works</span><a class="header-anchor-select" href="#verifying-that-env-works">#</a></h2>
-<p>Webpack configuration receives the result of <code>--env</code> if it exposes a function. To check that the correct environment is passed, adjust the configuration as follows:</p>
+<p>WDS tries to run in another port in case the default one is being used. The terminal output tells you where it ends up running. You can debug the situation with a command like <code>netstat -na | grep 8080</code>. If something is running on the port 8080, it should display a message on Unix.</p>
+<h2 class="header"><a class="header-anchor" href="#verifying-that-env-works" id="verifying-that-env-works"></a><span class="text">Verifying that <code>--env</code> Works</span><a class="header-anchor-select" href="#verifying-that-env-works">#</a></h2>
+<p>Webpack configuration is able to receive the value of <code>--env</code> if the configuration is defined within a function. To check that the correct environment is passed, adjust the configuration as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-delete">
 module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
@@ -58,18 +59,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <div class="leanpub-insert">
 <span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token punctuation" >{</span>
 </div>
-  entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
-    filename<span class="token punctuation" >:</span> <span class="token string" >'[name].js'</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      title<span class="token punctuation" >:</span> <span class="token string" >'Webpack demo'</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 
 <div class="leanpub-insert">
@@ -157,7 +147,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>It&#39;s possible to customize host and port settings through the environment in the setup (i.e., <code>export PORT=3000</code> on Unix or <code>SET PORT=3000</code> on Windows). The default settings are enough on most platforms.</p>
 <p>To access your server, you need to figure out the ip of your machine. On Unix, this can be achieved using <code>ifconfig | grep inet</code>. On Windows, <code>ipconfig</code> can be utilized. An npm package, such as <a href="https://www.npmjs.com/package/node-ip">node-ip</a> come in handy as well. Especially on Windows, you need to set your <code>HOST</code> to match your ip to make it accessible.</p>
 <h2 class="header"><a class="header-anchor" href="#making-it-faster-to-develop-configuration" id="making-it-faster-to-develop-configuration"></a><span class="text">Making It Faster to Develop Configuration</span><a class="header-anchor-select" href="#making-it-faster-to-develop-configuration">#</a></h2>
-<p>WDS will handle restarting the server when you change a bundled file, but what about when you edit the webpack config? Restarting the development server each time you make a change tends to get boring after a while; therefore, it can be a good idea to let automate it. As <a href="https://github.com/webpack/webpack-dev-server/issues/440#issuecomment-205757892">discussed in GitHub</a>, <a href="https://www.npmjs.com/package/nodemon">nodemon</a> monitoring tool can be used for this purpose.</p>
+<p>WDS will handle restarting the server when you change a bundled file, but what about when you edit the webpack config? Restarting the development server each time you make a change tends to get boring after a while. This can be automated as <a href="https://github.com/webpack/webpack-dev-server/issues/440#issuecomment-205757892">discussed in GitHub</a> by using <a href="https://www.npmjs.com/package/nodemon">nodemon</a> monitoring tool.</p>
 <p>To get it to work, you have to install it first through <code>npm install nodemon --save-dev</code>. After that, you can make it watch webpack config and restart WDS on change. Here&#39;s the script if you want to give it a go:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
@@ -165,7 +155,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
   <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env production"</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<p>It&#39;s possible WDS <a href="https://github.com/webpack/webpack/issues/3153">will support the functionality</a> itself in the future. If you want to make it reload itself on change, you should implement a workaround for now.</p>
+<p>It&#39;s possible WDS <a href="https://github.com/webpack/webpack/issues/3153">will support the functionality</a> itself in the future. If you want to make it reload itself on change, you should implement this workaround for now.</p>
 <h2 class="header"><a class="header-anchor" href="#polling-instead-of-watching-files" id="polling-instead-of-watching-files"></a><span class="text">Polling Instead of Watching Files</span><a class="header-anchor-select" href="#polling-instead-of-watching-files">#</a></h2>
 <p>Sometimes the file watching setup provided by WDS won&#39;t work on your system. It can be problematic on older versions of Windows, Ubuntu, Vagrant, and Docker. Enabling polling is a good option then:</p>
 <p><strong>webpack.config.js</strong></p>
@@ -211,7 +201,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <li><code>devServer.headers</code> - Attach custom headers to your requests here.</li>
 </ul>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://webpack.js.org/configuration/dev-server/">The official documentation</a> covers more options.</blockquote><h2 class="header"><a class="header-anchor" href="#development-plugins" id="development-plugins"></a><span class="text">Development Plugins</span><a class="header-anchor-select" href="#development-plugins">#</a></h2>
-<p>As webpack plugin ecosystem is diverse, there are a lot of plugins that can help specifically with development:</p>
+<p>The webpack plugin ecosystem is diverse and there are a lot of plugins that can help specifically with development:</p>
 <ul>
 <li><a href="https://www.npmjs.com/package/case-sensitive-paths-webpack-plugin">case-sensitive-paths-webpack-plugin</a> can be handy when you are developing on a case-insensitive environments like macOS or Windows but using case-sensitive environment like Linux for production.</li>
 <li><a href="https://www.npmjs.com/package/npm-install-webpack-plugin">npm-install-webpack-plugin</a> allows webpack to install and wire the installed packages with your <em>package.json</em> as you import new packages to your project.</li>
