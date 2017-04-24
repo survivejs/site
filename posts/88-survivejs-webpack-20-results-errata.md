@@ -63,6 +63,13 @@ I've listed errata per version below so you can see the main changes. You can se
 
 * Fixed a typo at the *Glossary*. `an a` &rarr; `a`.
 
+## 2.0.9
+
+* Recommended `cheap-module-source-map` over `cheap-module-eval-source-map` since it's a more stable option.
+* Included naming to `import()` syntax given that's supported now.
+* Dropped `devServer.open: true` bit as redundant.
+* Noted that CSS Modules work with purify if you use a whitelist.
+
 ## Conclusion
 
 There's still a [lot of touring](../euro-tour-2017) to be done so things will move slower than usual. That said, I'll try to get most out of this experience and convert that into something good. Traveling is good for ideas.
