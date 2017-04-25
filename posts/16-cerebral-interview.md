@@ -123,4 +123,6 @@ It would be interesting to talk to someone invested in FRP.  Who uses it for som
 
 ## Conclusion
 
-Thanks for the interview Christian! I hope the best of luck with your projects. It is always inspiring to see alternative solutions like these to pop up. If you became interested in Cerebral, consider checking out [gitter](https://gitter.im/christianalfoni/cerebral) or [Cerebral port of Kanban](https://github.com/survivejs/cerebral-demo). You can also try running [Cerebral Chrome debugger plugin](https://chrome.google.com/webstore/detail/cerebral-debugger/ddefoknoniaeoikpgneklcbjlipfedbb) against [TodoMVC demo](http://www.christianalfoni.com/todomvc/).
+Thanks for the interview Christian! I hope the best of luck with your projects. It is always inspiring to see alternative solutions like these to pop up.
+
+If you became interested in Cerebral, consider checking out [gitter](https://gitter.im/christianalfoni/cerebral) or [Cerebral port of Kanban](https://github.com/survivejs/cerebral-demo). You can also try running [Cerebral Chrome debugger plugin](https://chrome.google.com/webstore/detail/cerebral-debugger/ddefoknoniaeoikpgneklcbjlipfedbb) against [TodoMVC demo](http://www.christianalfoni.com/todomvc/).
