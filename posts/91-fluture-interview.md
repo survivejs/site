@@ -7,7 +7,7 @@ keywords: ['interview', 'functional programming']
 
 Dealing with the asynchronous code has always been a challenge in JavaScript. Callbacks are the classic way, and since then we've gained higher level abstractions and constructs for handling the problem.
 
-This time around we'll discuss [Fluture](https://github.com/fluture-js/Fluture), a FantasyLand specification compatible alternative to `Promises` by [Aldwin Vlasblom](https://github.com/Avaq).
+This time around we'll discuss [Fluture](https://github.com/fluture-js/Fluture), a Fantasy Land specification compatible alternative to `Promises` by [Aldwin Vlasblom](https://github.com/Avaq).
 
 ## Can you tell a bit about yourself?
 
@@ -109,7 +109,7 @@ Some weeks ago, by combining ideas from Promises, Fluture, and Free Monads, I cr
 
 ## What does the future look like for *Fluture* and web development in general? Can you see any particular trends?
 
-Fluture has earned a place in my personal toolkit when it comes to classic request-response applications, like those you find in web-servers. In this context, I consider it the best solution to the [async problem](ttps://github.com/plaid/async-problem) (and the promise problem) that I've used to date, and I don't think that will change soon.
+Fluture has earned a place in my personal toolkit when it comes to classic request-response applications, like those you find in web-servers. In this context, I consider it the best solution to the [async problem](https://github.com/plaid/async-problem) (and the promise problem) that I've used to date, and I don't think that will change soon.
 
 As for other kinds of applications, like the ones you might find running in browsers, I think we are moving towards reactive. Streams are the perfect async abstraction in these environments.
 
