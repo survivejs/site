@@ -178,4 +178,4 @@ To understand the design decisions I took with Reactabular, check out [my slides
 
 Here's a presentation I gave about the topic:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nEn5k_HXeNc" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" height="300px" src="https://www.youtube.com/embed/nEn5k_HXeNc" frameborder="0" allowfullscreen></iframe>

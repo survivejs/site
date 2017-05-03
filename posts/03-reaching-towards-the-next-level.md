@@ -2,7 +2,7 @@
 title: 'Reaching Towards the Next Level'
 date: 2015-07-15
 headerImage: '/assets/img/levels.jpg'
-keywords: ['publishing']
+keywords: ['survivejs', 'publishing']
 ---
 In [my previous post](./balance) I discussed some of the difficulties of related to technical publishing. I also presented a possible solution, a mixed model that might make open publishing more feasible. The idea is that starting closed and asking for money beforehand you reward early adopters while decreasing the risk of the author. As the content gets opened eventually others can benefit from it. I know this goes against the common wisdoms of book publishing but it's a model I would like to try.
 

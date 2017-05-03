@@ -2,7 +2,7 @@
 title: 'Balancing Between Open and Closed Publishing'
 date: 2015-07-14
 headerImage: '/assets/img/open_closed.jpg'
-keywords: ['publishing']
+keywords: ['survivejs', 'publishing']
 ---
 If there's one thing technical authors have in common, it's that they all want to help other people. The question is how to achieve that most effectively. In my [previous post](./the-story-so-far) I discussed how I have fared with my first effort so far. The results have been mixed. Community response has been amazing in many ways but that hasn't translated to amazing sales. That said I'm grateful to all that have contributed. In the end sales enable further efforts.
 
