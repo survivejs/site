@@ -75,6 +75,10 @@ You can support creation of new content by [purchasing a digital copy of the boo
 
 > If you get stuck, remember to check out the [Gitter chat](https://gitter.im/survivejs/react).
 
+## Training
+
+I offer training around the content. See [the training page](/training/) for more details.
+
 ## About the Author
 
 <p>
