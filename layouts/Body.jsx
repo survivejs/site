@@ -41,6 +41,10 @@ export default React.createClass({
           url: sectionName === 'blog' ? '/webpack/foreword/' : '/blog/',
         },
         {
+          title: 'Get training',
+          url: '/training/',
+        },
+        {
           title: 'Buy the ebook',
           url: sectionName === 'webpack' ?
             'https://leanpub.com/survivejs-webpack' :
@@ -58,9 +62,10 @@ export default React.createClass({
     );
   },
   renderFeedback(title, sectionName) {
-    if (sectionName === 'blog') {
+    if (sectionName !== 'react' || sectionName !== 'webpack') {
       sectionName = 'site';
     }
+
     return (
       <GithubCorner
         href={`https://github.com/survivejs/${sectionName}`}

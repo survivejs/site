@@ -95,6 +95,7 @@ module.exports = {
       },
     },
     blog: sections.blog(),
+    training: sections.training(),
     react: sections.react(reactHeaders),
     webpack_react: sections.webpackReact(),
     webpack: sections.webpack(webpackHeaders)
