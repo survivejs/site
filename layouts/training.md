@@ -58,6 +58,7 @@ You should contact me (see the site footer) through the means you find most conv
 
 ## References
 
+* [AlphaSense](https://www.alpha-sense.com/)
 * [Sevenval](https://www.sevenval.com/blog/5093/webpack-master-ein-kurzer-ruckblick-auf-unseren-workshop-mit-bebraw/) (in German)
 * [Typeform](https://www.typeform.com/)
 * [Xeneta](https://www.xeneta.com/)
