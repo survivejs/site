@@ -24,13 +24,13 @@ We are trying to save the planet, and my part in that is making technology choic
 
 Related to this I do a lot of open source. The [cerebral](http://www.cerebraljs.com) project, which we have talked about before, is about to hit 2.0 release and has been a great tool to handle the complexity and constant changes in our project.
 
-I also have other smaller projects, like [marksy](https://github.com/cerebral/marksy), I write articles from time to time on [www.christianalfoni.com](http://www.christianalfoni.com), and I have built a bin service that uses webpack bundling on the server side. My biggest project these days though is my six months year old daughter, Emma :-)
+I also have other smaller projects, like [marksy](https://github.com/cerebral/marksy), I write articles from time to time on [www.christianalfoni.com](http://www.christianalfoni.com), and I have built a bin service that uses webpack bundling on the server side. My biggest project these days though is my six months year old daughter, Emma.
 
 ## How would you describe *WebpackBin* to someone who has never heard of it?
 
 You have probably heard about bin services like JSBin, Codepen, etc. These are certainly excellent services, but the way we write our code has changed a lot the last few years. We transpile pretty much everything we write.
 
-The JavaScript code itself to a more modern syntax, JSX, templates, CSS, etc. We do not add libraries as script tags anymore either; we install them from npm. Last but not least we bundle all this together using a build tool, like webpack, using a single entry point. Webpackbin does its best to be a bin service that gives you these features directly in the browser.
+The JavaScript code itself to a more modern syntax, JSX, templates, CSS, etc. We do not add libraries as script tags anymore either; we install them from npm. Lastly, we bundle all this together using a build tool, like webpack, using a single entry point. Webpackbin does its best to be a bin service that gives you these features directly in the browser.
 
 ## How does *WebpackBin* work?
 
@@ -61,7 +61,7 @@ T> A DLL bundle is a JavaScript file that your app file can hook into to load mo
 
 Now **webpack-sandbox** has a manifest it bundles together with your middleware instance and any loaders configured. It responds with an OK, and the webpackbin client will now refresh an iframe also pointing to **webpack-sandbox**, but now it is a get request.
 
-The session is picked up, points to the middleware, extracts the bundled files and injects a script in the *index.html* to the *dll.js* file related to the manifest that was requested earlier. The iframe loads the returned index.html which grabs the dll file, your particular bin app bundle and voilà your bin is displayed :-)
+The session is picked up, points to the middleware, extracts the bundled files and injects a script in the *index.html* to the *dll.js* file related to the manifest that was requested earlier. The iframe loads the returned index.html which grabs the dll file, your particular bin app bundle and voilà your bin is displayed.
 
 ### Design - The Hardest Part
 
@@ -75,7 +75,7 @@ They require the npm packages to be installed locally to resolve entrypoints, bu
 
 It feels like every single npm package out there has their little tweak on **package.json** property names, directory names, file names and what is included in the published npm package.
 
-The **webpack-packager** service has a lot of logic to figure out what should be included, mostly by figuring out what should **not** be included. Doing this is still a challenge, but it is under control :-)
+The **webpack-packager** service has a lot of logic to figure out what should be included, mostly by figuring out what should **not** be included. Doing this is still a challenge, but it is under control.
 
 ## How does *WebpackBin* differ from the other solutions?
 
@@ -85,9 +85,9 @@ Another beautiful thing is that you can download your BIN at any time as a zip f
 
 But where it is rather unique is its ability to configure Webpack loaders. Which means you can use css-modules, Vue templates, handlebars, etc. pretty much any loader that transpiles can be used.
 
-That said, this has to be pre-configured on the server, due to the nature of running it in-memory with middleware. But if you can not find your loader a PR is always welcomed. :-)
+That said, this has to be pre-configured on the server, due to the nature of running it in-memory with middleware. But if you can not find your loader a PR is always welcomed.
 
-I am not sure about other bin services, but Webpackbin is [completely open source](https://github.com/cerebral/webpackbin). All the parts of the architecture is up for grabs. :-)
+I am not sure about other bin services, but Webpackbin is [completely open source](https://github.com/cerebral/webpackbin). All the parts of the architecture is up for grabs.
 
 ## Why did you develop *WebpackBin*?
 
@@ -97,7 +97,7 @@ I do not have grand plans with the stuff I do, I just like to follow my obsessio
 
 And working on these kinds of projects usually opens up new doors. Like the **webpack-dll** and **webpack-packager** service is now being used by Codesandbox.io as well, allowing me to meet and work together with a guy who is just as enthusiastic as me about open source, the community, creating things...
 
-Ives makes me feel incredibly old though. Can you believe he is like 20 years old and has built Codesandbox.io? It is pretty crazy. In my defense, and anyone else reading this who is also feeling old now, the web was pretty different 13 years ago :-)
+Ives makes me feel incredibly old though. Can you believe he is like 20 years old and has built Codesandbox.io? It is pretty crazy. In my defense, and anyone else reading this who is also feeling old now, the web was pretty different 13 years ago.
 
 ## What next?
 
@@ -113,7 +113,7 @@ Other than that Ives and I are tightening the screws on **webpack-packager**, cr
 
 T> **Editor's note:** I hope npm can take the clue and integrate some of these features to npm client itself!
 
-We want to help to force some conventions on these things. We are also collaborating on other features that both our services can use. And who knows, maybe a path opens where we can combine forces on all parts of the stack. :-)
+We want to help to force some conventions on these things. We are also collaborating on other features that both our services can use. And who knows, maybe a path opens where we can combine forces on all parts of the stack.
 
 ## What does the future look like for *WebpackBin* and web development in general? Can you see any particular trends?
 
@@ -133,7 +133,7 @@ To handle all this stuff we need abstractions. We need abstractions for UI, anim
 
 So I think we are going to see a massive increase in abstractions to help us handle all this complexity. We are not going to write more code; we are going to write less. We are going to use a lot more tools, and they are going to be visual tools.
 
-Just take a look at the significant innovations in dev tools for frameworks, Chrome dev tools, bundle analyzers, etc. I think we have only seen the beginning of this :-)
+Just take a look at the significant innovations in dev tools for frameworks, Chrome dev tools, bundle analyzers, etc. I think we have only seen the beginning of this.
 
 ## What advice would you give to programmers getting into web development?
 
@@ -146,13 +146,13 @@ Some people like to say: "Learn the language". I do not agree with that. I think
 
 ## Who should I interview next?
 
-I think you should get a hold of Amy Knight from [JavaScript Jabber](https://devchat.tv/js-jabber). As I understand she is relatively new to programming and I believe it would be interesting, especially here in Europe, to listen to what resources she had available to her and how she got going with programming. Maybe we can learn something over here. :-)
+I think you should get a hold of Amy Knight from [JavaScript Jabber](https://devchat.tv/js-jabber). As I understand she is relatively new to programming and I believe it would be interesting, especially here in Europe, to listen to what resources she had available to her and how she got going with programming. Maybe we can learn something over here.
 
-We are trying to get to a place where we do not ask questions like "As a woman....", but the state of our community is that we severely lack women, and we need to understand what we are doing wrong. Like my old boss said, you need at least 30% women at the party because then the men behave. ;-)
+We are trying to get to a place where we do not ask questions like "As a woman....", but the state of our community is that we severely lack women, and we need to understand what we are doing wrong. Like my old boss said, you need at least 30% women at the party because then the men behave.
 
 ## Any last remarks?
 
-Well, I guess I should encourage you to check out [Cerebral 2.0](http://www.cerebraljs.com) which is closing in on release. It is a JS framework that goes head on with handling side effects and has a pretty excellent debugger. :-)
+Well, I guess I should encourage you to check out [Cerebral 2.0](http://www.cerebraljs.com) which is closing in on release. It is a JS framework that goes head on with handling side effects and has a pretty excellent debugger.
 
 ## Conclusion
 
