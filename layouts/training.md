@@ -54,7 +54,7 @@ A lot depends on geography and availability as well. I reside in Finland current
 
 Online sessions and brief consulting are possible too on request.
 
-You should contact me (see the site footer) through the means you find most convenient for further details.
+You should contact me through the means you find most convenient for further details (see the site footer). Email is possible too (info @ domain).
 
 ## References
 
