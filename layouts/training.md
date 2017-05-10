@@ -61,6 +61,7 @@ You should contact me through the means you find most convenient for further det
 * [AlphaSense](https://www.alpha-sense.com/)
 * [Sevenval](https://www.sevenval.com/blog/5093/webpack-master-ein-kurzer-ruckblick-auf-unseren-workshop-mit-bebraw/) (in German)
 * [Typeform](https://www.typeform.com/)
+* [Quantifio](http://www.quantifio.no/)
 * [Xeneta](https://www.xeneta.com/)
 
 ## About the Author
