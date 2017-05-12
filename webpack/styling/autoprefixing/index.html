@@ -10,7 +10,7 @@ It can be difficult to remember which vendor prefixes you have to use for specif
   loader<span class="token punctuation" >:</span> <span class="token string" >'postcss-loader'</span><span class="token punctuation" >,</span>
   options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
     plugins<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-      <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'autoprefixer'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+      <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'autoprefixer'</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
     <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
@@ -18,7 +18,6 @@ It can be difficult to remember which vendor prefixes you have to use for specif
 <p>To connect the loader with <code>ExtractTextPlugin</code>, hook it up as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <div class="leanpub-delete">
   parts<span class="token punctuation" >.</span><span class="token function" >extractCSS</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> use<span class="token punctuation" >:</span> <span class="token string" >'css-loader'</span> <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
@@ -46,8 +45,7 @@ It can be difficult to remember which vendor prefixes you have to use for specif
   <span class="token property" >display</span><span class="token punctuation" >:</span> flex<span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>As you can see, autoprefixing expands the rules, so you don&#39;t have to remember to do that.</p>
-<p>If you know what browsers you support, it&#39;s possible to set up a <a href="https://www.npmjs.com/package/browserslist">browserslist</a> file. Different tools pick up this definition, <em>autoprefixer</em> included.</p>
+<p>As you can see, autoprefixing expands the rules. If you know what browsers you support, it&#39;s possible to set up a <a href="https://www.npmjs.com/package/browserslist">browserslist</a> file. Different tools pick up this definition, <em>autoprefixer</em> included.</p>
 <p>Consider the example below where you select only specific browsers:</p>
 <p><strong>browserslist</strong></p>
 <pre><code><span class="token operator" >></span> 1% <span class="token comment" spellcheck="true"># Browser usage over 1%</span>

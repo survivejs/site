@@ -4,7 +4,7 @@ When webpack writes bundles, it maintains a manifest as well. You can find it in
 <blockquote class="tip"><i class="icon-attention-circled"></i>To understand how a manifest is generated in detail, <a href="https://stackoverflow.com/questions/39548175/can-someone-explain-webpacks-commonschunkplugin/39600793">read the technical explanation at Stack Overflow</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#extracting-a-manifest" id="extracting-a-manifest"></a><span class="text">Extracting a Manifest</span><a class="header-anchor-select" href="#extracting-a-manifest">#</a></h2>
 <p>Most of the work was done already when <code>extractBundles</code> was set up in the <a href="/webpack/building/bundle-splitting">Bundle Splitting</a> chapter. To extract the manifest, a single change is required to capture the remaining code which contains webpack bootstrap:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
   parts<span class="token punctuation" >.</span><span class="token function" >extractBundles</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
       <span class="token punctuation" >{</span>
@@ -17,6 +17,7 @@ When webpack writes bundles, it maintains a manifest as well. You can find it in
       <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </div>
   <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The name <code>manifest</code> is used by convention. You can use any other name and it will still work. It&#39;s important that the definition is after others, though, as it has to capture what has not been extracted yet. <code>minChunks</code> is optional in this case and passing <code>Infinity</code> tells webpack <strong>not</strong> to move any modules to the resulting bundle.</p>

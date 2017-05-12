@@ -64,11 +64,10 @@ exports<span class="token punctuation" >.</span>attachRevision <span class="toke
 <p>And connect it to the main configuration:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >clean</span><span class="token punctuation" >(</span>PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <div class="leanpub-insert">
   parts<span class="token punctuation" >.</span><span class="token function" >attachRevision</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you build the project (<code>npm run build</code>), you should notice the built files contain comments like <code>/*! 0b5bb05 */</code> or <code>/*! v1.7.0-9-g5f82fe8 */</code> in the beginning.</p>

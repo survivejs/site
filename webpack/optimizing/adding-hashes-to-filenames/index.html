@@ -119,7 +119,12 @@ vendor.f897ca59.js.map     135 kB       2  <span class="token punctuation" >[</s
 <p>The process keeps module IDs stable as they aren&#39;t derived based on order. You sacrifice a couple of bytes for a cleaner setup, but the trade-off is well worth it.</p>
 <p>Tweak the configuration as follows:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<pre><code class="lang-javascript"><div class="leanpub-insert">
+<span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'webpack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</div>
+<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+
+<span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
   <span class="token punctuation" >{</span>
     <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <div class="leanpub-insert">

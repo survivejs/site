@@ -46,7 +46,7 @@ Time: 2864ms
 <p>So far, the project has only a single entry named as <code>app</code>. The configuration tells webpack to traverse dependencies starting from the <code>app</code> entry directory and then to output the resulting bundle below the <code>build</code> directory using the entry name and <code>.js</code> extension.</p>
 <p>To improve the situation, you can define a <code>vendor</code> entry containing React by matching the dependency name. It&#39;s possible to generate this information automatically as discussed at the end of this chapter, but a static array is enough to illustrate the basic idea. Change the code:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
 <div class="leanpub-insert">
   <span class="token punctuation" >{</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
@@ -97,7 +97,7 @@ vendor.js.map     164 kB       1  <span class="token punctuation" >[</span>emitt
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
   <span class="token punctuation" >{</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       vendor<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
@@ -170,7 +170,7 @@ exports<span class="token punctuation" >.</span>extractBundles <span class="toke
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 
-<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
   <span class="token punctuation" >{</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
       vendor<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'react'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
@@ -208,7 +208,7 @@ exports<span class="token punctuation" >.</span>extractBundles <span class="toke
 <p>Particularly <code>resource</code> and <code>userRequest</code> can return the same value if you are operating with imports that aren&#39;t being processed in any way. In the example above, <code>ExtractTextPlugin</code> caused a difference between the values.</p>
 <p>To capture only JavaScript files from <em>node_modules</em>, you should perform a check against each request using the <code>resource</code> since it contains the needed information:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
+<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
 <div class="leanpub-delete">
   <span class="token punctuation" >{</span>
     entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
@@ -252,9 +252,7 @@ exports<span class="token punctuation" >.</span>extractBundles <span class="toke
     <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>optimize<span class="token punctuation" >.</span>CommonsChunkPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
       name<span class="token punctuation" >:</span> <span class="token string" >'common'</span><span class="token punctuation" >,</span>
       chunks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'login'</span><span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-      minChunks<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >,</span> count<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-        <span class="token keyword" >return</span> count <span class="token operator" >>=</span> <span class="token number" >2</span> <span class="token operator" >&amp;&amp;</span> <span class="token function" >isVendor</span><span class="token punctuation" >(</span>module<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-      <span class="token punctuation" >}</span>
+      minChunks<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >,</span> count<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> count <span class="token operator" >>=</span> <span class="token number" >2</span> <span class="token operator" >&amp;&amp;</span> <span class="token function" >isVendor</span><span class="token punctuation" >(</span>module<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
     <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
