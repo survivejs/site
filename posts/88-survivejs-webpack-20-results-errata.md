@@ -70,6 +70,15 @@ I've listed errata per version below so you can see the main changes. You can se
 * Dropped `devServer.open: true` bit as redundant.
 * Noted that CSS Modules work with purify if you use a whitelist.
 
+## 2.0.10
+
+* Pushed `CommonsChunkPlugin` to production configuration to speed up the build.
+* Dropped `useSourceMap` flag from `parts.minifyJavaScript`.
+* Added missing `const webpack = require('webpack');` to `HashedModuleIdsPlugin` example.
+* Made CSSNext example use `require('postcss-cssnext')(),`.
+* Made autoprefixer example compatible with the newest version. It needs `require('autoprefixer')()` over `require('autoprefixer')` now.
+* Simplified stylelint configuration by dropping `ignoreFiles` since webpack `include` is used already.
+
 ## Conclusion
 
 There's still a [lot of touring](../euro-tour-2017) to be done so things will move slower than usual. That said, I'll try to get most out of this experience and convert that into something good. Traveling is good for ideas.
