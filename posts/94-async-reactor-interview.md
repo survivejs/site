@@ -163,6 +163,6 @@ T> If you are using [babel-preset-env](https://www.npmjs.com/package/babel-prese
 
 ## Conclusion
 
-Thanks for the interview Sven! **async-reactor** looks almost too easy to use! It definitely cuts down the amount of boilerplate related to performing asynchronous operations on component level.
+Thanks for the interview Sven! **async-reactor** looks almost too easy to use. It definitely cuts down the amount of boilerplate related to performing asynchronous operations on component level.
 
 Check out the [GitHub project](https://github.com/xtuc/async-reactor) to learn more.
