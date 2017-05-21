@@ -23,4 +23,4 @@ The win wouldn't have been possible without you, the community. It's the interac
 
 There are still challenges ahead but it's recognition like this that tells you, you might be on the right track. I hope to grow the effort further and live to my new title of code ambassador. It could be my chance to put Finland on the map.
 
-It's a win I consider more of a community win instead of a personal one. During this process, [we helped a major web technology to emerge](presentations.survivejs.com/re-imagining-webpack) and perhaps we can go a bit further.
+It's a win I consider more of a community win instead of a personal one. During this process, [we helped a major web technology to emerge](https://presentations.survivejs.com/re-imagining-webpack) and perhaps we can go a bit further.
