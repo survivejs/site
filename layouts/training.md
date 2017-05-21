@@ -62,14 +62,14 @@ You should contact me through the means you find most convenient for further det
 * [Kitchen Reklamebyrå](http://www.kitchen.no/)
 * [Sevenval](https://www.sevenval.com/blog/5093/webpack-master-ein-kurzer-ruckblick-auf-unseren-workshop-mit-bebraw/) (in German)
 * [Typeform](https://www.typeform.com/)
-* [Quantifio](http://www.quantifio.no/)
+* [Quantifio](http://www.quantifio.no/) - "I learned and understood more of webpack in a two-hour masterclass than all previous training combined. Juho has the skills and repertoire to improvise content and fine tune relevancy - he connected the dots on specific topics in an Electron environment and had the answers you wont find online."
 * [Xeneta](https://www.xeneta.com/)
 
 ## About the Author
 
 <p>
 <img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200' alt='Juho Vepsäläinen' class='author-photo' width='100' height='100' />
-Juho Vepsäläinen is behind the SurviveJS effort. In addition to being a core developer of webpack, he has been active in the open source scene since the early 2000s.
+Juho Vepsäläinen is behind the SurviveJS effort. In addition to being a core developer of webpack, he has been active in the open source scene since the early 2000s. Blue Arrow Awards winner.
 </p>
 
 * [@bebraw](https://twitter.com/bebraw)
