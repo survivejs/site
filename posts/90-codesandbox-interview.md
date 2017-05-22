@@ -120,7 +120,7 @@ I also recommend learning by just starting a personal project. Building somethin
 
 Christian Alfoni, the creator of [WebpackBin](https://www.webpackbin.com/) and [Cerebral](http://cerebraljs.com/docs/get_started/). It has been a blast working with him. He is close to releasing a new version of a state controller called Cerebral.
 
-T> Editor's note: I [interviewed Christian earlier about Cerebral](/blog/cerebral-interview).
+T> **Editor's note:** I [interviewed Christian earlier about Cerebral](/blog/cerebral-interview).
 
 ## Any last remarks?
 
