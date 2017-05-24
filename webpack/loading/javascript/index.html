@@ -134,6 +134,7 @@ To get a better idea of the default transform, consider the example output beloâ
 <blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s possible to connect Babel with Node through <a href="https://www.npmjs.com/package/babel-register">babel-register</a> or <a href="https://www.npmjs.com/package/babel-cli">babel-cli</a>. These packages can be handy if you want to execute your code through Babel without using webpack.</blockquote><h2 class="header"><a class="header-anchor" href="#enabling-presets-and-plugins-per-environment" id="enabling-presets-and-plugins-per-environment"></a><span class="text">Enabling Presets and Plugins per Environment</span><a class="header-anchor-select" href="#enabling-presets-and-plugins-per-environment">#</a></h2>
 <p>Babel allows you to control which presets and plugins are used per environment through its <a href="https://babeljs.io/docs/usage/babelrc/#env-option">env option</a>. You can manage Babel&#39;s behavior per build target this way.</p>
 <p><code>env</code> checks both <code>NODE_ENV</code> and <code>BABEL_ENV</code> and functionality to your build based on that. If <code>BABEL_ENV</code> is set, it overrides any possible <code>NODE_ENV</code>. Consider the example below:</p>
+<p><strong>.babelrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
   ...
   <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
