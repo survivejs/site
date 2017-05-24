@@ -79,6 +79,11 @@ I've listed errata per version below so you can see the main changes. You can se
 * Made autoprefixer example compatible with the newest version. It needs `require('autoprefixer')()` over `require('autoprefixer')` now.
 * Simplified stylelint configuration by dropping `ignoreFiles` since webpack `include` is used already.
 
+## 2.0.11
+
+* Add missing **.babelrc** to a  filename in the Loading JavaScript chapter.
+* Added `purify-css` as a dependency to install as `purifycss-webpack` requires that now as a peer dependency.
+
 ## Conclusion
 
 There's still a [lot of touring](../euro-tour-2017) to be done so things will move slower than usual. That said, I'll try to get most out of this experience and convert that into something good. Traveling is good for ideas.
