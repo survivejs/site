@@ -15,13 +15,13 @@ function main() {
 
     api.zonePurgeCacheBy(zone.id, {
       files: [
-        'http://survivejs.com/assets/main.css',
-        'http://survivejs.com/webpack_react/*',
-        'http://survivejs.com/webpack/*',
-        'http://survivejs.com/react/*',
-        'http://survivejs.com/assets/img/favicon.png',
-        'http://survivejs.com/favicon.ico',
-        'http://survivejs.com/'
+        'https://survivejs.com/assets/main.css',
+        'https://survivejs.com/webpack_react/*',
+        'https://survivejs.com/webpack/*',
+        'https://survivejs.com/react/*',
+        'https://survivejs.com/assets/img/favicon.png',
+        'https://survivejs.com/favicon.ico',
+        'https://survivejs.com/'
       ]
     }).then(function(ok) {
       console.log('purged main.css and content');
