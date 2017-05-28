@@ -46,15 +46,46 @@ What's exactly covered in a session depends on the available time and interest. 
 
 My React training is tailored per client need. You can get a good idea of how this works from my [React presentations](https://presentations.survivejs.com/#/1). I can cover a wide range of topics starting from basics to more advanced.
 
+## Example Program
+
+The program can be split into two days. They don't depend on each other although there is some overlap and you can apply certain webpack techniques with React. This applies particularly to ideas like **code splitting** and PWA (Progressive Web Apps).
+
+All the sessions have been split into smaller sections most of which contain hands-on exercises so you get experience with the ideas discussed. It's expected each participant has LTS version of Node installed and can run `node` and `npm` through terminal. Most of the React portion can be done through [CodeSandbox](https://codesandbox.io/) or [WebpackBin](https://www.webpackbin.com/).
+
+### Webpack Day
+
+The point of the webpack day is to help beginner level users to understand webpack while increasing the understanding of intermediate/expert level users. The tool has a large scope so it's easy to miss features that may be useful. Even though the focus is on webpack, the day covers a wide variety of techniques that are useful beyond it. So even if you don't end up using webpack in your daily work, you may still benefit from the ideas.
+
+* 09:00-12:00 - **Webpack - From apprentice to journeyman** - [Slides](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/)
+* 12:00-13:00 - Lunch break
+* 13:00-14:30 - **Webpack - From journeyman to master** - [Slides](https://presentations.survivejs.com/webpack-from-journeyman-to-master/)
+* 14:30-15:00 - Afternoon break
+* 15:00-16:00 - QA with Tobias, the author of the tool
+* 16:00-17:00 - Recap, QA
+
+### React Day
+
+The React session has been designed for beginner/intermediate level developers. It won't cover everything related to React, instead the focus has been chosen so that you have a good intersection through the key topics and a good starting point for delving deeper. An important part is learning to know what you don't know yet.
+
+* 09:00-10:00 - **React Infrastructure** session - Overview of the ecosystem, tools and libraries to use.
+* 10:00-11:00 - **React Components** - [Slides](https://presentations.survivejs.com/react-components/)
+* 11:00-12:00 - **React Architecture** - [Slides](https://presentations.survivejs.com/react-architecture/)
+* 12:00-13:00 - Lunch break
+* 13:00-14:00 - **React Architecture** continued - [Slides](https://presentations.survivejs.com/react-architecture/)
+* 14:00-14:30 - **Forms in React** - [Slides](https://presentations.survivejs.com/forms-in-react/)
+* 14:30-15:00 - Afternoon break
+* 15:00-16:00 - **React SSR** - This can be replaced with a testing, performance, or styling session depending on the interest.
+* 16:00-17:00 - Recap, QA
+
 ## How Much Does This Cost?
 
-There's no one right approach to pricing. What's too much to some company or person, is too little to another. My personal preference is to agree on a range before a session. After the session we'll discuss and settle on a figure within the range based on performance. This gives both parties good incentives to make it work.
+There's no one right approach to pricing. What's too much to some company or person, is too little to another. My personal preference is to agree on a range before a session. After the session we'll discuss and settle on a figure within the range based on performance. We can also fix a price beforehand if you prefer that.
 
-A lot depends on geography and availability as well. I reside in Finland currently and prefer to work with European companies for this reason. Anything beyond Europe takes more consideration as it's more difficult to arrange and takes more time.
-
-Online sessions and brief consulting are possible too on request.
+I prefer small groups (up to 15) and personal mentoring around a specific topic is possible as well. I reside in Finland currently and prefer to work with European companies for this reason. Anything beyond Europe takes more consideration as it's more difficult to arrange and takes more time.
 
 You should contact me through the means you find most convenient for further details (see the site footer). Email is possible too (`info @ domain`).
+
+> Online sessions and brief consulting are possible too on request.
 
 ## References
 
