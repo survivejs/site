@@ -18,8 +18,8 @@ export default React.createClass({
       <BodyTemplate head={<RSS href="/atom.xml" />} {...props}>
         {props.children}
 
-        {pathname !== '/' ? this.renderNavigation(props, section.name) : null}
-        {pathname !== '/' ? this.renderFeedback(props.page.title, section.name) : null}
+        {this.renderNavigation(props, section.name)}
+        {this.renderFeedback(props.page.title, section.name)}
 
         <Footer {...props} />
 
@@ -45,10 +45,8 @@ export default React.createClass({
           url: '/training/',
         },
         {
-          title: 'Buy the ebook',
-          url: sectionName === 'webpack' ?
-            'https://leanpub.com/survivejs-webpack' :
-            'https://leanpub.com/survivejs-react',
+          title: 'Buy the bundle',
+          url: 'https://leanpub.com/b/survivejs-webpack-react',
         },
         {
           title: '',
