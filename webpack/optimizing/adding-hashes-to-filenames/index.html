@@ -162,7 +162,7 @@ vendor.3c78d233.js.map     135 kB       2  <span class="token punctuation" >[</s
 <span class="token punctuation" >..</span>.
 </code></pre>
 <p>Note how the output has changed, though. Instead of numbers, you can see hashes. But this is expected given the change you made.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/webpack/appendices/hmr">Hot Module Replacement</a> appendix shows how to set up <code>NamedModulesPlugin</code> as it can be used for debugging HMR.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i><code>NamedChunksPlugin</code> achieves a similar result for split points. See <a href="https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31">Predictable long term caching with Webpack</a> by Tim Sebastian for further details.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/webpack/appendices/hmr">Hot Module Replacement</a> appendix shows how to set up <code>NamedModulesPlugin</code> as it can be used for debugging HMR.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Including hashes related to the file contents to their names allows to invalidate them on the client side. If a hash has changed, the client is forced to download the asset again.</p>
 <p>To recap:</p>
 <ul>
