@@ -84,6 +84,28 @@ I've listed errata per version below so you can see the main changes. You can se
 * Add missing **.babelrc** to a  filename in the Loading JavaScript chapter.
 * Added `purify-css` as a dependency to install as `purifycss-webpack` requires that now as a peer dependency.
 
+## 2.0.12
+
+* Linked to [Predictable long term caching with Webpack](https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31).
+* Toned down **records** statement.
+
+## 2.0.13
+
+* Fixed the book to use `cheap-module-eval-source-map` over `cheap-module-source-map` for development.
+
+## 2.0.14
+
+* Changed **browserslist** to **.browserslistrc** as the project has changed the file name.
+
+## 2.0.15
+
+* Added missing `const path = require('path');` to **Extending Loaders** chapter.
+* Added missing formatting to `const { RawSource } = require('webpack-sources');` at **Extending Loaders** chapter.
+
+## 2.0.16
+
+* Changed `PATHS.app` to `PATHS.lib` at the **Bundling Libraries** chapter.
+
 ## Conclusion
 
 There's still a [lot of touring](../euro-tour-2017) to be done so things will move slower than usual. That said, I'll try to get most out of this experience and convert that into something good. Traveling is good for ideas.
