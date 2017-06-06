@@ -54,7 +54,11 @@ All the sessions have been split into smaller sections most of which contain han
 
 ### Webpack Day
 
-The point of the webpack day is to help beginner level users to understand webpack while increasing the understanding of intermediate/expert level users. The tool has a large scope so it's easy to miss features that may be useful. Even though the focus is on webpack, the day covers a wide variety of techniques that are useful beyond it. So even if you don't end up using webpack in your daily work, you may still benefit from the ideas.
+The point of the webpack day is to help beginner level users to understand webpack while increasing the understanding of intermediate/expert level users. The tool has a large scope so it's easy to miss features that may be useful.
+
+Even though the focus is on webpack, the day covers a wide variety of techniques that are useful beyond it. So even if you don't end up using webpack in your daily work, you may still benefit from the ideas.
+
+It is possible to split the webpack content into two days to keep it more casual and hands on experience. In this case the first day would focus on the basic ideas while the second day would delve into advanced use cases.
 
 * 09:00-12:00 - **Webpack - From apprentice to journeyman** - [Slides](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/)
 * 12:00-13:00 - Lunch break
