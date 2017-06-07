@@ -9,7 +9,7 @@ Enough time has passed since [the major release of the webpack book](../survivej
 
 ## Results
 
-[The paperback](https://www.amazon.com/dp/9526868803) has sold roughly twenty copies in two weeks. [The Kindle edition](https://www.amazon.com/SurviveJS-Webpack-apprentice-Juho-Veps%C3%A4l%C3%A4inen-ebook/dp/B06XWZZGBS) is close to thirty and the higher quality and more expensive [signature edition](https://survivejs.typeform.com/to/LUQK0T) has close to ten interested buyers which just might be enough for me to do a little print but we'll see.
+[The paperback](https://www.amazon.com/dp/9526868803) has sold roughly twenty copies in two weeks. [The Kindle edition](https://www.amazon.com/SurviveJS-Webpack-apprentice-Juho-Veps%C3%A4l%C3%A4inen-ebook/dp/B06XWZZGBS) is close to thirty and the higher quality and more expensive [hard cover edition](https://survivejs.typeform.com/to/LUQK0T) has close to ten interested buyers which just might be enough for me to do a little print but we'll see.
 
 In addition, the [Leanpub edition](https://leanpub.com/survivejs-webpack) reached two thousand readers but it's good to remember half of those received the book for free when I split up my first book.
 
