@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var markdown = require('../utils/markdown');
 var highlight = require('../utils/highlight');
 
@@ -26,7 +27,7 @@ module.exports = function blog() {
         var content = o.file.__content.split('\n').slice(1).join('\n');
 
         return markdown().process(content, highlight);
-      }
+      },
     },
     layouts: {
       index: function() {
@@ -35,6 +36,11 @@ module.exports = function blog() {
       page: function() {
         return require('../layouts/BlogPage.jsx').default;
       }
+    },
+    sort: function(files) {
+      return _.sortBy(files, (o) => {
+        return -parseInt(o.name.split('-')[0], 10);
+      });
     },
     redirects: {
       'survivejs-webpack120': 'survivejs-webpack-120',
