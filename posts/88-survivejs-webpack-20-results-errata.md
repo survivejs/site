@@ -110,6 +110,11 @@ I've listed errata per version below so you can see the main changes. You can se
 
 * Simplified a `devtool` related paragraph to pass Amazon margin check.
 
+## 2.0.18
+
+* Getting Started - Use `import` over `require` at text.
+* Composing Configuration - Fix sentence structure at "Composition-based approach..."
+
 ## Conclusion
 
 There's still a [lot of touring](../euro-tour-2017) to be done so things will move slower than usual. That said, I'll try to get most out of this experience and convert that into something good. Traveling is good for ideas.
