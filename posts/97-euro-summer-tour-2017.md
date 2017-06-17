@@ -9,15 +9,15 @@ It's time for another tour. This time around I'll be focusing on [training](/tra
 
 This time around I'll spend time particularly in Slovakia, Germany, Austria, and the United Kingdom. I'll spend a few weeks at Vienna and there's room in the schedule.
 
-## 31.5-12.6 - Košice, Slovakia
+## ~~31.5-12.6 - Košice, Slovakia~~
 
 I'll start the tour from Košice and I'll be offering at least two sessions there, one of which will be public.
 
-## 12.6-14.6 - Prague, Czech Republic
+## ~~12.6-14.6 - Prague, Czech Republic~~
 
 I get to spend a day at Prague, one of my favorite cities in Europe. I don't have any specific plans yet but I might go and see some Mucha art.
 
-## 14.6-18.6 - Berlin, Germany
+## ~~14.6-18.6 - Berlin, Germany~~
 
 Most of my time in Berlin has been reserved by a client but I'll have time especially on 14th, 17th, and 18th.
 
@@ -32,10 +32,6 @@ The purpose of the Augsburg week is to focus on training through a local partner
 ## 10.7-15.7 - London, UK
 
 I'll participate [FullStack 2017](https://skillsmatter.com/conferences/8264-fullstack-2017-the-conference-on-javascript-node-and-internet-of-things) as an invited speaker. I'll have a short, two hour workshop on 14th based on [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) material.
-
-## 15.7-20.7 - Košice, Slovakia
-
-It's likely I'll return to Košice from London. Our goal is to organize more training sessions here.
 
 ## Conclusion
 
