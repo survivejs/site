@@ -1,6 +1,6 @@
 ---
 title: 'Working with Junior Developers - Interview with Aimee Knight'
-date: 2017-xx-xx
+date: 2017-06-20
 headerImage: '/assets/img/webdev.jpg'
 keywords: ['interview']
 ---
