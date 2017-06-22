@@ -1,5 +1,5 @@
 ---
-title: 'Hardcover Edition of the Webpack Book and Training'
+title: 'Hard-cover Edition of the Webpack Book and Training'
 date: 2017-06-22
 headerImage: '/assets/img/webpack-book.jpg'
 keywords: ['survivejs', 'training']
