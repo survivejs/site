@@ -17,7 +17,7 @@ To account for the logistics and "rarity", I decided to price this edition at $1
 
 If you want one of the remaining copies, [let me know](https://survivejs.typeform.com/to/LUQK0T) and I'll get one sent to you after payment has gone through.
 
-> Due to logistic issues, the books don't come with a signature. But if we meet, I have no problems signing the book for you.
+> Due to logistic issues, the books don't come with a signature. But if we meet, I'll be happy to sign the book for you.
 
 ## Webpack Training
 
