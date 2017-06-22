@@ -13,12 +13,24 @@ export default React.createClass({
         }
 
         return (
-            <blockquote className='latestpost tip'>
-                <div>From the blog:</div>
-                <a className='latestpost-link' href={`/${post.url}`}>
-                    {post.title}
-                </a>
-            </blockquote>
+            <div>
+                <blockquote className='latestpost tip'>
+                    <div>Register for workshops:</div>
+                    <a className='latestpost-link' href='https://survivejs.typeform.com/to/BlI8bR'>
+                        Vienna workshop (June/July)
+                    </a>
+                    <br/>
+                    <a className='latestpost-link' href='https://ti.to/peerigon/webpack-workshop'>
+                        Augsburg workshop (early July)
+                    </a>
+                </blockquote>
+                <blockquote className='latestpost tip'>
+                    <div>From the blog:</div>
+                    <a className='latestpost-link' href={`/${post.url}`}>
+                        {post.title}
+                    </a>
+                </blockquote>
+            </div>
         );
     }
 });
