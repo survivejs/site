@@ -7,7 +7,7 @@ keywords: ['interview', 'javascript']
 
 There are times when a vanilla `<abbr>` or `<acronym>` doesn't cut it. What if you want to do something more complex?
 
-[Popper.js](https://popper.js.org/) by [Federico Zivolo](https://twitter.com/FezVr4sta) achieves exactly this. Read on to learn more.
+[Popper.js](https://popper.js.org/) by [Federico Zivolo](https://twitter.com/FezVrasta) achieves exactly this. Read on to learn more.
 
 ## Can you tell a bit about yourself?
 
