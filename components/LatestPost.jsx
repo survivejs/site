@@ -17,7 +17,7 @@ export default React.createClass({
                 <blockquote className='latestpost tip'>
                     <div>Register for workshops:</div>
                     <a className='latestpost-link' href='https://survivejs.typeform.com/to/BlI8bR'>
-                        Vienna workshop (June/July)
+                        Vienna workshop (late July)
                     </a>
                     <br/>
                     <a className='latestpost-link' href='https://ti.to/peerigon/webpack-workshop'>
