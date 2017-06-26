@@ -16,12 +16,12 @@ export default React.createClass({
             <div>
                 <blockquote className='latestpost tip'>
                     <div>Register for workshops:</div>
-                    <a className='latestpost-link' href='https://survivejs.typeform.com/to/BlI8bR'>
-                        Vienna workshop (late July)
-                    </a>
-                    <br/>
                     <a className='latestpost-link' href='https://ti.to/peerigon/webpack-workshop'>
                         Augsburg workshop (early July)
+                    </a>
+                    <br/>
+                    <a className='latestpost-link' href='https://survivejs.typeform.com/to/BlI8bR'>
+                        Vienna workshop (late July)
                     </a>
                 </blockquote>
                 <blockquote className='latestpost tip'>
