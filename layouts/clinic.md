@@ -19,8 +19,8 @@ The prices have been given as minimums. If you feel you get more value out of a 
 
 I will arrange clinics in Vienna, Austria between 24-29.7 (July) as follows:
 
-* [Book an individual session](https://calendly.com/survivejs/clinic-for-individuals/). We'll agree on a suitable place separately. Most likely Abloom.
 * [Book a company session](https://calendly.com/survivejs/clinic-for-companies/). I'll come to visit you.
+* [Book an individual session](https://calendly.com/survivejs/clinic-for-individuals/). We'll agree on a suitable place separately. Most likely Abloom.
 
 ## How to Purchase?
 
