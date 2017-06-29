@@ -9,7 +9,7 @@ Two hours is a good amount of time for a clinic and it will give you a high ener
 A clinic comes with fixed prices as below:
 
 * 2h session for a company - min. 400 euros (VAT 0)
-* 2h session for an individual - min. 400 euros / <amount of persons in a session> (VAT 24), capped to 4 persons per session so this can be 100 euros at cheapest
+* 2h session for an individual - The price for individuals is split between participants. If there are four, then each would pay min. 100 euros (VAT 24). The amount of individuals per session is capped to four.
 
 If you want me on-site, you'll have to pay for related travel costs.
 
