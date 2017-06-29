@@ -95,9 +95,11 @@ module.exports = {
       },
     },
     blog: sections.blog(),
+    clinic: sections.clinic(),
     training: sections.training(),
     react: sections.react(reactHeaders),
     webpack_react: sections.webpackReact(),
-    webpack: sections.webpack(webpackHeaders)
+    webpack: sections.webpack(webpackHeaders),
+    workshop: sections.workshop()
   }
 };

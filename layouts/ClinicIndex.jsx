@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { Link } from 'react-router';
 
 export default React.createClass({
-  displayName: 'TrainingIndex',
+  displayName: 'ClinicIndex',
   render() {
     const section = this.props.section;
 
@@ -15,7 +15,7 @@ export default React.createClass({
               <div className='front-name'>
                 <span className='first'>Survive</span>
                 <span className='second'>JS</span>
-                <span className='first'> - Training</span>
+                <span className='first'> - Clinic</span>
               </div>
 
               <h1 className='front-header'>From apprentice to master</h1>
@@ -25,7 +25,7 @@ export default React.createClass({
 
         <div className='post post--front'>
           <section className='post__content'>
-            <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./training.md')}} />
+            <div dangerouslySetInnerHTML={{__html: require('raw!markdown!./clinic.md')}} />
           </section>
         </div>
       </div>
