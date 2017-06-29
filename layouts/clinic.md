@@ -22,6 +22,10 @@ I will arrange clinics in Vienna, Austria between 24-29.7 (July) as follows:
 * [Book a company session](https://calendly.com/survivejs/clinic-for-companies/). I'll come to visit you.
 * [Book an individual session](https://calendly.com/survivejs/clinic-for-individuals/). We'll agree on a suitable place separately. Most likely Abloom.
 
+## Remote Clinic
+
+You can [book a remote clinic](https://calendly.com/survivejs/clinic-for-remote) for 200 euros per an hour session if that's more convenient to you.
+
 ## How to Purchase?
 
 You should contact me through the means you find most convenient for further details (see the site footer). Email is possible too (`info @ domain`).
