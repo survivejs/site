@@ -6,21 +6,13 @@ Two hours is a good amount of time for a clinic and it will give you a high ener
 
 ## How Much Does This Cost?
 
-A clinic comes with fixed prices as below:
+A 2h session costs 400 euros and it's capped to four participants. If four individuals participate, then the cost is split between the participants. If you represent a company, then it's up to the company to cover the cost.
 
-* 2h session for a company - min. 400 euros (VAT 0)
-* 2h session for an individual - The price for individuals is split between participants. If there are four, then each would pay min. 100 euros (VAT 24). The amount of individuals per session is capped to four.
-
-If you want me on-site, you'll have to pay for related travel costs.
-
-The prices have been given as minimums. If you feel you get more value out of a session, compensate accordingly.
+If you want me on-site, you'll have to cover travel related costs.
 
 ## Vienna Clinics
 
-I will arrange clinics in Vienna, Austria between 24-29.7 (July) as follows:
-
-* [Book a company session](https://calendly.com/survivejs/clinic-for-companies/). I'll come to visit you.
-* [Book an individual session](https://calendly.com/survivejs/clinic-for-individuals/). We'll agree on a suitable place separately. Most likely Abloom.
+I will arrange clinics in Vienna, Austria between 24-29.7 (July). [Sign up at Doodle](https://survivejs.doodle.com/poll/mihayszmt5teb858).
 
 ## Remote Clinic
 
