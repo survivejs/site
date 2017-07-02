@@ -21,7 +21,7 @@ I get to spend a day at Prague, one of my favorite cities in Europe. I don't hav
 
 Most of my time in Berlin has been reserved by a client but I'll have time especially on 14th, 17th, and 18th.
 
-## 18.6-2.7 - Vienna, Austria
+## ~~18.6-2.7 - Vienna, Austria~~
 
 I'll spend most of my time in Vienna. This is actually a good time for you to book me as it's easy to reach places from there. In the worst case I get some vacation time in a great city!
 
