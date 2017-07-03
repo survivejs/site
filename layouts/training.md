@@ -12,6 +12,7 @@ I'm based on Finland and expect accommodation to be compensated separately. The 
 ## References
 
 * [AlphaSense](https://www.alpha-sense.com/)
+* [eBay](https://www.ebay.de/)
 * [Kitchen Reklamebyrå](http://www.kitchen.no/)
 * [Sevenval](https://www.sevenval.com/blog/5093/webpack-master-ein-kurzer-ruckblick-auf-unseren-workshop-mit-bebraw/) (in German)
 * [Typeform](https://www.typeform.com/)
