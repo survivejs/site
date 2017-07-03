@@ -16,6 +16,7 @@ export default React.createClass({
     const section = this.props.section;
     const page = this.props.page;
     const config = this.props.config;
+    const editors = page.editors;
     let author = page.author || (config.blog && config.blog.author);
     const relatedPosts = getRelatedPosts(page.keywords, section.pages(), 10);
     const relatedHeaders = {
@@ -63,6 +64,10 @@ export default React.createClass({
               <Author author={author} /> :
               null
             }
+            {editors ?
+              <Editors editors={editors} /> :
+              null
+            }
 
             <SocialLinks type="blog post" />
 
@@ -79,6 +84,29 @@ export default React.createClass({
     );
   }
 });
+
+function Editors({editors}) {
+  const editorLinks = {
+    bebraw: {
+      name: 'Juho Vepsäläinen',
+      url: 'https://twitter.com/bebraw'
+    },
+    karlhorky: {
+      name: 'Karl Horky',
+      url: 'https://twitter.com/karlhorky'
+    }
+  };
+
+  return (
+    <div className="post__author">Edited by {editors.map((editor, i) => (
+      <div style={{ display: 'inline' }} key={`editor-${i}`}>
+        <a href={editorLinks[editor].url} className="twitter">{editorLinks[editor].name}</a>
+        {i < editors.length -1 && <span>, </span>}
+      </div>
+    ))}
+    </div>
+  );
+}
 
 function RelatedPosts({page, posts, headers}) {
   return (
