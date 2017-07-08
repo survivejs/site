@@ -189,6 +189,8 @@ Take open source seriously. I learned 90% of what I know about computers and pro
 * [@_developit](https://twitter.com/_developit) is pushing the boundaries of what is possible within 3Kb.
 * [@iamsapegin](https://twitter.com/iamsapegin) created a tool called [React Styleguidist](https://react-styleguidist.js.org/) which provides the best dev environment to write components.
 
+T> **Editor's note:** I [interviewed Artem earlier about Styleguidist](/blog/styleguidist-interview/).
+
 ## Conclusion
 
 Thanks for the interview Oleg! I share your sense of design when it comes to plugin systems. Composition seems like a strong way to solve a lot of problems even if you get certain news in return.
