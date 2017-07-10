@@ -13,9 +13,9 @@ If jQuery gave us proper control over the DOM, and React brought components to t
 <span class="author">
   <img src="https://www.gravatar.com/avatar/329f9d32fe20b186838ee237d3eb2d43?s=200" alt="Rich Harris" class="author" width="100" height="100" />
 </span>
-</p>
 
 I'm an interactive editor at [theguardian.com](https://theguardian.com), based in New York City. My background is in journalism, and my day job is to come up with new ways to use web technologies in the service of storytelling. A key part of that is building the tools that we need to create rich and performant applications on tight deadlines.
+</p>
 
 ## How would you describe *Svelte* to someone who has never heard of it?
 

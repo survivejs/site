@@ -14,7 +14,12 @@ T> I [interviewed Rich earlier about Svelte](/blog/svelte-interview/), a UI fram
 
 ## Can you tell a bit about yourself?
 
+<p>
+<span class="author">
+  <img src="https://www.gravatar.com/avatar/329f9d32fe20b186838ee237d3eb2d43?s=200" alt="Rich Harris" class="author" width="100" height="100" />
+</span>
 I'm a graphics editor at the New York Times, working on the investigations team — part journalist, part developer. Before that I did a similar job at the Guardian. Part of my role historically has been to build tools that allow us to create and deploy projects at the speed of news, which can be pretty aggressive — [Rollup](https://rollupjs.org), [Bublé](https://buble.surge.sh) and [Svelte](https://svelte.technology), among others, are all products of that.
+</p>
 
 ## How would you describe *Rollup* to someone who has never heard of it?
 
