@@ -45,15 +45,15 @@ The three main features which distinguish PureScript from other similar transpil
 
 ### Expressive Types
 
-Other languages have strong type systems - [Elm](http://elm-lang.org/) is probably the most notable example of a language with an ML-like type system, compiling to JavaScript - but PureScript provides many advanced type system features which those languages lack: higher kinded types and type classes are two examples of advanced type system features which PureScript takes from Haskell. These features can enable a very high level of code reuse.
+Other languages have strong type systems - [Elm](http://elm-lang.org/) is probably the most notable example of a language with an ML-like type system, compiling to JavaScript - but PureScript provides many advanced type system features which those languages lack: higher kinded types and type classes are two examples of advanced type system features which PureScript takes from Haskell. These features can enable a high level of code reuse.
 
 ### JavaScript Compatibility
 
 There are other projects with advanced Haskell-like type systems. [GHCJS](https://github.com/ghcjs/ghcjs) is a great example - where PureScript is inspired by Haskell, GHCJS is actually full Haskell compiled to JavaScript.
 
-This is very powerful, since you get to reuse lots of existing work from the Haskell community. However, what separates PureScript from projects like GHCJS is that PureScript aims for strong compatibility with existing JavaScript tools, as opposed to using existing Haskell tooling.
+This is powerful, since you get to reuse lots of existing work from the Haskell community. However, what separates PureScript from projects like GHCJS is that PureScript aims for strong compatibility with existing JavaScript tools, as opposed to using existing Haskell tooling.
 
-Also, compiled PureScript code is very readable, and code generation is very predictable. By comparison, compiling the full Haskell language to JavaScript (along with its non-strict semantics) can result in large, unreadable code.
+Also, compiled PureScript code is readable, and code generation is predictable. By comparison, compiling the full Haskell language to JavaScript (along with its non-strict semantics) can result in large, unreadable code.
 
 So PureScript sits in an interesting niche between languages like Elm and GHCJS, providing some of the more advanced type system features from Haskell, but keeping very close ties to the JavaScript platform.
 
@@ -91,7 +91,7 @@ In the longer term, we continue to work towards a 1.0 release. Along with fixing
 
 ## What does the future look like for *PureScript* and web development in general? Can you see any particular trends?
 
-I hope to see more adoption of PureScript, and functional programming generally in industry. Functional programming is gradually becoming more popular for both backend and frontend JavaScript, both in terms of functional languages like PureScript, but also in the form of ideas from functional programming making their way into regular JavaScript libraries (React, Redux, etc.)
+I hope to see more adoption of PureScript, and functional programming generally in industry. Functional programming is gradually becoming more popular for both backend and frontend JavaScript, both in terms of functional languages like PureScript, but also in the form of ideas from functional programming making their way into regular JavaScript libraries (React, Redux, etc.).
 
 PureScript has been adopted successfully and put into production at several companies now, and I'd like to see that trend continue. To make that possible, I'd like to work on lowering the barrier to adoption, so that PureScript becomes a more obvious choice of programming language for more people.
 
