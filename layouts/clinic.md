@@ -1,8 +1,14 @@
 ## SurviveJS - Clinic
 
-A clinic is a miniature version of my [workshops](/workshop/). Maybe you have specific problems in mind and want specific feedback on those. The exact content is customized per client and we can spend time with your code in addition to general topics.
+A clinic is a miniature version of my [workshops](/workshop/). Maybe you have specific problems in mind and want specific feedback on those. The exact content is customized per client and we can spend time with your code in addition to general topics. I use [a specific set of slides](https://presentations.survivejs.com/webpack-the-good-parts/) to run the conversation.
 
 Two hours is a good amount of time for a clinic and it will give you a high energy blast of ideas and potential solutions to problems related to either webpack or React.
+
+At least the following outcomes are possible within a clinic:
+
+* Tuning your webpack configuration structurally so that it's easier to maintain.
+* Speeding up your webpack build. Certain minor changes can give a 2x boost sometimes although if you have applied optimizations already, this won't be possible to achieve easily.
+* Sharing information within your team so that other people understand better what's going on and can tune the configuration with confidence if needed.
 
 ## How Much Does This Cost?
 
