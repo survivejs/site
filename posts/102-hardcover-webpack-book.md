@@ -26,8 +26,8 @@ As I've been completing [my second tour](/blog/euro-summer-tour-2017/), this has
 I'm organizing workshops in three places with the help of local partners. See the links below if you want to participate. The pricing depends on the location.
 
 * ~~webpack in Vienna, Austria - 100 euros or more for beginner workshop (full day), 200 euros or more for advanced workshop. I'm going to try kind of "pay what you want" pricing based on satisfaction here. Both take a full day.~~
-* [webpack in Augsburg, Germany](https://ti.to/peerigon/webpack-workshop) - Prices for a full day begin from 399 euros. It is cheaper when you participate to both.
-* [webpack in London, UK](https://skillsmatter.com/conferences/8264-fullstack-2017-the-conference-on-javascript-node-and-internet-of-things#program) - Two-hour super-condensed workshop for FullStack 2017.
+* ~~[webpack in Augsburg, Germany](https://ti.to/peerigon/webpack-workshop)~~ - Prices for a full day begin from 399 euros. It is cheaper when you participate to both.
+* ~~[webpack in London, UK](https://skillsmatter.com/conferences/8264-fullstack-2017-the-conference-on-javascript-node-and-internet-of-things#program)~~ - Two-hour super-condensed workshop for FullStack 2017.
 
 T> Let me know if you want a workshop in your city (preferably within Europe). Maybe we can organize something. We should also do a free meetup session then too.
 
@@ -37,7 +37,7 @@ To reward the paying readers of my [webpack book](/webpack/), I've added two ext
 
 The first extra contains a two-page cheat sheet with the book essentials in a condensed format you can print out. I give signed copies to my workshop participants and random people I might encounter during my travels.
 
-I compiled the second extra based on QA sessions I've been running with Tobias. It's a roughly ten-page document full of answers to hard webpack questions.
+I compiled the second extra based on QA sessions I've been running with Tobias. It's a roughly twenty-page document full of answers to hard webpack questions.
 
 ## Conclusion
 
