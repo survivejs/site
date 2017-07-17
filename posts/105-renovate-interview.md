@@ -2,7 +2,7 @@
 title: 'renovate - Keep npm dependencies up-to-date - Interview with Rhys Arkins'
 date: 2017-07-03
 headerImage: '/assets/img/screwdrivers.jpg'
-keywords: ['interview']
+keywords: ['interview', 'javascript', 'npm']
 editors: ['bebraw', 'karlhorky']
 ---
 
