@@ -12,7 +12,7 @@ At least the following outcomes are possible within a clinic:
 
 ## How Much Does This Cost?
 
-A 2h session costs 400 euros and it's capped to four participants. If four individuals participate, then the cost is split between the participants. If you represent a company, then it's up to the company to cover the cost.
+A 2h session costs 100 euros per individual and it's capped to four participants. The cost is fixed to 400 euros for companies and comes without a cap.
 
 If you want me on-site, you'll have to cover travel related costs.
 
