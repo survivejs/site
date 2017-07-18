@@ -18,7 +18,7 @@ If you want me on-site, you'll have to cover travel related costs.
 
 ## Vienna Clinics
 
-I will arrange webpack clinics in Vienna, Austria between 24-29.7 (July). [Sign up at Doodle](https://survivejs.doodle.com/poll/mihayszmt5teb858).
+I will arrange webpack clinics in Vienna, Austria between 24.7-25.8 (July, August). [Sign up at Doodle](https://survivejs.doodle.com/poll/mihayszmt5teb858).
 
 ## Remote Clinic
 
