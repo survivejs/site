@@ -20,7 +20,7 @@ export default React.createClass({
                     </a>
                     <hr />
                     <a className='latestpost-link' href='/clinic/'>
-                        <b>Register</b> for Vienna clinics (late July)
+                        <b>Register</b> for Vienna clinics (late July, August)
                     </a>
                 </blockquote>
             </div>
