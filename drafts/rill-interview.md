@@ -26,7 +26,7 @@ Open source software has been my peaceful haven since I learned git. For me prog
 ## How would you describe *Rill* to someone who has never heard of it?
 [Rill](https://github.com/rill-js/rill) is my 2 year old baby. In JavaScript terms that means it's just turned 21. Jokes aside [Rill](https://github.com/rill-js/rill) is a tool that allows you to learn less tools. It is [Koa](https://github.com/koajs/koa) designed and optimized from the ground up to work in the browser.
 
-So how does this help? Well first of all you get one router for both the browser and node js, meaning you *can* drop react-router and [Koa](https://github.com/koajs/koa).
+So how does this help? Well first you get one router for both the browser and Node, meaning you *can* drop react-router and [Koa](https://github.com/koajs/koa).
 
 Second you get to think of building web applications as if you have a *zero latency node server* in every users browser. With this you can easily build fault tolerant, progressively enhanced websites with minimal effort.
 
@@ -36,11 +36,11 @@ Lastly it is a flexible abstraction, just like it is on the server-side already 
 ## How does *Rill* work?
 Depends where you look. [Rill](https://github.com/rill-js/rill) on the server-side is more or less a rip off of [Koa](https://github.com/koajs/koa) with some careful forthought, but in the browser things get interesting.
 
-[Rill](https://github.com/rill-js/rill) works by intercepting all `<a>` clicks and `<form>` submissions and pumping them through a browser side router with the same API as the server-side. It supports pretty much anything you can think of including cookies, redirects and [sessions](https://github.com/rill-js/session) all isomorphically (ie in both the server and browser).
+[Rill](https://github.com/rill-js/rill) works by intercepting all `<a>` clicks and `<form>` submissions and pumping them through a browser side router with the same API as the server-side. It supports pretty much anything you can think of including cookies, redirects and [sessions](https://github.com/rill-js/session) all isomorphically (i.e. in both the server and browser).
 
 There are a few huge wins here. Firstly you don't have to use any fancy `<Link>` tags or similar and aren't tied to [React](https://facebook.github.io/react). Second the server-side doesn't need to do anything fancy to handle links and forms. And lastly you already know how links and forms work, so just go use them.
 
-If you'd like to take a look at Rill's link/form hijacking logic it has been seperated out into [@rill/http](https://github.com/rill-js/http/blob/master/adapter/document.js), making the main [Rill](https://github.com/rill-js/rill) repository completely universal!
+If you'd like to take a look at Rill's link/form hijacking logic it has been separated out into [@rill/http](https://github.com/rill-js/http/blob/master/adapter/document.js), making the main [Rill](https://github.com/rill-js/rill) repository completely universal!
 
 
 ## How does *Rill* differ from the other solutions?
@@ -108,7 +108,7 @@ For a more detailed example checkout the [TodoMVC](https://github.com/rill-js/to
 
 
 ## Why did you develop *Rill*?
-I've built 20+ websites/applications all of which needed strong SEO and good fallback's for our users using legacy browsers. It became a constant struggle to enhance content for modern browsers while maintaining support for older ones.
+I've built 20+ websites/applications all of which needed strong SEO and good fallbacks for our users using legacy browsers. It became a constant struggle to enhance content for modern browsers while maintaining support for older ones.
 
 Rather than building a server-side solution and then rebuilding a client side solution my goal was to make a framework that allowed me to do both at once. It was originally inspired by [koa-client](https://github.com/kentjs/koa-client) and [monorouter](https://github.com/matthewwithanm/monorouter) and it turned out to be a robust solution.
 
@@ -119,15 +119,16 @@ Well that's largely up to what I build next and what the community asks for.
 
 One of the more recent changes is that [Rill](https://github.com/rill-js/rill) is now able to run in a service worker which I think could be interesting for offloading the router in another thread.
 
-Another thing that I have meant to explore is a creating a [Rill](https://github.com/rill-js/rill) middleware that works something like [ViralJS](http://pixelscommander.github.io/Viral.JS/#.WW5GmsYZNP0) and would allow for distrubuted rendering of [Rill](https://github.com/rill-js/rill) applications.
+Another thing that I have meant to explore is a creating a [Rill](https://github.com/rill-js/rill) middleware that works something like [ViralJS](http://pixelscommander.github.io/Viral.JS/#.WW5GmsYZNP0) and would allow for distributed rendering of [Rill](https://github.com/rill-js/rill) applications.
 
 Something that's been in the back of my head for a while now is making [Rill](https://github.com/rill-js/rill) work on other platforms. The code has been formatted in such a way that the document logic has all been extracted into a single file but I have limited experience with native applications and need a kick to get me going on this front.
 
 
 ## What does the future look like for *Rill* and web development in general? Can you see any particular trends?
-For [Rill](https://github.com/rill-js/rill) the future is hard to see; Theres some of the obvious features mentioned above of course but the point of it as with any router is to be flexible. [Rill](https://github.com/rill-js/rill) in my eyes is a foundation for isomorphic/universal apps and what i've built with it so far is only the tip of the iceberg. 
 
-In general I think that things are going to get simpler, faster and smaller. It never seems that way while i'm riding the wave JavaScript frameworks but at the same time things are constantly popping up like [svelte](https://svelte.technology) and [choo](https://choo.io) which are all considerably simpler than there predecesors and also faster and smaller.
+For [Rill](https://github.com/rill-js/rill) the future is hard to see; Theres some of the obvious features mentioned above of course but the point of it as with any router is to be flexible. [Rill](https://github.com/rill-js/rill) in my eyes is a foundation for isomorphic/universal apps and what I've built with it so far is only the tip of the iceberg.
+
+In general I think that things are going to get simpler, faster and smaller. It never seems that way while I'm riding the wave JavaScript frameworks but at the same time things are constantly popping up like [svelte](https://svelte.technology) and [choo](https://choo.io) which are all considerably simpler than there predecesors and also faster and smaller.
 
 However the main reason I think this is the case is that the web will eventually bake in much more of the functionality that is needed for modern applications such as web components. I think the abstractions will get lighter and lighter until they fade away.
 
@@ -143,11 +144,12 @@ Lastly find something fun to build. It's far too easy for your 9-5 job to ruin p
 
 
 ## Who should I interview next?
-There are a huge number of people i'd love to hear more from.
 
-I'd love to hear more from [Patrick Steele-Idem](https://github.com/patrick-steele-idem) on all of the crazy optimizations avaiable with [MarkoJS](https://github.com/marko-js/marko) and where they thing it's going. Hopefully a stable [Rill](https://github.com/rill-js/marko) integration is coming soon 😄.
+There are a huge number of people I'd love to hear more from.
 
-Also I'm constantly impressed by the quality of modules pumped out by [Yoshua Wuyts](https://github.com/yoshuawuyts) and would be very interested in his approach to building them.
+I'd love to hear more from [Patrick Steele-Idem](https://github.com/patrick-steele-idem) on all of the crazy optimizations available with [MarkoJS](https://github.com/marko-js/marko) and where they thing it's going. I hope a stable [Rill](https://github.com/rill-js/marko) integration is coming soon 😄.
+
+Also I'm constantly impressed by the quality of modules pumped out by [Yoshua Wuyts](https://github.com/yoshuawuyts) and would be interested in his approach to building them.
 
 
 ## Any last remarks?
