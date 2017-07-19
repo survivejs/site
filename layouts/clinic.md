@@ -10,7 +10,7 @@ At least the following outcomes are possible within a clinic:
 * Speeding up your webpack build. Certain minor changes can give a 2x boost sometimes although if you have applied optimizations already, this won't be possible to achieve easily.
 * Sharing information within your team so that other people understand better what's going on and can tune the configuration with confidence if needed.
 
-T> In addition to webpack, we can also discuss React or dig into your application code.
+> In addition to webpack, we can also discuss React or dig into your application code.
 
 ## How Much Does This Cost?
 

@@ -9,7 +9,7 @@ I've split the training offering into two different products:
 
 I'm based on Finland and expect accommodation to be compensated separately. The end of July (24-30.7) and August are exceptions as I'll run a series of clinics in Vienna, Austria then.
 
-T> 20% of training income goes to Tobias Koppers, the main developer of webpack. I do this to support the project and enable its future growth.
+> 20% of training income goes to Tobias Koppers, the main developer of webpack. I do this to support the project and enable its future growth.
 
 ## References
 
