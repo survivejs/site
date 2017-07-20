@@ -33,7 +33,7 @@ These pieces of interface are called **components**.
 You can find components in the React, Angular, Vue, Ember and Polymer ecosystem.
 We have chosen to focus on [React](https://facebook.github.io/react/) and the [Material Design Specification](https://material.io/guidelines/).
 
-Let's say you want to display a beautiful button, all you need to do is the following:
+Let's say you want to display a beautiful button, all you need to do is the following (example for Material-UI v1):
 
 ```js
 import Button from 'material-ui/Button'
