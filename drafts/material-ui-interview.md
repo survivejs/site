@@ -117,39 +117,39 @@ So, what about them?
 
 - Both versions can be used at the same time, meaning projects can progressively migrate to the new version, one component at the time.
 - Over time and with help from the community, more and more components will be implemented in v1.
-- Finally, in alignment with our vision we would rather support fewer use-cases very well which may mean that some features and components will not be in the v1 core.
+- Finally, in alignment with our vision, we would rather support fewer use-cases which may mean that some features and components will not be in the v1 core.
 
-It's all in our [ROADMAP](https://github.com/callemall/material-ui/blob/master/ROADMAP.md).
+All of the plans above are in [our roadmap](https://github.com/callemall/material-ui/blob/master/ROADMAP.md).
 
 ## What does the future look like for *Material-UI* and web development in general? Can you see any particular trends?
 
 *Material-UI* is very popular in the React ecosystem, but Google recently changed their strategy with [material-components-web](https://github.com/material-components/material-components-web).
 Depending on how well `material-components-web` solves the problem, *Material-UI* [might use it internally](https://github.com/callemall/material-ui/issues/6799).
 
-But at the same time, *Material-UI* goal is to provide an elegant implementation of the Material Design guidelines **and more**. The "more" is important here.
-The Material design specification set the bar quite high. As we are addressing it, people should be able to take advantage of it for their own business with any style customization needed.
+But at the same time, *Material-UI*'s goal goes further than just providing an elegant implementation of the Material Design guidelines.
+The Material Design specification sets the bar quite high and developers should be able to benefit from that while easily customizing it for their needs.
 
-This is what I have been doing lately at work.
-We have been taking advantage of *Material-UI* and its customization power in order to **implement a brand specific UI**.
-A UI far from the Material specification. You can think of it as a Bootstrap theme.
+This customization work is what I have been collaborating on lately at work.
+We have been taking advantage of *Material-UI*'s customization power in order to implement a brand-specific UI far from the Material Design specification. You can think of it as a Bootstrap theme. I believe this can be a useful strategy for other developers too.
 
 ## What advice would you give to programmers getting into web development?
 
-- Learn to focus on what matters. It's so easy to get lost.
-- Learn the abstractions up and down the one you are using.
-- Never miss the big picture.
-- Be curious, look for the details. In a codebase, nothing is left to chance. Learn and understand the Why.
-- **Sleep well** and go practice sports. It's always how I get my best ideas.
+- Learn to focus on what matters. It's so easy to lose focus and work on the wrong thing.
+- Learn the ins and outs of the abstractions you use.
+- Keep the big picture in mind.
+- Be curious about the details. In a codebase, nothing exists by chance. Learn and understand the "why" behind things.
+- Sleep well.
+- Stay active with something like sports. It's always how I get my best ideas.
 
 ## Who should I interview next?
 
-[Arunoda Susiripala](https://twitter.com/arunoda) for the awesome work he as been doing with the **@zeit** team on [next.js](https://github.com/zeit/next.js).
-I haven't been that excited by a JavaScript project since React. The User Experience and Developer Experience is way above anything I have been using before.
-Combined with *Material-UI*, it's a real joy to be a web developer.
+[Arunoda Susiripala](https://twitter.com/arunoda) for the awesome work he as been doing with the **ZEIT** team on [Next.js](https://github.com/zeit/next.js).
+React was the last JavaScript project that I was as excited about as I am about Next.js. The user experience and developer experience is way beyond anything I have used before.
 
 ## Any last remarks?
 
 Special thanks to the core *Material-UI* team:
+
 - [Hai Nguyen](https://twitter.com/haicea)
 - [Matt Brookes](https://twitter.com/randomtechdude)
 - [Nathan Marks](https://github.com/nathanmarks)
