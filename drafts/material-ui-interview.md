@@ -71,51 +71,53 @@ It helps to understand the tradeoffs we have made.
 At some point when building a UI library or even a presentational component, one aspect will need to be prioritized over another.
 So let's see what we have prioritized and what we haven't.
 
-First, I believe that **most of the value of using a UI library comes from the API contract it provides**. But at the same time, API design is one of the hardest things to do when building a UI library.
+I believe that **most of the value of using a UI library comes from the API contract it provides**. But at the same time, API design is one of the hardest things to do when building a UI library.
 
 1. We want the API to be consistent. We want to reduce the cognitive overhead of learning our API.
 This is prioritized over an API tuned for specific contexts.
 2. We want the API to be low-level. By low-level, we mean close to the DOM elements.
-**It's simpler to recover from no abstraction than from a wrong one** and it's increasing composition capabilities. We encourage users **to build on top of it**. If they find something valuable, we can integrate it into the library. That's opposed to a high-level API.
+**It's simpler to work with no abstraction than the wrong abstraction** and low-level APIs more easily allow composition. We encourage users to build on top of it. If they create something that is helpful for more users, it can be integrated into the library. We have prioritized these things over a higher-level API.
 
-Secondly, sometimes we have to trade consistency and level of abstraction to have a good enough implementation.
+However, sometimes we have to trade consistency and level of abstraction to have a good enough implementation.
 
-3. We want our components to **work in isolation** as much as possible.
-For instance, we consider global styles as an anti-pattern, not to mention the code splitting implication of them.
-Also, that means that people should be able to use only one of our components without paying a large overhead.
+3. We want our components to work in isolation as much as possible.
+For instance, we consider global styles an anti-pattern, not to mention their implications in regards to code splitting.
+Also, developers should be able to use only one of our components without paying a large overhead.
 4. We want the implementation to be performant.
-5. We want our components to be **easily customizable** from the outside.
+5. We want our components to be easily customizable from the outside.
 6. We want our components to be accessible.
 
-Finally, we would rather **support few use-cases very well and allow people to build** on top of it than many poorly.
-You can learn more about our [vision for the project](https://material-ui-1dab0.firebaseapp.com/discover-more/vision#material-ui-s-vision).
+Finally, we would rather support fewer use-cases very well and allow people to build on top of the library than support more use-cases poorly.
+You can read further in our [vision for the project](https://material-ui-1dab0.firebaseapp.com/discover-more/vision#material-ui-s-vision).
 
 ## Why did you develop *Material-UI*?
 
-The credit for creating *Material-UI* comes to [Hai Nguyen](https://twitter.com/haicea).
-I have started contributing 6 months after the first release and haven't stopped since then.
+The credit for creating *Material-UI* goes to [Hai Nguyen](https://twitter.com/haicea).
+I have been contributing since 6 months after the first release.
 
-Ironically, the motivation I had for choosing *Material-UI* as my UI library for a [fun-side project](https://github.com/oliviertassinari/SplitMe) goes against the maintainer status I have today.
-I was looking for a React implementation of the Material Design that I could use **in order to save time**. I end up spending a lot of time improving the library.
-But I don't regret it. I have learned a lot in the process, ranging from social interactions through deep web stack understanding, not forgetting API decision making, [visual tests](https://www.argos-ci.com/callemall/material-ui), etc.
+Ironically, my original motivation for choosing *Material-UI* for a [fun-side project](https://github.com/oliviertassinari/SplitMe) (to save time by using an existing React implementation of Material Design) is at odds with the effort I put in as a maintainer now.
+I have spent a lot of time improving the library.
+But I don't regret it. I have learned a lot in the process, ranging from how to conduct social interactions in a community to the ins and outs of the web stack, API design, [visual testing](https://www.argos-ci.com/callemall/material-ui) and more.
 
 ## What comes next?
 
-We are in the middle of the rewrite on the [v1-alpha branch](https://github.com/callemall/material-ui/tree/v1-alpha). The rewrite effort was started one year ago by [Nathan Marks](https://github.com/nathanmarks).
+We are in the middle of a rewrite on the [v1-alpha branch](https://github.com/callemall/material-ui/tree/v1-alpha). The rewrite effort was started one year ago by [Nathan Marks](https://github.com/nathanmarks).
 
 Personally, I have stopped using the v0.x releases. We are going to try to follow this plan:
-1. We completely address the styling issue before moving from *alpha* to [*beta*](https://github.com/callemall/material-ui/milestone/22).
-2. We publish our first beta releases.
-3. We fix the last API inconsistencies (as we can make breaking changes without having to worry much).
-4. We merge the beta branch into master
-5. We publish our first pre-releases, if all goes well, we move to the next step.
-6. We publish v1 :tada:
 
-At that point, some features and components from the v0.x will be missing in the v1.
+1. Address the styling issue and move from *alpha* to [*beta*](https://github.com/callemall/material-ui/milestone/22).
+2. Publish the first beta releases.
+3. Fix the last API inconsistencies (in beta we will still make breaking changes).
+4. Merge the beta branch into master.
+5. Publish the first pre-releases and fix any issues that come up.
+6. Publish v1! 🎉
+
+At that point, some features and components from v0.x will be missing in v1.
 So, what about them?
-- First, both versions can be used at the same time, people can progressively migrate, one component at the time.
-- Then, **with the help of the community** and over time, we will support more and more components.
-- Finally, as said before, we would rather **support few use-cases very well and allow people to build on top of it** than many poorly.
+
+- Both versions can be used at the same time, meaning projects can progressively migrate to the new version, one component at the time.
+- Over time and with help from the community, more and more components will be implemented in v1.
+- Finally, in alignment with our vision we would rather support fewer use-cases very well which may mean that some features and components will not be in the v1 core.
 
 It's all in our [ROADMAP](https://github.com/callemall/material-ui/blob/master/ROADMAP.md).
 
