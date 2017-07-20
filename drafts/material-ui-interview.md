@@ -41,13 +41,12 @@ import Button from 'material-ui/Button'
 function MyApp() {
   return (
     <Button>
-      {'I Will Survive'}
+      I Will Survive
     </Button>
   )
 }
 
 export default MyApp
-
 ```
 
 ## How does *Material-UI* work?
