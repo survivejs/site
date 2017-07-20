@@ -17,21 +17,21 @@ TODO: I'll fill this up and link to your Twitter
 </span>
 </p>
 
-I've been mastering Lego all my childhood but I have eventually ended up as a Software Engineer.
+I spent my childhood mastering LEGO but I ended up as a software engineer.
 
-I have started web development back in 2008, then graduated from one of the most prestigious and selective "grandes écoles" in France with a Master Degree in computer science.
-I worked at Doctolib, the leading booking platform and management software provider for doctors in France.
+I started with web development back in 2008. I went on to graduate from one of the most prestigious and selective *grandes écoles* in France with a Master's Degree in computer science.
 
-Beside of coding, I love sport, swimming, running and from time to time climbing.
+Some time later I worked at Doctolib, the leading booking platform and management software provider for doctors in France.
+
+Besides coding I love sports, swimming, running and from time to time climbing.
 I'm training to beat my 10k record next year.
 
 ## How would you describe *Material-UI* to someone who has never heard of it?
 
-[Material-UI](https://github.com/callemall/material-ui) provides pieces of interface usable in different contexts. That's our core mission, we are a UI library.
+[Material-UI](https://github.com/callemall/material-ui) provides user interface components which can be reused in different contexts. That's our core mission - we are a UI library.
 
-These pieces of interface are called **components**.
-You can find components in the React, Angular, Vue, Ember and Polymer ecosystem.
-We have chosen to focus on [React](https://facebook.github.io/react/) and the [Material Design Specification](https://material.io/guidelines/).
+The React, Angular, Vue, Ember and Polymer ecosystems all have the concept of components.
+We have chosen to implement the [Material Design Specification](https://material.io/guidelines/) in [React](https://facebook.github.io/react/) components.
 
 Let's say you want to display a beautiful button, all you need to do is the following (example for Material-UI v1):
 
@@ -51,33 +51,30 @@ export default MyApp
 
 ## How does *Material-UI* work?
 
-*Material-UI* has two foundations, React and [JSS](https://github.com/cssinjs/jss).
-Most of the heavy lifting is done by these two libraries.
-While we have been betting on React early in 2014 and have stuck it to it,
-we are at our **third iteration** on the styling solution.
-We have started with LESS, tried inline-style, and are now transitioning toward **CSS-in-JS** thanks to JSS.
+Most of the heavy lifting in *Material-UI* is done by React and [JSS](https://github.com/cssinjs/jss).
+While we bet on React early in 2014 and have stuck with it,
+we are already at our **third iteration** on our choice of a styling solution.
+We started with Less, tried inline styles, and now are switching to **CSS in JS** thanks to JSS.
 
-One of the first things people ask when discovering the library is how to customize the style of it.
-We used to have a poor answer to that question, but it's getting much better now.
-As components evolve in different contexts, we have identified four different types of customization needs going from **the most specific** to **the most generic** one:
+One of the first things people ask when they find out about the library is how to customize the style of it.
+In the past our answer to that question was not ideal, but it's improving now.
+Through the evolution of components in different contexts, we have identified and addressed four types of customization going (ordered from most specific to most generic):
 
 - [Specific variation for a one-time situation](https://material-ui-1dab0.firebaseapp.com/customization/overrides#1-specific-variation-for-a-one-time-situation)
 - [Specific variation of a component made by a user and used in different contexts](https://material-ui-1dab0.firebaseapp.com/customization/overrides#2-specific-variation-of-a-component)
 - [Material Design variations like with the buttons](https://material-ui-1dab0.firebaseapp.com/customization/overrides#3-material-design-variations)
 - [User global theme variation](https://material-ui-1dab0.firebaseapp.com/customization/overrides#4-user-global-theme-variation)
 
-And we have addressed all of them.
+## How does *Material-UI* differ from other solutions?
 
-## How does *Material-UI* differ from the other solutions?
-
-People need to understand the **tradeoffs we have made**.
-If you have tried to build a UI library in the past, or even a presentational component you know that, at some point, you have to prioritize one dimension over another.
+It helps to understand the tradeoffs we have made.
+At some point when building a UI library or even a presentational component, one aspect will need to be prioritized over another.
 So let's see what we have prioritized and what we haven't.
 
-First, I believe that **most of the value of using a UI library comes from the contract API it's giving you**. But at the same time, API design is one of the hardest things to do when building a UI library.
+First, I believe that **most of the value of using a UI library comes from the API contract it provides**. But at the same time, API design is one of the hardest things to do when building a UI library.
 
 1. We want the API to be consistent. We want to reduce the cognitive overhead of learning our API.
-That's opposed to an API tuned for each context.
+This is prioritized over an API tuned for specific contexts.
 2. We want the API to be low-level. By low-level, we mean close to the DOM elements.
 **It's simpler to recover from no abstraction than from a wrong one** and it's increasing composition capabilities. We encourage users **to build on top of it**. If they find something valuable, we can integrate it into the library. That's opposed to a high-level API.
 
