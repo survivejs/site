@@ -1,4 +1,120 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>SurviveJS</title><link href="http://survivejs.com/atom.xml" rel="self"></link><link href="http://survivejs.com/" rel=""></link><updated>2017-07-19T20:31:37+03:00</updated><id>http://survivejs.com/</id><author><name>Juho Vepsäläinen</name><email></email></author><entry><title>Fall Tour - Vienna Clinics, ReactNext, WebExpo, ReactiveConf</title><id>afalltourviennaclinicsreactnextwebexporeactiveconf2017-07-18t21:00:00z</id><link href="http://survivejs.com/blog/fall-tour"></link><updated>2017-07-18T21:00:00Z</updated><content type="html">&lt;p&gt;Even though I have traveled a lot this year already, it looks like more travel is in store. The travels so far have been valuable regarding experience. I&amp;#39;ve seen more places in this year than during my previous year alone. And I like to think it has made me better rounded as a person. Getting outside of your comfort zone can be a good thing even if it is a little painful.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>SurviveJS</title><link href="http://survivejs.com/atom.xml" rel="self"></link><link href="http://survivejs.com/" rel=""></link><updated>2017-07-21T12:56:08+03:00</updated><id>http://survivejs.com/</id><author><name>Juho Vepsäläinen</name><email></email></author><entry><title>Material-UI - React Components that Implement Google&apos;s Material Design - Interview with Olivier Tassinari</title><id>amaterialuireactcomponentsthatimplementgoogle39smaterialdesigninterviewwitholiviertassinari2017-07-20t21:00:00z</id><link href="http://survivejs.com/blog/material-ui-interview"></link><updated>2017-07-20T21:00:00Z</updated><content type="html">&lt;p&gt;Design is difficult as you have to come up with a set of rules to describe it – a system. You don&amp;#39;t always have to devise one yourself, and &lt;a href=&quot;https://material.io/&quot;&gt;Material Design&lt;/a&gt; by Google is one starting point.&lt;/p&gt;
+&lt;p&gt;To understand the topic better, I&amp;#39;m interviewing &lt;a href=&quot;https://twitter.com/olivtassinari&quot;&gt;Olivier Tassinari&lt;/a&gt;, one of the authors of &lt;a href=&quot;https://github.com/callemall/material-ui&quot;&gt;Material UI&lt;/a&gt;. It&amp;#39;s a collection of React components which implement the system.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#can-you-tell-a-bit-about-yourself-&quot; id=&quot;can-you-tell-a-bit-about-yourself-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Can you tell a bit about yourself?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#can-you-tell-a-bit-about-yourself-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;
+&lt;span class=&quot;author&quot;&gt;
+  &lt;img src=&quot;https://www.gravatar.com/avatar/e2b3127c877367bce1892635ffe153d0?s=200&quot; alt=&quot;Olivier Tassinari&quot; class=&quot;author&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;
+&lt;/span&gt;
+
+I spent my childhood mastering LEGO, but I ended up as a software engineer. I started with web development back in 2008. I went on to graduate from one of the most prestigious and selective &lt;em&gt;grandes écoles&lt;/em&gt; in France with a Master&amp;#39;s Degree in computer science.
+&lt;/p&gt;
+
+&lt;p&gt;Sometime later I worked at Doctolib, the leading booking platform, and management software provider for doctors in France.&lt;/p&gt;
+&lt;p&gt;Besides coding I love sports, swimming, running and from time to time climbing.
+I&amp;#39;m training to beat my 10k record next year.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-would-you-describe-material-ui-to-someone-who-has-never-heard-of-it-&quot; id=&quot;how-would-you-describe-material-ui-to-someone-who-has-never-heard-of-it-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How would you describe &lt;em&gt;Material-UI&lt;/em&gt; to someone who has never heard of it?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-would-you-describe-material-ui-to-someone-who-has-never-heard-of-it-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/callemall/material-ui&quot;&gt;Material-UI&lt;/a&gt; provides user interface components which can be reused in different contexts. That&amp;#39;s our core mission - we are a UI library.&lt;/p&gt;
+&lt;p&gt;The React, Angular, Vue, Ember and Polymer ecosystems all have the concept of components.
+We have chosen to implement the &lt;a href=&quot;https://material.io/guidelines/&quot;&gt;Material Design Specification&lt;/a&gt; in &lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt; components.&lt;/p&gt;
+&lt;p&gt;Let&amp;#39;s say you want to display a nice button, all you need to do is the following (example for Material-UI v1):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot; &gt;import&lt;/span&gt; Button &lt;span class=&quot;token keyword&quot; &gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot; &gt;&apos;material-ui/Button&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot; &gt;const&lt;/span&gt; MyApp &lt;span class=&quot;token operator&quot; &gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot; &gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;Button&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;I Will Survive&lt;span class=&quot;token operator&quot; &gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot; &gt;/&lt;/span&gt;Button&lt;span class=&quot;token operator&quot; &gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot; &gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot; &gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot; &gt;default&lt;/span&gt; MyApp&lt;span class=&quot;token punctuation&quot; &gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote class=&quot;tip&quot;&gt;&lt;i class=&quot;icon-attention-circled&quot;&gt;&lt;/i&gt;&lt;strong&gt;Editor&amp;#39;s note:&lt;/strong&gt; This would be a good chance to use &lt;a href=&quot;https://www.npmjs.com/package/babel-plugin-transform-imports&quot;&gt;babel-plugin-transform-imports&lt;/a&gt; as it can rewrite &lt;code&gt;import { Button } from &amp;#39;material-ui&amp;#39;;&lt;/code&gt; to above while still pulling the same amount of code to the project.&lt;/blockquote&gt;&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-does-material-ui-work-&quot; id=&quot;how-does-material-ui-work-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How does &lt;em&gt;Material-UI&lt;/em&gt; work?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-does-material-ui-work-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Most of the heavy lifting in &lt;em&gt;Material-UI&lt;/em&gt; is done by React and &lt;a href=&quot;https://github.com/cssinjs/jss&quot;&gt;JSS&lt;/a&gt;.
+While we bet on React early in 2014 and have stuck with it,
+we are already at our &lt;strong&gt;third iteration&lt;/strong&gt; on our choice of a styling solution.
+We started with Less, tried inline styles, and now are switching to &lt;strong&gt;CSS in JS&lt;/strong&gt; thanks to JSS.&lt;/p&gt;
+&lt;p&gt;One of the first things people ask when they find out about the library is how to customize the style of it.
+In the past our answer to that question was not ideal, but it&amp;#39;s improving now.
+Through the evolution of components in different contexts, we have identified and addressed four types of customization going (ordered from most specific to most generic):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://material-ui-1dab0.firebaseapp.com/customization/overrides#1-specific-variation-for-a-one-time-situation&quot;&gt;Specific variation for a one-time situation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://material-ui-1dab0.firebaseapp.com/customization/overrides#2-specific-variation-of-a-component&quot;&gt;Specific variation of a component made by a user and used in different contexts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://material-ui-1dab0.firebaseapp.com/customization/overrides#3-material-design-variations&quot;&gt;Material Design variations like with the buttons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://material-ui-1dab0.firebaseapp.com/customization/overrides#4-user-global-theme-variation&quot;&gt;User global theme variation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote class=&quot;tip&quot;&gt;&lt;i class=&quot;icon-attention-circled&quot;&gt;&lt;/i&gt;To learn more about JSS, see &lt;a href=&quot;http://survivejs.com/blog/jss-interview/&quot;&gt;the interview of Oleg Slobodskoi&lt;/a&gt;, the author of the tool.&lt;/blockquote&gt;&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#how-does-material-ui-differ-from-other-solutions-&quot; id=&quot;how-does-material-ui-differ-from-other-solutions-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;How does &lt;em&gt;Material-UI&lt;/em&gt; differ from other solutions?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#how-does-material-ui-differ-from-other-solutions-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;It helps to understand the tradeoffs we have made.
+At some point when building a UI library or even a presentational component, one aspect will need to be prioritized over another.
+So let&amp;#39;s see what we have prioritized and what we have not.&lt;/p&gt;
+&lt;p&gt;I believe that &lt;strong&gt;most of the value of using a UI library comes from the API contract it provides&lt;/strong&gt;. But at the same time, API design is one of the hardest things to do when building a UI library.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We want the API to be consistent. We want to reduce the cognitive overhead of learning our API. Doing this is prioritized over an API tuned for specific contexts.&lt;/li&gt;
+&lt;li&gt;We want the API to be low-level. By low-level, we mean close to the DOM elements.
+&lt;strong&gt;It&amp;#39;s simpler to work with no abstraction than the wrong abstraction&lt;/strong&gt; and low-level APIs more easily allow composition. We encourage users to build on top of it. If they create something that is helpful for more users, it can be integrated into the library. We have prioritized these things over a higher-level API.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;However, sometimes we have to trade consistency and level of abstraction to have a good enough implementation.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We want our components to work in isolation as much as possible.
+For instance, we consider global styles an anti-pattern, not to mention their implications for code splitting.
+Also, developers should be able to use only one of our components without paying a large overhead.&lt;/li&gt;
+&lt;li&gt;We want the implementation to be performant.&lt;/li&gt;
+&lt;li&gt;We want our components to be easily customizable from the outside.&lt;/li&gt;
+&lt;li&gt;We want our components to be accessible.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally, we would rather support fewer use-cases well and allow people to build on top of the library than supporting more use-cases poorly.
+You can read further in our &lt;a href=&quot;https://material-ui-1dab0.firebaseapp.com/discover-more/vision#material-ui-s-vision&quot;&gt;vision for the project&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#why-did-you-develop-material-ui-&quot; id=&quot;why-did-you-develop-material-ui-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Why did you develop &lt;em&gt;Material-UI&lt;/em&gt;?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#why-did-you-develop-material-ui-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The credit for creating &lt;em&gt;Material-UI&lt;/em&gt; goes to &lt;a href=&quot;https://twitter.com/haicea&quot;&gt;Hai Nguyen&lt;/a&gt;.
+I have been contributing since six months after the first release.&lt;/p&gt;
+&lt;p&gt;Ironically, my original motivation for choosing &lt;em&gt;Material-UI&lt;/em&gt; for a &lt;a href=&quot;https://github.com/oliviertassinari/SplitMe&quot;&gt;fun-side project&lt;/a&gt; (to save time by using an existing React implementation of Material Design) is at odds with the effort I put in as a maintainer now. I have spent a lot of time improving the library.&lt;/p&gt;
+&lt;p&gt;But I don&amp;#39;t regret it as I have learned a lot in the process, ranging from how to conduct social interactions in a community to the ins and outs of the web stack, API design, &lt;a href=&quot;https://www.argos-ci.com/callemall/material-ui&quot;&gt;visual testing&lt;/a&gt; and more.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-comes-next-&quot; id=&quot;what-comes-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What comes next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-comes-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We are in the middle of a rewrite on the &lt;a href=&quot;https://github.com/callemall/material-ui/tree/v1-alpha&quot;&gt;v1-alpha branch&lt;/a&gt;. The rewrite effort was started one year ago by &lt;a href=&quot;https://github.com/nathanmarks&quot;&gt;Nathan Marks&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Personally, I have stopped using the v0.x releases. We are going to try to follow this plan:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Address the styling issue and move from &lt;em&gt;alpha&lt;/em&gt; to &lt;a href=&quot;https://github.com/callemall/material-ui/milestone/22&quot;&gt;&lt;em&gt;beta&lt;/em&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Publish the first beta releases.&lt;/li&gt;
+&lt;li&gt;Fix the last API inconsistencies (in beta we will still make breaking changes).&lt;/li&gt;
+&lt;li&gt;Merge the beta branch into master.&lt;/li&gt;
+&lt;li&gt;Publish the first pre-releases and fix any issues that come up.&lt;/li&gt;
+&lt;li&gt;Publish v1! 🎉&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At that point, some features and components from v0.x will be missing in v1.
+So, what about them?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Both versions can be used at the same time, meaning projects can progressively migrate to the new version, one component at the time.&lt;/li&gt;
+&lt;li&gt;Over time and with help from the community, more and more components will be implemented in v1.&lt;/li&gt;
+&lt;li&gt;Finally, in alignment with our vision, we would rather support fewer use-cases which may mean that some features and components will not be in the v1 core.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of the plans above are in &lt;a href=&quot;https://github.com/callemall/material-ui/blob/master/ROADMAP.md&quot;&gt;our roadmap&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-does-the-future-look-like-for-material-ui-and-web-development-in-general-can-you-see-any-particular-trends-&quot; id=&quot;what-does-the-future-look-like-for-material-ui-and-web-development-in-general-can-you-see-any-particular-trends-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What does the future look like for &lt;em&gt;Material-UI&lt;/em&gt; and web development in general? Can you see any particular trends?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-does-the-future-look-like-for-material-ui-and-web-development-in-general-can-you-see-any-particular-trends-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Material-UI&lt;/em&gt; is popular in the React ecosystem, but Google recently changed their strategy with &lt;a href=&quot;https://github.com/material-components/material-components-web&quot;&gt;material-components-web&lt;/a&gt;.
+Depending on how well &lt;code&gt;material-components-web&lt;/code&gt; solves the problem, &lt;em&gt;Material-UI&lt;/em&gt; &lt;a href=&quot;https://github.com/callemall/material-ui/issues/6799&quot;&gt;might use it internally&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;But at the same time, &lt;em&gt;Material-UI&lt;/em&gt;&amp;#39;s goal goes further than just providing an elegant implementation of the Material Design guidelines.
+The Material Design specification sets the bar quite high, and developers should be able to benefit from that while easily customizing it for their needs.&lt;/p&gt;
+&lt;p&gt;This customization work is what I have been collaborating on lately at work.
+We have been taking advantage of &lt;em&gt;Material-UI&lt;/em&gt;&amp;#39;s customization power to implement a brand-specific UI far from the Material Design specification. You can think of it as a Bootstrap theme. I believe this can be a useful strategy for other developers too.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-advice-would-you-give-to-programmers-getting-into-web-development-&quot; id=&quot;what-advice-would-you-give-to-programmers-getting-into-web-development-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What advice would you give to programmers getting into web development?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-advice-would-you-give-to-programmers-getting-into-web-development-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Learn to focus on what matters. It&amp;#39;s so easy to lose focus and work on the wrong thing.&lt;/li&gt;
+&lt;li&gt;Learn the ins and outs of the abstractions you use.&lt;/li&gt;
+&lt;li&gt;Keep the big picture in mind.&lt;/li&gt;
+&lt;li&gt;Be curious about the details. In a codebase, nothing exists by chance. Learn and understand the &amp;quot;why&amp;quot; behind things.&lt;/li&gt;
+&lt;li&gt;Sleep well.&lt;/li&gt;
+&lt;li&gt;Stay active with something like sports. It&amp;#39;s always how I get my best ideas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#who-should-i-interview-next-&quot; id=&quot;who-should-i-interview-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Who should I interview next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#who-should-i-interview-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/arunoda&quot;&gt;Arunoda Susiripala&lt;/a&gt; for the awesome work he has been doing with the &lt;strong&gt;ZEIT&lt;/strong&gt; team on &lt;a href=&quot;https://github.com/zeit/next.js&quot;&gt;Next.js&lt;/a&gt;.
+React was the last JavaScript project that I was as excited about as I am about Next.js. The user experience and developer experience is way beyond anything I have used before.&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#any-last-remarks-&quot; id=&quot;any-last-remarks-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Any last remarks?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#any-last-remarks-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Special thanks to the core &lt;em&gt;Material-UI&lt;/em&gt; team:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/haicea&quot;&gt;Hai Nguyen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/randomtechdude&quot;&gt;Matt Brookes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/nathanmarks&quot;&gt;Nathan Marks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://twitter.com/rosskevin&quot;&gt;Kevin Ross&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thank you &lt;a href=&quot;https://twitter.com/oleg008&quot;&gt;Oleg Slobodskoi&lt;/a&gt; for open sourcing JSS.&lt;/p&gt;
+&lt;p&gt;And thanks for having me on the blog!&lt;/p&gt;
+&lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#conclusion&quot; id=&quot;conclusion&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Conclusion&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#conclusion&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Thanks for the interview Olivier! It&amp;#39;s great to see solid UI libraries for React as that has been traditionally a little weak point but looks like the situation is improving.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;http://www.material-ui.com/&quot;&gt;Material UI site&lt;/a&gt; and &lt;a href=&quot;https://github.com/callemall/material-ui&quot;&gt;Material UI GitHub&lt;/a&gt; to learn more about the project.&lt;/p&gt;
+</content></entry><entry><title>Fall Tour - Vienna Clinics, ReactNext, WebExpo, ReactiveConf</title><id>afalltourviennaclinicsreactnextwebexporeactiveconf2017-07-18t21:00:00z</id><link href="http://survivejs.com/blog/fall-tour"></link><updated>2017-07-18T21:00:00Z</updated><content type="html">&lt;p&gt;Even though I have traveled a lot this year already, it looks like more travel is in store. The travels so far have been valuable regarding experience. I&amp;#39;ve seen more places in this year than during my previous year alone. And I like to think it has made me better rounded as a person. Getting outside of your comfort zone can be a good thing even if it is a little painful.&lt;/p&gt;
 &lt;p&gt;As a result of my travels, I&amp;#39;ve gained a better insight on what to do next. And perhaps surprisingly I&amp;#39;ve won more good excuses to venture. Actions tend to generate reactions. Opportunities follow the brave ones and so on.&lt;/p&gt;
 &lt;p&gt;I have some clear steps ahead of me. There are still blanks, but it&amp;#39;s not a bad thing!&lt;/p&gt;
 &lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#vienna-austria-23-7-26-8&quot; id=&quot;vienna-austria-23-7-26-8&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Vienna, Austria - 23.7-26.8&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#vienna-austria-23-7-26-8&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
@@ -6540,7 +6656,7 @@ conference. At my dev shop we have been active contributors to OSS in the .Net e
 &lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-next-&quot; id=&quot;what-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;React-Bootstrap still has some work to achieve Section 508 and WCAG 2.0 AA compliance, at which point we&amp;#39;ll declare a 1.0 release. We&amp;#39;ll need to keep up with React and Bootstrap to keep the project up to date with the latest features of both projects.&lt;/p&gt;
 &lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#what-does-the-future-look-like-for-react-and-front-end-in-general-can-you-see-any-particular-trends-&quot; id=&quot;what-does-the-future-look-like-for-react-and-front-end-in-general-can-you-see-any-particular-trends-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;What does the future look like for React and front-end in general? Can you see any particular trends?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#what-does-the-future-look-like-for-react-and-front-end-in-general-can-you-see-any-particular-trends-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The future of React is undeniably very bright. I have full confidence in the core community involved in defining the best practices for building these front-end frameworks and tools.&lt;/p&gt;
+&lt;p&gt;The future of React is undeniably bright. I have full confidence in the core community involved in defining the best practices for building these front-end frameworks and tools.&lt;/p&gt;
 &lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#who-should-i-interview-next-&quot; id=&quot;who-should-i-interview-next-&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Who should I interview next?&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#who-should-i-interview-next-&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Jimmy and Jason would have more current insight to the affairs of React-Bootstrap.&lt;/p&gt;
 &lt;h2 class=&quot;header&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#conclusion&quot; id=&quot;conclusion&quot;&gt;&lt;/a&gt;&lt;span class=&quot;text&quot;&gt;Conclusion&lt;/span&gt;&lt;a class=&quot;header-anchor-select&quot; href=&quot;#conclusion&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
