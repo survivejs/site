@@ -1,13 +1,14 @@
 ---
-title: 'Material-UI - React Components that Implement Google&#x27;s Material Design - Interview with Olivier Tassinari'
-date: 2017-xx-xx
-headerImage: '/assets/img/XXX.jpg'
-keywords: ['interview', 'reactjs']
+title: "Material-UI - React Components that Implement Google's Material Design - Interview with Olivier Tassinari"
+date: 2017-07-21
+headerImage: '/assets/img/material.jpg'
+keywords: ['interview', 'reactjs', 'ui']
+editors: ['bebraw', 'karlhorky']
 ---
 
-TODO: Feel free to suggest a header image. Otherwise I'll figure out something.
+Design is difficult as you have to come up with a set of rules to describe it – a system. You don't always have to devise one yourself, and [Material Design](https://material.io/) by Google is one starting point.
 
-TODO: I'll fill this up and link to your Twitter
+To understand the topic better, I'm interviewing [Olivier Tassinari](https://twitter.com/olivtassinari), one of the authors of [Material UI](https://github.com/callemall/material-ui). It's a collection of React components which implement the system.
 
 ## Can you tell a bit about yourself?
 
@@ -15,13 +16,11 @@ TODO: I'll fill this up and link to your Twitter
 <span class="author">
   <img src="https://www.gravatar.com/avatar/e2b3127c877367bce1892635ffe153d0?s=200" alt="Olivier Tassinari" class="author" width="100" height="100" />
 </span>
+
+I spent my childhood mastering LEGO, but I ended up as a software engineer. I started with web development back in 2008. I went on to graduate from one of the most prestigious and selective *grandes écoles* in France with a Master's Degree in computer science.
 </p>
 
-I spent my childhood mastering LEGO but I ended up as a software engineer.
-
-I started with web development back in 2008. I went on to graduate from one of the most prestigious and selective *grandes écoles* in France with a Master's Degree in computer science.
-
-Some time later I worked at Doctolib, the leading booking platform and management software provider for doctors in France.
+Sometime later I worked at Doctolib, the leading booking platform, and management software provider for doctors in France.
 
 Besides coding I love sports, swimming, running and from time to time climbing.
 I'm training to beat my 10k record next year.
@@ -33,21 +32,17 @@ I'm training to beat my 10k record next year.
 The React, Angular, Vue, Ember and Polymer ecosystems all have the concept of components.
 We have chosen to implement the [Material Design Specification](https://material.io/guidelines/) in [React](https://facebook.github.io/react/) components.
 
-Let's say you want to display a beautiful button, all you need to do is the following (example for Material-UI v1):
+Let's say you want to display a nice button, all you need to do is the following (example for Material-UI v1):
 
-```js
-import Button from 'material-ui/Button'
+```javascript
+import Button from 'material-ui/Button';
 
-function MyApp() {
-  return (
-    <Button>
-      I Will Survive
-    </Button>
-  )
-}
+const MyApp = () => <Button>I Will Survive</Button>;
 
-export default MyApp
+export default MyApp;
 ```
+
+T> **Editor's note:** This would be a good chance to use [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) as it can rewrite `import { Button } from 'material-ui';` to above while still pulling the same amount of code to the project.
 
 ## How does *Material-UI* work?
 
@@ -65,39 +60,40 @@ Through the evolution of components in different contexts, we have identified an
 - [Material Design variations like with the buttons](https://material-ui-1dab0.firebaseapp.com/customization/overrides#3-material-design-variations)
 - [User global theme variation](https://material-ui-1dab0.firebaseapp.com/customization/overrides#4-user-global-theme-variation)
 
+T> To learn more about JSS, see [the interview of Oleg Slobodskoi](/blog/jss-interview/), the author of the tool.
+
 ## How does *Material-UI* differ from other solutions?
 
 It helps to understand the tradeoffs we have made.
 At some point when building a UI library or even a presentational component, one aspect will need to be prioritized over another.
-So let's see what we have prioritized and what we haven't.
+So let's see what we have prioritized and what we have not.
 
 I believe that **most of the value of using a UI library comes from the API contract it provides**. But at the same time, API design is one of the hardest things to do when building a UI library.
 
-1. We want the API to be consistent. We want to reduce the cognitive overhead of learning our API.
-This is prioritized over an API tuned for specific contexts.
+1. We want the API to be consistent. We want to reduce the cognitive overhead of learning our API. Doing this is prioritized over an API tuned for specific contexts.
 2. We want the API to be low-level. By low-level, we mean close to the DOM elements.
 **It's simpler to work with no abstraction than the wrong abstraction** and low-level APIs more easily allow composition. We encourage users to build on top of it. If they create something that is helpful for more users, it can be integrated into the library. We have prioritized these things over a higher-level API.
 
 However, sometimes we have to trade consistency and level of abstraction to have a good enough implementation.
 
 3. We want our components to work in isolation as much as possible.
-For instance, we consider global styles an anti-pattern, not to mention their implications in regards to code splitting.
+For instance, we consider global styles an anti-pattern, not to mention their implications for code splitting.
 Also, developers should be able to use only one of our components without paying a large overhead.
 4. We want the implementation to be performant.
 5. We want our components to be easily customizable from the outside.
 6. We want our components to be accessible.
 
-Finally, we would rather support fewer use-cases very well and allow people to build on top of the library than support more use-cases poorly.
+Finally, we would rather support fewer use-cases well and allow people to build on top of the library than supporting more use-cases poorly.
 You can read further in our [vision for the project](https://material-ui-1dab0.firebaseapp.com/discover-more/vision#material-ui-s-vision).
 
 ## Why did you develop *Material-UI*?
 
 The credit for creating *Material-UI* goes to [Hai Nguyen](https://twitter.com/haicea).
-I have been contributing since 6 months after the first release.
+I have been contributing since six months after the first release.
 
-Ironically, my original motivation for choosing *Material-UI* for a [fun-side project](https://github.com/oliviertassinari/SplitMe) (to save time by using an existing React implementation of Material Design) is at odds with the effort I put in as a maintainer now.
-I have spent a lot of time improving the library.
-But I don't regret it. I have learned a lot in the process, ranging from how to conduct social interactions in a community to the ins and outs of the web stack, API design, [visual testing](https://www.argos-ci.com/callemall/material-ui) and more.
+Ironically, my original motivation for choosing *Material-UI* for a [fun-side project](https://github.com/oliviertassinari/SplitMe) (to save time by using an existing React implementation of Material Design) is at odds with the effort I put in as a maintainer now. I have spent a lot of time improving the library.
+
+But I don't regret it as I have learned a lot in the process, ranging from how to conduct social interactions in a community to the ins and outs of the web stack, API design, [visual testing](https://www.argos-ci.com/callemall/material-ui) and more.
 
 ## What comes next?
 
@@ -123,14 +119,14 @@ All of the plans above are in [our roadmap](https://github.com/callemall/materia
 
 ## What does the future look like for *Material-UI* and web development in general? Can you see any particular trends?
 
-*Material-UI* is very popular in the React ecosystem, but Google recently changed their strategy with [material-components-web](https://github.com/material-components/material-components-web).
+*Material-UI* is popular in the React ecosystem, but Google recently changed their strategy with [material-components-web](https://github.com/material-components/material-components-web).
 Depending on how well `material-components-web` solves the problem, *Material-UI* [might use it internally](https://github.com/callemall/material-ui/issues/6799).
 
 But at the same time, *Material-UI*'s goal goes further than just providing an elegant implementation of the Material Design guidelines.
-The Material Design specification sets the bar quite high and developers should be able to benefit from that while easily customizing it for their needs.
+The Material Design specification sets the bar quite high, and developers should be able to benefit from that while easily customizing it for their needs.
 
 This customization work is what I have been collaborating on lately at work.
-We have been taking advantage of *Material-UI*'s customization power in order to implement a brand-specific UI far from the Material Design specification. You can think of it as a Bootstrap theme. I believe this can be a useful strategy for other developers too.
+We have been taking advantage of *Material-UI*'s customization power to implement a brand-specific UI far from the Material Design specification. You can think of it as a Bootstrap theme. I believe this can be a useful strategy for other developers too.
 
 ## What advice would you give to programmers getting into web development?
 
@@ -143,7 +139,7 @@ We have been taking advantage of *Material-UI*'s customization power in order to
 
 ## Who should I interview next?
 
-[Arunoda Susiripala](https://twitter.com/arunoda) for the awesome work he as been doing with the **ZEIT** team on [Next.js](https://github.com/zeit/next.js).
+[Arunoda Susiripala](https://twitter.com/arunoda) for the awesome work he has been doing with the **ZEIT** team on [Next.js](https://github.com/zeit/next.js).
 React was the last JavaScript project that I was as excited about as I am about Next.js. The user experience and developer experience is way beyond anything I have used before.
 
 ## Any last remarks?
@@ -161,6 +157,6 @@ And thanks for having me on the blog!
 
 ## Conclusion
 
-TODO: I'll fill this up, thank, and link. Feel free to add resources here.
+Thanks for the interview Olivier! It's great to see solid UI libraries for React as that has been traditionally a little weak point but looks like the situation is improving.
 
-Thanks for the interview Olivier!
+See [Material UI site](http://www.material-ui.com/) and [Material UI GitHub](https://github.com/callemall/material-ui) to learn more about the project.

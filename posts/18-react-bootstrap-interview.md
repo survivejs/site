@@ -2,7 +2,7 @@
 title: 'React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith'
 date: 2015-10-13
 headerImage: '/assets/img/bootstrap.jpg'
-keywords: ['interview']
+keywords: ['interview', 'reactjs', 'ui']
 ---
 
 [Bootstrap](http://getbootstrap.com/) is easily one of the most popular CSS frameworks out there. Beyond grids and basic layout utilities, it provides a nice set of widgets to use. Even though you can use the CSS with React, this may become cumbersome quite soon. You will likely end up wrapping portions of Bootstrap within components of your own.
@@ -61,7 +61,7 @@ React-Bootstrap still has some work to achieve Section 508 and WCAG 2.0 AA compl
 
 ## What does the future look like for React and front-end in general? Can you see any particular trends?
 
-The future of React is undeniably very bright. I have full confidence in the core community involved in defining the best practices for building these front-end frameworks and tools.
+The future of React is undeniably bright. I have full confidence in the core community involved in defining the best practices for building these front-end frameworks and tools.
 
 ## Who should I interview next?
 
