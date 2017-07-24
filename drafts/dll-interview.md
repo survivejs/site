@@ -122,7 +122,7 @@ I was developing <details><summary>[fliphub](https://github.com/fliphub/fliphub)
   <p>able to be used in only 1 line (dozens of examples work for the proof-of-concept)...</p>
   <code>require('fliphub').init({entry: './src/index.js'}).build()</code>
   <h2>Depreciated...</h2>
-  <p>it turned out to be much too big of a project with endless & very high maintainability since it would have to stay up to date with the changing api of those external bundler dependencies</p>
+  <p>it turned out to be much too big of a project with endless and very high maintainability since it would have to stay up to date with the changing api of those external bundler dependencies</p>
 
 </details>and found there was no webpack documentation for the [DllPlugin](https://webpack.js.org/plugins/dll-plugin), so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
 
@@ -136,20 +136,18 @@ First things first: it will get an update with some more features. In the future
 
 The minimum most effective plan would consist of trimming down dependencies, tightening up the logic, boiling down the code domain, extracting the solution that enables the ease of use, covering all corners with air-tight tests, then merge it so that the whole community can benefit from the functionality.
 
-### Plan
-
-I have a plan to add a wrapper library to webpack (webpack-wrap), allowing external easy & smart configuration of internal functionality.
-
 ### chain-able
 
 All of the libraries I create use [chain-able](https://github.com/fluents/chain-able), which enables me to easily crate interfaces that describe their intentions, and make simple solutions for complex problems.
 
 ### webpack-wrap
 
+I plan to add a wrapper library to webpack (webpack-wrap), allowing easy and smart configuration.
+
 - Abstract the [d-l-l](https://github.com/fliphub/d-l-l) wrapper
 - Easy splitting [webpack-split-plugin](https://github.com/aretecode/webpack-plugin-split)
 - Webpack merging, using [neutrino](https://github.com/mozilla-neutrino/neutrino-dev) presets in your webpack config
-- Finishing [happypack2](https://www.npmjs.com/package/happypack2) & [chain-able-webpack](https://github.com/fluents/chain-able-webpack) which allows automatic wrapping of configs in a similar fashion, <abbr title="resolving all relative paths in your config">automatic traversable path resolving</abbr>, integrating with [webpack-cli](https://github.com/webpack/webpack-cli) & adding hints for common misconfigurations
+- Finishing [happypack2](https://www.npmjs.com/package/happypack2) and [chain-able-webpack](https://github.com/fluents/chain-able-webpack) which allows automatic wrapping of configs in a similar fashion, automatic traversable path resolving (resolving all relative paths in your config), integrating with [webpack-cli](https://github.com/webpack/webpack-cli) and adding hints for common misconfigurations
 
 ## What does the future look like for web development in general? Can you see any particular trends?
 
