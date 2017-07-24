@@ -167,14 +167,15 @@ I couldn't fit it reasonably in this block, so I made it into a repo: [awesome-a
 - 15 minute rule (proverbial)
   - If you ask for help on a problem before doing at least 15 minutes of work researching, debugging, and defining your problem, you're doing the other person a disservice.
   - If you wait longer than 45 minutes and you are stuck, you are doing yourself a disservice.
-- #1. most important thing in programming is knowing how to research
-- #2. is research
-- #3. is research
+- The three most important skills in programming:
+  - #1. how to research
+  - #2. how to research
+  - #3. how to research
 - The better the problem is defined, the better the solution will be
 - Have [variable names describe their intention](https://twitter.com/svensauleau/status/856424137493008384)
 - Premature optimization is the root of all evil
 - Make it debuggable
-- Join in the community
+- Join the community and contribute
 
 ## Who should I interview next?
 
