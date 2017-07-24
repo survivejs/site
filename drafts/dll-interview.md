@@ -71,9 +71,9 @@ Cache files are created in a `.fliphub` folder, which helps provide means for so
 
 Another option:
 
-- a. When <abbr title="(configurable, defaults to *package.json*, *webpack.config.js*, require.main.filename)">[cache-busting-files][docs-cache]</abbr> are modified or
-- b. [Every X (default 33) builds][docs-everyx] or
-- c. [A day or more has passed since the last build][docs-staletime]
+- a. When <abbr title="(configurable, defaults to *package.json*, *webpack.config.js*, require.main.filename)">[cache-busting-files](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#cachebustingfiles)</abbr> are modified or
+- b. [Every X (default 33) builds](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#everyx) or
+- c. [A day or more has passed since the last build](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#staletime)
 - The cache is cleared and built again
 
 ## More advanced example?
@@ -122,7 +122,7 @@ There are no other solutions. The only other option is do everything *d-l-l* doe
 
 ## Why did you develop *d-l-l*?
 
-I was developing <details><summary>[fliphub][fliphub], </summary>
+I was developing <details><summary>[fliphub](https://github.com/fliphub/fliphub), </summary>
 
   <p>made to be an incredibly easy solution for allowing a unified syntax across all bundlers, with a large translation layer.</p>
   <p>able to be used in only 1 line (dozens of examples work for the proof-of-concept)...</p>
@@ -130,9 +130,9 @@ I was developing <details><summary>[fliphub][fliphub], </summary>
   <h2>Depreciated...</h2>
   <p>it turned out to be much too big of a project with endless & very high maintainability since it would have to stay up to date with the changing api of those external bundler dependencies</p>
 
-</details>and found there was no webpack documentation for the [DLLPlugin][DLLPlugin], so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
+</details>and found there was no webpack documentation for the [DLLPlugin](https://webpack.js.org/plugins/dll-plugin), so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
 
-To give a taste of what I mean by clunky, you have to have two separate webpack **files**! The DLL config has to be built first, and then the normal config has to be built. If the normal config uses the [DLLReferencePlugin][DLLPlugin], and the dll config wasn't built first... it just breaks.
+To give a taste of what I mean by clunky, you have to have two separate webpack **files**! The DLL config has to be built first, and then the normal config has to be built. If the normal config uses the [DLLReferencePlugin](https://webpack.js.org/plugins/dll-plugin), and the dll config wasn't built first... it just breaks.
 
 Adding even more commands to the build process wasn't going to happen, and so *d-l-l* was born.
 
@@ -148,14 +148,14 @@ I have a plan to add a wrapper library to webpack (webpack-wrap), allowing exter
 
 ### chain-able
 
-All of the libraries I create use [chain-able][chain-able], which enables me to easily crate interfaces that describe their intentions, and make simple solutions for complex problems.
+All of the libraries I create use [chain-able](https://github.com/fluents/chain-able), which enables me to easily crate interfaces that describe their intentions, and make simple solutions for complex problems.
 
 ### webpack-wrap
 
-- Abstract the [d-l-l][d-l-l] wrapper
-- Easy splitting [webpack-split-plugin][webpack-split-plugin]
-- Webpack merging, using [neutrino][neutrino] presets in your webpack config
-- Finishing [happypack2][happypack2] & [chain-able-webpack][chain-able-webpack] which allows automatic wrapping of configs in a similar fashion, <abbr title="resolving all relative paths in your config">automatic traversable path resolving</abbr>, integrating with [webpack-cli][webpack-cli] & adding hints for common misconfigurations
+- Abstract the [d-l-l](https://github.com/fliphub/d-l-l) wrapper
+- Easy splitting [webpack-split-plugin](https://github.com/aretecode/webpack-plugin-split)
+- Webpack merging, using [neutrino](https://github.com/mozilla-neutrino/neutrino-dev) presets in your webpack config
+- Finishing [happypack2](https://www.npmjs.com/package/happypack2) & [chain-able-webpack](https://github.com/fluents/chain-able-webpack) which allows automatic wrapping of configs in a similar fashion, <abbr title="resolving all relative paths in your config">automatic traversable path resolving</abbr>, integrating with [webpack-cli](https://github.com/webpack/webpack-cli) & adding hints for common misconfigurations
 
 ## What does the future look like for web development in general? Can you see any particular trends?
 
@@ -165,7 +165,7 @@ All of the libraries I create use [chain-able][chain-able], which enables me to 
 
 ## What advice would you give to programmers getting into web development?
 
-I couldn't fit it reasonably in this block, so I put it into a repo on [awesome-advice][awesome-advice]
+I couldn't fit it reasonably in this block, so I put it into a repo on [awesome-advice](https://github.com/aretecode/awesome-advice)
 
 - **15 minute rule (proverbial)**
   - If you ask for help on a problem before doing at least 15 minutes of work researching, debugging, and defining your problem, you're doing the other person a disservice.
@@ -193,45 +193,10 @@ Thanks for the interview James!
 
 ### Resources (TODO: integrate these above)
 
-[webpack-src-dll-example]: https://github.com/webpack/webpack/tree/master/examples/dll
-[dll-article-robertknight]:  https://robertknight.github.io/posts/webpack-dll-plugins/
-[dll-article-medium]: https://medium.com/@soederpop/webpack-plugins-been-we-been-keepin-on-the-dll-cdfdd6cb8cd7#.qh2wt3gr9
-[dll-article-invision]: http://engineering.invisionapp.com/post/optimizing-webpack/k
-[dll-article-medium-cache]: https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd#.58yunf3an
-[dll-stackoverflow]: http://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode
-
-- [d-l-l][d-l-l]
-- [chain-able][chain-able]
-- [official webpack dll example][webpack-src-dll-example]
+- [d-l-l](https://github.com/fliphub/d-l-l)
+- [chain-able](https://github.com/fluents/chain-able)
+- [official webpack dll example](https://github.com/webpack/webpack/tree/master/examples/dll)
 - [Robert Knight's article on the dll plugin][dll-article-robertknight]
-- [invisionapp on optimizing webpack builds with dll plugin][dll-article-invision]
-- [medium caching assets long term with dll plugin][dll-article-medium-cache]
-- [dll plugin on stackoverflow][dll-stackoverflow]
-
-<!-- webpack -->
-[DLLPlugin]: https://webpack.js.org/plugins/dll-plugin
-[webpack-cli]: https://github.com/webpack/webpack-cli
-<!-- from d-l-l -->
-[d-l-l]: https://github.com/fliphub/d-l-l
-[docs-resources]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%94%97-resources
-[docs-config]: https://github.com/fliphub/d-l-l/wiki/%E2%9A%99-configs
-[docs-how]: https://github.com/fliphub/d-l-l/wiki/%E2%9A%A1%F0%9F%A4%B8-d-l-l#-how
-[docs-ss]: https://github.com/fliphub/d-l-l/wiki/%E2%9A%A1%F0%9F%A4%B8-d-l-l#%EF%B8%8F-screenshots
-[docs-auto]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#auto-static
-[docs-find]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#find
-[docs-lastmodified]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#lastmodifiedfilter
-[docs-how]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#find
-[docs-pkg]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#pkgdeps
-[docs-cache]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#cachebustingfiles
-[docs-everyx]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#everyx
-[docs-staletime]: https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#staletime
-[src-shouldBuildDLL]: https://github.com/fliphub/d-l-l/tree/master/index.js#449
-[happypack-cache]: https://github.com/amireh/happypack#cachepath-string
-<!-- other -->
-[fliphub]: https://github.com/fliphub/fliphub
-[webpack-split-plugin]: https://github.com/aretecode/webpack-plugin-split
-[happypack2]: https://www.npmjs.com/package/happypack2
-[chain-able]: https://github.com/fluents/chain-able
-[chain-able-webpack]: https://github.com/fluents/chain-able-webpack
-[neutrino]: https://github.com/mozilla-neutrino/neutrino-dev
-[awesome-advice]: https://github.com/aretecode/awesome-advice
+- [invisionapp on optimizing webpack builds with dll plugin](http://engineering.invisionapp.com/post/optimizing-webpack/k)
+- [medium caching assets long term with dll plugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd#.58yunf3an)
+- [dll plugin on stackoverflow](http://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode)
