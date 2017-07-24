@@ -193,7 +193,7 @@ Thanks for the interview James!
 - [d-l-l](https://github.com/fliphub/d-l-l)
 - [chain-able](https://github.com/fluents/chain-able)
 - [official webpack dll example](https://github.com/webpack/webpack/tree/master/examples/dll)
-- [Robert Knight's article on the dll plugin][dll-article-robertknight]
+- [Robert Knight's article on the dll plugin](https://robertknight.github.io/posts/webpack-dll-plugins/)
 - [invisionapp on optimizing webpack builds with dll plugin](http://engineering.invisionapp.com/post/optimizing-webpack/k)
 - [medium caching assets long term with dll plugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd#.58yunf3an)
 - [dll plugin on stackoverflow](http://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode)
