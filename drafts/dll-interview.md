@@ -101,57 +101,62 @@ const configs = dll
     return deps.filter(dep => !/dev/.test(dep))
   })
 
-  // finds files matching a provided glob
+  // Find files matching a glob
   .find('src/**/*.+(js|jsx)')
   .lastModifiedFilter({days: 1})
 
-  // takes the config from connected Maps into an object webpack can understand
+  // Return an array of webpack configurations
   .toConfig()
-
 ```
 
-## How does *d-l-l* differ from the other solutions?
+## How does *d-l-l* differ from other solutions?
 
-There are no other solutions. The only other option is do everything *d-l-l* does... yourself. This means maintaining the DLL file and then having configuration to point to it. The point of *d-l-l* is to avoid all that complexity.
+There are no other solutions. The only other option is do everything *d-l-l* does manually yourself. This means maintaining the extra DLL configuration and referencing it in your code. The point of *d-l-l* is to avoid this complexity.
 
 ## Why did you develop *d-l-l*?
 
-I was developing <details><summary>[fliphub](https://github.com/fliphub/fliphub), </summary>
+I was developing [fliphub](https://github.com/fliphub/fliphub) and found there was no webpack documentation for the [DllPlugin](https://webpack.js.org/plugins/dll-plugin). As I researched and experimented with the plugin, I discovered how powerful it was but how clunky it was to configure it.
 
-  <p>made to be an incredibly easy solution for allowing a unified syntax across all bundlers, with a large translation layer.</p>
-  <p>able to be used in only 1 line (dozens of examples work for the proof-of-concept)...</p>
-  <code>require('fliphub').init({entry: './src/index.js'}).build()</code>
-  <h2>Depreciated...</h2>
-  <p>it turned out to be much too big of a project with endless and very high maintainability since it would have to stay up to date with the changing api of those external bundler dependencies</p>
+To expand on what I mean by clunky, the DllPlugin requires two separate webpack configurations! The order is important - the DLL config has to be built before the normal config. If the normal config uses the [DLLReferencePlugin](https://webpack.js.org/plugins/dll-plugin) before the DLL config has been built, the build will fail.
 
-</details>and found there was no webpack documentation for the [DllPlugin](https://webpack.js.org/plugins/dll-plugin), so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
-
-To expand on what I mean by clunky, you have to have two separate webpack configurations! The DLL config has to be built first, and then the normal config has to be built. If the normal config uses the [DLLReferencePlugin](https://webpack.js.org/plugins/dll-plugin), and the dll config wasn't built first... it just breaks.
-
-Adding even more commands to the build process wasn't going to happen, and so *d-l-l* was born.
+Adding even more commands to the build process wasn't going to happen, so *d-l-l* was born.
 
 ## What next?
 
-First things first: it will get an update with some more features. In the future, in an ideal world, the core solution it provides will be integrated into webpack core.
+### d-l-l
 
-The minimum most effective plan would consist of trimming down dependencies, tightening up the logic, boiling down the code domain, extracting the solution that enables the ease of use, covering all corners with air-tight tests, then merge it so that the whole community can benefit from the functionality.
+*d-l-l* will be updated with more features. In an ideal future, the core solution it provides would be integrated into webpack core.
+
+The minimum, most effective plan to integrate it into the core would involve the following changes for *d-l-l*:
+
+- Trim down dependencies
+- Improve focus in logic and the code domain
+- Extract features enabling ease of use
+- Cover edge cases with air-tight tests
+- Merge to webpack core
+
+Once that would be done, the whole community could benefit from the functionality.
 
 ### chain-able
 
-All of the libraries I create use [chain-able](https://github.com/fluents/chain-able), which enables me to easily crate interfaces that describe their intentions, and make simple solutions for complex problems.
+All of the libraries I create use [chain-able](https://github.com/fluents/chain-able), which enables me to easily create interfaces that describe their intentions, and make simple solutions for complex problems.
 
 ### webpack-wrap
 
-I plan to add a wrapper library to webpack (webpack-wrap), allowing easy and smart configuration.
+I plan to create a wrapper library around webpack (webpack-wrap), allowing easy and smart configuration by following this plan:
 
 - Abstract the [d-l-l](https://github.com/fliphub/d-l-l) wrapper
-- Easy splitting [webpack-split-plugin](https://github.com/aretecode/webpack-plugin-split)
-- Webpack merging, using [neutrino](https://github.com/mozilla-neutrino/neutrino-dev) presets in your webpack config
-- Finishing [happypack2](https://www.npmjs.com/package/happypack2) and [chain-able-webpack](https://github.com/fluents/chain-able-webpack) which allows automatic wrapping of configs in a similar fashion, automatic traversable path resolving (resolving all relative paths in your config), integrating with [webpack-cli](https://github.com/webpack/webpack-cli) and adding hints for common misconfigurations
+- Simplify splitting with the [webpack-split-plugin](https://github.com/aretecode/webpack-plugin-split)
+- Enable webpack merging using [neutrino](https://github.com/mozilla-neutrino/neutrino-dev) presets in your webpack config
+- Finish [happypack2](https://www.npmjs.com/package/happypack2) and [chain-able-webpack](https://github.com/fluents/chain-able-webpack) which allows for:
+  - Automatic wrapping of configs in a similar fashion
+  - Automatic traversable path resolving (resolving all relative paths in your config)
+  - Integration with [webpack-cli](https://github.com/webpack/webpack-cli)
+  - Hints for common misconfigurations
 
 ## What does the future look like for web development in general? Can you see any particular trends?
 
-- Better tools and language support. people want to use the coolest hottest sugar syntax which requires still a whole set of sub-skills for the tools required to provide compatible software
+- Better tools and language support. Developers want to use the coolest hottest sugar syntax which still requires a whole set of sub-skills for the tools required to provide compatible software
 - Companies competing in open source for developers to use their particular flavor of the latest greatest
 - Easier to use and more widespread AI use in open source alongside private code
 
