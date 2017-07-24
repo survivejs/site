@@ -64,40 +64,40 @@ Cache files are created in a `.fliphub` folder, which allows some smart-ish chec
 
 The cache files also allow *d-l-l* to add the decorated dll config if no cache folder or files exist or if there are no manifest files showing what was built and where.
 
-When to clear the cache is configurable:
+When the cache should be cleared is configurable:
 
 - when [cache-busting-files](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#cachebustingfiles) are modified
 - [every X (default 33) builds](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#everyx)
 - [a day or more has passed since the last build](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#staletime)
 
-## More advanced example?
+## Advanced Example
 
-Now that the bases are covered, a more advanced use case is more easily digestible:
+Now that we've covered a bit of background, an advanced use case should be more understandable:
 
 ```js
 const dll = require('d-l-l')
 
 const configs = dll
   .init()
-  // good to play with - very verbose debugging
+  // Verbose debugging
   .debug(true)
 
-  // forces building of d-l-l
+  // Force building of DLL
   .shouldBeUsed(true)
 
-  // returns original config, makes it easy to swap side-effect free
+  // Return original config, makes it easy to swap side-effect free
   .og(true)
 
-  // same as earlier
+  // Same as in the simple example above
   .dir(__dirname)
   .config(config)
 
-  // can provide resolved dep paths here manually
+  // Provide resolved dependency paths manually
   .deps(['lodash', 'inferno'].map(dep => require.resolve(dep)))
 
-  // or filter package json deps
+  // Filter dependencies in package.json
   .pkgDeps((deps, devDeps, allDeps)) => {
-    // ignore deps that have `dev` dev in them, such as dev tools
+    // Ignore dependencies that have `dev` in them, such as dev tools
     return deps.filter(dep => !/dev/.test(dep))
   }
 
