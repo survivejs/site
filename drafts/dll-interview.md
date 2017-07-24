@@ -99,7 +99,7 @@ const configs = dll
   .pkgDeps((deps, devDeps, allDeps)) => {
     // Ignore dependencies that have `dev` in them, such as dev tools
     return deps.filter(dep => !/dev/.test(dep))
-  }
+  })
 
   // finds files matching a provided glob
   .find(`src/**/*.+(js|jsx)`)
