@@ -27,7 +27,7 @@ TODO: I'll fill this up and link to your Twitter (https://twitter.com/aretecode)
 ![so much time](https://i.redd.it/pdvejjrcz1zy.jpg)
 
 
-*d-l-l* makes your webpack build faster, in just a few lines, without having to waste time with the tedious manual configuration steps required to use the [DLLPlugin][DLLPlugin].
+*d-l-l* makes your webpack build faster in just a few lines, without having to waste time on the tedious manual configuration steps required to use the [DLLPlugin](https://webpack.js.org/plugins/dll-plugin).
 
 It lets you _pre-build_ the parts of your code that _don't change often_, so when you change the parts that do, it's exponentially faster. It adds some helpful utilities for finding and adding dependencies & files that do not often change.
 
