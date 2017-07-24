@@ -158,13 +158,13 @@ I plan to create a wrapper library around webpack (webpack-wrap), allowing easy 
 
 - Tools and language support can be improved. Developers want to use the coolest hottest sugar syntax which sometimes still needs advanced skills to set up tooling for.
 - Companies competing in open source for developers should promote their particular flavor of the latest and greatest tech.
-- Easier to use and more widespread AI use in open source alongside private code
+- Artificial intelligence should be easier to use and more widespread in both open source and private code.
 
 ## What advice would you give to programmers getting into web development?
 
-I couldn't fit it reasonably in this block, so I put it into a repo on [awesome-advice](https://github.com/aretecode/awesome-advice)
+I couldn't fit it reasonably in this block, so I made it into a repo: [awesome-advice](https://github.com/aretecode/awesome-advice).
 
-- **15 minute rule (proverbial)**
+- 15 minute rule (proverbial)
   - If you ask for help on a problem before doing at least 15 minutes of work researching, debugging, and defining your problem, you're doing the other person a disservice.
   - If you wait longer than 45 minutes and you are stuck, you are doing yourself a disservice.
 - #1. most important thing in programming is knowing how to research
@@ -192,8 +192,8 @@ Thanks for the interview James!
 
 - [d-l-l](https://github.com/fliphub/d-l-l)
 - [chain-able](https://github.com/fluents/chain-able)
-- [official webpack dll example](https://github.com/webpack/webpack/tree/master/examples/dll)
-- [Robert Knight's article on the dll plugin](https://robertknight.github.io/posts/webpack-dll-plugins/)
-- [invisionapp on optimizing webpack builds with dll plugin](http://engineering.invisionapp.com/post/optimizing-webpack/k)
-- [medium caching assets long term with dll plugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd#.58yunf3an)
-- [dll plugin on stackoverflow](http://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode)
+- [Official webpack DLL example](https://github.com/webpack/webpack/tree/master/examples/dll)
+- [Robert Knight's article on the DllPlugin](https://robertknight.github.io/posts/webpack-dll-plugins/)
+- [InVision on optimizing webpack builds with the DllPlugin](http://engineering.invisionapp.com/post/optimizing-webpack/)
+- [Caching assets long term with the DllPlugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd#.58yunf3an)
+- [DllPlugin question and answer on Stack Overflow](https://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode)
