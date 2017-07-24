@@ -18,7 +18,7 @@ TODO: I'll fill this up and link to your Twitter (https://twitter.com/aretecode)
   <img src="https://lh4.googleusercontent.com/--1tse4VUPhM/UQRkGi9R0RI/AAAAAAAAACI/iY5biQNKSuI/w601-h600-no/Wiens-128-2web-vh.jpg" alt="James Wiens" class="author" width="100" height="100" />
 </span>
 
-👋 I'm a flow state enthusiast & crafting code is my life's passion from Vancouver, Canada, eh.
+👋 I'm a flow state enthusiast and crafting code is my life's passion. I'm from Vancouver, Canada, eh.
 </p>
 
 ## How would you describe *d-l-l* to someone who has never heard of it?
