@@ -29,7 +29,9 @@ TODO: I'll fill this up and link to your Twitter (https://twitter.com/aretecode)
 
 *d-l-l* makes your webpack build faster in just a few lines, without having to waste time on the tedious manual configuration steps required to use the [DllPlugin](https://webpack.js.org/plugins/dll-plugin).
 
-It lets you _pre-build_ the parts of your code that _don't change often_, so when you change the parts that do, it's exponentially faster. It adds some helpful utilities for finding and adding dependencies & files that do not often change.
+The DllPlugin lets you pre-build the parts of your code that don't change often (such as library code). This means when you change the parts that do change more often, webpack only needs to build these parts, which makes builds exponentially faster.
+
+*d-l-l* adds some helpful utilities for finding and adding dependencies and files that do not often change.
 
 ## What's a minimal example using *d-l-l*?
 
