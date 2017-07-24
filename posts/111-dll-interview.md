@@ -1,21 +1,20 @@
 ---
 title: 'd-l-l - Easy, automatic, optimized DLL config handler for webpack - Interview with James Wiens'
-date: 2017-xx-xx
-headerImage: '/assets/img/XXX.jpg'
+date: 2017-07-24
+headerImage: '/assets/img/chapters/library.jpg'
 keywords: ['interview', 'webpack']
+editors: ['bebraw', 'karlhorky']
 ---
 
-TODO: Feel free to suggest a header image. Otherwise I'll figure out something.
+Perhaps one of my favorite [webpack performance related tricks](/webpack/optimizing/performance/) is setting up DLLs so that you *avoid work*. The problem is that maintaining the setup requires time and effort. What if there was a better way?
 
-TODO: I'll fill this up and link to your Twitter (https://twitter.com/aretecode)
-
-![whatif](https://user-images.githubusercontent.com/4022631/27426209-bb8791ba-56ef-11e7-9ee9-a68d52728f84.jpg)
+[James Wiens](https://twitter.com/aretecode) has been exploring a  better solution with [d-l-l](https://www.npmjs.com/package/d-l-l).
 
 ## Can you tell a bit about yourself?
 
 <p>
 <span class="author">
-  <img src="https://lh4.googleusercontent.com/--1tse4VUPhM/UQRkGi9R0RI/AAAAAAAAACI/iY5biQNKSuI/w601-h600-no/Wiens-128-2web-vh.jpg" alt="James Wiens" class="author" width="100" height="100" />
+  <img src="/assets/img/dll/wiens.jpg" alt="James Wiens" class="author" width="100" height="100" />
 </span>
 
 👋 I'm a flow state enthusiast and crafting code is my life's passion. I'm from Vancouver, Canada, eh.
@@ -23,15 +22,13 @@ TODO: I'll fill this up and link to your Twitter (https://twitter.com/aretecode)
 
 ## How would you describe *d-l-l* to someone who has never heard of it?
 
-<!-- ![0-100](https://i.ytimg.com/vi/iFhma3zUcLs/hqdefault.jpg) -->
-![so much time](https://i.redd.it/pdvejjrcz1zy.jpg)
+*d-l-l* makes your webpack build faster in just a few lines, without having to waste time on the slow manual configuration steps required to use the [DllPlugin](https://webpack.js.org/plugins/dll-plugin).
 
-
-*d-l-l* makes your webpack build faster in just a few lines, without having to waste time on the tedious manual configuration steps required to use the [DllPlugin](https://webpack.js.org/plugins/dll-plugin).
-
-The DllPlugin lets you pre-build the parts of your code that don't change often (such as library code). This means when you change the parts that do change more often, webpack only needs to build these parts, which makes builds exponentially faster.
+The DllPlugin lets you pre-build the parts of your code that don't often change (such as library code). This means when you change the parts that do change more often, webpack only needs to build these parts, which makes builds exponentially faster.
 
 *d-l-l* adds some helpful utilities for finding and adding dependencies and files that do not often change.
+
+<img src="/assets/img/dll/dinosaurs.jpg" alt="Webpack dinosaurs" />
 
 ## What's a minimal example using *d-l-l*?
 
@@ -50,16 +47,14 @@ module.exports = dll
 
 ## How does *d-l-l* work?
 
-![magic](https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif)
-
-> What if I told you that you could make a webpack build go from 1 minute to 1 second?
+<img src="/assets/img/dll/whatif.jpg" alt="What if I told you that you could make a webpack build go from 1 minute to 1 second?" />
 
 *d-l-l* creates an array of webpack configuration consisting of a DLL-only webpack config followed by the existing config from your webpack.config.js.
 
 Cache files are created in a `.fliphub` folder, which allows some smart-ish checks such as:
 
 1. Analysis of your webpack config
-2. Extraction of important parts from it, such as the output path
+2. Extraction of essential parts from it, such as the output path
 3. Usage of the configuration passed via `.config()`
 
 The cache files also allow *d-l-l* to add the decorated dll config if no cache folder or files exist or if there are no manifest files showing what was built and where.
@@ -97,7 +92,8 @@ const configs = dll
 
   // Filter dependencies in package.json
   .pkgDeps((deps, devDeps, allDeps)) => {
-    // Ignore dependencies that have `dev` in them, such as dev tools
+    // Ignore dependencies that have `dev` in them.
+    // Development tools are one example.
     return deps.filter(dep => !/dev/.test(dep))
   })
 
@@ -111,7 +107,7 @@ const configs = dll
 
 ## How does *d-l-l* differ from other solutions?
 
-There are no other solutions. The only other option is do everything *d-l-l* does manually yourself. This means maintaining the extra DLL configuration and referencing it in your code. The point of *d-l-l* is to avoid this complexity.
+There are no other solutions. The only other option is do everything *d-l-l* does yourself manually. Doing this means maintaining the additional DLL configuration and referencing it in your code. The point of *d-l-l* is to avoid this complexity.
 
 ## Why did you develop *d-l-l*?
 
@@ -122,8 +118,6 @@ To expand on what I mean by clunky, the DllPlugin requires two separate webpack 
 Adding even more commands to the build process wasn't going to happen, so *d-l-l* was born.
 
 ## What next?
-
-### d-l-l
 
 *d-l-l* will be updated with more features. In an ideal future, the core solution it provides would be integrated into webpack core.
 
@@ -139,7 +133,7 @@ Once that would be done, the whole community could benefit from the functionalit
 
 ### chain-able
 
-All of the libraries I create use [chain-able](https://github.com/fluents/chain-able), which enables me to easily create interfaces that describe their intentions, and make simple solutions for complex problems.
+All of the libraries I create use [chain-able](https://github.com/fluents/chain-able), which enables me to easily create interfaces that describe their intentions and make simple solutions for complex problems.
 
 ### webpack-wrap
 
@@ -156,18 +150,18 @@ I plan to create a wrapper library around webpack (webpack-wrap), allowing easy 
 
 ## What does the future look like for web development in general? Can you see any particular trends?
 
-- Tools and language support can be improved. Developers want to use the coolest hottest sugar syntax which sometimes still needs advanced skills to set up tooling for.
-- Companies competing in open source for developers should promote their particular flavor of the latest and greatest tech.
-- Artificial intelligence should be easier to use and more widespread in both open source and private code.
+- Tools and language support can be improved. Developers want to use the coolest hottest sugar syntax which sometimes still needs advanced skills.
+- Companies competing in open source for developers will promote their particular flavor of the latest and greatest tech.
+- Artificial intelligence will be easier to use and more widespread in both open source and private code.
 
 ## What advice would you give to programmers getting into web development?
 
 I couldn't fit it reasonably in this block, so I made it into a repo: [awesome-advice](https://github.com/aretecode/awesome-advice).
 
-- 15 minute rule (proverbial)
+- 15-minute rule (proverbial)
   - If you ask for help on a problem before doing at least 15 minutes of work researching, debugging, and defining your problem, you're doing the other person a disservice.
   - If you wait longer than 45 minutes and you are stuck, you are doing yourself a disservice.
-- The three most important skills in programming:
+- The three essential skills in programming:
   - #1. how to research
   - #2. how to research
   - #3. how to research
@@ -179,22 +173,19 @@ I couldn't fit it reasonably in this block, so I made it into a repo: [awesome-a
 
 ## Who should I interview next?
 
-1. [eliperman](https://github.com/eliperelman)
+1. [Eli Perelman](https://github.com/eliperelman)
 2. [nchanged](https://github.com/nchanged)
 
 ## Conclusion
 
-TODO: I'll fill this up, thank, and link. Feel free to add resources here.
+Thanks for the interview James! I hope this work eventually finds its way to webpack proper. That would make the approach more approachable to a lot of people.
 
-Thanks for the interview James!
+You can find [d-l-l on GitHub](https://github.com/fliphub/d-l-l).
 
+See also the following resources for further information:
 
-### Resources (TODO: integrate these above)
-
-- [d-l-l](https://github.com/fliphub/d-l-l)
-- [chain-able](https://github.com/fluents/chain-able)
 - [Official webpack DLL example](https://github.com/webpack/webpack/tree/master/examples/dll)
 - [Robert Knight's article on the DllPlugin](https://robertknight.github.io/posts/webpack-dll-plugins/)
 - [InVision on optimizing webpack builds with the DllPlugin](http://engineering.invisionapp.com/post/optimizing-webpack/)
-- [Caching assets long term with the DllPlugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd#.58yunf3an)
+- [Caching assets long term with the DllPlugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd)
 - [DllPlugin question and answer on Stack Overflow](https://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode)
