@@ -27,7 +27,7 @@ TODO: I'll fill this up and link to your Twitter (https://twitter.com/aretecode)
 ![so much time](https://i.redd.it/pdvejjrcz1zy.jpg)
 
 
-*d-l-l* makes your webpack build faster in just a few lines, without having to waste time on the tedious manual configuration steps required to use the [DLLPlugin](https://webpack.js.org/plugins/dll-plugin).
+*d-l-l* makes your webpack build faster in just a few lines, without having to waste time on the tedious manual configuration steps required to use the [DllPlugin](https://webpack.js.org/plugins/dll-plugin).
 
 It lets you _pre-build_ the parts of your code that _don't change often_, so when you change the parts that do, it's exponentially faster. It adds some helpful utilities for finding and adding dependencies & files that do not often change.
 
@@ -130,7 +130,7 @@ I was developing <details><summary>[fliphub](https://github.com/fliphub/fliphub)
   <h2>Depreciated...</h2>
   <p>it turned out to be much too big of a project with endless & very high maintainability since it would have to stay up to date with the changing api of those external bundler dependencies</p>
 
-</details>and found there was no webpack documentation for the [DLLPlugin](https://webpack.js.org/plugins/dll-plugin), so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
+</details>and found there was no webpack documentation for the [DllPlugin](https://webpack.js.org/plugins/dll-plugin), so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
 
 To give a taste of what I mean by clunky, you have to have two separate webpack **files**! The DLL config has to be built first, and then the normal config has to be built. If the normal config uses the [DLLReferencePlugin](https://webpack.js.org/plugins/dll-plugin), and the dll config wasn't built first... it just breaks.
 
