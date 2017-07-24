@@ -156,8 +156,8 @@ I plan to create a wrapper library around webpack (webpack-wrap), allowing easy 
 
 ## What does the future look like for web development in general? Can you see any particular trends?
 
-- Better tools and language support. Developers want to use the coolest hottest sugar syntax which still requires a whole set of sub-skills for the tools required to provide compatible software
-- Companies competing in open source for developers to use their particular flavor of the latest greatest
+- Tools and language support can be improved. Developers want to use the coolest hottest sugar syntax which sometimes still needs advanced skills to set up tooling for.
+- Companies competing in open source for developers should promote their particular flavor of the latest and greatest tech.
 - Easier to use and more widespread AI use in open source alongside private code
 
 ## What advice would you give to programmers getting into web development?
