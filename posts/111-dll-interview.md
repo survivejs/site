@@ -37,12 +37,12 @@ const dll = require('d-l-l')
 
 module.exports = dll
   .init()
-  .dir(__dirname)                    // Directory to resolve paths from
-  .config(config)                    // Pass in webpack config
+  .dir(__dirname) // Directory to resolve paths from
+  .config(config) // Pass in webpack config
   .pkgDeps((deps, dev, all) => deps) // Filter to only use non-dev dependencies
-  .find('src/**/*.+(js|jsx)')        // Find all src files
-  .lastModifiedFilter({days: 1})     // Filter to files last modified at least a day ago
-  .toConfig()                        // Return an array of webpack configurations
+  .find('src/**/*.+(js|jsx)') // Find all src files
+  .lastModifiedFilter({days: 1}) // Filter to files last modified at least a day ago
+  .toConfig() // Return an array of webpack configurations
 ```
 
 ## How does *d-l-l* work?
