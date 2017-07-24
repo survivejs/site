@@ -54,7 +54,7 @@ module.exports = dll
 
 > What if I told you that you could make a webpack build go from 1 minute to 1 second?
 
-*d-l-l* creates an array of webpack configuration consisting of a DLL-only webpack config and the existing config from your webpack.config.js.
+*d-l-l* creates an array of webpack configuration consisting of a DLL-only webpack config followed by the existing config from your webpack.config.js.
 
 Cache files are created in a `.fliphub` folder, which allows some smart-ish checks such as:
 
