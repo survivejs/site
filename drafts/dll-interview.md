@@ -54,29 +54,21 @@ module.exports = dll
 
 > What if I told you that you could make a webpack build go from 1 minute to 1 second?
 
-<!-- https://media.giphy.com/media/8sDQ7nUXrGktG/giphy.gif -->
+*d-l-l* creates an array of webpack configuration consisting of a DLL-only webpack config and the existing config from your webpack.config.js.
 
-When required, a DLL-only webpack config is created and is prepended to the webpack.config.js exports.
+Cache files are created in a `.fliphub` folder, which allows some smart-ish checks such as:
 
-<!-- Note> It would a little simpler if webpack allowed synchronous building of config files. -->
+1. Analysis of your webpack config
+2. Extraction of important parts from it, such as the output path
+3. Usage of the configuration passed via `.config()`
 
-Cache files are created in a `.fliphub` folder, which helps provide means for some smart-ish checks as below:
+The cache files also allow *d-l-l* to add the decorated dll config if no cache folder or files exist or if there are no manifest files showing what was built and where.
 
-1. *d-l-l* analyzes your webpack config
-2. Extracts </abbr title="output path">important pieces</abbr> from it
-3. Takes the <abbr title="see above example">configuration given to it</abbr>,
-4. Checks the available information like this:
+When to clear the cache is configurable:
 
-- a. When no cache folder/files exists or
-- b. When there are no <abbr title="the .json files that keep a record of what was built & where the files are">manifest files</abbr>
-- It will add the decorated dll config, otherwise, it will safely leave it out.
-
-Another option:
-
-- a. When <abbr title="(configurable, defaults to *package.json*, *webpack.config.js*, require.main.filename)">[cache-busting-files](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#cachebustingfiles)</abbr> are modified or
-- b. [Every X (default 33) builds](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#everyx) or
-- c. [A day or more has passed since the last build](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#staletime)
-- The cache is cleared and built again
+- when [cache-busting-files](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#cachebustingfiles) are modified
+- [every X (default 33) builds](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#everyx)
+- [a day or more has passed since the last build](https://github.com/fliphub/d-l-l/wiki/%F0%9F%8C%90-api#staletime)
 
 ## More advanced example?
 
