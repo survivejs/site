@@ -43,7 +43,7 @@ module.exports = dll
   .dir(__dirname)                    // Directory to resolve paths from
   .config(config)                    // Pass in webpack config
   .pkgDeps((deps, dev, all) => deps) // Filter to only use non-dev dependencies
-  .find(`src/**/*.+(js|jsx)`)        // Find all src files
+  .find('src/**/*.+(js|jsx)')        // Find all src files
   .lastModifiedFilter({days: 1})     // Filter to files last modified at least a day ago
   .toConfig()                        // Return an array of webpack configurations
 ```
@@ -102,7 +102,7 @@ const configs = dll
   })
 
   // finds files matching a provided glob
-  .find(`src/**/*.+(js|jsx)`)
+  .find('src/**/*.+(js|jsx)')
   .lastModifiedFilter({days: 1})
 
   // takes the config from connected Maps into an object webpack can understand
