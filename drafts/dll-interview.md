@@ -43,8 +43,8 @@ module.exports = dll
   .dir(__dirname)                    // like context in webpack, very important
   .config(config)                    // webpack config
   .pkgDeps((deps, dev, all) => deps) // easily filterable arrays
-  .find(`src/**/*.+(js|jsx)`)        // glob to find old files
-  .lastModifiedFilter({days: 1})     // find files that haven't changed > 1 day
+  .find(`src/**/*.+(js|jsx)`)        // glob to find all src files
+  .lastModifiedFilter({days: 1})     // filter to files last modified minimum of a day ago
   .toConfig()                        // returns the values for webpack to use
 ```
 
