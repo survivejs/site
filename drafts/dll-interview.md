@@ -126,7 +126,7 @@ I was developing <details><summary>[fliphub](https://github.com/fliphub/fliphub)
 
 </details>and found there was no webpack documentation for the [DllPlugin](https://webpack.js.org/plugins/dll-plugin), so as I researched, experimented, wrote the documentation, I discovered how powerful it was, but also how extremely clunky the config required to use it was.
 
-To give a taste of what I mean by clunky, you have to have two separate webpack **files**! The DLL config has to be built first, and then the normal config has to be built. If the normal config uses the [DLLReferencePlugin](https://webpack.js.org/plugins/dll-plugin), and the dll config wasn't built first... it just breaks.
+To expand on what I mean by clunky, you have to have two separate webpack configurations! The DLL config has to be built first, and then the normal config has to be built. If the normal config uses the [DLLReferencePlugin](https://webpack.js.org/plugins/dll-plugin), and the dll config wasn't built first... it just breaks.
 
 Adding even more commands to the build process wasn't going to happen, and so *d-l-l* was born.
 
