@@ -121,6 +121,8 @@ const configs = dll
 
 There are no other solutions. The only other option is do everything *d-l-l* does yourself manually. Doing this means maintaining the additional DLL configuration and referencing it in your code. The point of *d-l-l* is to avoid this complexity.
 
+T> **Editor's note:** [autodll-webpack-plugin](https://www.npmjs.com/package/autodll-webpack-plugin) is a comparable plugin based solution.
+
 ## Why did you develop *d-l-l*?
 
 I was developing [fliphub](https://github.com/fliphub/fliphub) and found there was no webpack documentation for the [DllPlugin](https://webpack.js.org/plugins/dll-plugin). As I researched and experimented with the plugin, I discovered how powerful it was but how clunky it was to configure it.
