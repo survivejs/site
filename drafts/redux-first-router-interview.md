@@ -1,6 +1,6 @@
 ---
 title: 'redux-first-router - Just dispatch actions - Interview with James Gillmore'
-date: 2017-xx-xx
+date: 2017-08-04
 headerImage: '/assets/img/XXX.jpg'
 keywords: ['interview']
 ---

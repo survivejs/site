@@ -1,6 +1,6 @@
 ---
 title: 'Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala'
-date: 2017-xx-xx
+date: 2017-08-11
 headerImage: '/assets/img/XXX.jpg'
 keywords: ['interview']
 ---

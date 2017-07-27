@@ -1,6 +1,6 @@
 ---
 title: 'Motorcycle.js - A statically-typed, functional and reactive framework for modern browsers - Interview with Tylor Steinberger'
-date: 2017-xx-xx
+date: 2017-08-14
 headerImage: '/assets/img/XXX.jpg'
 keywords: ['interview']
 ---
