@@ -102,7 +102,7 @@ function MyForm (props) {
 }
 ```
 
-Notice how similar this looks to the server only code. You get to use middleware and routing in a way you are probably already know. However, the above example when compiled with [webpack](https://webpack.js.org), [Rollup](https://rollupjs.org), or [Browserify](http://browserify.org) will also work in the browser!
+Notice how similar this looks to the server only code. You get to use middleware and routing in a way you probably already know. However, the above example when compiled with [webpack](https://webpack.js.org), [Rollup](https://rollupjs.org), or [Browserify](http://browserify.org) will also work in the browser!
 
 For a more detailed example check out the [TodoMVC](https://github.com/rill-js/todomvc) implementation with [React](https://facebook.github.io/react) and [Rill](https://github.com/rill-js/rill).
 
