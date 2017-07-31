@@ -68,7 +68,7 @@ Secondly, you can get far by only working on the surface level, but you really s
 
 ## Who should I interview next?
 
-[Titus Wormer](https://github.com/wooorm) has been doing for natural language what Babel has done for JavaScript. [Lea Verou](https://twitter.com/LeaVerou)'s mavo project is incredibly fascinating. [Mary Rose Cook](https://github.com/maryrosecook)'s projects about gaming, programming languages, and entry points for new people to tech are amazing.
+[Titus Wormer](https://github.com/wooorm) has been doing for natural language what Babel has done for JavaScript. [Lea Verou](https://twitter.com/LeaVerou)'s [mavo](https://mavo.io/) project is incredibly fascinating. [Mary Rose Cook](https://github.com/maryrosecook)'s projects about gaming, programming languages, and entry points for new people to tech are amazing.
 
 ## Any last remarks?
 
