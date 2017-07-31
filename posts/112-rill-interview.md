@@ -2,7 +2,7 @@
 title: 'Rill - Universal web application framework - Interview with Dylan Piercey'
 date: 2017-07-28
 headerImage: '/assets/img/cosmos.jpg'
-keywords: ['interview']
+keywords: ['interview', 'reactjs', 'javascript']
 editors: ['bebraw', 'karlhorky']
 ---
 
