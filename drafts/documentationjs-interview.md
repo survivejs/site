@@ -17,51 +17,51 @@ TODO: I'll fill this up and link to your Twitter
 </span>
 </p>
 
-At work, I'm a software engineer but also spend a lot of time writing, designing products, and so on. Until recently, that was in the mapping space, at [Mapbox](https://mapbox.com/). I wrote lots of libraries that sliced and diced geospatial data, showed it on screens, and helped people design maps. The last big project I worked on there was [Mapbox Studio](https://www.mapbox.com/mapbox-studio/). There are enough hard problems in the world of maps to spend a lifetime trying to solve them, but I decided to try out some new domains. I've been taking a few months off to relax, so recently I've been spending more time training a few bonsai trees and maintaining open source projects.
+At work, I'm a software engineer but also spend a lot of time writing, designing products, and so on. Until recently, that was in the mapping space at [Mapbox](https://mapbox.com/). I wrote lots of libraries that sliced and diced geospatial data, showed it on screens, and helped people design maps. The last big project I worked on there was [Mapbox Studio](https://www.mapbox.com/mapbox-studio/). There are enough hard problems in the world of maps to spend a lifetime trying to solve them, but I decided to try out some new domains. I've been taking a few months off to relax, so recently I've been spending more time training a few bonsai trees and maintaining open source projects.
 
 ## How would you describe *documentation.js* to someone who has never heard of it?
 
-documentation.js is an program that generates documentation from the source code of other programs. The documentation is a combination of things that you write, like paragraphs explaining what a function does, and things that documentation.js itself is able to infer, like the types of parameters and return values.
+*documentation.js* is a program that generates documentation from the source code of other programs. The documentation is a combination of things that you write, like paragraphs explaining what a function does, and things that *documentation.js* itself is able to infer, like the types of parameters and return values.
 
 ## How does *documentation.js* work?
 
-To infer facts about source code, we stand on the shoulders of a giant, which in this case is named [Babel](https://github.com/babel/babel). That project has a great parser of JavaScript in JavaScript called babylon, as well as lots of other tools for interacting with those parsed JavaScript structures. Using those helpers, we can, for instance, find all functions declared in a file, ask them for parameter types, names, return values, and lots more.
+To infer facts about source code, we stand on the shoulders of a giant, which in this case is named [Babel](https://github.com/babel/babel). That project has a great JavaScript parser called [Babylon](https://github.com/babel/babylon), as well as lots of other tools for interacting with parsed JavaScript structures. Using these helpers, we can, for instance, find all functions declared in a file, ask them for parameter types, names, return values, and lots more.
 
-Then there's the trickiest step: combining that automatically-derived documentation with explicit documentation, things that people write themselves as documentation comments. That's all, well, merging tree data-structures and so on, and is one of the parts I most want to refactor!
+Then there's the trickiest step: combining that automatically-derived documentation with explicit documentation, things that people write themselves as source code comments. That's all done by merging tree data-structures and so on, and is one of the parts I most want to refactor!
 
 Then, finally, it has a big output system that can generate JSON, Markdown, and HTML documentation. I really want the output to be _great_ as a carrot for people to write documentation, so the project itself is responsible for at least the official theme.
 
 ## How does *documentation.js* differ from the other solutions?
 
-This is a crowded space! There are lots of documentation generators out there, which is why I maintain a big list of them on a page called [See Also](https://github.com/documentationjs/documentation/wiki/See-also).
+This is a crowded space! There are lots of documentation generators out there, which is why I maintain a big list of them on a wiki page called [See Also](https://github.com/documentationjs/documentation/wiki/See-also).
 
-The biggest player out there is [JSDoc](http://usejsdoc.org/), so I'll describe how documentation.js is different than it. First off, documentation.js has a system for automatically figuring out which files to document - doing the same trick as webpack or browserify to figure out what requires what and which functions are exported. I wanted that, so that code itself would be the authority that tells us what is public interface and what is private.
+The biggest player out there is [JSDoc](http://usejsdoc.org/), so I'll describe how *documentation.js* is different than it. First off, *documentation.js* has a system for automatically figuring out which files to document - doing the same trick as webpack or browserify to figure out what requires what and which functions are exported. I wanted that, so that code itself would be the authority that tells us what is public interface and what is private.
 
-The other big difference is that documentation.js aims to be universal and modern. We want to support new JavaScript features shortly after they're announced, and to use [Flow](https://flow.org/) types as information for automatic documentation. I was seeing so much information that previously fit into documentation, like property types, instead fitting into type systems like Flow, and I want to embrace that trend by leveraging that type information for documentation too.
+The other big difference is that *documentation.js* aims to be universal and modern. We want to support new JavaScript features shortly after they're announced, and to use [Flow](https://flow.org/) types as information for automatic documentation. I was seeing so much information that previously fit into documentation, like property types, instead fitting into type systems like Flow, and I want to embrace that trend by leveraging that type information for documentation too.
 
 ## Why did you develop *documentation.js*?
 
-I was using JSDoc quite a bit - first for the [Turf](http://turfjs.org/) project, and then for [Mapbox GL JS documentation](https://www.mapbox.com/mapbox-gl-js/api/). It's a great tool and still in many ways better and more robust than documentation.js. But it's in a place where lots of people rely on its stability, and the JavaScript ecosystem had changed so much since it was designed that I hoped that building something from scratch could make new styles of documentation possible.
+I was using JSDoc quite a bit - first for the [Turf](http://turfjs.org/) project, and then for [Mapbox GL JS documentation](https://www.mapbox.com/mapbox-gl-js/api/). JSDoc is a great tool and still in many ways better and more robust than *documentation.js*. But it's in a place where lots of people rely on its stability, and the JavaScript ecosystem has changed so much since it was designed. My thought was that building something from scratch could make new styles of documentation possible.
 
 Plus, it's a lot of fun. Documentation generation might seem bland on first glance, but it's an adventure through parsing, generation, static analysis, and so much more.
 
 ## What next?
 
-My first priority is to grow the documentation.js community, which I have lots of tactics to do, but nothing that's really worked so far. That's the most important thing to me, and I think to most maintainers of large projects.
+My first priority is to grow the *documentation.js* community. I have lots of strategies for doing this, but nothing has really worked so far. That's the most important thing to me and I think also to most maintainers of large projects.
 
-The other thing is learning from other projects. I've been amazed by the progress being made by projects like [ESDoc](https://esdoc.org/) and always think there are better ways I could structure documentation.js. Plus, there's an unending list of tasks that just entail keeping up with JavaScript itself: there are still some features like decorators that we don't support yet.
+The other thing is learning from other projects. I've been amazed by the progress being made by projects like [ESDoc](https://esdoc.org/) and always think there are better ways I could structure *documentation.js*. Plus, there's an unending list of tasks that just entail keeping up with JavaScript itself: there are still some features like decorators that we don't support yet.
 
 ## What does the future look like for *documentation.js* and web development in general? Can you see any particular trends?
 
-It's bright but uncertain: I love where the project is currently, but it's very large and has many corners that could use their own owners. In a perfect world, we'd have a team of 4 or 5, and, for instance, support for TypeScript could be 'owned' by someone who needed and used that support on a daily basis. As it stands right now, I'm pumped when another project or company adopts the module, but the ratio of work to versus people doing it continues to increase.
+It's bright but uncertain: I love where the project is currently, but it's very large and has many areas that could use their own owners. In a perfect world we'd have a team of 4 or 5 and, for an example of the ownership, support for TypeScript could be 'owned' by someone who needed and used that support on a daily basis. As it stands right now, I'm pumped when another project or company adopts the module, but the ratio of work to contributors continues to increase.
 
-Web development is weird and crazy right now. I think the biggest, most interesting trend I'll see in the next year is what happens when the bleeding-edge tech that was introduced 2 years ago becomes standard in all browsers. Native support for ES6 modules, for instance, will really change the landscape.
+Web development is weird and crazy right now. I think the biggest, most interesting development we'll see in the next year is the effect of the bleeding-edge tech that was introduced 2 years ago becoming standard in all browsers. Native support for ES6 modules, for instance, will really change the landscape.
 
 ## What advice would you give to programmers getting into web development?
 
-First, stay patient. Coding is difficult and frustrating, and the single most reliable sign I've seen of whether people will succeed is their ability to cope with frustration. You might need to laugh at yourself, or stop and breathe, or take a walk, but find something that works, because the feeling of being fooled by a program that _should_ work will never end.
+First of all, stay patient. Coding is difficult and frustrating, and the single most reliable sign I've noticed of whether people will succeed is their ability to cope with frustration. You might need to laugh at yourself, or stop and breathe, or take a walk. But find something that works, because the feeling of being fooled by a program that _should_ work will never end.
 
-Second, you can get really far by only working on the surface level, but you really shouldn't. Dig in, learn what's under the hood, read the code, and you'll get better, faster.
+Secondly, you can get really far by only working on the surface level, but you really shouldn't. Dig in, learn what's under the hood, read the code, and you'll get better, faster.
 
 ## Who should I interview next?
 
