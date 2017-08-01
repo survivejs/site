@@ -17,7 +17,7 @@ I'll begin this trip from Vienna. To slow down a bit, I'll stay there an entire 
 
 I'll be running [clinics](/clinic/) during my time in Vienna. They are three-hour sessions focused on webpack. I have [a particular set of slides](https://presentations.survivejs.com/webpack-the-good-parts/) to guide the discussion. Also, discussion over React is possible. The point of a clinic is to provide as much value as I can in two hours, and it can be adapted based on your needs.
 
-A clinic session of two hours costs 500 euros (VAT 0) for a company. I offer the same for individual developers for the price of 150 euros (capped to four developers per session). 20% of the income goes to Tobias Koppers as I want to support his efforts on webpack. You'll also have a chance to ask questions from him at the end of the session. I'll get the answers to you afterward.
+A clinic session of two hours costs 500 euros (VAT 0) for a company. I offer the same for individual developers for the price of 150 euros (capped to four developers per session). 20% of the income goes to Tobias Koppers as I want to support his efforts on webpack. You'll also have a chance to ask questions from him at the end of the session. I'll get the answers to you afterwards.
 
 I can also organize [full day workshops](/workshop/) in Vienna and nearby cities, even further. If you are interested, get in touch, and we'll make the schedule work.
 
