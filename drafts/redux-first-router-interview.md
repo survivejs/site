@@ -84,11 +84,11 @@ It was not all that complicated to do, so I was surprised that nobody had taken 
 
 Well, the point is that you have fewer actions when using *Redux-First Router*. Having fewer actions is a good, given how the number of actions can get out of control.
 
-Instead of having one action to show a drawer, and another action to close it (e.g. `'OPEN_DRAWER'` and `'CLOSE_DRAWER'`), you simply have `'FEED'` and `'NOTIFICATIONS'` which you'll need anyway. Then in the reducers, you must add some "tear down" code to open and close the drawer when you visit these routes. For instance, when you visit `'NOTIFICATIONS'` the `drawerOpen` state is `true` and when you visit `'FEED'`, `drawerOpen` is `false`.
+Instead of having one *setter-style* action to show a drawer, and another *setter-style* action to close it (e.g. `'OPEN_DRAWER'` and `'CLOSE_DRAWER'`), you simply have `'FEED'` and `'NOTIFICATIONS'` which you'll need anyway. Then in the reducers, you must add some "tear down" code to open and close the drawer when you visit these routes. For instance, when you visit `'NOTIFICATIONS'` the `drawerOpen` state is `true` and when you visit `'FEED'`, `drawerOpen` is `false`.
 
 Here's an example taken from the [Redux-First Router solving the 80% use-case for Middleware article](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262):
 
-**Old approach with many actions**
+**Old approach with many setter actions**
 ![old reducer](https://user-images.githubusercontent.com/154732/28441757-4145b8fe-6d61-11e7-8666-61c5843463ba.png)
 
 **New approach with fewer actions and smarter / fatter reducers:**
@@ -106,13 +106,13 @@ For truly professional apps, I can't see how seasoned developers would want it a
 
 ## What does the future look like for *redux-first-router* and web development in general? Can you see any particular trends?
 
-Simultaneous server-side rendering (SSR) and code splitting will become significant. It's been a gritty, time-consuming problem and nobody has wanted to solve it. My view is that the single page application is dead, and if you're not simultaneously SSRing and splitting you're doing it wrong.
+Simultaneous server-side rendering (SSR) and code splitting will become significant. It's been a gritty, time-consuming problem and nobody has wanted to solve it. My view is that the single page application is dead, and if you're not simultaneously SSRing and splitting you're doing it "wrong."
 
-Traffic from Google is the biggest driver for many businesses. It is the key component of basically anything online and to go without SSR is a mistake. Given the tools we are using are so heavy regarding bytes, it is a mistake not to split your code. Both need to be done together.
+Traffic from Google is the biggest driver for many businesses. It is a key component of basically anything online and to go without SSR is a mistake. Given the tools we are using are so heavy regarding bytes, it is also a mistake not to split your code. Both need to be done together.
 
 By the way, not splitting doesn't just increase bounce rates, it also compounds the *Google problem*, since Google likes fast sites.
 
-Until [now](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8), doing both SSR and code splitting has been a hair-pulling experience. Most people just gave up. I won't get into the nitty gritty of what the challenge is today. But you can read my [code cracked for SSR + Splitting article](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8) to learn why.
+Until [now](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8), doing both SSR and code splitting has been a hair-pulling experience. Most people just gave up. I won't get into the nitty gritty of what the challenge is today. But you can read my [code cracked for SSR + Splitting article](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8) and the recent [React Universal Component 2.0 launch article](https://medium.com/faceyspacey/announcing-react-universal-component-2-0-babel-plugin-universal-import-5702d59ec1f4) to learn why.
 
 Oh, and by the way, SSR with Redux-First Router is the most idiomatic Redux has ever been on the server. And due to the way my **Universal** product line works regardless of which router you use, simultaneous SSR and code splitting is a dream with Redux-First Router. There is still some stuff left to do, and if you've heard that splitting isn't related to routing, you've been misled. To do it at the highest level, you need to do prefetching.
 
