@@ -138,7 +138,7 @@ I've built the open source stuff I've built primarily because I refused to go an
 
 Also, don't focus on open source. If you do, make sure that your intentions are truly pure and that it makes sense for the juncture where you happen to be. For me, I have things I plan to create, and for the time being, I have the luxury to go the long first-principled route, which happens to align with open source contribution. After all, getting your creations in front of the most people is what it's all about. 
 
-But before anything else, get out in the real world. It's too easy to waste our lives a way in front of a computer. You'll miss everything. So with that thought, who has time for willy-nilly open source projects? Not me. If you do open source, make it count financially in one way or another. There's better places you can "give" and interact outside the digital realm. Programming is a business tool, a means to an end. No shame in that. Be about your business. Don't hide behind technology, whether that's your phone or immersing yourself in work. Learn people, follow what truly excites you (which won't be programming).
+But before anything else, get out in the real world. It's too easy to waste our lives a way in front of a computer. You'll miss everything. So with that thought, who has time for willy-nilly open source projects? Not me. If you do open source, make it count financially in one way or another. There's better places you can "give" and interact outside the digital realm. Programming is a business tool, a means to an end. No shame in that. Be about your business. Don't hide behind technology, whether that's your phone or immersing yourself in work. Learn people, follow what truly excites you.
 
 ### Empire Building is Fool's Gold
 
