@@ -174,7 +174,7 @@ Below you have a chronological history of how my James' product lines have been 
 
 - [Release Article -- Everything Doesn't Need To Be A Component](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)
 - [The "Sexy" On CodeSandBox Article](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)
-- [The 80% Use Case article: Data-Fetching + Middleware Debunking](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)
+- [The 80% Use Case Article: Data-Fetching + Middleware Debunking](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)
 
 **Universal:**
 
