@@ -148,7 +148,7 @@ Doing what's natural for you is the most important thing. Forcing anything will 
 
 ### Force Yourself to Become a Better Programmer
 
-So my advice to new programmers is: skip college lol, get yourself into a jam (or 2 or 3 or more lol) where you have to complete a product, and force yourself to become a better a programmer as the only option you have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
+So my advice to new programmers is: skip college lol, get yourself into a jam (or 2 or 3 or more lol) where you have to complete a product, and ***force*** yourself to become a better a programmer as the only option you [perceive you] have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
 
 ## Who should I interview next?
 
@@ -168,7 +168,7 @@ If you've ever felt Redux deserved a routing solution native to its workflow, gi
 
 Thanks for the interview James! Redux-First Router seems like a great addition to the ecosystem!
 
-Below you have chronological history of how my James' product lines have been progressing thus far:
+Below you have a chronological history of how my James' product lines have been progressing thus far:
 
 **Redux-First Router:**
 
@@ -187,4 +187,7 @@ Below you have chronological history of how my James' product lines have been pr
 - [redux-first-router](https://github.com/faceyspacey/redux-first-router) 🚀
 - [universal](https://github.com/faceyspacey/universal-render)
 
-If you find value in either product line, don't forget to star and tweet to let other developers know!
+
+And, if you'd like to give Redux-First Router a try, you can do so right here:
+
+<iframe src="https://codesandbox.io/embed/github/faceyspacey/redux-first-router-codesandbox/tree/master/?module=%2FroutesMap.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
