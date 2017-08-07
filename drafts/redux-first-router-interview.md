@@ -84,11 +84,11 @@ It was not all that complicated to do, so I was surprised that nobody had taken 
 
 Well, the point is that you have fewer actions when using *Redux-First Router*. Having fewer actions is a good, given how the number of actions can get out of control.
 
-Instead of having one action to show a drawer, and another action to close it (e.g. `'OPEN_DRAWER'` and `'CLOSE_DRAWER'`), you simply have `'FEED'` and `'NOTIFICATIONS'` which you'll need anyway. Then in the reducers, you must add some "tear down" code to open and close the drawer when you visit these routes. For instance, when you visit `'NOTIFICATIONS'` the `drawerOpen` state is `true` and when you visit `'FEED'`, `drawerOpen` is `false`.
+Instead of having one *setter-style* action to show a drawer, and another *setter-style* action to close it (e.g. `'OPEN_DRAWER'` and `'CLOSE_DRAWER'`), you simply have `'FEED'` and `'NOTIFICATIONS'` which you'll need anyway. Then in the reducers, you must add some "tear down" code to open and close the drawer when you visit these routes. For instance, when you visit `'NOTIFICATIONS'` the `drawerOpen` state is `true` and when you visit `'FEED'`, `drawerOpen` is `false`.
 
 Here's an example taken from the [Redux-First Router solving the 80% use-case for Middleware article](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262):
 
-**Old approach with many actions**
+**Old approach with many setter actions**
 ![old reducer](https://user-images.githubusercontent.com/154732/28441757-4145b8fe-6d61-11e7-8666-61c5843463ba.png)
 
 **New approach with fewer actions and smarter / fatter reducers:**
@@ -106,13 +106,13 @@ For truly professional apps, I can't see how seasoned developers would want it a
 
 ## What does the future look like for *redux-first-router* and web development in general? Can you see any particular trends?
 
-Simultaneous server-side rendering (SSR) and code splitting will become significant. It's been a gritty, time-consuming problem and nobody has wanted to solve it. My view is that the single page application is dead, and if you're not simultaneously SSRing and splitting you're doing it wrong.
+Simultaneous server-side rendering (SSR) and code splitting will become significant. It's been a gritty, time-consuming problem and nobody has wanted to solve it. My view is that the single page application is dead, and if you're not simultaneously SSRing and splitting you're doing it "wrong."
 
-Traffic from Google is the biggest driver for many businesses. It is the key component of basically anything online and to go without SSR is a mistake. Given the tools we are using are so heavy regarding bytes, it is a mistake not to split your code. Both need to be done together.
+Traffic from Google is the biggest driver for many businesses. It is a key component of basically anything online and to go without SSR is a mistake. Given the tools we are using are so heavy regarding bytes, it is also a mistake not to split your code. Both need to be done together.
 
 By the way, not splitting doesn't just increase bounce rates, it also compounds the *Google problem*, since Google likes fast sites.
 
-Until [now](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8), doing both SSR and code splitting has been a hair-pulling experience. Most people just gave up. I won't get into the nitty gritty of what the challenge is today. But you can read my [code cracked for SSR + Splitting article](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8) to learn why.
+Until [now](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8), doing both SSR and code splitting has been a hair-pulling experience. Most people just gave up. I won't get into the nitty gritty of what the challenge is today. But you can read my [code cracked for SSR + Splitting article](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8) and the recent [React Universal Component 2.0 launch article](https://medium.com/faceyspacey/announcing-react-universal-component-2-0-babel-plugin-universal-import-5702d59ec1f4) to learn why.
 
 Oh, and by the way, SSR with Redux-First Router is the most idiomatic Redux has ever been on the server. And due to the way my **Universal** product line works regardless of which router you use, simultaneous SSR and code splitting is a dream with Redux-First Router. There is still some stuff left to do, and if you've heard that splitting isn't related to routing, you've been misled. To do it at the highest level, you need to do prefetching.
 
@@ -126,21 +126,29 @@ Question your intentions before you do anything. You'll waste your time doing th
 
 The paradox is that it takes a long time to reach the sort of maturity where your intentions become "better". I started out in the game, not as a developer, but an entrepreneur wanting to build an empire. Reality has long since kicked my ass as I forced myself to become a coder to dig myself out of a hole. That is to say, *a long, VERY LONG, history*.
 
-### It's Not About Passion
+### It's Not About Passion, It's About Crafstmanship
 
 Mastering this craft is time-consuming. And it's not about passion. I like to think of myself as a straight-shooter cowboy type with a clarity of vision. Sure I have a passion for software, but it's more about the natural enthusiasm for creation and conception in general.
 
 The truth is I enjoy other things outside of staring at a screen far more. For me, it's about being a craftsman as a matter of maturity and integrity. To pay the bills, create value, and make real the stuff that only exists in my mind as I'm innately compelled to do.
 
-I've built open source projects primarily because I refused to start another project without these boxes checked.
+I've built the open source stuff I've built primarily because I refused to go another project without these boxes checked.
 
 ### Don't Focus on Open Source
 
-Also, don't focus on open source. If you do, make sure that your intentions are truly pure and that it makes sense for the juncture where you happen to be. For me, I have things I plan to create, and for the time being, I have the luxury to go the long first-principled route, which happens to align with open source contribution. After all, getting your creations in front of the most people is what it's all about.
+Also, don't focus on open source. If you do, make sure that your intentions are truly pure and that it makes sense for the juncture where you happen to be. For me, I have things I plan to create, and for the time being, I have the luxury to go the long first-principled route, which happens to align with open source contribution. After all, getting your creations in front of the most people is what it's all about. 
+
+But before anything else, get out in the real world. It's too easy to waste our lives a way in front of a computer. You'll miss everything. So with that thought, who has time for willy-nilly open source projects? Not me. If you do open source, make it count financially in one way or another. There's better places you can "give" and interact outside the digital realm. Programming is a business tool, a means to an end. No shame in that. Be about your business. Don't hide behind technology, whether that's your phone or immersing yourself in work. Learn people, follow what truly excites you.
+
+### Empire Building is Fool's Gold
+
+And if your intention is to build an empire and *"change the world!"*, I sincerely ask you to question what that is *really about* for you. Most of the things we're building, someone else will build in a matter of time. The world doesn't need you to change it, and you're going to go through a lot of unnecessary pain trying. That's all I'll say about that for now.
+
+Doing what's natural for you is the most important thing. Forcing anything will lead to bad results. But we're only human, and *forcing* is more often than not a core aspect of our journey--to getting somewhere where we no longer force things.
 
 ### Force Yourself to Become a Better Programmer
 
-So my advice to new programmers is: skip college, get yourself into a jam (or 2 or 3 or more) where you have to complete a product, and force yourself to become a better a programmer as the only option you have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
+So my advice to new programmers is: skip college lol, get yourself into a jam (or 2 or 3 or more lol) where you have to complete a product, and ***force*** yourself to become a better a programmer as the only option you [perceive you] have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
 
 ## Who should I interview next?
 
@@ -150,7 +158,7 @@ Here's someone else who you should interview:
 
 [@nchanged](https://github.com/nchanged) from [FuseBox](https://github.com/fuse-box/fuse-box)
 
-Perhaps I have an addiction to debunking stale solutions. Even though I get a tremendous amount of value from webpack, I'd love to see it built from the ground up, and everything made a lot simpler while still being flexible. I know I'm not alone in that feeling. FuseBox seems to show promise of being able to do that, but perhaps it's easier said than done.
+Perhaps I have an addiction to debunking stale solutions. Even though I get a tremendous amount of value from webpack, I'd love to see it built from the ground up, and everything made a lot simpler while still being flexible. I know I'm not alone in that feeling. FuseBox seems to show promise of being able to do that, but perhaps it's easier said than done. Webpack is also getting easier by the day, so it may be unnecessary.
 
 ## Any last remarks?
 
@@ -160,21 +168,30 @@ If you've ever felt Redux deserved a routing solution native to its workflow, gi
 
 Thanks for the interview James! Redux-First Router seems like a great addition to the ecosystem!
 
-Below you have chronological history of how my James' product lines have been progressing thus far:
+Below you have a chronological history of how my James' product lines have been progressing thus far:
 
 **Redux-First Router:**
 
-- [release article](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)
-- [the "sexy" on CodeSandBox article](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)
-- [data-fetching + Middleware debunking article](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)
+- [Release Article -- Everything Doesn't Need To Be A Component](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)
+- [The "Sexy" On CodeSandBox Article](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)
+- [The 80% Use Case Article: Data-Fetching + Middleware Debunking](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)
 
 **Universal:**
 
-- ["Code Cracked"--the article that started it all](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8)
-- [the "Magic Comments" article](https://medium.com/@faceyspacey/how-to-use-webpacks-new-magic-comment-feature-with-react-universal-component-ssr-a38fd3e296a)
-- [an accidentally popular article on importing both JS + CSS](https://medium.com/faceyspacey/webpacks-import-will-soon-fetch-js-css-here-s-how-you-do-it-today-4eb5b4929852)
+- ["Code Cracked"--The Article That Started It All](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8)
+- [The "Magic Comments" Article](https://medium.com/@faceyspacey/how-to-use-webpacks-new-magic-comment-feature-with-react-universal-component-ssr-a38fd3e296a)
+- [An Accidentally Popular Article On Importing Both JS + CSS ("dual imports")](https://medium.com/faceyspacey/webpacks-import-will-soon-fetch-js-css-here-s-how-you-do-it-today-4eb5b4929852)
+- [Announcing: React Universal Component 2.0 & babel-plugin-universal-import](https://medium.com/faceyspacey/announcing-react-universal-component-2-0-babel-plugin-universal-import-5702d59ec1f4)
 
 **Repositories:**
 
-- [redux-first-router](https://github.com/faceyspacey/redux-first-router)
-- [universal](https://github.com/faceyspacey/universal-render)
+- [redux-first-router](https://github.com/faceyspacey/redux-first-router) 🚀
+- [react-universal-component](https://github.com/faceyspacey/react-universal-component)
+- [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)
+- [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin)
+- [babel-plugin-universal-import](https://github.com/faceyspacey/babel-plugin-universal-import)
+
+
+And, if you'd like to give Redux-First Router a try, you can do so right here:
+
+<iframe src="https://codesandbox.io/embed/github/faceyspacey/redux-first-router-codesandbox/tree/master/?module=%2FroutesMap.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
