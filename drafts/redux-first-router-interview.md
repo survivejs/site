@@ -126,21 +126,29 @@ Question your intentions before you do anything. You'll waste your time doing th
 
 The paradox is that it takes a long time to reach the sort of maturity where your intentions become "better". I started out in the game, not as a developer, but an entrepreneur wanting to build an empire. Reality has long since kicked my ass as I forced myself to become a coder to dig myself out of a hole. That is to say, *a long, VERY LONG, history*.
 
-### It's Not About Passion
+### It's Not About Passion, It's About Crafstmanship
 
 Mastering this craft is time-consuming. And it's not about passion. I like to think of myself as a straight-shooter cowboy type with a clarity of vision. Sure I have a passion for software, but it's more about the natural enthusiasm for creation and conception in general.
 
 The truth is I enjoy other things outside of staring at a screen far more. For me, it's about being a craftsman as a matter of maturity and integrity. To pay the bills, create value, and make real the stuff that only exists in my mind as I'm innately compelled to do.
 
-I've built open source projects primarily because I refused to start another project without these boxes checked.
+I've built the open source stuff I've built primarily because I refused to go another project without these boxes checked.
 
 ### Don't Focus on Open Source
 
-Also, don't focus on open source. If you do, make sure that your intentions are truly pure and that it makes sense for the juncture where you happen to be. For me, I have things I plan to create, and for the time being, I have the luxury to go the long first-principled route, which happens to align with open source contribution. After all, getting your creations in front of the most people is what it's all about.
+Also, don't focus on open source. If you do, make sure that your intentions are truly pure and that it makes sense for the juncture where you happen to be. For me, I have things I plan to create, and for the time being, I have the luxury to go the long first-principled route, which happens to align with open source contribution. After all, getting your creations in front of the most people is what it's all about. 
+
+But before anything else, get out in the real world. It's too easy to waste our lives a way in front of a computer. You'll miss everything. So with that thought, who has time for willy-nilly open source projects? Not me. If you do open source, make it count financially in one way or another. There's better places you can "give" and interact outside the digital realm. Programming is a business tool, a means to an end. No shame in that. Be about your business. Don't hide behind technology, whether that's your phone or immersing yourself in work. Learn people, follow what truly excites you (which won't be programming).
+
+### Empire Building is Fool's Gold
+
+And if your intention is to build an empire and *"change the world!"*, I sincerely ask you to question what that is *really about* for you. Most of the things we're building, someone else will build in a matter of time. The world doesn't need you to change it, and you're going to go through a lot of unnecessary pain trying. That's all I'll say about that for now.
+
+Doing what's natural for you is the most important thing. Forcing anything will lead to bad results. But we're only human, and *forcing* is more often than not a core aspect of our journey--to getting somewhere where we no longer force things.
 
 ### Force Yourself to Become a Better Programmer
 
-So my advice to new programmers is: skip college, get yourself into a jam (or 2 or 3 or more) where you have to complete a product, and force yourself to become a better a programmer as the only option you have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
+So my advice to new programmers is: skip college lol, get yourself into a jam (or 2 or 3 or more lol) where you have to complete a product, and force yourself to become a better a programmer as the only option you have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
 
 ## Who should I interview next?
 
@@ -150,7 +158,7 @@ Here's someone else who you should interview:
 
 [@nchanged](https://github.com/nchanged) from [FuseBox](https://github.com/fuse-box/fuse-box)
 
-Perhaps I have an addiction to debunking stale solutions. Even though I get a tremendous amount of value from webpack, I'd love to see it built from the ground up, and everything made a lot simpler while still being flexible. I know I'm not alone in that feeling. FuseBox seems to show promise of being able to do that, but perhaps it's easier said than done.
+Perhaps I have an addiction to debunking stale solutions. Even though I get a tremendous amount of value from webpack, I'd love to see it built from the ground up, and everything made a lot simpler while still being flexible. I know I'm not alone in that feeling. FuseBox seems to show promise of being able to do that, but perhaps it's easier said than done. Webpack is also getting easier by the day, so it may be unnecessary.
 
 ## Any last remarks?
 
@@ -176,5 +184,7 @@ Below you have chronological history of how my James' product lines have been pr
 
 **Repositories:**
 
-- [redux-first-router](https://github.com/faceyspacey/redux-first-router)
+- [redux-first-router](https://github.com/faceyspacey/redux-first-router) 🚀
 - [universal](https://github.com/faceyspacey/universal-render)
+
+If you find value in either product line, don't forget to star and tweet to let other developers know!
