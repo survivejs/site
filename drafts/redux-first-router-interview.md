@@ -180,7 +180,8 @@ Below you have a chronological history of how my James' product lines have been 
 
 - ["Code Cracked"--the article that started it all](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8)
 - [the "Magic Comments" article](https://medium.com/@faceyspacey/how-to-use-webpacks-new-magic-comment-feature-with-react-universal-component-ssr-a38fd3e296a)
-- [an accidentally popular article on importing both JS + CSS](https://medium.com/faceyspacey/webpacks-import-will-soon-fetch-js-css-here-s-how-you-do-it-today-4eb5b4929852)
+- [an accidentally popular article on importing both JS + CSS ("dual imports")](https://medium.com/faceyspacey/webpacks-import-will-soon-fetch-js-css-here-s-how-you-do-it-today-4eb5b4929852)
+- [Announcing: React Universal Component 2.0 & babel-plugin-universal-import](https://medium.com/faceyspacey/announcing-react-universal-component-2-0-babel-plugin-universal-import-5702d59ec1f4)
 
 **Repositories:**
 
