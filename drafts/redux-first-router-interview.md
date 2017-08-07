@@ -185,7 +185,10 @@ Below you have a chronological history of how my James' product lines have been 
 **Repositories:**
 
 - [redux-first-router](https://github.com/faceyspacey/redux-first-router) 🚀
-- [universal](https://github.com/faceyspacey/universal-render)
+- [react-universal-component](https://github.com/faceyspacey/react-universal-component)
+- [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)
+- [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin)
+- [babel-plugin-universal-import](https://github.com/faceyspacey/babel-plugin-universal-import)
 
 
 And, if you'd like to give Redux-First Router a try, you can do so right here:
