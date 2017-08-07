@@ -1,6 +1,6 @@
 ---
 title: 'Rekit - Toolkit for building scalable React applications - Interview with Nate Wang'
-date: 2017-08-07
+date: 2017-08-09
 headerImage: '/assets/img/XXX.jpg'
 keywords: ['interview']
 ---

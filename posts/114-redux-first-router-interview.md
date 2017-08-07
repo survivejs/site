@@ -1,6 +1,6 @@
 ---
 title: 'Redux-First Router - Just dispatch actions - Interview with James Gillmore'
-date: 2017-08-04
+date: 2017-08-07
 headerImage: '/assets/img/redux-first.png'
 keywords: ['interview', 'reactjs', 'redux']
 ---
@@ -89,12 +89,43 @@ Instead of having one *setter-style* action to show a drawer, and another *sette
 Here's an example taken from the [Redux-First Router solving the 80% use-case for Middleware article](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262):
 
 **Old approach with many setter actions**
-![old reducer](https://user-images.githubusercontent.com/154732/28441757-4145b8fe-6d61-11e7-8666-61c5843463ba.png)
+
+```javascript
+const sidebarOpen = (state = false, action = {}) => {
+  switch (action.type) {
+    case 'SIDEBAR_CLOSED':
+      return false;
+    case 'SIDEBAR_OPEN':
+      return true;
+    default:
+      return state;
+  }
+}
+
+export default sidebarOpen;
+```
 
 **New approach with fewer actions and smarter / fatter reducers:**
-![new reducer](https://user-images.githubusercontent.com/154732/28441758-42bb28f4-6d61-11e7-9e29-563f96270ac3.png)
 
-So that's all I had to do - change my reducers, remove unnecessary actions being dispatched, make my reducers respond intelligently to a wider variety of actions, and voila! In record time I now had URLs and could deep link into my app.
+```javascript
+const sidebarOpen = (state = false, action = {}) => {
+  switch (action.type) {
+    case 'HOME':
+    case 'LIST':
+    case 'VIDEO':
+    case 'LOGIN':
+      return false;
+    case 'SETTINGS':
+      return true;
+    default:
+      return state;
+  }
+}
+
+export default sidebarOpen;
+```
+
+So that's all I had to do - change my reducers, remove unnecessary actions being dispatched, make my reducers respond intelligently to a wider variety of actions, and voilà! In record time I now had URLs and could deep link into my app.
 
 ## What next?
 
@@ -148,7 +179,7 @@ Doing what's natural for you is the most important thing. Forcing anything will 
 
 ### Force Yourself to Become a Better Programmer
 
-So my advice to new programmers is: skip college lol, get yourself into a jam (or 2 or 3 or more lol) where you have to complete a product, and ***force*** yourself to become a better a programmer as the only option you [perceive you] have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
+So my advice to new programmers is: skip college lol, get yourself into a jam (or 2 or 3 or more lol) where you have to complete a product, and ***force*** yourself to become a better a programmer as the only option you perceive you have. Then after you know a thing or two with conviction, build something only you have the unique insights to build.
 
 ## Who should I interview next?
 
