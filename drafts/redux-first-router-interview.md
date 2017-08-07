@@ -172,15 +172,15 @@ Below you have a chronological history of how my James' product lines have been 
 
 **Redux-First Router:**
 
-- [release article](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)
-- [the "sexy" on CodeSandBox article](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)
-- [data-fetching + Middleware debunking article](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)
+- [Release Article -- Everything Doesn't Need To Be A Component](https://medium.com/@faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea)
+- [The "Sexy" On CodeSandBox Article](https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053)
+- [The 80% Use Case article: Data-Fetching + Middleware Debunking](https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262)
 
 **Universal:**
 
-- ["Code Cracked"--the article that started it all](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8)
-- [the "Magic Comments" article](https://medium.com/@faceyspacey/how-to-use-webpacks-new-magic-comment-feature-with-react-universal-component-ssr-a38fd3e296a)
-- [an accidentally popular article on importing both JS + CSS ("dual imports")](https://medium.com/faceyspacey/webpacks-import-will-soon-fetch-js-css-here-s-how-you-do-it-today-4eb5b4929852)
+- ["Code Cracked"--The Article That Started It All](https://medium.com/@faceyspacey/code-cracked-for-code-splitting-ssr-in-reactlandia-react-loadable-webpack-flush-chunks-and-1a6b0112a8b8)
+- [The "Magic Comments" Article](https://medium.com/@faceyspacey/how-to-use-webpacks-new-magic-comment-feature-with-react-universal-component-ssr-a38fd3e296a)
+- [An Cccidentally Popular Article On Importing Both JS + CSS ("dual imports")](https://medium.com/faceyspacey/webpacks-import-will-soon-fetch-js-css-here-s-how-you-do-it-today-4eb5b4929852)
 - [Announcing: React Universal Component 2.0 & babel-plugin-universal-import](https://medium.com/faceyspacey/announcing-react-universal-component-2-0-babel-plugin-universal-import-5702d59ec1f4)
 
 **Repositories:**
