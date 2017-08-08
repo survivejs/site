@@ -3,6 +3,7 @@ title: 'Redux-First Router - Just dispatch actions - Interview with James Gillmo
 date: 2017-08-07
 headerImage: '/assets/img/redux-first.png'
 keywords: ['interview', 'reactjs', 'redux']
+editors: ['bebraw', 'karlhorky']
 ---
 
 Routing is one of those classic topics that comes up again and again. [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) itself is quite simple, but there are different opinions on how to apply the idea of routing on web applications and sites.
