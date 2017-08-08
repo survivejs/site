@@ -187,9 +187,7 @@ So my advice to new programmers is: skip college lol, get yourself into a jam (o
 
 Interview someone who's leading the serverless charge when it comes to React. That's another trend that will explode soon as a few more puzzle pieces come together. Perhaps the [Dawson](https://github.com/dawson-org/dawson-cli) guys. I haven't tried it yet, but I'd love to see serverless made stupid simple for the React crowd, and they seem to be on that path.
 
-Here's someone else who you should interview:
-
-[@nchanged](https://github.com/nchanged) from [FuseBox](https://github.com/fuse-box/fuse-box)
+Here's someone else who you should interview: [@nchanged](https://github.com/nchanged) from [FuseBox](https://github.com/fuse-box/fuse-box).
 
 Perhaps I have an addiction to debunking stale solutions. Even though I get a tremendous amount of value from webpack, I'd love to see it built from the ground up, and everything made a lot simpler while still being flexible. I know I'm not alone in that feeling. FuseBox seems to show promise of being able to do that, but perhaps it's easier said than done. Webpack is also getting easier by the day, so it may be unnecessary.
 
