@@ -21,7 +21,7 @@ A clinic session of two hours costs 500 euros (VAT 0) for a company. I offer the
 
 I can also organize [full day workshops](/workshop/) in Vienna and nearby cities, even further. If you are interested, get in touch, and we'll make the schedule work.
 
-My schedule for Vienna is relaxed, and it gives me time to do certain technical work that has been pending a while. It's also an excellent opportunity to write and prepare two presentations I have pending!
+My schedule for Vienna is relaxed, and it gives me time to do certain technical work that has been pending a while. It's also an excellent opportunity to write and prepare two presentations!
 
 > [Register to Vienna clinics!](https://survivejs.doodle.com/poll/mihayszmt5teb858)
 
