@@ -2,7 +2,7 @@
 title: 'React-Bootstrap - Bootstrap Rebuilt for React - Interview with Matt Smith'
 date: 2015-10-13
 headerImage: '/assets/img/bootstrap.jpg'
-keywords: ['interview', 'reactjs', 'ui']
+keywords: ['interview', 'react', 'ui']
 ---
 
 [Bootstrap](http://getbootstrap.com/) is easily one of the most popular CSS frameworks out there. Beyond grids and basic layout utilities, it provides a nice set of widgets to use. Even though you can use the CSS with React, this may become cumbersome quite soon. You will likely end up wrapping portions of Bootstrap within components of your own.

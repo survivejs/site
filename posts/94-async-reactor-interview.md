@@ -2,7 +2,7 @@
 title: 'async-reactor - Render Async Stateless Functional Components in React - Interview with Sven Sauleau'
 date: 2017-05-15
 headerImage: '/assets/img/reactor.jpg'
-keywords: ['interview', 'reactjs']
+keywords: ['interview', 'react']
 ---
 
 One common way to deal with asynchronous concerns (fetching for example) in React is to push the problem to a state manager or handling it through life cycle methods. Sometimes that can feel a bit much, though, and a lighter solution would be nice.

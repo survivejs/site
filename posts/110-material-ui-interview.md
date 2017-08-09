@@ -2,7 +2,7 @@
 title: "Material-UI - React Components that Implement Google's Material Design - Interview with Olivier Tassinari"
 date: 2017-07-21
 headerImage: '/assets/img/material.jpg'
-keywords: ['interview', 'reactjs', 'ui']
+keywords: ['interview', 'react', 'ui']
 editors: ['bebraw', 'karlhorky']
 ---
 

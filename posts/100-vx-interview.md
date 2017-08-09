@@ -2,7 +2,7 @@
 title: 'vx - The Power of D3 with the Benefits of React - Interview with Harrison Shoff'
 date: 2017-06-12
 headerImage: '/assets/img/vx.png'
-keywords: ['interview', 'reactjs', 'visualization']
+keywords: ['interview', 'react', 'visualization']
 ---
 
 Data visualization is a big topic itself. When it comes to the web, [D3](https://d3js.org/) is perhaps the most well-known solution. Even though you can wrap it with React quite quickly, there is value in having specific solutions.
