@@ -97,16 +97,13 @@ But I don't regret it as I have learned a lot in the process, ranging from how t
 
 ## What comes next?
 
-We are in the middle of a rewrite on the [v1-alpha branch](https://github.com/callemall/material-ui/tree/v1-alpha). The rewrite effort was started one year ago by [Nathan Marks](https://github.com/nathanmarks).
+We are going to try to follow this plan:
 
-Personally, I have stopped using the v0.x releases. We are going to try to follow this plan:
-
-1. Address the styling issue and move from *alpha* to [*beta*](https://github.com/callemall/material-ui/milestone/22).
-2. Publish the first beta releases.
-3. Fix the last API inconsistencies (in beta we will still make breaking changes).
-4. Merge the beta branch into master.
-5. Publish the first pre-releases and fix any issues that come up.
-6. Publish v1! 🎉
+1. Publish the first beta releases.
+2. Fix the last API inconsistencies (in beta we will still make breaking changes).
+3. Merge the beta branch into master.
+4. Publish the first pre-releases and fix any issues that come up.
+5. Publish v1! 🎉
 
 At that point, some features and components from v0.x will be missing in v1.
 So, what about them?
