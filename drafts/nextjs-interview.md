@@ -26,46 +26,47 @@ In late 2016, I discovered Next.js and started contributing to it. After Kadira'
 
 ## How would you describe *Next.js* to someone who has never heard of it?
 
-I think everyone is familiar with the concept of JavaScript fatigue. Basically, creating a web app with JavaScript can be hard with all of the packages that we have today. React, webpack, Redux, React Router join many more other libraries and tools that one may need to learn to create advanced applications.
+I think everyone is familiar with the concept of JavaScript fatigue. Basically, creating a web app with JavaScript is often hard with all of the packages and options that we have today. React, webpack, Redux, React Router and many more libraries and tools are often used and require effort to learn.
 
-In comparison, creating a simple PHP app is still pretty simple today. You just create some files and deploy them.
+In comparison, writing a simple PHP app can be as easy as just creating some files and deploying them.
 
-With Next.js we let developers to build apps just like they might do that with PHP. Just create some pages by exporting a React component and deploy your app. No need to setup Webpack or do any special routing and state management.
+With Next.js we enable developers to build JavaScript apps with a simpler workflow like in the PHP example. Just create some files that export React components and deploy your app. No need to set up webpack or do any special routing or state management.
 
-It support Server Side Rendering by default. It's also highly optimized for modern day web performance.
+Next.js also does server side rendering by default, among many other performance optimizations.
 
 ## How does *Next.js* work?
 
-Let me show you that with an example.
+Let me show you with an example.
 
-First we need to create a npm project with:
+We first create our project and initialize an npm package.json:
 
-```
+```sh
 mkdir hello-next
 cd hello-next
 npm init -y
 ```
 
-Then we install Next.js and react
+Then we install *Next.js* and the React dependencies and create a `pages` directory:
 
-```
+```sh
 npm install --save next react react-dom
+mkdir pages
 ```
 
-Then we create a directory called `pages` and add the following content to a file called "pages/index.js"
+In the pages directory, we create a file at `pages/index.js` with the following content:
 
 ```jsx
 import Link from 'next/link'
 
 export default () => (
   <div>
-    <p>Welcome, This is the Home page</p>
+    <p>Welcome, this is the home page.</p>
     <Link href="/about"><a>About Page</a></Link>
   </div>
 )
 ```
 
-After that add following content into a file called "pages/about.js"
+We also make a file called `pages/about.js` containing this code:
 
 ```js
 export default () => (
@@ -73,9 +74,9 @@ export default () => (
 )
 ```
 
-Now add the folling NPM script to the `package.json`.
+We add a script for the development server to the `package.json`:
 
-```
+```json
 {
   "scripts": {
     "dev": "next"
@@ -83,38 +84,42 @@ Now add the folling NPM script to the `package.json`.
 }
 ```
 
-Finally run `npm run dev` and you can see the app started on 'https://localhost:3000'.
-You can edit pages and the content will be updated instantly using webpack HMR.
+Finally we run that script to start the development server:
 
-This is just the beginning. You can do a lot with Next.js. You can even customize the base Webpack and Babel configuration too.
-I suggest to visit [Next.js repo](https://github.com/zeit/next.js) for more info.
+```sh
+npm run dev
+```
+
+The app will be started on https://localhost:3000. Any changes to pages and content will be updated instantly in the browser by webpack's hot module replacement (HMR).
+
+This is just the beginning. You can do a lot with *Next.js*. You can even customize the base webpack and Babel configuration too.
+I suggest visiting the [Next.js repo](https://github.com/zeit/next.js) for more info.
 
 ## How does *Next.js* differ from the other solutions?
 
-Here I'll primarly focus on other solution for building React apps. I'd like to compare with two solutions.
+Here I'll focus on comparing *Next.js* with two other solutions for building React apps.
 
-**1. Custom Webpack, Babel setup**
+**1. Custom webpack and Babel setup**
 
-Here you need to maintain your own configurations. And you need to update them as underline projects changes. If you manage multiple apps, this will be a real problem.
+Here you need to maintain your own configurations and update them for new versions of your dependencies. If you manage multiple apps, upgrading the dependencies and updating all configurations everywhere will be a real problem.
 
-If you use Next.js you don't need to worry about these configurations. We comes with decent deaults and allow you to customize as needed.
+If you use Next.js, you don't need to worry about these configurations. It comes along with sane defaults but also allows you to customize as needed.
 
 **2. Create React App (CRA)**
 
-CRA is the React's official solution for above. It's works well. But still, you need to deal with Routing on your own. You can't customize the configurations.
-And it's very difficult to do server side rendering.
+Create React App is Facebook's official solution for building React apps without build configuration. It works well for what it does. It doesn't, however, deal with routing, so you need to deal with this on your own. Furthermore, you can't customize as much of the webpack and Babel configurations. Server side rendering is also very difficult to do.
 
-For some apps, CRA is a good solution.
+For some apps, Create React App is a good solution.
 
-But if you go with Next.js, you'll get server side rendering and no need to worry about Routing.
-We've a built in file system based routing system and a custom routing setup for dynamic pages.
-Since the routing it built into the framework, we can do very cool things like:
+But with Next.js, you'll get server side rendering for free and no need to worry about routing. The built-in routing system is file system-based and custom routes can be set up for dynamic pages.
 
-* Server Side rendering by default.
+Since the routing is built into the framework, we can do very cool things like:
+
+* Server side rendering by default
 * Automatic code splitting
-* A simple data fetching solution for pages.
+* Simple data fetching solution for pages
 
-Basically, you can build a decent web app without worrying about Configurations, routing and state management.
+Basically, you can build a decent web app without worrying about configuration, routing and state management.
 
 ## Why did you develop *Next.js*?
 
