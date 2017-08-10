@@ -18,20 +18,19 @@ TODO: I'll fill this up and link to your Twitter
 
 </p>
 
-I started working with JavaScript when I was stydying at the university. Then I involved with Joomla and Status.net as a part of Google Summer of Code. That's my introduction to Open Source. Then I started working with Meteor related projects and founded kadira.io. (It was a performance monitoring solution for Meteor).
+I started working with JavaScript while I was studying at university. After this I had my first introduction to open source - I got involved with Joomla and Status.net as a part of Google Summer of Code.
 
-At that time, I started React Storybook with my colleagues at Kadira.
-Then we had to shutdown Kadira. 
+My work started to turn towards Meteor-related projects next and I founded kadira.io, a performance monitoring solution for Meteor. At Kadira, I started React Storybook with my colleagues, but eventually we needed to shut down Kadira.
 
-In late 2016, I discovered Next.js and started to contributing to it. After we formally shutdown Kadira, I joined ZEIT to maintain Next.js and take it further.
+In late 2016, I discovered Next.js and started contributing to it. After Kadira's formal shutdown, I joined ZEIT to maintain Next.js and take it further.
 
 ## How would you describe *Next.js* to someone who has never heard of it?
 
-I think everyone familiar with the concept of JavaScripr fatigue. Basically, creating a web app with JavaScript is hard. You need to learn about React, Webpack, Redux, React Router and the list goes on.
+I think everyone is familiar with the concept of JavaScript fatigue. Basically, creating a web app with JavaScript can be hard with all of the packages that we have today. React, webpack, Redux, React Router join many more other libraries and tools that one may need to learn to create advanced applications.
 
-But creating a simple PHP app is pretty simple. You just create some files and deploy them.
+In comparison, creating a simple PHP app is still pretty simple today. You just create some files and deploy them.
 
-With Next.js we let developers to build apps just like they might do that with PHP. Just create some pages by exporting a React component and deploy your app. No need to setup Webpack or do any special routing and state management. 
+With Next.js we let developers to build apps just like they might do that with PHP. Just create some pages by exporting a React component and deploy your app. No need to setup Webpack or do any special routing and state management.
 
 It support Server Side Rendering by default. It's also highly optimized for modern day web performance.
 
@@ -84,7 +83,7 @@ Now add the folling NPM script to the `package.json`.
 }
 ```
 
-Finally run `npm run dev` and you can see the app started on 'https://localhost:3000'. 
+Finally run `npm run dev` and you can see the app started on 'https://localhost:3000'.
 You can edit pages and the content will be updated instantly using webpack HMR.
 
 This is just the beginning. You can do a lot with Next.js. You can even customize the base Webpack and Babel configuration too.
@@ -102,7 +101,7 @@ If you use Next.js you don't need to worry about these configurations. We comes 
 
 **2. Create React App (CRA)**
 
-CRA is the React's official solution for above. It's works well. But still, you need to deal with Routing on your own. You can't customize the configurations. 
+CRA is the React's official solution for above. It's works well. But still, you need to deal with Routing on your own. You can't customize the configurations.
 And it's very difficult to do server side rendering.
 
 For some apps, CRA is a good solution.
