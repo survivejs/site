@@ -30,7 +30,7 @@ I think everyone is familiar with the concept of JavaScript fatigue. Basically, 
 
 In comparison, writing a simple PHP app can be as easy as just creating some files and deploying them.
 
-With Next.js we enable developers to build JavaScript apps with a simpler workflow like in the PHP example. Just create some files that export React components and deploy your app. No need to set up webpack or do any special routing or state management.
+With Next.js we enable developers to build JavaScript web apps with a simpler workflow like in the PHP example. Just create some files that export React components and deploy your app. No need to set up webpack or do any special routing or state management.
 
 Next.js also does server side rendering by default, among many other performance optimizations.
 
@@ -123,10 +123,10 @@ Basically, you can build a decent web app without worrying about configuration, 
 
 ## Why did you develop *Next.js*?
 
-It was built to develop ZEIT's webapp https://zeit.co. I didn't work at ZEIT at that time. It was primarly built by [@nkzawa](https://twitter.com/nkzawa?lang=en).
+Actually, I didn't work at ZEIT at the time it was built - it was primarily built by [@nkzawa](https://twitter.com/nkzawa) to develop ZEIT's web app https://zeit.co.
 Since it was a success, ZEIT released it as an open source project.
 
-After that, we develop features as they needed to continue to build https://zeit.co and the community helps us to fix bugs and requesting and developing new features.
+Since then, we develop features as they are needed to continue building https://zeit.co and the community helps us by fixing bugs and requesting and developing new features.
 
 ## What next?
 
