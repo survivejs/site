@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 
 export default React.createClass({
-  displayName: 'Author',
+  displayName: "Author",
 
   render: function() {
     var author = this.props.author;
 
     return (
-      <div className='post__author'>{author}</div>
+      <div className="post__author">
+        {author}
+      </div>
     );
   }
 });

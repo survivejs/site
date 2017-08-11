@@ -1,8 +1,8 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React from "react";
+import { Link } from "react-router";
 
 export default React.createClass({
-  displayName: 'PrevNextMini',
+  displayName: "PrevNextMini",
   render() {
     var page = this.props.page;
 
@@ -14,17 +14,17 @@ export default React.createClass({
     );
   },
   renderNext(next) {
-    return next ?
-      <Link className="next-page" to={`/${next.url}`} title={next.title}>
-        <i className="icon-right-open" />
-      </Link> :
-      null;
+    return next
+      ? <Link className="next-page" to={`/${next.url}`} title={next.title}>
+          <i className="icon-right-open" />
+        </Link>
+      : null;
   },
   renderPrev(prev) {
-    return prev ?
-      <Link className="previous-page" to={`/${prev.url}`} title={prev.title}>
-        <i className="icon-left-open" />
-      </Link> :
-      null;
+    return prev
+      ? <Link className="previous-page" to={`/${prev.url}`} title={prev.title}>
+          <i className="icon-left-open" />
+        </Link>
+      : null;
   }
 });

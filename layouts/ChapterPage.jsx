@@ -1,15 +1,15 @@
-import React from 'react';
-import Router from 'react-router';
+import React from "react";
+import Router from "react-router";
 
-import Disqus from 'antwar-helpers/components/Disqus';
-import LatestPost from '../components/LatestPost';
-import PrevNext from '../components/PrevNext';
-import PrevNextMini from '../components/PrevNextMini';
-import SocialLinks from '../components/SocialLinks';
-import Toc from '../components/Toc';
+import Disqus from "antwar-helpers/components/Disqus";
+import LatestPost from "../components/LatestPost";
+import PrevNext from "../components/PrevNext";
+import PrevNextMini from "../components/PrevNextMini";
+import SocialLinks from "../components/SocialLinks";
+import Toc from "../components/Toc";
 
 export default React.createClass({
-  displayName: 'Chapter',
+  displayName: "Chapter",
   render() {
     const section = this.props.section;
     const page = this.props.page;
@@ -17,20 +17,25 @@ export default React.createClass({
 
     return (
       <div className="chapter__wrapper">
-        {page.headerImage ?
-          <div className="header-image" style={{
-            backgroundImage: `url(${page.headerImage})`
-          }}></div> :
-          null
-        }
+        {page.headerImage
+          ? <div
+              className="header-image"
+              style={{
+                backgroundImage: `url(${page.headerImage})`
+              }}
+            />
+          : null}
 
-        <h1 className="post__heading">{page.title}</h1>
+        <h1 className="post__heading">
+          {page.title}
+        </h1>
 
-        {page.headerExtra ?
-          <div className="header-extra"
-            dangerouslySetInnerHTML={{__html: page.headerExtra}} /> :
-          null
-        }
+        {page.headerExtra
+          ? <div
+              className="header-extra"
+              dangerouslySetInnerHTML={{ __html: page.headerExtra }}
+            />
+          : null}
 
         <div className="toc-nav__wrapper">
           <h4 className="search-nav--header">Search</h4>
@@ -55,13 +60,35 @@ export default React.createClass({
 
             <SocialLinks type={page.type} />
 
-            <PrevNext page={page} previousText='Previous chapter' nextText='Next chapter' />
+            <PrevNext
+              page={page}
+              previousText="Previous chapter"
+              nextText="Next chapter"
+            />
 
             <blockquote className="tip">
-              {section.name === 'webpack' ?
-              <p>This book is available through <a href="https://leanpub.com/survivejs-webpack">Leanpub (digital)</a>, <a href="https://www.amazon.com/dp/9526868803">Amazon (paperback)</a>, and <a href="https://www.amazon.com/dp/B06XWZZGBS">Kindle (digital)</a>. By purchasing the book you support the development of further content. A part of profit (~30%) goes to Tobias Koppers, the author of webpack.</p> :
-              <p>This book is <a href="https://leanpub.com/survivejs-react">available through Leanpub</a>. By purchasing the book you support the development of further content.</p>
-              }
+              {section.name === "webpack"
+                ? <p>
+                    This book is available through{" "}
+                    <a href="https://leanpub.com/survivejs-webpack">
+                      Leanpub (digital)
+                    </a>,{" "}
+                    <a href="https://www.amazon.com/dp/9526868803">
+                      Amazon (paperback)
+                    </a>, and{" "}
+                    <a href="https://www.amazon.com/dp/B06XWZZGBS">
+                      Kindle (digital)
+                    </a>. By purchasing the book you support the development of
+                    further content. A part of profit (~30%) goes to Tobias
+                    Koppers, the author of webpack.
+                  </p>
+                : <p>
+                    This book is{" "}
+                    <a href="https://leanpub.com/survivejs-react">
+                      available through Leanpub
+                    </a>. By purchasing the book you support the development of
+                    further content.
+                  </p>}
             </blockquote>
 
             <div id="disqus_thread" />
@@ -69,12 +96,12 @@ export default React.createClass({
         </div>
         <PrevNextMini page={page} />
 
-        <Disqus shortname='survivejs' />
+        <Disqus shortname="survivejs" />
       </div>
     );
   },
   renderBuy(sectionName) {
-    if(sectionName === 'webpack') {
+    if (sectionName === "webpack") {
       return (
         <div>
           <BuyWebpack />
@@ -95,7 +122,7 @@ export default React.createClass({
     );
   },
   renderResources(resources) {
-    if(!resources || !resources.length) {
+    if (!resources || !resources.length) {
       return;
     }
 
@@ -105,68 +132,112 @@ export default React.createClass({
 
         <ul className="resources-nav">
           {resources.map((resource, i) => {
-            return <li key={`resourceItem${i}`}><a
-              href={`${resource.url}`}
-              className="resource-nav__link"
-              target="_blank">
-              {resource.name}
-            </a></li>
+            return (
+              <li key={`resourceItem${i}`}>
+                <a
+                  href={`${resource.url}`}
+                  className="resource-nav__link"
+                  target="_blank"
+                >
+                  {resource.name}
+                </a>
+              </li>
+            );
           })}
         </ul>
       </div>
     );
   },
   renderPostMeta(item) {
-    if(!(item.endSource || item.demo)) {
+    if (!(item.endSource || item.demo)) {
       return;
     }
 
     return (
       <div className="post__meta">
-        {item.endSource ?
-          <a className="post__end_source"
-            href={item.endSource}
-            target="_blank">Finished source code</a> :
-          null
-        }
-        {item.demo ?
-          <a className="post__demo"
-            href={item.demo}
-            target="_blank">Demo</a> :
-          null
-        }
+        {item.endSource
+          ? <a
+              className="post__end_source"
+              href={item.endSource}
+              target="_blank"
+            >
+              Finished source code
+            </a>
+          : null}
+        {item.demo
+          ? <a className="post__demo" href={item.demo} target="_blank">
+              Demo
+            </a>
+          : null}
       </div>
     );
   },
   renderPostContent(item) {
-    return <div className="chapter-content"
-      dangerouslySetInnerHTML={{__html: item.content}}></div>;
+    return (
+      <div
+        className="chapter-content"
+        dangerouslySetInnerHTML={{ __html: item.content }}
+      />
+    );
   }
 });
 
-const BuyWebpack = () => (
-  <div className='buy-container'>
+const BuyWebpack = () =>
+  <div className="buy-container">
     <a href="/webpack/foreword">
-      <img className='sidebar-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
+      <img
+        className="sidebar-cover"
+        src="/assets/img/webpack_title_page_small.png"
+        width="255"
+        height="329"
+      />
     </a>
 
     <p>
-      <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
-      <a className='btn btn--normal btn--buy' href='https://www.amazon.com/dp/9526868803/'>Buy at Amazon</a>
-      <a className='btn btn--normal btn--buy' href='https://www.amazon.com/dp/B06XWZZGBS'>Buy for Kindle</a>
-      <a className='btn btn--normal btn--buy' href='https://survivejs.typeform.com/to/LUQK0T'>Buy Signed LE</a>
+      <a
+        className="btn btn--normal btn--buy"
+        href="https://leanpub.com/survivejs-webpack"
+      >
+        Buy at Leanpub
+      </a>
+      <a
+        className="btn btn--normal btn--buy"
+        href="https://www.amazon.com/dp/9526868803/"
+      >
+        Buy at Amazon
+      </a>
+      <a
+        className="btn btn--normal btn--buy"
+        href="https://www.amazon.com/dp/B06XWZZGBS"
+      >
+        Buy for Kindle
+      </a>
+      <a
+        className="btn btn--normal btn--buy"
+        href="https://survivejs.typeform.com/to/LUQK0T"
+      >
+        Buy Signed LE
+      </a>
     </p>
-  </div>
-);
+  </div>;
 
-const BuyReact = () => (
-  <div className='buy-container'>
+const BuyReact = () =>
+  <div className="buy-container">
     <a href="/react/introduction">
-      <img className='sidebar-cover' src='/assets/img/react_title_page_small.png' width='255' height='329' />
+      <img
+        className="sidebar-cover"
+        src="/assets/img/react_title_page_small.png"
+        width="255"
+        height="329"
+      />
     </a>
 
     <p>
-      <a className='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-react'>Buy at Leanpub</a>
+      <a
+        className="btn btn--normal btn--buy"
+        href="https://leanpub.com/survivejs-react"
+      >
+        Buy at Leanpub
+      </a>
     </p>
-  </div>
-);
+  </div>;

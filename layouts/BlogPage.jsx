@@ -1,17 +1,17 @@
-import _ from 'lodash';
-import React from 'react';
-import titleCase from 'title-case';
+import _ from "lodash";
+import React from "react";
+import titleCase from "title-case";
 
-import Disqus from 'antwar-helpers/components/Disqus';
-import Moment from 'antwar-helpers/components/Moment';
-import Author from '../components/Author';
-import PrevNext from '../components/PrevNext';
-import PrevNextMini from '../components/PrevNextMini';
-import SocialLinks from '../components/SocialLinks';
-import Toc from '../components/Toc';
+import Disqus from "antwar-helpers/components/Disqus";
+import Moment from "antwar-helpers/components/Moment";
+import Author from "../components/Author";
+import PrevNext from "../components/PrevNext";
+import PrevNextMini from "../components/PrevNextMini";
+import SocialLinks from "../components/SocialLinks";
+import Toc from "../components/Toc";
 
 export default React.createClass({
-  displayName: 'BlogPage',
+  displayName: "BlogPage",
   render() {
     const section = this.props.section;
     const page = this.props.page;
@@ -20,58 +20,61 @@ export default React.createClass({
     let author = page.author || (config.blog && config.blog.author);
     const relatedPosts = getRelatedPosts(page.keywords, section.pages(), 10);
     const relatedHeaders = {
-      interview: 'Interviews',
-      opinion: 'Opinions',
-      publishing: 'Publishing thoughts'
+      interview: "Interviews",
+      opinion: "Opinions",
+      publishing: "Publishing thoughts"
     };
 
-    if(_.isFunction(author)) {
+    if (_.isFunction(author)) {
       author = author();
     }
 
     return (
       <div className="post__wrapper">
-        {page.headerImage ?
-          <div className="header-image" style={{
-            backgroundImage: `url(${page.headerImage})`
-          }} /> :
-          null
-        }
+        {page.headerImage
+          ? <div
+              className="header-image"
+              style={{
+                backgroundImage: `url(${page.headerImage})`
+              }}
+            />
+          : null}
 
-        <h1 className="post__heading">{page.title}</h1>
+        <h1 className="post__heading">
+          {page.title}
+        </h1>
 
         <div className="toc-nav__wrapper">
-          <RelatedPosts page={page} posts={relatedPosts} headers={relatedHeaders} />
+          <RelatedPosts
+            page={page}
+            posts={relatedPosts}
+            headers={relatedHeaders}
+          />
         </div>
 
         <div className="post">
           <div className="post__content">
-            {page.isDraft ?
-              <span className="draft-text">Draft</span> :
-              null
-            }
-            <div dangerouslySetInnerHTML={{__html: page.content}} />
-            {page.headerExtra ?
-              <div className="header-extra"
-                dangerouslySetInnerHTML={{__html: page.headerExtra}} /> :
-              null
-            }
-            {page.date ?
-              <Moment className="post__moment" datetime={page.date} /> :
-              null
-            }
-            {author ?
-              <Author author={author} /> :
-              null
-            }
-            {editors ?
-              <Editors editors={editors} /> :
-              null
-            }
+            {page.isDraft ? <span className="draft-text">Draft</span> : null}
+            <div dangerouslySetInnerHTML={{ __html: page.content }} />
+            {page.headerExtra
+              ? <div
+                  className="header-extra"
+                  dangerouslySetInnerHTML={{ __html: page.headerExtra }}
+                />
+              : null}
+            {page.date
+              ? <Moment className="post__moment" datetime={page.date} />
+              : null}
+            {author ? <Author author={author} /> : null}
+            {editors ? <Editors editors={editors} /> : null}
 
             <SocialLinks type="blog post" />
 
-            <PrevNext page={page} previousText="Previous post" nextText="Next post" />
+            <PrevNext
+              page={page}
+              previousText="Previous post"
+              nextText="Next post"
+            />
 
             <div id="disqus_thread" />
           </div>
@@ -85,30 +88,34 @@ export default React.createClass({
   }
 });
 
-function Editors({editors}) {
+function Editors({ editors }) {
   const editorLinks = {
     bebraw: {
-      name: 'Juho Vepsäläinen',
-      url: 'https://twitter.com/bebraw'
+      name: "Juho Vepsäläinen",
+      url: "https://twitter.com/bebraw"
     },
     karlhorky: {
-      name: 'Karl Horky',
-      url: 'https://twitter.com/karlhorky'
+      name: "Karl Horky",
+      url: "https://twitter.com/karlhorky"
     }
   };
 
   return (
-    <div className="post__author">Edited by {editors.map((editor, i) => (
-      <div style={{ display: 'inline' }} key={`editor-${i}`}>
-        <a href={editorLinks[editor].url} className="twitter">{editorLinks[editor].name}</a>
-        {i < editors.length -1 && <span>, </span>}
-      </div>
-    ))}
+    <div className="post__author">
+      Edited by{" "}
+      {editors.map((editor, i) =>
+        <div style={{ display: "inline" }} key={`editor-${i}`}>
+          <a href={editorLinks[editor].url} className="twitter">
+            {editorLinks[editor].name}
+          </a>
+          {i < editors.length - 1 && <span>, </span>}
+        </div>
+      )}
     </div>
   );
 }
 
-function RelatedPosts({page, posts, headers}) {
+function RelatedPosts({ page, posts, headers }) {
   return (
     <div>
       {_.map(posts, (pages, name) => {
@@ -118,7 +125,9 @@ function RelatedPosts({page, posts, headers}) {
 
         return (
           <div key={`related-posts-${name}`}>
-            <h4 className="toc-nav--header">{headers[name] || titleCase(name)}</h4>
+            <h4 className="toc-nav--header">
+              {headers[name] || titleCase(name)}
+            </h4>
 
             <Toc sectionPages={() => pages} page={page} />
           </div>
@@ -131,14 +140,14 @@ function RelatedPosts({page, posts, headers}) {
 function getRelatedPosts(keywords, pages, limit) {
   let ret = {}; // keyword -> posts
 
-  keywords.forEach((keyword) => {
-    if(!ret[keyword]) {
+  keywords.forEach(keyword => {
+    if (!ret[keyword]) {
       ret[keyword] = [];
     }
 
-    pages.forEach((page) => {
-      if(page.keywords && page.keywords.indexOf(keyword) >= 0) {
-        if(ret[keyword].length > limit) {
+    pages.forEach(page => {
+      if (page.keywords && page.keywords.indexOf(keyword) >= 0) {
+        if (ret[keyword].length > limit) {
           return;
         }
 

@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-var marked = require('marked');
+var marked = require("marked");
 
 module.exports = function(markdown) {
-    this.cacheable();
+  this.cacheable();
 
-    return marked(markdown);
+  return marked(markdown);
 };

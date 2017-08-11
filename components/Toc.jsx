@@ -1,8 +1,8 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React from "react";
+import { Link } from "react-router";
 
 export default React.createClass({
-  displayName: 'Toc',
+  displayName: "Toc",
   render() {
     const sectionPages = this.props.sectionPages;
     const page = this.props.page;
@@ -10,18 +10,24 @@ export default React.createClass({
     return (
       <ul className="toc-nav">
         {sectionPages().map((navPage, i) => {
-          const type = navPage.type || '';
+          const type = navPage.type || "";
 
-          return <li key={`navPage${i}`} className={type && 'toc-' + type}>
-          {navPage.title === page.title ?
-            <span className={`toc-nav__link toc-nav__link--current ${type}`}>
-              {navPage.title}
-            </span> :
-            <Link to={`/${navPage.url}`} className={`toc-nav__link ${type}`}>
-              {navPage.title}
-            </Link>
-          }
-          </li>
+          return (
+            <li key={`navPage${i}`} className={type && "toc-" + type}>
+              {navPage.title === page.title
+                ? <span
+                    className={`toc-nav__link toc-nav__link--current ${type}`}
+                  >
+                    {navPage.title}
+                  </span>
+                : <Link
+                    to={`/${navPage.url}`}
+                    className={`toc-nav__link ${type}`}
+                  >
+                    {navPage.title}
+                  </Link>}
+            </li>
+          );
         })}
       </ul>
     );

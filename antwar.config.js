@@ -1,16 +1,16 @@
-'use strict';
-var path = require('path');
+"use strict";
+var path = require("path");
 
-var React = require('react');
-var _ = require('lodash');
-var themeConfig = require('antwar-default-theme');
-var rssPlugin = require('antwar-rss-plugin');
-var prevnextPlugin = require('antwar-prevnext-plugin');
+var React = require("react");
+var _ = require("lodash");
+var themeConfig = require("antwar-default-theme");
+var rssPlugin = require("antwar-rss-plugin");
+var prevnextPlugin = require("antwar-prevnext-plugin");
 
-var reactHeaders = require('./headers/react');
-var webpackHeaders = require('./headers/webpack');
+var reactHeaders = require("./headers/react");
+var webpackHeaders = require("./headers/webpack");
 
-var sections = require('./sections');
+var sections = require("./sections");
 
 var cwd = process.cwd();
 
@@ -18,7 +18,7 @@ var cwd = process.cwd();
 themeConfig.webpack.common = {
   resolveLoader: {
     alias: {
-      markdown: path.join(cwd, 'loaders/markdown')
+      markdown: path.join(cwd, "loaders/markdown")
     }
   }
 };
@@ -27,25 +27,25 @@ module.exports = {
   webpack: themeConfig.webpack, // SCSS bits
   assets: [
     {
-      from: '../react/manuscript/images',
-      to: 'react/images',
+      from: "../react/manuscript/images",
+      to: "react/images"
     },
     {
-      from: '../webpack/manuscript/images',
-      to: 'webpack/images',
+      from: "../webpack/manuscript/images",
+      to: "webpack/images"
     },
     {
-      from: '../react/project_source/builds',
-      to: 'demos',
+      from: "../react/project_source/builds",
+      to: "demos"
     },
     {
-      from: './extra',
-      to: '.'
+      from: "./extra",
+      to: "."
     }
   ],
-  output: 'build',
-  title: 'SurviveJS',
-  author: 'Juho Vepsäläinen',
+  output: "build",
+  title: "SurviveJS",
+  author: "Juho Vepsäläinen",
   blog: {
     author: function() {
       return React.createElement(
@@ -61,9 +61,15 @@ module.exports = {
       );
     }
   },
-  keywords: ['webpack', 'react', 'javascript', 'programming', 'web development'],
+  keywords: [
+    "webpack",
+    "react",
+    "javascript",
+    "programming",
+    "web development"
+  ],
   deploy: {
-    branch: 'gh-pages',
+    branch: "gh-pages"
   },
   pageTitle: function(config, pageTitle) {
     var siteName = config.name;
@@ -74,25 +80,25 @@ module.exports = {
   },
   plugins: [
     rssPlugin({
-      baseUrl: 'http://survivejs.com/',
-      sections: ['blog'],
+      baseUrl: "http://survivejs.com/",
+      sections: ["blog"]
     }),
     prevnextPlugin()
   ],
   layout: function() {
-    return require('./layouts/Body.jsx');
+    return require("./layouts/Body.jsx");
   },
   style: function() {
-    require('./styles/custom.scss');
-    require('./styles/prism.css');
-    require('./styles/fontello-codes.css');
-    require('./styles/fontello-embedded.css');
+    require("./styles/custom.scss");
+    require("./styles/prism.css");
+    require("./styles/fontello-codes.css");
+    require("./styles/fontello-embedded.css");
   },
   paths: {
-    '/': {
+    "/": {
       path: function() {
-        return require.context('./pages', false, /^\.\/.*\.jsx$/);
-      },
+        return require.context("./pages", false, /^\.\/.*\.jsx$/);
+      }
     },
     blog: sections.blog(),
     clinic: sections.clinic(),

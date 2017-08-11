@@ -1,20 +1,20 @@
-'use strict';
-var marked = require('marked');
+"use strict";
+var marked = require("marked");
 
 module.exports = function(section) {
   // alter marked renderer to add slashes to beginning so images point at root
   // leanpub expects images without slash...
-  section = section ? '/' + section + '/' : '/';
+  section = section ? "/" + section + "/" : "/";
 
   var renderer = new marked.Renderer();
 
   renderer.paragraph = function(text) {
     // Skip pagebreaks
-    if (text === '{pagebreak}') {
-      return '';
+    if (text === "{pagebreak}") {
+      return "";
     }
 
-    return '<p>' + text + '</p>\n';
+    return "<p>" + text + "</p>\n";
   };
 
   renderer.image = function(href, title, text) {
@@ -22,33 +22,41 @@ module.exports = function(section) {
   };
 
   renderer.em = function(text) {
-    var webpackBook = require('./webpack-book');
+    var webpackBook = require("./webpack-book");
 
     // Perform a lookup against webpack book chapter definition to figure
     // out whether to link or not
     const match = webpackBook[text];
 
     if (match) {
-      return '<a href="' + match.url + '">' + text + '</a>';
+      return '<a href="' + match.url + '">' + text + "</a>";
     }
 
-    return '<em>' + text + '</em>';
+    return "<em>" + text + "</em>";
   };
 
   // patch ids (this.options.headerPrefix can be undefined!)
   renderer.heading = function(text, level, raw) {
-    var id = raw.toLowerCase().replace(/[^\w]+/g, '-');
+    var id = raw.toLowerCase().replace(/[^\w]+/g, "-");
 
-    return '<h'
-      + level
-      + ' class="header">'
-      + '<a class="header-anchor" href="#' + id + '" id="' + id + '"></a>'
-      + '<span class="text">'
-      + text
-      + '</span><a class="header-anchor-select" href="#' + id + '">#</a>'
-      + '</h'
-      + level
-      + '>\n';
+    return (
+      "<h" +
+      level +
+      ' class="header">' +
+      '<a class="header-anchor" href="#' +
+      id +
+      '" id="' +
+      id +
+      '"></a>' +
+      '<span class="text">' +
+      text +
+      '</span><a class="header-anchor-select" href="#' +
+      id +
+      '">#</a>' +
+      "</h" +
+      level +
+      ">\n"
+    );
   };
 
   return {
@@ -64,9 +72,9 @@ module.exports = function(section) {
         smartLists: false,
         silent: false,
         highlight: highlight || false,
-        langPrefix: 'lang-',
+        langPrefix: "lang-",
         smartypants: false,
-        headerPrefix: '',
+        headerPrefix: "",
         renderer: renderer,
         xhtml: false
       };
@@ -75,14 +83,16 @@ module.exports = function(section) {
       return marked.parser(tokens, markedDefaults);
     }
   };
-}
+};
 
 function parseQuotes(data) {
   var tokens = marked.lexer(data).map(function(t) {
-    if(t.type === 'paragraph') {
-      return parseCustomQuote(t, 'T>', 'tip') ||
-        parseCustomQuote(t, 'W>', 'warning') ||
-        t;
+    if (t.type === "paragraph") {
+      return (
+        parseCustomQuote(t, "T>", "tip") ||
+        parseCustomQuote(t, "W>", "warning") ||
+        t
+      );
     }
 
     return t;
@@ -93,15 +103,23 @@ function parseQuotes(data) {
 }
 
 function parseCustomQuote(token, match, className) {
-  if(token.type === 'paragraph') {
+  if (token.type === "paragraph") {
     var text = token.text;
 
-    if(text.indexOf(match) === 0) {
-      var icon = className === 'tip' ? 'icon-attention-circled' : 'icon-attention';
+    if (text.indexOf(match) === 0) {
+      var icon =
+        className === "tip" ? "icon-attention-circled" : "icon-attention";
 
       return {
-        type: 'html',
-        text: '<blockquote class="' + className + '"><i class="' + icon + '"></i>' + text.slice(2).trim() + '</blockquote>',
+        type: "html",
+        text:
+          '<blockquote class="' +
+          className +
+          '"><i class="' +
+          icon +
+          '"></i>' +
+          text.slice(2).trim() +
+          "</blockquote>"
       };
     }
   }

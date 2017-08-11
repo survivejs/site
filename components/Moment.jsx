@@ -1,11 +1,11 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
+import moment from "moment";
 
 export default React.createClass({
-  displayName: 'Moment',
+  displayName: "Moment",
   getDefaultProps() {
     return {
-      format: 'D MMM YYYY',
+      format: "D MMM YYYY",
       style: {}
     };
   },
