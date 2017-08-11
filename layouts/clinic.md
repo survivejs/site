@@ -1,4 +1,4 @@
-## SurviveJS - Webpack Clinic
+## Webpack Clinic
 
 A clinic is a miniature version of my [workshops](/workshop/). Maybe you have specific problems in mind and want specific feedback on those. The exact content is customized per client and we can spend time with your code in addition to general topics. I use [a specific set of slides](https://presentations.survivejs.com/webpack-the-good-parts/) to run the conversation.
 
@@ -18,10 +18,6 @@ A 3h session costs 150 euros per individual and it's capped to four participants
 
 If you want me on-site, you'll have to cover travel related costs.
 
-## Vienna Clinics
-
-I will arrange webpack clinics in Vienna, Austria between 3.8-25.8 (August). [Sign up at Doodle](https://survivejs.doodle.com/poll/mihayszmt5teb858).
-
 ## Remote Clinic
 
 You can [book a remote clinic](https://calendly.com/survivejs/clinic-for-remote) for 200 euros per an hour session if that's more convenient to you.
@@ -29,5 +25,3 @@ You can [book a remote clinic](https://calendly.com/survivejs/clinic-for-remote)
 ## How to Purchase?
 
 You should contact me through the means you find most convenient for further details (see the site footer). Email is possible too (`info @ domain`).
-
-> Online sessions and brief consulting are possible too on request.

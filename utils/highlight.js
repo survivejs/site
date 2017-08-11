@@ -1,18 +1,28 @@
-"use strict";
-var Prism = require("prismjs");
-var languages = require("prism-languages");
+// Ported from webpack.js.org
+const Prism = require("prismjs");
+const languages = require("prism-languages");
 
 attachPrismHooks(Prism);
 
-var highlight = Prism.highlight;
+const highlight = Prism.highlight;
 
-module.exports = function(code, language) {
+if (typeof document !== "undefined") {
+  // disable automatic highlight on content loaded
+  const script =
+    document.currentScript ||
+    [].slice.call(document.getElementsByTagName("script")).pop();
+  script.setAttribute("data-manual", "");
+}
+
+module.exports = function highlightPrism(code, language = "bash") {
   try {
-    language = language || "bash";
-
     return leanpubify(highlight(code, languages[language]));
-  } catch (err) {
-    console.warn("Failed to highlight", language, code, err);
+  } catch (error) {
+    if (!languages[language]) {
+      console.warn("Prism does not support this language: ", language);
+    } else {
+      console.warn("Prism failed to highlight: ", error);
+    }
   }
 
   return code;

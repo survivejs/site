@@ -1,5 +1,3 @@
-## SurviveJS - Workshop
-
 ## Webpack Workshop
 
 I've debugged hundreds of webpack configurations during my time with the tool and learned a lot about its pain points. It's a complex tool that begins to make more sense after you appreciate the basic ideas behind it.
