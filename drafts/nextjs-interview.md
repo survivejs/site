@@ -124,45 +124,39 @@ Basically, you can build a decent web app without worrying about configuration, 
 ## Why did you develop *Next.js*?
 
 Actually, I didn't work at ZEIT at the time it was built - it was primarily built by [@nkzawa](https://twitter.com/nkzawa) to develop ZEIT's web app https://zeit.co.
-Since it was a success, ZEIT released it as an open source project.
+Because it was a success, ZEIT released it as an open source project.
 
-Since then, we develop features as they are needed to continue building https://zeit.co and the community helps us by fixing bugs and requesting and developing new features.
+Since then, features are developed when they are needed to continue building https://zeit.co and the community helps by fixing bugs and requesting and developing new features.
 
 ## What next?
 
-We try to make Next.js as simple and lean as possible. We don't try to implement many features.
-Instead we want to build a very solid infrasture and encourage to reuse existing libraries and frameworks on top of Next.js.
+We try to keep *Next.js* as simple and lean as possible. We avoid implementing too many features. Instead we aim to build a very solid infrastructure and encourage reuse of existing libraries and frameworks on top of Next.js.
 
-We are going to ship Next.js 3.0 with dynamic import and static HTML exporting support pretty soon.
-After that, our focus is on improving overall stability and reduce the dev and production build time of the app.
+We just released *Next.js* 3.0 with dynamic imports and static HTML exporting support. The next topics we will focus on are improving overall stability and reducing the dev and production build time of the app.
 
 ## What does the future look like for *Next.js* and web development in general? Can you see any particular trends?
 
-I think we'll see more rich web apps in the future thanks to recent performance improvements on browsers. Web Assembly will be something huge. We'll be able to develop web apps using solid tools available for desktop and server side apps.
-Basically a webapps will completely obsolete Desktop apps.
+I think we'll see more rich web apps in the future thanks to recent performance improvements in browsers. Web Assembly will have a huge impact on the industry. Solid tooling will allow development of web apps available for both desktops and servers. Effects like these will lead to web apps to completely obsoleting desktop apps.
 
-With Next.js we'll always try to allow developers to build fast web apps without worrying too much about different APIs and configurations.
+Our goal with Next.js will always be to allow developers to build fast web apps without too much hassle with different APIs and configurations.
 
 ## What advice would you give to programmers getting into web development?
 
-First learn the basics well. For an example for the front-end web development, learn HTML, CSS and JavaScript correctly.
-Then focus on couple of frameworks you'll like and develop a carrier on top of them.
+First of all, learn the basics well. For example, with front-end web development, learn the ins and outs of HTML, CSS and JavaScript. Then focus on a couple of frameworks you like and develop a career on top of them.
 
-This space is changing so rapidly, so always look for what's new and keep in touch with them.
+The industry is changing very rapidly, so always look for what's new and stay updated.
 
-But don't try to change frameworks because they are new and cool. Only do that, if your current framework doesn't work well or you can find more jobs with the new framework.
+Don't switch frameworks because there's something new and cool. Only do that if your current framework doesn't work well or if the new one increases your job opportunities.
 
 ## Who should I interview next?
 
-I think JavaScript is huge area. I don't have specific person to mention.
-May be you can look at the GitHub trending page.
+JavaScript has a huge ecosystem. I don't have specific person to mention. The GitHub trending page may have some interesting people to interview.
 
 ## Any last remarks?
 
-As a project maintainer on GitHub, I'd love people search internet and the existing issues before creating new issues.
-If that's a new issue, always provide a way to reproduce the issue. (Better if that's a GitHub repo.)
+As a project maintainer on GitHub, I really appreciate it when developers search the web and the existing issues before creating new issues. If it's really a new issue, always provide a way to reproduce the issue (often better as a GitHub repo).
 
-That'll save us a ton of time and we can really fix legitimate issues and add new features.
+That saves us a ton of time so that we can fix legitimate issues and still add new features.
 
 ## Conclusion
 
