@@ -5,6 +5,7 @@ const rssPlugin = require("antwar-rss-plugin");
 const generateAdjacent = require("./utils/generate-adjacent");
 const clean = require("./utils/clean");
 
+// TODO: generate react demos on build
 // TODO: fix page descriptions
 // TODO: fix react extras + source links
 // TODO: add source links to webpack book
@@ -46,7 +47,7 @@ module.exports = () => ({
           },
           layout: () => require("./layouts/BlogPage").default,
           transform: pages =>
-            generateAdjacent(_.sortBy(pages, "date")).reverse(),
+            generateAdjacent(_.sortBy(pages, "file.attributes.date")).reverse(),
           url: ({ fileName }) => `/${clean.chapterName(fileName)}/`,
           redirects: require("./redirects/blog")
         }

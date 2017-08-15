@@ -71,13 +71,6 @@ function commonConfig() {
         {
           from: "./assets/extra/",
           to: "./assets/"
-        },
-        // XXXXX: These should be generated on build (netlify!)
-        // XXXXX: These files end up in webpack asset graph!!!
-        // -> messes up HtmlWebpackPlugin behavior
-        {
-          from: "../react/project_source/builds",
-          to: "demos"
         }
       ])
     ],

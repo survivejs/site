@@ -3,7 +3,6 @@ import React from "react";
 import {
   Disqus,
   Buy,
-  LatestPost,
   Meta,
   PrevNext,
   PrevNextMini,
@@ -11,6 +10,7 @@ import {
   SocialLinks,
   Toc
 } from "@survivejs/components";
+import LatestPost from "../components/LatestPost";
 
 const BookPage = ({
   page: {
