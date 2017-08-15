@@ -7,7 +7,7 @@ function getRelatedPosts(keywords, pages = [], limit) {
     }
 
     (pages || []).forEach(page => {
-      if (page.keywords && page.keywords.indexOf(keyword) >= 0) {
+      if (page.file.attributes.keywords.indexOf(keyword) >= 0) {
         if (ret[keyword].length > limit) {
           return;
         }

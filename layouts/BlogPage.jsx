@@ -17,9 +17,9 @@ const BlogPage = ({
   page: {
     file: {
       attributes: { author, date, headerExtra, headerImage, title },
-      body
+      body,
+      keywords
     },
-    keywords,
     previous,
     next
   },
@@ -33,6 +33,8 @@ const BlogPage = ({
     opinion: "Opinions",
     publishing: "Publishing thoughts"
   };
+
+  console.log("related posts", relatedPosts);
 
   if (_.isFunction(postAuthor)) {
     postAuthor = postAuthor();
