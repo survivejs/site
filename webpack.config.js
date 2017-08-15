@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const merge = require("webpack-merge");
 const autoprefixer = require("autoprefixer");
@@ -66,14 +65,6 @@ function commonConfig() {
         }
       ]
     },
-    plugins: [
-      new CopyWebpackPlugin([
-        {
-          from: "./assets/extra/",
-          to: "./assets/"
-        }
-      ])
-    ],
     resolve: {
       alias: {
         assets: path.resolve(__dirname, "assets"),
