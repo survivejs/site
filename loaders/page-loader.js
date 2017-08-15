@@ -19,7 +19,7 @@ module.exports = function pageLoader(source) {
     parse.header(this.resourcePath)
   );
 
-  result.title = result.attributes.title || "SurviveJS";
+  result.title = title || result.attributes.title || "SurviveJS";
 
   result.preview = generatePreview(result, body);
   result.description = generateDescription(result);

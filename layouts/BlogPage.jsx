@@ -16,9 +16,10 @@ import getRelatedPosts from "../utils/get-related-posts";
 const BlogPage = ({
   page: {
     file: {
-      attributes: { author, date, headerExtra, headerImage, title },
+      attributes: { author, date, headerExtra, headerImage },
       body,
-      keywords
+      keywords,
+      title
     },
     previous,
     next

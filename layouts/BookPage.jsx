@@ -15,15 +15,9 @@ import LatestPost from "../components/LatestPost";
 const BookPage = ({
   page: {
     file: {
-      attributes: {
-        endSource,
-        demo,
-        headerExtra,
-        headerImage,
-        title,
-        resources
-      },
-      body
+      attributes: { endSource, demo, headerExtra, headerImage, resources },
+      body,
+      title
     },
     previous,
     next,
