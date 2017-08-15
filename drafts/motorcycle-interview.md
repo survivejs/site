@@ -90,23 +90,23 @@ Only in the past year have I reduced my activity on Cycle.js and begun to focus 
 
 Motorcycle has become stable over the past 2 years. The next venture in Motorcycle will be to upgrade to depend on [`@most/core`](https://github.com/mostjs/core) which is a large improvement over the current version of Most.js. This shouldn't take too long after a v1.0.0 release.
 
-Spoiler: I plan to rebrand `Motorcycle.js` to `Motorcycle.ts` to further emphasize our commitment to having the best TypeScript typings the language allows. We're also looking to vastly improve documentation, split existing packages up into smaller pieces, and providing a great deal more testing utilities and commonly used functions. Essentially, we're looking to begin fostering a community around the project and continue to grow.
+Spoiler: I plan to rebrand `Motorcycle.js` to `Motorcycle.ts` to further emphasize our commitment to having the best TypeScript typings the language allows. We're also looking to vastly improve documentation, split existing packages up into smaller pieces, and providing a great deal more testing utilities and commonly used functions. Essentially, we want to foster the community around the project and continue to grow.
 
 ## What does the future look like for *Motorcycle.js* and web development in general? Can you see any particular trends?
 
-I think functional and reactive programming is creeping more and more into mainstream web development, and we'll be seeing more and more ideas exploring them. Motorcycle will always be trying to push this trend further and into the limelight.
+I think functional and reactive programming is creeping more and more into mainstream web development, and we'll be seeing more and more ideas exploring them. Motorcycle will continue to support this trend and bring these programming styles more into the limelight.
 
 ## What advice would you give to programmers getting into web development?
 
-Being self-taught, all the advice I can give is find a project that piques your curiosity and join their community and work hard to contribute regardless of you skill level. I found Cycle.js in August 2015, joined the community, and just tried making things, almost none of which anyone use today. The people active in those days would ask questions, do code reviews, and provide all kinds of tips to progressing and growing. Ask questions, be curious, and never stop asking yourself and others how you can improve your skills at and away from a keyboard.
+Being self-taught, all the advice I can give is to find a project that piques your curiosity, join their community, and work hard to contribute regardless of your skill level. I found Cycle.js in August 2015, joined the community, and just tried making things, almost none of which anyone uses today. The people active in those days would ask questions, do code reviews, and provide all kinds of tips to learn and grow. Ask questions, be curious, and never stop asking yourself and others how you can improve your skills at and away from a keyboard.
 
 ## Who should I interview next?
 
-I think it'd be great to interview André Staltz; He's doing some really awesome work to free people from large companies exploiting our privacy for profits.
+I think it'd be great to interview André Staltz. He's doing some really awesome work to free people from large companies exploiting our privacy for profits.
 
 ## Any last remarks?
 
-I'd just really like to thank everyone from the early Cycle.js days: [André Staltz](https://github.com/staltz), [Nick Johnstone](https://github.com/widdershin) [Frederik Krautwald](https://github.com/frikki) and [Nathan Ridley](https://github.com/axefrog). I'd also really like to thank the Most.js core team: [Brian Cavalier](https://github.com/briancavalier) and [David Chase](https://github.com/davidchase). Without these people, and others along the way, I'd still work 50+ hours a week in a coffee shop. I can't thank them enough!
+I'd really like to thank everyone from the early Cycle.js days: [André Staltz](https://github.com/staltz), [Nick Johnstone](https://github.com/widdershin) [Frederik Krautwald](https://github.com/frikki) and [Nathan Ridley](https://github.com/axefrog). I'd also really like to thank the Most.js core team: [Brian Cavalier](https://github.com/briancavalier) and [David Chase](https://github.com/davidchase). Without these people and others along the way, I'd still work 50+ hours a week in a coffee shop. I can't thank them enough!
 
 ## Conclusion
 
