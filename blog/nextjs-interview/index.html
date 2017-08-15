@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta
+      name="description"
+      content="" />
+    <meta
+      name="keywords"
+      content="interview,reactjs,webpack" />
+    <title>Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala</title>
+    
+    <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
+
+    
+      <link href="/site.f42268113d3c658ca584.css" rel="stylesheet">
+    
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"
+    />
+  </head>
+  <body>
+    <div><div class="post__wrapper"><div class="header-image" style="background-image:url(/ee6463e6b20d176ace3368931872378c.jpg);"></div><h1 class="post__heading">Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala</h1><div class="toc-nav__wrapper"><div><div><h4 class="toc-nav--header">Interviews</h4><ul class="toc-nav"><li class="toc-undefined"><span class="toc-nav__link toc-nav__link--current undefined">Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala</span></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/rekit-interview/">Rekit - Toolkit for building scalable React applications - Interview with Nate Wang</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/redux-first-router-interview/">Redux-First Router - Just dispatch actions - Interview with James Gillmore</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/documentationjs-interview/">documentation.js - The documentation system for modern JavaScript - Interview with Tom MacWright</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/rill-interview/">Rill - Universal web application framework - Interview with Dylan Piercey</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/dll-interview/">d-l-l - Easy, automatic, optimized DLL config handler for webpack - Interview with James Wiens</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/material-ui-interview/">Material-UI - React Components that Implement Google&#x27;s Material Design - Interview with Olivier Tassinari</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/dont-break-interview/">dont-break - Check if you break dependents - Interview with Gleb Bahmutov</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/rollup-interview/">Rollup - Next-generation ES6 module bundler - Interview with Rich Harris</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/jss-interview/">JSS - Author CSS Using JavaScript as a Host Language - Interview with Oleg Slobodskoi</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/renovate-interview/">renovate - Keep npm dependencies up-to-date - Interview with Rhys Arkins</a></li></ul></div><div></div><div><h4 class="toc-nav--header">Webpack</h4><ul class="toc-nav"><li class="toc-undefined"><span class="toc-nav__link toc-nav__link--current undefined">Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala</span></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/dll-interview/">d-l-l - Easy, automatic, optimized DLL config handler for webpack - Interview with James Wiens</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/webpackbin-interview/">WebpackBin - Webpack Code Sandbox - Interview with Christian Alfoni</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-20-results-errata/">SurviveJS - Webpack - v2.0 - Results and Errata</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-20/">SurviveJS - Webpack - v2.0</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-19/">SurviveJS - Webpack - v1.9</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-18/">SurviveJS - Webpack - v1.8</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-170/">SurviveJS - Webpack - v1.7.0</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-160/">SurviveJS - Webpack - v1.6.0</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/isomorphic-webpack-interview/">isomorphic-webpack - Universal module consumption using webpack - Interview with Gajus Kuizinas</a></li><li class="toc-undefined"><a class="toc-nav__link undefined" href="/blog/survivejs-webpack-150/">SurviveJS - Webpack - v1.5.0</a></li></ul></div></div></div><div class="post"><div class="post__content"><div><p>Building universal web applications combining server side rendering with front-end is popular these days. The approach is not without its problems, though. Now you have the extra challenge of managing code so that it works on the both sides. Due to the differences between them, you will run into a series of problems.</p>
+<p><a href="https://github.com/zeit/next.js/">next.js</a> was developed to handle these concerns for React. To understand the approach, I&#39;m interviewing <a href="https://twitter.com/arunoda">Arunoda Susiripala</a> this time.</p>
+<h2 class="header"><a class="header-anchor" href="#can-you-tell-a-bit-about-yourself-" id="can-you-tell-a-bit-about-yourself-"></a><span class="text">Can you tell a bit about yourself?</span><a class="header-anchor-select" href="#can-you-tell-a-bit-about-yourself-">#</a></h2>
+<p>
+<span class="author">
+  <img src="https://www.gravatar.com/avatar/ab13df38843556b57f7d2f6fe78003cf?s=200" alt="Arunoda Susiripala" class="author" width="100" height="100" />
+</span>
+
+I started working with JavaScript while I was studying at university. After this I had my first introduction to open source - I got involved with Joomla and Status.net as a part of Google Summer of Code.
+</p>
+
+<p>My work started to turn towards Meteor-related projects next, and I founded kadira.io, a performance monitoring solution for Meteor. At Kadira, I started React Storybook with my colleagues, but eventually, we needed to shut down Kadira.</p>
+<p>In late 2016, I discovered Next.js and started contributing to it. After Kadira&#39;s shutdown, I joined ZEIT to maintain Next.js and take it further.</p>
+<h2 class="header"><a class="header-anchor" href="#how-would-you-describe-next-js-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-next-js-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>Next.js</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-next-js-to-someone-who-has-never-heard-of-it-">#</a></h2>
+<p>I think everyone is familiar with the concept of JavaScript fatigue. Creating a web app with JavaScript is often hard with all of the packages and options that we have today. React, webpack, Redux, React Router and many more libraries and tools are often used and require effort to learn.</p>
+<p>In comparison, writing a simple PHP app can be as easy as just creating some files and deploying them.</p>
+<p>With Next.js we enable developers to build JavaScript web apps with more straightforward workflow like in the PHP example. Just create some files that export React components and deploy your app. No need to set up webpack or do any special routing or state management.</p>
+<p>Next.js also does server side rendering by default, among many other performance optimizations.</p>
+<h2 class="header"><a class="header-anchor" href="#how-does-next-js-work-" id="how-does-next-js-work-"></a><span class="text">How does <em>Next.js</em> work?</span><a class="header-anchor-select" href="#how-does-next-js-work-">#</a></h2>
+<p>Let me show you with an example.</p>
+<p>We first create our project and initialize an npm package.json:</p>
+<pre><code class="lang-bash"><span class="token function" >mkdir</span> hello-next
+<span class="token function" >cd</span> hello-next
+npm init -y
+</code></pre>
+<p>Then we install <em>Next.js</em> and the React dependencies and create a <code>pages</code> directory:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> --save next react react-dom
+<span class="token function" >mkdir</span> pages
+</code></pre>
+<p>In the pages directory, we create a file at <code>pages/index.js</code> with the following content:</p>
+<pre><code class="lang-jsx"><span class="token keyword" >import</span> Link <span class="token keyword" >from</span> <span class="token string" >'next/link'</span>
+
+<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
+  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span>
+    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>p</span><span class="token punctuation" >></span></span>Welcome<span class="token punctuation" >,</span> <span class="token keyword" >this</span> is the home page<span class="token punctuation" >.</span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>p</span><span class="token punctuation" >></span></span>
+    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Link</span> <span class="token attr-name" >href</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>/about<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>a</span><span class="token punctuation" >></span></span>About Page<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>a</span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>Link</span><span class="token punctuation" >></span></span>
+  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
+<span class="token punctuation" >)</span>
+</code></pre>
+<p>We also make a file called <code>pages/about.js</code> containing this code:</p>
+<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
+  <span class="token operator" >&lt;</span>div<span class="token operator" >></span>This is the about page<span class="token punctuation" >.</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
+<span class="token punctuation" >)</span>
+</code></pre>
+<p>We add a script for the development server to the <code>package.json</code>:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"dev"</span><span class="token operator" >:</span> <span class="token string" >"next"</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Finally, we run that script to start the development server:</p>
+<pre><code class="lang-bash">npm run dev
+</code></pre>
+<p>The app will be started on <code>https://localhost:3000</code>. Any changes to pages and content will be updated instantly in the browser by webpack&#39;s Hot Module Replacement (HMR).</p>
+<p>Above is just the beginning. You can do a lot with <em>Next.js</em>. You can even customize the base webpack and Babel configuration too.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>I suggest visiting the <a href="https://github.com/zeit/next.js">Next.js repo</a> for more info.</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-next-js-differ-from-the-other-solutions-" id="how-does-next-js-differ-from-the-other-solutions-"></a><span class="text">How does <em>Next.js</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-next-js-differ-from-the-other-solutions-">#</a></h2>
+<p>Here I&#39;ll focus on comparing <em>Next.js</em> with two other solutions for building React apps.</p>
+<p><strong>1. Custom webpack and Babel setup</strong></p>
+<p>Here you need to maintain your configurations and update them for new versions of your dependencies. If you manage multiple apps, upgrading the dependencies and updating all configurations everywhere will be a real problem.</p>
+<p>If you use Next.js, you don&#39;t need to worry about these configurations. It comes along with sane defaults but also allows you to customize as needed.</p>
+<p><strong>2. Create React App (CRA)</strong></p>
+<p>Create React App is Facebook&#39;s official solution for building React apps without build configuration. It works well for what it does. It doesn&#39;t, however, deal with routing, so you need to handle this on your own. Furthermore, you can&#39;t customize as much of the webpack and Babel configurations. Server side rendering is also complicated to do.</p>
+<p>For some apps, Create React App is a good solution.</p>
+<p>With Next.js, you&#39;ll get server side rendering for free and no need to worry about routing. The built-in routing system is file system-based, and custom routes can be set up for dynamic pages.</p>
+<p>Since the routing is built into the framework, we can do very cool things like:</p>
+<ul>
+<li>Server side rendering by default</li>
+<li>Automatic code splitting</li>
+<li>Simple data fetching solution for pages</li>
+</ul>
+<p>You can build a decent web app without worrying about configuration, routing and state management.</p>
+<h2 class="header"><a class="header-anchor" href="#why-did-you-develop-next-js-" id="why-did-you-develop-next-js-"></a><span class="text">Why did you develop <em>Next.js</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-next-js-">#</a></h2>
+<p>I didn&#39;t work at ZEIT at the time it was built - it was primarily developed by <a href="https://twitter.com/nkzawa">@nkzawa</a> to develop <a href="https://zeit.co">ZEIT&#39;s web app</a>. Because it was a success, ZEIT released it as an open source project.</p>
+<p>Since then, features are developed when they are needed to continue building <a href="https://zeit.co">https://zeit.co</a>, and the community helps by fixing bugs and requesting and developing new features.</p>
+<h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>
+<p>We try to keep <em>Next.js</em> as simple and lean as possible. We avoid implementing too many features. Instead, we aim to build a robust infrastructure and encourage reuse of existing libraries and frameworks on top of Next.js.</p>
+<p>We just released <em>Next.js</em> 3.0 with dynamic imports and static HTML exporting support. The next topics we will focus on are improving overall stability and reducing the dev and production build time of the app.</p>
+<h2 class="header"><a class="header-anchor" href="#what-does-the-future-look-like-for-next-js-and-web-development-in-general-can-you-see-any-particular-trends-" id="what-does-the-future-look-like-for-next-js-and-web-development-in-general-can-you-see-any-particular-trends-"></a><span class="text">What does the future look like for <em>Next.js</em> and web development in general? Can you see any particular trends?</span><a class="header-anchor-select" href="#what-does-the-future-look-like-for-next-js-and-web-development-in-general-can-you-see-any-particular-trends-">#</a></h2>
+<p>I think we&#39;ll see more rich web apps in the future thanks to recent performance improvements in browsers. Web Assembly will have an enormous impact on the industry. Solid tooling will allow development of web apps available for both desktops and servers. Effects like these will lead to web apps to completely obsoleting desktop apps.</p>
+<p>Our goal with Next.js will always be to allow developers to build fast web apps without too much hassle with different APIs and configurations.</p>
+<h2 class="header"><a class="header-anchor" href="#what-advice-would-you-give-to-programmers-getting-into-web-development-" id="what-advice-would-you-give-to-programmers-getting-into-web-development-"></a><span class="text">What advice would you give to programmers getting into web development?</span><a class="header-anchor-select" href="#what-advice-would-you-give-to-programmers-getting-into-web-development-">#</a></h2>
+<p>First of all, learn the basics well. For example, with front-end web development, learn the ins and outs of HTML, CSS, and JavaScript. Then focus on a couple of frameworks you like and develop a career on top of them.</p>
+<p>The industry is changing very rapidly, so always look for what&#39;s new and stay updated.</p>
+<p>Don&#39;t switch frameworks because there&#39;s something new and cool. Only do that if your current framework doesn&#39;t work well or if the new one increases your job opportunities.</p>
+<h2 class="header"><a class="header-anchor" href="#who-should-i-interview-next-" id="who-should-i-interview-next-"></a><span class="text">Who should I interview next?</span><a class="header-anchor-select" href="#who-should-i-interview-next-">#</a></h2>
+<p>JavaScript has a huge ecosystem. I don&#39;t have a specific person to mention. The GitHub trending page may have some interesting people to interview.</p>
+<h2 class="header"><a class="header-anchor" href="#any-last-remarks-" id="any-last-remarks-"></a><span class="text">Any last remarks?</span><a class="header-anchor-select" href="#any-last-remarks-">#</a></h2>
+<p>As a project maintainer on GitHub, I appreciate it when developers search the web and the existing issues before creating new issues. If it&#39;s a new issue, always provide a way to reproduce the issue (often better as a GitHub repo).</p>
+<p>That saves us a ton of time so that we can fix legitimate problems and still add new features.</p>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>Thanks for the interview Arunoda! I think it&#39;s great to see projects like Next.js pushing the envelope and finding better ways to develop universal web applications.</p>
+<p>Check out <a href="https://github.com/zeit/next.js/">next.js GitHub</a> and <a href="https://learnnextjs.com/">Learn Next.js</a> to understand the topic better.</p>
+</div><time datetime="2017-08-15T00:00:00.000Z" class="post__moment">15 Aug 2017</time><div class="social-links"><blockquote class="tip">If you enjoyed this blog post, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev" style="width:100%;"><div class="new-prevnext__bg" style="background-image:url(/3c0ec8014143566e44514d7cb947c0fb.jpg);"></div><span class="new-prevnext__info">Previous post</span><a class="new-prevnext__link" href="/blog/rekit-interview/">Rekit - Toolkit for building scalable React applications - Interview with Nate Wang</a></div></div><div id="disqus_thread"></div></div></div><div><a class="previous-page" title="Rekit - Toolkit for building scalable React applications - Interview with Nate Wang" href="/blog/rekit-interview/"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/webpack/foreword/">Read the webpack book</a></div><div class="nav__link"><a href="/training/">Get training</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs-react">Buy the ebook</a></div><div class="nav__link"><a href="/"></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><a href="https://github.com/survivejs/site" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="position:absolute;top:0;fill:#000;right:0;"><path class="octo-banner" d="M0 0l115 115h15l12 27 108 108V0z" fill="#fff"></path><path class="octo-arm" d="M128 109c-15-9-9-19-9-19 3-7 2-11 2-11-1-7 3-2 3-2 4 5 2 11 2 11-3 10 5 15 9 16" style="-webkit-transform-origin:130px 106px;transform-origin:130px 106px;"></path><path class="octo-body" d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"></path></svg></a><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank" rel="noopener noreferrer">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank" rel="noopener noreferrer">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank" rel="noopener noreferrer">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://presentations.survivejs.com" target="_blank" rel="noopener noreferrer">Presentations</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank" rel="noopener noreferrer">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank" rel="noopener noreferrer">Ask Me Anything</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+          ((window.gitter = {}).chat = {}).options = {
+            showChatByDefault: false,
+            activationElement: '.gitter-open-chat-button',
+            room: 'survivejs/react'
+          };
+        </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></div>
+
+    
+  </body>
+</html>
