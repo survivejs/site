@@ -5,7 +5,6 @@ const rssPlugin = require("antwar-rss-plugin");
 const generateAdjacent = require("./utils/generate-adjacent");
 const clean = require("./utils/clean");
 
-// TODO: fix page titles
 // TODO: fix page descriptions
 // TODO: fix react extras + source links
 // TODO: add source links to webpack book
@@ -29,10 +28,22 @@ module.exports = () => ({
   paths: {
     "/": {
       content: () => require.context("./pages", true, /^\.\/.*\.md$/),
-      index: () => require("./layouts/SiteIndex").default,
+      index: () => {
+        const index = require("./layouts/SiteIndex").default;
+
+        index.title = "SurviveJS";
+
+        return index;
+      },
       paths: {
         blog: {
-          index: () => require("./layouts/BlogIndex").default,
+          index: () => {
+            const index = require("./layouts/BlogIndex").default;
+
+            index.title = "Blog";
+
+            return index;
+          },
           layout: () => require("./layouts/BlogPage").default,
           transform: pages =>
             generateAdjacent(_.sortBy(pages, "date")).reverse(),
@@ -59,7 +70,13 @@ module.exports = () => ({
     react: {
       content: () =>
         require.context("./books/react-book/manuscript", true, /^\.\/.*\.md$/),
-      index: () => require("./layouts/BookIndex").default,
+      index: () => {
+        const index = require("./layouts/BookIndex").default;
+
+        index.title = "SurviveJS - React";
+
+        return index;
+      },
       layout: () => require("./layouts/BookPage").default,
       transform: pages =>
         generateAdjacent(
@@ -86,7 +103,13 @@ module.exports = () => ({
           true,
           /^\.\/.*\.md$/
         ),
-      index: () => require("./layouts/WebpackIndex").default,
+      index: () => {
+        const index = require("./layouts/WebpackIndex").default;
+
+        index.title = "SurviveJS - Webpack";
+
+        return index;
+      },
       layout: () => require("./layouts/BookPage").default,
       transform: pages =>
         generateAdjacent(
