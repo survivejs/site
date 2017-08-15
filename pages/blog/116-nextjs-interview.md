@@ -1,8 +1,9 @@
 ---
 title: 'Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala'
 date: 2017-08-15
-headerImage: '/assets/img/next.jpg'
+headerImage: 'assets/img/next.jpg'
 keywords: ['interview', 'reactjs', 'webpack']
+editors: ['bebraw', 'karlhorky']
 ---
 
 Building universal web applications combining server side rendering with front-end is popular these days. The approach is not without its problems, though. Now you have the extra challenge of managing code so that it works on the both sides. Due to the differences between them, you will run into a series of problems.
