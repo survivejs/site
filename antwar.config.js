@@ -11,7 +11,6 @@ const clean = require("./utils/clean");
 // TODO: add source links to webpack book
 module.exports = () => ({
   template: {
-    title: "SurviveJS",
     file: path.resolve(__dirname, "templates/page.ejs")
   },
   output: "build",

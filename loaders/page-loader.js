@@ -14,14 +14,12 @@ module.exports = function pageLoader(source) {
 
   result.attributes = result.attributes || {};
 
-  if (!result.attributes.title) {
-    result.attributes.title = title;
-  }
-
   result.attributes = _.merge(
     result.attributes,
     parse.header(this.resourcePath)
   );
+
+  result.title = result.attributes.title || "SurviveJS";
 
   result.preview = generatePreview(result, body);
   result.description = generateDescription(result);
