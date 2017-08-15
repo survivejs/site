@@ -7,10 +7,10 @@ import {
   PrevNext,
   PrevNextMini,
   Resources,
-  SocialLinks,
-  Toc
+  SocialLinks
 } from "@survivejs/components";
 import LatestPost from "../components/LatestPost";
+import Toc from "../components/Toc";
 
 const BookPage = ({
   page: {
