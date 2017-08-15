@@ -1,105 +1,138 @@
-'use strict';
-var path = require('path');
+const _ = require("lodash");
+const path = require("path");
+const moment = require("moment");
+const rssPlugin = require("antwar-rss-plugin");
+const generateAdjacent = require("./utils/generate-adjacent");
+const clean = require("./utils/clean");
 
-var React = require('react');
-var _ = require('lodash');
-var themeConfig = require('antwar-default-theme');
-var rssPlugin = require('antwar-rss-plugin');
-var prevnextPlugin = require('antwar-prevnext-plugin');
-
-var reactHeaders = require('./headers/react');
-var webpackHeaders = require('./headers/webpack');
-
-var sections = require('./sections');
-
-var cwd = process.cwd();
-
-// XXX: add custom loader to common config
-themeConfig.webpack.common = {
-  resolveLoader: {
-    alias: {
-      markdown: path.join(cwd, 'loaders/markdown')
-    }
-  }
-};
-
-module.exports = {
-  webpack: themeConfig.webpack, // SCSS bits
-  assets: [
-    {
-      from: '../react/manuscript/images',
-      to: 'react/images',
-    },
-    {
-      from: '../webpack/manuscript/images',
-      to: 'webpack/images',
-    },
-    {
-      from: '../react/project_source/builds',
-      to: 'demos',
-    },
-    {
-      from: './extra',
-      to: '.'
-    }
-  ],
-  output: 'build',
-  title: 'SurviveJS',
-  author: 'Juho Vepsäläinen',
-  blog: {
-    author: function() {
-      return React.createElement(
-        "span",
-        null,
-        "Published by Juho ",
-        React.createElement(
-          "a",
-          { href: "https://twitter.com/bebraw", className: "twitter" },
-          "@bebraw"
-        ),
-        " Vepsäläinen"
-      );
-    }
+// TODO: generate react demos on build
+// TODO: fix page descriptions
+// TODO: fix react extras + source links
+// TODO: add source links to webpack book
+module.exports = () => ({
+  template: {
+    file: path.resolve(__dirname, "templates/page.ejs")
   },
-  keywords: ['webpack', 'react', 'javascript', 'programming', 'web development'],
-  deploy: {
-    branch: 'gh-pages',
-  },
-  pageTitle: function(config, pageTitle) {
-    var siteName = config.name;
-
-    // No need for site title at page titles
-    return pageTitle || siteName;
-    //return siteName + ' - ' + pageTitle;
-  },
+  output: "build",
   plugins: [
     rssPlugin({
-      baseUrl: 'http://survivejs.com/',
-      sections: ['blog'],
-    }),
-    prevnextPlugin()
+      baseUrl: "https://survivejs.com/",
+      sections: ["blog"],
+      get: {
+        content: page => page.file.body,
+        date: page => moment(page.file.attributes.date).utcOffset(0).format(),
+        title: page => page.file.attributes.title
+      }
+    })
   ],
-  layout: function() {
-    return require('./layouts/Body.jsx');
-  },
-  style: function() {
-    require('./styles/custom.scss');
-    require('./styles/prism.css');
-    require('./styles/fontello-codes.css');
-    require('./styles/fontello-embedded.css');
-  },
+  layout: () => require("./layouts/SiteBody").default,
   paths: {
-    '/': {
-      path: function() {
-        return require.context('./pages', false, /^\.\/.*\.jsx$/);
+    "/": {
+      content: () => require.context("./pages", true, /^\.\/.*\.md$/),
+      index: () => {
+        const index = require("./layouts/SiteIndex").default;
+
+        index.title = "SurviveJS";
+
+        return index;
       },
+      paths: {
+        blog: {
+          index: () => {
+            const index = require("./layouts/BlogIndex").default;
+
+            index.title = "Blog";
+
+            return index;
+          },
+          layout: () => require("./layouts/BlogPage").default,
+          transform: pages =>
+            generateAdjacent(_.sortBy(pages, "file.attributes.date")).reverse(),
+          url: ({ fileName }) => `/${clean.chapterName(fileName)}/`,
+          redirects: require("./redirects/blog")
+        }
+      }
     },
-    blog: sections.blog(),
-    clinic: sections.clinic(),
-    training: sections.training(),
-    react: sections.react(reactHeaders),
-    webpack_react: sections.webpackReact(),
-    webpack: sections.webpack(webpackHeaders),
-    workshop: sections.workshop()
+    clinic: () =>
+      require("./components/IndexPage").default({
+        type: "Clinic",
+        content: require("./layouts/clinic.md").body
+      }),
+    training: () =>
+      require("./components/IndexPage").default({
+        type: "Training",
+        content: require("./layouts/training.md").body
+      }),
+    workshop: () =>
+      require("./components/IndexPage").default({
+        type: "Workshop",
+        content: require("./layouts/workshop.md").body
+      }),
+    react: {
+      content: () =>
+        require.context("./books/react-book/manuscript", true, /^\.\/.*\.md$/),
+      index: () => {
+        const index = require("./layouts/BookIndex").default;
+
+        index.title = "SurviveJS - React";
+
+        return index;
+      },
+      layout: () => require("./layouts/BookPage").default,
+      transform: pages =>
+        generateAdjacent(
+          require("./books/react-book/manuscript/Book.txt")
+            .split("\n")
+            .filter(name => path.extname(name) === ".md")
+            .map(fileName => {
+              const result = _.find(pages, { fileName });
+
+              if (!result) {
+                return console.error("Failed to find", fileName);
+              }
+
+              return result;
+            })
+        ),
+      url: ({ sectionName, fileName }) =>
+        `/${sectionName}/${clean.chapterName(fileName)}/`
+    },
+    webpack: {
+      content: () =>
+        require.context(
+          "./books/webpack-book/manuscript",
+          true,
+          /^\.\/.*\.md$/
+        ),
+      index: () => {
+        const index = require("./layouts/WebpackIndex").default;
+
+        index.title = "SurviveJS - Webpack";
+
+        return index;
+      },
+      layout: () => require("./layouts/BookPage").default,
+      transform: pages =>
+        generateAdjacent(
+          require("./books/webpack-book/manuscript/Book.txt")
+            .split("\n")
+            .filter(name => path.extname(name) === ".md")
+            .map(fileName => {
+              const result = _.find(pages, { fileName });
+
+              if (!result) {
+                return console.error("Failed to find", fileName);
+              }
+
+              return result;
+            })
+        ),
+      url: ({ sectionName, fileName }) =>
+        `/${sectionName}/${clean.chapterName(fileName)}/`,
+      redirects: require("./redirects/webpack")
+    },
+    webpack_react: {
+      redirects: require("./redirects/webpack_react")
+    }
   }
-};
+});

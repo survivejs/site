@@ -1,59 +1,57 @@
-'use strict';
-var marked = require('marked');
+// Ported from webpack.js.org
+const marked = require("marked");
+const parse = require("./parse");
 
-module.exports = function(section) {
-  // alter marked renderer to add slashes to beginning so images point at root
-  // leanpub expects images without slash...
-  section = section ? '/' + section + '/' : '/';
+module.exports = function markdown() {
+  const renderer = new marked.Renderer();
 
-  var renderer = new marked.Renderer();
+  renderer.image = function image(href, title, text) {
+    const textParts = text ? text.split("|") : [];
+    const alt = textParts[0] || "";
+    const width = textParts[1] || "";
+    const height = textParts[2] || "";
+    const className = textParts[3] || "";
 
-  renderer.paragraph = function(text) {
-    // Skip pagebreaks
-    if (text === '{pagebreak}') {
-      return '';
-    }
-
-    return '<p>' + text + '</p>\n';
-  };
-
-  renderer.image = function(href, title, text) {
-    return '<img src="' + section + href + '" alt="' + text + '">';
-  };
-
-  renderer.em = function(text) {
-    var webpackBook = require('./webpack-book');
-
-    // Perform a lookup against webpack book chapter definition to figure
-    // out whether to link or not
-    const match = webpackBook[text];
-
-    if (match) {
-      return '<a href="' + match.url + '">' + text + '</a>';
-    }
-
-    return '<em>' + text + '</em>';
+    return `<img src="__IMG_START__${href}__IMG_END__" alt="${alt}" class="${className}" width="${width}" height="${height}" />`;
   };
 
   // patch ids (this.options.headerPrefix can be undefined!)
-  renderer.heading = function(text, level, raw) {
-    var id = raw.toLowerCase().replace(/[^\w]+/g, '-');
+  renderer.heading = function heading(text, level, raw) {
+    const id = raw.toLowerCase().replace(/`/g, "").replace(/[^\w]+/g, "-");
 
-    return '<h'
-      + level
-      + ' class="header">'
-      + '<a class="header-anchor" href="#' + id + '" id="' + id + '"></a>'
-      + '<span class="text">'
-      + text
-      + '</span><a class="header-anchor-select" href="#' + id + '">#</a>'
-      + '</h'
-      + level
-      + '>\n';
+    return (
+      `<h${level} class="header">` +
+      `<a class="header-anchor" href="#${id}" id="${id}"></a>` +
+      `<span class="text">${text}</span>` +
+      `<a class="header-anchor-select" href="#${id}">#</a>` +
+      `</h${level}>\n`
+    );
+  };
+
+  renderer.paragraph = function paragraph(text) {
+    // Skip pagebreaks
+    if (text === "{pagebreak}") {
+      return "";
+    }
+
+    return `<p>${text}</p>\n`;
+  };
+
+  // XXXXX: This gets executed for all content. It would be better to constrain
+  // per book somehow.
+  renderer.em = function em(text) {
+    const webpackBook = require("./webpack-book");
+
+    // Perform a lookup against webpack book chapter definition to figure
+    // out whether to link or not
+    const match = webpackBook()[text];
+
+    return match ? `<a href="${match.url}">${text}</a>` : `<em>${text}</em>`;
   };
 
   return {
-    process: function(content, highlight) {
-      var markedDefaults = {
+    process(content, highlight) {
+      const markedDefaults = {
         gfm: true,
         tables: true,
         breaks: false,
@@ -64,45 +62,25 @@ module.exports = function(section) {
         smartLists: false,
         silent: false,
         highlight: highlight || false,
-        langPrefix: 'lang-',
+        langPrefix: "lang-",
         smartypants: false,
-        headerPrefix: '',
-        renderer: renderer,
+        headerPrefix: "",
+        renderer,
         xhtml: false
       };
-      var tokens = parseQuotes(content);
 
-      return marked.parser(tokens, markedDefaults);
+      return marked.parser(parse.quotes(content), markedDefaults);
+    },
+
+    // Note that this should correspond with renderer.heading
+    getAnchors(content) {
+      return marked
+        .lexer(content)
+        .filter(chunk => chunk.type === "heading")
+        .map(chunk => ({
+          title: chunk.text.replace(/`/g, ""),
+          id: chunk.text.toLowerCase().replace(/`/g, "").replace(/[^\w]+/g, "-")
+        }));
     }
   };
-}
-
-function parseQuotes(data) {
-  var tokens = marked.lexer(data).map(function(t) {
-    if(t.type === 'paragraph') {
-      return parseCustomQuote(t, 'T>', 'tip') ||
-        parseCustomQuote(t, 'W>', 'warning') ||
-        t;
-    }
-
-    return t;
-  });
-  tokens.links = [];
-
-  return tokens;
-}
-
-function parseCustomQuote(token, match, className) {
-  if(token.type === 'paragraph') {
-    var text = token.text;
-
-    if(text.indexOf(match) === 0) {
-      var icon = className === 'tip' ? 'icon-attention-circled' : 'icon-attention';
-
-      return {
-        type: 'html',
-        text: '<blockquote class="' + className + '"><i class="' + icon + '"></i>' + text.slice(2).trim() + '</blockquote>',
-      };
-    }
-  }
-}
+};

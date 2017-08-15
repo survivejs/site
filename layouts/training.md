@@ -7,8 +7,6 @@ I've split the training offering into two different products:
 * [Workshop](/workshop/) - Workshops can take anything from half a day to multiple days.
 * [Clinic](/clinic/) - Clinics are short sessions (2-3 hours) that are meant to give you a quick overview of the topic while also helping you with particular problems you might have to solve. It's a good starting point before arranging a full workshop.
 
-I'm based on Finland and expect accommodation to be compensated separately. The end of July (24-30.7) and August are exceptions as I'll run a series of clinics in Vienna, Austria then.
-
 > 20% of webpack training income goes to Tobias Koppers, the main developer of webpack. I do this to support the project and enable its future growth.
 
 ## References

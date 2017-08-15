@@ -1,151 +1,102 @@
-import _ from 'lodash';
-import React from 'react';
-import titleCase from 'title-case';
+import _ from "lodash";
+import React from "react";
 
-import Disqus from 'antwar-helpers/components/Disqus';
-import Moment from 'antwar-helpers/components/Moment';
-import Author from '../components/Author';
-import PrevNext from '../components/PrevNext';
-import PrevNextMini from '../components/PrevNextMini';
-import SocialLinks from '../components/SocialLinks';
-import Toc from '../components/Toc';
+import {
+  Disqus,
+  Moment,
+  Author,
+  PrevNext,
+  PrevNextMini,
+  RelatedPosts,
+  SocialLinks
+} from "@survivejs/components";
 
-export default React.createClass({
-  displayName: 'BlogPage',
-  render() {
-    const section = this.props.section;
-    const page = this.props.page;
-    const config = this.props.config;
-    const editors = page.editors;
-    let author = page.author || (config.blog && config.blog.author);
-    const relatedPosts = getRelatedPosts(page.keywords, section.pages(), 10);
-    const relatedHeaders = {
-      interview: 'Interviews',
-      opinion: 'Opinions',
-      publishing: 'Publishing thoughts'
-    };
+import getRelatedPosts from "../utils/get-related-posts";
 
-    if(_.isFunction(author)) {
-      author = author();
-    }
-
-    return (
-      <div className="post__wrapper">
-        {page.headerImage ?
-          <div className="header-image" style={{
-            backgroundImage: `url(${page.headerImage})`
-          }} /> :
-          null
-        }
-
-        <h1 className="post__heading">{page.title}</h1>
-
-        <div className="toc-nav__wrapper">
-          <RelatedPosts page={page} posts={relatedPosts} headers={relatedHeaders} />
-        </div>
-
-        <div className="post">
-          <div className="post__content">
-            {page.isDraft ?
-              <span className="draft-text">Draft</span> :
-              null
-            }
-            <div dangerouslySetInnerHTML={{__html: page.content}} />
-            {page.headerExtra ?
-              <div className="header-extra"
-                dangerouslySetInnerHTML={{__html: page.headerExtra}} /> :
-              null
-            }
-            {page.date ?
-              <Moment className="post__moment" datetime={page.date} /> :
-              null
-            }
-            {author ?
-              <Author author={author} /> :
-              null
-            }
-            {editors ?
-              <Editors editors={editors} /> :
-              null
-            }
-
-            <SocialLinks type="blog post" />
-
-            <PrevNext page={page} previousText="Previous post" nextText="Next post" />
-
-            <div id="disqus_thread" />
-          </div>
-        </div>
-
-        <PrevNextMini page={page} />
-
-        <Disqus shortname="survivejs" />
-      </div>
-    );
-  }
-});
-
-function Editors({editors}) {
-  const editorLinks = {
-    bebraw: {
-      name: 'Juho Vepsäläinen',
-      url: 'https://twitter.com/bebraw'
+const BlogPage = ({
+  page: {
+    file: {
+      attributes: { author, date, headerExtra, headerImage },
+      body,
+      keywords,
+      title
     },
-    karlhorky: {
-      name: 'Karl Horky',
-      url: 'https://twitter.com/karlhorky'
-    }
+    previous,
+    next
+  },
+  section,
+  config
+}) => {
+  let postAuthor = author || (config.blog && config.blog.author);
+  const relatedPosts = getRelatedPosts(keywords, section.pages(), 10);
+  const relatedHeaders = {
+    interview: "Interviews",
+    opinion: "Opinions",
+    publishing: "Publishing thoughts"
   };
 
+  console.log("related posts", relatedPosts);
+
+  if (_.isFunction(postAuthor)) {
+    postAuthor = postAuthor();
+  }
+
   return (
-    <div className="post__author">Edited by {editors.map((editor, i) => (
-      <div style={{ display: 'inline' }} key={`editor-${i}`}>
-        <a href={editorLinks[editor].url} className="twitter">{editorLinks[editor].name}</a>
-        {i < editors.length -1 && <span>, </span>}
+    <div className="post__wrapper">
+      {headerImage &&
+        <div
+          className="header-image"
+          style={{
+            backgroundImage: `url(${headerImage})`
+          }}
+        />}
+
+      <h1 className="post__heading">
+        {title}
+      </h1>
+
+      <div className="toc-nav__wrapper">
+        <RelatedPosts
+          title={title}
+          posts={relatedPosts}
+          headers={relatedHeaders}
+        />
       </div>
-    ))}
+
+      <div className="post">
+        <div className="post__content">
+          <div dangerouslySetInnerHTML={{ __html: body }} />
+          {headerExtra &&
+            <div
+              className="header-extra"
+              dangerouslySetInnerHTML={{ __html: headerExtra }}
+            />}
+          {date && <Moment className="post__moment" datetime={date} />}
+          {postAuthor && <Author author={postAuthor} />}
+
+          <SocialLinks type="blog post" />
+
+          <PrevNext
+            previous={previous}
+            next={next}
+            previousText="Previous post"
+            nextText="Next post"
+            getTitle={page => page.file.attributes.title}
+          />
+
+          <div id="disqus_thread" />
+        </div>
+      </div>
+
+      <PrevNextMini
+        previous={previous}
+        next={next}
+        getTitle={page => page.file.attributes.title}
+      />
+
+      <Disqus shortname="survivejs" />
     </div>
   );
-}
+};
 
-function RelatedPosts({page, posts, headers}) {
-  return (
-    <div>
-      {_.map(posts, (pages, name) => {
-        if (pages.length < 2) {
-          return <div key={`related-posts-${name}`} />;
-        }
-
-        return (
-          <div key={`related-posts-${name}`}>
-            <h4 className="toc-nav--header">{headers[name] || titleCase(name)}</h4>
-
-            <Toc sectionPages={() => pages} page={page} />
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function getRelatedPosts(keywords, pages, limit) {
-  let ret = {}; // keyword -> posts
-
-  keywords.forEach((keyword) => {
-    if(!ret[keyword]) {
-      ret[keyword] = [];
-    }
-
-    pages.forEach((page) => {
-      if(page.keywords && page.keywords.indexOf(keyword) >= 0) {
-        if(ret[keyword].length > limit) {
-          return;
-        }
-
-        ret[keyword].push(page);
-      }
-    });
-  });
-
-  return ret;
-}
+export default BlogPage;

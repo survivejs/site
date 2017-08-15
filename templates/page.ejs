@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.context.description %>" />
+    <meta
+      name="keywords"
+      content="<%= htmlWebpackPlugin.options.context.keywords %>" />
+    <title><%= htmlWebpackPlugin.options.context.title %></title>
+    <% if (htmlWebpackPlugin.options.context.rss) { %>
+    <link rel="alternate" type="application/atom+xml" href="<%= htmlWebpackPlugin.options.context.rss.href %>" title="<%= htmlWebpackPlugin.options.context.rss.title %>">
+    <% } %>
+    <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
+
+    <% for (var file of htmlWebpackPlugin.options.context.cssFiles) { %>
+      <link href="<%= file %>" rel="stylesheet">
+    <% } %>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"
+    />
+  </head>
+  <body>
+    <%- webpackConfig.html %>
+
+    <% for (var script of htmlWebpackPlugin.options.context.jsFiles) { %>
+      <script src="<%= script %>" type="text/javascript"></script>
+    <% } %>
+  </body>
+</html>
