@@ -35,8 +35,6 @@ const BlogPage = ({
     publishing: "Publishing thoughts"
   };
 
-  console.log("related posts", relatedPosts);
-
   if (_.isFunction(postAuthor)) {
     postAuthor = postAuthor();
   }
