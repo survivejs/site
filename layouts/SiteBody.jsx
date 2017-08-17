@@ -1,12 +1,7 @@
 import React from "react";
 
-import {
-  GitterChat,
-  Feedback,
-  Footer,
-  Navigation
-} from "@survivejs/components";
-import { Search } from "../components";
+import { GitterChat, Feedback, Navigation } from "@survivejs/components";
+import { Footer, Search } from "../components";
 
 import "../styles/custom.scss";
 import "../styles/prism.css";

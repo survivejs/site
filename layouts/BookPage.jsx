@@ -9,8 +9,7 @@ import {
   Resources,
   SocialLinks
 } from "@survivejs/components";
-import LatestPost from "../components/LatestPost";
-import Toc from "../components/Toc";
+import { LatestPost, Toc } from "../components";
 
 const BookPage = ({
   page: {
