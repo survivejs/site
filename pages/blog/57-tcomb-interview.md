@@ -73,7 +73,7 @@ function getFullName(person) {
 
 When an assert fails, the default behavior throws a `TypeError` with a descriptive message, so you can leverage the power of the debugger, inspect the stack and find out what's wrong with little effort.
 
-## How does *tcomb* differ from the other solutions?
+## How does *tcomb* differ from other solutions?
 
 For a start, tcomb is a mature project: it's five years old, battle tested and deployed in several production environments (it recently hit 70K/month downloads).
 

@@ -69,7 +69,7 @@ At this point, JavaScript's hoisting takes place, and function declarations and 
 
 Now that the module graph is linked, it is time to start evaluating it. The engine takes a depth-first traversal from the entry module in the order which the import declarations appear in the source text and starts evaluating. If any module throws an error while evaluating, the engine stops evaluating modules and leaves them in the current state of evaluation.
 
-## How do *ES Modules* differ from the other solutions?
+## How do *ES Modules* differ from other solutions?
 
 First and foremost, I need to preface this by stating transpilers don't implement ES Modules. They implement a transform of ES Modules *syntax* to CommonJS semantics and APIs. What I am talking about probably doesn't work the same as a transpiler.
 

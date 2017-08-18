@@ -59,7 +59,7 @@ const baz = R.add(1,10)
 
 In terms of performance `R.add(1,10)` is faster, but code of type `R.add(1)(10)` is more readable with longer declarations.
 
-## How does *Rambda* differ from the other solutions?
+## How does *Rambda* differ from other solutions?
 
 Rambda doesn't offer the same freedom of expression as Ramda, as it focuses on covering a small but useful portion of the vast API of Ramda.
 

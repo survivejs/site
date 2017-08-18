@@ -57,9 +57,9 @@ If you need to tweak the default configuration, you can add an `nwb.config.js` f
 }
 ```
 
-## What makes *nwb* different compared to the other solutions?
+## What makes *nwb* different compared to other solutions?
 
-Compared to the other solutions, nwb is focused almost entirely on reducing tooling boilerplate for common tasks and making the config it generates tweakable, whereas others get deeper into how you architect your React apps.
+Compared to other solutions, nwb is focused almost entirely on reducing tooling boilerplate for common tasks and making the config it generates tweakable, whereas others get deeper into how you architect your React apps.
 
 nwb probably has the most similar "why?" story to the one on the Formidable Labs' [Builder](http://formidable.com/open-source/builder/) homepage and shares Builder's ability to deal with multiple project types, but limits itself to a small number commands in the core and simple skeleton projects versus Builder's extensiblity and richer project archetypes.
 

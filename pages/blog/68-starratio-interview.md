@@ -43,7 +43,7 @@ Under the hood, StarRatio API is really simple. It is just aggregating data from
 
 ![Card view](assets/img/starratio/star-ratio-02.png)
 
-## How does *StarRatio* differ from the other solutions?
+## How does *StarRatio* differ from other solutions?
 
 StarRatio tries to gather and calculate stats that are really important from a developer point of view.
 

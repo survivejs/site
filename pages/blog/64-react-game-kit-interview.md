@@ -41,7 +41,7 @@ A central game loop is created using the `Loop` component, which is then passed 
 
 All of these components use the context based loop to keep everything in sync.
 
-## How does *react-game-kit* differ from the other solutions?
+## How does *react-game-kit* differ from other solutions?
 
 I'm not sure there are other solutions in the React world? There are other ways to make games, things like Phaser and Unity, but they are super fully featured, whereas react-game-kit is literally bare bones.
 

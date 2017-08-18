@@ -39,7 +39,7 @@ We record the underlying events instead of pixels. When replaying a Scrimba scre
 
 This opens up a whole new world of possibilities for interactivity, creation, responsiveness, search, and recommendations. We've only begun scratching the surface of what we can do with this format.
 
-## How does *Scrimba* differ from the other solutions?
+## How does *Scrimba* differ from other solutions?
 
 Compared to traditional video, Scrimba has the following benefits:
 

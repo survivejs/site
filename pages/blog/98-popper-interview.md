@@ -45,7 +45,7 @@ The line also achieves the following:
 * If the two elements are positioned in two different parents, Popper.js will take care of it and will still properly position the popper element correctly.
 * It handles scrollable elements and page resizes.
 
-## How does *Popper.js* differ from the other solutions?
+## How does *Popper.js* differ from other solutions?
 
 There aren't a lot of available solutions and they all cover a small subset of cases that are instead adequately addressed by Popper.js. The main difference is in the fact that my library doesn't need to manipulate the DOM directly to work.
 

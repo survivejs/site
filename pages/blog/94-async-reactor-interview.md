@@ -57,7 +57,7 @@ For better user experience you can show a loading component while waiting for yo
 
 Components returned by async-reactor are just regular React components, you can use them across your app.
 
-## How does *async-reactor* differ from the other solutions?
+## How does *async-reactor* differ from other solutions?
 
 I didn't find an alternative solution to async-reactor.
 

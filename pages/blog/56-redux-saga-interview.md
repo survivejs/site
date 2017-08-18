@@ -172,7 +172,7 @@ function* watchFetchRequests() {
 }
 ```
 
-## How does *redux-saga* differ from the other solutions?
+## How does *redux-saga* differ from other solutions?
 
 - **Declarative effects**: all operations inside sagas are yielded as plain JavaScript objects, which then get executed by the middleware. This makes it very easy to test the business logic inside the saga. You simply iterate over the generator and test the yielded sequence of objects by a simple `deepEqual`.
 

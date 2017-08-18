@@ -110,7 +110,7 @@ It uses [lodash](https://lodash.com/) internally. There are certain webpack spec
 
 The rewrite was possible thanks to extensive tests in place. I've tested *webpack-merge* fairly thoroughly (over 200 tests and counting) given it's so critical piece of code to have right or else you start breaking people's projects.
 
-## How does *webpack-merge* differ from the other solutions?
+## How does *webpack-merge* differ from other solutions?
 
 There are quite a few solutions for managing webpack configuration. Just to mention a few, consider [webpack-config](https://www.npmjs.com/package/webpack-config) or [easy-webpack](https://www.npmjs.com/package/@easy-webpack/core). Using lodash `merge` is one option, but for the reasons outlined above I don't consider as a good long term way to handle it.
 

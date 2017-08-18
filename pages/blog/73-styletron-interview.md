@@ -89,7 +89,7 @@ const newClassName = injectStyle(styletron, {
 });
 ```
 
-## How does *Styletron* differ from the other solutions?
+## How does *Styletron* differ from other solutions?
 
 The traditional CSS-in-JS method involves a straightforward 1:1 conversion of style objects into corresponding scoped CSS classes. Instead, Styletron takes advantage of a novel approach to generating CSS from JavaScript styles.
 

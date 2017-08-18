@@ -109,7 +109,7 @@ const MyButton = styled('button')({
 
 T> [Play with it on webpackbin](https://www.webpackbin.com/bins/-KlrbQuwAZSK5eSzpCSy).
 
-## How does JSS differ from the other solutions?
+## How does JSS differ from other solutions?
 
 There are too many differences to name them all. To name a few:
 

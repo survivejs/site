@@ -57,7 +57,7 @@ A good example is [snap-shot-core](https://github.com/bahmutov/snap-shot-core), 
 
 The above slide is from my presentation that I highly recommend to anyone working in the npm ecosystem: [Self Improving Software](https://slides.com/bahmutov/self-improving-software-node-week). It demonstrates *dont-break* via the *dont-crack* wrapper (see below).
 
-## How does *dont-break* differ from the other solutions?
+## How does *dont-break* differ from other solutions?
 
 As far as I know, there are no similar tools. Few people like publishing new versions of their modules that are compatible with previously published ones as much as I do (just kidding). Hopefully, in the near future, each project will always stay up to date and will be carefully tested against existing "users" (downstream dependencies) before releasing a patch version for example.
 

@@ -50,7 +50,7 @@ var app = new HelloWorld({
 app.set({ name: 'SurviveJS' });
 ```
 
-## How does *Svelte* differ from the other solutions?
+## How does *Svelte* differ from other solutions?
 
 To the end user, the biggest difference is speed. Svelte is lighter and faster than alternative solutions because the browser has a lot less work to do (benchmarks coming soon!). Our [TodoMVC implementation](https://svelte-todomvc.surge.sh/) is just 3.6 kB gzipped, which is tiny.
 

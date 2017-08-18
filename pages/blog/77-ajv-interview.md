@@ -142,7 +142,7 @@ The generated code is verbose. However, it is very efficient as it has no loops 
 There are several other validators using the same approach - it allows to achieve more than 100 times performance of interpreting validators.
 
 
-## How does *Ajv* differ from the other solutions?
+## How does *Ajv* differ from other solutions?
 
 Ajv is the fastest JSON Schema validator - in [some tests](https://github.com/pandastrike/jsck#benchmarks) it is almost 3 times faster than the nearest alternative.
 

@@ -38,7 +38,7 @@ What's significant and special about it is something that was never done before:
 
 As obvious as it sounds, having a `type` that is as informative as actions you manually dispatch is the key ingredient that finally makes routing seamless for Redux apps.
 
-## How does *Redux-First Router* differ from the other solutions?
+## How does *Redux-First Router* differ from other solutions?
 
 ### No `<Route />` components
 

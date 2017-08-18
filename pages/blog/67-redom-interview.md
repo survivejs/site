@@ -95,7 +95,7 @@ setInterval(() => {
 }, 1000)
 ```
 
-## How does *RE:DOM* differ from the other solutions?
+## How does *RE:DOM* differ from other solutions?
 
 RE:DOM doesn't use Virtual DOM, but still allows you to define components and how to update them. For me it's the best of both worlds: mutability gives great flexibility and performance, but defining a one-directional flow of updates is very close to VDOM-approach.
 

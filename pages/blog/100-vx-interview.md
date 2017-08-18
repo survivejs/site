@@ -40,7 +40,7 @@ Below is a flow diagram that illustrates how *vx* could fit in at your organizat
 
 Under the hood, *vx* is using D3 for the calculations and math. D3 is the visualization kernel used to generate the data that flows to your components. If you’re creating your chart library on top of *vx*, it’s easy to create a component API that hides D3 entirely. Because of this you and your team could set up and share charts as quickly as using reusable React components.
 
-## How does *vx* differ from the other solutions?
+## How does *vx* differ from other solutions?
 
 To create a complete charting library, you would need to anticipate the needs of every chart out there. Instead of doing that, you tell *vx* what you want to make, and away you go. You only need to pull in the packages you need.
 

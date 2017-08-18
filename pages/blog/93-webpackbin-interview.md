@@ -76,7 +76,7 @@ It feels like every single npm package out there has their little tweak on **pac
 
 The **webpack-packager** service has a lot of logic to figure out what should be included, mostly by figuring out what should **not** be included. Doing this is still a challenge, but it is under control.
 
-## How does *WebpackBin* differ from the other solutions?
+## How does *WebpackBin* differ from other solutions?
 
 When it comes to features, Webpackbin has a cool LIVE feature. You can just hit a button and share your URL and others can see your code live. You can give control to your participants, and the idea is to provide a teaching tool.
 

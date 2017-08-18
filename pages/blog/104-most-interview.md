@@ -62,7 +62,7 @@ This direct synchronous method call event propagation model is one of the keys t
 
 T> Check out the [Architecture wiki](https://github.com/cujojs/most/wiki/Architecture), to read more about the details of the Source-Sink chain, including how error handling works, and avoids having to `try`/`catch` in every combinator.
 
-## How does *Most.js* differ from the other solutions?
+## How does *Most.js* differ from other solutions?
 
 ### Performance
 

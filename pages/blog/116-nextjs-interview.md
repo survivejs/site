@@ -96,7 +96,7 @@ Above is just the beginning. You can do a lot with *Next.js*. You can even custo
 
 T> I suggest visiting the [Next.js repo](https://github.com/zeit/next.js) for more info.
 
-## How does *Next.js* differ from the other solutions?
+## How does *Next.js* differ from other solutions?
 
 Here I'll focus on comparing *Next.js* with two other solutions for building React apps.
 

@@ -43,7 +43,7 @@ import foo from './foo.js';
 
 That means that Rollup needs to resolve `./foo.js` relative to `index.js`, load it, parse it, analyse it, lather, rinse and repeat until there are no more modules to import. Crucially, all these steps are pluggable, so you can augment Rollup with the ability to import from `node_modules` or compile ES2015 to ES5 in a sourcemap-aware way, for example.
 
-## How does *Rollup* differ from the other solutions?
+## How does *Rollup* differ from other solutions?
 
 Firstly, there's zero overhead. The traditional approach to bundling is to wrap every module in a function, put those functions in an array, and implement a `require` function that plucks those functions out of the array and executes them on demand. It turns out [this is terrible](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/) for both bundle size and startup time.
 

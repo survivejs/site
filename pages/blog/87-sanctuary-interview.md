@@ -108,7 +108,7 @@ S.map :: (String -> b) -> Array String -> Array b
 S.map :: (String -> Number) -> Array String -> Array Number
 ```
 
-## How does *Sanctuary* differ from the other solutions?
+## How does *Sanctuary* differ from other solutions?
 
 Sanctuary is most similar to Ramda. In [sanctuary-js/sanctuary#377](https://github.com/sanctuary-js/sanctuary/issues/377)
 we're currently documenting the differences between Ramda and Sanctuary.

@@ -76,7 +76,7 @@ The npm dependencies are handled by a separate server; I call it the 'bundler'. 
 
 A manifest is an object with a mapping from dependency name to module number, so the JavaScript loader knows which module to load from the UMD build when a dependency is required.
 
-## How does *CodeSandbox* differ from the other solutions?
+## How does *CodeSandbox* differ from other solutions?
 
 CodeSandbox is one of the few editors that supports npm dependencies and multiple files/directories. It also handles almost everything in the browser, which allows us to show real-time feedback without any server communication.
 

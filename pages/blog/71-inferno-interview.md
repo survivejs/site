@@ -54,7 +54,7 @@ This *might get a bit technical*, but I've been asked about it plenty of times s
 
 There are plenty more optimisations going on under the hood, so I'd recommend reading the sourcecode if anyone is interested in learning more.
 
-## How does *Inferno* differ from the other solutions?
+## How does *Inferno* differ from other solutions?
 
 Inferno doesn't try to be too different from React. Very much like Preact, Inferno enjoys having lots of similarities with React. Inferno supports many different ways of creating UIs, such as: JSX (Inferno has its own Babel plugin for this), HyperScript and good ol' `createElement()` from React.
 

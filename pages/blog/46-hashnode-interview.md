@@ -17,7 +17,7 @@ I have written two books, [Jump Start HTML5 : APIs](http://shop.oreilly.com/prod
 
 Recently I, along with [Fazle](https://twitter.com/@fazlerocks), started Hashnode which is a community for software developers.
 
-## How would you describe Hashnode to someone who has never heard of it? How does it differ from the other solutions?
+## How would you describe Hashnode to someone who has never heard of it? How does it differ from other solutions?
 
 Hashnode brings a social angle to how developers interact. Stack Overflow already does a great job at helping developers with specific questions and programming errors
 

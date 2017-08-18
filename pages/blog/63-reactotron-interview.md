@@ -35,7 +35,7 @@ If your app uses Redux, you can track state changes, subscribe to parts of your 
 
 ![Reactotron in action](assets/img/reactotron/demo.gif)
 
-## How does *Reactotron* differ from the other solutions?
+## How does *Reactotron* differ from other solutions?
 
 So, I consider `console.log` the “other solution”. There’s something magical about it, right?
 

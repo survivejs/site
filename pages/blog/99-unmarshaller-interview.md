@@ -141,7 +141,7 @@ In the case of a casting error, `unmarshaller` will always return the type you d
 
 For example, if you pass an invalid JSON string in `builder.object` it will return `{}` unless you have defined a `defaultValue`.
 
-## How does *unmarshaller* differ from the other solutions?
+## How does *unmarshaller* differ from other solutions?
 
 I didn't find an alternative solution to *unmarshaller*. There are some libraries which also adopt the idea of declarative configuration, but they only focus on one usage.
 

@@ -46,7 +46,7 @@ Fast-forward to the future, I'm the lead developer of [BABOOM](http://baboom.com
 
 The most interesting stuff happens in the `npms-analyzer`. Its role is to process and analyze every single module from the npm ecosystem. The analysis process collects as much information as possible about a module which is then used to evaluate and produce a score. If you are interested in knowing more, you may read our [architectural documention](https://github.com/npms-io/npms-analyzer/blob/master/docs/architecture.md).
 
-## How does *npms* differ from the other solutions?
+## How does *npms* differ from other solutions?
 
 When I started the project, I knew that there were several other projects that tried to solve the npmjs.com problem. While they were an improvement over the official search, I felt that there was room for improvement.
 

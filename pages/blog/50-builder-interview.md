@@ -187,7 +187,7 @@ At Formidable, we use a multi-repository strategy for our collection of [Victory
 
 At the same time, not all projects would benefit from a builder archetype solution. If you have a one-off, single-purpose project, there's no need to abstract to an archetype. And the same goes for projects (like [Babel](https://github.com/babel/babel)) that follow a [monorepo strategy](https://github.com/babel/babel/blob/4c371132ae7321f6d08567eab54a59049e07f246/doc/design/monorepo.md) with a single repository.
 
-## How does *builder* differ from the other solutions?
+## How does *builder* differ from other solutions?
 
 Builder is unlike most other "meta" approaches that I'm aware of...
 

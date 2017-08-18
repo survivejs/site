@@ -117,7 +117,7 @@ app.listen(8000);
 
 ```
 
-## How does *isomorphic-webpack* differ from the other solutions?
+## How does *isomorphic-webpack* differ from other solutions?
 
 I have added a [comparison table](https://github.com/gajus/isomorphic-webpack#what-makes-isomorphic-webpack-different-from-webpack-isomorphic-tools-universal-webpack-) to the main repository. The key difference is that `isomorphic-webpack` does not require a separate configuration for client- and server-side code and all `webpack` loaders and dependencies work out of the box.
 

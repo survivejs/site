@@ -65,7 +65,7 @@ In the end, when you have made all your modifications, you can write the content
 
 Writing your own transformations is relatively straight forward, since the data models are kind of standard these days. HTML is is modeled using jsdom, so you can simply traverse DOM as you are used to. CSS is modeled with the PostCSS data model and JavaScript with Esprima. So you have raw access to the bare metal if you need to, but can still reap all the benefits from the high level modeling.
 
-## How does *Assetgraph* differ from the other solutions?
+## How does *Assetgraph* differ from other solutions?
 
 I am not aware of any project with a scope comparable to core Assetgraph, but I can compare [Assetgraph-builder](https://github.com/assetgraph/assetgraph-builder) to other projects. Assetgraph-builder is the teams opinionated take on what a web performance optimizing build tool should do, so it comes with all the bells and whistles and attempts to expose a very powerful set of functionality with a focus on simple configuration.
 

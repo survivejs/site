@@ -34,7 +34,7 @@ Then there's the trickiest step: combining that automatically-derived documentat
 
 Then, finally, it has a significant output system that can generate JSON, Markdown, and HTML documentation. I want the output to be _great_ as a carrot for people to write documentation, so the project itself is responsible for at least the official theme.
 
-## How does *documentation.js* differ from the other solutions?
+## How does *documentation.js* differ from other solutions?
 
 Documentation is a crowded space! There are lots of documentation generators out there, which is why I maintain a big list of them on a wiki page called [See Also](https://github.com/documentationjs/documentation/wiki/See-also).
 

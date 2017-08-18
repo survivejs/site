@@ -31,7 +31,7 @@ First the developer defines inline CSS rules as JavaScript objects. Something li
 
 In the background, Glamor treats CSS rules as 'values', generates an identifier corresponding to that rule (similar to Clojure hashes for their data structures). It attaches this id to a DOM element with a data-attribute, while also adding the rule to a **real** stylesheet. Glamor also dedupes rules, manages universal shims, adds vendor prefixes, all the boring stuff you don't want to do by hand.
 
-## How does *Glamor* differ from the other solutions?
+## How does *Glamor* differ from other solutions?
 
 I really like this *css-as-values* abstraction. It enables a bunch of nice properties, like not having to *name* a rule unless preferred, and letting the developer choose how to compose/modularize their code. Glamor also tries hard to allow *all* possible CSS features, with no compromises on selectors and what not. And it works hard at being efficient, so you shouldn't worry about it being a part of your stack.
 

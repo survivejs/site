@@ -35,7 +35,7 @@ One of the most popular tools is [Pulp](https://github.com/bodil/pulp), which is
 
 Another essential tool for PureScript development is [Pursuit](https://pursuit.purescript.org), which is our package database.
 
-## How does *PureScript* differ from the other solutions?
+## How does *PureScript* differ from other solutions?
 
 The three main features which distinguish PureScript from other similar transpilers are:
 

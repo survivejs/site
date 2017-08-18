@@ -128,7 +128,7 @@ The table definition is fairly flexible. It generates standard `table` elements 
 
 There are also hooks for customizing rendering per row (`Table.Body.onRow` prop). You can also replace `Table.Provider` `components` with your own if you aren't happy with the defaults. Instead of rendering a regular table, you could render divs. Or you could inject React components. I implemented drag and drop on top of the core this way. The hooks also enabled a performance related feature known as virtualization without a lot of effort.
 
-## How does *Reactabular* differ from the other solutions?
+## How does *Reactabular* differ from other solutions?
 
 When I started developing Reactabular in early 2015 I found the existing solutions too monolithic. I gravitated towards the idea of a column definition early on. I would say the work done during this Summer helped to make the ideas shine. The emphasis on keeping the core decoupled and extensible is the thing that sets Reactabular apart in good and bad.
 

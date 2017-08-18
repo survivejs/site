@@ -70,7 +70,7 @@ Users interact with your application to trigger actions. They can be used to do 
 
 HyperApp also promotes the concept of stateless components. Stateless components are pure functions that only know how to render themselves and what actions they are allowed to trigger. As a result, they are framework agnostic and easy to debug and test.
 
-## How does *HyperApp* differ from the other solutions?
+## How does *HyperApp* differ from other solutions?
 
 ### HyperApp is opinionated about state management
 

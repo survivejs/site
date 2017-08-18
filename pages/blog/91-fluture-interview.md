@@ -75,7 +75,7 @@ Fluture builds on top of these ideas to add:
 * Input type checking
 * And [soon](https://github.com/fluture-js/Fluture/milestone/5): Stack safety
 
-## How does *Fluture* differ from the other solutions?
+## How does *Fluture* differ from other solutions?
 
 The description of Fluture states that it's *an alternative to Promises*, so it's only natural that people want to compare it. In my article [comparing Futures to Promises](https://github.com/fluture-js/Fluture/wiki/Comparison-to-Promises) I write:
 
