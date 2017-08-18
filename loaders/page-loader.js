@@ -10,7 +10,7 @@ const parse = require("../utils/parse");
 module.exports = function pageLoader(source) {
   const result = frontmatter(source);
 
-  const { title, body } = parse.title(result.body);
+  const { title, body } = parse.title(result.body); // XXX: Simplify?
 
   result.attributes = result.attributes || {};
 

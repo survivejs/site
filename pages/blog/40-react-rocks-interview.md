@@ -10,12 +10,9 @@ Given there's a lot going on in the React ecosystem, it can be difficult to keep
 ## Can you tell a bit about yourself?
 
 <p>
-<span class="author">
-  <img
-    src="assets/img/interviews/jeff.jpg"
-    alt="Jeff Winkler" class='author' width='100' height='100' />
-</span>
-I am a full stack developer and I have been writing code for over 20 years. From museum kiosks to big enterprise software. I've been using React for a couple years. I'm a tool/feedback loop junkie. I've been lucky enough to work on a couple green-field ReactJS projects.
+  ![Jeff Winkler|100|100|author](assets/img/interviews/jeff.jpg)
+
+  I am a full stack developer and I have been writing code for over 20 years. From museum kiosks to big enterprise software. I've been using React for a couple years. I'm a tool/feedback loop junkie. I've been lucky enough to work on a couple green-field ReactJS projects.
 </p>
 
 My wife and I live outside Boston and we have a five year old, it's really fun to see through the eyes of a kid.

@@ -53,7 +53,7 @@ This can be done for as many downstream dependencies as you'd like, and if no re
 
 A good example is [snap-shot-core](https://github.com/bahmutov/snap-shot-core), which is checked against its downstream dependencies *snap-shot* and *schema-shot*, among others. The project *snap-shot* is in turn checked against its downstream dependencies *snap-shot-jest-test*, *snap-shot-ava-test*, etc. In diagram form it looks like this:
 
-<img src="assets/img/dont-break/snap-shot.png" alt="snap-shot in a diagram form" />
+![snap-shot in a diagram form](assets/img/dont-break/snap-shot.png)
 
 The above slide is from my presentation that I highly recommend to anyone working in the npm ecosystem: [Self Improving Software](https://slides.com/bahmutov/self-improving-software-node-week). It demonstrates *dont-break* via the *dont-crack* wrapper (see below).
 

@@ -12,10 +12,9 @@ Besides React Hot Loader, Dan is behind well-known projects such as [React DnD](
 ## How did you discover React? Can you provide a bit of background?
 
 <p>
-<span class="author">
-  <img src="assets/img/interviews/dan.jpg" alt="Dan Abramov" class='author' width='100' height='100' />
-</span>
-I think it’s a typical story. In 2014, when I was working at [Stampsy](http://stampsy.com), we needed to pivot from an iPad app to a webapp in a matter of a few months. We only knew Backbone so we went with it, but as the app grew more dynamic and complicated, we knew we couldn’t use it for much longer.
+  ![Dan Abramov|100|100|author](assets/img/interviews/dan.jpg)
+
+  I think it’s a typical story. In 2014, when I was working at [Stampsy](http://stampsy.com), we needed to pivot from an iPad app to a webapp in a matter of a few months. We only knew Backbone so we went with it, but as the app grew more dynamic and complicated, we knew we couldn’t use it for much longer.
 </p>
 
 However, we also decidedly did not adopt any opinionated data binding library because we wanted to maintain a simple mental model of what’s happening in the app. At some point in time, there was a widget with a dozen of different states that occurred several times on the page, and we knew we *had* to throw some data binding library into the mix.
@@ -32,7 +31,7 @@ Every time he’d change some tiny piece of UI, he’d have to refresh, open tha
 
 Secondly, I read a book on Erlang when I was a teenager, and it said something that changed my life forever:
 
-<img src='assets/img/pure_functions.jpg' class='center-image' width='400' height='400' alt='Pure functions can be replaced while the application is running'>
+![Pure functions can be replaced while the application is running|400|400|center-image](assets/img/pure_functions.jpg)
 
 Thirdly, I was in awe of Bret Victor’s videos.
 

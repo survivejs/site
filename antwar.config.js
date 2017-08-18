@@ -28,30 +28,30 @@ module.exports = () => ({
   layout: () => require("./layouts/SiteBody").default,
   paths: {
     "/": {
-      content: () => require.context("./pages", true, /^\.\/.*\.md$/),
+      content: () => require.context("./pages", false, /^\.\/.*\.md$/),
       index: () => {
         const index = require("./layouts/SiteIndex").default;
 
         index.title = "SurviveJS";
 
         return index;
-      },
-      paths: {
-        blog: {
-          index: () => {
-            const index = require("./layouts/BlogIndex").default;
-
-            index.title = "Blog";
-
-            return index;
-          },
-          layout: () => require("./layouts/BlogPage").default,
-          transform: pages =>
-            generateAdjacent(_.sortBy(pages, "file.attributes.date")).reverse(),
-          url: ({ fileName }) => `/${clean.chapterName(fileName)}/`,
-          redirects: require("./redirects/blog")
-        }
       }
+    },
+    blog: {
+      content: () => require.context("./pages/blog", false, /^\.\/.*\.md$/),
+      index: () => {
+        const index = require("./layouts/BlogIndex").default;
+
+        index.title = "Blog";
+
+        return index;
+      },
+      layout: () => require("./layouts/BlogPage").default,
+      transform: pages =>
+        generateAdjacent(_.sortBy(pages, "file.attributes.date")).reverse(),
+      url: ({ sectionName, fileName }) =>
+        `/${sectionName}/${clean.chapterName(fileName)}/`,
+      redirects: require("./redirects/blog")
     },
     clinic: () =>
       require("./components/IndexPage").default({

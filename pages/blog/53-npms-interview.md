@@ -21,7 +21,7 @@ My name is André Cruz. I'm 28 years old and I live in Porto, Portugal with my w
 
 When I was a kid, I used to sneak into my brothers computer. Every time I used his computer, I asked myself how this little metal box was able to interpret and execute commands on my behalf. I quickly become intrigued and interested in knowing how it was built. Several years passed and, in the IRC apogee, I developed a several scripts for mIRC.
 
-<img src="assets/img/npms/mirc.jpg" alt="mIRC Scripts" />
+![mIRC scripts](assets/img/npms/mirc.jpg)
 
 That's where my passion in coding and programming started. Since then, I've explored and used several technologies, became graduated in Computers and Telematic Engineering, gave a couple [of](https://www.youtube.com/watch?v=PHlZan97TN0) [talks](https://www.youtube.com/watch?v=5h66mv6Ve4o) and built many projects.
 

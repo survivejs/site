@@ -13,11 +13,9 @@ Perhaps one of my favorite [webpack performance related tricks](/webpack/optimiz
 ## Can you tell a bit about yourself?
 
 <p>
-<span class="author">
-  <img src="assets/img/dll/wiens.jpg" alt="James Wiens" class="author" width="100" height="100" />
-</span>
+  ![James Wiens|100|100|author](assets/img/interviews/wiens.jpg)
 
-👋 I'm a flow state enthusiast and crafting code is my life's passion. I'm from Vancouver, Canada, eh.
+  👋 I'm a flow state enthusiast and crafting code is my life's passion. I'm from Vancouver, Canada, eh.
 </p>
 
 ## How would you describe *d-l-l* to someone who has never heard of it?
@@ -28,7 +26,7 @@ The DllPlugin lets you pre-build the parts of your code that don't often change 
 
 *d-l-l* adds some helpful utilities for finding and adding dependencies and files that do not often change.
 
-<img src="assets/img/dll/dinosaurs.jpg" alt="Webpack dinosaurs" />
+![Webpack dinosaurs](assets/img/dll/dinosaurs.jpg)
 
 ## What's a minimal example using *d-l-l*?
 
@@ -59,7 +57,7 @@ module.exports = dll
 
 ## How does *d-l-l* work?
 
-<img src="assets/img/dll/whatif.jpg" alt="What if I told you that you could make a webpack build go from 1 minute to 1 second?" />
+![What if I told you that you could make a webpack build go from 1 minute to 1 second?](assets/img/dll/whatif.jpg)
 
 *d-l-l* creates an array of webpack configuration consisting of a DLL-only webpack config followed by the existing config from your webpack.config.js.
 

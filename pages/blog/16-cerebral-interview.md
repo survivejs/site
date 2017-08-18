@@ -12,10 +12,9 @@ While I've been plugging away with the book, Christian has been busy developing 
 ## How did you discover Webpack and React? Can you provide a bit of background?
 
 <p>
-<span class="author">
-  <img src="assets/img/interviews/christian.jpg" alt="Christian Alfoni" class='author' width='100' height='100' />
-</span>
-I had saved up some money and chose to quit my job the summer of last year (2014). I wanted to spend 6 months on my own researching web technologies and play around with projects. I feel kinda lucky that way, as obsessed I am with JavaScript and building things I now got the chance to level up. At my previous employer I left a Backbone app with a Grunt workflow. Before that it was all vanilla JavaScript… crazy, but learned a lot!
+  ![Christian Alfoni|100|100|author](assets/img/interviews/christian.jpg)
+
+  I had saved up some money and chose to quit my job the summer of last year (2014). I wanted to spend 6 months on my own researching web technologies and play around with projects. I feel kinda lucky that way, as obsessed I am with JavaScript and building things I now got the chance to level up. At my previous employer I left a Backbone app with a Grunt workflow. Before that it was all vanilla JavaScript… crazy, but learned a lot!
 </p>
 
 So I suppose my timing was good. I started my expedition by diving into Angular, but now both React and Flux started to get some solid ground. Not being too opinionated by Angular I instantly saw the benefits of the “one way flow” of Flux. Now I had a strong concept of storing any kind of state, it being from the server or produced on the client. This was a huge issue at my previous employer, sharing client side state between views and keeping it in sync.
@@ -50,7 +49,7 @@ As signals are arrays of actions you can also use the new spread operator. This 
 
 So Cerebral is this layer between your state storing and UI. It handles the complex part of your application, state changing flow. It is a single powerful entity representing the layer between state and ui, as displayed here:
 
-<img src='assets/img/cerebral_state_ui.png' class='center-image' width='425' height='510' alt='Cerebral is between the state and the UI'>
+![Cerebral is between the state and the UI|425|510|center-image](assets/img/cerebral_state_ui.png)
 
 Running the debugger next to the UI gives you insight into all these three layers. The UI, the state changing flow and the current state of the application. It is pretty cool!
 About the future of Cerebral. I have been working on a project for a year now.

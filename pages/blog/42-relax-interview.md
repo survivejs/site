@@ -35,7 +35,7 @@ The page builder lets you build any page with drag and drop, providing you insta
 
 The content types builder let's you create data models to use in your site or just to save information. A good and standard example of a content type is a blog, each blog post might have a featured image, a title, a description, etc. With Relax you can create this in a simple and graphic way on the admin area.
 
-<img src="assets/img/relax/relax_01.jpg" alt="Asset types" />
+![Asset types](assets/img/relax/relax_01.jpg)
 
 But wait, isn't there already page builders and content types builders around? Yes there is, but Relax takes it up a big notch integrating the both. You can link data from your created content types in the page builder itself, and all with drag and drop! So you can create a blog posts list using the page builder only. You can also create singles for the blog posts by linking data in the page builder as well.
 
@@ -66,7 +66,7 @@ We're now at a stable path with the techs we're using. User experience is someth
 
 Well, we should finish the dashboard design development the next 3-4 weeks. It will be a fresh face to Relax and a much better user experience overall. Then it's a matter of concluding some pendent issues towards the beta release. We've set up a macro view of what's missing at [the roadmap](https://github.com/relax/relax/blob/master/ROADMAP.md).
 
-<img src="assets/img/relax/relax_02.jpg" alt="Asset search" />
+![Asset search](assets/img/relax/relax_02.jpg)
 
 We have bigger plans later down the road for Relax. Relax CMS will always be free as an open source project. Although, we have plans to make a marketplace where developers and designers can sell themes and more complex components for Relax. It will be a review based marketplace to assure every item will be top notch.
 

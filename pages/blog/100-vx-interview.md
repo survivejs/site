@@ -34,7 +34,7 @@ Outside of work, I enjoy playing golf poorly, reading programming books I don't 
 
 Below is a flow diagram that illustrates how *vx* could fit in at your organization:
 
-<img src="assets/img/vx/diagram.png" alt="vx flow diagram" />
+![vx flow diagram](assets/img/vx/diagram.png)
 
 ## How does *vx* work?
 

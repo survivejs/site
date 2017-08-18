@@ -55,7 +55,7 @@ Sometimes issues beyond your control like these will affect you. Technical probl
 
 I was interested in having more free sessions in Berlin, but I probably didn't push that enough as there was no response to my initial tweet. But on the plus side, I had time to explore the city and its possibilities.
 
-<img src="assets/img/euro-tour-2017/gnome.jpg" alt="Gnome" />
+![Gnome](assets/img/euro-tour-2017/gnome.jpg)
 
 ## Trip
 
@@ -63,7 +63,7 @@ The trip itself was amazing. I spent time in a lot of cities and learn about dif
 
 I also understood how expensive place Finland is. Only Norway was worse in this regard, and the other countries were cheaper, sometimes greatly so. A good example is a pasta dinner at Berlin which included appetizer, main course, dessert, and a drink for 7.5 euros. The comparable offering would cost between 20 and 30 euros in Finland while not matching the quality.
 
-<img src="assets/img/euro-tour-2017/oslo.jpg" alt="Oslo" />
+![Oslo](assets/img/euro-tour-2017/oslo.jpg)
 
 ### What Went Right
 
@@ -95,7 +95,7 @@ I should have spent more time researching restaurants and places to visit before
 
 It would have been a good idea to bring earplugs and a sleep mask to help with sleep quality. I did get sleep, but I could have done better in this department.
 
-<img src="assets/img/euro-tour-2017/berlin.jpg" alt="Berlin" />
+![Berlin](assets/img/euro-tour-2017/berlin.jpg)
 
 ## Conclusion
 

@@ -55,7 +55,7 @@ T> **Editor's note:** Peter has written a tool known as [Assetviz](https://githu
 
 ### 3. Transforming the graph
 
-<img src="assets/img/assetgraph/graph.png" alt="Transforming the Graph" />
+![Transforming the graph](assets/img/assetgraph/graph.png)
 
 Now you have a fully populated graph model of your code, and this is where the fun starts. Using the transform pipeline you can queue transformations to run on the graph. If you want to rename a file, change its URL with `asset.url = 'foo.html'`. As a result all relations pointing to it will be updated.
 

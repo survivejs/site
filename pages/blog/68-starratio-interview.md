@@ -28,7 +28,7 @@ For sure you would like to check which of them are still maintained, how popular
 
 As I say, StarRatio is a *handy tool to compare JavaScript open source projects*.
 
-<img src="assets/img/starratio/star-ratio-01.png" alt="Basic Comparison" />
+![Basic comparison](assets/img/starratio/star-ratio-01.png)
 
 ## How does *StarRatio* work?
 
@@ -41,7 +41,7 @@ From technical perspective it is a client-server web application. On the client 
 
 Under the hood, StarRatio API is really simple. It is just aggregating data from npm and GitHub, processing it and caching the results.
 
-<img src="assets/img/starratio/star-ratio-02.png" alt="Card view" />
+![Card view](assets/img/starratio/star-ratio-02.png)
 
 ## How does *StarRatio* differ from the other solutions?
 
@@ -49,7 +49,7 @@ StarRatio tries to gather and calculate stats that are really important from a d
 
 It is quite unique as it doesn't try to solve the problem of choice, it just helps to simplify it by showing all needed information on one page in a way that is easy to compare.
 
-<img src="assets/img/starratio/star-ratio-03.png" alt="Chart view" />
+![Chart view](assets/img/starratio/star-ratio-03.png)
 
 ## Why did you develop *StarRatio*?
 

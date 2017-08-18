@@ -35,7 +35,7 @@ This is an example of a project on CodeSandbox, it's the classic TodoMVC example
 
 CodeSandbox at its core consists of two parts: the editor and the preview. The editor is the whole CodeSandbox application (file manager, code editor, dependency settings) and the preview is the result you see on the right. These two parts are very decoupled and only communicate using [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). The preview is on a subdomain (`sandbox.codesandbox.io`) in an iframe to literally 'sandbox' the preview away from the main application.
 
-<img src="assets/img/codesandbox/preview.png" alt="Editor vs. preview" />
+![Editor vs. preview](assets/img/codesandbox/preview.png)
 
 The editor sends all its files, directories and dependencies to the preview; this either happens when the user changes something or when the application loads. The preview then takes all these files and processes each type using different loaders, which currently is either CSS, JavaScript, JSON, or HTML. These loaders can be very simple, the JSON loader, for example, is only a one-liner:
 
@@ -96,7 +96,7 @@ It also includes a very requested feature: deleting sandboxes. Deleting is curre
 
 This is the current design for the new profile view:
 
-<img src="assets/img/codesandbox/profile.png" alt="Profile view design" />
+![Profile view design](assets/img/codesandbox/profile.png)
 
 After we have better support for searching and sharing sandboxes within CodeSandbox, I can work on 'import as library'. I'm excited about that feature and would love to build it sooner; it's just that I first need to build the foundation for it.
 

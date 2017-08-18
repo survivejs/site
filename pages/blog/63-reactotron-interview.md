@@ -33,7 +33,7 @@ It plugs into your React JS or React Native app and relays info up to 1 of the 2
 
 If your app uses Redux, you can track state changes, subscribe to parts of your state tree, and even replay & dispatch actions. There are ways to pass data like you would `console.log` and even supports images.
 
-<img src="assets/img/reactotron/demo.gif" alt="Reactotron in action" />
+![Reactotron in action](assets/img/reactotron/demo.gif)
 
 ## How does *Reactotron* differ from the other solutions?
 

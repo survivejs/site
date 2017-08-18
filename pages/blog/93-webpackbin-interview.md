@@ -14,10 +14,9 @@ T> If you have been following the series, you might remember an earlier intervie
 ## Can you tell a bit about yourself?
 
 <p>
-<span class="author">
-  <img src="assets/img/interviews/christian.jpg" alt="Christian Alfoni" class='author' width='100' height='100' />
-</span>
-For sure! :) I am a 33-year-old JavaScript hacker, developer, OSS enthusiast and due to that an emotional wreck. Living in Trondheim, Norway. I spend my days at Ducky, a startup I joined last year.
+  ![Christian Alfoni|100|100|author](assets/img/interviews/christian.jpg)
+
+  For sure! :) I am a 33-year-old JavaScript hacker, developer, OSS enthusiast and due to that an emotional wreck. Living in Trondheim, Norway. I spend my days at Ducky, a startup I joined last year.
 </p>
 
 We are trying to save the planet, and my part in that is making technology choices and informally running a small development team to support the constant changes and ambitions of the company.

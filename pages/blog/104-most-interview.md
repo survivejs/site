@@ -12,9 +12,7 @@ To learn more about the topic, I'm interviewing [Brian Cavalier](https://twitter
 ## Can you tell a bit about yourself?
 
 <p>
-<span class="author">
- <img src="assets/img/interviews/brian.jpg" alt"Brian Cavalier" class="author" width="100" height="100" />
-</span>
+  ![Brian Cavalier|100|100|author](assets/img/interviews/brian.jpg)
 
 I'm a software engineer at Yelp in Pittsburgh, PA, where I work on Node-based web services and distributed systems. I had done all kinds of stuff before I started writing JavaScript: Basic, Assembly, C, C++, Ruby, ML, and way more Java than I want to admit. Recently, I've done a decent amount of Haskell, and have been actively digging into Purescript, Rust, and Idris. I love learning about how to solve problems in different ways.
 </p>
