@@ -1,6 +1,6 @@
 ---
 title: 'Idyll - Narratives for the web - Interview with Matthew Conlen'
-date: 2017-08-18
+date: 2017-08-21
 headerImage: '/assets/img/XXX.jpg'
 keywords: ['interview']
 ---
