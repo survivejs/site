@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.14763bf0fb1830432e3e.css" rel="stylesheet">
+      <link href="/site.7c08804ef059dcdf73e5.css" rel="stylesheet">
     
 
     <link
@@ -43,7 +43,7 @@ At work, I&#39;m a software engineer but also spend a lot of time writing, desig
 <p>To infer facts about source code, we stand on the shoulders of a giant, which in this case is named <a href="https://github.com/babel/babel">Babel</a>. That project has an excellent JavaScript parser called <a href="https://github.com/babel/babylon">Babylon</a>, as well as lots of other tools for interacting with parsed JavaScript structures. Using these helpers, we can, for instance, find all functions declared in a file, ask them for parameter types, names, return values, and lots more.</p>
 <p>Then there&#39;s the trickiest step: combining that automatically-derived documentation with explicit documentation, things that people write themselves as source code comments. That&#39;s all done by merging tree data-structures and so on, and is one of the parts I most want to refactor!</p>
 <p>Then, finally, it has a significant output system that can generate JSON, Markdown, and HTML documentation. I want the output to be <em>great</em> as a carrot for people to write documentation, so the project itself is responsible for at least the official theme.</p>
-<h2 class="header"><a class="header-anchor" href="#how-does-documentation-js-differ-from-the-other-solutions-" id="how-does-documentation-js-differ-from-the-other-solutions-"></a><span class="text">How does <em>documentation.js</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-documentation-js-differ-from-the-other-solutions-">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#how-does-documentation-js-differ-from-other-solutions-" id="how-does-documentation-js-differ-from-other-solutions-"></a><span class="text">How does <em>documentation.js</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-documentation-js-differ-from-other-solutions-">#</a></h2>
 <p>Documentation is a crowded space! There are lots of documentation generators out there, which is why I maintain a big list of them on a wiki page called <a href="https://github.com/documentationjs/documentation/wiki/See-also">See Also</a>.</p>
 <p>The biggest player out there is <a href="http://usejsdoc.org/">JSDoc</a>, so I&#39;ll describe how <em>documentation.js</em> is different than it. First off, <em>documentation.js</em> has a system for automatically figuring out which files to document - doing the same trick as webpack or browserify to figure out what requires what and which functions are exported. I wanted that, so that code itself would be the authority that tells us what is a public interface and what is private.</p>
 <p>The other big difference is that <em>documentation.js</em> aims to be universal and modern. We want to support new JavaScript features shortly after they&#39;re announced, and to use <a href="https://flow.org/">Flow</a> types as information for automatic documentation. I was seeing so much information that previously fit into documentation, like property types, instead of fitting into type systems like Flow, and I want to embrace that trend by leveraging that type information for documentation too.</p>

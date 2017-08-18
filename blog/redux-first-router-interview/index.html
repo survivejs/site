@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.14763bf0fb1830432e3e.css" rel="stylesheet">
+      <link href="/site.7c08804ef059dcdf73e5.css" rel="stylesheet">
     
 
     <link
@@ -45,7 +45,7 @@ I&#39;ve tried to stay quiet and keep it to the code rather than myself. But per
 <p>With Redux-First Router, actions are dispatched as a result of visiting URLs and conversely, the address bar is updated in response to matching actions.</p>
 <p>What&#39;s significant and special about it is something that was never done before: the actions dispatched have unique <code>type</code>s that only the given kind of URL has. This is unique because previous attempts at Redux routing (such as <em>redux-little-router</em>) dispatch actions that all have the same type: the equivalent of <code>LOCATION_CHANGED</code>. Then you have to dig through lots of information nested in that action to figure out what happened. It wasn&#39;t conducive to switching over types as is idiomatic in reducers.</p>
 <p>As obvious as it sounds, having a <code>type</code> that is as informative as actions you manually dispatch is the key ingredient that finally makes routing seamless for Redux apps.</p>
-<h2 class="header"><a class="header-anchor" href="#how-does-redux-first-router-differ-from-the-other-solutions-" id="how-does-redux-first-router-differ-from-the-other-solutions-"></a><span class="text">How does <em>Redux-First Router</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-redux-first-router-differ-from-the-other-solutions-">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#how-does-redux-first-router-differ-from-other-solutions-" id="how-does-redux-first-router-differ-from-other-solutions-"></a><span class="text">How does <em>Redux-First Router</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-redux-first-router-differ-from-other-solutions-">#</a></h2>
 <h3 class="header"><a class="header-anchor" href="#no-route-components" id="no-route-components"></a><span class="text">No <code>&lt;Route /&gt;</code> components</span><a class="header-anchor-select" href="#no-route-components">#</a></h3>
 <p>Initial attempts at Redux routing followed the React Router approach that <em>&quot;everything is a component&quot;</em>. As <a href="https://github.com/kmcclosk">one of our initial users</a> put it, <em>&quot;cargo culting the same React Router stuff as everyone else just didn&#39;t feel right, felt leaky, felt hacky&quot;.</em></p>
 <p>The fact of the matter is that keeping any state (especially URL state) in the view layer has been an anti-pattern for a long time now, yet somehow React convinced us that it was the exception. It makes sense when you <em>don&#39;t</em> have Redux (or another data store). But when you do, a lot more compelling opportunities unveil themselves to you.</p>

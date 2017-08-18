@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.14763bf0fb1830432e3e.css" rel="stylesheet">
+      <link href="/site.7c08804ef059dcdf73e5.css" rel="stylesheet">
     
 
     <link
@@ -46,7 +46,7 @@ I&#39;m a graphics editor at the New York Times, working on the investigations t
 <pre><code class="lang-js"><span class="token keyword" >import</span> foo <span class="token keyword" >from</span> <span class="token string" >'./foo.js'</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>That means that Rollup needs to resolve <code>./foo.js</code> relative to <code>index.js</code>, load it, parse it, analyse it, lather, rinse and repeat until there are no more modules to import. Crucially, all these steps are pluggable, so you can augment Rollup with the ability to import from <code>node_modules</code> or compile ES2015 to ES5 in a sourcemap-aware way, for example.</p>
-<h2 class="header"><a class="header-anchor" href="#how-does-rollup-differ-from-the-other-solutions-" id="how-does-rollup-differ-from-the-other-solutions-"></a><span class="text">How does <em>Rollup</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-rollup-differ-from-the-other-solutions-">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#how-does-rollup-differ-from-other-solutions-" id="how-does-rollup-differ-from-other-solutions-"></a><span class="text">How does <em>Rollup</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-rollup-differ-from-other-solutions-">#</a></h2>
 <p>Firstly, there&#39;s zero overhead. The traditional approach to bundling is to wrap every module in a function, put those functions in an array, and implement a <code>require</code> function that plucks those functions out of the array and executes them on demand. It turns out <a href="https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/">this is terrible</a> for both bundle size and startup time.</p>
 <p>Instead, Rollup essentially just concatenates your code — there&#39;s no waste, and the resulting bundle minifies better. Some people call this &#39;scope hoisting&#39;.</p>
 <p>Secondly, it removes unused code from the modules you import, which is called &#39;treeshaking&#39; for reasons that no-one is certain of.</p>

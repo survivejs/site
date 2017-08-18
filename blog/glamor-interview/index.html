@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.14763bf0fb1830432e3e.css" rel="stylesheet">
+      <link href="/site.7c08804ef059dcdf73e5.css" rel="stylesheet">
     
 
     <link
@@ -42,7 +42,7 @@ Hi! My name&#39;s Sunil Pai, and I wrote the css-in-js library <a href="https://
 <h2 class="header"><a class="header-anchor" href="#how-does-glamor-work-" id="how-does-glamor-work-"></a><span class="text">How does <em>Glamor</em> work?</span><a class="header-anchor-select" href="#how-does-glamor-work-">#</a></h2>
 <p>First the developer defines inline CSS rules as JavaScript objects. Something like <code>&lt;div {...style({ color: &#39;red&#39; })/&gt;</code> or with the <code>createElement</code> replacement <code>&lt;div css={{ color: &#39;red&#39; }} /&gt;</code>.</p>
 <p>In the background, Glamor treats CSS rules as &#39;values&#39;, generates an identifier corresponding to that rule (similar to Clojure hashes for their data structures). It attaches this id to a DOM element with a data-attribute, while also adding the rule to a <strong>real</strong> stylesheet. Glamor also dedupes rules, manages universal shims, adds vendor prefixes, all the boring stuff you don&#39;t want to do by hand.</p>
-<h2 class="header"><a class="header-anchor" href="#how-does-glamor-differ-from-the-other-solutions-" id="how-does-glamor-differ-from-the-other-solutions-"></a><span class="text">How does <em>Glamor</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-glamor-differ-from-the-other-solutions-">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#how-does-glamor-differ-from-other-solutions-" id="how-does-glamor-differ-from-other-solutions-"></a><span class="text">How does <em>Glamor</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-glamor-differ-from-other-solutions-">#</a></h2>
 <p>I really like this <em>css-as-values</em> abstraction. It enables a bunch of nice properties, like not having to <em>name</em> a rule unless preferred, and letting the developer choose how to compose/modularize their code. Glamor also tries hard to allow <em>all</em> possible CSS features, with no compromises on selectors and what not. And it works hard at being efficient, so you shouldn&#39;t worry about it being a part of your stack.</p>
 <p>I&#39;m also happy with the abstraction this library offers; it&#39;s low level enough that it&#39;s mostly invisible, but allows for some higher order programming. Indeed, Glamor itself ships with shims for <a href="https://github.com/Khan/aphrodite">Aphrodite</a> and <a href="https://github.com/smyte/jsxstyle">jsxstyle</a> APIs, and I&#39;m totally on the lookout for other interesting options.</p>
 <p>There&#39;s some other technical stuff like super efficient css <em>insertion</em>, <strong>precise</strong> server side rendering, a plugin system, etc, but I think the css-as-values abstraction is the nicest.</p>

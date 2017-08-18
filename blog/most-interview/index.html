@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.14763bf0fb1830432e3e.css" rel="stylesheet">
+      <link href="/site.7c08804ef059dcdf73e5.css" rel="stylesheet">
     
 
     <link
@@ -62,7 +62,7 @@ I&#39;m a software engineer at Yelp in Pittsburgh, PA, where I work on Node-base
 <li>The <code>map</code> <code>Sink</code> then applies the mapping function to the event value and calls the <code>observe</code> <code>Sink</code>&#39;s <code>event</code> method.</li>
 </ol>
 <p>This direct synchronous method call event propagation model is one of the keys to Most.js&#39;s simple and performant internal architecture.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>Check out the <a href="https://github.com/cujojs/most/wiki/Architecture">Architecture wiki</a>, to read more about the details of the Source-Sink chain, including how error handling works, and avoids having to <code>try</code>/<code>catch</code> in every combinator.</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-most-js-differ-from-the-other-solutions-" id="how-does-most-js-differ-from-the-other-solutions-"></a><span class="text">How does <em>Most.js</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-most-js-differ-from-the-other-solutions-">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Check out the <a href="https://github.com/cujojs/most/wiki/Architecture">Architecture wiki</a>, to read more about the details of the Source-Sink chain, including how error handling works, and avoids having to <code>try</code>/<code>catch</code> in every combinator.</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-most-js-differ-from-other-solutions-" id="how-does-most-js-differ-from-other-solutions-"></a><span class="text">How does <em>Most.js</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-most-js-differ-from-other-solutions-">#</a></h2>
 <h3 class="header"><a class="header-anchor" href="#performance" id="performance"></a><span class="text">Performance</span><a class="header-anchor-select" href="#performance">#</a></h3>
 <p>I think many people know Most.js because of its performance characteristics, and that was certainly a goal from the beginning, along with modularity and a simple API. The simple call stack event propagation architecture, plus hoisting <code>try</code>/<code>catch</code> out of combinator implementations were two of the earliest and biggest performance improvements.</p>
 <p>Most.js performs several other optimizations automatically, based on algebraic equivalences. A relatively well-known example is combining multiple <code>map</code> operations, e.g. <code>map(g, map(f, stream))</code>, into a single <code>map</code> by doing function composition on <code>f</code> and <code>g</code>.</p>

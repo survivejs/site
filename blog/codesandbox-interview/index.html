@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.14763bf0fb1830432e3e.css" rel="stylesheet">
+      <link href="/site.7c08804ef059dcdf73e5.css" rel="stylesheet">
     
 
     <link
@@ -74,7 +74,7 @@ My name is Ives van Hoorne; I&#39;m a Computer Science student at the <a href="h
 I want to make it possible for others to build and share loaders/boilerplates as well, but this requires some thinking because we still want to support <code>create-react-app</code> interoperability.</p>
 <p>The npm dependencies are handled by a separate server; I call it the &#39;bundler&#39;. The editor sends the list of dependencies to it, the bundler then creates a UMD build of this combination using webpack 2 and sends an object containing the URL and the manifest back.</p>
 <p>A manifest is an object with a mapping from dependency name to module number, so the JavaScript loader knows which module to load from the UMD build when a dependency is required.</p>
-<h2 class="header"><a class="header-anchor" href="#how-does-codesandbox-differ-from-the-other-solutions-" id="how-does-codesandbox-differ-from-the-other-solutions-"></a><span class="text">How does <em>CodeSandbox</em> differ from the other solutions?</span><a class="header-anchor-select" href="#how-does-codesandbox-differ-from-the-other-solutions-">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#how-does-codesandbox-differ-from-other-solutions-" id="how-does-codesandbox-differ-from-other-solutions-"></a><span class="text">How does <em>CodeSandbox</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-codesandbox-differ-from-other-solutions-">#</a></h2>
 <p>CodeSandbox is one of the few editors that supports npm dependencies and multiple files/directories. It also handles almost everything in the browser, which allows us to show real-time feedback without any server communication.</p>
 <p>That is a feature-wise difference, but I think the real difference compared to other editors is the goal. We want to make it possible to let others import your sandbox as a dependency. This way you can&#39;t only edit others work, you can use it in your projects. The feature hasn&#39;t been fully implemented yet; I still need to finish the UI for it.</p>
 <h2 class="header"><a class="header-anchor" href="#why-did-you-develop-codesandbox-" id="why-did-you-develop-codesandbox-"></a><span class="text">Why did you develop <em>CodeSandbox</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-codesandbox-">#</a></h2>
