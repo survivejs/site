@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -99,7 +99,7 @@
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#generating-font-files-based-on-svgs" id="generating-font-files-based-on-svgs"></a><span class="text">Generating Font Files Based on SVGs</span><a class="header-anchor-select" href="#generating-font-files-based-on-svgs">#</a></h2>
 <p>If you prefer to use SVG based fonts, they can be bundled as a single font file by using <a href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</a>.</p>
-<blockquote class="warning"><i class="icon-attention"></i>Take care with SVGs if you have SVG specific image setup in place already. If you want to process font SVGs differently, set their definitions carefully. The <a href="/webpack/loader-definitions/">Loader Definitions</a> chapter covers alternatives.</blockquote><h2 class="header"><a class="header-anchor" href="#using-font-awesome" id="using-font-awesome"></a><span class="text">Using Font Awesome</span><a class="header-anchor-select" href="#using-font-awesome">#</a></h2>
+<blockquote class="warning"><i class="icon-attention"></i>Take care with SVGs if you have SVG specific image setup in place already. If you want to process font SVGs differently, set their definitions carefully. The <a href="/webpack/loading/loader-definitions/">Loader Definitions</a> chapter covers alternatives.</blockquote><h2 class="header"><a class="header-anchor" href="#using-font-awesome" id="using-font-awesome"></a><span class="text">Using Font Awesome</span><a class="header-anchor-select" href="#using-font-awesome">#</a></h2>
 <p>The ideas above can be applied with <a href="https://www.npmjs.com/package/font-awesome">Font Awesome</a>. It&#39;s a collection of high-quality font icons you can refer to using CSS classes.</p>
 <h3 class="header"><a class="header-anchor" href="#integrating-font-awesome-to-the-project" id="integrating-font-awesome-to-the-project"></a><span class="text">Integrating Font Awesome to the Project</span><a class="header-anchor-select" href="#integrating-font-awesome-to-the-project">#</a></h3>
 <p>To integrate Font Awesome to the book project, install it first:</p>
@@ -114,7 +114,7 @@
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 </code></pre>
 <p>Font Awesome includes Sass and Less versions as well, but given you have not set up either, this definition is enough.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>import</code> could be cleaned up as <code>import &#39;font-awesome&#39;</code> by setting up a <code>resolve.alias</code>. The <a href="/webpack/consuming-techniques/">Package Consuming Techniques</a> chapter discusses this idea in detail.</blockquote><p>If you run the project now (<code>npm start</code>), webpack should give a long list of errors:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>import</code> could be cleaned up as <code>import &#39;font-awesome&#39;</code> by setting up a <code>resolve.alias</code>. The <a href="/webpack/packages/consuming-techniques/">Package Consuming Techniques</a> chapter discusses this idea in detail.</blockquote><p>If you run the project now (<code>npm start</code>), webpack should give a long list of errors:</p>
 <pre><code class="lang-bash">ERROR <span class="token keyword" >in</span> ./~/font-awesome/fonts/fontawesome-webfont.woff2?v<span class="token operator" >=</span>4.7.0
 Module parse failed: <span class="token punctuation" >..</span>./node_modules/font-awesome/fonts/fontawesome-webfont.woff2?v<span class="token operator" >=</span>4.7.0 Unexpected character <span class="token string" >''</span> <span class="token punctuation" >(</span>1:4<span class="token punctuation" >)</span>
 You may need an appropriate loader to handle this <span class="token function" >file</span> type.
@@ -195,7 +195,7 @@ Time: 2547ms
    <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
 <span class="token punctuation" >..</span>.
 </code></pre>
-<p>The SVG file included in Font Awesome has been marked as <code>[big]</code>. It&#39;s beyond the performance budget defaults set by webpack and the topic is discussed in detail in the <a href="/webpack/minifying/">Minifying</a> chapter.</p>
+<p>The SVG file included in Font Awesome has been marked as <code>[big]</code>. It&#39;s beyond the performance budget defaults set by webpack and the topic is discussed in detail in the <a href="/webpack/optimizing/minifying/">Minifying</a> chapter.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/font-awesome-loader">font-awesome-loader</a> allows more customization. Font Awesome 5 improves the situation further and make it easier to decide what fonts to consume. <a href="https://github.com/FortAwesome/Font-Awesome/wiki/Customize-Font-Awesome">Font Awesome wiki</a> points to available online services that allow you to select specific fonts from Font Awesome collection.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Loading fonts is similar to loading other assets. You have to consider the browsers you want to support and choose the loading strategy based on that.</p>
 <p>To recap:</p>

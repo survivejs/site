@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -196,7 +196,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>The approach can be pushed to another direction by dropping the multi-compiler mode. Even though it&#39;s slower to process this kind of build, it enables code sharing, and the implementation of shells. The first step towards a shell setup is to rework the configuration so that it picks up the code shared between the pages.</p>
 <h2 class="header"><a class="header-anchor" href="#generating-multiple-pages-while-sharing-code" id="generating-multiple-pages-while-sharing-code"></a><span class="text">Generating Multiple Pages While Sharing Code</span><a class="header-anchor-select" href="#generating-multiple-pages-while-sharing-code">#</a></h2>
 <p>The current configuration shares code by coincidence already due to the usage patterns. Only a small part of the code differs, and as a result only the page manifests, and the bundles mapping to their entries differ.</p>
-<p>In a more complicated application, you should apply techniques covered in the <a href="/webpack/bundle-splitting/">Bundle Splitting</a> chapter across the pages. Dropping the multi-compiler mode can be worthwhile then.</p>
+<p>In a more complicated application, you should apply techniques covered in the <a href="/webpack/building/bundle-splitting/">Bundle Splitting</a> chapter across the pages. Dropping the multi-compiler mode can be worthwhile then.</p>
 <h3 class="header"><a class="header-anchor" href="#adjusting-configuration" id="adjusting-configuration"></a><span class="text">Adjusting Configuration</span><a class="header-anchor-select" href="#adjusting-configuration">#</a></h3>
 <p>To reach a code sharing setup, a minor adjustment is needed. Most of the code can remain the same. The way you expose it to webpack has to change so that it receives a single configuration object. As <code>HtmlWebpackPlugin</code> picks up all chunks by default, you have to adjust it to pick up only the chunks that are related to each page:</p>
 <p><strong>webpack.config.js</strong></p>

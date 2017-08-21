@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -80,7 +80,7 @@
 </code></pre><p>Mocha also provides a watch mode which you can activate through <code>npm run test:mocha -- --watch</code>. It runs the test suite as you modify the code.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><code>--grep &lt;pattern&gt;</code> can be used for constraining the behavior if you want to focus only on a particular set of tests.</blockquote><h3 class="header"><a class="header-anchor" href="#configuring-webpack" id="configuring-webpack"></a><span class="text">Configuring Webpack</span><a class="header-anchor-select" href="#configuring-webpack">#</a></h3>
 <p>Webpack can provide similar functionality through a web interface. The hard parts of the problem have been solved earlier in this book, what remain is combining those solutions together through configuration.</p>
-<p>To tell webpack which tests to run, they need to be imported somehow. The <a href="/webpack/dynamic-loading/">Dynamic Loading</a> chapter discussed <code>require.context</code> that allows to aggregate files based on a rule. It&#39;s ideal here. Set up an entry point as follows:</p>
+<p>To tell webpack which tests to run, they need to be imported somehow. The <a href="/webpack/techniques/dynamic-loading/">Dynamic Loading</a> chapter discussed <code>require.context</code> that allows to aggregate files based on a rule. It&#39;s ideal here. Set up an entry point as follows:</p>
 <p><strong>tests/index.js</strong></p>
 <pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// Skip execution in Node</span>
 <span class="token keyword" >if</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
@@ -111,14 +111,14 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
   <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>See the <a href="/webpack/composing-configuration/">Composing Configuration</a> chapter for the full <code>devServer</code> setup. The page setup is explained in the <a href="/webpack/multiple-pages/">Multiple Pages</a> chapter.</blockquote><p>Add a helper script to make it convenient to run:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>See the <a href="/webpack/developing/composing-configuration/">Composing Configuration</a> chapter for the full <code>devServer</code> setup. The page setup is explained in the <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter.</blockquote><p>Add a helper script to make it convenient to run:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
   "test<span class="token operator" >:</span>mocha<span class="token operator" >:</span>watch"<span class="token operator" >:</span> <span class="token string" >"webpack-dev-server --hot --config webpack.mocha.js"</span><span class="token punctuation" >,</span>
   ...
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand what <code>--hot</code> does better, see the <a href="/webpack/hmr/">Hot Module Replacement</a> appendix.</blockquote><p>If you execute the server now and navigate to <code>http://localhost:8080/</code>, you should see the test:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand what <code>--hot</code> does better, see the <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> appendix.</blockquote><p>If you execute the server now and navigate to <code>http://localhost:8080/</code>, you should see the test:</p>
 <p><img src="/f845229e1cd70b6f4598df7dd1d20a80.png" alt="Mocha in browser" class="" width="" height="" /></p>
 <p>Adjusting either the test or the code should lead to a change in the browser. You can grow your specification or refactor the code while seeing the status of the tests.</p>
 <p>Compared to the vanilla Mocha setup, configuring Mocha through webpack comes with a couple of advantages:</p>
@@ -245,7 +245,7 @@ PhantomJS <span class="token punctuation" >..</span>.: Executed 1 of 1 SUCCESS <
   <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand the <code>env</code> idea, see the <a href="/webpack/javascript/">Loading JavaScript</a> chapter.</blockquote><p>On Karma side, reporting has to be set up and Karma configuration has to be connected with webpack. <em>karma-webpack</em> provides two fields for this purpose: <code>webpack</code> and <code>webpackMiddleware</code>. You should use the former in this case to make sure the code gets processed through Babel.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand the <code>env</code> idea, see the <a href="/webpack/loading/javascript/">Loading JavaScript</a> chapter.</blockquote><p>On Karma side, reporting has to be set up and Karma configuration has to be connected with webpack. <em>karma-webpack</em> provides two fields for this purpose: <code>webpack</code> and <code>webpackMiddleware</code>. You should use the former in this case to make sure the code gets processed through Babel.</p>
 <p><strong>karma.conf.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
 <span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'path'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>

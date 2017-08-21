@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -38,7 +38,7 @@
 <p>Webpack uses only a single instance by default meaning you aren&#39;t able to benefit from a multi-core processor without extra effort. This where third party solutions, such as <a href="https://www.npmjs.com/package/parallel-webpack">parallel-webpack</a> and <a href="https://www.npmjs.com/package/happypack">HappyPack</a> come in.</p>
 <h3 class="header"><a class="header-anchor" href="#parallel-webpack-run-multiple-webpack-s-in-parallel" id="parallel-webpack-run-multiple-webpack-s-in-parallel"></a><span class="text">parallel-webpack - Run Multiple Webpack&#39;s in Parallel</span><a class="header-anchor-select" href="#parallel-webpack-run-multiple-webpack-s-in-parallel">#</a></h3>
 <p><em>parallel-webpack</em> allows you to parallelize webpack configuration in two ways. Assuming you have defined your webpack configuration as an array, it can run the configurations in parallel. In addition to this, <em>parallel-webpack</em> can generate builds based on given <strong>variants</strong>.</p>
-<p>Using variants allows you to generate both production and development builds at once. Variants also allow you to generate bundles with different targets to make them easier to consume depending on the environment. Variants can be used to implement feature flags when combined with <code>DefinePlugin</code> as discussed in the <a href="/webpack/environment-variables/">Environment Variables</a> chapter.</p>
+<p>Using variants allows you to generate both production and development builds at once. Variants also allow you to generate bundles with different targets to make them easier to consume depending on the environment. Variants can be used to implement feature flags when combined with <code>DefinePlugin</code> as discussed in the <a href="/webpack/optimizing/environment-variables/">Environment Variables</a> chapter.</p>
 <p>The underlying idea can be implemented using a <a href="https://www.npmjs.com/package/worker-farm">worker-farm</a>. In fact, <em>parallel-webpack</em> relies on <em>worker-farm</em> underneath.</p>
 <p><em>parallel-webpack</em> can be used by installing it to your project as a development dependency and then replacing <code>webpack</code> command with <code>parallel-webpack</code>.</p>
 <h3 class="header"><a class="header-anchor" href="#happypack-file-level-parallelism" id="happypack-file-level-parallelism"></a><span class="text">HappyPack - File Level Parallelism</span><a class="header-anchor-select" href="#happypack-file-level-parallelism">#</a></h3>
@@ -102,7 +102,7 @@
 </ul>
 <h2 class="header"><a class="header-anchor" href="#optimizing-rebundling-speed-during-development" id="optimizing-rebundling-speed-during-development"></a><span class="text">Optimizing Rebundling Speed During Development</span><a class="header-anchor-select" href="#optimizing-rebundling-speed-during-development">#</a></h2>
 <p>It&#39;s possible to optimize rebundling times during development by pointing the development setup to a minified version of a library, such as React. In React&#39;s case, you lose <code>propType</code>-based validation. But if speed is more important, this technique is worth a go.</p>
-<p><code>module.noParse</code> accepts a RegExp or an array of RegExps. In addition to telling webpack not to parse the minified file you want to use, you also have to point <code>react</code> to it by using <code>resolve.alias</code>. The aliasing idea is discussed in detail in the <a href="/webpack/consuming-techniques/">Package Consuming Techniques</a> chapter.</p>
+<p><code>module.noParse</code> accepts a RegExp or an array of RegExps. In addition to telling webpack not to parse the minified file you want to use, you also have to point <code>react</code> to it by using <code>resolve.alias</code>. The aliasing idea is discussed in detail in the <a href="/webpack/packages/consuming-techniques/">Package Consuming Techniques</a> chapter.</p>
 <p>It&#39;s possible to encapsulate the core idea within a function:</p>
 <pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>dontParse <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> name<span class="token punctuation" >,</span> path <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
   <span class="token keyword" >const</span> alias <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >;</span>

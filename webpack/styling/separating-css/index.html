@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -34,7 +34,7 @@
 <pre><code class="lang-bash">npm <span class="token function" >install</span> extract-text-webpack-plugin --save-dev
 </code></pre>
 <p><code>ExtractTextPlugin</code> includes a loader, <code>ExtractTextPlugin.extract</code> that marks the assets to be extracted. Then a plugin performs its work based on this annotation.</p>
-<p><code>ExtractTextPlugin.extract</code> accepts <code>use</code> and <code>fallback</code> definitions. <code>ExtractTextPlugin</code> processes content through <code>use</code> only from <strong>initial chunks</strong> by default and it uses <code>fallback</code> for the rest. It doesn&#39;t touch any split bundles unless <code>allChunks: true</code> is set true. The <a href="/webpack/bundle-splitting/">Bundle Splitting</a> chapter digs into greater detail.</p>
+<p><code>ExtractTextPlugin.extract</code> accepts <code>use</code> and <code>fallback</code> definitions. <code>ExtractTextPlugin</code> processes content through <code>use</code> only from <strong>initial chunks</strong> by default and it uses <code>fallback</code> for the rest. It doesn&#39;t touch any split bundles unless <code>allChunks: true</code> is set true. The <a href="/webpack/building/bundle-splitting/">Bundle Splitting</a> chapter digs into greater detail.</p>
 <p>If you wanted to extract CSS from a more involved format, like Sass, you would have to pass multiple loaders to the <code>use</code> option. Both <code>use</code> and <code>fallback</code> accept a loader (string), a loader definition, or an array of loader definitions.</p>
 <p>The idea can be modeled as below:</p>
 <p><strong>webpack.parts.js</strong></p>
@@ -71,7 +71,7 @@ exports<span class="token punctuation" >.</span>extractCSS <span class="token op
 <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
 </div>
 </code></pre>
-<p>That <code>[name]</code> placeholder uses the name of the entry where the CSS is referred. Placeholders and hashing are discussed in detail in the <a href="/webpack/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</p>
+<p>That <code>[name]</code> placeholder uses the name of the entry where the CSS is referred. Placeholders and hashing are discussed in detail in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</p>
 <p>It would be possible to have multiple <code>plugin.extract</code> calls against different file types. This would allow you to aggregate them to a single CSS file. Another option would be to extract multiple CSS files through separate plugin definitions and then concatenate them using <a href="https://www.npmjs.com/package/merge-files-webpack-plugin">merge-files-webpack-plugin</a>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you wanted to output the resulting file to a specific directory, you could do it by passing a path. Example: <code>filename: &#39;styles/[name].css&#39;</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-with-configuration" id="connecting-with-configuration"></a><span class="text">Connecting with Configuration</span><a class="header-anchor-select" href="#connecting-with-configuration">#</a></h3>
 <p>Connect the function with the configuration as below:</p>
@@ -97,7 +97,7 @@ exports<span class="token punctuation" >.</span>extractCSS <span class="token op
 <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Using this setup, you can still benefit from the HMR during development. For a production build, it&#39;s possible to generate a separate CSS, though. <code>HtmlWebpackPlugin</code> picks it up automatically and injects it into <code>index.html</code>.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you are using CSS Modules, remember to tweak <code>use</code> accordingly as discussed in the <a href="/webpack/loading/">Loading Styles</a> chapter. You can maintain separate setups for normal CSS and CSS Modules so that they get loaded through separate logic.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you are using CSS Modules, remember to tweak <code>use</code> accordingly as discussed in the <a href="/webpack/styling/loading/">Loading Styles</a> chapter. You can maintain separate setups for normal CSS and CSS Modules so that they get loaded through separate logic.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
 <pre><code class="lang-bash">Hash: 57e54590377069688806
 Version: webpack 2.2.1
 Time: 952ms

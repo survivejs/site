@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -30,7 +30,7 @@
 <p>A good first step towards a better development environment is to use webpack in its <strong>watch</strong> mode. You can activate it through <code>webpack --watch</code>. Once enabled, it detects changes made to your files and recompiles automatically. <em>webpack-dev-server</em> (WDS) builds on top of the watch mode and goes even further.</p>
 <p>WDS is a development server running <strong>in-memory</strong>, meaning the bundle contents aren&#39;t written out to files, but stored in memory. This is an important distinction when trying to debug code and styles.</p>
 <p>By default WDS refreshes content automatically in the browser while you develop your application so you don&#39;t have to do it yourself. However it also supports an advanced webpack feature, <strong>Hot Module Replacement</strong> (HMR).</p>
-<p>HMR allows patching the browser state without a full refresh making it particularly handy with libraries like React where a refresh blows away the application state. The <a href="/webpack/hmr/">Hot Module Replacement</a> appendix covers the feature in detail.</p>
+<p>HMR allows patching the browser state without a full refresh making it particularly handy with libraries like React where a refresh blows away the application state. The <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> appendix covers the feature in detail.</p>
 <p>WDS provides an interface that makes it possible to patch code on the fly, however for this to work effectively, you have to implement this interface for the client-side code. It&#39;s trivial for something like CSS because it&#39;s stateless, but the problem is harder with JavaScript frameworks and libraries.</p>
 <h2 class="header"><a class="header-anchor" href="#emitting-files-from-wds" id="emitting-files-from-wds"></a><span class="text">Emitting Files from WDS</span><a class="header-anchor-select" href="#emitting-files-from-wds">#</a></h2>
 <p>Even though it&#39;s good that WDS operates in-memory by default for performance reasons, sometimes it can be good to emit files to the file system. This applies in particular, if you are integrating with another server that expects to find the files. <a href="https://www.npmjs.com/package/webpack-disk-plugin">webpack-disk-plugin</a>, <a href="https://www.npmjs.com/package/write-file-webpack-plugin">write-file-webpack-plugin</a>, and more specifically <a href="https://www.npmjs.com/package/html-webpack-harddisk-plugin">html-webpack-harddisk-plugin</a> can achieve this.</p>
@@ -99,7 +99,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <span class="token function" >env</span> development
 <span class="token punctuation" >..</span>.
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>The result could be verified also by using the <code>DefinePlugin</code> to write it to the client code. The <a href="/webpack/environment-variables/">Environment Variables</a> chapter discusses how to achieve this.</blockquote><h3 class="header"><a class="header-anchor" href="#understanding-env" id="understanding-env"></a><span class="text">Understanding <code>--env</code></span><a class="header-anchor-select" href="#understanding-env">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The result could be verified also by using the <code>DefinePlugin</code> to write it to the client code. The <a href="/webpack/optimizing/environment-variables/">Environment Variables</a> chapter discusses how to achieve this.</blockquote><h3 class="header"><a class="header-anchor" href="#understanding-env" id="understanding-env"></a><span class="text">Understanding <code>--env</code></span><a class="header-anchor-select" href="#understanding-env">#</a></h3>
 <p>Even though <code>--env</code> allows to pass strings to the configuration, it can do a bit more. Consider the following example:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
@@ -166,7 +166,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>If you access through <code>http://localhost:8080/webpack-dev-server/</code>, WDS provides status information at the top. If your application relies on WebSockets and you use WDS proxying, you need to use this particular url as otherwise WDS logic interferes.</p>
 <p><img src="/e7113f538130c79105554932eedf28ba.png" alt="Status information" class="" width="" height="" /></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/dotenv">dotenv</a> allows you to define environment variables through a <em>.env</em> file. <em>dotenv</em> allows you to control the host and port setting of the setup quickly.</blockquote><h2 class="header"><a class="header-anchor" href="#enabling-hot-module-replacement" id="enabling-hot-module-replacement"></a><span class="text">Enabling Hot Module Replacement</span><a class="header-anchor-select" href="#enabling-hot-module-replacement">#</a></h2>
-<p>Hot Module Replacement is one of those features that sets webpack apart. Implementing it requires additional effort on both server and client-side. The <a href="/webpack/hmr/">Hot Module Replacement</a> appendix discusses the topic in greater detail. If you want to integrate HMR to your project, give it a look. It won&#39;t be needed to complete the tutorial, though.</p>
+<p>Hot Module Replacement is one of those features that sets webpack apart. Implementing it requires additional effort on both server and client-side. The <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> appendix discusses the topic in greater detail. If you want to integrate HMR to your project, give it a look. It won&#39;t be needed to complete the tutorial, though.</p>
 <h2 class="header"><a class="header-anchor" href="#accessing-the-development-server-from-network" id="accessing-the-development-server-from-network"></a><span class="text">Accessing the Development Server from Network</span><a class="header-anchor-select" href="#accessing-the-development-server-from-network">#</a></h2>
 <p>It&#39;s possible to customize host and port settings through the environment in the setup (i.e., <code>export PORT=3000</code> on Unix or <code>SET PORT=3000</code> on Windows). The default settings are enough on most platforms.</p>
 <p>To access your server, you need to figure out the ip of your machine. On Unix, this can be achieved using <code>ifconfig | grep inet</code>. On Windows, <code>ipconfig</code> can be utilized. An npm package, such as <a href="https://www.npmjs.com/package/node-ip">node-ip</a> come in handy as well. Especially on Windows, you need to set your <code>HOST</code> to match your ip to make it accessible.</p>
@@ -235,7 +235,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <li><a href="https://www.npmjs.com/package/react-dev-utils">react-dev-utils</a> contains webpack utilities developed for <a href="https://www.npmjs.com/package/create-react-app">Create React App</a>. Despite its name, they can find use beyond React.</li>
 <li><a href="https://www.npmjs.com/package/webpack-dashboard">webpack-dashboard</a> gives an entire terminal based dashboard over the standard webpack output. If you prefer clear visual output, this one comes in handy.</li>
 </ul>
-<p>In addition to plugins like these, it can be worth your while to set up linting to enforce coding standards. The <a href="/webpack/linting/">Linting JavaScript</a> chapter digs into that topic in detail.</p>
+<p>In addition to plugins like these, it can be worth your while to set up linting to enforce coding standards. The <a href="/webpack/developing/linting/">Linting JavaScript</a> chapter digs into that topic in detail.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>WDS complements webpack and makes it more friendly by developers by providing development oriented functionality.</p>
 <p>To recap:</p>

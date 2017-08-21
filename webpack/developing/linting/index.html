@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -97,7 +97,7 @@
 <pre><code class="lang-bash">npm <span class="token function" >install</span> eslint-loader --save-dev
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i><em>eslint-loader</em> uses a globally installed version of ESLint unless you have one included in the project itself. Make sure you have ESLint as a development dependency to avoid the strange behavior.</blockquote><p>The loader needs wiring to work. Loaders are discussed in detail in the <em>Loading</em> part of this book, but the basic idea is fast to understand. A loader is connected to webpack through a rule that contains preconditions related to it and a reference to the loader itself.</p>
-<p>In this case, you want to ensure that ESLint gets executed before anything else using the <code>enforce</code> field. It allows to guarantee that linting happens before any other processing. The idea is discussed in detail in the <a href="/webpack/loader-definitions/">Loader Definitions</a> chapter.</p>
+<p>In this case, you want to ensure that ESLint gets executed before anything else using the <code>enforce</code> field. It allows to guarantee that linting happens before any other processing. The idea is discussed in detail in the <a href="/webpack/loading/loader-definitions/">Loader Definitions</a> chapter.</p>
 <p>To add linting to the project, adjust the configuration as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
@@ -163,7 +163,7 @@
 <li>ESLint supports ES6 features through configuration. You have to specify the features to use through the <a href="http://eslint.org/docs/user-guide/configuring.html#specifying-language-options">ecmaFeatures</a> property.</li>
 <li>Plugins, such as <a href="https://www.npmjs.com/package/eslint-plugin-node">eslint-plugin-node</a>, <a href="https://www.npmjs.com/package/eslint-plugin-promise">eslint-plugin-promise</a>, <a href="https://www.npmjs.com/package/eslint-plugin-compat">eslint-plugin-compat</a>, and <a href="https://www.npmjs.com/package/eslint-plugin-import">eslint-plugin-import</a>, are worth studying.</li>
 <li>Most IDEs and editors have good linter integration so you can spot issues as you develop.</li>
-<li>To learn about ESLint customizations options and how to write an ESLint plugin, check out the <a href="/webpack/customizing-eslint/">Customizing ESLint</a> appendix.</li>
+<li>To learn about ESLint customizations options and how to write an ESLint plugin, check out the <a href="/webpack/appendices/customizing-eslint/">Customizing ESLint</a> appendix.</li>
 </ul>
 <h3 class="header"><a class="header-anchor" href="#configuring-eslint-further" id="configuring-eslint-further"></a><span class="text">Configuring ESLint Further</span><a class="header-anchor-select" href="#configuring-eslint-further">#</a></h3>
 <p>Since webpack 2, the configuration schema of webpack has become stricter, and it doesn&#39;t allow arbitrary fields at configuration root level anymore. To overcome this issue and to access all functionality of the <em>eslint-loader</em>, you have to use <code>LoaderOptionsPlugin</code> as below:</p>

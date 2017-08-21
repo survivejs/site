@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -155,12 +155,12 @@ vendor.js.map     135 kB       2  <span class="token punctuation" >[</span>emitt
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>Webpack can pick the right code based on the <code>DefinePlugin</code> declaration and this code. You have to use CommonJS module definition style here as ES6 <code>import</code>s don&#39;t allow dynamic behavior by design.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>A related technique, <strong>aliasing</strong>, is discussed in the <a href="/webpack/consuming-techniques/">Package Consuming Techniques</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack-optimization-plugins" id="webpack-optimization-plugins"></a><span class="text">Webpack Optimization Plugins</span><a class="header-anchor-select" href="#webpack-optimization-plugins">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>A related technique, <strong>aliasing</strong>, is discussed in the <a href="/webpack/packages/consuming-techniques/">Package Consuming Techniques</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack-optimization-plugins" id="webpack-optimization-plugins"></a><span class="text">Webpack Optimization Plugins</span><a class="header-anchor-select" href="#webpack-optimization-plugins">#</a></h2>
 <p>Webpack includes a collection of optimization related plugins:</p>
 <ul>
 <li><a href="https://www.npmjs.com/package/compression-webpack-plugin">compression-webpack-plugin</a> allows you to push the problem of generating compressed files to webpack to potentially save processing time on the server.</li>
 <li><code>webpack.optimize.UglifyJsPlugin</code> allows you to minify output using different heuristics. Certain of them break code unless you are careful.</li>
-<li><code>webpack.optimize.AggressiveSplittingPlugin</code> allows you to split code into smaller bundles as discussed in the <a href="/webpack/bundle-splitting/">Bundle Splitting</a> chapter. The result is ideal for a HTTP/2 environment.</li>
+<li><code>webpack.optimize.AggressiveSplittingPlugin</code> allows you to split code into smaller bundles as discussed in the <a href="/webpack/building/bundle-splitting/">Bundle Splitting</a> chapter. The result is ideal for a HTTP/2 environment.</li>
 <li><code>webpack.optimize.CommonsChunkPlugin</code> makes it possible to extract common dependencies into bundles of their own.</li>
 <li><code>webpack.DefinePlugin</code> allows you to use feature flags in your code and eliminate the redundant code as discussed in this chapter.</li>
 <li><a href="https://www.npmjs.com/package/lodash-webpack-plugin">lodash-webpack-plugin</a> creates smaller Lodash builds by replacing feature sets with smaller alternatives leading to more compact builds.</li>

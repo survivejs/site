@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.e86305e785d3b75b67c2.css" rel="stylesheet">
+      <link href="/site.1e5688e7a42e7c1c0ab4.css" rel="stylesheet">
     
 
     <link
@@ -103,8 +103,8 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>If you build now (<code>npm run build:i18n</code>), you should end up with a new directory containing two translated files. If you examine them, you should see webpack bootstrap and the translated code in each.</p>
-<p>To take the example further, you could generate a proper page for each translation as described in the <a href="/webpack/multiple-pages/">Multiple Pages</a> chapter. Language selector would be a good addition to the demonstration. You could handle the language definition through webpack&#39;s <code>DefinePlugin</code>. A user interface widget could rely on that and load another language based a page or directory naming convention.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>The techniques discussed in the <a href="/webpack/code-splitting/">Code Splitting</a> chapter are valid with i18n. You could define dynamic <code>import</code>s to load translation files on demand. Doing this would push the problem of loading and maintaining translations elsewhere.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>To take the example further, you could generate a proper page for each translation as described in the <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter. Language selector would be a good addition to the demonstration. You could handle the language definition through webpack&#39;s <code>DefinePlugin</code>. A user interface widget could rely on that and load another language based a page or directory naming convention.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The techniques discussed in the <a href="/webpack/building/code-splitting/">Code Splitting</a> chapter are valid with i18n. You could define dynamic <code>import</code>s to load translation files on demand. Doing this would push the problem of loading and maintaining translations elsewhere.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>The other webpack approaches follow a similar idea but require more work on the frontend side. They are also more flexible, and if you go with a loader based solution, then you can set up split points to load languages on demand. You can also consider caching the language data to avoid fetching it altogether or loading it in smaller portions.</p>
 <p>To recap:</p>
 <ul>
