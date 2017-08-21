@@ -40,7 +40,7 @@ function parseChapters() {
     const title = parse.title(bookContent).title;
     const sectionName = fileName.split("/")[0];
     const url = webpackUrl({
-      fileName: path.basename(fileName, ".md"),
+      fileName: fileName.split(".")[0],
       sectionName: "webpack"
     });
 
