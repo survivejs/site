@@ -18,11 +18,11 @@ TODO: I'll fill this up and link to your Twitter
 
 </p>
 
-I'm currently working on my Ph.D. with [Jeffrey Heer](https://homes.cs.washington.edu/~jheer/) at the [Interactive Data Lab](https://idl.cs.washington.edu/) at the  University of Washington. Prior to grad school I worked on data visualization tools and interactive stories at [FiveThirtyEight](http://fivethirtyeight.com/), helped [the Freeman Lab](https://www.janelia.org/our-research/former-labs/freeman-lab) build open-source tools for computational neuroscience, developed digital tools for journalists at [The Huffington Post](http://www.huffingtonpost.com/), and was the senior developer at [Rhizome](http://rhizome.org/).
+I'm currently working on my Ph.D. with [Jeffrey Heer](https://homes.cs.washington.edu/~jheer/) at the [Interactive Data Lab](https://idl.cs.washington.edu/) at the University of Washington. Prior to grad school I worked on data visualization tools and interactive stories at [FiveThirtyEight](http://fivethirtyeight.com/), helped [the Freeman Lab](https://www.janelia.org/our-research/former-labs/freeman-lab) build open-source tools for computational neuroscience, developed digital tools for journalists at [The Huffington Post](http://www.huffingtonpost.com/), and was the senior developer at [Rhizome](http://rhizome.org/).
 
 ## How would you describe *Idyll* to someone who has never heard of it?
 
-Idyll is a markup language for creating and publishing interactive narratives — think posts on websites like [*Distill*](https://distill.pub/), [*The Upshot*](https://www.nytimes.com/section/upshot), [*FiveThirtyEight*](https://fivethirtyeight.com), and [*The Pudding*](https://pudding.cool/). With Idyll you write markup in a text file, which is then compiled into an interactive webpage. Idyll takes a lot of inspiration (and borrows a lot of syntax) from [markdown](https://daringfireball.net/projects/markdown/), and tries to extend these ideas beyond static text.
+Idyll is a markup language for creating and publishing interactive narratives — think posts on websites like [*Distill*](https://distill.pub/), [*The Upshot*](https://www.nytimes.com/section/upshot), [*FiveThirtyEight*](https://fivethirtyeight.com), and [*The Pudding*](https://pudding.cool/). With Idyll you write markup in a text file, which is then compiled into an interactive webpage. Idyll takes a lot of inspiration (and borrows a lot of syntax) from [Markdown](https://daringfireball.net/projects/markdown/), while trying to extend these ideas beyond static text.
 
 One of the main points of Idyll is to make it very easy to embed JavaScript components inline with your text, and even have these components responsively update based on a reader's actions or scrolls. For example, a short Idyll file might look like this:
 
@@ -30,83 +30,83 @@ One of the main points of Idyll is to make it very easy to embed JavaScript comp
 # This is my title
 ### This is my subheading
 
-This is the main body of my article. Here is a scatter plot, rendered with JavaScript: 
+This is the main body of my article. Here is a scatter plot, rendered with JavaScript:
 
-[data name:"exampleData" source:"example-data.csv" /] 
+[data name:"exampleData" source:"example-data.csv" /]
 [Chart type:"scatter" data:exampleData /]
 
 And here is some more text after the chart.
 ```
 
-In this case the markdown will be converted to html, a dataset will be read from a csv file (using the `[data /]` tag), and the `[Chart /]` component is used to call out to JavaScript and render the contents of the CSV in a scatter plot.
+In this example:
 
-Idyll ships with a [set of standard components](https://idyll-lang.github.io/components-built-in) that can be invoked in the markup. Because Idyll is built on top of [React](https://facebook.github.io/react/), anything that functions as a React component can be installed from `npm` and used without any additionaly configuration. It is also straighforward for users to write their own [custom components](https://idyll-lang.github.io/components-custom).
+- the Markdown will be converted to HTML
+- a dataset will be read from the `example-data.csv` file using the `[data /]` tag
+- the `[Chart /]` component will call out to JavaScript to render the contents of the CSV in a scatter plot
+
+Idyll ships with a [set of standard components](https://idyll-lang.github.io/components-built-in) that can be invoked in the markup. Because Idyll is built on top of [React](https://facebook.github.io/react/), any React component can be installed from `npm` and used without any additional configuration. It is also straightforward for users to write their own [custom components](https://idyll-lang.github.io/components-custom).
 
 Everything in Idyll is reactive, so when anything changes the document automatically updates. For example, if we wanted to have a chart toggle between a scatter and a line plot, we could add a variable that changes when a button is pressed:
 
 ```
-[var name:"showScatter" value:true /] 
+[var name:"showScatter" value:true /]
 
 [Chart type:`showScatter ? "scatter" : "line"` data:exampleData /]
 
 [Button onClick:`showScatter = !showScatter`] Toggle Scatter [/Button]
 ```
 
-
 ## How does *Idyll* work?
 
-As is typical with any programming language, Idyll starts with a compiler that does lexing and parsing of the input file. We've leaned heavily on existing open-source tools to help with this task, namely [lex](https://github.com/aaditmshah/lexer) for the lexing and [nearley](https://github.com/Hardmath123/nearley) to do the parsing. The compiler then spits out an *abstract syntax tree* (AST) that represents the heirarchy of elements that belong in the document.
+As is typical with any programming language, Idyll starts with a compiler that does lexing and parsing of the input file. We rely heavily on existing open-source tools to help with this task, namely [lex](https://github.com/aaditmshah/lexer) for the lexing and [nearley](https://github.com/Hardmath123/nearley) to do the parsing. The compiler then spits out an *abstract syntax tree* (AST) that represents the hierarchy of elements that belong in the document.
 
-Once the AST is created, Idyll processes it to see which components are used and uses browserify to create a JavaScript bundle that can be executed in a web browser. This JavaScript bundle includes a React component that will dynamically map the nodes in the AST to React components and render those components as its children. Part of this mapping process involves generating and executing some JavaScript code to make sure that Idyll's reactive variables work and the document is always re-rendered properly as those variables change.
+Once the AST is created, Idyll processes it to see which components are used and uses Browserify to create a JavaScript bundle that can be executed in a web browser. This JavaScript bundle includes a React component that will dynamically map the nodes in the AST to React components and render those components as its children. Part of this mapping process involves generating and executing some JavaScript code to make sure that Idyll's reactive variables work and the document is always re-rendered properly as those variables change.
 
 One cool thing is that because Idyll's compiler is written in JavaScript we can actually [execute this whole build process in the browser](https://idyll-lang.github.io/editor/).
 
+## How does *Idyll* differ from other solutions?
 
-## How does *Idyll* differ from the other solutions?
-
-The typical process for creating interactive documents or [explorable explanations](http://explorabl.es/) involves hand-writing a lot of custom JavaScript and HTML. It can quickly become tedious balancing the narrative portion of the project with the nitty-gritty details of code. To this end, the New York Times developed [ArchieML](http://archieml.org/), a markup language designed to make it easy to pull text into JavaScript code. A core idea with ArchieML is that code and text should be separated because they deal with very different concerns. Text needs to be edited for content and clarity, often by someone who doesn't care to look at code. Developers will need to integrate that text with their code at some point, but typically aren't concerned with grammar while they are writing JavaScript. 
+The typical process for creating interactive documents or [explorable explanations](http://explorabl.es/) involves hand-writing a lot of custom JavaScript and HTML. It can quickly become tedious balancing the narrative portion of the project with the nitty-gritty details of code. To this end, the New York Times developed [ArchieML](http://archieml.org/), a markup language designed to make it easy to pull text into JavaScript code. A core idea with ArchieML is that code and text should be separated because they deal with very different concerns. Text needs to be edited for content and clarity, often by someone who doesn't care to look at code. Developers will need to integrate that text with their code at some point, but typically aren't concerned with grammar while they are writing JavaScript.
 
 In some ways Idyll takes the opposite approach to ArchieML. Instead of making it easy to pull text into code, Idyll makes it easy to include JavaScript components in text. With this approach the relationship between code and text becomes much easier to reason about from an editorial perspective, and it becomes feasible to make nuanced changes to where components appear in text, and how they interact with the page. In this way the process of including an interactive component becomes much closer to, say, using a CMS to embed an image in a post.
 
-Another project that addresses combining code and data with text is [stencila](https://stenci.la/). Stencila borrows ideas from the "code notebook" world, and focuses on embedding executable code with text. My understanding is that the project is focused on reproducible research, whereas Idyll is focused on streamlining the connection between prose and JavaScript to build interactive narratives.
+Another project that addresses combining code and data with text is [Stencila](https://stenci.la/). Stencila borrows ideas from the "code notebook" world and focuses on embedding executable code with text. My understanding is that the project is focused on reproducible research, whereas Idyll is focused on streamlining the connection between prose and JavaScript to build interactive narratives.
 
-There are lots of projects that make it easy to publish markdown documents online ([Jekyll](https://jekyllrb.com/), for example), but none of these allow JavaScript to be tightly integrated with the text. 
+There are lots of projects that make it easy to publish Markdown documents online ([Jekyll](https://jekyllrb.com/), for example), but none of these allow JavaScript to be tightly integrated with the text.
 
 ## Why did you develop *Idyll*?
 
-I developed Idyll as a way to automate away an entire class of hardships that authors face when they want to publish documents with interactivity. The project is a synthesis of a lot of ideas and lessons learned from developing these sorts of projects at FiveThirtyEight and elsewhere. 
+I developed Idyll as a way to automate away an entire class of hardships that authors face when they want to publish documents with interactivity. The project is a synthesis of a lot of ideas and lessons learned from developing these sorts of projects at FiveThirtyEight and elsewhere.
 
-Because Idyll has a fairly specific use-case, it is able to encapsulate some best practices, for example, automatically performing server-side rendering and making other performance optimizations, and removes the headache of setting up a JavaScript build system and HTML templates.
+Because Idyll has a fairly specific use-case, it is able to encapsulate some best practices. For example, it enables server-side rendering and other performance optimizations by default and allows the developer to avoid the headache of setting up a JavaScript build system and HTML templates.
 
-I believe that the web is a great platform for communication, and we are only now starting to see some of the potential of moving beyond static text. With Idyll I hope to make it easier for other people to express their ideas in a dynamic and engaging way, and publish them online. The project also has implications beyond just blog posts and news articles, for example it could provide a new entrypoint into the authorship of interactive textbooks. 
-
+I believe that the web is a great platform for communication and we are only now starting to see some of the potential of moving beyond static text. With Idyll I hope to make it easier for other people to express their ideas in a dynamic and engaging way, and publish them online. The project also has implications beyond just blog posts and news articles, such as providing a new entry point into the authorship of interactive textbooks.
 
 ## What next?
 
-I'll continue to focus on making Idyll more user friendly and making sure that there are plenty of examples online that people can look at and use as starting points for their own projects. I'm also interested in improving the authorship experience for interactive and data heavy websites in general, so you can expect to see continued work in this area specifically.
+I'll continue to focus on Idyll's user friendliness and expanding the online examples that serve as reference for new projects. I'm also interested in improving the authorship experience for interactive and data heavy websites in general, so you can expect to see continued work in this area specifically.
 
-In terms of new features for Idyll, one big item on the roadmap is enabling custom transformations that operate on the AST. With this feature one could have a component that called out to another program at compile time to generate new static output, for example, calling `graphviz` to generate an image of a graph. We may also add some syntactic sugar to make certain common tasks even easier. We've also been working hard to modularize the individual components of Idyll to make it easier for others to work with Idyll in their projects.
-
+In terms of new features for Idyll, one big item on the roadmap is enabling custom transformations that operate on the AST. This would enable new possibilities such as writing components that call out to another program at compile time to generate new static output, for example, calling `graphviz` to generate an image of a graph. We may also add some syntactic sugar to make certain common tasks even easier. In addition to that, we've been working hard to modularize the individual components of Idyll to make it easier for others to work with Idyll in their projects.
 
 ## What does the future look like for *Idyll* and web development in general? Can you see any particular trends?
 
-It is an exciting time for web development. There continue to be more and more powerful technologies at developers' disposal. I would expect that the JavaScript developer's toolkit for building and deploying code will continue to become more sophisticated and optimized, and I am even happy to expect that build tools will become easier to set-up and use once more concensus has been established within the community around certain features. 
+It is an exciting time for web development. The number of powerful technologies at developers' disposal continues to increase. I would expect that the JavaScript developer's toolkit for building and deploying code will continue improving in sophistication and optimization. I'm optimistic that build tools will become easier to set up and use once more consensus has been established within the community around certain features.
 
-Because of the persistance of the open-source community, the web is becoming filled with increasingly high quality artifacts. I'm excited to see tools that empower people to create continue to develop and mature.
+Thanks to the persistence of the open-source community, the amount and quality of web tooling continues to rise. I'm excited to see further development and advancing maturity of these tools that empower creation.
 
 ## What advice would you give to programmers getting into web development?
 
-Focus on solving a problem that is interesting to you instead of wading through tutorials. Learn to use google to solve problems as they come up. Use things like [budo](https://github.com/mattdesl/budo) to get up and running quickly, and don't bother listening to people who argue about tools online. Don't use a framework until you can articulare why you need a framework.
+Focus on solving a problem that is interesting to you instead of wading through tutorials. Learn to use Google to solve problems as they come up. Use things like [budo](https://github.com/mattdesl/budo) to get up and running quickly and don't bother listening to people who argue about tools online. Don't use a framework until you can articulate why you need a framework.
 
 ## Who should I interview next?
 
-There's lots of interesting work being done in the WebGL / 3D graphics space. [Mikola Lysenko](https://github.com/mikolalysenko) is doing great work with [regl](https://github.com/regl-project/regl), and [Ricky Reusser](http://rickyreusser.com/) has been using it to make some awesome [data visualizations](https://github.com/rreusser/demos#regl). [Stardust.js](https://stardustjs.github.io/) is also a very interesting project for using WebGL to visualize data. 
+There's lots of interesting work being done in the WebGL / 3D graphics space. [Mikola Lysenko](https://github.com/mikolalysenko) is doing great work with [regl](https://github.com/regl-project/regl), and [Ricky Reusser](http://rickyreusser.com/) has been using it to make some awesome [data visualizations](https://github.com/rreusser/demos#regl). [Stardust.js](https://stardustjs.github.io/) is also a very interesting project for using WebGL to visualize data.
 
 The work on decentralization from folks working on projects like [Beaker Browser](https://github.com/beakerbrowser/beaker) and [Dat](https://datproject.org/) is also very exciting.
 
 ## Any last remarks?
 
-The Idyll folks are usually hanging out in a [chatroom on gitter](https://gitter.im/idyll-lang/Lobby). It's really easy to join, and we're always happy when people say "Hi" or ask questions about the project. I'd also like to call out [Ben Clinkinbeard](https://benclinkinbeard.com/) for all the hard work he has done on the development of Idyll. 
+The Idyll folks are usually hanging out in a [chatroom on gitter](https://gitter.im/idyll-lang/Lobby). It's really easy to join, and we're always happy when people say "Hi" or ask questions about the project. I'd also like to call out [Ben Clinkinbeard](https://benclinkinbeard.com/) for all the hard work he has done on the development of Idyll.
 
 Thanks for having me! :sparkles:
 
