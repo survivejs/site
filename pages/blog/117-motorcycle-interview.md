@@ -113,7 +113,7 @@ The people active in those days would ask questions, do code reviews, and provid
 
 I think it'd be great to interview André Staltz. He's doing some awesome work to free people from large companies exploiting our privacy for profits.
 
-T> [I interviewed André earlier about Cycle.js](/blog/cyclejs-interview). Perhaps we can find another topic to cover!
+T> [I interviewed André earlier about Cycle.js](/blog/cycle-interview). Perhaps we can find another topic to cover!
 
 ## Any last remarks?
 
