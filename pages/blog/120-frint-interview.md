@@ -1,5 +1,5 @@
 ---
-title: 'FrintJS - Built reactive applications with React and RxJS - Interview with Fahad Ibnay Heylaal'
+title: 'FrintJS - Build reactive applications with React and RxJS - Interview with Fahad Ibnay Heylaal'
 date: 2017-09-06
 headerImage: 'assets/img/frint.png'
 keywords: ['interview', 'reactjs', 'rxjs']
