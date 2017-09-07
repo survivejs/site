@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.cb477ba475fc6f03a11e.css" rel="stylesheet">
+      <link href="/site.9ecdda7e16f95d2a7fdb.css" rel="stylesheet">
     
 
     <link
@@ -90,15 +90,15 @@ Entrypoints:
 <p>Unsafe transformations can break code as they can lose something implicit the underlying code relies upon. For example, Angular 1 expects specific function parameter naming when using modules. Rewriting the parameters breaks code unless you take precautions against it in this case.</p>
 <p>Minification in webpack can be enabled through <code>webpack -p</code> (same as <code>--optimize-minimize</code>). This uses webpack&#39;s <code>UglifyJsPlugin</code> underneath. The problem is that UglifyJS doesn&#39;t support ES6 syntax yet making it problematic if Babel and <em>babel-preset-env</em> are used while targeting specific browsers. You have to go another route in this case for this reason.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-javascript-minification" id="setting-up-javascript-minification"></a><span class="text">Setting Up JavaScript Minification</span><a class="header-anchor-select" href="#setting-up-javascript-minification">#</a></h3>
-<p><a href="https://www.npmjs.com/package/babili">babili</a> is a JavaScript minifier maintained by the Babel team and it provides support for ES6 and newer features. <a href="https://www.npmjs.com/package/babili-webpack-plugin">babili-webpack-plugin</a> makes it possible to use it through webpack.</p>
+<p><a href="https://www.npmjs.com/package/babel-preset-minify">babel-preset-minify</a> is a JavaScript minifier maintained by the Babel team and it provides support for ES6 and newer features. <a href="https://www.npmjs.com/package/babel-minify-webpack-plugin">babel-minify-webpack-plugin</a> makes it possible to use it through webpack.</p>
 <p>To get started, include the plugin to the project:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> babili-webpack-plugin --save-dev
+<pre><code class="lang-bash">npm <span class="token function" >install</span> babel-minify-webpack-plugin --save-dev
 </code></pre>
 <p>To attach it to the configuration, define a part for it first:</p>
 <p><strong>webpack.parts.js</strong></p>
 <pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
 <div class="leanpub-insert">
-<span class="token keyword" >const</span> BabiliPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'babili-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> BabelWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'babel-minify-webpack-plugin'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </div>
 
 <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
@@ -106,7 +106,7 @@ Entrypoints:
 <div class="leanpub-insert">
 exports<span class="token punctuation" >.</span>minifyJavaScript <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
   plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >BabiliPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token keyword" >new</span> <span class="token class-name" >BabelWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
   <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 </div>
@@ -152,11 +152,11 @@ vendor.js.map     169 kB       2  <span class="token punctuation" >[</span>emitt
 <span class="token punctuation" >..</span>.
 </code></pre>
 <p>Given it needs to do more work, it took longer to execute the build. But on the plus side, the build is now smaller, the size limit warning disappeared, and the vendor build went from 150 kB to roughly 45 kB.</p>
-<p>You should check <em>babili-webpack-plugin</em> and Babili documentation for more options. Babili gives you control over how to handle code comments for example.</p>
+<p>You should check <em>babel-minify-webpack-plugin</em> for more options. It gives you control over how to handle code comments for example.</p>
 <h2 class="header"><a class="header-anchor" href="#other-ways-to-minify-javascript" id="other-ways-to-minify-javascript"></a><span class="text">Other Ways to Minify JavaScript</span><a class="header-anchor-select" href="#other-ways-to-minify-javascript">#</a></h2>
-<p>Although Babili works for this use case, there are more options you can consider:</p>
+<p>Although <em>babel-minify-webpack-plugin</em> works for this use case, there are more options you can consider:</p>
 <ul>
-<li><a href="https://www.npmjs.com/package/webpack-closure-compiler">webpack-closure-compiler</a> runs parallel and gives even smaller result than Babili at times.</li>
+<li><a href="https://www.npmjs.com/package/webpack-closure-compiler">webpack-closure-compiler</a> runs parallel and gives even smaller result than <em>babel-minify-webpack-plugin</em> at times.</li>
 <li><a href="https://www.npmjs.com/package/optimize-js-plugin">optimize-js-plugin</a> complements the other solutions by wrapping eager functions and it enhances the way your JavaScript code gets parsed initially. The plugin relies on <a href="https://github.com/nolanlawson/optimize-js">optimize-js</a> by Nolan Lawson.</li>
 <li><a href="https://webpack.js.org/plugins/uglifyjs-webpack-plugin/">webpack.optimize.UglifyJsPlugin</a> is the official UglifyJS plugin for webpack. It doesn&#39;t support ES6 yet.</li>
 <li><a href="https://www.npmjs.com/package/uglifyjs-webpack-plugin">uglifyjs-webpack-plugin</a> allows you to try out an experimental version of UglifyJS that provides better support for ES6 than the stable version.</li>
@@ -248,7 +248,7 @@ vendor.js.map     169 kB       2  <span class="token punctuation" >[</span>emitt
 <ul>
 <li><strong>Minification</strong> process analyzes your source code and turns it into a smaller form with the same meaning if you use safe transformations. Certain unsafe transformations allow you to reach even smaller results while potentially breaking code that relies, for example, on exact parameter naming.</li>
 <li><strong>Performance budget</strong> allows you to set limits to the build size. Maintaining a budget can keep developers more conscious of the size of the generated bundles.</li>
-<li>Webpack includes <code>UglifyJsPlugin</code> for minification. Other solutions, such as Babili, provide similar functionality with costs of their own. While Babili supports ES6, it can be less performant than UglifyJS.</li>
+<li>Webpack includes <code>UglifyJsPlugin</code> for minification. Other solutions, such as <em>babel-minify-webpack-plugin</em>, provide similar functionality with costs of their own. While <em>babel-minify-webpack-plugin</em> supports ES6, it can be less performant than UglifyJS.</li>
 <li>Besides JavaScript, it&#39;s possible to minify other assets, such as CSS and HTML, too. Minifying these requires specific technologies that have to be applied through loaders and plugins of their own.</li>
 </ul>
 <p>You&#39;ll learn to apply tree shaking against code in the next chapter.</p>

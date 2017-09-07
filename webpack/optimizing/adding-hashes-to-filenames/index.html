@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.cb477ba475fc6f03a11e.css" rel="stylesheet">
+      <link href="/site.9ecdda7e16f95d2a7fdb.css" rel="stylesheet">
     
 
     <link
@@ -33,7 +33,7 @@
 <li><code>[name]</code> - Returns the file name.</li>
 <li><code>[ext]</code> - Returns the extension. <code>[ext]</code> works for most available fields. <code>ExtractTextPlugin</code> is a notable exception to this rule.</li>
 <li><code>[hash]</code> - Returns the build hash. If any portion of the build changes, this changes as well.</li>
-<li><code>[chunkhash]</code> - Returns an entry chunk-specific hash. Each <code>entry</code> defined at the configuration receives a hash of own. If any portion of the entry changes, the hash changes as well. <code>[chunkhash]</code> is more granular than <code>[hash]</code> by definition.</li>
+<li><code>[chunkhash]</code> - Returns an entry chunk-specific hash. Each <code>entry</code> defined at the configuration receives a hash of its own. If any portion of the entry changes, the hash changes as well. <code>[chunkhash]</code> is more granular than <code>[hash]</code> by definition.</li>
 <li><code>[contenthash]</code> - Returns a hash specific to content. <code>[contenthash]</code> is available for <code>ExtractTextPlugin</code> only and is the most specific option available.</li>
 </ul>
 <p>It&#39;s preferable to use particularly <code>hash</code> and <code>chunkhash</code> only for production purposes as hashing doesn&#39;t do much good during development.</p>
@@ -51,7 +51,7 @@
 vendor.dc746a5db4ed650296e1.js
 </code></pre>
 <p>If the file contents related to a chunk are different, the hash changes as well, thus invalidating the cache. More accurately, the browser sends a new request for the new file. If only <code>app</code> bundle gets updated, only that file needs to be requested again.</p>
-<p>The same result can be achieved by generating static filenames and invalidating the cache through a querystring (i.e., <code>app.js?d587bbd6e38337f5accd</code>). The part behind the question mark invalidates the cache. According to <a href="http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">Steve Souders</a>, attaching the hash to the filename is the more performant.</p>
+<p>The same result can be achieved by generating static filenames and invalidating the cache through a querystring (i.e., <code>app.js?d587bbd6e38337f5accd</code>). The part behind the question mark invalidates the cache. According to <a href="http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">Steve Souders</a>, attaching the hash to the filename is the most performant option.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-hashing" id="setting-up-hashing"></a><span class="text">Setting Up Hashing</span><a class="header-anchor-select" href="#setting-up-hashing">#</a></h2>
 <p>The build needs tweaking to generate proper hashes. Images and fonts should receive <code>hash</code> while chunks should use <code>chunkhash</code> in their names to invalidate them correctly:</p>
 <p><strong>webpack.config.js</strong></p>
