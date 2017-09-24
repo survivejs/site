@@ -9,6 +9,8 @@ More often than not, you are going to need a back-end for your application. Part
 
 To understand the topic a little better, I am interviewing Ville Immonen of Reindex.
 
+W> [Reindex has been discontinued as a service](https://www.reindex.io/blog/discontinuing-backend-as-a-service/). You can still read the post to gain insights, though.
+
 ## Can you tell a bit about yourself?
 
 <p>
