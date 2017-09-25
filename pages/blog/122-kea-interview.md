@@ -128,9 +128,9 @@ import { INCREMENT, DECREMENT } from '../constants/counter';
 
 export default function counter (state = 0, action) {
   switch (action.type) {
-    case 'INCREMENT':
+    case INCREMENT:
       return state + action.payload.amount;
-    case 'DECREMENT':
+    case DECREMENT:
       return state - action.payload.amount;
     default:
       return state;
