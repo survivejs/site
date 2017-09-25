@@ -1,6 +1,6 @@
 import React from "react";
 
-import { GitterChat, Feedback, Navigation } from "@survivejs/components";
+import { GitterChat, Navigation } from "@survivejs/components";
 import { Footer, Search } from "../components";
 
 import "../styles/custom.scss";
@@ -38,18 +38,18 @@ const navigationPages = sectionName => [
   }
 ];
 
-const SiteBody = ({ children, section, location: { pathname } }) =>
+const SiteBody = ({ children, section, location: { pathname } }) => (
   <div>
     {children}
 
     {pathname !== "/" && <Navigation pages={navigationPages(section.name)} />}
-    {pathname !== "/" && <Feedback sectionName={section.name} />}
 
     <Footer section={section} />
 
     <GitterChat sectionName={section.name} />
 
     {pathname !== "/" && <Search sectionName={section.name} />}
-  </div>;
+  </div>
+);
 
 export default SiteBody;
