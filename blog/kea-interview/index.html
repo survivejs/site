@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.6e15d3a2faab770994d8.css" rel="stylesheet">
+      <link href="/site.cba292bc35ce98ddd072.css" rel="stylesheet">
     
 
     <link
@@ -95,9 +95,9 @@ Sure! I&#39;m Marius. I was born in Estonia and now live in Belgium. I work as t
 <p><strong>constants/counter.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >const</span> INCREMENT <span class="token operator" >=</span> <span class="token string" >'INCREMENT'</span><span class="token punctuation" >;</span>
 <span class="token keyword" >export</span> <span class="token keyword" >const</span> DECREMENT <span class="token operator" >=</span> <span class="token string" >'DECREMENT'</span><span class="token punctuation" >;</span>
-
-<span class="token comment" spellcheck="true">// actions/counter.js</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> INCREMENT<span class="token punctuation" >,</span> DECREMENT <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'../constants/counter'</span><span class="token punctuation" >;</span>
+</code></pre>
+<p><strong>actions/counter.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> INCREMENT<span class="token punctuation" >,</span> DECREMENT <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'../constants/counter'</span><span class="token punctuation" >;</span>
 
 <span class="token keyword" >export</span> <span class="token keyword" >function</span> increment <span class="token punctuation" >(</span>amount <span class="token operator" >=</span> <span class="token number" >1</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
@@ -122,9 +122,9 @@ Sure! I&#39;m Marius. I was born in Estonia and now live in Belgium. I work as t
 
 <span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span> counter <span class="token punctuation" >(</span>state <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >,</span> action<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
   <span class="token keyword" >switch</span> <span class="token punctuation" >(</span>action<span class="token punctuation" >.</span>type<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >case</span> <span class="token string" >'INCREMENT'</span><span class="token punctuation" >:</span>
+    <span class="token keyword" >case</span> INCREMENT<span class="token punctuation" >:</span>
       <span class="token keyword" >return</span> state <span class="token operator" >+</span> action<span class="token punctuation" >.</span>payload<span class="token punctuation" >.</span>amount<span class="token punctuation" >;</span>
-    <span class="token keyword" >case</span> <span class="token string" >'DECREMENT'</span><span class="token punctuation" >:</span>
+    <span class="token keyword" >case</span> DECREMENT<span class="token punctuation" >:</span>
       <span class="token keyword" >return</span> state <span class="token operator" >-</span> action<span class="token punctuation" >.</span>payload<span class="token punctuation" >.</span>amount<span class="token punctuation" >;</span>
     <span class="token keyword" >default</span><span class="token punctuation" >:</span>
       <span class="token keyword" >return</span> state<span class="token punctuation" >;</span>
