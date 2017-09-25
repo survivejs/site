@@ -20,7 +20,10 @@ module.exports = () => ({
       sections: ["blog"],
       get: {
         content: page => page.file.body,
-        date: page => moment(page.file.attributes.date).utcOffset(0).format(),
+        date: page =>
+          moment(page.file.attributes.date)
+            .utcOffset(0)
+            .format(),
         title: page => page.file.attributes.title
       }
     })
