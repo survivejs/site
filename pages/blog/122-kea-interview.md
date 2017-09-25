@@ -98,8 +98,11 @@ Compare this to a standard Redux-based approach:
 ```javascript
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
+```
 
-// actions/counter.js
+**actions/counter.js**
+
+```javascript
 import { INCREMENT, DECREMENT } from '../constants/counter';
 
 export function increment (amount = 1) {
