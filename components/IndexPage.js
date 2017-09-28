@@ -1,7 +1,7 @@
 import React from "react";
 
 const IndexPage = ({ type, content }) => {
-  const page = () =>
+  const page = () => (
     <div className="frontpage">
       <div
         className="front__heading"
@@ -12,9 +12,7 @@ const IndexPage = ({ type, content }) => {
             <div className="front-name">
               <span className="first">Survive</span>
               <span className="second">JS</span>
-              <span className="first">
-                {" "}- {type}
-              </span>
+              <span className="first"> - {type}</span>
             </div>
 
             <h1 className="front-header">From apprentice to master</h1>
@@ -31,7 +29,8 @@ const IndexPage = ({ type, content }) => {
           />
         </section>
       </div>
-    </div>;
+    </div>
+  );
 
   page.title = type;
 

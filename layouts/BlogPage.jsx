@@ -41,17 +41,16 @@ const BlogPage = ({
 
   return (
     <div className="post__wrapper">
-      {headerImage &&
+      {headerImage && (
         <div
           className="header-image"
           style={{
             backgroundImage: `url(${headerImage})`
           }}
-        />}
+        />
+      )}
 
-      <h1 className="post__heading">
-        {title}
-      </h1>
+      <h1 className="post__heading">{title}</h1>
 
       <div className="toc-nav__wrapper">
         <RelatedPosts
@@ -64,11 +63,12 @@ const BlogPage = ({
       <div className="post">
         <div className="post__content">
           <div dangerouslySetInnerHTML={{ __html: body }} />
-          {headerExtra &&
+          {headerExtra && (
             <div
               className="header-extra"
               dangerouslySetInnerHTML={{ __html: headerExtra }}
-            />}
+            />
+          )}
           {date && <Moment className="post__moment" datetime={date} />}
           {postAuthor && <Author author={postAuthor} />}
 

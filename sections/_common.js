@@ -19,7 +19,10 @@ exports.title = function(o) {
 
 exports.content = function(section) {
   return function(o) {
-    var content = o.file.__content.split("\n").slice(1).join("\n");
+    var content = o.file.__content
+      .split("\n")
+      .slice(1)
+      .join("\n");
 
     return markdown(section).process(content, highlight);
   };
@@ -27,7 +30,11 @@ exports.content = function(section) {
 
 exports.preview = function(o) {
   var previewLimit = 300;
-  var content = o.file.__content.split("##")[0].split("\n").slice(1).join("\n");
+  var content = o.file.__content
+    .split("##")[0]
+    .split("\n")
+    .slice(1)
+    .join("\n");
   var stripped = removeMd(content);
 
   if (stripped.length > previewLimit) {
@@ -38,16 +45,25 @@ exports.preview = function(o) {
 };
 
 exports.url = function(o) {
-  var fileName = o.fileName.split(".")[0].toLowerCase().replace(/_/g, "-");
+  var fileName = o.fileName
+    .split(".")[0]
+    .toLowerCase()
+    .replace(/_/g, "-");
   var parts = fileName.split("/");
   var partName = parts[0];
 
   if (parts.length > 1) {
-    var chapterName = parts[1].split("-").slice(1).join("-");
+    var chapterName = parts[1]
+      .split("-")
+      .slice(1)
+      .join("-");
 
     return o.sectionName + "/" + partName + "/" + chapterName;
   } else {
-    partName = parts[0].split("-").slice(1).join("-");
+    partName = parts[0]
+      .split("-")
+      .slice(1)
+      .join("-");
   }
 
   return o.sectionName + "/" + partName;

@@ -17,7 +17,10 @@ module.exports = function markdown() {
 
   // patch ids (this.options.headerPrefix can be undefined!)
   renderer.heading = function heading(text, level, raw) {
-    const id = raw.toLowerCase().replace(/`/g, "").replace(/[^\w]+/g, "-");
+    const id = raw
+      .toLowerCase()
+      .replace(/`/g, "")
+      .replace(/[^\w]+/g, "-");
 
     return (
       `<h${level} class="header">` +
@@ -79,7 +82,10 @@ module.exports = function markdown() {
         .filter(chunk => chunk.type === "heading")
         .map(chunk => ({
           title: chunk.text.replace(/`/g, ""),
-          id: chunk.text.toLowerCase().replace(/`/g, "").replace(/[^\w]+/g, "-")
+          id: chunk.text
+            .toLowerCase()
+            .replace(/`/g, "")
+            .replace(/[^\w]+/g, "-")
         }));
     }
   };

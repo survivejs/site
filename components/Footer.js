@@ -1,7 +1,7 @@
 import React from "react";
 import Teaser from "./Teaser";
 
-const Footer = ({ section }) =>
+const Footer = ({ section }) => (
   <footer>
     <div className="footer-wrapper">
       <div className="footer-content-wrapper">
@@ -80,6 +80,7 @@ const Footer = ({ section }) =>
         </div>
       </div>
     </div>
-  </footer>;
+  </footer>
+);
 
 export default Footer;

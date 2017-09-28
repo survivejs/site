@@ -1,7 +1,7 @@
 import React from "react";
 import { Testimonial } from "@survivejs/components";
 
-const WebpackIndex = () =>
+const WebpackIndex = () => (
   <div className="frontpage">
     <div
       className="front__heading"
@@ -103,6 +103,7 @@ const WebpackIndex = () =>
         title="Software Engineer, Liferay"
       />
     </div>
-  </div>;
+  </div>
+);
 
 export default WebpackIndex;
