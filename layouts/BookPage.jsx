@@ -3,13 +3,14 @@ import React from "react";
 import {
   Disqus,
   Buy,
+  LatestPost,
   Meta,
   PrevNext,
   PrevNextMini,
   Resources,
-  SocialLinks
+  SocialLinks,
+  Toc
 } from "@survivejs/components";
-import { LatestPost, Toc } from "../components";
 
 const BookPage = ({
   page: {

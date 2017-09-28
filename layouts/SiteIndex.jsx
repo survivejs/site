@@ -1,6 +1,5 @@
 import React from "react";
-import { SocialLinks } from "@survivejs/components";
-import { LatestPost } from "../components";
+import { LatestPost, SocialLinks } from "@survivejs/components";
 
 const SiteIndex = ({ section }) => (
   <div className="frontpage">
