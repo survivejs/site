@@ -2,7 +2,7 @@
 title: 'Unexpected - The Extensible BDD Assertion Toolkit - Interview with Sune Simonsen'
 date: 2016-01-30
 headerImage: 'assets/img/unexpected.jpg'
-keywords: ['interview', 'react']
+keywords: ['interview', 'react', 'testing']
 ---
 
 When it comes to testing, often you assert certain truths.  At the very least you might have simple [asserts](https://nodejs.org/api/assert.html) sprinkled in your code. Or you might push them to separate suites which you then execute using a test runner.
