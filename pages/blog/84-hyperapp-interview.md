@@ -7,7 +7,7 @@ keywords: ['interview']
 
 Micro-sized JavaScript libraries are a niche of their own. Often the idea is to use modern JavaScript APIs and expose them in an easier way. The earlier [RE:DOM interview](/blog/redom-interview) discussed one option.
 
-This time around I am interviewing [Jorge Bucaran](https://twitter.com/jbucaran), the author of [HyperApp](https://github.com/hyperapp/hyperapp).
+This time around I am interviewing [Jorge Bucaran](https://twitter.com/JorgeBucaran), the author of [HyperApp](https://github.com/hyperapp/hyperapp).
 
 ## Can you tell a bit about yourself?
 
@@ -98,7 +98,7 @@ I looked at other options too: Elm, Choo, and yo-yo, were the ones closest to my
 
 Elm is undoubtedly otherworldly. It's probably the best attempt to popularize functional programming that I've seen in recent years. However, I found that it was quite challenging to integrate third party libraries with Elm.
 
-Choo and yo-yo were lovely too. Both projects were a big source of inspiration for me, but I wanted something ⅓ of the size and less opinionated about JavaScript and how it should be written. If you are not sure what I mean by this, shoot me a tweet at [@jbucaran](https://twitter.com/jbucaran), and I'll be happy to elaborate.
+Choo and yo-yo were lovely too. Both projects were a big source of inspiration for me, but I wanted something ⅓ of the size and less opinionated about JavaScript and how it should be written. If you are not sure what I mean by this, shoot me a tweet at [@jbucaran](https://twitter.com/JorgeBucaran), and I'll be happy to elaborate.
 
 ## What next?
 
