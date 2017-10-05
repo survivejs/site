@@ -35,7 +35,7 @@ Regarding the content, the event will start with two workshops on Thursday, wher
 
 The venue is a nice hotel (with a terrace pool!) close to Alicante’s port. Lunches and coffee breaks will be served at the hotel. We will also have refreshments at the end of each day, and a closing party on Saturday.
 
-## How does *React Alicante* differ from the other events?
+## How does *React Alicante* differ from other events?
 
 Our idea is to make sure that the atmosphere is delightful for everyone. In my opinion, when organizing an event like this, there are two things that you need to care of: the quality of the talks and the quality of the networking opportunities.
 
