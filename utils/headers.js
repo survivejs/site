@@ -1,4 +1,100 @@
 module.exports = {
+  monorepos: {
+    author: "Pexels",
+    source: "https://pixabay.com/en/brand-data-mono-music-1851576/",
+    license: "Public Domain",
+    image: "vinyl.jpg"
+  },
+  marketing: {
+    author: "StartupStockPhotos",
+    source: "https://pixabay.com/en/student-typing-keyboard-text-woman-849825/",
+    license: "Public Domain",
+    image: "student.jpg"
+  },
+  longevity: {
+    author: "FelixMittermeier",
+    source: "https://pixabay.com/en/milky-way-starry-sky-night-sky-star-2695569/",
+    license: "Public Domain",
+    image: "milky-way.jpg"
+  },
+  future: {
+    author: "Genty",
+    source: "https://pixabay.com/en/wormhole-time-travel-portal-vortex-2514312/",
+    license: "Public Domain",
+    image: "wormhole.jpg"
+  },
+  automation: {
+    author: "jarmoluk",
+    source: "https://pixabay.com/en/robot-arm-technology-robot-arm-2791670/",
+    license: "Public Domain",
+    image: "robot.jpg"
+  },
+  "continuous-integration": {
+    author: "Magnascan",
+    source: "https://pixabay.com/en/mother-board-electronics-computer-581597/",
+    license: "Public Domain",
+    image: "motherboard.jpg"
+  },
+  processes: {
+    author: "blickpixel",
+    source: "https://pixabay.com/en/board-electronics-computer-453758/",
+    license: "Public Domain",
+    image: "board.jpg"
+  },
+  site: {
+    author: "StockSnap",
+    source: "https://pixabay.com/en/architecture-building-infrastructure-2557568/",
+    license: "Public Domain",
+    image: "infrastructure.jpg"
+  },
+  infrastructure: {
+    author: "StockSnap",
+    source: "https://pixabay.com/en/architecture-building-infrastructure-2557568/",
+    license: "Public Domain",
+    image: "infrastructure.jpg"
+  },
+  dependencies: {
+    author: "blickpixel",
+    source: "https://pixabay.com/en/python-snake-green-tree-python-564817/",
+    license: "Public Domain",
+    image: "snakes.jpg"
+  },
+  "code-formatting": {
+    author: "Bluesnap",
+    source: "https://pixabay.com/en/air-show-aircraft-formation-389965/",
+    license: "Public Domain",
+    image: "formation.jpg"
+  },
+  "code-quality": {
+    author: "PatternPictures",
+    source: "https://pixabay.com/en/stars-rating-travel-four-hotel-1128772/",
+    license: "Public Domain",
+    image: "hotel-stars.jpg"
+  },
+  "standalone-builds": {
+    author: "SplitShire",
+    source: "https://pixabay.com/en/motorbike-garage-repairs-hobby-407186/",
+    license: "Public Domain",
+    image: "build.jpg"
+  },
+  typing: {
+    author: "rawpixel",
+    source: "https://pixabay.com/en/alphabets-ancient-author-data-2365812/",
+    license: "Public Domain",
+    image: "typewriter.jpg"
+  },
+  publishing: {
+    author: "rawpixel",
+    source: "https://pixabay.com/en/alphabets-ancient-author-data-2365812/",
+    license: "Public Domain",
+    image: "typewriter.jpg"
+  },
+  anatomy: {
+    author: "Mimzy",
+    source: "https://pixabay.com/en/family-artist-s-mannequin-figure-2755604/",
+    license: "Public Domain",
+    image: "anatomy.jpg"
+  },
   foreword: {
     author: "MarkoGrothe",
     source: "https://pixabay.com/en/back-light-dandelion-sun-nature-1701549/",
@@ -63,6 +159,12 @@ module.exports = {
     source: "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
     license: "Public Domain",
     image: "decorators.jpg"
+  },
+  packaging: {
+    author: "NASA",
+    source: "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+    license: "Public Domain",
+    image: "skydiving.jpg"
   },
   packages: {
     author: "NASA",
@@ -129,6 +231,10 @@ module.exports = {
     source: "https://pixabay.com/en/collaboration-collaborator-book-1106196/",
     license: "Public Domain",
     image: "glossary.jpg"
+  },
+  "where-to-start": {
+    license: "Public Domain",
+    image: "jumper.jpg"
   },
   "getting-started": {
     license: "Public Domain",
@@ -240,11 +346,29 @@ module.exports = {
     license: "Public Domain",
     image: "darts.jpg"
   },
+  api: {
+    author: "jarmoluk",
+    source: "https://pixabay.com/en/old-books-book-old-library-436498/",
+    license: "Public Domain",
+    image: "books.jpg"
+  },
+  documentation: {
+    author: "jarmoluk",
+    source: "https://pixabay.com/en/old-books-book-old-library-436498/",
+    license: "Public Domain",
+    image: "books.jpg"
+  },
   "bundling-libraries": {
     author: "jarmoluk",
     source: "https://pixabay.com/en/old-books-book-old-library-436498/",
     license: "Public Domain",
     image: "books.jpg"
+  },
+  readme: {
+    author: "Duke University Archives",
+    source: "https://www.flickr.com/photos/19219926@N04/3707001321",
+    license: "CC BY-NC-SA",
+    image: "library.jpg"
   },
   "library-output": {
     author: "Duke University Archives",

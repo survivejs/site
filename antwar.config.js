@@ -71,6 +71,35 @@ module.exports = () => ({
         type: "Workshop",
         content: require("./layouts/workshop.md").body
       }),
+    maintenance: {
+      content: () =>
+        require.context("./books/maintenance-book/manuscript", true, /^\.\/.*\.md$/),
+      index: () => {
+        const index = require("./layouts/BookIndex").default;
+
+        index.title = "SurviveJS - Maintenance";
+
+        return index;
+      },
+      layout: () => require("./layouts/BookPage").default,
+      transform: pages =>
+        generateAdjacent(
+          require("./books/maintenance-book/manuscript/Book.txt")
+            .split("\n")
+            .filter(name => path.extname(name) === ".md")
+            .map(fileName => {
+              const result = _.find(pages, { fileName });
+
+              if (!result) {
+                return console.error("Failed to find", fileName, pages);
+              }
+
+              return result;
+            })
+        ),
+      url: ({ sectionName, fileName }) =>
+        `/${sectionName}/${clean.chapterName(fileName)}/`
+    },
     react: {
       content: () =>
         require.context("./books/react-book/manuscript", true, /^\.\/.*\.md$/),
@@ -91,7 +120,7 @@ module.exports = () => ({
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                return console.error("Failed to find", fileName);
+                return console.error("Failed to find", fileName, pages);
               }
 
               return result;
@@ -124,7 +153,7 @@ module.exports = () => ({
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                return console.error("Failed to find", fileName);
+                return console.error("Failed to find", fileName, pages);
               }
 
               return result;

@@ -58,6 +58,10 @@ function resolveAliases(resource) {
       return src;
     }
 
+    if (relativePath.startsWith("books/maintenance-book")) {
+      return `books/maintenance-book/manuscript/${src}`;
+    }
+
     if (relativePath.startsWith("books/react-book")) {
       return `books/react-book/manuscript/${src}`;
     }
