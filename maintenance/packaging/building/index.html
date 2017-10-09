@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta
+      name="description"
+      content="" />
+    <meta
+      name="keywords"
+      content="" />
+    <title>Building Packages</title>
+    
+    <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
+
+    
+      <link href="/site.04161538ed595143dff9.css" rel="stylesheet">
+    
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"
+    />
+  </head>
+  <body>
+    <div><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/182f70dd0225f637ed6b56c8fb25a2de.jpg);"></div><h1 class="post__heading">Building Packages</h1><div class="header-extra"><a href="https://pixabay.com/en/rusty-metal-old-machine-185531/">werner22brigitte (Public Domain)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/maintenance/foreword/">Foreword</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/maintenance/preface/">Preface</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/maintenance/introduction/">Introduction</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/packaging/">Packaging</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/where-to-start/">Where to Start Packaging</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/anatomy/">Anatomy of a Package</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/publishing/">Publishing Packages</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Building Packages</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/standalone-builds/">Standalone Builds</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/code-quality/">Code Quality</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/linting/">Linting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/code-formatting/">Code Formatting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/typing/">Typing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/testing/">Testing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/dependencies/">Dependencies</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/infrastructure/">Infrastructure</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/infrastructure/processes/">Processes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/infrastructure/continuous-integration/">Continuous Integration</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/infrastructure/automation/">Automation</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/documentation/">Documentation</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/readme/">README</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/site/">Site</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/api/">API Documentation and Style Guides</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/linting/">Linting</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/future/">Future</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/future/longevity/">Longevity</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/future/marketing/">Marketing</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/conclusion/">Conclusion</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/appendices/">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/appendices/monorepos/">Managing Packages Using a Monorepo</a></li></ul><div><div class="buy-container"><a href="/react/introduction"><img alt="React book cover" class="sidebar-cover" src="/b61671d95f81496495f2587a10ddb122.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/webpack/foreword"><img alt="Webpack book cover" class="sidebar-cover" src="/8f86c1d07d5536454690030cd1a10b53.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a><a class="btn btn--normal btn--buy" href="https://www.amazon.com/dp/9526868803/">Buy at Amazon</a><a class="btn btn--normal btn--buy" href="https://www.amazon.com/dp/B06XWZZGBS">Buy for Kindle</a><a class="btn btn--normal btn--buy" href="https://survivejs.typeform.com/to/LUQK0T">Buy Signed LE</a></p></div></div></div><div class="chapter"><div class="post__content"><div><blockquote class="latestpost tip"><a class="latestpost-link" href="/blog/unexpected-react-interview/">unexpected-react - Test Full Virtual DOM - Interview with Dave Brotherstone</a></blockquote></div><div class="chapter-content"><p>While publishing packages, you have a few concerns to worry about:</p>
+<ul>
+<li>Which browsers and Node versions to support?</li>
+<li>What to do if we want to use language features that aren&#39;t supported by these targets?</li>
+<li>What to do if we want to use another language than JavaScript to author our package?</li>
+<li>How to support modern module bundlers and their tree shaking features?</li>
+</ul>
+<p>If you author your packages using a source format that works directly with Node, you can avoid additional processing. In this case it&#39;s enough to point <em>package.json</em> <code>main</code> field to the source as discussed in the previous chapter.</p>
+<p>If you support only the newest <a href="https://github.com/nodejs/LTS">LTS (Long-term support) version</a>, you can use <a href="http://node.green/">new features of the language</a> without having to compile the code in any way.</p>
+<p>That said, if you prefer to use features that are not supported by LTS yet or want to support features like <strong>tree shaking</strong>, you have extra effort ahead of you. In this case you have to compile your code in a specific way.</p>
+<h2 class="header"><a class="header-anchor" href="#communicating-where-code-should-work" id="communicating-where-code-should-work"></a><span class="text">Communicating Where Code Should Work</span><a class="header-anchor-select" href="#communicating-where-code-should-work">#</a></h2>
+<p>To communicate in which Node environments your package should work, you should set <em>package.json</em> <code>engines</code> field. It accepts a range in a similar way as for dependencies. Consider the example adapted from <a href="https://docs.npmjs.com/files/package.json#engines">npm documentation</a>:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"engines"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >">= 4"</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>The same idea works for npm version and you can control it by setting <code>engines.npm</code> field like <code>engines.node</code> above.</p>
+<p>You can also document operating system in which the code should run through the <code>os</code> field. You can specify the CPU architecture through the <code>cpu</code> field. Both of these are niche cases and come into play only if you have platform specific code that is compiled for example.</p>
+<h2 class="header"><a class="header-anchor" href="#compiling-to-support-specific-environments" id="compiling-to-support-specific-environments"></a><span class="text">Compiling to Support Specific Environments</span><a class="header-anchor-select" href="#compiling-to-support-specific-environments">#</a></h2>
+<p><a href="https://babeljs.io/">Babel</a> is a popular JavaScript compiler that allows you to transform future code into a format that works in legacy environments. It can be used through Node, <a href="https://www.npmjs.com/package/babel-cli">a CLI client</a>, or available task runners and bundlers.</p>
+<p>In addition to a method to run, you will have to configure Babel to use specific plugins or presets. <a href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</a> allows you to define which environments you want to support and can use the right plugins based on the definition and generate the minimal code required.</p>
+<p>During this process, it will also shim the code appropriately so that the features work as they should. It&#39;s important to note that the shimming process isn&#39;t perfect and you may still have to include <a href="https://babeljs.io/docs/usage/polyfill/">Babel polyfill</a> to the end result or at least advice consumers to use it.</p>
+<p>To configure <em>babel-preset-env</em> to work with Node, set it up as follows:</p>
+<p><strong>.babelrc</strong></p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
+    <span class="token punctuation" >[</span>
+      <span class="token string" >"env"</span><span class="token punctuation" >,</span>
+      <span class="token punctuation" >{</span>
+        <span class="token property" >"targets"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+          <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >"4"</span>
+        <span class="token punctuation" >}</span>
+      <span class="token punctuation" >}</span>
+    <span class="token punctuation" >]</span>
+  <span class="token punctuation" >]</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>After this change, Babel will pick up any features not supported by the specified version and transform them into a form that works.</p>
+<p>To see the configuration in action, install <strong>babel-cli</strong> to your project, and invoke <code>babel ./src --out-dir ./lib</code>. The command picks up the source and writes it below <code>./lib</code> directory. You should set <code>&quot;main&quot;: &quot;lib&quot;,</code> and also ignore <code>lib</code> at <strong>.gitignore</strong> to avoid including it in source control by accident.</p>
+<p>To make sure the code gets generated before you publish it to npm, set up hooks as below:</p>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+  ...
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>The code should work in the current Node after these changes. There&#39;s one problem, though. If you try to consume a package that relies on a build script like this, it won&#39;t work if you try to use it directly through Git. For this reason customization is required.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>It can be convenient to set up a watch process using <code>babel --watch</code> to generate the build during development. <a href="https://www.npmjs.com/package/npm-watch">npm-watch</a> gives more control if needed.</blockquote><h2 class="header"><a class="header-anchor" href="#generating-a-build-on-postinstall" id="generating-a-build-on-postinstall"></a><span class="text">Generating a Build on <code>postinstall</code></span><a class="header-anchor-select" href="#generating-a-build-on-postinstall">#</a></h2>
+<p>To consume a package like this from Git, you have to make sure the consumer can generate the missing build. To make this happen, you have to write a small <code>postinstall</code> script that does exactly this. To get started, point the hook to a custom script:</p>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+  ...
+  /* Point to the script that generates the missing source. */
+  <span class="token property" >"postinstall"</span><span class="token operator" >:</span> <span class="token string" >"node lib/postinstall.js"</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>Write a script as below that will check if a build exists and then generates it if it doesn&#39;t:</p>
+<p><strong>lib/postinstall.js</strong></p>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">/* eslint-disable */</span>
+<span class="token comment" spellcheck="true">// adapted based on rackt/history (MIT)</span>
+<span class="token comment" spellcheck="true">// Node 4+</span>
+<span class="token keyword" >const</span> execSync <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'child_process'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>execSync<span class="token punctuation" >;</span>
+<span class="token keyword" >const</span> fs <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'fs'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token comment" spellcheck="true">// This could be read from package.json</span>
+<span class="token keyword" >const</span> distDirectory <span class="token operator" >=</span> <span class="token string" >'dist-modules'</span><span class="token punctuation" >;</span>
+
+fs<span class="token punctuation" >.</span><span class="token function" >stat</span><span class="token punctuation" >(</span>distDirectory<span class="token punctuation" >,</span> <span class="token punctuation" >(</span>error<span class="token punctuation" >,</span> stat<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>error <span class="token operator" >||</span> <span class="token operator" >!</span>stat<span class="token punctuation" >.</span><span class="token function" >isDirectory</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Create a directory to avoid getting stuck</span>
+    <span class="token comment" spellcheck="true">// in postinstall loop</span>
+    fs<span class="token punctuation" >.</span><span class="token function" >mkdirSync</span><span class="token punctuation" >(</span>distDirectory<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token function" >exec</span><span class="token punctuation" >(</span><span class="token string" >'npm install --only=dev'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token function" >exec</span><span class="token punctuation" >(</span><span class="token string" >'npm run build'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+
+<span class="token keyword" >function</span> <span class="token function" >exec</span><span class="token punctuation" >(</span>command<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token function" >execSync</span><span class="token punctuation" >(</span>command<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
+    <span class="token comment" spellcheck="true">// Print stdin/stdout/stderr</span>
+    stdio<span class="token punctuation" >:</span> <span class="token string" >'inherit'</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>After these two steps, you have a build that should work whether or not you consume it through npm or not.</p>
+<h2 class="header"><a class="header-anchor" href="#configuring-babel-for-tree-shaking" id="configuring-babel-for-tree-shaking"></a><span class="text">Configuring Babel for Tree Shaking</span><a class="header-anchor-select" href="#configuring-babel-for-tree-shaking">#</a></h2>
+<p>Certain tools, like webpack or Rollup, support <strong>tree shaking</strong>. It&#39;s a form of <strong>dead code elimination</strong> (DCE) that relies on detecting which parts of the code are being used and which are not. The process relies on <strong>static analysis</strong> meaning it goes through the source, detects module imports and exports exist, checks which are being used, and drops the code of those that are not.</p>
+<p>To make this possible, you have to use the ES6 module definition as it&#39;s possible to analyze code relying on it exactly like this. CommonJS definition is too dynamic for proper analysis. That&#39;s a problem in the configuration above as it converts the possible ES6 code to CommonJS given that&#39;s what Node supports at the moment.</p>
+<p>For this reason, you have to set up another process to generate tree shaking compatible code. When it comes to Babel, you have to disable its module processing. Also, you have to point <strong>package.json</strong> <code>module</code> field to the generated source. The existing tooling relies on this convention and can pick up the tree-shakeable code based on the field.</p>
+<p>The technique requires two steps. Set up a helper scripts first:</p>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+  ...
+<div class="leanpub-delete">
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
+</div>
+<div class="leanpub-insert">
+  "build<span class="token operator" >:</span>all"<span class="token operator" >:</span> <span class="token string" >"npm run build &amp;&amp; npm run build:tree-shaking"</span><span class="token punctuation" >,</span>
+  "build<span class="token operator" >:</span>tree-shaking"<span class="token operator" >:</span> <span class="token string" >"BABEL_ENV=tree-shaking babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"BABEL_ENV=build babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run build:all"</span>
+</div>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>To make sure Babel&#39;s module processing gets disabled during processing, set it up as follows:</p>
+<p><strong>.babelrc</strong></p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  ...
+  <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"tree-shaking"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+      <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
+        <span class="token string" >"env"</span><span class="token punctuation" >,</span>
+        <span class="token punctuation" >{</span>
+          <span class="token property" >"targets"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+            <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >"current"</span>
+          <span class="token punctuation" >}</span>
+        <span class="token punctuation" >}</span>
+      <span class="token punctuation" >]</span>
+    <span class="token punctuation" >}</span>
+    <span class="token property" >"tree-shaking"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+      <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
+        <span class="token string" >"env"</span><span class="token punctuation" >,</span>
+        <span class="token punctuation" >{</span>
+          <span class="token property" >"modules"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+          <span class="token property" >"targets"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+            <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >"current"</span>
+          <span class="token punctuation" >}</span>
+        <span class="token punctuation" >}</span>
+      <span class="token punctuation" >]</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Now it should build both a version of the package for Node and a version for tree shaking compatible environments. To perfect the solution, you should make the <em>postinstall</em> script point at <code>build:all</code> to build both targets.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>There is <a href="https://www.npmjs.com/package/webpack-common-shake">an experimental CommonJS based tree shaking solution for webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#using-other-languages-than-javascript" id="using-other-languages-than-javascript"></a><span class="text">Using Other Languages than JavaScript</span><a class="header-anchor-select" href="#using-other-languages-than-javascript">#</a></h2>
+<p>If you want to use some other language than JavaScript to author your packages, you cannot avoid a compilation process as above. The idea is similar and in this case you may end up with additional build artifacts, such as type definitions, that you may want to include in the distributed version of the package.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <em>Typing</em> chapter covers a few popular options including Flow and TypeScript.</blockquote><h2 class="header"><a class="header-anchor" href="#cross-platform-concerns" id="cross-platform-concerns"></a><span class="text">Cross-Platform Concerns</span><a class="header-anchor-select" href="#cross-platform-concerns">#</a></h2>
+<p>To make sure your npm scripts work across different platforms, you cannot rely on environment specific tools. This can be solved by using a task runner to hide the differences. Alternately, you can use a collection of npm packages which expose small CLI interface. The list below contains several of them:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/cpy-cli">cpy-cli</a> - Copy files and folders.</li>
+<li><a href="https://www.npmjs.com/package/cross-env">cross-env</a> - Set environment variables.</li>
+<li><a href="https://www.npmjs.com/package/mkdirp">mkdirp</a> - <em>mkdirp</em> equals to Unix <code>mkdir -p &lt;path&gt;</code> which creates all directories given to it. A normal <code>mkdir &lt;path&gt;</code> would fail if any of the parents are missing. <code>-p</code> stands for <code>--parents</code>.</li>
+<li><a href="https://www.npmjs.com/package/npm-run-all">npm-run-all</a> - Running npm scripts in series and parallel is problematic as there&#39;s no native support for that and you have to rely on OS level semantics. <em>npm-run-all</em> solves this problem by hiding it behind a small CLI interface. Example: <code>npm-run-all clean build:*</code>.</li>
+<li><a href="https://www.npmjs.com/package/rimraf">rimraf</a> - <em>rimraf</em> equals to <code>rm -rf &lt;path&gt;</code> which in Unix terms removes the given path and its contents without any confirmation. The command is both powerful and dangerous.</li>
+<li><a href="https://www.npmjs.com/package/fs-extra">fs-extra</a> - <em>fs-extra</em> extends Node <code>fs</code> module with commonly needed utilities. It works as a drop-in replacement to it.</li>
+</ul>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>If you are developing only against Node and use exactly the features it supports, you can skip the bundling step. Once you want to use features not available in Node yet, you have to compile your code at least. In case you want to make it possible to consume your package through Git or want to provide standalone bundles, additional effort is required.</p>
+<p>You&#39;ll learn how to generate standalone versions of your npm packages in the next chapter.</p>
+</div><div class="social-links"><blockquote class="tip">If you enjoyed this page, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/9484144bf9f674a8b04217e6b3cdfe78.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/maintenance/packaging/publishing/">Publishing Packages</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/b7bb4ae72ade06a84962fcbb38dd2ab2.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/maintenance/packaging/standalone-builds/">Standalone Builds</a></div></div><blockquote class="tip"><p>This book is <a href="https://leanpub.com/survivejs-react">available through Leanpub</a>. By purchasing the book you support the development of further content.</p></blockquote><div id="disqus_thread"></div></div></div><div><a class="next-page" title="Standalone Builds" href="/maintenance/packaging/standalone-builds/"><i class="icon-right-open"></i></a><a class="previous-page" title="Publishing Packages" href="/maintenance/packaging/publishing/"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog/">Read the blog</a></div><div class="nav__link"><a href="/training/">Get training</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs-react">Buy the ebook</a></div><div class="nav__link"><a href="/"></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank" rel="noopener noreferrer">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank" rel="noopener noreferrer">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank" rel="noopener noreferrer">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://presentations.survivejs.com" target="_blank" rel="noopener noreferrer">Presentations</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank" rel="noopener noreferrer">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank" rel="noopener noreferrer">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/unexpected-react-interview/">unexpected-react - Test Full Virtual DOM - Interview with Dave Brotherstone</a></li><li><a class="blog-teaser" href="/blog/webexpo-2017/">Experiences on WebExpo 2017</a></li><li><a class="blog-teaser" href="/blog/kea-interview/">Kea - High level abstraction between React and Redux - Interview with Marius Andra</a></li><li><a class="blog-teaser" href="/blog/react-next-2017/">Experiences on React Next 2017</a></li><li><a class="blog-teaser" href="/blog/frint-interview/">FrintJS - Build reactive applications with React and RxJS - Interview with Fahad Ibnay Heylaal</a></li><li><a class="blog-teaser" href="/blog/neutrino-interview/">Neutrino - Create modern JavaScript applications with minimal configuration - Interview with Eli Perelman</a></li><li><a class="blog-teaser" href="/blog/idyll-interview/">Idyll - Narratives for the web - Interview with Matthew Conlen</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+          ((window.gitter = {}).chat = {}).options = {
+            showChatByDefault: false,
+            activationElement: '.gitter-open-chat-button',
+            room: 'survivejs/react'
+          };
+        </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></div>
+
+    
+  </body>
+</html>

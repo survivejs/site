@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta
+      name="description"
+      content="" />
+    <meta
+      name="keywords"
+      content="" />
+    <title>Linting</title>
+    
+    <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
+
+    
+      <link href="/site.04161538ed595143dff9.css" rel="stylesheet">
+    
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css"
+    />
+  </head>
+  <body>
+    <div><div class="chapter__wrapper"><div class="header-image" style="background-image:url(/7eeb48a0bd1cc4c5622b80b432555a15.jpg);"></div><h1 class="post__heading">Linting</h1><div class="header-extra"><a href="https://www.flickr.com/photos/16324044@N00/10833734686">Eva the Weaver (CC BY-NC-SA)</a></div><div class="toc-nav__wrapper"><h4 class="search-nav--header">Search</h4><input id="search"/><h4 class="toc-nav--header">Table of Contents</h4><ul class="toc-nav"><li class="toc-intro"><a class="toc-nav__link intro" href="/maintenance/foreword/">Foreword</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/maintenance/preface/">Preface</a></li><li class="toc-intro"><a class="toc-nav__link intro" href="/maintenance/introduction/">Introduction</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/packaging/">Packaging</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/where-to-start/">Where to Start Packaging</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/anatomy/">Anatomy of a Package</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/publishing/">Publishing Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/building/">Building Packages</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/packaging/standalone-builds/">Standalone Builds</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/code-quality/">Code Quality</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Linting</span></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/code-formatting/">Code Formatting</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/typing/">Typing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/testing/">Testing</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/code-quality/dependencies/">Dependencies</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/infrastructure/">Infrastructure</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/infrastructure/processes/">Processes</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/infrastructure/continuous-integration/">Continuous Integration</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/infrastructure/automation/">Automation</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/documentation/">Documentation</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/readme/">README</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/site/">Site</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/documentation/api/">API Documentation and Style Guides</a></li><li class="toc-chapter"><span class="toc-nav__link toc-nav__link--current chapter">Linting</span></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/future/">Future</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/future/longevity/">Longevity</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/future/marketing/">Marketing</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/conclusion/">Conclusion</a></li><li class="toc-part"><a class="toc-nav__link part" href="/maintenance/appendices/">Appendices</a></li><li class="toc-chapter"><a class="toc-nav__link chapter" href="/maintenance/appendices/monorepos/">Managing Packages Using a Monorepo</a></li></ul><div><div class="buy-container"><a href="/react/introduction"><img alt="React book cover" class="sidebar-cover" src="/b61671d95f81496495f2587a10ddb122.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></p></div><h3>See also</h3><div class="buy-container"><a href="/webpack/foreword"><img alt="Webpack book cover" class="sidebar-cover" src="/8f86c1d07d5536454690030cd1a10b53.png" width="255" height="329"/></a><p><a class="btn btn--normal btn--buy" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a><a class="btn btn--normal btn--buy" href="https://www.amazon.com/dp/9526868803/">Buy at Amazon</a><a class="btn btn--normal btn--buy" href="https://www.amazon.com/dp/B06XWZZGBS">Buy for Kindle</a><a class="btn btn--normal btn--buy" href="https://survivejs.typeform.com/to/LUQK0T">Buy Signed LE</a></p></div></div></div><div class="chapter"><div class="post__content"><div><blockquote class="latestpost tip"><a class="latestpost-link" href="/blog/unexpected-react-interview/">unexpected-react - Test Full Virtual DOM - Interview with Dave Brotherstone</a></blockquote></div><div class="chapter-content"><p>We read code more often then we write it: sometimes we spend hours looking for what caused the bug, only to fix it with a single line of code. That’s why consistent code style is important. Ideally code in a project should look like it was written by a single developer. It makes code easier to read because the same formatting patterns are used everywhere in the project.</p>
+<h2 class="header"><a class="header-anchor" href="#why-to-lint" id="why-to-lint"></a><span class="text">Why to Lint</span><a class="header-anchor-select" href="#why-to-lint">#</a></h2>
+<p>Good code style can save you from a bug one day. Consider this code:</p>
+<!-- textlint-disable -->
+<pre><code class="lang-js"><span class="token keyword" >if</span> <span class="token punctuation" >(</span>mealType <span class="token operator" >===</span> BREAKFAST<span class="token punctuation" >)</span>
+  <span class="token function" >drinkCoffee</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token function" >eatCroissant</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<!-- textlint-enable -->
+<p>Can you spot the issue? <code>eatCroissant();</code> gets evaluated with <em>any</em> <code>mealType</code> value.</p>
+<p>Many popular JavaScript code styles require curly braces around all blocks and consistent indentation for this reason. Doing this forces you to write the correct code:</p>
+<pre><code class="lang-js"><span class="token keyword" >if</span> <span class="token punctuation" >(</span>mealType <span class="token operator" >===</span> BREAKFAST<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token function" >drinkCoffee</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token function" >eatCroissant</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>You can enforce code style in your project or even autoformat code with linters and code formatting tools. Linting can also capture mistakes in your code before you even run it — thanks to IDE and editor integration.</p>
+<p>Code style is subjective and automation can reduce pointless discussions and improve team productivity. It also simplifies switching between different projects and reduces time to ramp up on a new project.</p>
+<h2 class="header"><a class="header-anchor" href="#linting-javascript-with-eslint" id="linting-javascript-with-eslint"></a><span class="text">Linting JavaScript with ESLint</span><a class="header-anchor-select" href="#linting-javascript-with-eslint">#</a></h2>
+<p><a href="http://eslint.org/">ESLint</a> is a popular linter for JavaScript. It’s primarily used to capture language related issues but can be used to enforce code style and good practices. It can fix many issues automatically, especially code style. You can write your own rules to ensure code consistency across your team or organization.</p>
+<p>JavaScript doesn’t have an official coding style but the community maintains a few. <a href="https://github.com/airbnb/javascript">Airbnb</a> and <a href="http://standardjs.com/">Standard</a> are especially popular: Airbnb is detailed and pragmatic, Standard is a bit controversial because it doesn’t use semicolons. <a href="https://www.npmjs.com/package/semistandard">Semistandard</a> is a variant that fixes that issue. All of these options use two spaces for indentation.</p>
+<p>ESLint is unopinionated and doesn’t have any rules by default so you should enable them manually or use a configuration like <a href="https://www.npmjs.com/package/eslint-config-airbnb-base">eslint-config-airbnb-base</a>, that implements Airbnb style guide. To get started, use <code>eslint --init</code> and let it generate a starting point for you.</p>
+<p>All ES6 features are supported and <a href="https://www.npmjs.com/package/babel-eslint">babel-eslint</a> adds support for newer ECMAScript features and Flow. ESLint is supported by JetBrains’ IDEs and is available as a plugin for other popular editors.</p>
+<p>ESLint itself is modular and uses plugins to operate - for example:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/eslint-plugin-compat">eslint-plugin-compat</a> checks browser compatibility using <a href="https://github.com/ai/browserslist">Browserslist</a>, <a href="http://caniuse.com/">Can I use</a> and <a href="http://kangax.github.io/compat-table/es6/">@kangax’s compat</a> table.</li>
+<li><a href="https://www.npmjs.com/package/eslint-plugin-import">eslint-plugin-import</a> validates ES6 import/export syntax, prevents misspelling of file paths.</li>
+<li><a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a> contains best practices for React, JSX code style.</li>
+<li><a href="https://www.npmjs.com/package/eslint-plugin-security">eslint-plugin-security</a> finds potential security issues in Node code.</li>
+</ul>
+<h3 class="header"><a class="header-anchor" href="#setting-up-eslint" id="setting-up-eslint"></a><span class="text">Setting Up ESLint</span><a class="header-anchor-select" href="#setting-up-eslint">#</a></h3>
+<p>Let’s install ESLint with the Airbnb config:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> eslint eslint-config-airbnb-base eslint-plugin-import --save-dev
+</code></pre>
+<p>Update your <em>package.json</em> as follows to run ESLint against the project. The setup will fix any errors it&#39;s able to fix thanks to the <code>--fix</code> flag:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    "lint<span class="token operator" >:</span>js"<span class="token operator" >:</span> <span class="token string" >"eslint . --fix"</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Create a config file, <em>.eslintrc</em>:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>And finally run:</p>
+<pre><code class="lang-bash">npm run lint:js
+</code></pre>
+<p>You may need to tweak your <em>.eslintrc</em> according to your project needs:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"parserOptions"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    // ECMAScript version<span class="token operator" >:</span> <span class="token number" >3</span>—<span class="token number" >8</span> (or <span class="token number" >2015</span>—<span class="token number" >2017</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> defaults to <span class="token number" >5</span>
+    <span class="token property" >"ecmaVersion"</span><span class="token operator" >:</span> <span class="token number" >6</span><span class="token punctuation" >,</span>
+
+    // Treat source files as ECMAScript modules<span class="token punctuation" >,</span> defaults to <span class="token string" >"script"</span>
+    <span class="token property" >"sourceType"</span><span class="token operator" >:</span> <span class="token string" >"module"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"ecmaFeatures"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+      // Enable JSX
+      <span class="token property" >"jsx"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+
+      // Enable object rest/spread properties<span class="token operator" >:</span> <span class="token punctuation" >{</span>...a<span class="token punctuation" >,</span> ...b<span class="token punctuation" >}</span>
+      <span class="token property" >"experimentalObjectRestSpread"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
+    <span class="token punctuation" >}</span>
+  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+
+  // If you’re using Flow or experimental ECMAScript features
+  // not supported by ESLint<span class="token punctuation" >,</span> enable babel-eslint parser
+  <span class="token property" >"parser"</span><span class="token operator" >:</span> <span class="token string" >"babel-eslint"</span><span class="token punctuation" >,</span>
+
+  // Predefined sets of global variables
+  <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    <span class="token property" >"browser"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"es6"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"jest"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>See <a href="http://eslint.org/docs/user-guide/configuring">ESLint docs on configuring</a> for more information.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>To get most value out of linting tools during development, make sure you have installed related editor plugins. This way you can get feedback realtime as you develop and can spot potential issues earlier.</blockquote><h3 class="header"><a class="header-anchor" href="#speeding-up-eslint-execution" id="speeding-up-eslint-execution"></a><span class="text">Speeding Up ESLint Execution</span><a class="header-anchor-select" href="#speeding-up-eslint-execution">#</a></h3>
+<p>One of the most convenient ways to speed up ESLint execution on big projects is to run it on only files that have been changed while you are working. It&#39;s possible to achieve this by using <em>lint-staged</em>. The exact technique is covered in the <em>Automation</em> chapter.</p>
+<p>Node comes with startup overhead and it takes a while for the processing to begin. <a href="https://www.npmjs.com/package/eslint_d">eslint_d</a> is a daemon process designed to overcome this problem. It runs ESLint as a process in the background. <a href="https://www.npmjs.com/package/esprint">esprint</a> is a similar solution. It runs ESLint across multiple threads parallel.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>You can find <a href="https://medium.com/@Pinterest_Engineering/introducing-esprint-a-fast-open-source-eslint-cli-19a470cd1c7d">more technical details about esprint in its introduction post</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#linting-typescript-with-tslint" id="linting-typescript-with-tslint"></a><span class="text">Linting TypeScript with TSLint</span><a class="header-anchor-select" href="#linting-typescript-with-tslint">#</a></h2>
+<p><a href="https://palantir.github.io/tslint/">TSLint</a> is a linter for TypeScript. It has a much smaller community than ESLint and overall experience is not as nice but otherwise it’s like ESLint.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/eslint/typescript-eslint-parser">TypeScript support</a> for ESLint is experimental and has known issues.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-tslint" id="setting-up-tslint"></a><span class="text">Setting Up TSLint</span><a class="header-anchor-select" href="#setting-up-tslint">#</a></h3>
+<p>Let’s install TSLint with the Airbnb config:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> tslint tslint-config-airbnb --save-dev
+</code></pre>
+<p>Update your <em>package.json</em> like this:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    "lint<span class="token operator" >:</span>ts"<span class="token operator" >:</span> "tslint --fix 'src/**/*.ts'"
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Create a config file, <em>tslint.json</em>:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"tslint-config-airbnb"</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>And finally run:</p>
+<pre><code class="lang-bash">npm run lint:ts
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#linting-css-with-stylelint" id="linting-css-with-stylelint"></a><span class="text">Linting CSS with Stylelint</span><a class="header-anchor-select" href="#linting-css-with-stylelint">#</a></h2>
+<p><a href="https://stylelint.io/">Stylelint</a> is a CSS linting tool, it’s like ESLint but for CSS. Stylelint understands CSS, including the latest features like custom properties, and SCSS. Sass-like indented syntaxes are supported using PostCSS <a href="https://github.com/postcss/sugarss">SugarSS</a>. It also has an experimental support for Less.</p>
+<p><a href="https://www.npmjs.com/package/stylelint-config-standard">stylelint-config-standard</a> is a config maintaned by stylelint team and based on CSS style guides of GitHub, Google and Airbnb.</p>
+<h3 class="header"><a class="header-anchor" href="#setting-up-stylelint" id="setting-up-stylelint"></a><span class="text">Setting up Stylelint</span><a class="header-anchor-select" href="#setting-up-stylelint">#</a></h3>
+<p>Let’s install stylelint:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> stylelint stylelint-config-standard --save-dev
+</code></pre>
+<p>Add a script to your <em>package.json</em> like this:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    "lint<span class="token operator" >:</span>css"<span class="token operator" >:</span> "stylelint --fix '**/*.scss' --syntax scss"
+  <span class="token punctuation" >}</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>Create a config file, <em>.stylelintrc</em>:</p>
+<pre><code class="lang-json"><span class="token punctuation" >{</span>
+  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"stylelint-config-standard"</span>
+<span class="token punctuation" >}</span>
+</code></pre>
+<p>And finally run:</p>
+<pre><code class="lang-bash">npm run lint:css
+</code></pre>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<p>Code style is an important aspect of code quality and you can enforce code style through tooling. Doing so forces contributors to code using the same standard and this also keeps the source consistent to read. Pushing code style to configuration also avoids arguments about which conventions to apply.</p>
+<p>You&#39;ll learn about formatting in the next chapter.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>See the <em>Automation</em> chapter to learn how to automate linting.</blockquote></div><div class="social-links"><blockquote class="tip">If you enjoyed this page, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><h2 class="subscribe-header">Subscribe to the mailing list</h2><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;amp;id=b853b8e786" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate social-form" target="_blank" novalidate=""><div id="mc_embed_signup_scroll"><div class="mc-field-group social-input-container"><input type="email" placeholder="Email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/></div><div style="display:none;position:absolute;left:-5000px;"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><div class="social-subscribe-container"><input type="submit" class="btn button social-subscribe" style="margin-top:1em;margin-bottom:1em;line-height:2em;" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"/></div></div></form></div><div class="new-prevnext"><div class="new-prevnext__prev"><div class="new-prevnext__bg" style="background-image:url(/14066d45581f9c67c5420d8bcdfc0075.jpg);"></div><span class="new-prevnext__info">Previous chapter</span><a class="new-prevnext__link" href="/maintenance/code-quality/">Code Quality</a></div><div class="new-prevnext__next"><div class="new-prevnext__bg" style="background-image:url(/3a76eacb0e7d5d630a35f21fb91f9250.jpg);"></div><span class="new-prevnext__info">Next chapter</span><a class="new-prevnext__link" href="/maintenance/code-quality/code-formatting/">Code Formatting</a></div></div><blockquote class="tip"><p>This book is <a href="https://leanpub.com/survivejs-react">available through Leanpub</a>. By purchasing the book you support the development of further content.</p></blockquote><div id="disqus_thread"></div></div></div><div><a class="next-page" title="Code Formatting" href="/maintenance/code-quality/code-formatting/"><i class="icon-right-open"></i></a><a class="previous-page" title="Code Quality" href="/maintenance/code-quality/"><i class="icon-left-open"></i></a></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog/">Read the blog</a></div><div class="nav__link"><a href="/training/">Get training</a></div><div class="nav__link"><a href="https://leanpub.com/survivejs-react">Buy the ebook</a></div><div class="nav__link"><a href="/"></a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><footer><div class="footer-wrapper"><div class="footer-content-wrapper"><div class="footer-social"><h3>Social</h3><ul><li><a href="https://twitter.com/survivejs" target="_blank" rel="noopener noreferrer">@survivejs</a></li><li><a href="http://eepurl.com/bth1v5" target="_blank" rel="noopener noreferrer">Mailing List</a></li><li><a href="https://gitter.im/survivejs" target="_blank" rel="noopener noreferrer">Gitter Chat</a></li><li><a href="https://github.com/survivejs" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://presentations.survivejs.com" target="_blank" rel="noopener noreferrer">Presentations</a></li><li><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank" rel="noopener noreferrer">Contact</a></li><li><a href="https://github.com/survivejs/ama/issues" target="_blank" rel="noopener noreferrer">Ask Me Anything</a></li></ul></div><div class="footer-blog"><h3>From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/unexpected-react-interview/">unexpected-react - Test Full Virtual DOM - Interview with Dave Brotherstone</a></li><li><a class="blog-teaser" href="/blog/webexpo-2017/">Experiences on WebExpo 2017</a></li><li><a class="blog-teaser" href="/blog/kea-interview/">Kea - High level abstraction between React and Redux - Interview with Marius Andra</a></li><li><a class="blog-teaser" href="/blog/react-next-2017/">Experiences on React Next 2017</a></li><li><a class="blog-teaser" href="/blog/frint-interview/">FrintJS - Build reactive applications with React and RxJS - Interview with Fahad Ibnay Heylaal</a></li><li><a class="blog-teaser" href="/blog/neutrino-interview/">Neutrino - Create modern JavaScript applications with minimal configuration - Interview with Eli Perelman</a></li><li><a class="blog-teaser" href="/blog/idyll-interview/">Idyll - Narratives for the web - Interview with Matthew Conlen</a></li></ul></div></div></div></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">
+          ((window.gitter = {}).chat = {}).options = {
+            showChatByDefault: false,
+            activationElement: '.gitter-open-chat-button',
+            room: 'survivejs/react'
+          };
+        </script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="" defer=""></script></div></div>
+
+    
+  </body>
+</html>
