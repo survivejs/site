@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.01abe0b2bfe6d16a85a3.css" rel="stylesheet">
+      <link href="/site.9b8f659913bbb4bf743b.css" rel="stylesheet">
     
 
     <link
@@ -71,10 +71,10 @@
 <li><code>&gt;= 1.3.0 &lt; 2.0.0</code> - Ranges between versions come in handy with <code>peerDependencies</code>.</li>
 </ul>
 <p>You can set the default range using <code>npm config set save-prefix=&#39;^&#39;</code> in case you prefer something else than caret. Alternately, you can modify <em>~/.npmrc</em> directly. Especially defaulting to tilde can be a good idea that can help you to avoid trouble with dependencies, although it doesn&#39;t remove potential problems entirely. That&#39;s where shrinkwrapping comes in.</p>
-<h2 class="header"><a class="header-anchor" href="#shrinkwrapping-versions" id="shrinkwrapping-versions"></a><span class="text">Shrinkwrapping Versions</span><a class="header-anchor-select" href="#shrinkwrapping-versions">#</a></h2>
-<p>Using version ranges can feel dangerous as it doesn&#39;t take much to break an application. A single change in the wrong place is enough. <a href="https://docs.npmjs.com/cli/shrinkwrap">npm shrinkwrap</a> allows you to fix your dependency versions and have stricter control over the versions you are using in a production environment. Most importantly it fixes the dependencies of your dependencies avoiding accidental breakage due to version changes and SemVer.</p>
-<p><a href="https://www.npmjs.com/package/lockdown">lockdown</a> goes further and gives guarantees about dependency content, not version alone. <a href="https://www.npmjs.com/package/shrinkpack">shrinkpack</a> is another complementary option.</p>
-<p><a href="https://yarnpkg.com/">Yarn</a>, an npm alternative, goes a step further as it introduces the idea of a <em>lockfile</em>. Yarn is worth a look, as it fixes certain shortcomings of npm. Yarn has value for package authors as well as it keeps maintenance easier given you can guarantee certain versions of dependencies are being used.</p>
+<h2 class="header"><a class="header-anchor" href="#locking-versions" id="locking-versions"></a><span class="text">Locking Versions</span><a class="header-anchor-select" href="#locking-versions">#</a></h2>
+<p>Using version ranges can feel dangerous as it doesn&#39;t take much to break an application. A single change in the wrong place is enough. Since npm 5, npm has provided support for <strong>lockfiles</strong>. When <code>npm install</code> is run, it writes a file, <em>package-lock.json</em>. The file should be committed to a project repository and it contains the versions of the installed packages.</p>
+<p>The next time someone runs <code>npm install</code>, npm will use the versions specified in this lockfile. The point is to provide predictable environment as sometimes a package might break by not following the aforementioned SemVer rules correctly.</p>
+<p><a href="https://yarnpkg.com/">Yarn</a>, an npm alternative, implemented the idea of lockfiles first. It provides certain functionality, such as workspaces, not found in npm and continues to push the envelope.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://yarnpkg.com/blog/2017/05/31/determinism/">Sebastian McKenzie discusses the difference between the lockfile approaches</a>. In short, Yarn needs <em>package.json</em> to work while npm doesn&#39;t. Future interoperability is still unclear due to the difference of the approaches.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>When publishing npm packages, you should take care to follow SemVer carefully. Consider ComVer as it&#39;s a simpler backwards compatible alternative. Use tooling to your advantage to avoid regressions and to keep your user base happy.</p>
 <p>You&#39;ll learn how to build npm packages in the next chapter.</p>

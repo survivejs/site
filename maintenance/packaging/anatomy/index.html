@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.01abe0b2bfe6d16a85a3.css" rel="stylesheet">
+      <link href="/site.9b8f659913bbb4bf743b.css" rel="stylesheet">
     
 
     <link
@@ -113,7 +113,7 @@
       cross-env BABEL_ENV=modules babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
 
     <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm run test"</span><span class="token punctuation" >,</span>
-    <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run dist:es6 &amp;&amp; npm run dist:modules"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run dist:es6 &amp;&amp; npm run dist:modules"</span><span class="token punctuation" >,</span>
     <span class="token property" >"postpublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run gh-pages &amp;&amp; npm run gh-pages:deploy"</span><span class="token punctuation" >,</span>
 
     /* If your library is installed through Git<span class="token punctuation" >,</span> compile it */
@@ -128,7 +128,8 @@
 <li><code>npm t</code> maps to <code>npm test</code> or <code>npm run test</code>.</li>
 <li><code>npm start</code> maps to <code>npm run start</code>.</li>
 </ul>
-<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>postinstall</code> script and how it works is discussed in detail in the next chapter.</blockquote><h3 class="header"><a class="header-anchor" href="#entry-points" id="entry-points"></a><span class="text">Entry Points</span><a class="header-anchor-select" href="#entry-points">#</a></h3>
+<p>npm commands, such as <code>npm install</code>, <code>npm publish</code> or <code>npm version</code>, can have hooks attached to them. In the example above, we have attached functionality to these.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>postinstall</code> script and how it works is discussed in detail in the <em>Building Packages</em> chapter.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Before npm 5, people used <code>prepublish</code> instead of <code>prepublishOnly</code>. <a href="https://docs.npmjs.com/misc/scripts">According to the documentation</a>, <code>prepublish</code> is run also on <code>npm install</code>. To overcome this confusing behavior, <code>prepublishOnly</code> was implemented.</blockquote><h3 class="header"><a class="header-anchor" href="#entry-points" id="entry-points"></a><span class="text">Entry Points</span><a class="header-anchor-select" href="#entry-points">#</a></h3>
 <p>The entry points describe how the package should resolve to your source based on the context in which it&#39;s being used.</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>

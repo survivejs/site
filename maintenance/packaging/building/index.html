@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.01abe0b2bfe6d16a85a3.css" rel="stylesheet">
+      <link href="/site.9b8f659913bbb4bf743b.css" rel="stylesheet">
     
 
     <link
@@ -72,7 +72,7 @@
   ...
   <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
   <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
+  <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>The code should work in the current Node after these changes. There&#39;s one problem, though. If you try to consume a package that relies on a build script like this, it won&#39;t work if you try to use it directly through Git. For this reason customization is required.</p>
@@ -125,14 +125,14 @@ fs<span class="token punctuation" >.</span><span class="token function" >stat</s
 <div class="leanpub-delete">
   <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
   <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
+  <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
 </div>
 <div class="leanpub-insert">
   "build<span class="token operator" >:</span>all"<span class="token operator" >:</span> <span class="token string" >"npm run build &amp;&amp; npm run build:tree-shaking"</span><span class="token punctuation" >,</span>
   "build<span class="token operator" >:</span>tree-shaking"<span class="token operator" >:</span> <span class="token string" >"BABEL_ENV=tree-shaking babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
   <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"BABEL_ENV=build babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
   <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"prepublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run build:all"</span>
+  <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build:all"</span>
 </div>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
