@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.00e10ec15149ca9c0e25.css" rel="stylesheet">
+      <link href="/site.c23290ea0ffe2cf4e48a.css" rel="stylesheet">
     
 
     <link
@@ -49,7 +49,16 @@
 <p>When it comes to older projects that have poor <strong>test coverage</strong>, tests can be used for exploration. <strong>Explorative testing</strong> allows you to learn how the code works by testing it. Instead of running the code and examining it, you can write tests to assert your knowledge. As you gain confidence with the way the code works, you are more willing to make changes to it as the risk of breakage becomes smaller.</p>
 <p>Specific techniques, such as <strong>snapshot testing</strong> or <strong>approval testing</strong>, allow you to capture the old state of an application or a library and test against it. Having a snapshot of the state is a good starting point as then you have something instead of nothing. Capturing this state is often cheap, and the techniques can be complemented with more specific ones. They provide a baseline for more sophisticated testing.</p>
 <h2 class="header"><a class="header-anchor" href="#types-of-testing" id="types-of-testing"></a><span class="text">Types of Testing</span><a class="header-anchor-select" href="#types-of-testing">#</a></h2>
-<p>Each type of testing provides specific insight to the project. The following sections cover the most common techniques.</p>
+<p><img src="/63288a6b2c5d5749acdc3a45f9c13e00.png" alt="Test tower" class="" width="" height="" /></p>
+<p>Mike Cohn popularized <a href="https://martinfowler.com/bliki/TestPyramid.html">the concept of the test pyramid</a>. He split testing into three levels: unit, service, and user interface. The test tower adapted from his and <a href="https://github.com/ForbesLindesay/end-to-end-testing-react-applications">Forbes Lindesay&#39;s work</a> expands on the idea.</p>
+<p>Each type of testing provides specific insight to the project. The following sections cover the most common techniques while also discussed a few beyond the tower.</p>
+<h3 class="header"><a class="header-anchor" href="#acceptance-testing" id="acceptance-testing"></a><span class="text">Acceptance Testing</span><a class="header-anchor-select" href="#acceptance-testing">#</a></h3>
+<p><strong>Acceptance testing</strong> looks at testing from the user perspective. It answers the question does the user interface configured in a certain way lead to the expected result. Tools like <a href="http://codecept.io/">CodeceptJS</a>, <a href="https://theintern.github.io/">Intern</a>, or <a href="http://www.seleniumhq.org/">Selenium</a> provide a high-level syntax that allows you to model user behaviors against the browser.</p>
+<h3 class="header"><a class="header-anchor" href="#end-to-end-testing" id="end-to-end-testing"></a><span class="text">End to End Testing</span><a class="header-anchor-select" href="#end-to-end-testing">#</a></h3>
+<p><strong>End to End testing</strong> (E2E) is closer to technical level than acceptance testing and tests particular use flows. For example, in an application you would test that the user can log in and log out. Or that the user can fill a form in a specific view and get expected results.</p>
+<p>Tools like <a href="https://devexpress.github.io/testcafe/">TestCafé</a>, <a href="http://nightwatchjs.org/">Nightwatch.js</a> and services such as <a href="https://www.cypress.io/">cypress</a> focus exactly on this type of testing.</p>
+<h3 class="header"><a class="header-anchor" href="#integration-testing" id="integration-testing"></a><span class="text">Integration Testing</span><a class="header-anchor-select" href="#integration-testing">#</a></h3>
+<p><strong>Integration testing</strong> asserts that separate modules work together. You can use the same ideas as above here except this time around the scope of the system under test is larger.</p>
 <h3 class="header"><a class="header-anchor" href="#unit-testing" id="unit-testing"></a><span class="text">Unit Testing</span><a class="header-anchor-select" href="#unit-testing">#</a></h3>
 <p><strong>Unit testing</strong> asserts specific truths about code. Each unit should verify the single truth. You can get started by using Node <a href="https://nodejs.org/api/assert.html">assert</a>. Specialized assertion libraries have more functionality and better output but <code>assert</code> is a good starting point.</p>
 <p>To have something to test, define a module:</p>
@@ -98,12 +107,10 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <li>If the <code>add</code> function contained type information, it would be possible to extract that and then map the types to generators. Doing this would keep the test code slightly neater if you have multiple tests as then you would have to define the mapping between types and generators in one place while individual tests could skip the definition problem.</li>
 </ul>
 <p>Good property testing tools like <a href="https://jsverify.github.io/">JSVerify</a> or <a href="http://leebyron.com/testcheck-js/">testcheck-js</a> are able to shrink a failure to a specific case so you can fix it. The biggest benefit of the technique it can help to discover boundary cases to repair.</p>
-<h3 class="header"><a class="header-anchor" href="#integration-testing" id="integration-testing"></a><span class="text">Integration Testing</span><a class="header-anchor-select" href="#integration-testing">#</a></h3>
-<p><strong>Integration testing</strong> asserts that separate modules work together. You can use the same ideas as above here except this time around the scope of the system under test is larger.</p>
+<h3 class="header"><a class="header-anchor" href="#static-analysis" id="static-analysis"></a><span class="text">Static Analysis</span><a class="header-anchor-select" href="#static-analysis">#</a></h3>
+<p>Static analysis tools, such as ESLint or Prettier, can help to keep code consistent and push it towards right patterns. They cannot detect each and every problem related to these aspects but they can still help as discussed in the <em>Linting</em> and <em>Code Formatting</em> chapters.</p>
 <h3 class="header"><a class="header-anchor" href="#security-testing" id="security-testing"></a><span class="text">Security Testing</span><a class="header-anchor-select" href="#security-testing">#</a></h3>
 <p><strong>Security testing</strong> addresses specific vulnerabilities that allow a potential attacker to breach a system. <a href="https://www.npmjs.com/package/nsp">nsp</a> is a tool that checks your project against known vulnerabilities. <a href="https://www.npmjs.com/package/eslint-plugin-security">eslint-plugin-security</a> can be used to identify potential security hotspots that need to be checked by a human.</p>
-<h3 class="header"><a class="header-anchor" href="#acceptance-testing" id="acceptance-testing"></a><span class="text">Acceptance Testing</span><a class="header-anchor-select" href="#acceptance-testing">#</a></h3>
-<p><strong>Acceptance testing</strong> looks at testing from the user perspective. It answers the question does the user interface configured in a certain way lead to the expected result. Tools like <a href="http://codecept.io/">CodeceptJS</a>, <a href="https://theintern.github.io/">Intern</a>, or <a href="http://www.seleniumhq.org/">Selenium</a> provide a high-level syntax that allows you to model user behaviors against the browser.</p>
 <h3 class="header"><a class="header-anchor" href="#regression-testing" id="regression-testing"></a><span class="text">Regression Testing</span><a class="header-anchor-select" href="#regression-testing">#</a></h3>
 <p><strong>Regression testing</strong> makes sure the software works still the same way as before without breaking anything.</p>
 <p><strong>Approval testing</strong> allows you to develop regression tests against an existing system. The idea is to store the existing system state as snapshots and use this data for testing a behavior for changes while the implementation is being refactored.</p>
