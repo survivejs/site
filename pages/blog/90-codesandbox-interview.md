@@ -118,7 +118,7 @@ I also recommend learning by just starting a personal project. Building somethin
 
 ## Who should I interview next?
 
-Christian Alfoni, the creator of [WebpackBin](https://www.webpackbin.com/) and [Cerebral](http://cerebraljs.com/docs/get_started/). It has been a blast working with him. He is close to releasing a new version of a state controller called Cerebral.
+Christian Alfoni, the creator of [WebpackBin](https://www.webpackbin.com/) and [Cerebral](https://cerebraljs.com/). It has been a blast working with him. He is close to releasing a new version of a state controller called Cerebral.
 
 T> **Editor's note:** I [interviewed Christian earlier about Cerebral](/blog/cerebral-interview).
 

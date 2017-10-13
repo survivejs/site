@@ -85,7 +85,7 @@ The main advantages are the JSX based syntax, so there's no big API to learn, an
 
 > I think this is a vast improvement over Enzyme, where you'd typically end up with an `expected false to equal true` output if the output wasn't found.
 
-When running Jest, it also supports [snapshot tests](https://facebook.github.io/jest/docs/snapshot-testing.html#content), but unlike Jest's native snapshot tests, the diffs are based on real objects not just string representations of the JSX.
+When running Jest, it also supports [snapshot tests](https://facebook.github.io/jest/docs/en/snapshot-testing.html), but unlike Jest's native snapshot tests, the diffs are based on real objects not just string representations of the JSX.
 
 Doing this means that if for example, a class is missing, the missing class will be named, rather than just highlighting the diffed line. If the classes appear in a different order, the test will still pass under *unexpected-react* as it understands classes, but fail under Jest. You can also snapshot out of the box using any of the renderers without any special add-ons.
 
