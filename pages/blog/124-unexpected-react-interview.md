@@ -35,7 +35,7 @@ expect(
 );
 ```
 
-This example uses the [React shallow renderer](https://github.com/facebook/react/blob/master/docs/docs/addons-shallow-renderer.md) to render the `MyButtonComponent` and compares the output to `<button>Click me</button>`. If the output is different, you'll see something like the following as output:
+This example uses the [React shallow renderer](https://reactjs.org/docs/shallow-renderer.html) to render the `MyButtonComponent` and compares the output to `<button>Click me</button>`. If the output is different, you'll see something like the following as output:
 
 ```jsx
 <button className="btn">
