@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3d1ca16ddf7e0940df8a.css" rel="stylesheet">
+      <link href="/site.6e0f0fcaac687c73baed.css" rel="stylesheet">
     
 
     <link
@@ -80,7 +80,7 @@ I&#39;m originally from the UK, but I&#39;ve lived in Germany for the last seven
 <blockquote>
 <p>I think this is a vast improvement over Enzyme, where you&#39;d typically end up with an <code>expected false to equal true</code> output if the output wasn&#39;t found.</p>
 </blockquote>
-<p>When running Jest, it also supports <a href="https://facebook.github.io/jest/docs/snapshot-testing.html#content">snapshot tests</a>, but unlike Jest&#39;s native snapshot tests, the diffs are based on real objects not just string representations of the JSX.</p>
+<p>When running Jest, it also supports <a href="https://facebook.github.io/jest/docs/en/snapshot-testing.html">snapshot tests</a>, but unlike Jest&#39;s native snapshot tests, the diffs are based on real objects not just string representations of the JSX.</p>
 <p>Doing this means that if for example, a class is missing, the missing class will be named, rather than just highlighting the diffed line. If the classes appear in a different order, the test will still pass under <em>unexpected-react</em> as it understands classes, but fail under Jest. You can also snapshot out of the box using any of the renderers without any special add-ons.</p>
 <h2 class="header"><a class="header-anchor" href="#why-did-you-develop-unexpected-react-" id="why-did-you-develop-unexpected-react-"></a><span class="text">Why did you develop <em>unexpected-react</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-unexpected-react-">#</a></h2>
 <p>Back in 2015 the shallow renderer came out, and I was using it to write some tests, but asserting it was hard. You&#39;d have to navigate your way through the children, and end up with assertions like <code>expect(component.props.children[0].props.children[1].props.className).toEqual(&#39;foo&#39;)</code>. I&#39;d seen a lightning talk from <a href="https://github.com/munter">Peter Müller</a> as <a href="https://jsunconf.eu">JSUnconf</a> in Hamburg on unexpected and had started to play around with it.</p>
