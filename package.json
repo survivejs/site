@@ -13,7 +13,7 @@
     "lint": "eslint . --ext js --ext jsx --ignore-path .gitignore --cache",
     "purge_cf": "node ./utils/purge_cf.js",
     "test": "npm run lint",
-    "check:links": "hyperlink build/index.html",
+    "check:links": "hyperlink build/index.html -r",
     "prepush": "npm test",
     "copy:all": "npm run copy:demos && npm run copy:extra",
     "copy:demos": "cp -rf ../react/project_source/builds/ build/demos/",
