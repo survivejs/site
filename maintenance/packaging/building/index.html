@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.d756791094b89fd1a8a5.css" rel="stylesheet">
+      <link href="/site.7139ed9309c4169df9f3.css" rel="stylesheet">
     
 
     <link
@@ -37,10 +37,9 @@
 <p>That said, if you prefer to use features that are not supported by LTS yet or want to support features like <strong>tree shaking</strong>, you have extra effort ahead of you. In this case you have to compile your code in a specific way.</p>
 <h2 class="header"><a class="header-anchor" href="#communicating-where-code-should-work" id="communicating-where-code-should-work"></a><span class="text">Communicating Where Code Should Work</span><a class="header-anchor-select" href="#communicating-where-code-should-work">#</a></h2>
 <p>To communicate in which Node environments your package should work, you should set <em>package.json</em> <code>engines</code> field. It accepts a range in a similar way as for dependencies. Consider the example adapted from <a href="https://docs.npmjs.com/files/package.json#engines">npm documentation</a>:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"engines"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >">= 4"</span>
-  <span class="token punctuation" >}</span>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"engines"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+  <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >">= 4"</span>
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>The same idea works for npm version and you can control it by setting <code>engines.npm</code> field like <code>engines.node</code> above.</p>
@@ -118,7 +117,7 @@ fs<span class="token punctuation" >.</span><span class="token function" >stat</s
 <p>Certain tools, like webpack or Rollup, support <strong>tree shaking</strong>. It&#39;s a form of <strong>dead code elimination</strong> (DCE) that relies on detecting which parts of the code are being used and which are not. The process relies on <strong>static analysis</strong> meaning it goes through the source, detects module imports and exports exist, checks which are being used, and drops the code of those that are not.</p>
 <p>To make this possible, you have to use the ES6 module definition as it&#39;s possible to analyze code relying on it exactly like this. CommonJS definition is too dynamic for proper analysis. That&#39;s a problem in the configuration above as it converts the possible ES6 code to CommonJS given that&#39;s what Node supports at the moment.</p>
 <p>For this reason, you have to set up another process to generate tree shaking compatible code. When it comes to Babel, you have to disable its module processing. Also, you have to point <strong>package.json</strong> <code>module</code> field to the generated source. The existing tooling relies on this convention and can pick up the tree-shakeable code based on the field.</p>
-<p>The technique requires two steps. Set up a helper scripts first:</p>
+<p>The technique requires two steps. Set up helper scripts first:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
   ...
@@ -129,14 +128,15 @@ fs<span class="token punctuation" >.</span><span class="token function" >stat</s
 </div>
 <div class="leanpub-insert">
   "build<span class="token operator" >:</span>all"<span class="token operator" >:</span> <span class="token string" >"npm run build &amp;&amp; npm run build:tree-shaking"</span><span class="token punctuation" >,</span>
-  "build<span class="token operator" >:</span>tree-shaking"<span class="token operator" >:</span> <span class="token string" >"BABEL_ENV=tree-shaking babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"BABEL_ENV=build babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
+  "build<span class="token operator" >:</span>tree-shaking"<span class="token operator" >:</span> <span class="token string" >"cross-env BABEL_ENV=tree-shaking
+    babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"cross-env BABEL_ENV=build babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
   <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
   <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build:all"</span>
 </div>
 <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<p>To make sure Babel&#39;s module processing gets disabled during processing, set it up as follows:</p>
+<blockquote class="warning"><i class="icon-attention"></i>The example relies on the <em>cross-env</em> tool discussed later in this chapter. If you are on Unix only, you can skip it.</blockquote><p>To make sure Babel&#39;s module processing gets disabled during processing, set it up as follows:</p>
 <p><strong>.babelrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
   ...
