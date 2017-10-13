@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.7139ed9309c4169df9f3.css" rel="stylesheet">
+      <link href="/site.b2c1dcc746e43e59bc1e.css" rel="stylesheet">
     
 
     <link
@@ -100,13 +100,11 @@ scope: <span class="token punctuation" >{</span>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can customize every step of this process with plugins. For example, <a href="http://blog.sapegin.me/all/semantic-release">make only PATCH releases automatically</a> and allow user to decide when to make MINOR and MAJOR releases and edit change logs manually.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Look into <a href="https://www.npmjs.com/package/standard-version">standard-release</a> and <a href="https://www.npmjs.com/package/unleash">unleash</a> for alternatives.</blockquote><h2 class="header"><a class="header-anchor" href="#git-hooks" id="git-hooks"></a><span class="text">Git Hooks</span><a class="header-anchor-select" href="#git-hooks">#</a></h2>
 <p>Git provides a set of hooks that trigger for example before pushing or committing a change. These hooks are ideal for quick checks and they allow you to adjust your source before finally pushing by using <code>git rebase --interactive</code> (or <code>git rebase -i</code>). Rebase workflow is good to know as it allows you to fix mistakes before they get shared with other developers.</p>
 <p>Git hooks can be used in a JavaScript project with a package such as <a href="https://www.npmjs.com/package/husky">husky</a>. It connects Git hook interface with npm <code>scripts</code>. Consider the example below:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    ...
-    <span class="token property" >"prepush"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
   ...
-<span class="token punctuation" >}</span>
+  <span class="token property" >"prepush"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span>
+<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>The package will do all the wiring required and run project tests before pushing to the repository.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Note that if you have set up Git hooks manually, it might not work! It&#39;s better to let husky control the Git side entirely.</blockquote><h2 class="header"><a class="header-anchor" href="#automating-linting-with-lint-staged" id="automating-linting-with-lint-staged"></a><span class="text">Automating Linting with lint-staged</span><a class="header-anchor-select" href="#automating-linting-with-lint-staged">#</a></h2>
@@ -116,6 +114,7 @@ scope: <span class="token punctuation" >{</span>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> lint-staged husky --save-dev
 </code></pre>
 <p>Update your <em>package.json</em> like this:</p>
+<p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
   <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
     <span class="token property" >"precommit"</span><span class="token operator" >:</span> <span class="token string" >"lint-staged"</span>
