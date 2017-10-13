@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.5949ad2147f6f016de12.css" rel="stylesheet">
+      <link href="/site.e12bb4c262347b760f5d.css" rel="stylesheet">
     
 
     <link
@@ -75,6 +75,7 @@
 <pre><code class="lang-bash">npm run lint:js
 </code></pre>
 <p>You may need to tweak your <em>.eslintrc</em> according to your project needs:</p>
+<p><strong>.eslintrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
   <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span><span class="token punctuation" >,</span>
   <span class="token property" >"parserOptions"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
@@ -106,7 +107,7 @@
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>See <a href="http://eslint.org/docs/user-guide/configuring">ESLint docs on configuring</a> for more information.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>To get most value out of linting tools during development, make sure you have installed related editor plugins. This way you can get feedback realtime as you develop and can spot potential issues earlier.</blockquote><h3 class="header"><a class="header-anchor" href="#speeding-up-eslint-execution" id="speeding-up-eslint-execution"></a><span class="text">Speeding Up ESLint Execution</span><a class="header-anchor-select" href="#speeding-up-eslint-execution">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i><em>.eslintrc</em> supports <a href="http://json5.org/">JSON5</a> format by default. It&#39;s a proposed extension to JSON that enables features like commenting and trailing commas.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>ESLint configuration can be written in other formats, such as YAML or JavaScript, as well. JSON5 is a good default, though, given it&#39;s a good format for other tools to consume.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>To get most value out of linting tools during development, make sure you have installed related editor plugins. This way you can get feedback realtime as you develop and can spot potential issues earlier.</blockquote><h3 class="header"><a class="header-anchor" href="#speeding-up-eslint-execution" id="speeding-up-eslint-execution"></a><span class="text">Speeding Up ESLint Execution</span><a class="header-anchor-select" href="#speeding-up-eslint-execution">#</a></h3>
 <p>One of the most convenient ways to speed up ESLint execution on big projects is to run it on only files that have been changed while you are working. It&#39;s possible to achieve this by using <em>lint-staged</em>. The exact technique is covered in the <em>Automation</em> chapter.</p>
 <p>Node comes with startup overhead and it takes a while for the processing to begin. <a href="https://www.npmjs.com/package/eslint_d">eslint_d</a> is a daemon process designed to overcome this problem. It runs ESLint as a process in the background. <a href="https://www.npmjs.com/package/esprint">esprint</a> is a similar solution. It runs ESLint across multiple threads parallel.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can find <a href="https://medium.com/@Pinterest_Engineering/introducing-esprint-a-fast-open-source-eslint-cli-19a470cd1c7d">more technical details about esprint in its introduction post</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#linting-typescript-with-tslint" id="linting-typescript-with-tslint"></a><span class="text">Linting TypeScript with TSLint</span><a class="header-anchor-select" href="#linting-typescript-with-tslint">#</a></h2>

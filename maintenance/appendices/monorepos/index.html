@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/assets/favicon.png'></link>
 
     
-      <link href="/site.5949ad2147f6f016de12.css" rel="stylesheet">
+      <link href="/site.e12bb4c262347b760f5d.css" rel="stylesheet">
     
 
     <link
@@ -58,7 +58,6 @@
 <p>Sometimes this can mean replacing entire file (i.e. Travis CI configuration) but there are times when patching the existing configuration is enough (i.e. <code>.gitignore</code>). This allows you to retain control and it avoids customization per project based on specific needs.</p>
 <p>The biggest win of pushing shared configuration to a package like this is that it allows webpack to push project standards to a single place where they can be maintained. The changes can be consumed by running a single command at each project. This still requires inspection by programmers but it beats the alternative where it&#39;s not possible to cascade changes across projects.</p>
 <p><em>webpack-defaults</em> relies on <a href="https://www.npmjs.com/package/mrm-core">mrm-core</a> for handling project level migrations. It&#39;s at its best in patching configuration file formats like JSON or YAML. The problems begin if you have to patch configuration based on JavaScript as then the needed transformations become arbitrary given code can be written in so many ways. This is where <a href="https://www.npmjs.com/package/js-codemod">codemods</a> can come in for limited scenarios.</p>
-<p>TODO: <a href="https://www.npmjs.com/package/lerna-semantic-release">https://www.npmjs.com/package/lerna-semantic-release</a></p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Monorepos provide a refreshing alternative to managing each package per repository. They allow you to share the same configuration across separate packages and also coordinate related changes more easily. The approach comes with technical cost as performing this orchestration requires tooling.</p>
 <p>Another option is to push the configuration problem to a package as was done in <em>webpack-defaults</em>. This way you can manage shared standards in a single place and share them across multiple projects.</p>
