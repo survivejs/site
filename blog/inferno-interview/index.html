@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6e0f0fcaac687c73baed.css" rel="stylesheet">
+      <link href="/site.d6e1ce54d243dd2620ec.css" rel="stylesheet">
     
 
     <link
@@ -57,7 +57,7 @@ I&#39;ve been developing and writing actual software since I was 15 years old, b
 <li>Inferno prefers the usage of helper functions that all get inlined by a JIT compiler – for example, rather than doing <code>foo === null</code>, doing <code>isNull(foo)</code>. We found that this really helped improve bundle size, and in some cases it also improved JIT performance (when the <a href="https://docs.google.com/document/d/1VoYBhpDhJC4VlqMXCKvae-8IGuheBGxy32EOgC2LnT8/edit">inline budget for inlining hadn&#39;t been fully consumed</a>).</li>
 <li>Extensive checking was done to ensure that deoptimisations (&quot;deopts&quot;, where a JIT compiler can&#39;t compile something) were kept to the absolute minimum. The Inferno team used benchmarks, profiling tools (IRHydra 2, Chrome Dev Tools) and lots of spikes re-writes on various parts of the codebase as way of constantly finding ways to remove deopts.</li>
 <li>Inferno uses its own event system for certain events, which allows it to choose a delegated event or an inline event depending on the type of event. Delegated events can offer a significant performance and memory improvement over non-delegated events in cetain use-cases.</li>
-<li>Inferno&#39;s keyed children sorting algorithm is highly efficient and yields the fewest possible DOM mutations to get from A to B (thanks to the <a href="https://github.com/ivijs/ivi/blob/master/src/vdom/implementation.ts#L1511">great work</a> by <a href="https://github.com/localvoid">localvoid</a>).</li>
+<li>Inferno&#39;s keyed children sorting algorithm is highly efficient and yields the fewest possible DOM mutations to get from A to B (thanks to the <a href="https://github.com/ivijs/ivi">great work</a> by <a href="https://github.com/localvoid">localvoid</a>).</li>
 </ul>
 <p>There are plenty more optimisations going on under the hood, so I&#39;d recommend reading the sourcecode if anyone is interested in learning more.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-inferno-differ-from-other-solutions-" id="how-does-inferno-differ-from-other-solutions-"></a><span class="text">How does <em>Inferno</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-inferno-differ-from-other-solutions-">#</a></h2>

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6e0f0fcaac687c73baed.css" rel="stylesheet">
+      <link href="/site.d6e1ce54d243dd2620ec.css" rel="stylesheet">
     
 
     <link
@@ -83,7 +83,7 @@ I&#39;m originally from the UK, but I&#39;ve lived in Germany for the last seven
 <p>When running Jest, it also supports <a href="https://facebook.github.io/jest/docs/en/snapshot-testing.html">snapshot tests</a>, but unlike Jest&#39;s native snapshot tests, the diffs are based on real objects not just string representations of the JSX.</p>
 <p>Doing this means that if for example, a class is missing, the missing class will be named, rather than just highlighting the diffed line. If the classes appear in a different order, the test will still pass under <em>unexpected-react</em> as it understands classes, but fail under Jest. You can also snapshot out of the box using any of the renderers without any special add-ons.</p>
 <h2 class="header"><a class="header-anchor" href="#why-did-you-develop-unexpected-react-" id="why-did-you-develop-unexpected-react-"></a><span class="text">Why did you develop <em>unexpected-react</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-unexpected-react-">#</a></h2>
-<p>Back in 2015 the shallow renderer came out, and I was using it to write some tests, but asserting it was hard. You&#39;d have to navigate your way through the children, and end up with assertions like <code>expect(component.props.children[0].props.children[1].props.className).toEqual(&#39;foo&#39;)</code>. I&#39;d seen a lightning talk from <a href="https://github.com/munter">Peter Müller</a> as <a href="https://jsunconf.eu">JSUnconf</a> in Hamburg on unexpected and had started to play around with it.</p>
+<p>Back in 2015 the shallow renderer came out, and I was using it to write some tests, but asserting it was hard. You&#39;d have to navigate your way through the children, and end up with assertions like <code>expect(component.props.children[0].props.children[1].props.className).toEqual(&#39;foo&#39;)</code>. I&#39;d seen a lightning talk from <a href="https://github.com/munter">Peter Müller</a> as JSUnconf in Hamburg on unexpected and had started to play around with it.</p>
 <p>I was impressed with the output and began to use Peter&#39;s plugin <a href="https://github.com/munter/unexpected-dom">unexpected-dom</a> to assert properties on the DOM.  One weekend I thought I might be able to adapt <em>unexpected-dom</em> to diff JSX trees, and so <em>unexpected-react-shallow</em> was born.</p>
 <p><em>unexpected-react</em> came a bit later when I realized how I could access the full virtual DOM by hooking into the devtools hooks, and how to separate the logic of diffing a XML-like tree from the actual objects.</p>
 <h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6e0f0fcaac687c73baed.css" rel="stylesheet">
+      <link href="/site.d6e1ce54d243dd2620ec.css" rel="stylesheet">
     
 
     <link
@@ -286,7 +286,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>Jest tests follow <a href="https://www.npmjs.com/package/jasmine">Jasmine</a> test framework semantics, and it supports Jasmine-style assertions out of the box. Especially the suite definition is close enough to Mocha so that the current test should work without any adjustments to the test code itself. Jest provides <a href="https://www.npmjs.com/package/jest-codemods">jest-codemods</a> for migrating more complex projects to Jest semantics.</p>
 <p>Install Jest first:</p>
 <pre><code>npm <span class="token function" >install</span> jest --save-dev
-</code></pre><p>Jest captures tests through <em>package.json</em> <a href="https://facebook.github.io/jest/docs/configuration.html">configuration</a>. It detects tests within a <em><strong>tests</strong></em> directory it also happens to capture the naming pattern the project is using by default:</p>
+</code></pre><p>Jest captures tests through <em>package.json</em> <a href="https://facebook.github.io/jest/docs/en/configuration.html">configuration</a>. It detects tests within a <em><strong>tests</strong></em> directory it also happens to capture the naming pattern the project is using by default:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
 <div class="leanpub-insert">
@@ -298,7 +298,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 </code></pre>
 <p>Now you have two new commands: one to run tests once and other to run them in a watch mode. To capture coverage information, you have to set <code>&quot;collectCoverage&quot;: true</code> at <code>&quot;jest&quot;</code> settings in <em>package.json</em> or pass <code>--coverage</code> flag to Jest. It emits the coverage reports below <em>coverage</em> directory by default.</p>
 <p>Given generating coverage reports comes with a performance overhead, enabling the behavior through the flag can be a good idea. This way you can control exactly when to capture the information.</p>
-<p>Porting a webpack setup to Jest requires more effort especially if you rely on webpack specific features. <a href="https://facebook.github.io/jest/docs/webpack.html">The official guide</a> covers quite a few of the common problems. You can also configure Jest to use Babel through <a href="https://www.npmjs.com/package/babel-jest">babel-jest</a> as it allows you to use Babel plugins like <a href="https://www.npmjs.com/package/babel-plugin-module-resolver">babel-plugin-module-resolver</a> to match webpack&#39;s functionality.</p>
+<p>Porting a webpack setup to Jest requires more effort especially if you rely on webpack specific features. <a href="https://facebook.github.io/jest/docs/en/webpack.html">The official guide</a> covers quite a few of the common problems. You can also configure Jest to use Babel through <a href="https://www.npmjs.com/package/babel-jest">babel-jest</a> as it allows you to use Babel plugins like <a href="https://www.npmjs.com/package/babel-plugin-module-resolver">babel-plugin-module-resolver</a> to match webpack&#39;s functionality.</p>
 <h2 class="header"><a class="header-anchor" href="#ava" id="ava"></a><span class="text">AVA</span><a class="header-anchor-select" href="#ava">#</a></h2>
 <p><img src="/323760a8a9b8c7fe6b0de0888ddf66ee.png" alt="AVA" class="" width="" height="" /></p>
 <p><a href="https://www.npmjs.com/package/ava">AVA</a> is a test runner that has been designed to take advantage of parallel execution. It comes with a test suite definition of its own. <a href="https://github.com/greyepoxy/webpack-ava-recipe">webpack-ava-recipe</a> covers how to connect it with webpack.</p>
