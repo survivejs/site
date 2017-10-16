@@ -71,7 +71,7 @@ There is a basic introduction to [Flow](http://flowtype.org/). Unfortunately the
 ### Linting in Webpack
 
 * Rewrote introduction to be easier to approach.
-* Mentioned about [ESLint autofixing](http://eslint.org/blog/2015/09/eslint-v1.4.0-released). This is a feature that allows you to fix certain linting errors automatically. As it's new, not a lot of rules are supported yet.
+* Mentioned about [ESLint autofixing](https://eslint.org/blog/2015/09/eslint-v1.4.0-released). This is a feature that allows you to fix certain linting errors automatically. As it's new, not a lot of rules are supported yet.
 * Explained ESLint env configuration detail. That's important to know especially when you are dealing with multiple environments and testing tools.
 * Added [EditorConfig](http://editorconfig.org/). This tool allows you to maintain project-wide coding style. There's a good level of editor/IDE support. It's a valuable tool in a team environment.
 

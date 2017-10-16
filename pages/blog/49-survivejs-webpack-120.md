@@ -19,7 +19,7 @@ In addition to pushing the book content further, I spent some time contributing 
 
 The development of the [training slides](https://survivejs.github.io/training/) took serious effort, but fortunately now that's done, I don't have to worry about slides so much anymore should I get training requests. The initial set can be developed further and perhaps turned into something greater, but more on this later.
 
-My next goal is to finish the split. There is still some content to be developed and infrastructure work to be done, but it's gladly it's not that far away! Most importantly [Leanpub has completed its share](https://leanpub.com/blog/2016/05/book-mitosis.html) so now I just need to finish my part and we are in a good place with this.
+My next goal is to finish the split. There is still some content to be developed and infrastructure work to be done, but it's gladly it's not that far away! Most importantly [Leanpub has completed its share](https://medium.com/@leanpub/the-leanpub-blog-in-progress-publishing-and-ebook-mitosis-2ab707198ca7) so now I just need to finish my part and we are in a good place with this.
 
 ## Book Improvements - `1.2.0`
 

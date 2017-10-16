@@ -74,7 +74,7 @@ HyperApp also promotes the concept of stateless components. Stateless components
 
 ### HyperApp is opinionated about state management
 
- HyperApp embraces [The Elm Architecture](https://guide.elm-lang.org/architecture/) and does not rely on external libraries such as Redux, enabling you to create pure functional applications out of the box.
+HyperApp embraces [The Elm Architecture](https://guide.elm-lang.org/architecture/) and does not rely on external libraries such as Redux, enabling you to create pure functional applications out of the box.
 
 ### HyperApp is easy to make your own
 

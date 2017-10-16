@@ -91,7 +91,7 @@ Doing this means that if for example, a class is missing, the missing class will
 
 ## Why did you develop *unexpected-react*?
 
-Back in 2015 the shallow renderer came out, and I was using it to write some tests, but asserting it was hard. You'd have to navigate your way through the children, and end up with assertions like `expect(component.props.children[0].props.children[1].props.className).toEqual('foo')`. I'd seen a lightning talk from [Peter Müller](https://github.com/munter) as [JSUnconf](https://jsunconf.eu) in Hamburg on unexpected and had started to play around with it.
+Back in 2015 the shallow renderer came out, and I was using it to write some tests, but asserting it was hard. You'd have to navigate your way through the children, and end up with assertions like `expect(component.props.children[0].props.children[1].props.className).toEqual('foo')`. I'd seen a lightning talk from [Peter Müller](https://github.com/munter) as JSUnconf in Hamburg on unexpected and had started to play around with it.
 
 I was impressed with the output and began to use Peter's plugin [unexpected-dom](https://github.com/munter/unexpected-dom) to assert properties on the DOM.  One weekend I thought I might be able to adapt *unexpected-dom* to diff JSX trees, and so *unexpected-react-shallow* was born.
 

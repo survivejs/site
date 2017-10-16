@@ -13,7 +13,7 @@ T> Remember to check [Sven's previous interview about async-reactor](/blog/async
 
 ## How would you describe *unmarshaller* to someone who has never heard of it?
 
-If you are not familiar with the term of marshalling, here is an [excerpt from Wikipedia](https://en.wikipedia.org/wiki/Marshalling_(computer_science)):
+If you are not familiar with the term of marshalling, here is an [excerpt from Wikipedia](https://en.wikipedia.org/wiki/Marshalling_%28computer_science%29):
 
 > In computer science, marshalling [...] is the process of transforming the memory representation of an object to a data format suitable for storage or transmission, and it is typically used when data must be moved between different parts of a computer program or from one program to another. Marshalling is similar to serialization and is used to communicate to remote objects with an object, in this case, a serialized object. It simplifies complex communication, using custom/complex objects to communicate instead of primitives. [...]
 

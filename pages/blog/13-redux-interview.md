@@ -76,7 +76,7 @@ I have released [a few new tools](https://github.com/gaearon/react-transform-boi
 
 And then—who knows?—I might even take a day job!
 
-## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [MobX](https://mobxjs.github.io/mobx/) or [Cerebral](http://christianalfoni.com/cerebral/)?
+## At the moment a lot of architecture related innovation seems to happen. What do you think of alternative approaches such as [MobX](https://mobxjs.github.io/mobx/) or [Cerebral](https://cerebraljs.com/)?
 
 I am not the right person to ask, as I have not used them. I’m definitely in awe of the work Christian has been putting into Cerebral and the [developer experience behind it](http://www.youtube.com/watch?v=xCIv4-Q2dtA). Its concept of signals and expressing async flow declaratively is [also very interesting](https://github.com/reactjs/redux/issues/343).
 

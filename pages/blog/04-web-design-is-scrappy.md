@@ -10,7 +10,7 @@ If you had to describe my approach to web design in one word the word would be s
 
 I started from a base design created by [Andreas Eldh](http://eldh.co/). We have developed a static site generator known as [Antwar](https://antwarjs.github.io/) together. Incidentally it is based upon webpack and React. And Antwar itself is based on an [experiment by Brad Denver](http://braddenver.com/blog/2015/react-static-site.html). Feeling scrappy yet?
 
-As nothing is harder than evaluating your own work I looked actively for feedback during the development process. I had to [develop Antwar further](https://antwarjs.github.io/blog/antwar-050/) in order to reach my goals. Besides the technical part I also had to make sure the content is accessible and that there's marketing copy in place.
+As nothing is harder than evaluating your own work I looked actively for feedback during the development process. I had to [develop Antwar further](https://antwar.js.org/blog/antwar-050/) in order to reach my goals. Besides the technical part I also had to make sure the content is accessible and that there's marketing copy in place.
 
 The design is scrappy in sense that I integrated ideas from various sources. Sometimes I might realize something randomly and will just add it there. A good example is the recent addition of commenting per chapter. I understood it might be a nice way to get some extra feedback on content and help me to see potential problems clearer. And given it was fast to add, it made perfect sense.
 

@@ -87,7 +87,7 @@ If you want to learn React through a series of specific examples this might be t
 
 ### React Under the Hood
 
-[React Under the Hood](https://leanpub.com/reactunderthehood) by [Freddy Rangel](http://spaces-vs-tabs.com/) is available through Leanpub. The minimum price of the book is $9.99 without VAT. At the time of writing it has around 80 pages of content. As per title, the book delves into the technical foundations of React.
+[React Under the Hood](https://leanpub.com/reactunderthehood) by Freddy Rangel is available through Leanpub. The minimum price of the book is $9.99 without VAT. At the time of writing it has around 80 pages of content. As per title, the book delves into the technical foundations of React.
 
 ### ReactJS Cookbook
 
@@ -103,7 +103,7 @@ The book is expected to have 194 pages. It covers basics of React and goes into 
 
 ### Introduction to React
 
-[Introduction to React](https://www.apress.com/9781484212462) by [Cory Gackenheimer](http://cgack.blogspot.com) is available through Apress and Amazon. At Apress digital edition is available for $17.99 while print costs $24.99. At Amazon paperback costs $19.68. The book is expected to be available at September.
+[Introduction to React](https://www.apress.com/9781484212462) by Cory Gackenheimer is available through Apress and Amazon. At Apress digital edition is available for $17.99 while print costs $24.99. At Amazon paperback costs $19.68. The book is expected to be available at September.
 
 The planned length of the book is 170 pages and it will cover basics of React, Flux architecture and testing at least. There is also specific discussion about JSX.
 
@@ -145,7 +145,7 @@ There's also an emerging category of React Native books and the first book has a
 
 ### React Quickly
 
-[React Quickly](https://www.manning.com/books/react-quickly) by [Azat Mardan](http://azat.co/), published by Manning Publications, delves through React related topics quickly as the title promises. The early access version costs $31.99. If you want the paperback as well, expect to pay $39.99.
+[React Quickly](https://www.manning.com/books/react-quickly) by Azat Mardan, published by Manning Publications, delves through React related topics quickly as the title promises. The early access version costs $31.99. If you want the paperback as well, expect to pay $39.99.
 
 ## Conclusion
 

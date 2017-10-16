@@ -63,7 +63,7 @@ In terms of performance `R.add(1,10)` is faster, but code of type `R.add(1)(10)`
 
 Rambda doesn't offer the same freedom of expression as Ramda, as it focuses on covering a small but useful portion of the vast API of Ramda.
 
-To illustrate the size difference in numbers - my custom Ramda build was 24.6 kB, while the same methods in Rambda take only 7.6 kB. I uploaded [the custom Ramda build](https://gist.github.com/selfrefactor/69bc136500ef63586f56382217b080f6) as a proof.
+To illustrate the size difference in numbers - my custom Ramda build was 24.6 kB, while the same methods in Rambda take only 7.6 kB.
 
 Also, Rambda has better performance when [benchmarked against Ramda and Lodash](https://github.com/selfrefactor/rambda#benchmark). You can run the benchmark yourself by cloning Rambda repository and the running `npm i && node benchmark`.
 

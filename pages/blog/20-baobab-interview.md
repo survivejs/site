@@ -141,4 +141,4 @@ Thanks for the interview Guillaume! In case you want to get started with Baobab,
 * [Baobab project site](https://github.com/Yomguithereal/baobab)
 * [baobab-react](https://github.com/Yomguithereal/baobab-react) - baobab-react implements popular React patterns to make it easier to integrate with Baobab.
 
-Note that [Cerebral](http://christianalfoni.com/cerebral/) has Baobab bindings. We [discussed the topic earlier](./cerebral-interview) with Christian.
+Note that [Cerebral](https://cerebraljs.com/) has Baobab bindings. We [discussed the topic earlier](./cerebral-interview) with Christian.

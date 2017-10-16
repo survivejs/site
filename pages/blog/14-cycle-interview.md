@@ -60,7 +60,7 @@ Thanks a lot for the interview André! Perhaps a programming model as demonstrat
 If this interview made you interested in Cycle.js, consider the following resources:
 
 * [Getting started guide](http://cycle.js.org/getting-started.html). I set up a small [boilerplate](https://github.com/survivejs/cycle-starter) to help you get up to speed faster.
-* [Time traveling with Cycle.js](http://cycle.js.org/cycle-time-travel/)
-* [A Dead-Simple Todo List with Cycle.js](http://blog.edanschwartz.com/2015/09/18/dead-simple-rxjs-todo-list/) by Edan Schwartz
+* [Time traveling with Cycle.js](https://github.com/cyclejs/cycle-time-travel)
+* [A Dead-Simple Todo List with Cycle.js](https://gist.github.com/eschwartz/c8a98275e014b43ea6f0d3b8876d67ac) by Edan Schwartz
 * [Online support through Gitter](https://gitter.im/cyclejs/cycle-core)
 * [Awesome Cycle.js](https://github.com/vic/awesome-cyclejs) contains a lot more.

@@ -7,7 +7,7 @@ keywords: ['interview', 'react']
 
 I ran into [Christian Alfoni](http://www.christianalfoni.com/) through his original blog early this year (2015). He had written a nice post about Webpack. That led me to provide a several suggestions and I realized we might want to combine some of our knowledge in the form of a [React/Webpack cookbook](https://christianalfoni.github.io/react-webpack-cookbook/). Eventually the development led to this book so I suppose you can blame Christian for that.
 
-While I've been plugging away with the book, Christian has been busy developing cool technology. This includes [EmptyBox](https://github.com/christianalfoni/EmptyBox), a static site generator, [formsy-react](https://github.com/christianalfoni/formsy-react), a form input builder and validator for React, and of course [Cerebral](http://christianalfoni.com/cerebral/), the primary topic of our interview. You could say it puts some brains to React and Angular development. We'll also discuss [addressbar](https://github.com/christianalfoni/addressbar), a routing solution with a twist.
+While I've been plugging away with the book, Christian has been busy developing cool technology. This includes [EmptyBox](https://github.com/christianalfoni/EmptyBox), a static site generator, [formsy-react](https://github.com/christianalfoni/formsy-react), a form input builder and validator for React, and of course [Cerebral](https://cerebraljs.com/), the primary topic of our interview. You could say it puts some brains to React and Angular development. We'll also discuss [addressbar](https://github.com/christianalfoni/addressbar), a routing solution with a twist.
 
 ## How did you discover Webpack and React? Can you provide a bit of background?
 

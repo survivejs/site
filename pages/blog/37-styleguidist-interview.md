@@ -59,4 +59,4 @@ Thank you for your interview Artem. I wish the best of luck to your project!
 
 react-styleguidist just reached an important milestone with its [2.0.0 release](https://github.com/sapegin/react-styleguidist/releases/tag/2.0.0). See also [the GitHub repository](https://github.com/sapegin/react-styleguidist) of the project.
 
-To get a better idea of what kind of style guides the tool is able to produce, check out [the example style guide](https://sapegin.github.io/react-styleguidist/).
+To get a better idea of what kind of style guides the tool is able to produce, check out [the example style guide](https://react-styleguidist.js.org/).
