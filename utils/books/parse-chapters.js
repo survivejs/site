@@ -1,25 +1,13 @@
-// This parses webpack book manuscript and converts it into a lookup
+// This parses a manuscript and converts it into a lookup
 // useful for linking
 const fs = require("fs");
 const path = require("path");
-const parse = require("./parse");
+const parse = require("../parse");
 
-const webpackUrl = require("../antwar.config.js")().paths.webpack.url;
-
-let cache = {};
-
-if (Object.keys(cache).length > 0) {
-  module.exports = () => cache;
-} else {
-  module.exports = parseChapters;
-}
-
-function parseChapters() {
+function parseChapters(urlCb, bookRoot, sectionName) {
   const ret = {}; // title -> { ... }
-  const bookRoot = "./books/webpack-book/manuscript";
-
   const fileNames = fs
-    .readFileSync("./books/webpack-book/manuscript/Book.txt", {
+    .readFileSync(`${bookRoot}/Book.txt`, {
       encoding: "utf8"
     })
     .split("\n")
@@ -39,9 +27,9 @@ function parseChapters() {
 
     const title = parse.title(bookContent).title;
     const sectionName = fileName.split("/")[0];
-    const url = webpackUrl({
+    const url = urlCb({
       fileName: fileName.split(".")[0],
-      sectionName: "webpack"
+      sectionName
     });
 
     ret[title] = {
@@ -51,7 +39,7 @@ function parseChapters() {
     };
   });
 
-  cache = ret;
-
   return ret;
 }
+
+module.exports = parseChapters;

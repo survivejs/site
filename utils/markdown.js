@@ -43,7 +43,7 @@ module.exports = function markdown() {
   // XXXXX: This gets executed for all content. It would be better to constrain
   // per book somehow.
   renderer.em = function em(text) {
-    const webpackBook = require("./webpack-book");
+    const webpackBook = require("./books/webpack-book");
 
     // Perform a lookup against webpack book chapter definition to figure
     // out whether to link or not
