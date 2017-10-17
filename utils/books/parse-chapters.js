@@ -26,7 +26,6 @@ function parseChapters(urlCb, bookRoot, sectionName) {
     }
 
     const title = parse.title(bookContent).title;
-    const sectionName = fileName.split("/")[0];
     const url = urlCb({
       fileName: fileName.split(".")[0],
       sectionName
