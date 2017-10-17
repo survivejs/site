@@ -73,9 +73,13 @@ module.exports = () => ({
       }),
     maintenance: {
       content: () =>
-        require.context("./books/maintenance-book/manuscript", true, /^\.\/.*\.md$/),
+        require.context(
+          "./books/maintenance-book/manuscript",
+          true,
+          /^\.\/.*\.md$/
+        ),
       index: () => {
-        const index = require("./layouts/BookIndex").default;
+        const index = require("./layouts/MaintenanceIndex").default;
 
         index.title = "SurviveJS - Maintenance";
 

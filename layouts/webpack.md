@@ -1,10 +1,8 @@
 ## SurviveJS - Webpack
 
-<p>
-  <img class='front-cover' src='/assets/img/webpack_title_page_small.png' width='255' height='329' />
+![SurviveJS - Webpack|255|329|front-cover](assets/img/webpack_title_page_small.png)
 
-  **SurviveJS - Webpack** is meant for beginner to intermediate users of [webpack](https://webpack.github.io/). Webpack is a powerful bundler that can simplify the creation of complex web applications.
-</p>
+**SurviveJS - Webpack** is meant for beginner to intermediate users of [webpack](https://webpack.github.io/). Webpack is a powerful bundler that can simplify the creation of complex web applications.
 
 I designed this book to help you get up to speed with the tool. The book project started early 2015 from a small wiki effort and has since evolved into a complete guide to webpack.
 
@@ -34,8 +32,6 @@ About a third of the income goes to Tobias Koppers, the author of webpack. This 
 <a class='btn btn--normal btn--buy' href='https://www.amazon.com/dp/B06XWZZGBS'>Buy for Kindle</a>
 </p>
 
-> [The book is also available in hard cover](https://survivejs.typeform.com/to/LUQK0T).
-
 ## About the Author
 
 <p>
@@ -44,5 +40,4 @@ Juho Vepsäläinen is behind the SurviveJS effort. In addition to being a core d
 </p>
 
 * [@bebraw](https://twitter.com/bebraw)
-* [Personal blog](http://nixtu.info)
 * [GitHub](https://github.com/bebraw)

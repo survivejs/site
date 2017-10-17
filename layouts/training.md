@@ -27,5 +27,4 @@ Juho Vepsäläinen is behind the SurviveJS effort. In addition to being a core d
 </p>
 
 * [@bebraw](https://twitter.com/bebraw)
-* [Personal blog](http://nixtu.info)
 * [GitHub](https://github.com/bebraw)
