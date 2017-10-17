@@ -16,7 +16,7 @@ Unless you work on fresh greenfield projects all the time, maintenance concerns 
 
 * How to manage npm packages
 * How to improve code quality
-* How to set up intrastructure for your project,
+* How to set up intrastructure for your project
 * How to document the project in a sustainable manner
 * How to plan for the future
 
