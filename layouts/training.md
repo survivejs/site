@@ -2,7 +2,7 @@
 
 What if instead of [reading the webpack book](/webpack/) or [the React book](/react/) you could go through the material and key ideas in a live environment with me? I have used the tool for a few years and I am a part of webpack core team. I wrote [a 499 page book](https://www.amazon.com/dp/9526868803) about the tool and [spent a month touring Europe](/blog/euro-tour-2017/).
 
-I've split the training offering into two different products:
+I've split the training offering into two different offerings:
 
 * [Workshop](/workshop/) - Workshops can take anything from half a day to multiple days.
 * [Clinic](/clinic/) - Clinics are short sessions (2-3 hours) that are meant to give you a quick overview of the topic while also helping you with particular problems you might have to solve. It's a good starting point before arranging a full workshop.
