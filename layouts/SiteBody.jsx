@@ -1,36 +1,37 @@
 import React from "react";
 
-import { Footer, GitterChat, Navigation } from "@survivejs/components";
-import { Search } from "../components";
+import { Footer, GitterChat } from "@survivejs/components";
+import { Navigation, Search } from "../components";
 
 import "../styles/custom.scss";
 import "../styles/prism.css";
 import "../styles/fontello-codes.css";
 import "../styles/fontello-embedded.css";
 
-const navigationPages = sectionName => [
+const navigationPages = [
   {
     title: "Home",
     url: "/"
   },
   {
-    title: sectionName === "blog" ? "Read the webpack book" : "Read the blog",
-    url: sectionName === "blog" ? "/webpack/foreword/" : "/blog/"
+    title: "Read the blog",
+    url: "/blog/"
+  },
+  {
+    title: "Maintenance book",
+    url: "/maintenance/"
+  },
+  {
+    title: "React book",
+    url: "/react/"
+  },
+  {
+    title: "Webpack book",
+    url: "/webpack/"
   },
   {
     title: "Get training",
     url: "/training/"
-  },
-  {
-    title: "Buy the ebook",
-    url:
-      sectionName === "webpack"
-        ? "https://leanpub.com/survivejs-webpack"
-        : "https://leanpub.com/survivejs-react"
-  },
-  {
-    title: "",
-    url: ""
   },
   {
     title: "@survivejs",
@@ -42,7 +43,7 @@ const SiteBody = ({ children, section, location: { pathname } }) => (
   <div>
     {children}
 
-    {pathname !== "/" && <Navigation pages={navigationPages(section.name)} />}
+    <Navigation pages={navigationPages} pathname={pathname} />
 
     <Footer section={section} />
 

@@ -42,7 +42,8 @@ $line-height: 3px;
 }
 
 .nav__link,
-.nav__toggle-label {
+.nav__toggle-label,
+.nav__selected__link {
   z-index: 10000;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -56,11 +57,19 @@ $line-height: 3px;
   transition: color $transition-easing $transition-speed;
   @include font-size($deci-size);
   &:hover {
-      color: darken($action-color, 25%);
+    color: darken($action-color, 25%);
   }
   @include media-query(palm) {
-      text-align: center;
-      width: 100%;
+    text-align: center;
+    width: 100%;
+  }
+}
+.nav__selected__link {
+  display: inline-block;
+  padding: $quarter-spacing-unit $base-spacing-unit;
+  @include media-query(palm) {
+    text-align: center;
+    width: 100%;
   }
 }
 .nav__toggle {
@@ -87,7 +96,7 @@ $line-height: 3px;
   }
   &:before,
   &:after {
-    content: '';
+    content: "";
     width: $base-spacing-unit;
     height: $line-height;
     background-color: darken($action-color, 30%);
@@ -96,11 +105,12 @@ $line-height: 3px;
     left: calc(50% - #{$half-spacing-unit});
     transform-origin: 50% 50%;
     transition: transform $transition-speed $transition-easing 0s,
-        top $transition-speed $transition-easing $transition-speed ;
+      top $transition-speed $transition-easing $transition-speed;
 
     .nav__toggle:checked ~ & {
-      transition: transform $transition-speed $transition-easing $transition-speed,
-        top $transition-speed $transition-easing 0s ;
+      transition: transform $transition-speed $transition-easing
+          $transition-speed,
+        top $transition-speed $transition-easing 0s;
     }
   }
   .nav__toggle:checked ~ &:after {
