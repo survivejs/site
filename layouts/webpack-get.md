@@ -2,7 +2,7 @@ The easiest way to get started with the material is to check out [the free onlin
 
 About a third of the income goes to Tobias Koppers, the author of webpack. This is my way of saying thanks and supporting his effort. Since I'm a webpack core developer as well, you help me to spend more time on the project too.
 
-> There's a [Gitter chat](https://gitter.im/survivejs/webpack) for support. You can [check out the project at GitHub](https://github.com/survivejs/webpack) and [support webpack directly through Open Collective](https://opencollective.com/webpack).
+> There's a [Gitter chat](https://gitter.im/survivejs/webpack) for support. You can [check out the project at GitHub](https://github.com/survivejs/webpack-book) and [support webpack directly through Open Collective](https://opencollective.com/webpack).
 
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
