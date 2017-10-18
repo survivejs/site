@@ -835,7 +835,8 @@ main {
                 box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); } }
 
 .nav__link,
-.nav__toggle-label {
+.nav__toggle-label,
+.nav__selected__link {
   z-index: 10000;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -862,6 +863,18 @@ main {
       text-align: center;
       width: 100%; } }
 
+.nav__selected__link {
+  display: inline-block;
+  padding: 6.75px 27px; }
+  @media only screen and (max-width: 649px) {
+    .nav__selected__link {
+      text-align: center;
+      width: 100%; } }
+  @media only screen and (max-width: palm) {
+    .nav__selected__link {
+      text-align: center;
+      width: 100%; } }
+
 .nav__toggle {
   display: none; }
 
@@ -883,7 +896,7 @@ main {
   .nav__toggle-label:after {
     top: 33px; }
   .nav__toggle-label:before, .nav__toggle-label:after {
-    content: '';
+    content: "";
     width: 27px;
     height: 3px;
     background-color: #09b5c4;
