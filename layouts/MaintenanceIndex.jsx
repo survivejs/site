@@ -35,16 +35,16 @@ const MaintenanceIndex = () => (
       </div>
     </div>
 
-    <div className="post post--front">
-      <section className="post__content">
-        <div className="post__block post__description">
+    <div className="post">
+      <section className="post__content landing__content">
+        <div className="landing__block post__description">
           <div
             dangerouslySetInnerHTML={{
               __html: require("./maintenance-description.md").body
             }}
           />
         </div>
-        <div className="post__block post__authors">
+        <div className="landing__block post__authors">
           <h2>About the Authors</h2>
           <div
             dangerouslySetInnerHTML={{
@@ -54,6 +54,12 @@ const MaintenanceIndex = () => (
           <div
             dangerouslySetInnerHTML={{
               __html: require("./authors/artem.md").body
+            }}
+          />
+          <h2>Getting the Book</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./maintenance-get.md").body
             }}
           />
         </div>
