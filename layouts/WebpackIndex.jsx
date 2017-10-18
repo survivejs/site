@@ -60,11 +60,30 @@ const WebpackIndex = () => (
       />
     </div>
 
-    <div className="post post--front">
-      <section className="post__content">
-        <div
-          dangerouslySetInnerHTML={{ __html: require("./webpack.md").body }}
-        />
+    <div className="post">
+      <section className="post__content landing__content">
+        <div className="landing__block post__description">
+          <h2>SurviveJS - Webpack</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./webpack-description.md").body
+            }}
+          />
+        </div>
+        <div className="landing__block post__authors">
+          <h2>About the Author</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./authors/juho.md").body
+            }}
+          />
+          <h2>Getting the Book</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./webpack-get.md").body
+            }}
+          />
+        </div>
       </section>
     </div>
 

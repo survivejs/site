@@ -38,6 +38,7 @@ const MaintenanceIndex = () => (
     <div className="post">
       <section className="post__content landing__content">
         <div className="landing__block post__description">
+          <h2>SurviveJS - Maintenance</h2>
           <div
             dangerouslySetInnerHTML={{
               __html: require("./maintenance-description.md").body

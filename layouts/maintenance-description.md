@@ -1,5 +1,3 @@
-## SurviveJS - Maintenance
-
 ![SurviveJS - Maintenance|255|329|front-cover](assets/img/maintenance_title_page_small.png)
 
 **SurviveJS - Maintenance** is meant for anyone who has to develop and maintain JavaScript applications or packages.
