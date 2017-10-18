@@ -22,7 +22,7 @@ In addition, there are small appendices that delve into deeper detail on topics 
 
 ## Getting the Book
 
-The easiest way to get started with the material is to check out [the free online edition](/maintenance/foreword). If you like it, [purchase a digital copy of the book](https://leanpub.com/survivejs-maintenance). The digital edition comes in three formats (epub/mobi/pdf) and makes you eligible for future updates.
+The easiest way to get started with the material is to check out [the free online edition](/maintenance/preface/). If you like it, [purchase a digital copy of the book](https://leanpub.com/survivejs-maintenance). The digital edition comes in three formats (epub/mobi/pdf) and makes you eligible for future updates.
 
 The profit is split between the authors apart after Leanpub has taken its cut. The income is used for ventures like this and helps us to develop and support the content.
 
