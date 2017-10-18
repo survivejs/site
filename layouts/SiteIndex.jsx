@@ -54,14 +54,65 @@ const SiteIndex = ({ section }) => (
       </div>
     </div>
 
-    <div className="post post--front">
-      <section className="post__content">
-        <LatestPost section={section} />
-        <div dangerouslySetInnerHTML={{ __html: require("./index.md").body }} />
+    <div className="post">
+      <section className="post__content landing__content">
+        <div className="landing__block post__description">
+          <LatestPost section={section} />
 
-        <SocialLinks />
+          <h2>SurviveJS - Maintenance</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./descriptions/maintenance.md").body
+            }}
+          />
+          <h2>Getting the Book</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./gets/maintenance.md").body
+            }}
+          />
 
-        <LatestPost section={section} />
+          <h2>SurviveJS - React</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./descriptions/react.md").body
+            }}
+          />
+          <h2>Getting the Book</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./gets/react.md").body
+            }}
+          />
+        </div>
+        <div className="landing__block post__authors">
+          <h2>SurviveJS - Webpack</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./descriptions/webpack.md").body
+            }}
+          />
+          <h2>Getting the Book</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./gets/webpack.md").body
+            }}
+          />
+
+          <h2>About the Author</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./authors/juho.md").body
+            }}
+          />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("./descriptions/index.md").body
+            }}
+          />
+
+          <LatestPost section={section} />
+        </div>
       </section>
     </div>
   </div>

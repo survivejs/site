@@ -41,7 +41,7 @@ const MaintenanceIndex = () => (
           <h2>SurviveJS - Maintenance</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./maintenance-description.md").body
+              __html: require("./descriptions/maintenance.md").body
             }}
           />
         </div>
@@ -61,7 +61,7 @@ const MaintenanceIndex = () => (
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./maintenance-get.md").body
+              __html: require("./gets/maintenance.md").body
             }}
           />
         </div>
