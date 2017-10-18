@@ -108,7 +108,7 @@ module.exports = () => ({
       content: () =>
         require.context("./books/react-book/manuscript", true, /^\.\/.*\.md$/),
       index: () => {
-        const index = require("./layouts/BookIndex").default;
+        const index = require("./layouts/ReactIndex").default;
 
         index.title = "SurviveJS - React";
 
