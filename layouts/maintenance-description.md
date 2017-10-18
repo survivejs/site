@@ -31,25 +31,3 @@ The profit is split between the authors apart after Leanpub has taken its cut. T
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-maintenance'>Buy at Leanpub</a>
 </p>
-
-## About the Authors
-
-### Juho Vepsäläinen
-
-<p>
-<img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200' alt='Juho Vepsäläinen' class='author-photo' width='100' height='100' />
-Juho Vepsäläinen is behind the SurviveJS effort. In addition to being a core developer of webpack, he has been active in the open source scene since the early 2000s. Blue Arrow Awards winner.
-</p>
-
-* [@bebraw](https://twitter.com/bebraw)
-* [GitHub](https://github.com/bebraw)
-
-### Artem Sapegin
-
-<p>
-<img src='https://www.gravatar.com/avatar/16a1493bcecf09614c413e571c371e96?s=200' alt='Artem Sapegin' class='author-photo' width='100' height='100' />
-Frontend developer living in Berlin, passionate photographer and owner of crazy dogs. Creator of React Styleguidist.
-</p>
-
-* [@iamsapegin](https://twitter.com/iamsapegin)
-* [GitHub](https://github.com/sapegin)
