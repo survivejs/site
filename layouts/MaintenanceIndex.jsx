@@ -52,6 +52,7 @@ const MaintenanceIndex = () => (
               __html: require("./authors/juho.md").body
             }}
           />
+          <hr />
           <div
             dangerouslySetInnerHTML={{
               __html: require("./authors/artem.md").body
