@@ -18,13 +18,3 @@ I've split the training offering into two different products:
 * [Typeform](https://www.typeform.com/)
 * [Quantifio](http://www.quantifio.no/) - "I learned and understood more of webpack in a two-hour masterclass than all previous training combined. Juho has the skills and repertoire to improvise content and fine tune relevancy - he connected the dots on specific topics in an Electron environment and had the answers you wont find online."
 * [Xeneta](https://www.xeneta.com/)
-
-## About the Author
-
-<p>
-<img src='https://www.gravatar.com/avatar/b26ec3c2769168c2cbc64cc3df9cdd9c?s=200' alt='Juho Vepsäläinen' class='author-photo' width='100' height='100' />
-Juho Vepsäläinen is behind the SurviveJS effort. In addition to being a core developer of webpack, he has been active in the open source scene since the early 2000s. Blue Arrow Awards winner.
-</p>
-
-* [@bebraw](https://twitter.com/bebraw)
-* [GitHub](https://github.com/bebraw)

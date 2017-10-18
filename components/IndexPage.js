@@ -27,6 +27,12 @@ const IndexPage = ({ type, content }) => {
               __html: content
             }}
           />
+          <h2>About the Trainer</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("../layouts/authors/juho.md").body
+            }}
+          />
         </section>
       </div>
     </div>
