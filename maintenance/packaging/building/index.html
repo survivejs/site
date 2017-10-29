@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.fdf049f8bdd20de18de0.css" rel="stylesheet">
+      <link href="/site.622c29e0bcae7d392135.css" rel="stylesheet">
     
 
     <link
@@ -43,11 +43,11 @@
 <span class="token punctuation" >}</span>
 </code></pre>
 <p>The same idea works for npm version and you can control it by setting <code>engines.npm</code> field like <code>engines.node</code> above.</p>
-<p>You can also document operating system in which the code should run through the <code>os</code> field. You can specify the CPU architecture through the <code>cpu</code> field. Both of these are niche cases and come into play only if you have platform specific code that is compiled for example.</p>
+<p>You can also document operating system in which the code should run through the <code>os</code> field. You can specify the CPU architecture through the <code>cpu</code> field. Both of these are niche cases and come into play only if you have platform specific code.</p>
 <h2 class="header"><a class="header-anchor" href="#compiling-to-support-specific-environments" id="compiling-to-support-specific-environments"></a><span class="text">Compiling to Support Specific Environments</span><a class="header-anchor-select" href="#compiling-to-support-specific-environments">#</a></h2>
 <p><a href="https://babeljs.io/">Babel</a> is a popular JavaScript compiler that allows you to transform future code into a format that works in legacy environments. It can be used through Node, <a href="https://www.npmjs.com/package/babel-cli">a CLI client</a>, or available task runners and bundlers.</p>
-<p>In addition to a method to run, you will have to configure Babel to use specific plugins or presets. <a href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</a> allows you to define which environments you want to support and can use the right plugins based on the definition and generate the minimal code required.</p>
-<p>During this process, it will also shim the code appropriately so that the features work as they should. It&#39;s important to note that the shimming process isn&#39;t perfect and you may still have to include <a href="https://babeljs.io/docs/usage/polyfill/">Babel polyfill</a> to the end result or at least advice consumers to use it.</p>
+<p>Additionally you have to configure Babel to use specific plugins or presets. <a href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</a> allows you to define which environments you want to support and can use the right plugins while generating the minimal code required.</p>
+<p>During this process, it will also shim the code appropriately so that the features work as they should. It&#39;s important to note that the shimming process isn&#39;t perfect and you may still have to include <a href="https://babeljs.io/docs/usage/polyfill/">Babel polyfill</a> or at least advice consumers to use it.</p>
 <p>To configure <em>babel-preset-env</em> to work with Node, set it up as follows:</p>
 <p><strong>.babelrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation" >{</span>
@@ -112,11 +112,11 @@ fs<span class="token punctuation" >.</span><span class="token function" >stat</s
   <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>After these two steps, you have a build that should work whether or not you consume it through npm or not.</p>
+<p>After these two steps, you have a build that should work regardless whether consume it through npm or not.</p>
 <h2 class="header"><a class="header-anchor" href="#configuring-babel-for-tree-shaking" id="configuring-babel-for-tree-shaking"></a><span class="text">Configuring Babel for Tree Shaking</span><a class="header-anchor-select" href="#configuring-babel-for-tree-shaking">#</a></h2>
 <p>Certain tools, like webpack or Rollup, support <strong>tree shaking</strong>. It&#39;s a form of <strong>dead code elimination</strong> (DCE) that relies on detecting which parts of the code are being used and which are not. The process relies on <strong>static analysis</strong> meaning it goes through the source, detects module imports and exports exist, checks which are being used, and drops the code of those that are not.</p>
-<p>To make this possible, you have to use the ES6 module definition as it&#39;s possible to analyze code relying on it exactly like this. CommonJS definition is too dynamic for proper analysis. That&#39;s a problem in the configuration above as it converts the possible ES6 code to CommonJS given that&#39;s what Node supports at the moment.</p>
-<p>For this reason, you have to set up another process to generate tree shaking compatible code. When it comes to Babel, you have to disable its module processing. Also, you have to point <strong>package.json</strong> <code>module</code> field to the generated source. The existing tooling relies on this convention and can pick up the tree-shakeable code based on the field.</p>
+<p>To make this possible, you have to use the ES6 module definition as it&#39;s possible to analyze code relying on it exactly like this. CommonJS definition is too dynamic for proper analysis. That&#39;s a problem in the configuration above as it converts the possible ES6 code to CommonJS given that&#39;s what Node supports.</p>
+<p>For this reason, you have to set up another process to generate tree shaking compatible code. You have to disable its module processing in Babel for this reason. Also, you have to point <strong>package.json</strong> <code>module</code> field to the generated source. The existing tooling relies on this convention and can pick up the tree-shakeable code if the field is set.</p>
 <p>The technique requires two steps. Set up helper scripts first:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
@@ -165,9 +165,9 @@ fs<span class="token punctuation" >.</span><span class="token function" >stat</s
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
-<p>Now it should build both a version of the package for Node and a version for tree shaking compatible environments. To perfect the solution, you should make the <em>postinstall</em> script point at <code>build:all</code> to build both targets.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>There is <a href="https://www.npmjs.com/package/webpack-common-shake">an experimental CommonJS based tree shaking solution for webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#using-other-languages-than-javascript" id="using-other-languages-than-javascript"></a><span class="text">Using Other Languages than JavaScript</span><a class="header-anchor-select" href="#using-other-languages-than-javascript">#</a></h2>
-<p>If you want to use some other language than JavaScript to author your packages, you cannot avoid a compilation process as above. The idea is similar and in this case you may end up with additional build artifacts, such as type definitions, that you may want to include in the distributed version of the package.</p>
+<p>Now it should build both a version of the package for Node and a version for tree shaking compatible environments. You should make the <em>postinstall</em> script point at <code>build:all</code> to build both targets to finish the setup.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>There is <a href="https://www.npmjs.com/package/webpack-common-shake">an experimental CommonJS based tree shaking approach for webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#using-other-languages-than-javascript" id="using-other-languages-than-javascript"></a><span class="text">Using Other Languages than JavaScript</span><a class="header-anchor-select" href="#using-other-languages-than-javascript">#</a></h2>
+<p>You cannot avoid a compilation process as above with languages other than JavaScript. The idea is similar and in this case you may end up with additional build artifacts, such as type definitions, that you may want to include in the distributed version of the package.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/maintenance/code-quality/typing/">Typing</a> chapter covers a few popular options including Flow and TypeScript.</blockquote><h2 class="header"><a class="header-anchor" href="#cross-platform-concerns" id="cross-platform-concerns"></a><span class="text">Cross-Platform Concerns</span><a class="header-anchor-select" href="#cross-platform-concerns">#</a></h2>
 <p>To make sure your npm scripts work across different platforms, you cannot rely on environment specific tools. This can be solved by using a task runner to hide the differences. Alternately, you can use a collection of npm packages which expose small CLI interface. The list below contains several of them:</p>
 <ul>
