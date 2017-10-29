@@ -3,7 +3,7 @@ import _ from "lodash";
 import { Link, Moment } from "@survivejs/components";
 
 const BlogIndex = ({ section }) => (
-  <div className="grid">
+  <div className="blog-index grid">
     <h1>Blog Posts</h1>
 
     <ul className="post-list">
