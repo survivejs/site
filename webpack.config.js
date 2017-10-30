@@ -27,55 +27,55 @@ function commonConfig() {
           include: [
             path.join(__dirname, "components"),
             path.join(__dirname, "layouts"),
-            path.join(__dirname, "pages")
-          ]
+            path.join(__dirname, "pages"),
+          ],
         },
         {
           test: /\.woff$/,
           use:
-            "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff"
+            "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff",
         },
         {
           test: /\.ttf$|\.eot$/,
-          use: "file-loader?prefix=font/"
+          use: "file-loader?prefix=font/",
         },
         {
           test: /\.gif$/,
-          use: "file-loader"
+          use: "file-loader",
         },
         {
           test: /\.jpg$/,
-          use: "file-loader"
+          use: "file-loader",
         },
         {
           test: /\.png$/,
-          use: "file-loader"
+          use: "file-loader",
         },
         {
           test: /\.svg$/,
-          use: "raw-loader"
+          use: "raw-loader",
         },
         {
           test: /\.txt$/,
-          use: "raw-loader"
+          use: "raw-loader",
         },
         {
           test: /\.md$/,
-          use: "page-loader"
-        }
-      ]
+          use: "page-loader",
+        },
+      ],
     },
     resolve: {
       alias: {
         assets: path.resolve(__dirname, "assets"),
-        books: path.resolve(__dirname, "books")
-      }
+        books: path.resolve(__dirname, "books"),
+      },
     },
     resolveLoader: {
       alias: {
-        "page-loader": path.resolve(__dirname, "loaders/page-loader.js")
-      }
-    }
+        "page-loader": path.resolve(__dirname, "loaders/page-loader.js"),
+      },
+    },
   };
 }
 
@@ -84,16 +84,16 @@ function interactiveConfig() {
     resolve: {
       alias: {
         react: "preact-compat/dist/preact-compat.min.js",
-        "react-dom": "preact-compat/dist/preact-compat.min.js"
-      }
+        "react-dom": "preact-compat/dist/preact-compat.min.js",
+      },
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          warnings: false
-        }
-      })
-    ]
+          warnings: false,
+        },
+      }),
+    ],
   };
 }
 
@@ -103,7 +103,7 @@ function developmentConfig() {
       rules: [
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"]
+          use: ["style-loader", "css-loader"],
         },
         {
           test: /\.scss$/,
@@ -113,14 +113,16 @@ function developmentConfig() {
             {
               loader: "postcss-loader",
               options: {
-                plugins: () => [autoprefixer({ browsers: ["last 2 versions"] })]
-              }
+                plugins: () => [
+                  autoprefixer({ browsers: ["last 2 versions"] }),
+                ],
+              },
             },
-            "sass-loader"
-          ]
-        }
-      ]
-    }
+            "sass-loader",
+          ],
+        },
+      ],
+    },
   };
 }
 
@@ -132,8 +134,8 @@ function buildConfig() {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
             use: "css-loader",
-            fallback: "style-loader"
-          })
+            fallback: "style-loader",
+          }),
         },
         {
           test: /\.scss$/,
@@ -145,22 +147,22 @@ function buildConfig() {
                 loader: "postcss-loader",
                 options: {
                   plugins: () => [
-                    autoprefixer({ browsers: ["last 2 versions"] })
-                  ]
-                }
+                    autoprefixer({ browsers: ["last 2 versions"] }),
+                  ],
+                },
               },
-              "sass-loader"
-            ]
-          })
-        }
-      ]
+              "sass-loader",
+            ],
+          }),
+        },
+      ],
     },
     plugins: [
       new ExtractTextPlugin({
         filename: "[name].[chunkhash].css",
-        allChunks: true
+        allChunks: true,
       }),
-      new CleanWebpackPlugin(["build"])
-    ]
+      new CleanWebpackPlugin(["build"]),
+    ],
   };
 }

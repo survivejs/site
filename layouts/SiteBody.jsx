@@ -11,32 +11,32 @@ import "../styles/fontello-embedded.css";
 const navigationPages = [
   {
     title: "Home",
-    url: "/"
+    url: "/",
   },
   {
     title: "Read the blog",
-    url: "/blog/"
+    url: "/blog/",
   },
   {
     title: "Maintenance book",
-    url: "/maintenance/"
+    url: "/maintenance/",
   },
   {
     title: "React book",
-    url: "/react/"
+    url: "/react/",
   },
   {
     title: "Webpack book",
-    url: "/webpack/"
+    url: "/webpack/",
   },
   {
     title: "Get training",
-    url: "/training/"
+    url: "/training/",
   },
   {
     title: "@survivejs",
-    url: "https://twitter.com/survivejs"
-  }
+    url: "https://twitter.com/survivejs",
+  },
 ];
 
 const SiteBody = ({ children, section, location: { pathname } }) => (

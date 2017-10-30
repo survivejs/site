@@ -9,7 +9,7 @@ import {
   PrevNextMini,
   Resources,
   SocialLinks,
-  Toc
+  Toc,
 } from "@survivejs/components";
 
 const BookPage = ({
@@ -17,20 +17,20 @@ const BookPage = ({
     file: {
       attributes: { endSource, demo, headerExtra, headerImage, resources },
       body,
-      title
+      title,
     },
     previous,
     next,
-    type
+    type,
   },
-  section
+  section,
 }) => (
   <div className="chapter__wrapper">
     {headerImage && (
       <div
         className="header-image"
         style={{
-          backgroundImage: `url(${headerImage})`
+          backgroundImage: `url(${headerImage})`,
         }}
       />
     )}

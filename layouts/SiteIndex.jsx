@@ -27,26 +27,26 @@ const SiteIndex = ({ section }) => (
           <h2>SurviveJS - Maintenance</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/maintenance.md").body
+              __html: require("./descriptions/maintenance.md").body,
             }}
           />
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./gets/maintenance.md").body
+              __html: require("./gets/maintenance.md").body,
             }}
           />
 
           <h2>SurviveJS - React</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/react.md").body
+              __html: require("./descriptions/react.md").body,
             }}
           />
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./gets/react.md").body
+              __html: require("./gets/react.md").body,
             }}
           />
         </div>
@@ -54,25 +54,25 @@ const SiteIndex = ({ section }) => (
           <h2>SurviveJS - Webpack</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/webpack.md").body
+              __html: require("./descriptions/webpack.md").body,
             }}
           />
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./gets/webpack.md").body
+              __html: require("./gets/webpack.md").body,
             }}
           />
 
           <h2>About the Author</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./authors/juho.md").body
+              __html: require("./authors/juho.md").body,
             }}
           />
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/index.md").body
+              __html: require("./descriptions/index.md").body,
             }}
           />
 
@@ -82,7 +82,5 @@ const SiteIndex = ({ section }) => (
     </div>
   </div>
 );
-SiteIndex.description =
-  "Want to learn webpack or React? Get started for free and build a Kanban board by following the example project.";
 
 export default SiteIndex;

@@ -66,7 +66,7 @@ const WebpackIndex = () => (
           <h2>SurviveJS - Webpack</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/webpack.md").body
+              __html: require("./descriptions/webpack.md").body,
             }}
           />
         </div>
@@ -74,13 +74,13 @@ const WebpackIndex = () => (
           <h2>About the Author</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./authors/juho.md").body
+              __html: require("./authors/juho.md").body,
             }}
           />
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./gets/webpack.md").body
+              __html: require("./gets/webpack.md").body,
             }}
           />
         </div>

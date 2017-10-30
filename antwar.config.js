@@ -11,7 +11,7 @@ const clean = require("./utils/clean");
 // TODO: add source links to webpack book
 module.exports = () => ({
   template: {
-    file: path.resolve(__dirname, "templates/page.ejs")
+    file: path.resolve(__dirname, "templates/page.ejs"),
   },
   output: "build",
   plugins: [
@@ -24,9 +24,9 @@ module.exports = () => ({
           moment(page.file.attributes.date)
             .utcOffset(0)
             .format(),
-        title: page => page.file.attributes.title
-      }
-    })
+        title: page => page.file.attributes.title,
+      },
+    }),
   ],
   layout: () => require("./layouts/SiteBody").default,
   paths: {
@@ -36,9 +36,11 @@ module.exports = () => ({
         const index = require("./layouts/SiteIndex").default;
 
         index.title = "SurviveJS";
+        index.description =
+          "Want to learn how to manage your JavaScript projects? Get started for free.";
 
         return index;
-      }
+      },
     },
     blog: {
       content: () => require.context("./pages/blog", false, /^\.\/.*\.md$/),
@@ -46,6 +48,7 @@ module.exports = () => ({
         const index = require("./layouts/BlogIndex").default;
 
         index.title = "Blog";
+        index.description = "";
 
         return index;
       },
@@ -54,22 +57,22 @@ module.exports = () => ({
         generateAdjacent(_.sortBy(pages, "file.attributes.date")).reverse(),
       url: ({ sectionName, fileName }) =>
         `/${sectionName}/${clean.chapterName(fileName)}/`,
-      redirects: require("./redirects/blog")
+      redirects: require("./redirects/blog"),
     },
     clinic: () =>
       require("./components/IndexPage").default({
         type: "Clinic",
-        content: require("./layouts/clinic.md").body
+        content: require("./layouts/clinic.md").body,
       }),
     training: () =>
       require("./components/IndexPage").default({
         type: "Training",
-        content: require("./layouts/training.md").body
+        content: require("./layouts/training.md").body,
       }),
     workshop: () =>
       require("./components/IndexPage").default({
         type: "Workshop",
-        content: require("./layouts/workshop.md").body
+        content: require("./layouts/workshop.md").body,
       }),
     maintenance: {
       content: () =>
@@ -82,6 +85,8 @@ module.exports = () => ({
         const index = require("./layouts/MaintenanceIndex").default;
 
         index.title = "SurviveJS - Maintenance";
+        index.description =
+          "Want to improve maintainability of your projects? Learn the related techniques for free.";
 
         return index;
       },
@@ -102,7 +107,7 @@ module.exports = () => ({
             })
         ),
       url: ({ sectionName, fileName }) =>
-        `/${sectionName}/${clean.chapterName(fileName)}/`
+        `/${sectionName}/${clean.chapterName(fileName)}/`,
     },
     react: {
       content: () =>
@@ -111,6 +116,8 @@ module.exports = () => ({
         const index = require("./layouts/ReactIndex").default;
 
         index.title = "SurviveJS - React";
+        index.description =
+          "Want to learn React? Get started for free and build a Kanban board by following the example project.";
 
         return index;
       },
@@ -131,7 +138,7 @@ module.exports = () => ({
             })
         ),
       url: ({ sectionName, fileName }) =>
-        `/${sectionName}/${clean.chapterName(fileName)}/`
+        `/${sectionName}/${clean.chapterName(fileName)}/`,
     },
     webpack: {
       content: () =>
@@ -144,6 +151,8 @@ module.exports = () => ({
         const index = require("./layouts/WebpackIndex").default;
 
         index.title = "SurviveJS - Webpack";
+        index.description =
+          "Want to learn webpack? Get started for free and build webpack configuration.";
 
         return index;
       },
@@ -165,10 +174,10 @@ module.exports = () => ({
         ),
       url: ({ sectionName, fileName }) =>
         `/${sectionName}/${clean.chapterName(fileName)}/`,
-      redirects: require("./redirects/webpack")
+      redirects: require("./redirects/webpack"),
     },
     webpack_react: {
-      redirects: require("./redirects/webpack_react")
-    }
-  }
+      redirects: require("./redirects/webpack_react"),
+    },
+  },
 });

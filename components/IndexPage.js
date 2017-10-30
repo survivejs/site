@@ -24,13 +24,13 @@ const IndexPage = ({ type, content }) => {
         <section className="post__content">
           <div
             dangerouslySetInnerHTML={{
-              __html: content
+              __html: content,
             }}
           />
           <h2>About the Trainer</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../layouts/authors/juho.md").body
+              __html: require("../layouts/authors/juho.md").body,
             }}
           />
         </section>

@@ -34,7 +34,7 @@ function parseCustomQuote(token, match, className) {
         type: "html",
         text: `<blockquote class="${className}"><i class="${icon}"></i>${text
           .slice(2)
-          .trim()}</blockquote>`
+          .trim()}</blockquote>`,
       };
     }
   }
@@ -49,14 +49,14 @@ function parseTitle(body) {
   if (lines[0].indexOf("#") === 0 && lines[0][1] === " ") {
     return {
       title: removeMarkdown(lines[0]),
-      body: lines.slice(1).join("\n")
+      body: lines.slice(1).join("\n"),
     };
   }
 
   if (lines[0].indexOf("-#") === 0) {
     return {
       title: removeMarkdown(lines[0].slice(2).trim()),
-      body: lines.slice(1).join("\n")
+      body: lines.slice(1).join("\n"),
     };
   }
 

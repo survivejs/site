@@ -10,7 +10,7 @@ function main() {
 
   api
     .zoneGetAll({
-      name: "survivejs.com"
+      name: "survivejs.com",
     })
     .then(function(zones) {
       var zone = zones[0];
@@ -24,8 +24,8 @@ function main() {
             "https://survivejs.com/react/*",
             "https://survivejs.com/assets/img/favicon.png",
             "https://survivejs.com/favicon.ico",
-            "https://survivejs.com/"
-          ]
+            "https://survivejs.com/",
+          ],
         })
         .then(function(ok) {
           console.log("purged main.css and content");

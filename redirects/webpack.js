@@ -84,5 +84,5 @@ module.exports = {
   "appendices/deploying/": "techniques/deploying/",
   "appendices/configuring-hmr/": "appendices/hmr/",
   "why-webpack": "what-is-webpack/",
-  "building/splitting-bundles": "building/bundle-splitting/"
+  "building/splitting-bundles": "building/bundle-splitting/",
 };

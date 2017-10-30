@@ -5,5 +5,5 @@ module.exports = {
   training: require("./training"),
   webpack: require("./webpack"),
   webpackReact: require("./webpack_react"),
-  workshop: require("./workshop")
+  workshop: require("./workshop"),
 };

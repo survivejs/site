@@ -70,7 +70,7 @@ module.exports = function markdown() {
         smartypants: false,
         headerPrefix: "",
         renderer,
-        xhtml: false
+        xhtml: false,
       };
 
       return marked.parser(parse.quotes(content), markedDefaults);
@@ -86,8 +86,8 @@ module.exports = function markdown() {
           id: chunk.text
             .toLowerCase()
             .replace(/`/g, "")
-            .replace(/[^\w]+/g, "-")
+            .replace(/[^\w]+/g, "-"),
         }));
-    }
+    },
   };
 };

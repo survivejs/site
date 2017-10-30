@@ -21,5 +21,5 @@ module.exports = {
     "/react/advanced-techniques/structuring-react-projects/",
   language_features: "/react/appendices/language-features/",
   understanding_decorators: "/react/appendices/understanding-decorators/",
-  troubleshooting: "/react/appendices/troubleshooting/"
+  troubleshooting: "/react/appendices/troubleshooting/",
 };

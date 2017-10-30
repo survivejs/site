@@ -15,7 +15,7 @@ module.exports = function webpack(headers) {
       title: _common.title,
       content: _common.content("webpack"),
       preview: _common.preview,
-      url: _common.url
+      url: _common.url,
     },
     sort: function(files) {
       var order = require("raw!../../webpack/manuscript/Book.txt")
@@ -29,7 +29,7 @@ module.exports = function webpack(headers) {
 
       order.forEach(function(name, i) {
         var result = _.findWhere(files, {
-          name: name
+          name: name,
         });
 
         if (!result) {
@@ -75,7 +75,7 @@ module.exports = function webpack(headers) {
       },
       page: function() {
         return require("../layouts/ChapterPage.jsx").default;
-      }
+      },
     },
     redirects: {
       "webpack-compared": "appendices/comparison/",
@@ -164,8 +164,8 @@ module.exports = function webpack(headers) {
       "appendices/deploying/": "techniques/deploying/",
       "appendices/configuring-hmr/": "appendices/hmr/",
       "why-webpack": "what-is-webpack/",
-      "building/splitting-bundles": "building/bundle-splitting/"
-    }
+      "building/splitting-bundles": "building/bundle-splitting/",
+    },
   };
 };
 

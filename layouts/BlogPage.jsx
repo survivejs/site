@@ -8,7 +8,7 @@ import {
   PrevNext,
   PrevNextMini,
   RelatedPosts,
-  SocialLinks
+  SocialLinks,
 } from "@survivejs/components";
 
 import getRelatedPosts from "../utils/get-related-posts";
@@ -19,20 +19,20 @@ const BlogPage = ({
       attributes: { author, date, headerExtra, headerImage },
       body,
       keywords,
-      title
+      title,
     },
     previous,
-    next
+    next,
   },
   section,
-  config
+  config,
 }) => {
   let postAuthor = author || (config.blog && config.blog.author);
   const relatedPosts = getRelatedPosts(keywords, section.pages(), 10);
   const relatedHeaders = {
     interview: "Interviews",
     opinion: "Opinions",
-    publishing: "Publishing thoughts"
+    publishing: "Publishing thoughts",
   };
 
   if (_.isFunction(postAuthor)) {
@@ -45,7 +45,7 @@ const BlogPage = ({
         <div
           className="header-image"
           style={{
-            backgroundImage: `url(${headerImage})`
+            backgroundImage: `url(${headerImage})`,
           }}
         />
       )}

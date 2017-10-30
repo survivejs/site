@@ -22,11 +22,11 @@ function main() {
 
       var brokenLinksChecker = new BrokenLinksChecker({
         logger: {
-          level: "warn"
+          level: "warn",
         },
         onDone: function() {
           server.close();
-        }
+        },
       });
 
       brokenLinksChecker.start("http://localhost:" + port);
