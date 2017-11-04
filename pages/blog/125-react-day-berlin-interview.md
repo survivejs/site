@@ -66,3 +66,5 @@ The more we hear from developers behind the projects we use, the better communit
 ## Conclusion
 
 Thanks for the interview Robert! I will be most likely participating in [React Day Berlin](https://reactday.berlin) myself. It's a good place for a conference like this.
+
+T> You can get a [15% discount to the conference ticket through this link](https://www.eventbrite.com/e/react-day-berlin-2017-tickets-37159994544?discount=SurviveJS).
