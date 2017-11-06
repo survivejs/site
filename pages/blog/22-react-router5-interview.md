@@ -7,7 +7,7 @@ keywords: ['interview', 'react', 'routing']
 
 When people ask about what routing solution to use with React, they often get pointed at [react-router](https://github.com/reactjs/react-router). It is a powerful solution and used by many so it can make sense. That doesn't mean it's the only alternative, though.
 
-This time I'm interviewing Thomas Roch, the author of [react-router5](https://github.com/router5/react-router5). It provides React bindings for [router5](https://router5.github.io/), a generic routing solution he has developed. Read on to learn more about this interesting alternative.
+This time I'm interviewing [Thomas Roch](https://twitter.com/tcroch), the author of [react-router5](https://github.com/router5/react-router5). It provides React bindings for [router5](https://router5.github.io/), a generic routing solution he has developed. Read on to learn more about this interesting alternative.
 
 > There are also [redux bindings](https://github.com/router5/redux-router5) available for router5!
 
@@ -74,7 +74,7 @@ I like what Anthony Short is doing with [Deku](https://github.com/dekujs/deku). 
 Thanks a lot for the interview Thomas! I hope people will find your routing solution. To make it easier to dig in, I've compiled a set of resources below:
 
 * [The official site of router5](https://router5.github.io/)
-* [router5/react-router5](https://github.com/router5/react-router5) - React bindings
+* [router5/react-router5](https://github.com/router5/router5/tree/master/packages/react-router5) - React bindings
 * [Online demo for React](https://router5.github.io/docs/with-react.html#/inbox) - [Demo source](https://github.com/router5/examples/tree/master/apps/react)
-* [router5/redux-router5](https://github.com/router5/redux-router5) - Redux bindings
+* [router5/redux-router5](https://github.com/router5/router5/tree/master/packages/redux-router5) - Redux bindings
 * [Online demo for React and Redux](https://router5.github.io/docs/with-react-redux.html#/inbox) - [Demo source](https://github.com/router5/examples/tree/master/apps/react-redux)
