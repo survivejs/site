@@ -5,7 +5,7 @@ headerImage: 'assets/img/light.jpg'
 keywords: ['interview', 'reactjs', 'react-lite']
 ---
 
-Even though React API is small, the implementation is quite sizable due to all the work it does behind the facade. For this reason, people have developed solutions that implement the API with different tradeoffs.
+Even though React API is small, the implementation is quite sizable due to all the work it does behind the façade. For this reason, people have developed solutions that implement the API with different trade-offs.
 
 *react-lite* by [Jade](https://twitter.com/guyingjie129) is one of these solutions.
 
