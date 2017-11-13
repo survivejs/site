@@ -6,7 +6,13 @@ let result = "";
 Object.keys(headers).forEach(k => {
   const v = headers[k];
 
-  result += prefix + k + "/, " + prefix + v + ",\n";
+  if (v.startsWith("http")) {
+    result += prefix + k + "/, " + v + ",\n";
+  } else if (v.startsWith("/")) {
+    result += prefix + k + "/, https://survivejs.com" + v + ",\n";
+  } else {
+    result += prefix + k + "/, " + prefix + v + ",\n";
+  }
 });
 
 console.log(result);

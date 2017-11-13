@@ -256,6 +256,12 @@ module.exports = {
     license: "Public Domain",
     image: "splash.jpg",
   },
+  "webpack-dev-server": {
+    author: "PublicDomainPictures",
+    source: "https://pixabay.com/en/splashing-splash-aqua-water-rain-165192/",
+    license: "Public Domain",
+    image: "splash.jpg",
+  },
   linting: {
     author: "Eva the Weaver",
     source: "https://www.flickr.com/photos/16324044@N00/10833734686",
