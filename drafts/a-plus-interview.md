@@ -43,7 +43,7 @@ The big idea here is to work with the grain of an engineer's understanding of fo
 ```javascript
 import { Form, TextInput, PasswordInput } from 'a-plus-forms';
 
-cosnt sendToServer = ({ username, password }) => ...;
+cosnt sendToServer = ({ username, password }) => { /* ... */ };
 
 <Form onSubmit={sendToServer}>
   <TextInput name="username" label="Username" />
