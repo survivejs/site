@@ -14,7 +14,7 @@ const MaintenanceIndex = () => (
             <span className="first"> - Maintenance</span>
           </div>
 
-          <h1 className="front-header">From apprentice to master</h1>
+          <h1 className="front-header">Streamline JavaScript Workflow</h1>
 
           <div className="front-button-wrapper">
             <span className="read-free">
@@ -27,7 +27,7 @@ const MaintenanceIndex = () => (
               className="btn btn--buy-main"
               href="https://leanpub.com/survivejs-maintenance"
             >
-              Become a maintenance master
+              Improve Your JavaScript Projects
             </a>
           </div>
         </div>
