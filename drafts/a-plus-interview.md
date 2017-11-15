@@ -18,25 +18,25 @@ TODO: I'll fill this up and link to your Twitter
 </span>
 </p>
 
-Well, over the years trying to answer this questions, i narrowed it down to the following:
+Well, over the years of trying to answer this question, I narrowed it down to the following:
 
 > Hi, I'm Nikolay, I'm here to help
 
-That's usually enough to start. But, I suppose you want something more palpable in this case. Well, I'm a software engineer, I think. And, I've been doing this long enough to start feeling a bit awkward about it. I think my "career" as a software engineer started when IE4 was the tip of the spear, and I'm still have my hands on the keyboard every single day.
+That's usually enough to start. But, I suppose you want something more tangible in this case. Well, I'm a software engineer, I think. And I've been doing this long enough to start feeling a bit awkward about it. I think my "career" as a software engineer started when IE4 was the tip of the spear and I still had my hands on the keyboard every single day.
 
-Although, admittedly, recently I've been more focused on building teams of software engineers as my day job. Which, I see as just another way of building technology and software in particular. I suppose it's a natural projection of attempts to build larger and larger projects.
+Recently, however, I've been more focused on building teams of software engineers at my day job. I see this as just another way to create software. I suppose it's a natural outcome of attempts to realize larger and larger projects.
 
-Ok, I admit, this was a big vague. Don't get me wrong, I am trying to dodge the question, but, I feel like a personal story of a Siberian born, working class nerd who lives in Australia is going to be a bit confusing, and besides the point.
+Ok, I admit, this was a big vague. Don't get me wrong, I am not trying to dodge the question. But I feel like a personal story of a Siberian born, working class nerd who lives in Australia is going to be a bit confusing and beside the point.
 
 ## How would you describe *a-plus-forms* to someone who has never heard of it?
 
-So, it's a React form library, that helps you not to cry yourself to sleep every time when your boss asks you to build a twelve fields long form. It basically solves the shitty problems, things like state management, validation, data transformation, and such. And it does it in a predictable manner with minimal configuration.
+*a-plus-forms* is a React forms library that helps you not cry yourself to sleep every time your boss asks you to build a twelve-field form. It solves tedious problems like state management, validation, and data transformation in a predictable manner with minimal configuration.
 
 ## How does *a-plus-forms* work?
 
-I think this question could be answered on multiple levels. How does it work internally, what it exposes externally, and how does it work in the context of an engineering team.
+I think this question can be answered from multiple angles: how it works internally, what it exposes externally, and how it works in the context of an engineering team.
 
-It basically revolves around a concept of an input field. I started with the familiar to everyone idea of a HTML input tag. It's something that has `name`, `value`, and `onChange` hook. But then everything is treated as a field. For example, fields might have sub-fields. Or a form is one large field.
+It basically revolves around a concept of an input field. I started with the familiar idea of a HTML input tag. It's something that has `name`, `value`, and `onChange` hook. But then everything is treated as a field. For example, fields might have sub-fields. Or a form is one large field.
 
 The big idea here is to work with the grain of an engineer's understanding of forms. We, engineers think of forms as a bucket of input fields that in the end spits out a blob of data. Which we then pick up and send to the server. And this is exactly the type of developer experience A+ forms provide:
 
