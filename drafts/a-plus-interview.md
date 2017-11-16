@@ -30,15 +30,15 @@ Ok, I admit, this was a big vague. Don't get me wrong, I am not trying to dodge 
 
 ## How would you describe *a-plus-forms* to someone who has never heard of it?
 
-*a-plus-forms* is a React forms library that helps you not cry yourself to sleep every time your boss asks you to build a twelve-field form. It solves tedious problems like state management, validation, and data transformation in a predictable manner with minimal configuration.
+A+ forms is a React forms library that helps you not cry yourself to sleep every time your boss asks you to build a twelve-field form. It solves tedious problems like state management, validation, and data transformation in a predictable manner with minimal configuration.
 
 ## How does *a-plus-forms* work?
 
-I think this question can be answered from multiple angles: how it works internally, what it exposes externally, and how it works in the context of an engineering team.
+I think this question can be answered from multiple perspectives: how it works internally, what it exposes externally, and how it works in the context of an engineering team.
 
-It basically revolves around a concept of an input field. I started with the familiar idea of a HTML input tag. It's something that has `name`, `value`, and `onChange` hook. But then everything is treated as a field. For example, fields might have sub-fields. Or a form is one large field.
+It basically revolves around the concept of an input field. I started with the familiar idea of a HTML input tag with its `name`, `value`, and `onchange` attributes and then applied these to all fields. Fields may also have sub-fields. In some cases a form is one large field.
 
-The big idea here is to work with the grain of an engineer's understanding of forms. We, engineers think of forms as a bucket of input fields that in the end spits out a blob of data. Which we then pick up and send to the server. And this is exactly the type of developer experience A+ forms provide:
+The big idea here is to work with the grain of engineers' understanding of forms. Engineers think of forms as a bucket of input fields that spits out a blob of data which we then retrieve and send to the server. This is the type of developer experience A+ forms provides. For example:
 
 ```javascript
 import { Form, TextInput, PasswordInput } from 'a-plus-forms';
@@ -52,41 +52,41 @@ cosnt sendToServer = ({ username, password }) => { /* ... */ };
 </Form>
 ```
 
-This, obviously, a simplistic example that doesn't do justice to the level of complexity the A+ forms handle. But it demonstrates the principle behind the though:
+This is just a simple example that doesn't do justice to the level of complexity A+ forms can handle. But it demonstrates the principle behind the library:
 
-> Here are my fields, please give me the data, because I don't care about anything else at the moment.
+> Here are my fields. Please give me the data entered into them, because I don't care about anything else at the moment.
 
-And that mentality works really well with engineers and teams. It's a universal truth of forms if you will. All you really want is data.
+This mentality is shared by engineers and teams. It's a universal truth of forms if you will. All you really want is data.
 
 ## How does *a-plus-forms* differ from other solutions?
 
-Ok, let's get this straight. I'm not going to say anything negative about other solutions, I'm not here to bash on other people's work. Besides, most problems could be eventually solved with any tool available; it's just the question of determination. Instead, let me explain what's important to me.
+Ok, let's get this straight. I'm not going to say anything negative about other solutions - I'm not here to bash other people's work. Besides, given enough determination, most problems can be solved with any tool available. Instead, I'll explain what's important to me.
 
-As technology matures, we humans are trying to use it to solve more and more complex problems. Which, in turn, requires more and more complex solutions. Over time, this complexity starts to piling up, until we forget what we were doing in the first place.
+As technology matures, we humans try to use it to solve increasingly complex problems. This, in turn, requires increasingly complex solutions. Over time this complexity starts accumulating, until we forget what we were doing in the first place.
 
-Most solutions on the market are providing this extra fire power complexity to combat the complexity of the tasks. Which is expected, but over time, inevitably becomes taxing. And here is where A+ forms differ. A+ forms is an attempt to add simplicity into the task of creating and maintaining complex forms.
+Most solutions on the market address the complexity of the task with increased complexity. Over time this inevitably becomes taxing. A+ forms differ here by attempting to keeping the task of creating and maintaining complex forms simple.
 
 ## Why did you develop *a-plus-forms*?
 
-To become rich and famous, and achieve the world domination, obviously. But, seriously though. I think I have little patience for BS in my work. I don't know about you, but I'm easily distracted and discouraged when things are not going smoothly. There are so many awesome things waiting to be built in the world, that spending time dealing with already solved mundane problems is just borderline treacherous.
+To become rich and famous and achieve world domination, obviously. But seriously, I think I have little patience for BS in my work. I don't know about you, but I'm easily distracted and discouraged when things are not going smoothly. There are so many awesome things waiting to be built in the world, and spending time dealing with mundane problems that have already been solved is unproductive.
 
-That's the same principle why you use React. You totally could assert yourself to vanilla JavaScript and DOM. But after 10 times, you probably want this to be done, you just want to focus on building the actual app, not figuring out why `onChange` is not triggered on a range input in IE10.
+That's the same principle why you use React. You totally could devote yourself to vanilla JavaScript and DOM. But after ten times of writing the same repetitive boilerplate code and dealing with browser inconsistencies, you probably just want to focus on building the actual app, not figuring out why `change` events are not triggered on a range input in IE 10.
 
-I built A+ forms for the same reason, so my engineers and I didn't have to worry about this problem again, and could focus on building what we want to build.
+I built A+ forms for the same reason, so my engineers and I don't have to solve this problem over and over again, and can focus on building what we want to build.
 
 ## What next?
 
-I'm glad you've asked. A+ forms itself represent just the data handling core. All the components are just standard HTML looking abstractions, which depending on a context can be implemented in all sorts of things. A those _"all sorts of things"_ is the next step in my view.
+I'm glad you've asked. A+ forms itself represents just the data handling core. All the components are just standard HTML-looking abstractions, which depending on a context, can be implemented in all sorts of things. Those _"all sorts of things"_ is the next step in my view.
 
-Here is several next extensions that I'm planning to build:
+Here are the next extensions that I'm planning to build:
 
-**1) Bootstrap tailored fields**
+**1) Bootstrap-tailored fields**
 
-A+ forms has a bunch of standard fields out of the box, but they're not tied to any particular implementation. So, I want create an extension that will convert those fields into standard Bootstrap fields as a mean to make the adoption even simpler.
+A+ forms has a bunch of standard fields out of the box, but they're not tied to any particular UI component implementation. I want create an extension that will convert those fields into standard Bootstrap fields as a means to simplify adoption further.
 
 **2) React Native fields**
 
-This one is my favorite. Form management in native mobile apps is so alien to us web developers. but this doesn't have to be so. If we re-implement those fields in react native components, then engineers could have a 100% the same forms experience between different platforms. Heck, they could even finally share their forms code between them.
+This one is my favorite. Form management in native mobile apps is so alien to us web developers. But it doesn't have to be like this. If we re-implement those fields in React Native components, then engineers could have the same developer experience between web and native apps. Heck, they could even finally share their forms code between them.
 
 **3) HTML5 props validator**
 
