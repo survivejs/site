@@ -356,7 +356,7 @@ module.exports = {
     license: "Public Domain",
     image: "caliper.jpg",
   },
-  analysis: {
+  "build-analysis": {
     author: "jpj2000nl",
     source: "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
     license: "Public Domain",
