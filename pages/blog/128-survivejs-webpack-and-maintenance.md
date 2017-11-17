@@ -65,3 +65,5 @@ Both books have specific chat channels at Gitter if you want to discuss the topi
 * [Webpack book Gitter channel](https://gitter.im/survivejs/webpack)
 
 You can also [ask questions at my AmA](https://github.com/survivejs/ama/issues).
+
+T> We will arrange [a React conference in Finland (end of April, 2018)](https://react-finland.fi/). Perhaps I will see some of you there!
