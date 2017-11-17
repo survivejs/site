@@ -9,7 +9,7 @@ module.exports = {
   "developing-with-webpack/automatic-browser-refresh":
     "developing/automatic-browser-refresh/",
   "developing-with-webpack/configuring-hmr": "appendices/hmr/",
-  "developing-with-webpack/linting": "developing/linting/",
+  "developing-with-webpack/linting": "/maintenance/code-quality/linting/",
   "developing-with-webpack/composing-configuration":
     "developing/composing-configuration/",
   "developing-with-webpack/refreshing-css":
@@ -45,7 +45,7 @@ module.exports = {
   "building-with-webpack/eliminating-unused-css":
     "styling/eliminating-unused-css/",
   "building-with-webpack/analyzing-build-statistics":
-    "optimizing/analyzing-build-statistics/",
+    "optimizing/analysis/",
   "building-with-webpack/hosting-on-github-pages/": "techniques/deploying/",
   "building-with-webpack/enabling-sourcemaps": "building/source-maps/",
   "optimizing-build": "optimizing/",
@@ -57,16 +57,17 @@ module.exports = {
     "optimizing/adding-hashes-to-filenames/",
   "optimizing-build/separating-manifest": "optimizing/separating-manifest/",
   "optimizing-build/analyzing-build-statistics":
-    "optimizing/analyzing-build-statistics/",
+    "optimizing/analysis/",
   "optimizing/setting-environment-variables":
     "optimizing/environment-variables/",
+  "optimizing/analyzing-build-statistics": "optimizing/analysis"
   "developing/configuring-hmr": "appendices/hmr/",
   "handling-styles": "styling/",
   "handling-styles/loading": "styling/loading/",
   "handling-styles/separating-css": "styling/separating-css/",
   "handling-styles/autoprefixing": "styling/autoprefixing/",
   "handling-styles/eliminating-unused-css": "styling/eliminating-unused-css/",
-  "handling-styles/linting": "styling/linting/",
+  "handling-styles/linting": "/maintenance/code-quality/linting/",
   "loading-assets": "loading/",
   "loading-assets/formats-supported": "loading/loader-definitions/",
   "loading-assets/loader-definitions": "loading/loader-definitions/",
@@ -85,10 +86,10 @@ module.exports = {
   "advanced-techniques/consuming-packages": "packages/consuming/",
   "advanced-techniques/authoring-packages": "packages/authoring/",
   "advanced-techniques/understanding-chunks": "building/bundle-splitting/",
-  "advanced-techniques/linting-in-webpack": "developing/linting/",
+  "advanced-techniques/linting-in-webpack": "/maintenance/code-quality/linting/",
   "advanced-techniques/writing-loaders": "extending/loaders/",
   "advanced-techniques/configuring-react": "output/server-side-rendering/",
-  "appendices/configuring-hmr-with-react": "appendices/hmr-with-react/",
+  "appendices/configuring-hmr-with-react": "https://github.com/gaearon/react-hot-loader",
   "appendices/writing-eslint-plugins": "appendices/customizing-eslint/",
   "appendices/dynamic-loading": "techniques/dynamic-loading/",
   "appendices/using-web-workers/": "techniques/web-workers/",

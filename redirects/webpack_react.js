@@ -1,9 +1,9 @@
 module.exports = {
   introduction: "/react/introduction/",
   webpack: "/webpack/introduction/",
-  webpack_compared: "/webpack/compared/",
+  webpack_compared: "/webpack/appendices/comparison/",
   developing_with_webpack: "/webpack/developing/",
-  webpack_and_react: "/webpack/appendices/hmr-with-react/",
+  webpack_and_react: "/webpack/output/server-side-rendering/",
   react: "/react/getting-started/",
   implementing_notes: "/react/getting-started/implementing-notes/",
   react_and_flux: "/react/implementing-kanban/react-and-flux/",
@@ -13,8 +13,8 @@ module.exports = {
   advanced: "/react/advanced-techniques/",
   testing_react: "/react/advanced-techniques/testing-react/",
   typing_with_react: "/react/advanced-techniques/typing-with-react/",
-  linting_in_webpack: "/webpack/developing/linting/",
-  authoring_libraries: "/webpack/packages/authoring/",
+  linting_in_webpack: "/maintenance/code-quality/linting/",
+  authoring_libraries: "/maintenance/packaging/",
   styling_react: "/react/advanced-techniques/styling-react/",
   appendices: "/react/appendices/",
   structuring_react_projects:
