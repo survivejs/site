@@ -1,5 +1,5 @@
 // TODO: generalize
-const headers = require("../sections/webpack")().redirects;
+const headers = require("../redirects/webpack");
 
 const prefix = "https://survivejs.com/webpack/";
 let result = "";
