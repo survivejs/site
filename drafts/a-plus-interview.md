@@ -90,21 +90,21 @@ This one is my favorite. Form management in native mobile apps is so alien to us
 
 **3) HTML5 props validator**
 
-At my dayjob we're using JSON Schemas as a way to validate forms, but it's a bit of an overkill for simpler cases. So, I want to build an extension that will pick up the standard `required`, `pattern`, etc props from the input fields and validate them accordingly.
+At my day job we're using JSON Schema as a way to validate forms, but it's a bit overkill for simpler cases. I want to build an extension that will read standard validation props like `required` and `pattern` on the input fields and set validation rules accordingly.
 
-The goal, as you can see is to make A+ forms into sort of a Barbie doll, where the community could build extensions and extra accessories for it, and share their solutions between each other.
+The goal is to make A+ forms into a sort of "Barbie doll", where the community can build extensions and extra accessories for it and share their solutions with each other.
 
 ## What does the future look like for *a-plus-forms* and web development in general? Can you see any particular trends?
 
-If you ask my opinion, i think we should stop calling it "web development" by now and just call it "development". Experiencing the history of the web first hand from almost the beginning of its adoption, I can tell one thing. Engineers tend to be overprotective; right to the point of being real jerks.
+If you ask my opinion, I think we should stop calling it "web development" and instead just use the term "development". From first hand experience  since almost the beginning of widespread adoption of the web, I can say one thing: engineers tend to be overprotective of their reputation, to the point of being real jerks.
 
-When I started my career, the word "web developer" was sort of an oxymoron. The older generation didn't even want to call us "developers", they called us "webmaster" as a way to distance themselves as "real engineers".
+When I started my career, the word "web developer" was sort of an oxymoron. The older generation didn't even want to call us "developers", they called us "webmasters" as a way to distance themselves from us. They saw themselves as "real engineers", where we were just playing with toys.
 
-If you have joined the bandwagon a bit later, you might caught the times when JavaScript developers were not considered real "programmers" either. Humans do this stuff to each other now and then.
+If you joined the bandwagon a bit later, you might have seen web developers belittled as not being "real programmers". Humans do nasty stuff to each other now and then.
 
-But, by now "web" became pretty much the standard practice in most areas of software. The process for building UIs we've developed in the "web" beats the traditional "native" UI practices. Same goes for building API side. Node.js based microservices, Serverless, load balancing, high efficiency networking, etc. It all grew out of the "web".
+But, by now techniques developed for the "web" have become pretty much the standard practice in most areas of software. For example, the process for building UIs we've developed for the "web" beats the traditional "native" UI practices. The same goes for building APIs. Node.js based microservices, Serverless, load balancing, high efficiency networking, and so on all grew out of the "web".
 
-The kid had grown into an adult and feels its strength. I suppose I just needs to learn how to act like one. And that will be the trend in the near future.
+The child has grown into an adult and feels strong. Now that adult just needs to learn how to act like an adult. That will be a trend in the near future.
 
 ## What advice would you give to programmers getting into web development?
 
