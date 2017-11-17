@@ -350,6 +350,12 @@ module.exports = {
     license: "Public Domain",
     image: "caliper.jpg",
   },
+  analysis: {
+    author: "jpj2000nl",
+    source: "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    license: "Public Domain",
+    image: "caliper.jpg",
+  },
   performance: {
     author: "smarko",
     source: "https://pixabay.com/en/car-supercar-gt-ford-speed-power-1376190/",
