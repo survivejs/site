@@ -46,7 +46,7 @@ module.exports = {
     "styling/eliminating-unused-css/",
   "building-with-webpack/analyzing-build-statistics":
     "optimizing/analysis/",
-  "building-with-webpack/hosting-on-github-pages/": "techniques/deploying/",
+  "building-with-webpack/hosting-on-github-pages": "techniques/deploying/",
   "building-with-webpack/enabling-sourcemaps": "building/source-maps/",
   "optimizing-build": "optimizing/",
   "optimizing-build/minifying": "optimizing/minifying/",
@@ -92,10 +92,10 @@ module.exports = {
   "appendices/configuring-hmr-with-react": "https://github.com/gaearon/react-hot-loader",
   "appendices/writing-eslint-plugins": "appendices/customizing-eslint/",
   "appendices/dynamic-loading": "techniques/dynamic-loading/",
-  "appendices/using-web-workers/": "techniques/web-workers/",
-  "appendices/i18n/": "techniques/i18n/",
-  "appendices/deploying/": "techniques/deploying/",
-  "appendices/configuring-hmr/": "appendices/hmr/",
+  "appendices/using-web-workers": "techniques/web-workers/",
+  "appendices/i18n": "techniques/i18n/",
+  "appendices/deploying": "techniques/deploying/",
+  "appendices/configuring-hmr": "appendices/hmr/",
   "why-webpack": "what-is-webpack/",
   "building/splitting-bundles": "building/bundle-splitting/",
 };
