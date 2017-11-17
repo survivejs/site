@@ -49,6 +49,12 @@ module.exports = {
     license: "Public Domain",
     image: "board.jpg",
   },
+  "css-modules": {
+    author: "distel2610",
+    source: "https://pixabay.com/en/lego-duplo-build-module-macro-1762442/",
+    license: "CC0",
+    image: "legos.jpg",
+  },
   site: {
     author: "StockSnap",
     source:
