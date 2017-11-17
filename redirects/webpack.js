@@ -44,8 +44,7 @@ module.exports = {
   "building-with-webpack/separating-css": "styling/separating-css/",
   "building-with-webpack/eliminating-unused-css":
     "styling/eliminating-unused-css/",
-  "building-with-webpack/analyzing-build-statistics":
-    "optimizing/analysis/",
+  "building-with-webpack/analyzing-build-statistics": "optimizing/analysis/",
   "building-with-webpack/hosting-on-github-pages": "techniques/deploying/",
   "building-with-webpack/enabling-sourcemaps": "building/source-maps/",
   "optimizing-build": "optimizing/",
@@ -56,11 +55,10 @@ module.exports = {
   "optimizing-build/adding-hashes-to-filenames":
     "optimizing/adding-hashes-to-filenames/",
   "optimizing-build/separating-manifest": "optimizing/separating-manifest/",
-  "optimizing-build/analyzing-build-statistics":
-    "optimizing/analysis/",
+  "optimizing-build/analyzing-build-statistics": "optimizing/analysis/",
   "optimizing/setting-environment-variables":
     "optimizing/environment-variables/",
-  "optimizing/analyzing-build-statistics": "optimizing/analysis"
+  "optimizing/analyzing-build-statistics": "optimizing/analysis",
   "developing/configuring-hmr": "appendices/hmr/",
   "handling-styles": "styling/",
   "handling-styles/loading": "styling/loading/",
@@ -86,10 +84,12 @@ module.exports = {
   "advanced-techniques/consuming-packages": "packages/consuming/",
   "advanced-techniques/authoring-packages": "packages/authoring/",
   "advanced-techniques/understanding-chunks": "building/bundle-splitting/",
-  "advanced-techniques/linting-in-webpack": "/maintenance/code-quality/linting/",
+  "advanced-techniques/linting-in-webpack":
+    "/maintenance/code-quality/linting/",
   "advanced-techniques/writing-loaders": "extending/loaders/",
   "advanced-techniques/configuring-react": "output/server-side-rendering/",
-  "appendices/configuring-hmr-with-react": "https://github.com/gaearon/react-hot-loader",
+  "appendices/configuring-hmr-with-react":
+    "https://github.com/gaearon/react-hot-loader",
   "appendices/writing-eslint-plugins": "appendices/customizing-eslint/",
   "appendices/dynamic-loading": "techniques/dynamic-loading/",
   "appendices/using-web-workers": "techniques/web-workers/",
