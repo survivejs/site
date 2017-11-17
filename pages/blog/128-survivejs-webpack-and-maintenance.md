@@ -1,11 +1,11 @@
 ---
-title: '"SurviveJS - Webpack" v2.1 and "SurviveJS - Maintenance" v0.9'
+title: '“SurviveJS — Webpack” v2.1 and “SurviveJS — Maintenance” v0.9'
 date: 2017-11-17
 headerImage: 'assets/img/no-pressure.jpg'
 keywords: ['maintenance', 'release-notes', 'webpack']
 ---
 
-What do you do when you realize a book has become too big? You split it of course. The [webpack book](/webpack/) began to feel this way after [the previous release](../survivejs-webpack-20/) and this is the reason why I started to develop [a new book about maintenance](/maintenance/) with [Artem Sapegin](https://github.com/sapegin).
+What do you do when you realize a book has become too big? You split it of course. The [webpack book](/webpack/) began to feel this way after [the previous release](../survivejs-webpack-20/) and this is the reason why I started to write [a new book about maintenance](/maintenance/) with [Artem Sapegin](https://github.com/sapegin).
 
 ## Overview of the Situation
 
@@ -13,7 +13,7 @@ I've been collaborating with Artem since I wrote my first React book and he was 
 
 Maintenance feels like an undervalued topic, and it's one of the main reasons why we decided to write the book in the first place. It's easy to start a project but how can you ensure its success? Normally a project spends most of its lifetime in maintenance mode so putting the focus on this topic has value.
 
-## Book Improvements - "SurviveJS - Webpack" v2.1
+## Book Improvements — “SurviveJS - Webpack" v2.1
 
 We began writing the book by moving secondary topics to the maintenance book from the webpack one. This cleaned up the structure of the book and allowed me to make it easier to approach.
 
@@ -27,12 +27,12 @@ In total 309 commits went to the book since the last release. You can find the [
 
 You can find the book below:
 
-* ["SurviveJS - Webpack" - Free online edition](/webpack/preface/)
-* ["SurviveJS - Webpack" - Leanpub edition (digital)](https://leanpub.com/survivejs-webpack/)
+* [“SurviveJS — Webpack" - Free online edition](/webpack/preface/)
+* [“SurviveJS — Webpack" - Leanpub edition (digital)](https://leanpub.com/survivejs-webpack/)
 
 T> A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. I support his work this way given mine builds on top of his. Literally, most of the income goes to webpack developers now!
 
-## New Book - "SurviveJS - Maintenance" v0.9
+## New Book - “SurviveJS — Maintenance" v0.9
 
 [The maintenance book](/maintenance) has roughly 150 pages in its current state, and it covers topics including packaging, code quality, infrastructure, documentation, and future. It's a light, inspirational read and it contains plenty of techniques you can apply in your daily work.
 
@@ -42,8 +42,8 @@ The current version of the book is missing some content, and the book is still s
 
 You can find the book below:
 
-* ["SurviveJS - Maintenance" - Free online edition](/maintenance/preface/)
-* ["SurviveJS - Maintenance" - Leanpub edition (digital)](https://leanpub.com/survivejs-maintenance/)
+* [“SurviveJS — Maintenance" - Free online edition](/maintenance/preface/)
+* [“SurviveJS — Maintenance" - Leanpub edition (digital)](https://leanpub.com/survivejs-maintenance/)
 
 T> The book profit is split between Artem and me. We use the funds to develop further content based on demand.
 
