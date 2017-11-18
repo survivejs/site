@@ -108,19 +108,19 @@ The child has grown into an adult and feels strong. Now that adult just needs to
 
 ## What advice would you give to programmers getting into web development?
 
-Tread without fear my friends. "Web" is here to stay. And for the love of god, don't listen to anyone who says to you it's not "real software engineering".
+Tread without fear, my friends. The "web" is here to stay. And for the love of god, don't listen to anyone who tells you it's not "real software engineering".
 
-Also, a bit of a downer, but the sooner you accept the idea that 99% of your time won't be about "writing clever algorithms" the better off you will be. It's just a fairy tale that has nothing to do with the reality. It's called "development", not "slinging out code" for a reason. It's really about building things, not showing how smart you are. Because, guess what, everyone else is just as smart :)
+Also, a bit of a downer: 99% of your time won't be about "writing clever algorithms". The sooner you accept that the better off you will be. It's just a fairy tale that has nothing to do with reality. It's called "development", not "slinging out code" for a reason. It's really about building things, not showing how smart you are. Because, guess what, everyone else is just as smart :)
 
-Which brings me to the third and last advice. Learn how business works. I know, ewww!... But, it will help you to make better decisions, and it will help you to understand how other people see your role in a company. This will help you to cut BS to the minimum and get back to doing what you love. Creating things.
+Which brings us to the third and last piece of advice. Learn how business works. I know, business, ewww! But it will help you to make better decisions and understand how other people see your role in a company. This will help you to keep BS to a minimum and get back to doing what you love - creating things.
 
 ## Who should I interview next?
 
-Oooh, I love this! Okay, so, anyone really from thinkmill, envato or buildkite. They all strong technically and most of them are very good people.
+Ooh, I love this! Okay, so, anyone really from thinkmill, envato or buildkite. They are all strong technically and most of them are very good people.
 
 ## Any last remarks?
 
-Right. So, don't forget to eat well, get enough sunlight, and, if you're an introvert, don't forget to give yourself plenty of downtime cuddling with a book to recharge your batteries. The world is one exhausting place, but it has pancakes in it.
+Don't forget to eat well, get enough sunlight, and, if you're an introvert, don't forget to give yourself plenty of downtime cuddling with a book to recharge your batteries. The world is an exhausting place, but it has pancakes in it.
 
 ## Conclusion
 
