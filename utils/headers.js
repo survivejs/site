@@ -176,6 +176,12 @@ module.exports = {
     license: "Public Domain",
     image: "decorators.jpg",
   },
+  misc: {
+    author: "NASA",
+    source: "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+    license: "Public Domain",
+    image: "skydiving.jpg",
+  },
   packaging: {
     author: "NASA",
     source: "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
