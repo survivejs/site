@@ -44,7 +44,8 @@ module.exports = {
   "building-with-webpack/separating-css": "styling/separating-css/",
   "building-with-webpack/eliminating-unused-css":
     "styling/eliminating-unused-css/",
-  "building-with-webpack/analyzing-build-statistics": "optimizing/analysis/",
+  "building-with-webpack/analyzing-build-statistics":
+    "optimizing/build-analysis/",
   "building-with-webpack/hosting-on-github-pages": "techniques/deploying/",
   "building-with-webpack/enabling-sourcemaps": "building/source-maps/",
   "optimizing-build": "optimizing/",
@@ -55,10 +56,10 @@ module.exports = {
   "optimizing-build/adding-hashes-to-filenames":
     "optimizing/adding-hashes-to-filenames/",
   "optimizing-build/separating-manifest": "optimizing/separating-manifest/",
-  "optimizing-build/analyzing-build-statistics": "optimizing/analysis/",
+  "optimizing-build/analyzing-build-statistics": "optimizing/build-analysis/",
   "optimizing/setting-environment-variables":
     "optimizing/environment-variables/",
-  "optimizing/analyzing-build-statistics": "optimizing/analysis",
+  "optimizing/analyzing-build-statistics": "optimizing/build-analysis",
   "developing/configuring-hmr": "appendices/hmr/",
   "handling-styles": "styling/",
   "handling-styles/loading": "styling/loading/",
