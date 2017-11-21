@@ -21,6 +21,20 @@ The webpack book is more to the point now although it's still a long book (~370 
 
 During this process, I've applied simplifications based on my [training experiences](/training/) this year. I updated the book to webpack 3 and added tons of small tips and tricks here and there. A few editorial tweaks have been made to ensure the book reads well and fits the PDF format nicely.
 
+I've listed the main changes below:
+
+* The *Packages* part has been eliminated. The chapter focused on consuming packages remains in the book while the rest of the content has been moved to the maintenance book.
+* The code has been formatted using Prettier. There are still trailing commas to keep the diffs simple.
+* The *Automatic Browser Refresh* chapter has been renamed as *webpack-dev-server* to reflect its content better.
+* The linting chapters have been rewritten and moved to the maintenance book.
+* The *Analyzing Build Statistics* chapter has been renamed as *Build Analysis* chapter.
+* The *Bundling Libraries* chapter has been reworked and moved to the maintenance book.
+* The *Library Output* chapter has been dropped as webpack documentation and the maintenance book cover the topic well.
+* The *Customizing ESLint* appendix has been moved to the maintenance book.
+* The *Hot Module Replacement with React* appendix has been dropped as the official documentation covers the topic well.
+* The CSS Modules portions have been moved to an appendix as it's secondary content.
+* The book structure has been simplified and streamlined where possible so it's easier to get into the topic. At the same time I added more tips and tricks where it makes sense.
+
 I still have content planned for the webpack book, but even in its current state, it's better, and more focused, than the old one. If you have ideas on what specific topics to cover, [let me know at GitHub](https://github.com/survivejs/webpack-book/issues).
 
 In total 309 commits went to the book since the last release. You can find the [changes at GitHub](https://github.com/survivejs/webpack-book/compare/v2.0.22...v2.1.0). Remember to use the "Files changed" tab as it gives you a good overview of what's happening with the book.
