@@ -31,7 +31,7 @@ I was invited to participate in [ReactNext](http://react-next.com/) this year. I
 
 I will give a presentation discussing how I built my business at [WebExpo](https://www.webexpo.net/). It's going to be a mix of business, technical, and personal bits. A good time for a retrospective.
 
-## Bratislava, Slovakia - ReactiveConf - 25-27.10
+## ~~Bratislava, Slovakia - ReactiveConf - 25-27.10~~
 
 You'll see me in [ReactiveConf](https://reactiveconf.com/) this year as well. I don't have a presentation scheduled, but we'll do a webpack workshop on the third day.
 

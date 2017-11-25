@@ -25,11 +25,11 @@ Most of my time in Berlin has been reserved by a client but I'll have time espec
 
 I'll spend most of my time in Vienna. This is actually a good time for you to book me as it's easy to reach places from there. In the worst case I get some vacation time in a great city!
 
-## 2.7-10.7 - Augsburg, Germany
+## ~~2.7-10.7 - Augsburg, Germany~~
 
 The purpose of the Augsburg week is to focus on training through a local partner.
 
-## 10.7-15.7 - London, UK
+## ~~10.7-15.7 - London, UK~~
 
 I'll participate [FullStack 2017](https://skillsmatter.com/conferences/8264-fullstack-2017-the-conference-on-javascript-node-and-internet-of-things) as an invited speaker. I'll have a short, two hour workshop on 14th based on [Webpack - From Apprentice to Master](https://presentations.survivejs.com/webpack-from-apprentice-to-journeyman/) material.
 
