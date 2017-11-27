@@ -1,8 +1,8 @@
 ---
 title: 'Redux Form - The best way to manage your form state in Redux - Interview with Erik Rasmussen'
-date: 2017-12-11
+date: 2017-xx-xx
 headerImage: 'assets/img/XXX.jpg'
-keywords: ['interview', 'redux', 'reactjs']
+keywords: ['interview']
 ---
 
 TODO: Feel free to suggest a header image. Otherwise, I'll figure out something.
@@ -16,8 +16,9 @@ TODO: I'll fill this up and link to your Twitter, https://twitter.com/erikras
   <img src="https://www.gravatar.com/avatar/7e86f7e41168df55b65e30cdda423e10?s=200" alt="Erik Rasmussen" class="author" width="100" height="100" />
 </span>
 
-I'm originally from North Carolina, but I haven't lived in the US since late 2001, when I moved to Birmingham, England. I was there for four and a half years, and now I live in northern Spain with my Spanish wife and two bilingual kids. I'm a transatlantic telecommuter, working from home in Spain for my employer in the US.
 </p>
+
+I'm originally from North Carolina, but I haven't lived in the US since late 2001, when I moved to Birmingham, England. I was there for four and a half years, and now I live in northern Spain with my Spanish wife and two bilingual kids. I'm a transatlantic telecommuter, working from home in Spain for my employer in the US.
 
 I began using React immediately after it was open sourced in 2013, building side projects, and ran into all of the state management problems that Flux was introduced to solve, and I was active on the Reactiflux Slack channel as Redux was taking shape before its announcement in 2015, back when what are now called _reducers_ were still called _stores_.
 
@@ -49,13 +50,13 @@ Well, I was building an app that had several long forms. I asked Dan Abramov in 
 
 ## What next?
 
-Taking into account all that I have learned in maintaining *Redux Form*, I have an idea for the next generation of form state management that does not depend on Redux or even React, a library that could potentially also be used by our brethren in the Angular, Ember, Preact, and Vue communities. It's still very much a work in progress, but it could potentially be really awesome. Don't ask me about a release date, because I don't know. It's incubating.
+Taking into account all that I have learned in maintaining *Redux Form*, I have recently created and released what I think might be the next generation of form state management, that does not depend on Redux or even React, a library that could potentially also be used by our brethren in the Angular, Ember, Preact, and Vue communities. It's called [🏁 Final Form](https://github.com/erikras/final-form#-final-form), and it's based on the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), where different form elements on the page _subscribe_ to different parts of the form state, and only update themselves when they need to. I would encourage your readers to check it out.
 
 ## What does the future look like for *Redux Form* and web development in general? Can you see any particular trends?
 
-The npm download charts for React, Redux, and *Redux Form* look very similar: **GROWTH**. 📈
+The NPM download charts for React, Redux, and *Redux Form* look very similar: **GROWTH**. 📈 
 
-According to the npm download stats for October 2017, 46% of projects using `react` are using `react-redux`, and 24% of those are using `redux-form`. That's **11.2% of React projects that are using *Redux Form***. There are [**_1.6 million_** projects](https://www.npmjs.com/browse/depended/redux-form) on NPM that depend on *Redux Form*. *Redux Form* is here to stay.
+According to the NPM download stats for October 2017, 46% of projects using `react` are using `react-redux`, and 24% of those are using `redux-form`. That's **11.2% of React projects that are using *Redux Form***. There are [**_1.6 million_** projects](https://www.npmjs.com/browse/depended/redux-form) on NPM that depend on *Redux Form*. *Redux Form* is here to stay.
 
 As for web development in general, I think the declarative "UI as a function of State" paradigm that React has popularlized is here to stay. From what I can tell, most of the frontline battles being fought today are attempting to drive a stake into the heart of CSS once and for all. Web Components and WebAssembly seem like promising future tech, but aren't worth learning yet unless you really lust for the bleeding edge.
 
@@ -69,7 +70,7 @@ You just have to build something, and ask questions when you run into problems..
 
 I think the person I'd most like to see gain exposure from a site like this is [Eric Berry](https://twitter.com/coderberry), the creator of [CodeSponsor](https://codesponsor.io), he's valiantly attempting to do the impossible: make open source sustainable and avoid developer burnout. How much money would companies have to invest to update their code base if the sole developer of a popular OSS library were to quit and walk away? Thousands upon thousands of dollars worldwide. And how much are they paying to use these libraries? Zero. Donate buttons aren't worth the pixels they're rendered with. There are _some_ efforts, like OpenCollective, that are beginning to address this problem, but it's still a huge problem.
 
-It never occurred to me that having such a popular library could be monetized through tasteful, subtle ads on the documentation pages. How many hours a day do we coders spend looking at documentation pages? And how valuable are our eyes to get ads in front of? If you have a product that plugs into the production stack at any place, or even a product that you want to advertise to people with healthy salaries library docs is a great place to advertise. Anyone with an open source library with even a few dozen monthly downloads, should look into CodeSponsor. `$3/month > $0/month`.
+It never occurred to me that having such a popular library could be monetized through tasteful, subtle ads on the documentation pages. How many hours a day do we coders spend looking at documentation pages? And how valuable are our eyes to get ads in front of? If you have a product that plugs into the production stack at any place, or even a product that you want to advertise to people with healthy salaries, library docs is a great place to advertise. Anyone with an open source library with even a few dozen monthly downloads, should look into CodeSponsor. `$3/month > $0/month`.
 
 ## Any last remarks?
 
