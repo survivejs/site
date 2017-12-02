@@ -12,7 +12,9 @@ module.exports = function markdown() {
     const height = textParts[2] || "";
     const className = textParts[3] || "";
 
-    return `<img src="__IMG_START__${href}__IMG_END__" alt="${alt}" class="${className}" width="${width}" height="${height}" />`;
+    return `<img src="__IMG_START__${href}__IMG_END__" alt="${alt}" class="${
+      className
+    }" width="${width}" height="${height}" />`;
   };
 
   // patch ids (this.options.headerPrefix can be undefined!)

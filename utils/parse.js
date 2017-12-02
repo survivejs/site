@@ -32,9 +32,9 @@ function parseCustomQuote(token, match, className) {
 
       return {
         type: "html",
-        text: `<blockquote class="${className}"><i class="${icon}"></i>${text
-          .slice(2)
-          .trim()}</blockquote>`,
+        text: `<blockquote class="${className}"><i class="${
+          icon
+        }"></i>${text.slice(2).trim()}</blockquote>`,
       };
     }
   }
@@ -73,7 +73,9 @@ function parseHeader(resourcePath) {
 
   if (header) {
     if (header.source && header.author && header.license) {
-      ret.headerExtra = `<a href="${header.source}">${header.author} (${header.license})</a>`;
+      ret.headerExtra = `<a href="${header.source}">${header.author} (${
+        header.license
+      })</a>`;
     } else if (header.license) {
       ret.headerExtra = header.license;
     }

@@ -29,25 +29,27 @@ module.exports = function pageLoader(source) {
   delete result.frontmatter;
 
   if (result.attributes.headerImage) {
-    result.attributes.headerImage = `__IMG_START__${result.attributes
-      .headerImage}__IMG_END__`;
+    result.attributes.headerImage = `__IMG_START__${
+      result.attributes.headerImage
+    }__IMG_END__`;
   }
 
   const context = this;
   const resolve = resolveAliases(context.resource);
 
-  return `module.exports = ${JSON.stringify(
-    result
-  )};`.replace(/__IMG_START__([^,\]>]+)__IMG_END__/g, (match, src) => {
-    if (_.startsWith(src, "http")) {
-      return src;
-    }
+  return `module.exports = ${JSON.stringify(result)};`.replace(
+    /__IMG_START__([^,\]>]+)__IMG_END__/g,
+    (match, src) => {
+      if (_.startsWith(src, "http")) {
+        return src;
+      }
 
-    return `" + require(${loaderUtils.stringifyRequest(
-      context,
-      resolve(src)
-    )}) + "`;
-  });
+      return `" + require(${loaderUtils.stringifyRequest(
+        context,
+        resolve(src)
+      )}) + "`;
+    }
+  );
 };
 
 function resolveAliases(resource) {
