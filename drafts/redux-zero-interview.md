@@ -21,7 +21,7 @@ TODO: I'll fill this up and link to your Twitter, https://twitter.com/matheusml
 
 Redux Zero is a simple way to handle state in modern applications. It's lightweight, easy to learn and already works with React, React Native, Preact and Svelte, and we have plans to add Angular and Vue.js bindings as well.
 
-## How does *Redux Zero* work?
+## How does _Redux Zero_ work?
 
 It's very simple.
 
@@ -43,7 +43,7 @@ Then, create your actions. This is where you change the state from your store:
 ```javascript
 const actions = store => ({
   increment: state => ({ count: state.count + 1 }),
-  decrement: state => ({ count: state.count - 1 })
+  decrement: state => ({ count: state.count - 1 }),
 });
 ```
 
@@ -59,27 +59,29 @@ import actions from './actions';
 
 const mapToProps = ({ count }) => ({ count });
 
-export default connect(mapToProps, actions)(({ count, increment, decrement }) => (
-  <div>
-    <h1>{count}</h1>
+export default connect(mapToProps, actions)(
+  ({ count, increment, decrement }) => (
     <div>
-      <button onClick={decrement}>decrement</button>
-      <button onClick={increment}>increment</button>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={decrement}>decrement</button>
+        <button onClick={increment}>increment</button>
+      </div>
     </div>
-  </div>
-));
+  )
+);
 ```
 
 Last but not least, plug the whole thing in your index file:
 
 ```jsx
-import React from "react";
-import { render } from "react-dom";
-import { Provider } from "redux-zero/react";
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'redux-zero/react';
 
-import store from "./store";
+import store from './store';
 
-import Counter from "./Counter";
+import Counter from './Counter';
 
 const App = () => (
   <Provider store={store}>
@@ -87,10 +89,10 @@ const App = () => (
   </Provider>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
 ```
 
-## How does *Redux Zero* differ from other solutions?
+## How does _Redux Zero_ differ from other solutions?
 
 Redux is great, but in some cases, it's way too much. Maybe you don’t want to add all of that boilerplate to your project. Or maybe the learning curve is too steep and you just want something simpler to work with.
 
@@ -98,7 +100,7 @@ Redux Zero, on the other hand, is very simple. You don't have to learn about dis
 
 With Redux Zero you just have a store and some actions.
 
-## Why did you develop *Redux Zero*?
+## Why did you develop _Redux Zero_?
 
 One of our developers here at [Concrete](https://concrete.com.br/), [Miguel Albernaz](https://twitter.com/miguel_albernaz), was using this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) instead of Redux as a state management tool. The project was going so well, that I decided to extract the code, modify it a little bit and open source it to the community.
 
@@ -107,11 +109,12 @@ What I did not expect was this huge success in less than a month.
 ## What next?
 
 Right now we have three things in mind:
-- Improve the documentation
-- Add a middleware
-- Add Angular and Vue.js bindings (if you're reading this, [we need your help](https://github.com/concretesolutions/redux-zero/issues)).
 
-## What does the future look like for *Redux Zero* and web development in general? Can you see any particular trends?
+* Improve the documentation
+* Add a middleware
+* Add Angular and Vue.js bindings (if you're reading this, [we need your help](https://github.com/concretesolutions/redux-zero/issues)).
+
+## What does the future look like for _Redux Zero_ and web development in general? Can you see any particular trends?
 
 This is a really hard question. Everything is moving so fast in web development that's really hard to make predictions. With that said I think that web components and state management tools are here to stay.
 
