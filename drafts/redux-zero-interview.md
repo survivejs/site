@@ -12,15 +12,12 @@ TODO: I'll fill this up and link to your Twitter, https://twitter.com/matheusml
 ## Can you tell a bit about yourself?
 
 <p>
-<span class="author">
-  <img src="https://www.gravatar.com/avatar/ef4d9b6fdbcdd0ac1fb8927d23fca104?s=200" alt="Matheus Lima" class="author" width="100" height="100" />
-</span>
-
+  <span class="author">
+    <img src="https://avatars1.githubusercontent.com/u/444202?s=200&v=4" alt="Matheus Lima" class="author" width="100" height="100" />
+  </span>
 </p>
 
-ps: please change the avatar image to the current one from my github.
-
-## How would you describe *Redux Zero* to someone who has never heard of it?
+## How would you describe _Redux Zero_ to someone who has never heard of it?
 
 Redux Zero is a simple way to handle state in modern applications. It's lightweight, easy to learn and already works with React, React Native, Preact and Svelte, and we have plans to add Angular and Vue.js bindings as well.
 
