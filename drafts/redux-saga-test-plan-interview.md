@@ -25,13 +25,13 @@ TODO: I'll fill this up and link to your Twitter
 
 I'm a software engineer and consultant with [Test Double](https://testdouble.com/). We believe that software is broken, and we're here to fix it. Our mission is to improve how the world builds software.
 
-I've been doing front-end development for almost ten years now and really enjoy the paradigms that React and Redux helped introduce to the front-end world. I've created a few open source projects that work well with the React and Redux world such as [revalidate](https://github.com/jfairbank/revalidate), [redux-saga-router](https://github.com/jfairbank/redux-saga-router), and of course [_redux-saga-test-plan_](https://github.com/jfairbank/redux-saga-test-plan).
+I've been doing front-end development for almost ten years now and really enjoy the paradigms that React and Redux helped introduce to the front-end world. I've created a few open source projects that work well with the React and Redux ecosystem such as [revalidate](https://github.com/jfairbank/revalidate), [redux-saga-router](https://github.com/jfairbank/redux-saga-router), and, the topic of this interview, [_redux-saga-test-plan_](https://github.com/jfairbank/redux-saga-test-plan).
 
-I'm also a huge fan of functional programming and Elm. In fact, I'm currently writing a book on Elm with the [Pragmatic Programmers](https://pragprog.com/) called _Programming Elm: Build Safe and Maintainable Front-End Applications_. The book is over halfway complete and should be available sometime in spring 2018.
+I'm a huge fan of functional programming and Elm. In fact, I'm currently writing a book on Elm with [The Pragmatic Programmers](https://pragprog.com/) called _Programming Elm: Build Safe and Maintainable Front-End Applications_. The book is over halfway complete and should be available sometime in spring 2018.
 
 ## How would you describe _redux-saga-test-plan_ to someone who has never heard of it?
 
-[_redux-saga-test-plan_](https://redux-saga-test-plan.jeremyfairbank.com/) is a library for easily testing [redux-saga](https://redux-saga.js.org/). If you're unfamiliar with redux-saga, check out this [previous interview](https://survivejs.com/blog/redux-saga-interview/) with Yassine Elouafi, its creator.
+[_redux-saga-test-plan_](https://redux-saga-test-plan.jeremyfairbank.com/) is a library for easily testing [redux-saga](https://redux-saga.js.org/). If you're unfamiliar with redux-saga, check out [the redux-saga interview](https://survivejs.com/blog/redux-saga-interview/) with creator Yassine Elouafi.
 
 _redux-saga-test-plan_ removes the headache of manually testing saga generator functions that couple your tests to their implementations. It offers a declarative, chainable API for testing that your saga yields certain effects without worrying about other effects or the order effects were yielded. It also runs your saga with redux-saga's runtime, so you can write integration tests, or you can use _redux-saga-test-plan's_ built-in effect mocking to write unit tests too.
 
