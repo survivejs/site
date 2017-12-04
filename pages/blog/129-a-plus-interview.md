@@ -82,7 +82,9 @@ Here are the next extensions that I'm planning to build:
 
 **1) Bootstrap-tailored fields**
 
-A+ forms have a bunch of standard fields out of the box, but they're not tied to any particular UI component implementation. I want to create an extension that will convert those fields into standard Bootstrap fields as a means to simplify adoption further.
+~~A+ forms have a bunch of standard fields out of the box, but they're not tied to any particular UI component implementation. I want to create an extension that will convert those fields into standard Bootstrap fields as a means to simplify adoption further.~~
+
+This has been done. See [a-plus-forms-bootstrap](https://www.npmjs.com/package/a-plus-forms-bootstrap).
 
 **2) React Native fields**
 
