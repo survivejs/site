@@ -14,11 +14,13 @@ const MaintenanceIndex = () => (
             <span className="first"> - Maintenance</span>
           </div>
 
-          <h1 className="front-header">Streamline JavaScript Workflow</h1>
+          <h1 className="front-header">
+            Streamline JavaScript Workflow
+          </h1>
 
           <div className="front-button-wrapper">
             <span className="read-free">
-              <a href="/maintenance/preface/">Read the free version</a>
+              <a href="/maintenance/preface/">Read for free</a>
             </span>
 
             <span className="buy-or">or</span>

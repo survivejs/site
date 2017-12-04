@@ -18,7 +18,7 @@ const ReactIndex = () => (
 
           <div className="front-button-wrapper">
             <span className="read-free">
-              <a href="/react/introduction/">Read the free version</a>
+              <a href="/react/introduction/">Read for free</a>
             </span>
 
             <span className="buy-or">or</span>

@@ -19,7 +19,7 @@ const WebpackIndex = () => (
 
           <div className="front-button-wrapper">
             <span className="read-free">
-              <a href="/webpack/preface/">Read the free version</a>
+              <a href="/webpack/preface/">Read for free</a>
             </span>
 
             <span className="buy-or">or</span>
