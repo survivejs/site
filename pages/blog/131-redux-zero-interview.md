@@ -1,21 +1,21 @@
 ---
 title: 'Redux Zero - Single Store, No Reducers - Interview with Matheus Lima'
 date: 2017-12-04
-headerImage: 'assets/img/XXX.jpg'
-keywords: ['interview', 'redux']
+headerImage: 'assets/img/calculator.jpg'
+keywords: ['interview', 'redux', 'reactjs']
 ---
 
-TODO: Feel free to suggest a header image. Otherwise, I'll figure out something.
+Although using Redux is straight-forward once you understand the approach and its nuances, after a while it gets repetitive. It's easy to end up with a lot of "boilerplate" code that wires all the logic together. For this reason, multiple solutions addressing the issue have appeared.
 
-TODO: I'll fill this up and link to your Twitter, https://twitter.com/matheusml
+In this interview, we'll learn about [Redux Zero](https://github.com/concretesolutions/redux-zero) by [Matheus Lima](https://twitter.com/matheusml).
+
+T> [See also the Kea interview](/blog/kea-interview/) for another approach and [the original Redux interview](/blog/redux-interview) to learn more about the approach from its creator.
 
 ## Can you tell a bit about yourself?
 
-<p>
-  <span class="author">
-    <img src="https://avatars1.githubusercontent.com/u/444202?s=200&v=4" alt="Matheus Lima" class="author" width="100" height="100" />
-  </span>
-</p>
+![Matheus Lima|100|100|author](assets/img/interviews/matheus.jpg)
+
+I am Matheus Lima, a JavaScript lead developer at Concrete Solutions.
 
 ## How would you describe _Redux Zero_ to someone who has never heard of it?
 
@@ -23,9 +23,9 @@ Redux Zero is a library which offers a simple way to handle state in modern appl
 
 ## How does _Redux Zero_ work?
 
-It's very simple.
+It's simple.
 
-First, create a store. This is where your application state will live:
+First, create a store. The application state will live here:
 
 ```javascript
 import { createStore } from 'redux-zero';
@@ -92,7 +92,7 @@ render(<App />, document.getElementById('root'));
 
 ## How does _Redux Zero_ differ from other solutions?
 
-_Redux_ is great, but in some cases, it's way too much. Maybe you don’t want to add all of that boilerplate to your project. Or maybe the learning curve is too steep and you just want something simpler to work with.
+_Redux_ is great, but in some cases, it's way too much. Maybe you don’t want to add all of that boilerplate to your project. Or perhaps the learning curve is too steep, and you just want something simpler to work with.
 
 _Redux Zero_, on the other hand, is very simple. You don't have to learn about dispatchers and reducers (that's why the name is _Redux Zero_ - because there are zero reducers).
 
@@ -114,15 +114,15 @@ Right now we have three things in mind:
 
 ## What does the future look like for _Redux Zero_ and web development in general? Can you see any particular trends?
 
-This is a really hard question. Everything is moving so fast in web development that's really hard to make predictions. That said, I think that web components and state management tools are here to stay.
+This is a really hard question. Everything is moving so fast in web development that's hard to make predictions. That said, I think that web components and state management tools are here to stay.
 
 ## What advice would you give to programmers getting into web development?
 
-Study the basics. React and Angular are probably going to die, but JavaScript and CSS won't.
+Study the basics. React, and Angular are probably going to die, but JavaScript and CSS won't.
 
 ## Who should I interview next?
 
-[Jason Miller](https://twitter.com/_developit)
+[Jason Miller](https://twitter.com/_developit).
 
 ## Any last remarks?
 
@@ -130,8 +130,6 @@ Try to be kind to open source maintainers. Most of them are not getting paid to 
 
 ## Conclusion
 
-TODO: I'll fill this up, thank, and link. Feel free to add resources here.
+Thanks for the interview Matheus! Redux Zero is one of the lightest state management solutions I've seen so far.
 
-Thanks for the interview Matheus!
-
-https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee
+[Check out Redux Zero in GitHub](https://github.com/concretesolutions/redux-zero) or [learn more in an introduction to Redux Zero](https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee).
