@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.4d1d4d9981a7c6e83c86.css" rel="stylesheet">
+      <link href="/site.6a2c7ea311ef12d25aaf.css" rel="stylesheet">
     
 
     <link
@@ -36,7 +36,8 @@
 <p>Code formatting tools solve the first problem. They also <a href="https://medium.freecodecamp.org/why-robots-should-format-our-code-159fd06d17f7">solve another problem</a> — arguments on the right code style in a team.</p>
 <p>Linters can help with the second problem, although they won’t solve it entirely. This like <code>var</code> v. <code>const</code> / <code>let</code> can be detected by ESLint, but higher level patterns can’t.</p>
 <p>Problems like naming consistency are hard, or even impossible, to detect automatically. For example, you could have <code>FooLoader</code> and <code>BarThatLoadsFoo</code> that both do the same thing but in different ways. To detect such issues you’ll have to review all new code manually.</p>
-<p>A common misconception is that if you use a code formatter like Prettier you don’t need a linter anymore. There’s some overlap between two tools, for example, ESLint can change code formatting a bit, but you can’t achieve 100% code consistency with ESLint, like you can with Prettier. Most of the time you’ll benefit from using both tools at the same time: use ESLint to catch possible errors and achieve consistent language usage and Prettier to format code.</p>
+<p>A common misconception is that if you use a code formatter like Prettier then you don’t need a linter anymore. There’s some overlap between two tools. ESLint can fix indentation, semicolons or quote type in JavaScript, but Prettier can achieve 100% code consistency, because it removes the original formatting and reprints all the code using its own formatting rules.</p>
+<p>Most of the time you’ll benefit from using both tools at the same time: use ESLint to catch possible errors and achieve consistent language usage and Prettier to format the code.</p>
 <h2 class="header"><a class="header-anchor" href="#configuring-ides-and-editors-with-editorconfig" id="configuring-ides-and-editors-with-editorconfig"></a><span class="text">Configuring IDEs and Editors with EditorConfig</span><a class="header-anchor-select" href="#configuring-ides-and-editors-with-editorconfig">#</a></h2>
 <p><a href="http://editorconfig.org/">EditorConfig</a> allows you to define indentation style and other whitespace settings for any file type. This way your editor can automatically choose the correct settings. This is handy when developers use platforms with different line endings, e.g., Mac and Windows.</p>
 <p>Here is a typical config (<em>.editorconfig</em>) with separate rules for Markdown, JSON and YAML files:</p>
@@ -55,7 +56,7 @@
 <span class="token constant" >indent_size</span> <span class="token attr-value" ><span class="token punctuation" >=</span> 2</span>
 </code></pre>
 <p>EditorConfig is supported by popular IDEs and editors through <a href="http://editorconfig.org/#download">plugins</a>.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s possible to force line endings through <em>.gitattributes</em> by setting <code>* text=auto</code> and <code>bin/* eol=lf</code> but EditorConfig has more options.</blockquote><h2 class="header"><a class="header-anchor" href="#formatting-code-with-prettier" id="formatting-code-with-prettier"></a><span class="text">Formatting Code with Prettier</span><a class="header-anchor-select" href="#formatting-code-with-prettier">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s possible to force line endings through <em>.gitattributes</em> by setting <code>* text=auto</code> and <code>bin/* eol=lf</code> but EditorConfig has more options.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig">Use Mrm</a> to add EditorConfig to your project with a single command.</blockquote><h2 class="header"><a class="header-anchor" href="#formatting-code-with-prettier" id="formatting-code-with-prettier"></a><span class="text">Formatting Code with Prettier</span><a class="header-anchor-select" href="#formatting-code-with-prettier">#</a></h2>
 <p><a href="https://prettier.io/">Prettier</a> is an opinionated code formatter that supports JavaScript, TypeScript, CSS, GraphQL, JSON and Markdown. It has few settings and most of the code style rules are built in. Prettier removes any existing formatting from your code and prints its own version which makes code absolutely consistent.</p>
 <p>Prettier is smarter than other tools. For example, you can restrict line length while tools like ESLint can only yell at you if a line is too long and you would have to reformat the code yourself. If any line exceeds the limit, Prettier reformats the whole code block:</p>
 <!-- prettier-ignore -->
@@ -106,7 +107,7 @@
 <p>And finally run:</p>
 <pre><code class="lang-bash">npm run <span class="token function" >format</span>
 </code></pre>
-<blockquote class="warning"><i class="icon-attention"></i>Commit your code before running Prettier for the first time — it will reformat all your codebase.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Prettier will ignore <code>node_modules</code> by default, use <em>.prettierignore</em> file to ignore other files.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-prettier-as-eslint-plugin" id="setting-up-prettier-as-eslint-plugin"></a><span class="text">Setting Up Prettier as ESLint Plugin</span><a class="header-anchor-select" href="#setting-up-prettier-as-eslint-plugin">#</a></h3>
+<blockquote class="warning"><i class="icon-attention"></i>Commit your code before running Prettier for the first time — it will reformat all your codebase.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Prettier will ignore <code>node_modules</code> by default, use <em>.prettierignore</em> file to ignore other files.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-prettier">Use Mrm</a> to add Prettier to your project with a single command.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-prettier-as-eslint-plugin" id="setting-up-prettier-as-eslint-plugin"></a><span class="text">Setting Up Prettier as ESLint Plugin</span><a class="header-anchor-select" href="#setting-up-prettier-as-eslint-plugin">#</a></h3>
 <p>You can also run Prettier as a <a href="https://github.com/prettier/eslint-plugin-prettier">ESLint plugin</a>. This way Prettier formats all files that go through ESLint and you will not need to setup another script.</p>
 <p>Let’s install Prettier and <code>eslint-plugin-prettier</code>, assuming you already have ESLint configured as described in the <a href="/maintenance/code-quality/linting/">Linting</a> chapter:</p>
 <pre><code class="lang-bash">npm <span class="token function" >install</span> prettier eslint-plugin-prettier --save-dev

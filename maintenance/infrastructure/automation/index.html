@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.4d1d4d9981a7c6e83c86.css" rel="stylesheet">
+      <link href="/site.6a2c7ea311ef12d25aaf.css" rel="stylesheet">
     
 
     <link
@@ -127,7 +127,7 @@ scope: <span class="token punctuation" >{</span>
       <span class="token string" >"prettier --write"</span><span class="token punctuation" >,</span>
       <span class="token string" >"git add"</span>
     <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    "*.scss"<span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"stylefmt"</span><span class="token punctuation" >,</span> <span class="token string" >"stylelint --syntax scss"</span><span class="token punctuation" >,</span> <span class="token string" >"git add"</span><span class="token punctuation" >]</span>
+    "*.scss"<span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"stylelint --fix"</span><span class="token punctuation" >,</span> <span class="token string" >"prettier --write"</span><span class="token punctuation" >,</span> <span class="token string" >"git add"</span><span class="token punctuation" >]</span>
   <span class="token punctuation" >}</span>
 <span class="token punctuation" >}</span>
 </code></pre>
@@ -136,16 +136,16 @@ scope: <span class="token punctuation" >{</span>
 <ol>
 <li>Run ESLint with autofixing on files you are committing.</li>
 <li>Run Jest tests related to files you are committing.</li>
-<li>Format files you are committing with Prettier. (See the <a href="/maintenance/code-quality/code-formatting/">Code Formatting</a> chapter for more details.)</li>
+<li>Format files you are committing with Prettier.</li>
 <li>Add changes caused by autofixing and reformatting to your commit.</li>
 </ol>
 <p><strong>Every time you commit an <em>.scss</em> file:</strong></p>
 <ol>
-<li>Format files you are committing with stylefmt.</li>
-<li>Run stylelint on files you are committing.</li>
+<li>Run stylelint with autofixing on files you are committing.</li>
+<li>Format files you are committing with Prettier.</li>
 <li>Add changes caused by reformatting to your commit.</li>
 </ol>
-<h2 class="header"><a class="header-anchor" href="#automating-releases" id="automating-releases"></a><span class="text">Automating Releases</span><a class="header-anchor-select" href="#automating-releases">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Read more about Prettier in the <a href="/maintenance/code-quality/code-formatting/">Code Formatting</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#automating-releases" id="automating-releases"></a><span class="text">Automating Releases</span><a class="header-anchor-select" href="#automating-releases">#</a></h2>
 <p>To make it easier to manage SemVer, <a href="https://www.npmjs.com/package/next-ver">next-ver</a> can compute the next version you should use and update it for you. <a href="https://www.npmjs.com/package/commitizen">commitizen</a> goes further and allows change log generation and automated releases. <a href="https://www.npmjs.com/package/semantic-release">semantic-release</a> allows you to automatically make new npm releases and publish release notes to GitHub.</p>
 <p>All these tools rely on commit message convention.</p>
 <h2 class="header"><a class="header-anchor" href="#gh-lint" id="gh-lint"></a><span class="text">gh-lint</span><a class="header-anchor-select" href="#gh-lint">#</a></h2>
@@ -228,6 +228,30 @@ jsTestChanges<span class="token punctuation" >.</span><span class="token functio
 <li><a href="https://www.npmjs.com/package/danger-plugin-no-test-shortcuts">no-test-shortcuts</a> — check for test shortcuts;</li>
 <li><a href="https://www.npmjs.com/package/danger-plugin-spellcheck">spellcheck</a> — spell checks created or modified Markdown files.</li>
 </ul>
+<h2 class="header"><a class="header-anchor" href="#configuration-automation" id="configuration-automation"></a><span class="text">Configuration automation</span><a class="header-anchor-select" href="#configuration-automation">#</a></h2>
+<p>Most of the tools described in this book require some configuration. But maintaining this configuration is far from easy, especially if you want up-to-date configs in all your projects.</p>
+<p><a href="https://github.com/sapegin/mrm">Mrm</a> tries to solve this problem. It works like <a href="https://www.sitepoint.com/getting-started-with-codemods/">codemods</a>: it doesn’t use templates that would overwrite everything, you’re describing in code how to <em>modify</em> or create files to achieve the desired state.</p>
+<p>Mrm has <a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-preset-default">many tasks</a> out of the box: CodeCov, EditorConfig, ESLint, .gitignore, Jest, lint-staged, Prettier, semantic-release, React Styleguidist, stylelint, Travis CI, TypeScript, package.json, contributing guidelines, license and readme file. You can create your own task or combine multiple tasks using aliases.</p>
+<p>Mrm tries to do minimal changes by inferring indentation style or read it from the EditorConfig and keeping comments in JSON files. It has minimal required configuration by inferring values from the project itself or from the environment, like reading your name and email from your Git or npm configs.</p>
+<p>Mrm has utilities to work with the most popular config file formats: JSON, YAML, INI and new line separated text files; install and uninstall npm modules; and file operations.</p>
+<p>Let’s install Mrm:</p>
+<pre><code class="lang-bash">npm <span class="token function" >install</span> -g mrm
+</code></pre>
+<p>And run like this:</p>
+<pre><code class="lang-bash">mrm gitignore
+mrm license --config:licenseFile README
+</code></pre>
+<p>Optionally, create a config file at <code>~/.mrm/config.json</code> or <code>~/dotfiles/mrm/config.json</code> instead of passing values via command line:</p>
+<pre><code class="lang-json5">{
+  &quot;github&quot;: &quot;sapegin&quot;,
+  &quot;eslintPreset&quot;: &quot;airbnb&quot;,
+  &quot;aliases&quot;: {
+    // Aliases to run multiple tasks at once
+    &quot;node&quot;: [&quot;license&quot;, &quot;readme&quot;, &quot;editorconfig&quot;, &quot;gitignore&quot;]
+  }
+}
+</code></pre>
+<p>See more usage examples and options <a href="https://github.com/sapegin/mrm#usage">in the docs</a>.</p>
 <h2 class="header"><a class="header-anchor" href="#bots" id="bots"></a><span class="text">Bots</span><a class="header-anchor-select" href="#bots">#</a></h2>
 <p>TODO</p>
 <ul>
