@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -39,12 +39,12 @@
 <p>It&#39;s preferable to use particularly <code>hash</code> and <code>chunkhash</code> only for production purposes as hashing doesn&#39;t do much good during development.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s possible to slice <code>hash</code> and <code>chunkhash</code> using specific syntax: <code>[chunkhash:8]</code>. Instead of a hash like <code>8c4cbfdb91ff93f3f3c5</code> this would yield <code>8c4cbfdb</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>There are more options available, and you can even modify the hashing and digest type as discussed at <a href="https://www.npmjs.com/package/loader-utils#interpolatename">loader-utils</a> documentation.</blockquote><h3 class="header"><a class="header-anchor" href="#example-placeholders" id="example-placeholders"></a><span class="text">Example Placeholders</span><a class="header-anchor-select" href="#example-placeholders">#</a></h3>
 <p>Assuming you have the following configuration:</p>
-<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
-    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash].js"</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token punctuation">{</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>build<span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">"[name].[chunkhash].js"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>Webpack would generate filenames like these:</p>
 <pre><code class="lang-bash">app.d587bbd6e38337f5accd.js
@@ -55,88 +55,88 @@ vendor.dc746a5db4ed650296e1.js
 <h2 class="header"><a class="header-anchor" href="#setting-up-hashing" id="setting-up-hashing"></a><span class="text">Setting Up Hashing</span><a class="header-anchor-select" href="#setting-up-hashing">#</a></h2>
 <p>The build needs tweaking to generate proper hashes. Images and fonts should receive <code>hash</code> while chunks should use <code>chunkhash</code> in their names to invalidate them correctly:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >loadFonts</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  parts<span class="token punctuation">.</span><span class="token function">loadFonts</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
 <div class="leanpub-delete">
-      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[ext]"</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation">:</span> <span class="token string">"[name].[ext]"</span><span class="token punctuation">,</span>
 </div>
 <div class="leanpub-insert">
-      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[hash:8].[ext]"</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation">:</span> <span class="token string">"[name].[hash:8].[ext]"</span><span class="token punctuation">,</span>
 </div>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
 <div class="leanpub-insert">
-    output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      chunkFilename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash:8].js"</span><span class="token punctuation" >,</span>
-      filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash:8].js"</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      chunkFilename<span class="token punctuation">:</span> <span class="token string">"[name].[chunkhash:8].js"</span><span class="token punctuation">,</span>
+      filename<span class="token punctuation">:</span> <span class="token string">"[name].[chunkhash:8].js"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >loadImages</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      limit<span class="token punctuation" >:</span> <span class="token number" >15000</span><span class="token punctuation" >,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+  parts<span class="token punctuation">.</span><span class="token function">loadImages</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      limit<span class="token punctuation">:</span> <span class="token number">15000</span><span class="token punctuation">,</span>
 <div class="leanpub-delete">
-      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[ext]"</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation">:</span> <span class="token string">"[name].[ext]"</span><span class="token punctuation">,</span>
 </div>
 <div class="leanpub-insert">
-      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[hash:8].[ext]"</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation">:</span> <span class="token string">"[name].[hash:8].[ext]"</span><span class="token punctuation">,</span>
 </div>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If you used <code>chunkhash</code> for the extracted CSS as well, this would lead to problems as the code points to the CSS through JavaScript bringing it to the same entry. That means if the application code or CSS changed, it would invalidate both. Therefore, instead of <code>chunkhash</code>, you can use <code>contenthash</code> that&#39;s generated based on the extracted content:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>extractCSS <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> include<span class="token punctuation" >,</span> exclude<span class="token punctuation" >,</span> use <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Output extracted CSS to a file</span>
-  <span class="token keyword" >const</span> plugin <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >ExtractTextPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// `allChunks` is needed with CommonsChunkPlugin to extract</span>
-    <span class="token comment" spellcheck="true">// from extracted chunks as well.</span>
-    allChunks<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">extractCSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude<span class="token punctuation">,</span> use <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// Output extracted CSS to a file</span>
+  <span class="token keyword">const</span> plugin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// `allChunks` is needed with CommonsChunkPlugin to extract</span>
+    <span class="token comment">// from extracted chunks as well.</span>
+    allChunks<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 <div class="leanpub-delete">
-    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].css"</span><span class="token punctuation" >,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">"[name].css"</span><span class="token punctuation">,</span>
 </div>
 <div class="leanpub-insert">
-    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[contenthash:8].css"</span><span class="token punctuation" >,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">"[name].[contenthash:8].css"</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>The hashes have been sliced to make the output fit better in the book. In practice, you can skip slicing them.</blockquote><p>If you generate a build now (<code>npm run build</code>), you should see something:</p>
 <pre><code class="lang-bash">Hash: beb8471fa36469ac48c7
 Version: webpack 3.8.1
 Time: 3204ms
                  Asset       Size  Chunks             Chunk Names
-    vendor.ad7a8b28.js    8.42 kB       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-  <span class="token punctuation" >..</span>.font.674f50d2.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.font.af7ae505.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
- <span class="token punctuation" >..</span>.font.fee66e71.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >..</span>.font.912ec66d.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-         0.470796d5.js  222 bytes       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-       app.e0f59512.js  805 bytes       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-  <span class="token punctuation" >..</span>.font.b06871f2.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-      app.bf4d156d.css    2.54 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-     0.470796d5.js.map    2.08 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   app.e0f59512.js.map    2.33 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-  app.bf4d156d.css.map   93 bytes       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-vendor.f897ca59.js.map    38.3 kB       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-            index.html  301 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 217 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
- <span class="token punctuation" >[</span>10<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
- <span class="token punctuation" >[</span>11<span class="token punctuation" >]</span> ./app/component.js 464 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
+    vendor.ad7a8b28.js    8.42 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+  <span class="token punctuation">..</span>.font.674f50d2.eot     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.font.af7ae505.woff2    77.2 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+ <span class="token punctuation">..</span>.font.fee66e71.woff      98 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  <span class="token punctuation">..</span>.font.912ec66d.svg     444 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+         0.470796d5.js  222 bytes       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+       app.e0f59512.js  805 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+  <span class="token punctuation">..</span>.font.b06871f2.ttf     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+      app.bf4d156d.css    2.54 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+     0.470796d5.js.map    2.08 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   app.e0f59512.js.map    2.33 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+  app.bf4d156d.css.map   93 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+vendor.f897ca59.js.map    38.3 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+            index.html  301 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 217 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span>10<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span>11<span class="token punctuation">]</span> ./app/component.js 464 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
 </code></pre>
 <p>The files have neat hashes now. To prove that it works for styling, you could try altering <em>app/main.css</em> and see what happens to the hashes when you rebuild.</p>
 <p>There&#39;s one problem, though. If you change the application code, it invalidates the vendor file as well! Solving this requires extracting a <strong>manifest</strong>, but before that, you can improve the way the production build handles module IDs.</p>
@@ -149,43 +149,43 @@ vendor.f897ca59.js.map    38.3 kB       2  <span class="token punctuation" >[</s
 <p>The process keeps module IDs stable as they aren&#39;t derived based on order. You sacrifice a couple of bytes for a cleaner setup, but the trade-off is well worth it. In this case, you can use <code>NamedModulesPlugin</code> to get a better development experience while fixing the module ID stability issue. Tweak the configuration as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"webpack"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"webpack"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </div>
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token operator">...</span>
 
-<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
 <div class="leanpub-insert">
-    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>NamedModulesPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>NamedModulesPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>As you can see in the build output, the difference is negligible:</p>
 <pre><code class="lang-bash">Hash: 410229e400dbfd95d622
 Version: webpack 3.8.1
 Time: 2935ms
                  Asset       Size  Chunks             Chunk Names
-    vendor.12f5b764.js    8.48 kB       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-  <span class="token punctuation" >..</span>.font.912ec66d.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >..</span>.font.674f50d2.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
- <span class="token punctuation" >..</span>.font.fee66e71.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.font.af7ae505.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-         0.b2a1fec0.js  230 bytes       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-       app.4330d101.js  874 bytes       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-  <span class="token punctuation" >..</span>.font.b06871f2.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-      app.bf4d156d.css    2.54 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-     0.b2a1fec0.js.map    2.08 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   app.4330d101.js.map    2.34 kB       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-  app.bf4d156d.css.map   93 bytes       1  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-vendor.3c78d233.js.map    38.3 kB       2  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  vendor
-            index.html  301 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>./app/main.css<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>./app/index.js<span class="token punctuation" >]</span> ./app/index.js 217 bytes <span class="token punctuation" >{</span>1<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>./app/lazy.css<span class="token punctuation" >]</span> ./app/lazy.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
+    vendor.12f5b764.js    8.48 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+  <span class="token punctuation">..</span>.font.912ec66d.svg     444 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  <span class="token punctuation">..</span>.font.674f50d2.eot     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+ <span class="token punctuation">..</span>.font.fee66e71.woff      98 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.font.af7ae505.woff2    77.2 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+         0.b2a1fec0.js  230 bytes       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+       app.4330d101.js  874 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+  <span class="token punctuation">..</span>.font.b06871f2.ttf     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+      app.bf4d156d.css    2.54 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+     0.b2a1fec0.js.map    2.08 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   app.4330d101.js.map    2.34 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+  app.bf4d156d.css.map   93 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+vendor.3c78d233.js.map    38.3 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+            index.html  301 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>./app/main.css<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>./app/index.js<span class="token punctuation">]</span> ./app/index.js 217 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>./app/lazy.css<span class="token punctuation">]</span> ./app/lazy.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
 </code></pre>
 <p>Note how the output has changed, though. Instead of numbers, you can see file paths.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to hide the path information from the client, use <code>HashedModuleIdsPlugin</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><code>NamedChunksPlugin</code> achieves a similar result for split points. See <a href="https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31">Predictable long term caching with Webpack</a> by Tim Sebastian for further details.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> appendix shows how to set up <code>NamedModulesPlugin</code> as it can be used for debugging HMR.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -31,23 +31,23 @@
 <p>TODO: <a href="https://developers.google.com/web/updates/2017/04/headless-chrome">https://developers.google.com/web/updates/2017/04/headless-chrome</a></p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-travis-ci" id="setting-up-travis-ci"></a><span class="text">Setting up Travis CI</span><a class="header-anchor-select" href="#setting-up-travis-ci">#</a></h2>
 <p>Create a config file, <code>.travis.yml</code>:</p>
-<pre><code class="lang-yaml">language<span class="token punctuation" >:</span> node_js
-<span class="token key atrule" >cache</span><span class="token punctuation" >:</span>
-  <span class="token key atrule" >directories</span><span class="token punctuation" >:</span>
-    <span class="token punctuation" >-</span> node_modules
-<span class="token key atrule" >node_js</span><span class="token punctuation" >:</span>
-  <span class="token punctuation" >-</span> <span class="token number" >4</span>
-  <span class="token punctuation" >-</span> <span class="token number" >6</span>
-  <span class="token punctuation" >-</span> <span class="token number" >8</span>
-  <span class="token punctuation" >-</span> <span class="token number" >9</span>
+<pre><code class="lang-yaml"><span class="token key atrule">language</span><span class="token punctuation">:</span> node_js
+<span class="token key atrule">cache</span><span class="token punctuation">:</span>
+  <span class="token key atrule">directories</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> node_modules
+<span class="token key atrule">node_js</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token number">4</span>
+  <span class="token punctuation">-</span> <span class="token number">6</span>
+  <span class="token punctuation">-</span> <span class="token number">8</span>
+  <span class="token punctuation">-</span> <span class="token number">9</span>
 </code></pre>
 <p>This will run your tests (<code>npm test</code> is the default command for Node) in four versions of Node on Linux.</p>
 <p>Now you need to enable the repository in your Travis CI profile, and the next push to your repository will run the CI build.</p>
 <p>Travis CI has <a href="https://docs.travis-ci.com/user/customizing-the-build/">many other options</a>. For example, to upload code coverage report to Codecov, add a few more lines to your config:</p>
-<pre><code class="lang-yaml">script<span class="token punctuation" >:</span>
-  <span class="token punctuation" >-</span> <span class="token string" >'npm run test:coverage'</span>
-<span class="token key atrule" >after_success</span><span class="token punctuation" >:</span>
-  <span class="token punctuation" >-</span> <span class="token string" >'bash &lt;(curl -s https://codecov.io/bash)'</span>
+<pre><code class="lang-yaml"><span class="token key atrule">script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">'npm run test:coverage'</span>
+<span class="token key atrule">after_success</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">'bash &lt;(curl -s https://codecov.io/bash)'</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Read move about code coverage in the <em>Code Coverage</em> section.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis">Use Mrm</a> to add Travis CI to your project with a single command.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Here a <a href="https://hackernoon.com/continuous-integration-circleci-vs-travis-ci-vs-jenkins-41a1c2bd95f5">short comparison</a> of Travis CI and CircleCI.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Continuous integration will help you to be sure that your project works in all supported environments, and will prevent you from publishing a new version with a regression.</p>

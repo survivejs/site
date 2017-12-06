@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -39,81 +39,81 @@
 <h2 class="header"><a class="header-anchor" href="#composing-configuration-by-merging" id="composing-configuration-by-merging"></a><span class="text">Composing Configuration by Merging</span><a class="header-anchor-select" href="#composing-configuration-by-merging">#</a></h2>
 <p>If the configuration file is broken into separate pieces, they have to be combined together again somehow. Normally this means merging objects and arrays. To eliminate the problem of dealing with <code>Object.assign</code> and <code>Array.concat</code>, <a href="https://www.npmjs.org/package/webpack-merge">webpack-merge</a> was developed.</p>
 <p><em>webpack-merge</em> does two things: it concatenates arrays and merges objects instead of overriding them allowing composition. The example below shows the behavior in detail:</p>
-<pre><code class="lang-bash"><span class="token operator" >></span> merge <span class="token operator" >=</span> require<span class="token punctuation" >(</span><span class="token string" >"webpack-merge"</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >..</span>.
-<span class="token operator" >></span> merge<span class="token punctuation" >(</span>
-<span class="token punctuation" >..</span>. <span class="token punctuation" >{</span> a: <span class="token punctuation" >[</span>1<span class="token punctuation" >]</span>, b: 5, c: 20 <span class="token punctuation" >}</span>,
-<span class="token punctuation" >..</span>. <span class="token punctuation" >{</span> a: <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span>, b: 10, d: 421 <span class="token punctuation" >}</span>
-<span class="token punctuation" >..</span>. <span class="token punctuation" >)</span>
-<span class="token punctuation" >{</span> a: <span class="token punctuation" >[</span> 1, 2 <span class="token punctuation" >]</span>, b: 10, c: 20, d: 421 <span class="token punctuation" >}</span>
+<pre><code class="lang-bash"><span class="token operator">></span> merge <span class="token operator">=</span> require<span class="token punctuation">(</span><span class="token string">"webpack-merge"</span><span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.
+<span class="token operator">></span> merge<span class="token punctuation">(</span>
+<span class="token punctuation">..</span>. <span class="token punctuation">{</span> a: <span class="token punctuation">[</span>1<span class="token punctuation">]</span>, b: 5, c: 20 <span class="token punctuation">}</span>,
+<span class="token punctuation">..</span>. <span class="token punctuation">{</span> a: <span class="token punctuation">[</span>2<span class="token punctuation">]</span>, b: 10, d: 421 <span class="token punctuation">}</span>
+<span class="token punctuation">..</span>. <span class="token punctuation">)</span>
+<span class="token punctuation">{</span> a: <span class="token punctuation">[</span> 1, 2 <span class="token punctuation">]</span>, b: 10, c: 20, d: 421 <span class="token punctuation">}</span>
 </code></pre>
 <p><em>webpack-merge</em> provides even more control through strategies that enable you to control its behavior per field. Strategies allow you to force it to append, prepend, or replace content.</p>
 <p>Even though <em>webpack-merge</em> was designed for this book, it has proven to be an invaluable tool beyond it. You can consider it as a learning tool and pick it up in your work if you find it handy.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/webpack-chain">webpack-chain</a> provides a fluent API for configuring webpack allowing you to avoid configuration shape-related problems while enabling composition.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-webpack-merge-" id="setting-up-webpack-merge-"></a><span class="text">Setting Up <em>webpack-merge</em></span><a class="header-anchor-select" href="#setting-up-webpack-merge-">#</a></h2>
 <p>To get started, add <em>webpack-merge</em> to the project:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> webpack-merge --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> webpack-merge --save-dev
 </code></pre>
 <p>To give a degree of abstraction, you can define <em>webpack.config.js</em> for higher level configuration and <em>webpack.parts.js</em> for configuration parts to consume. Here are the parts with small function-based interfaces extracted from the existing code:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>devServer <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> host<span class="token punctuation" >,</span> port <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  devServer<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    stats<span class="token punctuation" >:</span> <span class="token string" >"errors-only"</span><span class="token punctuation" >,</span>
-    host<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Defaults to `localhost`</span>
-    port<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Defaults to 8080</span>
-    overlay<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      errors<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-      warnings<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">devServer</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> host<span class="token punctuation">,</span> port <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    stats<span class="token punctuation">:</span> <span class="token string">"errors-only"</span><span class="token punctuation">,</span>
+    host<span class="token punctuation">,</span> <span class="token comment">// Defaults to `localhost`</span>
+    port<span class="token punctuation">,</span> <span class="token comment">// Defaults to 8080</span>
+    overlay<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      errors<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      warnings<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The same <code>stats</code> idea works for production configuration as well. See <a href="https://webpack.js.org/configuration/stats/">the official documentation</a> for all the available options.</blockquote><p>To connect this configuration part, set up <em>webpack.config.js</em> as in the code example below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"path"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"html-webpack-plugin"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"webpack-merge"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"html-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> merge <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"webpack-merge"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> parts <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"./webpack.parts"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> parts <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./webpack.parts"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"app"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"build"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> PATHS <span class="token operator">=</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"app"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  build<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"build"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >{</span>
-    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
-      filename<span class="token punctuation" >:</span> <span class="token string" >"[name].js"</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-        title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      app<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>build<span class="token punctuation">,</span>
+      filename<span class="token punctuation">:</span> <span class="token string">"[name].js"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >devServer</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Customize host/port here if needed</span>
-    host<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>HOST<span class="token punctuation" >,</span>
-    port<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>PORT<span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> developmentConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  parts<span class="token punctuation">.</span><span class="token function">devServer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// Customize host/port here if needed</span>
+    host<span class="token punctuation">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>HOST<span class="token punctuation">,</span>
+    port<span class="token punctuation">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>PORT<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> env <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>env <span class="token operator" >===</span> <span class="token string" >"production"</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >return</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>commonConfig<span class="token punctuation" >,</span> productionConfig<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> env <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"production"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> productionConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  <span class="token keyword" >return</span> <span class="token function" >merge</span><span class="token punctuation" >(</span>commonConfig<span class="token punctuation" >,</span> developmentConfig<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> developmentConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>After this change, the build should behave the same way as before. This time, however, you have room to expand, and you don&#39;t have to worry about how to combine different parts of the configuration.</p>
 <p>You can add more targets by expanding the <em>package.json</em> definition and branching at <em>webpack.config.js</em> based on the need. <em>webpack.parts.js</em> grows to contain specific techniques you can then use to compose the configuration.</p>
@@ -127,7 +127,7 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>In the book project, you push all of the configuration into two files: <em>webpack.config.js</em> and <em>webpack.parts.js</em>. The former contains higher level configuration while the latter lower level and isolates you from webpack specifics. The chosen approach allows more layouts, and you can evolve it further.</p>
 <h3 class="header"><a class="header-anchor" href="#split-per-configuration-target" id="split-per-configuration-target"></a><span class="text">Split per Configuration Target</span><a class="header-anchor-select" href="#split-per-configuration-target">#</a></h3>
 <p>If you split the configuration per target, you could end up with a file structure as below:</p>
-<pre><code class="lang-bash"><span class="token keyword" >.</span>
+<pre><code class="lang-bash"><span class="token keyword">.</span>
 └── config
     ├── webpack.common.js
     ├── webpack.development.js
@@ -137,14 +137,14 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>In this case, you would point to the targets through webpack <code>--config</code> parameter and <code>merge</code> common configuration through <code>module.exports = merge(common, config);</code>.</p>
 <h3 class="header"><a class="header-anchor" href="#split-parts-per-purpose" id="split-parts-per-purpose"></a><span class="text">Split Parts per Purpose</span><a class="header-anchor-select" href="#split-parts-per-purpose">#</a></h3>
 <p>To add hierarchy to the way configuration parts are managed, you could decompose <em>webpack.parts.js</em> per category:</p>
-<pre><code class="lang-bash"><span class="token keyword" >.</span>
+<pre><code class="lang-bash"><span class="token keyword">.</span>
 └── config
     ├── parts
     │   ├── devserver.js
-    <span class="token punctuation" >..</span>.
+    <span class="token punctuation">..</span>.
     │   ├── index.js
     │   └── javascript.js
-    └── <span class="token punctuation" >..</span>.
+    └── <span class="token punctuation">..</span>.
 </code></pre>
 <p>This arrangement would make it faster to find configuration related to a category. A good option would be to arrange the parts within a single file and use comments to split it up.</p>
 <h3 class="header"><a class="header-anchor" href="#pushing-parts-to-packages" id="pushing-parts-to-packages"></a><span class="text">Pushing Parts to Packages</span><a class="header-anchor-select" href="#pushing-parts-to-packages">#</a></h3>

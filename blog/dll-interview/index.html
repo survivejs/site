@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -40,28 +40,28 @@
 <p><em>d-l-l</em> adds some helpful utilities for finding and adding dependencies and files that do not often change.</p>
 <p><img src="/478e8b8cdb937e6ffe9cfa542e31c42d.jpg" alt="Webpack dinosaurs" class="" width="" height="" /></p>
 <h2 class="header"><a class="header-anchor" href="#what-s-a-minimal-example-using-d-l-l-" id="what-s-a-minimal-example-using-d-l-l-"></a><span class="text">What&#39;s a minimal example using <em>d-l-l</em>?</span><a class="header-anchor-select" href="#what-s-a-minimal-example-using-d-l-l-">#</a></h2>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> dll <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'d-l-l'</span><span class="token punctuation" >)</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> dll <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'d-l-l'</span><span class="token punctuation">)</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> dll
-  <span class="token punctuation" >.</span><span class="token function" >init</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> dll
+  <span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Directory to resolve paths from</span>
-  <span class="token punctuation" >.</span><span class="token function" >dir</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >)</span>
+  <span class="token comment">// Directory to resolve paths from</span>
+  <span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Pass in webpack config</span>
-  <span class="token punctuation" >.</span><span class="token function" >config</span><span class="token punctuation" >(</span>config<span class="token punctuation" >)</span>
+  <span class="token comment">// Pass in webpack config</span>
+  <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Filter to only use non-dev dependencies</span>
-  <span class="token punctuation" >.</span><span class="token function" >pkgDeps</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>deps<span class="token punctuation" >,</span> dev<span class="token punctuation" >,</span> all<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> deps<span class="token punctuation" >)</span>
+  <span class="token comment">// Filter to only use non-dev dependencies</span>
+  <span class="token punctuation">.</span><span class="token function">pkgDeps</span><span class="token punctuation">(</span><span class="token punctuation">(</span>deps<span class="token punctuation">,</span> dev<span class="token punctuation">,</span> all<span class="token punctuation">)</span> <span class="token operator">=></span> deps<span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Find all src files</span>
-  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>'src<span class="token comment" spellcheck="true">/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span><span class="token operator" >+</span><span class="token punctuation" >(</span>js<span class="token operator" >|</span>jsx<span class="token punctuation" >)</span>'<span class="token punctuation" >)</span>
+  <span class="token comment">// Find all src files</span>
+  <span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'src/**/*.+(js|jsx)'</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Filter to files last modified at least a day ago</span>
-  <span class="token punctuation" >.</span><span class="token function" >lastModifiedFilter</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>days<span class="token punctuation" >:</span> <span class="token number" >1</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Filter to files last modified at least a day ago</span>
+  <span class="token punctuation">.</span><span class="token function">lastModifiedFilter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>days<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Return an array of webpack configurations</span>
-  <span class="token punctuation" >.</span><span class="token function" >toConfig</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Return an array of webpack configurations</span>
+  <span class="token punctuation">.</span><span class="token function">toConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-d-l-l-work-" id="how-does-d-l-l-work-"></a><span class="text">How does <em>d-l-l</em> work?</span><a class="header-anchor-select" href="#how-does-d-l-l-work-">#</a></h2>
 <p><img src="/d148142889188dfb43fec3401e51ada6.jpg" alt="What if I told you that you could make a webpack build go from 1 minute to 1 second?" class="" width="" height="" /></p>
@@ -81,39 +81,39 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 </ul>
 <h2 class="header"><a class="header-anchor" href="#advanced-example" id="advanced-example"></a><span class="text">Advanced Example</span><a class="header-anchor-select" href="#advanced-example">#</a></h2>
 <p>Now that we&#39;ve covered a bit of background, an advanced use case should be more understandable:</p>
-<pre><code class="lang-js"><span class="token keyword" >const</span> dll <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'d-l-l'</span><span class="token punctuation" >)</span>
+<pre><code class="lang-js"><span class="token keyword">const</span> dll <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'d-l-l'</span><span class="token punctuation">)</span>
 
-<span class="token keyword" >const</span> configs <span class="token operator" >=</span> dll
-  <span class="token punctuation" >.</span><span class="token function" >init</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
-  <span class="token comment" spellcheck="true">// Verbose debugging</span>
-  <span class="token punctuation" >.</span><span class="token function" >debug</span><span class="token punctuation" >(</span><span class="token boolean" >true</span><span class="token punctuation" >)</span>
+<span class="token keyword">const</span> configs <span class="token operator">=</span> dll
+  <span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// Verbose debugging</span>
+  <span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Force building of DLL</span>
-  <span class="token punctuation" >.</span><span class="token function" >shouldBeUsed</span><span class="token punctuation" >(</span><span class="token boolean" >true</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Force building of DLL</span>
+  <span class="token punctuation">.</span><span class="token function">shouldBeUsed</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Return original config, makes it easy to swap side-effect free</span>
-  <span class="token punctuation" >.</span><span class="token function" >og</span><span class="token punctuation" >(</span><span class="token boolean" >true</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Return original config, makes it easy to swap side-effect free</span>
+  <span class="token punctuation">.</span><span class="token function">og</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Same as in the simple example above</span>
-  <span class="token punctuation" >.</span><span class="token function" >dir</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >)</span>
-  <span class="token punctuation" >.</span><span class="token function" >config</span><span class="token punctuation" >(</span>config<span class="token punctuation" >)</span>
+  <span class="token comment">// Same as in the simple example above</span>
+  <span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Provide resolved dependency paths manually</span>
-  <span class="token punctuation" >.</span><span class="token function" >deps</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span><span class="token string" >'lodash'</span><span class="token punctuation" >,</span> <span class="token string" >'inferno'</span><span class="token punctuation" >]</span><span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>dep <span class="token operator" >=</span><span class="token operator" >></span> require<span class="token punctuation" >.</span><span class="token function" >resolve</span><span class="token punctuation" >(</span>dep<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Provide resolved dependency paths manually</span>
+  <span class="token punctuation">.</span><span class="token function">deps</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'lodash'</span><span class="token punctuation">,</span> <span class="token string">'inferno'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>dep <span class="token operator">=></span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>dep<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Filter dependencies in package.json</span>
-  <span class="token punctuation" >.</span><span class="token function" >pkgDeps</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>deps<span class="token punctuation" >,</span> devDeps<span class="token punctuation" >,</span> allDeps<span class="token punctuation" >)</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Ignore dependencies that have `dev` in them.</span>
-    <span class="token comment" spellcheck="true">// Development tools are one example.</span>
-    <span class="token keyword" >return</span> deps<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>dep <span class="token operator" >=</span><span class="token operator" >></span> <span class="token operator" >!</span><span class="token regex" >/dev/</span><span class="token punctuation" >.</span><span class="token function" >test</span><span class="token punctuation" >(</span>dep<span class="token punctuation" >)</span><span class="token punctuation" >)</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Filter dependencies in package.json</span>
+  <span class="token punctuation">.</span><span class="token function">pkgDeps</span><span class="token punctuation">(</span><span class="token punctuation">(</span>deps<span class="token punctuation">,</span> devDeps<span class="token punctuation">,</span> allDeps<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Ignore dependencies that have `dev` in them.</span>
+    <span class="token comment">// Development tools are one example.</span>
+    <span class="token keyword">return</span> deps<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>dep <span class="token operator">=></span> <span class="token operator">!</span><span class="token regex">/dev/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>dep<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Find files matching a glob</span>
-  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>'src<span class="token comment" spellcheck="true">/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span><span class="token operator" >+</span><span class="token punctuation" >(</span>js<span class="token operator" >|</span>jsx<span class="token punctuation" >)</span>'<span class="token punctuation" >)</span>
-  <span class="token punctuation" >.</span><span class="token function" >lastModifiedFilter</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>days<span class="token punctuation" >:</span> <span class="token number" >1</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Find files matching a glob</span>
+  <span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'src/**/*.+(js|jsx)'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">lastModifiedFilter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>days<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-  <span class="token comment" spellcheck="true">// Return an array of webpack configurations</span>
-  <span class="token punctuation" >.</span><span class="token function" >toConfig</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+  <span class="token comment">// Return an array of webpack configurations</span>
+  <span class="token punctuation">.</span><span class="token function">toConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-d-l-l-differ-from-other-solutions-" id="how-does-d-l-l-differ-from-other-solutions-"></a><span class="text">How does <em>d-l-l</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-d-l-l-differ-from-other-solutions-">#</a></h2>
 <p>There are no other solutions. The only other option is do everything <em>d-l-l</em> does yourself manually. Doing this means maintaining the additional DLL configuration and referencing it in your code. The point of <em>d-l-l</em> is to avoid this complexity.</p>

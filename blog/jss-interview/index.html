@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -50,52 +50,52 @@
 </ol>
 <h3 class="header"><a class="header-anchor" href="#examples" id="examples"></a><span class="text">Examples</span><a class="header-anchor-select" href="#examples">#</a></h3>
 <p><strong>Example using the low level <a href="https://github.com/cssinjs/jss">core library</a></strong></p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> jss <span class="token keyword" >from</span> <span class="token string" >'jss'</span>
-<span class="token keyword" >import</span> preset <span class="token keyword" >from</span> <span class="token string" >'jss-preset-default'</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> jss <span class="token keyword">from</span> <span class="token string">'jss'</span>
+<span class="token keyword">import</span> preset <span class="token keyword">from</span> <span class="token string">'jss-preset-default'</span>
 
-<span class="token comment" spellcheck="true">// One-time setup.</span>
-jss<span class="token punctuation" >.</span><span class="token function" >setup</span><span class="token punctuation" >(</span><span class="token function" >preset</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
+<span class="token comment">// One-time setup.</span>
+jss<span class="token punctuation">.</span><span class="token function">setup</span><span class="token punctuation">(</span><span class="token function">preset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token keyword" >const</span> styles <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  button<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    color<span class="token punctuation" >:</span> <span class="token string" >'red'</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token punctuation">{</span>
+  button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    color<span class="token punctuation">:</span> <span class="token string">'red'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// Compile and render the styles.</span>
-<span class="token keyword" >const</span> <span class="token punctuation" >{</span> classes <span class="token punctuation" >}</span> <span class="token operator" >=</span> jss<span class="token punctuation" >.</span><span class="token function" >createStyleSheet</span><span class="token punctuation" >(</span>styles<span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >attach</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+<span class="token comment">// Compile and render the styles.</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> classes <span class="token punctuation">}</span> <span class="token operator">=</span> jss<span class="token punctuation">.</span><span class="token function">createStyleSheet</span><span class="token punctuation">(</span>styles<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attach</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> `
-  <span class="token operator" >&lt;</span>button <span class="token keyword" >class</span><span class="token operator" >=</span><span class="token string" >"${classes.button}"</span><span class="token operator" >></span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token string">`
+  &lt;button class="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>classes<span class="token punctuation">.</span>button<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">">
     My Button
-  <span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-`
+  &lt;/button>
+`</span></span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.webpackbin.com/bins/-KlrNqkpZZmKIz0eYwIk">Play with it on webpackbin</a>.</blockquote><p><strong>Example using <a href="http://cssinjs.org/react-jss">React-JSS</a></strong></p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> injectSheet <span class="token keyword" >from</span> <span class="token string" >'react-jss'</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> injectSheet <span class="token keyword">from</span> <span class="token string">'react-jss'</span>
 
-<span class="token keyword" >const</span> styles <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  button<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    color<span class="token punctuation" >:</span> <span class="token string" >'red'</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token punctuation">{</span>
+  button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    color<span class="token punctuation">:</span> <span class="token string">'red'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >const</span> Button <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> classes <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token punctuation" >{</span>classes<span class="token punctuation" >.</span>button<span class="token punctuation" >}</span><span class="token operator" >></span>
+<span class="token keyword">const</span> <span class="token function-variable function">Button</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> classes <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token punctuation">{</span>classes<span class="token punctuation">.</span>button<span class="token punctuation">}</span><span class="token operator">></span>
     My Button
-  <span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-<span class="token punctuation" >)</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Function injectSheet generates a HOC, which uses JSS and passes `classes` to the `Button`.</span>
-<span class="token keyword" >const</span> StyledButton <span class="token operator" >=</span> <span class="token function" >injectSheet</span><span class="token punctuation" >(</span>styles<span class="token punctuation" >)</span><span class="token punctuation" >(</span>Button<span class="token punctuation" >)</span>
+<span class="token comment">// Function injectSheet generates a HOC, which uses JSS and passes `classes` to the `Button`.</span>
+<span class="token keyword">const</span> StyledButton <span class="token operator">=</span> <span class="token function">injectSheet</span><span class="token punctuation">(</span>styles<span class="token punctuation">)</span><span class="token punctuation">(</span>Button<span class="token punctuation">)</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.webpackbin.com/bins/-Kn90iijPuAJO48ItgF-">Play with it on webpackbin</a>.</blockquote><p><strong>Example using <a href="http://cssinjs.org/styled-jss">Styled-JSS</a></strong></p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> styled <span class="token keyword" >from</span> <span class="token string" >'styled-jss'</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> styled <span class="token keyword">from</span> <span class="token string">'styled-jss'</span>
 
-<span class="token comment" spellcheck="true">// Produces a button which has the styles already applied.</span>
-<span class="token keyword" >const</span> MyButton <span class="token operator" >=</span> <span class="token function" >styled</span><span class="token punctuation" >(</span><span class="token string" >'button'</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  color<span class="token punctuation" >:</span> <span class="token string" >'red'</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+<span class="token comment">// Produces a button which has the styles already applied.</span>
+<span class="token keyword">const</span> MyButton <span class="token operator">=</span> <span class="token function">styled</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> <span class="token string">'red'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.webpackbin.com/bins/-KlrbQuwAZSK5eSzpCSy">Play with it on webpackbin</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-jss-differ-from-other-solutions-" id="how-does-jss-differ-from-other-solutions-"></a><span class="text">How does JSS differ from other solutions?</span><a class="header-anchor-select" href="#how-does-jss-differ-from-other-solutions-">#</a></h2>
 <p>There are too many differences to name them all. To name a few:</p>

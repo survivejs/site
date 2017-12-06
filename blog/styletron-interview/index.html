@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -42,77 +42,77 @@ I&#39;m a software engineer living in San Francisco currently working at Uber on
 <p>This includes React where UI logic, markup, and styling are colocated in JavaScript and partitioned by component rather than separated into HMTL, CSS, and JS. Among other things, Styletron makes it easier to treat your views (styling included) as a pure function of state and not worry about side effects or global namespace collisions in CSS.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-styletron-work-" id="how-does-styletron-work-"></a><span class="text">How does <em>Styletron</em> work?</span><a class="header-anchor-select" href="#how-does-styletron-work-">#</a></h2>
 <p>Styletron produces CSS from styles defined in JavaScript. Many different APIs can be built on top of Styletron, but typically, styles are defined somewhere in the render function of a component in the form of object literals, which Styletron turns into corresponding class names.</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> Styletron <span class="token keyword" >from</span> <span class="token string" >'styletron'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> injectStyle <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'styletron-utils'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> Styletron <span class="token keyword">from</span> <span class="token string">'styletron'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> injectStyle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'styletron-utils'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Create a Styletron instance</span>
-<span class="token keyword" >const</span> styletron <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Styletron</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Create a Styletron instance</span>
+<span class="token keyword">const</span> styletron <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Styletron</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> className <span class="token operator" >=</span> <span class="token function" >injectStyle</span><span class="token punctuation" >(</span>styletron<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-  color<span class="token punctuation" >:</span> <span class="token string" >'red'</span><span class="token punctuation" >,</span>
-  display<span class="token punctuation" >:</span> <span class="token string" >'inline-block'</span><span class="token punctuation" >,</span>
-  fontSize<span class="token punctuation" >:</span> <span class="token string" >'1.6em'</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token comment" spellcheck="true">// Corresponding css is injected into the page</span>
-<span class="token comment" spellcheck="true">// and a class name is returned</span>
+<span class="token keyword">const</span> className <span class="token operator">=</span> <span class="token function">injectStyle</span><span class="token punctuation">(</span>styletron<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+  display<span class="token punctuation">:</span> <span class="token string">'inline-block'</span><span class="token punctuation">,</span>
+  fontSize<span class="token punctuation">:</span> <span class="token string">'1.6em'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Corresponding css is injected into the page</span>
+<span class="token comment">// and a class name is returned</span>
 </code></pre>
 <p>During a page render on the server, Styletron accumulates the injected styles into a cache which is then serialized into a string of HTML which can inlined into <code>&lt;head&gt;</code> of the server-rendered markup. Since the styles came from the rendered components, the output has no non-critical or unused CSS!</p>
 <p>In the browser, Styletron will hydrate its cache from the server-rendered styles (to avoid re-rendering these on the initial client render) and any additional styles rendered on the client will be injected into the page.</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> Styletron <span class="token keyword" >from</span> <span class="token string" >'styletron'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> injectStyle <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'styletron-utils'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> Styletron <span class="token keyword">from</span> <span class="token string">'styletron'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> injectStyle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'styletron-utils'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// On the server:</span>
-<span class="token keyword" >function</span> <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Create a Styletron instance</span>
-  <span class="token keyword" >const</span> styletron <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Styletron</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// On the server:</span>
+<span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Create a Styletron instance</span>
+  <span class="token keyword">const</span> styletron <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Styletron</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token comment" spellcheck="true">// Render the app, which results in several `injectStyle` calls</span>
-  <span class="token keyword" >const</span> appHtml <span class="token operator" >=</span> <span class="token function" >renderApp</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token keyword" >const</span> stylesheets <span class="token operator" >=</span> styletron<span class="token punctuation" >.</span><span class="token function" >getStylesheetsHtml</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token comment">// Render the app, which results in several `injectStyle` calls</span>
+  <span class="token keyword">const</span> appHtml <span class="token operator">=</span> <span class="token function">renderApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> stylesheets <span class="token operator">=</span> styletron<span class="token punctuation">.</span><span class="token function">getStylesheetsHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> <span class="token template-string" ><span class="token string" >`
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`
     &lt;html>
-      &lt;head></span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>stylesheets<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >&lt;/head>
-      &lt;body></span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>appHtml<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >&lt;/body>
+      &lt;head></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>stylesheets<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/head>
+      &lt;body></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>appHtml<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/body>
     &lt;/html>
-  `</span></span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  `</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// On the client:</span>
-<span class="token keyword" >const</span> serverRenderedStyles <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >getElementsByClassName</span><span class="token punctuation" >(</span>
-  <span class="token string" >'_styletron_hydrate_'</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// On the client:</span>
+<span class="token keyword">const</span> serverRenderedStyles <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span>
+  <span class="token string">'_styletron_hydrate_'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Create Styletron instance on the client,</span>
-<span class="token comment" spellcheck="true">// hydrating from server-rendered styles</span>
-<span class="token keyword" >const</span> styletron <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Styletron</span><span class="token punctuation" >(</span>serverRenderedStyles<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Create Styletron instance on the client,</span>
+<span class="token comment">// hydrating from server-rendered styles</span>
+<span class="token keyword">const</span> styletron <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Styletron</span><span class="token punctuation">(</span>serverRenderedStyles<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Inject new styles into the page</span>
-<span class="token keyword" >const</span> newClassName <span class="token operator" >=</span> <span class="token function" >injectStyle</span><span class="token punctuation" >(</span>styletron<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-  color<span class="token punctuation" >:</span> <span class="token string" >'blue'</span><span class="token punctuation" >,</span>
-  fontSize<span class="token punctuation" >:</span> <span class="token string" >'24px'</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Inject new styles into the page</span>
+<span class="token keyword">const</span> newClassName <span class="token operator">=</span> <span class="token function">injectStyle</span><span class="token punctuation">(</span>styletron<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span>
+  fontSize<span class="token punctuation">:</span> <span class="token string">'24px'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-styletron-differ-from-other-solutions-" id="how-does-styletron-differ-from-other-solutions-"></a><span class="text">How does <em>Styletron</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-styletron-differ-from-other-solutions-">#</a></h2>
 <p>The traditional CSS-in-JS method involves a straightforward 1:1 conversion of style objects into corresponding scoped CSS classes. Instead, Styletron takes advantage of a novel approach to generating CSS from JavaScript styles.</p>
 <p>This involves the generation of &quot;virtual CSS classes&quot; that are composed of several underlying atomic, single-declaration classes. As a result, any re-used declaration is shared between all classes, which effectively results in declaration-level deduplication, yielding much smaller CSS output than the traditional CSS-in-JS method.</p>
 <p>For example, given styles for two buttons, we get the following class names and corresponding CSS:</p>
-<pre><code class="lang-js"><span class="token keyword" >const</span> redButtonClass <span class="token operator" >=</span> <span class="token function" >injectStyle</span><span class="token punctuation" >(</span>styletron<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-  color<span class="token punctuation" >:</span> <span class="token string" >'red'</span><span class="token punctuation" >,</span>
-  display<span class="token punctuation" >:</span> <span class="token string" >'inline-block'</span><span class="token punctuation" >,</span>
-  fontSize<span class="token punctuation" >:</span> <span class="token string" >'1.6em'</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token comment" spellcheck="true">// redButtonClass is `a b c`</span>
+<pre><code class="lang-js"><span class="token keyword">const</span> redButtonClass <span class="token operator">=</span> <span class="token function">injectStyle</span><span class="token punctuation">(</span>styletron<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+  display<span class="token punctuation">:</span> <span class="token string">'inline-block'</span><span class="token punctuation">,</span>
+  fontSize<span class="token punctuation">:</span> <span class="token string">'1.6em'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// redButtonClass is `a b c`</span>
 
-<span class="token keyword" >const</span> blueButtonClass <span class="token operator" >=</span> <span class="token function" >injectStyle</span><span class="token punctuation" >(</span>styletron<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-  color<span class="token punctuation" >:</span> <span class="token string" >'blue'</span><span class="token punctuation" >,</span>
-  display<span class="token punctuation" >:</span> <span class="token string" >'inline-block'</span><span class="token punctuation" >,</span>
-  fontSize<span class="token punctuation" >:</span> <span class="token string" >'1.6em'</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token comment" spellcheck="true">// blueButtonClass is `d b c`</span>
+<span class="token keyword">const</span> blueButtonClass <span class="token operator">=</span> <span class="token function">injectStyle</span><span class="token punctuation">(</span>styletron<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  color<span class="token punctuation">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span>
+  display<span class="token punctuation">:</span> <span class="token string">'inline-block'</span><span class="token punctuation">,</span>
+  fontSize<span class="token punctuation">:</span> <span class="token string">'1.6em'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// blueButtonClass is `d b c`</span>
 
-<span class="token comment" spellcheck="true">// injected CSS is:</span>
-<span class="token comment" spellcheck="true">/*
+<span class="token comment">// injected CSS is:</span>
+<span class="token comment">/*
 .a { color: red }
 .b { display: inline-block }
 .c { font-size: 1.6em }

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -30,210 +30,210 @@
 <h2 class="header"><a class="header-anchor" href="#styling-add-note-button" id="styling-add-note-button"></a><span class="text">Styling &quot;Add Note&quot; Button</span><a class="header-anchor-select" href="#styling-add-note-button">#</a></h2>
 <p>To style the &quot;Add Note&quot; button we&#39;ll need to attach a class to it first:</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript"><span class="token operator">...</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >}</span>
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>notes<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
 
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
 <div class="leanpub-delete">
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>addNote<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
 </div>
 <div class="leanpub-insert">
-        <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token string" >"add-note"</span> onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+        <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token string">"add-note"</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>addNote<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
 </div>
-        <span class="token operator" >&lt;</span>Notes
-          notes<span class="token operator" >=</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span>
-          onNoteClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>activateNoteEdit<span class="token punctuation" >}</span>
-          onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>editNote<span class="token punctuation" >}</span>
-          onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >}</span>
-          <span class="token operator" >/</span><span class="token operator" >></span>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >}</span>
+        <span class="token operator">&lt;</span>Notes
+          notes<span class="token operator">=</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span>
+          onNoteClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>activateNoteEdit<span class="token punctuation">}</span>
+          onEdit<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>editNote<span class="token punctuation">}</span>
+          onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>deleteNote<span class="token punctuation">}</span>
+          <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>We also need to add corresponding styling:</p>
 <p><strong>app/main.css</strong></p>
-<pre><code class="lang-css"><span class="token selector" ><span class="token class" >...</span>
+<pre><code class="lang-css"><span class="token selector"><span class="token class">...</span>
 
 <div class="leanpub-insert">
-<span class="token class" >.add-note</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >background-color</span><span class="token punctuation" >:</span> <span class="token hexcode" >#fdfdfd</span><span class="token punctuation" >;</span>
+<span class="token class">.add-note</span> </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#fdfdfd</span><span class="token punctuation">;</span>
 
-  <span class="token property" >border</span><span class="token punctuation" >:</span> <span class="token number" >1</span>px solid <span class="token hexcode" >#ccc</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid <span class="token hexcode">#ccc</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </div>
 </code></pre>
 <p>A more general way to handle this would be to set up a <code>Button</code> component and style it. That would give us nicely styled buttons across the application.</p>
 <h2 class="header"><a class="header-anchor" href="#styling-notes" id="styling-notes"></a><span class="text">Styling <code>Notes</code></span><a class="header-anchor-select" href="#styling-notes">#</a></h2>
 <p>Currently the <code>Notes</code> list looks a little rough. We can improve that by hiding the list specific styling. We can also fix <code>Notes</code> width so if the user enter a long task, our user interface still remains fixed to some maximum width. A good first step is to attach some classes to <code>Notes</code> so it&#39;s easier to style:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Note'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> Editable <span class="token keyword" >from</span> <span class="token string" >'./Editable'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Note <span class="token keyword">from</span> <span class="token string">'./Note'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Editable <span class="token keyword">from</span> <span class="token string">'./Editable'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  notes<span class="token punctuation" >,</span>
-  onNoteClick<span class="token operator" >=</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span> onEdit<span class="token operator" >=</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span> onDelete<span class="token operator" >=</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  notes<span class="token punctuation">,</span>
+  <span class="token function-variable function">onNoteClick</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token function-variable function">onEdit</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token function-variable function">onDelete</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
 <div class="leanpub-delete">
-  <span class="token operator" >&lt;</span>ul<span class="token operator" >></span><span class="token punctuation" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> editing<span class="token punctuation" >,</span> task<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span>
+  <span class="token operator">&lt;</span>ul<span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span>id<span class="token punctuation">,</span> editing<span class="token punctuation">,</span> task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span>
 </div>
 <div class="leanpub-insert">
-  <span class="token operator" >&lt;</span>ul className<span class="token operator" >=</span><span class="token string" >"notes"</span><span class="token operator" >></span><span class="token punctuation" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> editing<span class="token punctuation" >,</span> task<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span>
+  <span class="token operator">&lt;</span>ul className<span class="token operator">=</span><span class="token string">"notes"</span><span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span>id<span class="token punctuation">,</span> editing<span class="token punctuation">,</span> task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span>
 </div>
-    <span class="token operator" >&lt;</span>li key<span class="token operator" >=</span><span class="token punctuation" >{</span>id<span class="token punctuation" >}</span><span class="token operator" >></span>
+    <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>id<span class="token punctuation">}</span><span class="token operator">></span>
 <div class="leanpub-delete">
-      <span class="token operator" >&lt;</span>Note onClick<span class="token operator" >=</span><span class="token punctuation" >{</span>onNoteClick<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>
+      <span class="token operator">&lt;</span>Note onClick<span class="token operator">=</span><span class="token punctuation">{</span>onNoteClick<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>
 </div>
 <div class="leanpub-insert">
-      <span class="token operator" >&lt;</span>Note className<span class="token operator" >=</span><span class="token string" >"note"</span> onClick<span class="token operator" >=</span><span class="token punctuation" >{</span>onNoteClick<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>
+      <span class="token operator">&lt;</span>Note className<span class="token operator">=</span><span class="token string">"note"</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>onNoteClick<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>
 </div>
-        <span class="token operator" >&lt;</span>Editable
+        <span class="token operator">&lt;</span>Editable
 <div class="leanpub-insert">
-          className<span class="token operator" >=</span><span class="token string" >"editable"</span>
+          className<span class="token operator">=</span><span class="token string">"editable"</span>
 </div>
-          editing<span class="token operator" >=</span><span class="token punctuation" >{</span>editing<span class="token punctuation" >}</span>
-          value<span class="token operator" >=</span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span>
-          onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span>onEdit<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+          editing<span class="token operator">=</span><span class="token punctuation">{</span>editing<span class="token punctuation">}</span>
+          value<span class="token operator">=</span><span class="token punctuation">{</span>task<span class="token punctuation">}</span>
+          onEdit<span class="token operator">=</span><span class="token punctuation">{</span>onEdit<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
 <div class="leanpub-delete">
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span>onDelete<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>x<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDelete<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>x<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
 </div>
 <div class="leanpub-insert">
-        <span class="token operator" >&lt;</span>button
-          className<span class="token operator" >=</span><span class="token string" >"delete"</span>
-          onClick<span class="token operator" >=</span><span class="token punctuation" >{</span>onDelete<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>x<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+        <span class="token operator">&lt;</span>button
+          className<span class="token operator">=</span><span class="token string">"delete"</span>
+          onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDelete<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>x<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
 </div>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>Note<span class="token operator" >></span>
-    <span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >></span>
-<span class="token punctuation" >)</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Note<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+<span class="token punctuation">)</span>
 </code></pre>
 <p>In order to eliminate the list specific styling, we can apply rules like these:</p>
 <p><strong>app/main.css</strong></p>
-<pre><code class="lang-css"><span class="token selector" ><span class="token class" >...</span>
+<pre><code class="lang-css"><span class="token selector"><span class="token class">...</span>
 
 <div class="leanpub-insert">
-<span class="token class" >.notes</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >margin</span><span class="token punctuation" >:</span> <span class="token number" >0.5</span>em<span class="token punctuation" >;</span>
-  <span class="token property" >padding-left</span><span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >;</span>
+<span class="token class">.notes</span> </span><span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0.5</span>em<span class="token punctuation">;</span>
+  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-  <span class="token property" >max-width</span><span class="token punctuation" >:</span> <span class="token number" >10</span>em<span class="token punctuation" >;</span>
-  <span class="token property" >list-style</span><span class="token punctuation" >:</span> none<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">10</span>em<span class="token punctuation">;</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </div>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#styling-individual-notes" id="styling-individual-notes"></a><span class="text">Styling Individual Notes</span><a class="header-anchor-select" href="#styling-individual-notes">#</a></h2>
 <p>There is still <code>Note</code> related portions left to style. Before attaching any rules, we should make sure we have good styling hooks on <code>Editable</code>:</p>
 <p><strong>app/components/Editable.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <div class="leanpub-insert">
-<span class="token keyword" >import</span> classnames <span class="token keyword" >from</span> <span class="token string" >'classnames'</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> classnames <span class="token keyword">from</span> <span class="token string">'classnames'</span><span class="token punctuation">;</span>
 </div>
 
 <div class="leanpub-delete">
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>editing<span class="token punctuation" >,</span> value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>editing<span class="token punctuation">,</span> value<span class="token punctuation">,</span> onEdit<span class="token punctuation">,</span> <span class="token operator">...</span>props<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>editing<span class="token punctuation" >,</span> value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> className<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>editing<span class="token punctuation">,</span> value<span class="token punctuation">,</span> onEdit<span class="token punctuation">,</span> className<span class="token punctuation">,</span> <span class="token operator">...</span>props<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 </div>
-  <span class="token keyword" >if</span><span class="token punctuation" >(</span>editing<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>editing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <div class="leanpub-delete">
-    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>Edit value<span class="token operator" >=</span><span class="token punctuation" >{</span>value<span class="token punctuation" >}</span> onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span>onEdit<span class="token punctuation" >}</span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token punctuation" >;</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Edit value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> onEdit<span class="token operator">=</span><span class="token punctuation">{</span>onEdit<span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">;</span>
 </div>
 <div class="leanpub-insert">
-    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>Edit
-      className<span class="token operator" >=</span><span class="token punctuation" >{</span>className<span class="token punctuation" >}</span>
-      value<span class="token operator" >=</span><span class="token punctuation" >{</span>value<span class="token punctuation" >}</span>
-      onEdit<span class="token operator" >=</span><span class="token punctuation" >{</span>onEdit<span class="token punctuation" >}</span>
-      <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token punctuation" >;</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Edit
+      className<span class="token operator">=</span><span class="token punctuation">{</span>className<span class="token punctuation">}</span>
+      value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span>
+      onEdit<span class="token operator">=</span><span class="token punctuation">{</span>onEdit<span class="token punctuation">}</span>
+      <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">;</span>
 </div>
-  <span class="token punctuation" >}</span>
+  <span class="token punctuation">}</span>
 
 <div class="leanpub-delete">
-  <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>span <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token punctuation" >{</span>value<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >></span><span class="token punctuation" >;</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>span <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>value<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">;</span>
 </div>
 <div class="leanpub-insert">
-  <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>span className<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token function" >classnames</span><span class="token punctuation" >(</span><span class="token string" >'value'</span><span class="token punctuation" >,</span> className<span class="token punctuation" >)</span><span class="token punctuation" >}</span> <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span><span class="token operator" >></span>
-    <span class="token punctuation" >{</span>value<span class="token punctuation" >}</span>
-  <span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >></span><span class="token punctuation" >;</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>span className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token function">classnames</span><span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">,</span> className<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span><span class="token operator">></span>
+    <span class="token punctuation">{</span>value<span class="token punctuation">}</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">;</span>
 </div>
-<span class="token punctuation" >}</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >class</span> <span class="token class-name" >Edit</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<span class="token keyword">class</span> <span class="token class-name">Edit</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <div class="leanpub-delete">
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>value<span class="token punctuation">,</span> onEdit<span class="token punctuation">,</span> <span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 </div>
 <div class="leanpub-insert">
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>className<span class="token punctuation" >,</span> value<span class="token punctuation" >,</span> onEdit<span class="token punctuation" >,</span> <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>className<span class="token punctuation">,</span> value<span class="token punctuation">,</span> onEdit<span class="token punctuation">,</span> <span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 </div>
 
-    <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>input
-      type<span class="token operator" >=</span><span class="token string" >"text"</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>input
+      type<span class="token operator">=</span><span class="token string">"text"</span>
 <div class="leanpub-insert">
-      className<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token function" >classnames</span><span class="token punctuation" >(</span><span class="token string" >'edit'</span><span class="token punctuation" >,</span> className<span class="token punctuation" >)</span><span class="token punctuation" >}</span>
+      className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token function">classnames</span><span class="token punctuation">(</span><span class="token string">'edit'</span><span class="token punctuation">,</span> className<span class="token punctuation">)</span><span class="token punctuation">}</span>
 </div>
-      autoFocus<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token boolean" >true</span><span class="token punctuation" >}</span>
-      defaultValue<span class="token operator" >=</span><span class="token punctuation" >{</span>value<span class="token punctuation" >}</span>
-      onBlur<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>finishEdit<span class="token punctuation" >}</span>
-      onKeyPress<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>checkEnter<span class="token punctuation" >}</span>
-      <span class="token punctuation" >{</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>props<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >}</span>
+      autoFocus<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">true</span><span class="token punctuation">}</span>
+      defaultValue<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span>
+      onBlur<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>finishEdit<span class="token punctuation">}</span>
+      onKeyPress<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>checkEnter<span class="token punctuation">}</span>
+      <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Given <code>className</code> accepts only a string, it can be difficult to work with when you have multiple classes depending on some logic. This is where a package known as <a href="https://www.npmjs.org/package/classnames">classnames</a> can be useful. It accepts almost arbitrary input and converts that to a string solving the problem.</p>
 <p>There are enough classes to style the remainder now. We can show a shadow below the hovered note. It&#39;s also a good touch to show the delete control on hover as well. Unfortunately this won&#39;t work on touch based interfaces, but it&#39;s good enough for this demo:</p>
 <p><strong>app/main.css</strong></p>
-<pre><code class="lang-css"><span class="token selector" ><span class="token class" >...</span>
+<pre><code class="lang-css"><span class="token selector"><span class="token class">...</span>
 
 <div class="leanpub-insert">
-<span class="token class" >.note</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >overflow</span><span class="token punctuation" >:</span> auto<span class="token punctuation" >;</span>
+<span class="token class">.note</span> </span><span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
 
-  <span class="token property" >margin-bottom</span><span class="token punctuation" >:</span> <span class="token number" >0.5</span>em<span class="token punctuation" >;</span>
-  <span class="token property" >padding</span><span class="token punctuation" >:</span> <span class="token number" >0.5</span>em<span class="token punctuation" >;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">0.5</span>em<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0.5</span>em<span class="token punctuation">;</span>
 
-  <span class="token property" >background-color</span><span class="token punctuation" >:</span> <span class="token hexcode" >#fdfdfd</span><span class="token punctuation" >;</span>
-  <span class="token property" >box-shadow</span><span class="token punctuation" >:</span> <span class="token number" >0</span> <span class="token number" >0</span> <span class="token number" >0.3</span>em <span class="token number" >.03</span>em <span class="token function" >rgba</span><span class="token punctuation" >(</span><span class="token number" >0</span>,<span class="token number" >0</span>,<span class="token number" >0</span>,<span class="token number" >.3</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
-<span class="token selector" ><span class="token class" >.note</span><span class="token pseudo-class" >:hover</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >box-shadow</span><span class="token punctuation" >:</span> <span class="token number" >0</span> <span class="token number" >0</span> <span class="token number" >0.3</span>em <span class="token number" >.03</span>em <span class="token function" >rgba</span><span class="token punctuation" >(</span><span class="token number" >0</span>,<span class="token number" >0</span>,<span class="token number" >0</span>,<span class="token number" >.7</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#fdfdfd</span><span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">0.3</span>em <span class="token number">.03</span>em <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span>,<span class="token number">0</span>,<span class="token number">0</span>,<span class="token number">.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector"><span class="token class">.note</span><span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">0.3</span>em <span class="token number">.03</span>em <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">0</span>,<span class="token number">0</span>,<span class="token number">0</span>,<span class="token number">.7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token property" >transition</span><span class="token punctuation" >:</span> <span class="token number" >.6</span>s<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> <span class="token number">.6</span>s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token selector" ><span class="token class" >.note</span> <span class="token class" >.value</span> </span><span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">/* force to use inline-block so that it gets minimum height */</span>
-  <span class="token property" >display</span><span class="token punctuation" >:</span> inline-block<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token selector"><span class="token class">.note</span> <span class="token class">.value</span> </span><span class="token punctuation">{</span>
+  <span class="token comment">/* force to use inline-block so that it gets minimum height */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token selector" ><span class="token class" >.note</span> <span class="token class" >.editable</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >float</span><span class="token punctuation" >:</span> left<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
-<span class="token selector" ><span class="token class" >.note</span> <span class="token class" >.delete</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >float</span><span class="token punctuation" >:</span> right<span class="token punctuation" >;</span>
+<span class="token selector"><span class="token class">.note</span> <span class="token class">.editable</span> </span><span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector"><span class="token class">.note</span> <span class="token class">.delete</span> </span><span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
 
-  <span class="token property" >padding</span><span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-  <span class="token property" >background-color</span><span class="token punctuation" >:</span> <span class="token hexcode" >#fdfdfd</span><span class="token punctuation" >;</span>
-  <span class="token property" >border</span><span class="token punctuation" >:</span> none<span class="token punctuation" >;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#fdfdfd</span><span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
 
-  <span class="token property" >cursor</span><span class="token punctuation" >:</span> pointer<span class="token punctuation" >;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
 
-  <span class="token property" >visibility</span><span class="token punctuation" >:</span> hidden<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
-<span class="token selector" ><span class="token class" >.note</span><span class="token pseudo-class" >:hover</span> <span class="token class" >.delete</span> </span><span class="token punctuation" >{</span>
-  <span class="token property" >visibility</span><span class="token punctuation" >:</span> visible<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector"><span class="token class">.note</span><span class="token pseudo-class">:hover</span> <span class="token class">.delete</span> </span><span class="token punctuation">{</span>
+  <span class="token property">visibility</span><span class="token punctuation">:</span> visible<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </div>
 </code></pre>
 <p>Assuming everything went fine, your application should look roughly like this now:</p>

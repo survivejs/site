@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -38,12 +38,12 @@ Hi, my name is Sven Sauleau, and I&#39;m a French software engineer. OSS enthusi
 
 <h2 class="header"><a class="header-anchor" href="#how-would-you-describe-async-reactor-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-async-reactor-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>async-reactor</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-async-reactor-to-someone-who-has-never-heard-of-it-">#</a></h2>
 <p><strong>async-reactor</strong> gives you the possibility to render async functional component in React. It has simple and concise syntax using <code>async</code>/<code>await</code> as illustrated below:</p>
-<pre><code class="lang-js"><span class="token keyword" >async</span> <span class="token keyword" >function</span> <span class="token function" >Component</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >await</span> <span class="token function" >asyncA</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token keyword" >await</span> <span class="token function" >asyncB</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> <span class="token function">asyncA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> <span class="token function">asyncB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> <span class="token operator" >&lt;</span>html<span class="token operator" >></span><span class="token operator" >&lt;</span><span class="token operator" >/</span>html<span class="token operator" >></span>
-<span class="token punctuation" >}</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>html<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>It&#39;s useful at least in the following ways:</p>
 <ul>
@@ -54,72 +54,72 @@ Hi, my name is Sven Sauleau, and I&#39;m a French software engineer. OSS enthusi
 </ul>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can find examples in the <a href="https://github.com/xtuc/async-reactor">GitHub repository</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-async-reactor-work-" id="how-does-async-reactor-work-"></a><span class="text">How does <em>async-reactor</em> work?</span><a class="header-anchor-select" href="#how-does-async-reactor-work-">#</a></h2>
 <p>async-reactor is a small library for React implementing the API below:</p>
-<pre><code class="lang-js"><span class="token function" >asyncReactor</span><span class="token punctuation" >(</span>
-  component<span class="token punctuation" >:</span> Function<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// The `async` component you want to render</span>
-  loader<span class="token operator" >?</span><span class="token punctuation" >:</span> Component<span class="token punctuation" >,</span>  <span class="token comment" spellcheck="true">// Shown until the first component renders</span>
-  error<span class="token operator" >?</span><span class="token punctuation" >:</span> Component    <span class="token comment" spellcheck="true">// Shown when an error occurred</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >:</span> Component
+<pre><code class="lang-js"><span class="token function">asyncReactor</span><span class="token punctuation">(</span>
+  component<span class="token punctuation">:</span> Function<span class="token punctuation">,</span> <span class="token comment">// The `async` component you want to render</span>
+  loader<span class="token operator">?</span><span class="token punctuation">:</span> Component<span class="token punctuation">,</span>  <span class="token comment">// Shown until the first component renders</span>
+  error<span class="token operator">?</span><span class="token punctuation">:</span> Component    <span class="token comment">// Shown when an error occurred</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span> Component
 </code></pre>
 <p>For better user experience you can show a loading component while waiting for your main component to render and an error component when an error occurs.</p>
 <p>Components returned by async-reactor are just regular React components, you can use them across your app.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-async-reactor-differ-from-other-solutions-" id="how-does-async-reactor-differ-from-other-solutions-"></a><span class="text">How does <em>async-reactor</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-async-reactor-differ-from-other-solutions-">#</a></h2>
 <p>I didn&#39;t find an alternative solution to async-reactor.</p>
 <p><strong>@thejameskyle</strong> made an excellent package named <a href="https://www.npmjs.com/package/react-loadable">react-loadable</a>. It&#39;s a higher order React component for remote loading components. You can have an equivalent behavior using async-reactor with a concise syntax and a simpler error handling:</p>
-<pre><code class="lang-js"><span class="token keyword" >async</span> <span class="token keyword" >function</span> <span class="token function" >Component</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> DynamicComponent <span class="token operator" >=</span> <span class="token keyword" >await</span> <span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token string" >'./DynamicComponent.js'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> DynamicComponent <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./DynamicComponent.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-    <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
-      <span class="token operator" >&lt;</span>DynamicComponent <span class="token operator" >/</span><span class="token operator" >></span>
-    <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>DynamicComponent <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>You can add a regular <code>try</code>/<code>catch</code> block around the import and a loader component using the async-reactor API.</p>
 <h2 class="header"><a class="header-anchor" href="#why-did-you-develop-async-reactor-" id="why-did-you-develop-async-reactor-"></a><span class="text">Why did you develop <em>async-reactor</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-async-reactor-">#</a></h2>
 <p>I mentioned the boilerplate code that I needed to write to handle an HTTP request. The first solution was a high order component, but it wasn&#39;t simple to use.</p>
 <p>Here is an example of one of my project that I refactored to use async-reactor.</p>
 <p><strong>Before:</strong></p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> React<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> Component<span class="token punctuation" >,</span> cloneElement <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> cloneElement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >class</span> <span class="token class-name" >FetchIssues</span> <span class="token keyword" >extends</span> <span class="token class-name" >Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >super</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">FetchIssues</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> <span class="token punctuation" >{</span> isLoading<span class="token punctuation" >:</span> <span class="token boolean" >true</span> <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> isLoading<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  <span class="token function" >componentWillMount</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> issues <span class="token operator" >=</span> <span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token template-string" ><span class="token string" >`../issues-</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>LANG<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >.json`</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token function">componentWillMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> issues <span class="token operator">=</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`../issues-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>LANG<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.json`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    issues<span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>data<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> data<span class="token punctuation" >,</span> isLoading<span class="token punctuation" >:</span> <span class="token boolean" >false</span> <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
+    issues<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> data<span class="token punctuation">,</span> isLoading<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> data<span class="token punctuation" >,</span> isLoading <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> data<span class="token punctuation">,</span> isLoading <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
 
-    <span class="token keyword" >if</span> <span class="token punctuation" >(</span>isLoading<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >return</span> <span class="token function" >cloneElement</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>loader<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isLoading<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">cloneElement</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>loader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword" >return</span> <span class="token function" >cloneElement</span><span class="token punctuation" >(</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>children<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> data <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token keyword">return</span> <span class="token function">cloneElement</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>children<span class="token punctuation">,</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><strong>After:</strong></p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> cloneElement <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> FetchLoader <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'./FetchLoader'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> asyncReactor <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'async-reactor'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> cloneElement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> FetchLoader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./FetchLoader'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> asyncReactor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'async-reactor'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >async</span> <span class="token keyword" >function</span> <span class="token function" >Component</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>children<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> data <span class="token operator" >=</span> <span class="token keyword" >await</span> <span class="token keyword" >import</span><span class="token punctuation" >(</span><span class="token template-string" ><span class="token string" >`../issues-</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>LANG<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >.json`</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`../issues-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>LANG<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.json`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> <span class="token function" >cloneElement</span><span class="token punctuation" >(</span>children<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> data <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token keyword">return</span> <span class="token function">cloneElement</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >const</span> FetchIssues <span class="token operator" >=</span> <span class="token function" >asyncReactor</span><span class="token punctuation" >(</span>Component<span class="token punctuation" >,</span> FetchLoader<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> FetchIssues <span class="token operator">=</span> <span class="token function">asyncReactor</span><span class="token punctuation">(</span>Component<span class="token punctuation">,</span> FetchLoader<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>
 <p>I&#39;m using Preact a lot, and I would like to make an async-reactor version which would work out of the box with it.</p>

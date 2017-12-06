@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -43,7 +43,7 @@ In short, it&#39;s a piece of code that saves you hours of work on any of your p
 <p>Jokes apart, the principle is pretty straightforward. It takes a reference element (usually a button) and a popper element (any element you want to position), it finds out a common offset parent, computes the position of the reference element relative to such parent, and then generates a set of coordinates use to position the popper element.</p>
 <p>The hardest part is to consider a whole set of edge cases which range from cross browser compatibilities to box model capillarities, including taking care of the scrollable elements.</p>
 <p>The usage is simple:</p>
-<pre><code class="lang-js"><span class="token keyword" >new</span> <span class="token class-name" >Popper</span><span class="token punctuation" >(</span>referenceElement<span class="token punctuation" >,</span> popperElement<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">new</span> <span class="token class-name">Popper</span><span class="token punctuation">(</span>referenceElement<span class="token punctuation">,</span> popperElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>This code will position the <code>popperElement</code> on the bottom of the provided <code>referenceElement</code>. Also, you already have access to all the built-in features of the library.</p>
 <p>The line also achieves the following:</p>
@@ -56,19 +56,19 @@ In short, it&#39;s a piece of code that saves you hours of work on any of your p
 <p>There aren&#39;t a lot of available solutions and they all cover a small subset of cases that are instead adequately addressed by Popper.js. The main difference is in the fact that my library doesn&#39;t need to manipulate the DOM directly to work.</p>
 <p>This fact leads to two strengths: it doesn&#39;t have to move the popper node in a different context to properly work and can be integrated into frameworks and view libraries such as React and AngularJS with ease.</p>
 <p>You can easily do this to delegate the DOM manipulation:</p>
-<pre><code class="lang-js"><span class="token keyword" >new</span> <span class="token class-name" >Popper</span><span class="token punctuation" >(</span>referenceElement<span class="token punctuation" >,</span> popperElement<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-  modifiers<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    applyStyle<span class="token punctuation" >:</span> <span class="token punctuation" >{</span> enabled<span class="token punctuation" >:</span> <span class="token boolean" >false</span> <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    updateReactData<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      order<span class="token punctuation" >:</span> <span class="token number" >900</span><span class="token punctuation" >,</span>
-      <span class="token function" >fn</span><span class="token punctuation" >(</span>data<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-        <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> data <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">new</span> <span class="token class-name">Popper</span><span class="token punctuation">(</span>referenceElement<span class="token punctuation">,</span> popperElement<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  modifiers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    applyStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> enabled<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    updateReactData<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      order<span class="token punctuation">:</span> <span class="token number">900</span><span class="token punctuation">,</span>
+      <span class="token function">fn</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword" >return</span> data<span class="token punctuation" >;</span>
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+        <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We have disabled the built-in <code>applyStyle</code> modifier (they are like middleware, and most of the functionalities provided by Popper.js are provided by them), and defined our custom modifier that only proxies the computed popper coordinates and information to our React component.</p>
 <p>Now that you have all the knowledge provided by Popper.js, you can do whatever you need to apply the needed styles to the popper element.</p>

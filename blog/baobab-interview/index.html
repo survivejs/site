@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -38,59 +38,59 @@
 <h2 class="header"><a class="header-anchor" href="#how-would-you-describe-baobab-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-baobab-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe Baobab to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-baobab-to-someone-who-has-never-heard-of-it-">#</a></h2>
 <p>I guess you could picture Baobab as a mere JavaScript object. As such, you can set its keys, and of course, nest items as you wish. If you do so, you will find yourself with what is commonly known in computer science as a tree (hence the Baobab).</p>
 <p>Now this is where the library kicks in: imagine that you can select any particular branch of the tree, because at this precise moment it might be the only part of the tree you are interested in, and subscribe to its updates.</p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// Let's create a very simple tree:</span>
-<span class="token keyword" >var</span> tree <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Baobab</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  user<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >'John'</span><span class="token punctuation" >,</span>
-    surname<span class="token punctuation" >:</span> <span class="token string" >'Doe'</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token comment">// Let's create a very simple tree:</span>
+<span class="token keyword">var</span> tree <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Baobab</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  user<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span>
+    surname<span class="token punctuation">:</span> <span class="token string">'Doe'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Selecting a part of the tree by creating a "cursor"</span>
-<span class="token keyword" >var</span> nameCursor <span class="token operator" >=</span> tree<span class="token punctuation" >.</span><span class="token function" >select</span><span class="token punctuation" >(</span><span class="token string" >'user'</span><span class="token punctuation" >,</span> <span class="token string" >'name'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Selecting a part of the tree by creating a "cursor"</span>
+<span class="token keyword">var</span> nameCursor <span class="token operator">=</span> tree<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Getting the user's name:</span>
-tree<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span><span class="token string" >'user'</span><span class="token punctuation" >,</span> <span class="token string" >'name'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token comment" spellcheck="true">// or</span>
-nameCursor<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Getting the user's name:</span>
+tree<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// or</span>
+nameCursor<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Listening to the name's updates</span>
-nameCursor<span class="token punctuation" >.</span><span class="token function" >on</span><span class="token punctuation" >(</span><span class="token string" >'update'</span><span class="token punctuation" >,</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token string" >'The name has changed!'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Listening to the name's updates</span>
+nameCursor<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'update'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The name has changed!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Now, let&#39;s imagine this tree is meant to hold your whole app&#39;s state (think <em>model</em> in a typical MVC architecture) and you have, with cursors, a very straightforward way to plug UI components to it. Just make your component declare the part of the tree they are interested in and they will be re-rendered <strong>only</strong> if required because said part of the tree was updated.</p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// A simplistic component displaying the user's surname:</span>
-<span class="token keyword" >function</span> <span class="token function" >component</span><span class="token punctuation" >(</span>surname<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token string" >'&lt;span>'</span> <span class="token operator" >+</span> surname <span class="token operator" >+</span> <span class="token string" >'&lt;/span>'</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-javascript"><span class="token comment">// A simplistic component displaying the user's surname:</span>
+<span class="token keyword">function</span> <span class="token function">component</span><span class="token punctuation">(</span>surname<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">'&lt;span>'</span> <span class="token operator">+</span> surname <span class="token operator">+</span> <span class="token string">'&lt;/span>'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// Rendering logic</span>
-<span class="token keyword" >var</span> mountNode <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >getElementById</span><span class="token punctuation" >(</span><span class="token string" >'surname'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >function</span> <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<span class="token comment">// Rendering logic</span>
+<span class="token keyword">var</span> mountNode <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'surname'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  <span class="token comment" spellcheck="true">// Getting the surname from our tree</span>
-  <span class="token keyword" >var</span> surname <span class="token operator" >=</span> tree<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span><span class="token string" >'user'</span><span class="token punctuation" >,</span> <span class="token string" >'surname'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token comment">// Getting the surname from our tree</span>
+  <span class="token keyword">var</span> surname <span class="token operator">=</span> tree<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'surname'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token comment" spellcheck="true">// Rendering our component</span>
-  mountNode<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> <span class="token function" >component</span><span class="token punctuation" >(</span>surname<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
-<span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token comment">// Rendering our component</span>
+  mountNode<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span>surname<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Subscribing to the surname's updates</span>
-tree<span class="token punctuation" >.</span><span class="token function" >select</span><span class="token punctuation" >(</span><span class="token string" >'user'</span><span class="token punctuation" >,</span> <span class="token string" >'surname'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >on</span><span class="token punctuation" >(</span><span class="token string" >'update'</span><span class="token punctuation" >,</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
+<span class="token comment">// Subscribing to the surname's updates</span>
+tree<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'surname'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'update'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-  <span class="token comment" spellcheck="true">// The surname has been updated, let's re-render!</span>
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token comment">// The surname has been updated, let's re-render!</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// This will trigger a render:</span>
-tree<span class="token punctuation" >.</span><span class="token keyword" >set</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span><span class="token string" >'user'</span><span class="token punctuation" >,</span> <span class="token string" >'surname'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span> <span class="token string" >'Williams'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token comment" spellcheck="true">// This will not:</span>
-tree<span class="token punctuation" >.</span><span class="token keyword" >set</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span><span class="token string" >'user'</span><span class="token punctuation" >,</span> <span class="token string" >'name'</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span> <span class="token string" >'Jack'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// This will trigger a render:</span>
+tree<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'surname'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'Williams'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// This will not:</span>
+tree<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'Jack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>As a bonus, the tree&#39;s data is persistent and immutable (at least by default, but feel free to tweak this if needed through options). This means that you can easily store its history to go back and forth in time, plus you can perform efficient referential comparisons (<code>O(1)</code>, no diffing involved) between several states of the tree in time. Comparison of states is as simple as:</p>
-<pre><code class="lang-javascript">previousData <span class="token operator" >!==</span> nextData
+<pre><code class="lang-javascript">previousData <span class="token operator">!==</span> nextData
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#why-did-you-develop-baobab-" id="why-did-you-develop-baobab-"></a><span class="text">Why did you develop Baobab?</span><a class="header-anchor-select" href="#why-did-you-develop-baobab-">#</a></h2>
 <p>Well, I really enjoy developing in <a href="http://clojure.org/">Clojure</a> from time to time and I grew accustomed to <a href="https://en.wikipedia.org/wiki/Zipper_%28data_structure%29">zippers</a> (a typical data structure you generally encounter in functional programming languages) and I am very fond of cursors such as the ones you can find in the <a href="https://github.com/omcljs/om/wiki/Cursors">Om</a> library (a popular ClojureScript interface to <a href="https://facebook.github.io/react/">React</a>).</p>

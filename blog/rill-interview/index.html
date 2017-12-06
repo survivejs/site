@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -51,55 +51,55 @@ I like to tinker. As a kid, I enjoyed modding video games and got into programmi
 <p>It provides a unified router. While developing universal applications, I often found myself writing routes twice. As if that wasn&#39;t bad enough the syntax for the routers were often vastly different - try comparing <a href="https://github.com/ReactTraining/react-router">react-router</a> with <a href="https://github.com/expressjs/express">Express</a> and you&#39;ll see what I mean.</p>
 <p><a href="https://github.com/rill-js/rill">Rill</a> aims to simplify that and provides a consistent routing interface between the server and browser. It also works perfectly fine as a standalone router in either one.</p>
 <p>Take for instance the following example:</p>
-<pre><code class="lang-jsx"><span class="token keyword" >import</span> rill <span class="token keyword" >from</span> <span class="token string" >'rill'</span>
-<span class="token keyword" >import</span> bodyMiddleware <span class="token keyword" >from</span> <span class="token string" >'@rill/body'</span>
-<span class="token keyword" >import</span> reactMiddleware <span class="token keyword" >from</span> <span class="token string" >'@rill/react'</span>
+<pre><code class="lang-jsx"><span class="token keyword">import</span> rill <span class="token keyword">from</span> <span class="token string">'rill'</span>
+<span class="token keyword">import</span> bodyMiddleware <span class="token keyword">from</span> <span class="token string">'@rill/body'</span>
+<span class="token keyword">import</span> reactMiddleware <span class="token keyword">from</span> <span class="token string">'@rill/react'</span>
 
-<span class="token comment" spellcheck="true">// Setup app.</span>
-<span class="token keyword" >const</span> app <span class="token operator" >=</span> <span class="token function" >rill</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+<span class="token comment">// Setup app.</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">rill</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Use isomomorphic React renderer.</span>
-app<span class="token punctuation" >.</span><span class="token function" >use</span><span class="token punctuation" >(</span><span class="token function" >reactMiddleware</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
+<span class="token comment">// Use isomomorphic React renderer.</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">reactMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Use an isomorphic form-data / body parser.</span>
-app<span class="token punctuation" >.</span><span class="token function" >use</span><span class="token punctuation" >(</span><span class="token function" >bodyMiddleware</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
+<span class="token comment">// Use an isomorphic form-data / body parser.</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">bodyMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Register our form page route as normal.</span>
-app<span class="token punctuation" >.</span><span class="token keyword" >get</span><span class="token punctuation" >(</span><span class="token string" >'/my-form-page'</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> req<span class="token punctuation" >,</span> res <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
- res<span class="token punctuation" >.</span>body <span class="token operator" >=</span> <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>MyForm</span><span class="token punctuation" >/></span></span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+<span class="token comment">// Register our form page route as normal.</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/my-form-page'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> req<span class="token punctuation">,</span> res <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token punctuation">{</span>
+ res<span class="token punctuation">.</span>body <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MyForm</span><span class="token punctuation">/></span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Setup our post route.</span>
-app<span class="token punctuation" >.</span><span class="token function" >post</span><span class="token punctuation" >(</span><span class="token string" >'/my-form-submit'</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> req<span class="token punctuation" >,</span> res <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Analyze the response body (works in node and the browser).</span>
-  req<span class="token punctuation" >.</span>body <span class="token comment" spellcheck="true">//-> { email: ... }</span>
-  <span class="token comment" spellcheck="true">// Perform the business logic (typically calling some api).</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token comment" spellcheck="true">// Finally, take the user somewhere meaningful.</span>
-  res<span class="token punctuation" >.</span><span class="token function" >redirect</span><span class="token punctuation" >(</span><span class="token string" >'/thank-you'</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+<span class="token comment">// Setup our post route.</span>
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/my-form-submit'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> req<span class="token punctuation">,</span> res <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// Analyze the response body (works in node and the browser).</span>
+  req<span class="token punctuation">.</span>body <span class="token comment">//-> { email: ... }</span>
+  <span class="token comment">// Perform the business logic (typically calling some api).</span>
+  <span class="token operator">...</span>
+  <span class="token comment">// Finally, take the user somewhere meaningful.</span>
+  res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/thank-you'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Start app.</span>
-app<span class="token punctuation" >.</span><span class="token function" >listen</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> port<span class="token punctuation" >:</span> <span class="token number" >3000</span> <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+<span class="token comment">// Start app.</span>
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token punctuation">{</span> port<span class="token punctuation">:</span> <span class="token number">3000</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Simple full page react component with a form.</span>
-<span class="token keyword" >function</span> MyForm <span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>html</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>head</span><span class="token punctuation" >></span></span>
-        <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>title</span><span class="token punctuation" >></span></span>My App<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>title</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>head</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>body</span><span class="token punctuation" >></span></span>
-        <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>form</span> <span class="token attr-name" >action</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>/my-form-submit<span class="token punctuation" >"</span></span> <span class="token attr-name" >method</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>POST<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span>
-          Email<span class="token punctuation" >:</span> <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>input</span> <span class="token attr-name" >name</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>email<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span>
-          <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>button</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>submit<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span>Subscribe<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>button</span><span class="token punctuation" >></span></span>
-        <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>form</span><span class="token punctuation" >></span></span>
+<span class="token comment">// Simple full page react component with a form.</span>
+<span class="token keyword">function</span> <span class="token function">MyForm</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>My App<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/my-form-submit<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>POST<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          Email<span class="token punctuation">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Subscribe<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
 
-        <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>script</span> <span class="token attr-name" >src</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>/app.js<span class="token punctuation" >"</span>/</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>body</span><span class="token punctuation" >></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>html</span><span class="token punctuation" >></span></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/app.js<span class="token punctuation">"</span>/</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Notice how similar this looks to the server only code. You get to use middleware and routing in a way you probably already know. However, the above example when compiled with <a href="https://webpack.js.org">webpack</a>, <a href="https://rollupjs.org">Rollup</a>, or <a href="http://browserify.org">Browserify</a> will also work in the browser!</p>
 <p>For a more detailed example check out the <a href="https://github.com/rill-js/todomvc">TodoMVC</a> implementation with <a href="https://facebook.github.io/react">React</a> and <a href="https://github.com/rill-js/rill">Rill</a>.</p>

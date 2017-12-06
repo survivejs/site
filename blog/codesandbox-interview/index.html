@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -47,28 +47,28 @@ My name is Ives van Hoorne; I&#39;m a Computer Science student at the <a href="h
 <p>CodeSandbox at its core consists of two parts: the editor and the preview. The editor is the whole CodeSandbox application (file manager, code editor, dependency settings) and the preview is the result you see on the right. These two parts are very decoupled and only communicate using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage</code></a>. The preview is on a subdomain (<code>sandbox.codesandbox.io</code>) in an iframe to literally &#39;sandbox&#39; the preview away from the main application.</p>
 <p><img src="/e01fe7a0efe82a8cacc40c2d562e1e3c.png" alt="Editor vs. preview" class="" width="" height="" /></p>
 <p>The editor sends all its files, directories and dependencies to the preview; this either happens when the user changes something or when the application loads. The preview then takes all these files and processes each type using different loaders, which currently is either CSS, JavaScript, JSON, or HTML. These loaders can be very simple, the JSON loader, for example, is only a one-liner:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> module <span class="token operator" >=</span><span class="token operator" >></span> JSON<span class="token punctuation" >.</span><span class="token function" >parse</span><span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>code<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> module <span class="token operator">=></span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>module<span class="token punctuation">.</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The JavaScript loader is by far the most interesting since this loader also has to transpile, require and cache the result. It first transpiles the code using <code>babel</code>; then it evals the transpiled code with a stubbed <code>require</code> function.</p>
 <p>This <code>require</code> function just takes a path, checks if this is an npm dependency or a file and handles it again with the loader for that extension. Every result is cached, so most of the time only the edited file is evalled again after a change.</p>
 <p>The output of the loader goes through a <code>boilerplate</code>, this boilerplate is determined by the output. A boilerplate simply is a separate file that does something with the loader output, for example, the boilerplate for a returned React components is:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> render <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react-dom'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// domChanged is a boolean which specifies if the module</span>
-<span class="token comment" spellcheck="true">// has done something to the DOM while it was evaluated</span>
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span><span class="token punctuation" >(</span>evaluatedModule<span class="token punctuation" >,</span> domChanged<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >if</span> <span class="token punctuation" >(</span><span class="token operator" >!</span>domChanged<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> node <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >'div'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// domChanged is a boolean which specifies if the module</span>
+<span class="token comment">// has done something to the DOM while it was evaluated</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span>evaluatedModule<span class="token punctuation">,</span> domChanged<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>domChanged<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >appendChild</span><span class="token punctuation" >(</span>node<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token function" >render</span><span class="token punctuation" >(</span>
-      React<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span>evaluatedModule<span class="token punctuation" >.</span><span class="token keyword" >default</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token function">render</span><span class="token punctuation">(</span>
+      React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>evaluatedModule<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       node
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This boilerplate renders the output of a React component to the DOM if it doesn&#39;t change the DOM at all.
 I want to make it possible for others to build and share loaders/boilerplates as well, but this requires some thinking because we still want to support <code>create-react-app</code> interoperability.</p>

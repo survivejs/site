@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -30,21 +30,21 @@
 <h2 class="header"><a class="header-anchor" href="#extracting-a-manifest" id="extracting-a-manifest"></a><span class="text">Extracting a Manifest</span><a class="header-anchor-select" href="#extracting-a-manifest">#</a></h2>
 <p>Most of the work was done already when <code>extractBundles</code> was set up in the <a href="/webpack/building/bundle-splitting/">Bundle Splitting</a> chapter. To extract the manifest, a single change is required to capture the remaining code which contains webpack bootstrap:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >extractBundles</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-      <span class="token punctuation" >{</span>
-        <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token operator">...</span>
+  parts<span class="token punctuation">.</span><span class="token function">extractBundles</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <div class="leanpub-insert">
-      <span class="token punctuation" >{</span>
-        name<span class="token punctuation" >:</span> <span class="token string" >"manifest"</span><span class="token punctuation" >,</span>
-        minChunks<span class="token punctuation" >:</span> <span class="token number" >Infinity</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">"manifest"</span><span class="token punctuation">,</span>
+        minChunks<span class="token punctuation">:</span> <span class="token number">Infinity</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The name <code>manifest</code> is used by convention. You can use any other name and it will still work. It&#39;s important that the definition is after others, though, as it has to capture what has not been extracted yet. <code>minChunks</code> is optional in this case and passing <code>Infinity</code> tells webpack <strong>not</strong> to move any modules to the resulting bundle.</p>
 <p>If you build the project now (<code>npm run build</code>), you should see something:</p>
@@ -53,19 +53,19 @@ Version: webpack 3.8.1
 Time: 2798ms
                    Asset       Size  Chunks             Chunk Names
 <div class="leanpub-insert">
-    manifest.95266dc7.js    1.49 kB       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+    manifest.95266dc7.js    1.49 kB       3  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  manifest
 </div>
-         app.801b7672.js  865 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-<span class="token punctuation" >..</span>.
-    app.bf4d156d.css.map   93 bytes    2, 3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
+         app.801b7672.js  865 bytes    2, 3  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+<span class="token punctuation">..</span>.
+    app.bf4d156d.css.map   93 bytes    2, 3  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
 <div class="leanpub-insert">
-manifest.95266dc7.js.map   97 bytes       3  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  manifest
+manifest.95266dc7.js.map   97 bytes       3  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  manifest
 </div>
-              index.html  368 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>1Q41<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>2twT<span class="token punctuation" >]</span> ./app/index.js 217 bytes <span class="token punctuation" >{</span>2<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >[</span>KMic<span class="token punctuation" >]</span> ./app/lazy.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
+              index.html  368 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>1Q41<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>2<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>2twT<span class="token punctuation">]</span> ./app/index.js 217 bytes <span class="token punctuation">{</span>2<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>KMic<span class="token punctuation">]</span> ./app/lazy.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
 </code></pre>
 <p>This change gave a separate file that contains the manifest. In the output above it has been marked with <code>manifest</code> chunk name. Because the setup is using <code>HtmlWebpackPlugin</code>, there is no need to worry about loading the manifest ourselves as the plugin adds a reference to <em>index.html</em>.</p>
 <p>Plugins, such as <a href="https://www.npmjs.com/package/inline-manifest-webpack-plugin">inline-manifest-webpack-plugin</a> and <a href="https://www.npmjs.com/package/html-webpack-inline-chunk-plugin">html-webpack-inline-chunk-plugin</a>, <a href="https://www.npmjs.com/package/assets-webpack-plugin">assets-webpack-plugin</a>, work with <code>HtmlWebpackPlugin</code> and allow you to write the manifest within <em>index.html</em> to avoid a request.</p>
@@ -75,15 +75,15 @@ manifest.95266dc7.js.map   97 bytes       3  <span class="token punctuation" >[<
 <p>Records are used for storing module IDs across separate builds. The problem is that you need to store this file. If you build locally, one option is to include it to your version control.</p>
 <p>To generate a <em>records.json</em> file, adjust the configuration as follows:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
 <div class="leanpub-insert">
-    recordsPath<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"records.json"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    recordsPath<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"records.json"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If you build the project (<code>npm run build</code>), you should see a new file, <em>records.json</em>, at the project root. The next time webpack builds, it picks up the information and rewrites the file if it has changed.</p>
 <p>Records are particularly valuable if you have a complicated setup with code splitting and want to make sure the split parts gain correct caching behavior. The biggest problem is maintaining the record file.</p>

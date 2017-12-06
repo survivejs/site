@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -57,44 +57,44 @@
 </ul>
 <h2 class="header"><a class="header-anchor" href="#react-createelement-and-jsx" id="react-createelement-and-jsx"></a><span class="text"><code>React.createElement</code> and JSX</span><a class="header-anchor-select" href="#react-createelement-and-jsx">#</a></h2>
 <p>Given we are operating with virtual DOM, there&#39;s a <a href="https://facebook.github.io/react/docs/top-level-api.html">high level API</a> for handling it. A naïve React component written using the JavaScript API could look like this:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> Names <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> names <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token string" >'John'</span><span class="token punctuation" >,</span> <span class="token string" >'Jill'</span><span class="token punctuation" >,</span> <span class="token string" >'Jack'</span><span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Names</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token string">'Jill'</span><span class="token punctuation">,</span> <span class="token string">'Jack'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> React<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span>
-    <span class="token string" >'div'</span><span class="token punctuation" >,</span>
-    <span class="token keyword" >null</span><span class="token punctuation" >,</span>
-    React<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >'h2'</span><span class="token punctuation" >,</span> <span class="token keyword" >null</span><span class="token punctuation" >,</span> <span class="token string" >'Names'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    React<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span>
-      <span class="token string" >'ul'</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >{</span> className<span class="token punctuation" >:</span> <span class="token string" >'names'</span> <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-      names<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>name <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-        <span class="token keyword" >return</span> React<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span>
-          <span class="token string" >'li'</span><span class="token punctuation" >,</span>
-          <span class="token punctuation" >{</span> className<span class="token punctuation" >:</span> <span class="token string" >'name'</span> <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token keyword">return</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+    <span class="token string">'div'</span><span class="token punctuation">,</span>
+    <span class="token keyword">null</span><span class="token punctuation">,</span>
+    React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h2'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Names'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+      <span class="token string">'ul'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> className<span class="token punctuation">:</span> <span class="token string">'names'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      names<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>name <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
+          <span class="token string">'li'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> className<span class="token punctuation">:</span> <span class="token string">'name'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
           name
-        <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-    <span class="token punctuation" >)</span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>As it is verbose to write components this way and the code is quite hard to read, often people prefer to use a language known as <a href="https://facebook.github.io/jsx/">JSX</a> instead. Consider the same component written using JSX below:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> Names <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> names <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token string" >'John'</span><span class="token punctuation" >,</span> <span class="token string" >'Jill'</span><span class="token punctuation" >,</span> <span class="token string" >'Jack'</span><span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Names</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token string">'Jill'</span><span class="token punctuation">,</span> <span class="token string">'Jack'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-    <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
-      <span class="token operator" >&lt;</span>h2<span class="token operator" >></span>Names<span class="token operator" >&lt;</span><span class="token operator" >/</span>h2<span class="token operator" >></span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>h2<span class="token operator">></span>Names<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
 
-      <span class="token punctuation" >{</span><span class="token comment" spellcheck="true">/* This is a list of names */</span><span class="token punctuation" >}</span>
-      <span class="token operator" >&lt;</span>ul className<span class="token operator" >=</span><span class="token string" >"names"</span><span class="token operator" >></span><span class="token punctuation" >{</span>
-        names<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>name <span class="token operator" >=</span><span class="token operator" >></span>
-          <span class="token operator" >&lt;</span>li className<span class="token operator" >=</span><span class="token string" >"name"</span><span class="token operator" >></span><span class="token punctuation" >{</span>name<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
-        <span class="token punctuation" >)</span>
-      <span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >></span>
-    <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+      <span class="token punctuation">{</span><span class="token comment">/* This is a list of names */</span><span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>ul className<span class="token operator">=</span><span class="token string">"names"</span><span class="token operator">></span><span class="token punctuation">{</span>
+        names<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>name <span class="token operator">=></span>
+          <span class="token operator">&lt;</span>li className<span class="token operator">=</span><span class="token string">"name"</span><span class="token operator">></span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Now we can see the component renders a set of names within a HTML list. It might not be the most useful component, but it&#39;s enough to illustrate the basic idea of JSX. It provides us a syntax that resembles HTML. It also provides a way to write JavaScript within it by using braces (<code>{}</code>).</p>
 <p>Compared to vanilla HTML, we are using <code>className</code> instead of <code>class</code>. This is because the API has been modeled after the DOM naming. It takes some getting used to and you might experience a <a href="https://medium.com/@housecor/react-s-jsx-the-other-side-of-the-coin-2ace7ab62b98">JSX shock</a> until you begin to appreciate the approach. It gives us an additional level of validation.</p>

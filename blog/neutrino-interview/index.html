@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -47,9 +47,9 @@ several other pieces of Neutrino middleware that do things like perform Babel co
 <pre><code class="lang-bash">yarn add react react-dom
 yarn add --dev neutrino neutrino-preset-react
 
-<span class="token keyword" >echo</span> <span class="token string" >'import React from "react";'</span> <span class="token operator" >>></span> src/index.js
-<span class="token keyword" >echo</span> <span class="token string" >'import { render } from "react-dom";'</span> <span class="token operator" >>></span> src/index.js
-<span class="token keyword" >echo</span> <span class="token string" >'render(&lt;h1>hello world&lt;/h1>, document.getElementById("root"));'</span> <span class="token operator" >>></span> src/index.js
+<span class="token keyword">echo</span> <span class="token string">'import React from "react";'</span> <span class="token operator">>></span> src/index.js
+<span class="token keyword">echo</span> <span class="token string">'import { render } from "react-dom";'</span> <span class="token operator">>></span> src/index.js
+<span class="token keyword">echo</span> <span class="token string">'render(&lt;h1>hello world&lt;/h1>, document.getElementById("root"));'</span> <span class="token operator">>></span> src/index.js
 
 yarn neutrino -- start --use neutrino-preset-react
 
@@ -59,57 +59,57 @@ yarn neutrino -- start --use neutrino-preset-react
 <p>Open a browser to localhost:5000, and you are ready to go!</p>
 <p>To make some of this possible, we had to create our webpack configuration API, called <a href="https://github.com/mozilla-neutrino/webpack-chain">webpack-chain</a>. As you may know, webpack exposes a low-level configuration format, but this format isn&#39;t well-suited for merging configuration deterministically across middleware, or even across many projects. With webpack-chain, we expose a chainable or fluent API for aggregating a webpack configuration which is much more deterministic.</p>
 <p>The above can be done by accessing the Neutrino API from a <code>.neutrinorc.js</code> file, which Neutrino can pick up automatically. You can also move the middleware Neutrino <code>use</code>s to this file to shorten up your command to <code>neutrino start</code>.</p>
-<pre><code class="lang-js"><span class="token comment" spellcheck="true">// .neutrinorc.js</span>
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  use<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token punctuation" >[</span><span class="token string" >'neutrino-preset-react'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-      <span class="token comment" spellcheck="true">// Override the page title</span>
-      html<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-        title<span class="token punctuation" >:</span> <span class="token string" >'Enterprise 2.0'</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-js"><span class="token comment">// .neutrinorc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'neutrino-preset-react'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Override the page title</span>
+      html<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'Enterprise 2.0'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-      <span class="token comment" spellcheck="true">// Override the Babel configuration for the React preset</span>
-      babel<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-        presets<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-          <span class="token punctuation" >[</span><span class="token string" >'babel-preset-env'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-            targets<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-              browsers<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-                <span class="token string" >'last 1 Chrome versions'</span><span class="token punctuation" >,</span>
-                <span class="token string" >'last 1 Firefox versions'</span>
-              <span class="token punctuation" >]</span>
-            <span class="token punctuation" >}</span>
-          <span class="token punctuation" >}</span><span class="token punctuation" >]</span>
-        <span class="token punctuation" >]</span>
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+      <span class="token comment">// Override the Babel configuration for the React preset</span>
+      babel<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        presets<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span><span class="token string">'babel-preset-env'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            targets<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+              browsers<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">'last 1 Chrome versions'</span><span class="token punctuation">,</span>
+                <span class="token string">'last 1 Firefox versions'</span>
+              <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Even completely override the webpack configuration</span>
-    <span class="token comment" spellcheck="true">// using the webpack-chain API</span>
-    <span class="token punctuation" >(</span>neutrino<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-      neutrino<span class="token punctuation" >.</span>config
-        <span class="token punctuation" >.</span><span class="token function" >entry</span><span class="token punctuation" >(</span><span class="token string" >'vendor'</span><span class="token punctuation" >)</span>
-          <span class="token punctuation" >.</span><span class="token function" >add</span><span class="token punctuation" >(</span><span class="token string" >'react'</span><span class="token punctuation" >)</span>
-          <span class="token punctuation" >.</span><span class="token function" >add</span><span class="token punctuation" >(</span><span class="token string" >'react-dom'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+    <span class="token comment">// Even completely override the webpack configuration</span>
+    <span class="token comment">// using the webpack-chain API</span>
+    <span class="token punctuation">(</span>neutrino<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      neutrino<span class="token punctuation">.</span>config
+        <span class="token punctuation">.</span><span class="token function">entry</span><span class="token punctuation">(</span><span class="token string">'vendor'</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'react'</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'react-dom'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>At this point, you can start your app using <code>neutrino start</code> or add a script to your <code>package.json</code> to be able to more easily run it from your command line.</p>
 <p>It&#39;s easy to add linting and testing to your project that also can consume Neutrino middleware and presets:</p>
 <pre><code class="lang-bash">yarn add --dev neutrino-preset-airbnb-base neutrino-preset-jest
 </code></pre>
-<pre><code class="lang-js"><span class="token comment" spellcheck="true">// .neutrinorc.js</span>
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  use<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token string" >'neutrino-preset-airbnb-base'</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >[</span><span class="token string" >'neutrino-preset-react'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-      html<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-        title<span class="token punctuation" >:</span> <span class="token string" >'Enterprise 2.0'</span>
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    <span class="token string" >'neutrino-preset-jest'</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token comment">// .neutrinorc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'neutrino-preset-airbnb-base'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'neutrino-preset-react'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      html<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'Enterprise 2.0'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'neutrino-preset-jest'</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>When running <code>neutrino start</code>, you&#39;ll see linting errors, with no upfront configuration. If you create some tests, you can run those with <code>neutrino test</code> and they will be run using the same configuration, using the test middleware you have chosen. With <code>neutrino build</code> you can output compiled static assets for production deployment.</p>
 <p>For advanced cases, Neutrino even supports running custom commands that can consume the same configuration that webpack does. It has proven for us to be a pretty robust solution.</p>

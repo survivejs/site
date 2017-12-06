@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -76,35 +76,35 @@ I&#39;ve tried to stay quiet and keep it to the code rather than myself. But per
 <p>Instead of having one <em>setter-style</em> action to show a drawer, and another <em>setter-style</em> action to close it (e.g. <code>&#39;OPEN_DRAWER&#39;</code> and <code>&#39;CLOSE_DRAWER&#39;</code>), you simply have <code>&#39;FEED&#39;</code> and <code>&#39;NOTIFICATIONS&#39;</code> which you&#39;ll need anyway. Then in the reducers, you must add some &quot;tear down&quot; code to open and close the drawer when you visit these routes. For instance, when you visit <code>&#39;NOTIFICATIONS&#39;</code> the <code>drawerOpen</code> state is <code>true</code> and when you visit <code>&#39;FEED&#39;</code>, <code>drawerOpen</code> is <code>false</code>.</p>
 <p>Here&#39;s an example taken from the <a href="https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262">Redux-First Router solving the 80% use-case for Middleware article</a>:</p>
 <p><strong>Old approach with many setter actions</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> sidebarOpen <span class="token operator" >=</span> <span class="token punctuation" >(</span>state <span class="token operator" >=</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span> action <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >switch</span> <span class="token punctuation" >(</span>action<span class="token punctuation" >.</span>type<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >case</span> <span class="token string" >'SIDEBAR_CLOSED'</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> <span class="token boolean" >false</span><span class="token punctuation" >;</span>
-    <span class="token keyword" >case</span> <span class="token string" >'SIDEBAR_OPEN'</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> <span class="token boolean" >true</span><span class="token punctuation" >;</span>
-    <span class="token keyword" >default</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> state<span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">sidebarOpen</span> <span class="token operator">=</span> <span class="token punctuation">(</span>state <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'SIDEBAR_CLOSED'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'SIDEBAR_OPEN'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> sidebarOpen<span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> sidebarOpen<span class="token punctuation">;</span>
 </code></pre>
 <p><strong>New approach with fewer actions and smarter / fatter reducers:</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> sidebarOpen <span class="token operator" >=</span> <span class="token punctuation" >(</span>state <span class="token operator" >=</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span> action <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >switch</span> <span class="token punctuation" >(</span>action<span class="token punctuation" >.</span>type<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >case</span> <span class="token string" >'HOME'</span><span class="token punctuation" >:</span>
-    <span class="token keyword" >case</span> <span class="token string" >'LIST'</span><span class="token punctuation" >:</span>
-    <span class="token keyword" >case</span> <span class="token string" >'VIDEO'</span><span class="token punctuation" >:</span>
-    <span class="token keyword" >case</span> <span class="token string" >'LOGIN'</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> <span class="token boolean" >false</span><span class="token punctuation" >;</span>
-    <span class="token keyword" >case</span> <span class="token string" >'SETTINGS'</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> <span class="token boolean" >true</span><span class="token punctuation" >;</span>
-    <span class="token keyword" >default</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> state<span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">sidebarOpen</span> <span class="token operator">=</span> <span class="token punctuation">(</span>state <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'HOME'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'LIST'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'VIDEO'</span><span class="token punctuation">:</span>
+    <span class="token keyword">case</span> <span class="token string">'LOGIN'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'SETTINGS'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> sidebarOpen<span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> sidebarOpen<span class="token punctuation">;</span>
 </code></pre>
 <p>So that&#39;s all I had to do - change my reducers, remove unnecessary actions being dispatched, make my reducers respond intelligently to a wider variety of actions, and voilà! In record time I now had URLs and could deep link into my app.</p>
 <h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>

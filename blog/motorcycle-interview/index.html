@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -47,33 +47,33 @@ I&#39;m a software engineer at a company called PokerJuice, where I mostly work 
 <p>In order to better understand how Motorcycle works, it&#39;s important to understand what it achieves first. Motorcycle itself is just a single function named <code>run</code>. Using <code>run</code> requires two functions. We call these two functions <code>Main</code> and <code>Effects</code>.</p>
 <p><img src="/e9442cd1f94b3f5a75367416154772a9.png" alt="Motorcycle run diagram" class="" width="" height="" /></p>
 <p>As you may be able to tell from the diagram above, the <code>run</code> function effectively operates like this:</p>
-<pre><code class="lang-typescript"><span class="token keyword" >const</span> sinks <span class="token operator" >=</span> <span class="token function" >Main</span><span class="token punctuation" >(</span>sources<span class="token punctuation" >)</span>
-<span class="token keyword" >const</span> sources <span class="token operator" >=</span> <span class="token function" >Effects</span><span class="token punctuation" >(</span>sinks<span class="token punctuation" >)</span>
+<pre><code class="lang-typescript"><span class="token keyword">const</span> sinks <span class="token operator">=</span> <span class="token function">Main</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span>
+<span class="token keyword">const</span> sources <span class="token operator">=</span> <span class="token function">Effects</span><span class="token punctuation">(</span>sinks<span class="token punctuation">)</span>
 </code></pre>
 <p>Above may seem impossible to do at first glance, but is 100% possible! Using a
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"><code>Proxy</code></a>
 we can solve this problem.</p>
-<pre><code class="lang-typescript"><span class="token comment" spellcheck="true">// Create a Proxy which dynamically adds key-value entries</span>
-<span class="token comment" spellcheck="true">// as they are accessed from Effects</span>
-<span class="token keyword" >const</span> proxySinks <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Proxy</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >get</span><span class="token punctuation" >(</span>target<span class="token punctuation" >,</span> property<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >if</span> <span class="token punctuation" >(</span><span class="token operator" >!</span>target<span class="token punctuation" >[</span>property<span class="token punctuation" >]</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      target<span class="token punctuation" >[</span>property<span class="token punctuation" >]</span> <span class="token operator" >=</span> <span class="token function" >createNewStream</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span>
+<pre><code class="lang-typescript"><span class="token comment">// Create a Proxy which dynamically adds key-value entries</span>
+<span class="token comment">// as they are accessed from Effects</span>
+<span class="token keyword">const</span> proxySinks <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token keyword">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> property<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>target<span class="token punctuation">[</span>property<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      target<span class="token punctuation">[</span>property<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">createNewStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
-    <span class="token keyword" >return</span> target<span class="token punctuation" >[</span>property<span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">[</span>property<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Call Effects with our Proxy</span>
-<span class="token keyword" >const</span> sources <span class="token operator" >=</span> <span class="token function" >Effects</span><span class="token punctuation" >(</span>proxySinks<span class="token punctuation" >)</span>
-<span class="token comment" spellcheck="true">// Call Main to get our *real* Sinks</span>
-<span class="token keyword" >const</span> sinks <span class="token operator" >=</span> <span class="token function" >Main</span><span class="token punctuation" >(</span>sources<span class="token punctuation" >)</span>
+<span class="token comment">// Call Effects with our Proxy</span>
+<span class="token keyword">const</span> sources <span class="token operator">=</span> <span class="token function">Effects</span><span class="token punctuation">(</span>proxySinks<span class="token punctuation">)</span>
+<span class="token comment">// Call Main to get our *real* Sinks</span>
+<span class="token keyword">const</span> sinks <span class="token operator">=</span> <span class="token function">Main</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Replicate the values from *real* Sinks to the proxySinks</span>
-<span class="token comment" spellcheck="true">// This is what "closes" the loop to make a reactive cycle</span>
-<span class="token keyword" >for</span> <span class="token punctuation" >(</span><span class="token keyword" >const</span> sinkName <span class="token keyword" >in</span> sinks<span class="token punctuation" >)</span>
-  sinks<span class="token punctuation" >[</span>sinkName<span class="token punctuation" >]</span><span class="token punctuation" >.</span><span class="token function" >subscribe</span><span class="token punctuation" >(</span>proxySinks<span class="token punctuation" >[</span>sinkName<span class="token punctuation" >]</span><span class="token punctuation" >)</span>
+<span class="token comment">// Replicate the values from *real* Sinks to the proxySinks</span>
+<span class="token comment">// This is what "closes" the loop to make a reactive cycle</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> sinkName <span class="token keyword">in</span> sinks<span class="token punctuation">)</span>
+  sinks<span class="token punctuation">[</span>sinkName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>proxySinks<span class="token punctuation">[</span>sinkName<span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <p>The above is an abbreviated version of how the real thing works, for those interested in how it works in practice, <a href="https://github.com/motorcyclejs/motorcyclejs/tree/master/run">the source code can be found online</a>.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-motorcycle-js-differ-from-other-solutions-" id="how-does-motorcycle-js-differ-from-other-solutions-"></a><span class="text">How does <em>Motorcycle.js</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-motorcycle-js-differ-from-other-solutions-">#</a></h2>

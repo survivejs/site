@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -31,68 +31,68 @@
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/canifont">canifont</a> helps you to figure out which font formats you should support. It accepts a <strong>.browserslistrc</strong> definition and then checks font support of each browser based on the definition.</blockquote><h2 class="header"><a class="header-anchor" href="#choosing-one-format" id="choosing-one-format"></a><span class="text">Choosing One Format</span><a class="header-anchor-select" href="#choosing-one-format">#</a></h2>
 <p>If you exclude Opera Mini, all browsers support the <em>.woff</em> format. Its newer version, <em>.woff2</em>, is widely supported by modern browsers and can be a good alternative.</p>
 <p>Going with one format you can use a similar setup as for images and rely on both <em>file-loader</em> and <em>url-loader</em> while using the limit option:</p>
-<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff$/</span><span class="token punctuation" >,</span>
-  use<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    loader<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
-    options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token punctuation">{</span>
+  test<span class="token punctuation">:</span> <span class="token regex">/\.woff$/</span><span class="token punctuation">,</span>
+  use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    loader<span class="token punctuation">:</span> <span class="token string">"url-loader"</span><span class="token punctuation">,</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      limit<span class="token punctuation">:</span> <span class="token number">50000</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>A more elaborate approach to achieve a similar result that includes <em>.woff2</em> and others, would be to end up with code as below:</p>
-<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Match woff2 in addition to patterns like .woff?v=1.1.1.</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
-  use<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
-  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Limit at 50k. Above that it emits separate files</span>
-    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token punctuation">{</span>
+  <span class="token comment">// Match woff2 in addition to patterns like .woff?v=1.1.1.</span>
+  test<span class="token punctuation">:</span> <span class="token regex">/\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation">,</span>
+  use<span class="token punctuation">:</span> <span class="token string">"url-loader"</span><span class="token punctuation">,</span>
+  options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Limit at 50k. Above that it emits separate files</span>
+    limit<span class="token punctuation">:</span> <span class="token number">50000</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// url-loader sets mimetype if it's passed.</span>
-    <span class="token comment" spellcheck="true">// Without this it derives it from the file extension</span>
-    mimetype<span class="token punctuation" >:</span> <span class="token string" >"application/font-woff"</span><span class="token punctuation" >,</span>
+    <span class="token comment">// url-loader sets mimetype if it's passed.</span>
+    <span class="token comment">// Without this it derives it from the file extension</span>
+    mimetype<span class="token punctuation">:</span> <span class="token string">"application/font-woff"</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Output below fonts directory</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >"./fonts/[name].[ext]"</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    <span class="token comment">// Output below fonts directory</span>
+    name<span class="token punctuation">:</span> <span class="token string">"./fonts/[name].[ext]"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#supporting-multiple-formats" id="supporting-multiple-formats"></a><span class="text">Supporting Multiple Formats</span><a class="header-anchor-select" href="#supporting-multiple-formats">#</a></h2>
 <p>In case you want to make sure the site looks good on a maximum amount of browsers, you can use <em>file-loader</em> and forget about inlining. Again, it&#39;s a trade-off as you get extra requests, but perhaps it&#39;s the right move. Here you could end up with a loader configuration:</p>
-<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(ttf|eot|woff|woff2)$/</span><span class="token punctuation" >,</span>
-  loader<span class="token punctuation" >:</span> <span class="token string" >"file-loader"</span><span class="token punctuation" >,</span>
-  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >"fonts/[name].[ext]"</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token punctuation">{</span>
+  test<span class="token punctuation">:</span> <span class="token regex">/\.(ttf|eot|woff|woff2)$/</span><span class="token punctuation">,</span>
+  loader<span class="token punctuation">:</span> <span class="token string">"file-loader"</span><span class="token punctuation">,</span>
+  options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"fonts/[name].[ext]"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>The way you write your CSS definition matters. To make sure you are getting the benefit from the newer formats, they should become first in the definition. This way the browser picks them up.</p>
-<pre><code class="lang-css"><span class="token atrule" ><span class="token rule" >@font-face</span></span> <span class="token punctuation" >{</span>
-  <span class="token property" >font-family</span><span class="token punctuation" >:</span> <span class="token string" >"myfontfamily"</span><span class="token punctuation" >;</span>
-  <span class="token property" >src</span><span class="token punctuation" >:</span> <span class="token url" >url("./fonts/myfontfile.woff2")</span> <span class="token function" >format</span><span class="token punctuation" >(</span><span class="token string" >"woff2"</span><span class="token punctuation" >)</span>,
-    <span class="token url" >url("./fonts/myfontfile.woff")</span> <span class="token function" >format</span><span class="token punctuation" >(</span><span class="token string" >"woff"</span><span class="token punctuation" >)</span>,
-    <span class="token url" >url("./fonts/myfontfile.eot")</span> <span class="token function" >format</span><span class="token punctuation" >(</span><span class="token string" >"embedded-opentype"</span><span class="token punctuation" >)</span>,
-    <span class="token url" >url("./fonts/myfontfile.ttf")</span> <span class="token function" >format</span><span class="token punctuation" >(</span><span class="token string" >"truetype"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token comment" spellcheck="true">/* Add other formats as you see fit */</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-css"><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"myfontfamily"</span><span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url("./fonts/myfontfile.woff2")</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"woff2"</span><span class="token punctuation">)</span>,
+    <span class="token url">url("./fonts/myfontfile.woff")</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"woff"</span><span class="token punctuation">)</span>,
+    <span class="token url">url("./fonts/myfontfile.eot")</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"embedded-opentype"</span><span class="token punctuation">)</span>,
+    <span class="token url">url("./fonts/myfontfile.ttf")</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"truetype"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/* Add other formats as you see fit */</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://developer.mozilla.org/en/docs/Web/CSS/@font-face">MDN discusses the font-family rule</a> in detail.</blockquote><h2 class="header"><a class="header-anchor" href="#manipulating-file-loader-output-path-and-publicpath" id="manipulating-file-loader-output-path-and-publicpath"></a><span class="text">Manipulating <em>file-loader</em> Output Path and <code>publicPath</code></span><a class="header-anchor-select" href="#manipulating-file-loader-output-path-and-publicpath">#</a></h2>
 <p>As discussed above and in <a href="https://github.com/webpack/file-loader/issues/32#issuecomment-250622904">webpack issue tracker</a>, <em>file-loader</em> allows shaping the output. This way you can output your fonts below <code>fonts/</code>, images below <code>images/</code>, and so on over using the root.</p>
 <p>Furthermore, it&#39;s possible to manipulate <code>publicPath</code> and override the default per loader definition. The following example illustrates these techniques together:</p>
-<pre><code class="lang-javascript"><span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Match woff2 and patterns like .woff?v=1.1.1.</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff2?(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
-  loader<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
-  options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
-    mimetype<span class="token punctuation" >:</span> <span class="token string" >"application/font-woff"</span><span class="token punctuation" >,</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >"./fonts/[name].[ext]"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Output below ./fonts</span>
-    publicPath<span class="token punctuation" >:</span> <span class="token string" >"../"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Take the directory into account</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token punctuation">{</span>
+  <span class="token comment">// Match woff2 and patterns like .woff?v=1.1.1.</span>
+  test<span class="token punctuation">:</span> <span class="token regex">/\.woff2?(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation">,</span>
+  loader<span class="token punctuation">:</span> <span class="token string">"url-loader"</span><span class="token punctuation">,</span>
+  options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    limit<span class="token punctuation">:</span> <span class="token number">50000</span><span class="token punctuation">,</span>
+    mimetype<span class="token punctuation">:</span> <span class="token string">"application/font-woff"</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">"./fonts/[name].[ext]"</span><span class="token punctuation">,</span> <span class="token comment">// Output below ./fonts</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">"../"</span><span class="token punctuation">,</span> <span class="token comment">// Take the directory into account</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#generating-font-files-based-on-svgs" id="generating-font-files-based-on-svgs"></a><span class="text">Generating Font Files Based on SVGs</span><a class="header-anchor-select" href="#generating-font-files-based-on-svgs">#</a></h2>
 <p>If you prefer to use SVG based fonts, they can be bundled as a single font file by using <a href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</a>.</p>
@@ -102,92 +102,92 @@
 <p>The ideas above can be applied with <a href="https://www.npmjs.com/package/font-awesome">Font Awesome</a>. It&#39;s a collection of high-quality font icons you can refer to using CSS classes.</p>
 <h3 class="header"><a class="header-anchor" href="#integrating-font-awesome-to-the-project" id="integrating-font-awesome-to-the-project"></a><span class="text">Integrating Font Awesome to the Project</span><a class="header-anchor-select" href="#integrating-font-awesome-to-the-project">#</a></h3>
 <p>To integrate Font Awesome to the book project, install it first:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> font-awesome --save
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> font-awesome --save
 </code></pre>
 <p>Given Font Awesome doesn&#39;t define a <code>main</code> field in its <em>package.json</em> file, you need to point to it through a direct path instead of package name alone as follows:</p>
 <p><strong>app/index.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword" >import</span> <span class="token string" >"font-awesome/css/font-awesome.css"</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> <span class="token string">"font-awesome/css/font-awesome.css"</span><span class="token punctuation">;</span>
 </div>
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token operator">...</span>
 </code></pre>
 <p>Font Awesome includes Sass and Less versions as well, but given you have not set up either, this definition is enough.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The <code>import</code> could be cleaned up as <code>import &quot;font-awesome&quot;</code> by setting up a <code>resolve.alias</code>. The <em>Package Consuming Techniques</em> chapter discusses this idea in detail.</blockquote><p>If you run the project now (<code>npm start</code>), webpack should give a long list of errors:</p>
-<pre><code class="lang-bash">ERROR <span class="token keyword" >in</span> ./node_modules/font-awesome/fonts/fontawesome-webfont.ttf?v<span class="token operator" >=</span>4.7.0
-Module parse failed: Unexpected character <span class="token string" >''</span> <span class="token punctuation" >(</span>1:0<span class="token punctuation" >)</span>
-You may need an appropriate loader to handle this <span class="token function" >file</span> type.
-<span class="token punctuation" >(</span>Source code omitted <span class="token keyword" >for</span> this binary file<span class="token punctuation" >)</span>
- @ ./node_modules/css-loader<span class="token operator" >!</span>./node_modules/font-awesome/css/font-awesome.css 6:645-696
-<span class="token punctuation" >..</span>.
+<pre><code class="lang-bash">ERROR <span class="token keyword">in</span> ./node_modules/font-awesome/fonts/fontawesome-webfont.ttf?v<span class="token operator">=</span>4.7.0
+Module parse failed: Unexpected character <span class="token string">''</span> <span class="token punctuation">(</span>1:0<span class="token punctuation">)</span>
+You may need an appropriate loader to handle this <span class="token function">file</span> type.
+<span class="token punctuation">(</span>Source code omitted <span class="token keyword">for</span> this binary file<span class="token punctuation">)</span>
+ @ ./node_modules/css-loader<span class="token operator">!</span>./node_modules/font-awesome/css/font-awesome.css 6:645-696
+<span class="token punctuation">..</span>.
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#implementing-webpack-configuration" id="implementing-webpack-configuration"></a><span class="text">Implementing Webpack Configuration</span><a class="header-anchor-select" href="#implementing-webpack-configuration">#</a></h3>
 <p>The result is expected as you haven&#39;t configured loaders for any of Font Awesome fonts yet and webpack doesn&#39;t know what to do with the files in question. To match the files and map them through <em>file-loader</em>, attach the following snippet to the project:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>loadFonts <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> include<span class="token punctuation" >,</span> exclude<span class="token punctuation" >,</span> options <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  module<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    rules<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >{</span>
-        <span class="token comment" spellcheck="true">// Capture eot, ttf, woff, and woff2</span>
-        test<span class="token punctuation" >:</span> <span class="token regex" >/\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
-        include<span class="token punctuation" >,</span>
-        exclude<span class="token punctuation" >,</span>
-        use<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-          loader<span class="token punctuation" >:</span> <span class="token string" >"file-loader"</span><span class="token punctuation" >,</span>
-          options<span class="token punctuation" >,</span>
-        <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">loadFonts</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude<span class="token punctuation">,</span> options <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment">// Capture eot, ttf, woff, and woff2</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation">,</span>
+        include<span class="token punctuation">,</span>
+        exclude<span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          loader<span class="token punctuation">:</span> <span class="token string">"file-loader"</span><span class="token punctuation">,</span>
+          options<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The idea is the same as for loading images. This time around you match font files. If you wanted, you could refactor the commonality to a function to share between the two.</p>
 <p>You still need to connect the above with the main configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token operator">...</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation" >.</span><span class="token function" >loadFonts</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    options<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[ext]"</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  parts<span class="token punctuation">.</span><span class="token function">loadFonts</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">"[name].[ext]"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 </div>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The project should run (<code>npm start</code>) without any errors now.</p>
 <p>To see Font Awesome in action, adjust the application as follows:</p>
 <p><strong>app/component.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span>text <span class="token operator" >=</span> <span class="token string" >"Hello world"</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> element <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >"div"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token string">"Hello world"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <div class="leanpub-delete">
-  element<span class="token punctuation" >.</span>className <span class="token operator" >=</span> <span class="token string" >"pure-button"</span><span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">"pure-button"</span><span class="token punctuation">;</span>
 </div>
 <div class="leanpub-insert">
-  element<span class="token punctuation" >.</span>className <span class="token operator" >=</span> <span class="token string" >"fa fa-hand-spock-o fa-1g"</span><span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">"fa fa-hand-spock-o fa-1g"</span><span class="token punctuation">;</span>
 </div>
-  element<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> text<span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> text<span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> element<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If you build the application (<code>npm run build</code>), you should see that it processed and Font Awesome assets were included.</p>
 <pre><code class="lang-bash">Hash: a1278d7c20953a506768
 Version: webpack 3.8.1
 Time: 1738ms
         Asset       Size  Chunks                    Chunk Names
-  <span class="token punctuation" >..</span>.font.eot     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >..</span>.font.ttf     166 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.font.woff2    77.2 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
- <span class="token punctuation" >..</span>.font.woff      98 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >..</span>.font.svg     444 kB          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  <span class="token punctuation" >[</span>big<span class="token punctuation" >]</span>
-       app.js    4.18 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
-      app.css    3.51 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>         app
-   index.html  218 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-  <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 161 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-  <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-  <span class="token punctuation" >[</span>4<span class="token punctuation" >]</span> ./app/component.js 193 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
+  <span class="token punctuation">..</span>.font.eot     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  <span class="token punctuation">..</span>.font.ttf     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.font.woff2    77.2 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+ <span class="token punctuation">..</span>.font.woff      98 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  <span class="token punctuation">..</span>.font.svg     444 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  <span class="token punctuation">[</span>big<span class="token punctuation">]</span>
+       app.js    4.18 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
+      app.css    3.51 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
+   index.html  218 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+  <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 161 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+  <span class="token punctuation">[</span>3<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+  <span class="token punctuation">[</span>4<span class="token punctuation">]</span> ./app/component.js 193 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
 </code></pre>
 <p>The SVG file included in Font Awesome has been marked as <code>[big]</code>. It&#39;s beyond the performance budget defaults set by webpack and the topic is discussed in detail in the <a href="/webpack/optimizing/minifying/">Minifying</a> chapter.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/font-awesome-loader">font-awesome-loader</a> allows more customization. Font Awesome 5 improves the situation further and make it easier to decide what fonts to consume. <a href="https://github.com/FortAwesome/Font-Awesome/wiki/Customize-Font-Awesome">Font Awesome wiki</a> points to available online services that allow you to select specific fonts from Font Awesome collection.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

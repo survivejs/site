@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -39,52 +39,52 @@
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-project" id="setting-up-a-project"></a><span class="text">Setting Up a Project</span><a class="header-anchor-select" href="#setting-up-a-project">#</a></h2>
 <p>To prove that translation works, set up something to replace:</p>
 <p><strong>app/i18n.js</strong></p>
-<pre><code class="lang-javascript">console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span><span class="token function" >__</span><span class="token punctuation" >(</span><span class="token string" >"Hello world"</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">__</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>To translate that into Finnish, set up a definition:</p>
 <p><strong>languages/fi.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span> "Hello world"<span class="token operator" >:</span> <span class="token string" >"Terve maailma"</span> <span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span> "Hello world"<span class="token operator">:</span> <span class="token string">"Terve maailma"</span> <span class="token punctuation">}</span>
 </code></pre>
 <p>The next step is to glue the files together using webpack.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>To make ESLint aware of the global <code>__</code> function, you should add it to your linting rules through <code>globals.__: true</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-i18nwebpackplugin" id="setting-up-i18nwebpackplugin"></a><span class="text">Setting Up <code>I18nWebpackPlugin</code></span><a class="header-anchor-select" href="#setting-up-i18nwebpackplugin">#</a></h2>
 <p>Install <em>i18n-webpack-plugin</em> and <em>glob</em> helper first. The latter is needed for capturing translation files.</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> glob i18n-webpack-plugin --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> glob i18n-webpack-plugin --save-dev
 </code></pre>
 <p>On the webpack side, you should iterate through the available languages, and then set up a configuration for each:</p>
 <p><strong>webpack.i18n.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"path"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> glob <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"glob"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> I18nPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"i18n-webpack-plugin"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> glob <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"glob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> I18nPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"i18n-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"i18n-build"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  i18nDemo<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"app"</span><span class="token punctuation" >,</span> <span class="token string" >"i18n.js"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> PATHS <span class="token operator">=</span> <span class="token punctuation">{</span>
+  build<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"i18n-build"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  i18nDemo<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"app"</span><span class="token punctuation">,</span> <span class="token string">"i18n.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> TRANSLATIONS <span class="token operator" >=</span> <span class="token punctuation" >[</span><span class="token punctuation" >{</span> language<span class="token punctuation" >:</span> <span class="token string" >"en"</span> <span class="token punctuation" >}</span><span class="token punctuation" >]</span><span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation" >(</span>
-  glob<span class="token punctuation" >.</span><span class="token function" >sync</span><span class="token punctuation" >(</span><span class="token string" >"./languages/*.json"</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>file <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    language<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >basename</span><span class="token punctuation" >(</span>file<span class="token punctuation" >,</span> path<span class="token punctuation" >.</span><span class="token function" >extname</span><span class="token punctuation" >(</span>file<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    translation<span class="token punctuation" >:</span> <span class="token function" >require</span><span class="token punctuation" >(</span>file<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> TRANSLATIONS <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> language<span class="token punctuation">:</span> <span class="token string">"en"</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>
+  glob<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token string">"./languages/*.json"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>file <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    language<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">extname</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    translation<span class="token punctuation">:</span> <span class="token function">require</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> TRANSLATIONS<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> language<span class="token punctuation" >,</span> translation <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    index<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>i18nDemo<span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
-    filename<span class="token punctuation" >:</span> <span class="token template-string" ><span class="token string" >`[name].</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>language<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >.js`</span></span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token keyword" >new</span> <span class="token class-name" >I18nPlugin</span><span class="token punctuation" >(</span>translation<span class="token punctuation" >)</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> TRANSLATIONS<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span> language<span class="token punctuation">,</span> translation <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    index<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>i18nDemo<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>build<span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`[name].</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>language<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.js`</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">I18nPlugin</span><span class="token punctuation">(</span>translation<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>To make it convenient to build, set a shortcut:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  "build<span class="token operator" >:</span>i18n"<span class="token operator" >:</span> <span class="token string" >"webpack --config webpack.i18n.js"</span><span class="token punctuation" >,</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  "build<span class="token operator">:</span>i18n"<span class="token operator">:</span> <span class="token string">"webpack --config webpack.i18n.js"</span><span class="token punctuation">,</span>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>If you build now (<code>npm run build:i18n</code>), you should end up with a new directory containing two translated files and translated code in each.</p>
 <p>To take the example further, generate a page for each translation as described in the <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter and add a language selector. The language definition can be handled through webpack&#39;s <code>DefinePlugin</code>. A user interface widget could rely on that and load languages based a page or directory naming convention.</p>

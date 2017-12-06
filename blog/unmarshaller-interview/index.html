@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -39,92 +39,92 @@
 <h3 class="header"><a class="header-anchor" href="#lookup-function" id="lookup-function"></a><span class="text">Lookup Function</span><a class="header-anchor-select" href="#lookup-function">#</a></h3>
 <p>During the unmarshalling process the lookup <code>function</code> will be called to get the value for a given key.</p>
 <p>If you want to extract values from an object the lookup will look like this:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> lookupFn <span class="token operator" >=</span> key <span class="token operator" >=</span><span class="token operator" >></span> myObject<span class="token punctuation" >[</span>key<span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">lookupFn</span> <span class="token operator">=</span> key <span class="token operator">=></span> myObject<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>How to provide the values is up to you. You could get them from the URL, looking for DOM nodes, network requests, and so on.</p>
 <p>First, you need to declare your configuration in the unmarshaller object, here is an example:</p>
 <p><strong>unmarshaller.js:</strong></p>
-<pre><code class="lang-js"><span class="token comment" spellcheck="true">// The builder is a set of helper functions to build</span>
-<span class="token comment" spellcheck="true">// the unmarshaller object.</span>
-<span class="token comment" spellcheck="true">// It has the builtin types: `string`, `number`,</span>
-<span class="token comment" spellcheck="true">// `boolean`, `object` and `holder` that is used to</span>
-<span class="token comment" spellcheck="true">// nest configurations.</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> builder <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'unmarshaller'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token comment">// The builder is a set of helper functions to build</span>
+<span class="token comment">// the unmarshaller object.</span>
+<span class="token comment">// It has the builtin types: `string`, `number`,</span>
+<span class="token comment">// `boolean`, `object` and `holder` that is used to</span>
+<span class="token comment">// nest configurations.</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> builder <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'unmarshaller'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >const</span> unmarshaller <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// `person_name` will be the key used as argument</span>
-  <span class="token comment" spellcheck="true">// in the lookup function</span>
-  name<span class="token punctuation" >:</span> builder<span class="token punctuation" >.</span><span class="token function" >string</span><span class="token punctuation" >(</span><span class="token string" >'person_name'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// `description` is used for documentation</span>
-    <span class="token comment" spellcheck="true">// generation</span>
-    description<span class="token punctuation" >:</span> <span class="token string" >'Name of the person'</span><span class="token punctuation" >,</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> unmarshaller <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// `person_name` will be the key used as argument</span>
+  <span class="token comment">// in the lookup function</span>
+  name<span class="token punctuation">:</span> builder<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">'person_name'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment">// `description` is used for documentation</span>
+    <span class="token comment">// generation</span>
+    description<span class="token punctuation">:</span> <span class="token string">'Name of the person'</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// If the lookup function didn't returned a value,</span>
-    <span class="token comment" spellcheck="true">// the default value will be used instead</span>
-    defaultValue<span class="token punctuation" >:</span> <span class="token string" >'Sven'</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+    <span class="token comment">// If the lookup function didn't returned a value,</span>
+    <span class="token comment">// the default value will be used instead</span>
+    defaultValue<span class="token punctuation">:</span> <span class="token string">'Sven'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  customProps<span class="token punctuation" >:</span> builder<span class="token punctuation" >.</span><span class="token function" >object</span><span class="token punctuation" >(</span><span class="token string" >'custom_props'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    description<span class="token punctuation" >:</span> <span class="token string" >'Custom properties'</span><span class="token punctuation" >,</span>
-    defaultValue<span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  customProps<span class="token punctuation">:</span> builder<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token string">'custom_props'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    description<span class="token punctuation">:</span> <span class="token string">'Custom properties'</span><span class="token punctuation">,</span>
+    defaultValue<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  showAge<span class="token punctuation" >:</span> builder<span class="token punctuation" >.</span><span class="token function" >boolean</span><span class="token punctuation" >(</span><span class="token string" >'person_show_age'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    description<span class="token punctuation" >:</span> <span class="token string" >'Show age of the person'</span><span class="token punctuation" >,</span>
-    defaultValue<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  showAge<span class="token punctuation">:</span> builder<span class="token punctuation">.</span><span class="token function">boolean</span><span class="token punctuation">(</span><span class="token string">'person_show_age'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    description<span class="token punctuation">:</span> <span class="token string">'Show age of the person'</span><span class="token punctuation">,</span>
+    defaultValue<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  age<span class="token punctuation" >:</span> builder<span class="token punctuation" >.</span><span class="token function" >number</span><span class="token punctuation" >(</span><span class="token string" >'person_age'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    description<span class="token punctuation" >:</span> <span class="token string" >'Age of the person'</span><span class="token punctuation" >,</span>
-    defaultValue<span class="token punctuation" >:</span> <span class="token operator" >-</span><span class="token number" >1</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  age<span class="token punctuation">:</span> builder<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token string">'person_age'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    description<span class="token punctuation">:</span> <span class="token string">'Age of the person'</span><span class="token punctuation">,</span>
+    defaultValue<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  backgroundColor<span class="token punctuation" >:</span> builder<span class="token punctuation" >.</span><span class="token function" >string</span><span class="token punctuation" >(</span><span class="token string" >'background_color'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    description<span class="token punctuation" >:</span> <span class="token string" >'Background color of the card'</span><span class="token punctuation" >,</span>
-    defaultValue<span class="token punctuation" >:</span> <span class="token string" >'#69b0dc'</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  backgroundColor<span class="token punctuation">:</span> builder<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">'background_color'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    description<span class="token punctuation">:</span> <span class="token string">'Background color of the card'</span><span class="token punctuation">,</span>
+    defaultValue<span class="token punctuation">:</span> <span class="token string">'#69b0dc'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  textColor<span class="token punctuation" >:</span> builder<span class="token punctuation" >.</span><span class="token function" >string</span><span class="token punctuation" >(</span><span class="token string" >'font_color'</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    description<span class="token punctuation" >:</span> <span class="token string" >'Font color'</span><span class="token punctuation" >,</span>
-    defaultValue<span class="token punctuation" >:</span> <span class="token string" >'black'</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  textColor<span class="token punctuation">:</span> builder<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">'font_color'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    description<span class="token punctuation">:</span> <span class="token string">'Font color'</span><span class="token punctuation">,</span>
+    defaultValue<span class="token punctuation">:</span> <span class="token string">'black'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>index.js:</strong></p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> unmarshal <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'unmarshaller'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> unmarshal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'unmarshaller'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// This is the unmarshaller object from the file above</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> unmarshaller<span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'./unmarshaller.js'</span>
+<span class="token comment">// This is the unmarshaller object from the file above</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> unmarshaller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./unmarshaller.js'</span>
 
-<span class="token keyword" >const</span> lookupFn <span class="token operator" >=</span> <span class="token punctuation" >(</span>key<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> myObject<span class="token punctuation" >[</span>key<span class="token punctuation" >]</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> config <span class="token operator" >=</span> <span class="token function" >unmarshal</span><span class="token punctuation" >(</span>lookupFn<span class="token punctuation" >,</span> unmarshaller<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">lookupFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">=></span> myObject<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token function">unmarshal</span><span class="token punctuation">(</span>lookupFn<span class="token punctuation">,</span> unmarshaller<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// `config` is a regular JavaScript object containing your configuration:</span>
-<span class="token comment" spellcheck="true">//</span>
-<span class="token comment" spellcheck="true">// {</span>
-<span class="token comment" spellcheck="true">//   name: ...,</span>
-<span class="token comment" spellcheck="true">//   backgroundColor: ...,</span>
-<span class="token comment" spellcheck="true">//   textColor: ...,</span>
-<span class="token comment" spellcheck="true">// }</span>
-console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation" >(</span>config<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// `config` is a regular JavaScript object containing your configuration:</span>
+<span class="token comment">//</span>
+<span class="token comment">// {</span>
+<span class="token comment">//   name: ...,</span>
+<span class="token comment">//   backgroundColor: ...,</span>
+<span class="token comment">//   textColor: ...,</span>
+<span class="token comment">// }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#custom-types" id="custom-types"></a><span class="text">Custom types</span><a class="header-anchor-select" href="#custom-types">#</a></h3>
 <p>To be able to use custom types you need to extend the default builder.</p>
 <p>Here is an example of a <code>color</code> type:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span>
-  builder <span class="token keyword" >as</span> defaultBuilder
-<span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'unmarshaller'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  builder <span class="token keyword">as</span> defaultBuilder
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'unmarshaller'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >const</span> builder <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>defaultBuilder<span class="token punctuation" >,</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> builder <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>defaultBuilder<span class="token punctuation">,</span>
 
-  color<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>name<span class="token punctuation" >,</span> options<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    name<span class="token punctuation" >,</span>
-    parser<span class="token punctuation" >:</span> parseColor<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// custom parser function</span>
-    type<span class="token punctuation" >:</span> <span class="token string" >'color'</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>options
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  color<span class="token punctuation">:</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> options<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">,</span>
+    parser<span class="token punctuation">:</span> parseColor<span class="token punctuation">,</span> <span class="token comment">// custom parser function</span>
+    type<span class="token punctuation">:</span> <span class="token string">'color'</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>options
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>You can find more information about custom types in the documentation in <a href="https://github.com/xtuc/unmarshaller">the project repository</a>.</p>
 <h3 class="header"><a class="header-anchor" href="#error-handling" id="error-handling"></a><span class="text">Error handling</span><a class="header-anchor-select" href="#error-handling">#</a></h3>
@@ -140,28 +140,28 @@ console<span class="token punctuation" >.</span><span class="token function" >lo
 <h3 class="header"><a class="header-anchor" href="#better-syntax-" id="better-syntax-"></a><span class="text">Better syntax?</span><a class="header-anchor-select" href="#better-syntax-">#</a></h3>
 <p>The <code>unmarshaller</code> could also be JSX based (<a href="https://webpack.js.org/concepts/configuration/#using-jsx">example for Webpack</a>).
 The configuration could look like this:</p>
-<pre><code class="lang-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>unmarshaller</span><span class="token punctuation" >></span></span>
+<pre><code class="lang-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unmarshaller</span><span class="token punctuation">></span></span>
 
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>string</span>
-    <span class="token attr-name" >name</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>name<span class="token punctuation" >"</span></span>
-    <span class="token attr-name" >defaultValue</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>Sven<span class="token punctuation" >"</span></span>
-    <span class="token attr-name" >description</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>Name of the person<span class="token punctuation" >"</span></span>
-  <span class="token punctuation" >/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span>
+    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span>
+    <span class="token attr-name">defaultValue</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Sven<span class="token punctuation">"</span></span>
+    <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Name of the person<span class="token punctuation">"</span></span>
+  <span class="token punctuation">/></span></span>
 
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>holder</span> <span class="token attr-name" >name</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>colors<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>color</span>
-      <span class="token attr-name" >name</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>background_color<span class="token punctuation" >"</span></span>
-      <span class="token attr-name" >defaultValue</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>#69b0dc<span class="token punctuation" >"</span></span>
-      <span class="token attr-name" >description</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>Background color<span class="token punctuation" >"</span></span>
-    <span class="token punctuation" >/></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>color</span>
-      <span class="token attr-name" >name</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>font_color<span class="token punctuation" >"</span></span>
-      <span class="token attr-name" >defaultValue</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>black<span class="token punctuation" >"</span></span>
-      <span class="token attr-name" >description</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>Font color<span class="token punctuation" >"</span></span>
-    <span class="token punctuation" >/></span></span>
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>holder</span><span class="token punctuation" >></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>holder</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>colors<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span>
+      <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>background_color<span class="token punctuation">"</span></span>
+      <span class="token attr-name">defaultValue</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#69b0dc<span class="token punctuation">"</span></span>
+      <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Background color<span class="token punctuation">"</span></span>
+    <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span>
+      <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>font_color<span class="token punctuation">"</span></span>
+      <span class="token attr-name">defaultValue</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>black<span class="token punctuation">"</span></span>
+      <span class="token attr-name">description</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Font color<span class="token punctuation">"</span></span>
+    <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>holder</span><span class="token punctuation">></span></span>
 
-<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>unmarshaller</span><span class="token punctuation" >></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unmarshaller</span><span class="token punctuation">></span></span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#most-common-lookup-functions" id="most-common-lookup-functions"></a><span class="text">Most common lookup functions</span><a class="header-anchor-select" href="#most-common-lookup-functions">#</a></h3>
 <p>Provide standard <code>lookup functions</code>, for example, to extract configuration values from URLs as this would allow users to use the functions that come with <code>unmarshaller</code> instead of having to write them themselves.</p>

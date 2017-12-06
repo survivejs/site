@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -46,40 +46,40 @@ I&#39;m Charles, and I run a JavaScript consultancy called <a href="https://code
 <p>There are two main packages:</p>
 <p><strong>flow-runtime</strong></p>
 <p><a href="https://www.npmjs.com/package/flow-runtime">flow-runtime</a> represents types and does the actual verification. It provides a simple, composable API for defining types and matching values against them:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> t <span class="token keyword" >from</span> <span class="token string" >"flow-runtime"</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> t <span class="token keyword">from</span> <span class="token string">"flow-runtime"</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> stringOrNumber <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token function" >union</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span><span class="token function" >string</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> t<span class="token punctuation" >.</span><span class="token function" >number</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> stringOrNumber <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">union</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-stringOrNumber<span class="token punctuation" >.</span><span class="token function" >assert</span><span class="token punctuation" >(</span><span class="token number" >123</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-stringOrNumber<span class="token punctuation" >.</span><span class="token function" >assert</span><span class="token punctuation" >(</span><span class="token string" >"this is fine"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-stringOrNumber<span class="token punctuation" >.</span><span class="token function" >assert</span><span class="token punctuation" >(</span><span class="token boolean" >false</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// throws an error</span>
+stringOrNumber<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+stringOrNumber<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span><span class="token string">"this is fine"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+stringOrNumber<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// throws an error</span>
 </code></pre>
 <p>You can use this standalone and as well as type checking it enables some pretty cool stuff, like <a href="https://codemix.github.io/flow-runtime/#/docs/pattern-matching">pattern matching</a>.</p>
 <p><strong>babel-plugin-flow-runtime</strong></p>
 <p><a href="https://www.npmjs.com/package/babel-plugin-flow-runtime">babel-plugin-flow-runtime</a> takes code written with Flow annotations and turns those annotations into flow-runtime API calls.</p>
 <p>So when you write code like this:</p>
-<pre><code class="lang-javascript">type Thing <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  id<span class="token punctuation" >:</span> number<span class="token punctuation" >;</span>
-  name<span class="token punctuation" >:</span> string<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">type Thing <span class="token operator">=</span> <span class="token punctuation">{</span>
+  id<span class="token punctuation">:</span> number<span class="token punctuation">;</span>
+  name<span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> widget<span class="token punctuation" >:</span> Thing <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  id<span class="token punctuation" >:</span> <span class="token number" >123</span><span class="token punctuation" >,</span>
-  name<span class="token punctuation" >:</span> <span class="token string" >"Widget"</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> widget<span class="token punctuation">:</span> Thing <span class="token operator">=</span> <span class="token punctuation">{</span>
+  id<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
+  name<span class="token punctuation">:</span> <span class="token string">"Widget"</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>the plugin produces this:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> t <span class="token keyword" >from</span> <span class="token string" >"flow-runtime"</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> t <span class="token keyword">from</span> <span class="token string">"flow-runtime"</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> Thing <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token function" >type</span><span class="token punctuation" >(</span><span class="token string" >"Thing"</span><span class="token punctuation" >,</span> t<span class="token punctuation" >.</span><span class="token function" >object</span><span class="token punctuation" >(</span>
-  t<span class="token punctuation" >.</span><span class="token function" >property</span><span class="token punctuation" >(</span><span class="token string" >"id"</span><span class="token punctuation" >,</span> t<span class="token punctuation" >.</span><span class="token function" >number</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  t<span class="token punctuation" >.</span><span class="token function" >property</span><span class="token punctuation" >(</span><span class="token string" >"name"</span><span class="token punctuation" >,</span> t<span class="token punctuation" >.</span><span class="token function" >string</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> Thing <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"Thing"</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span>
+  t<span class="token punctuation">.</span><span class="token function">property</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  t<span class="token punctuation">.</span><span class="token function">property</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> widget <span class="token operator" >=</span> Thing<span class="token punctuation" >.</span><span class="token function" >assert</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  id<span class="token punctuation" >:</span> <span class="token number" >123</span><span class="token punctuation" >,</span>
-  name<span class="token punctuation" >:</span> <span class="token string" >"Widget"</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> widget <span class="token operator">=</span> Thing<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  id<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
+  name<span class="token punctuation">:</span> <span class="token string">"Widget"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can try this out in <a href="https://codemix.github.io/flow-runtime/#/try">the online demo</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-flow-runtime-differ-from-other-solutions-" id="how-does-flow-runtime-differ-from-other-solutions-"></a><span class="text">How does <em>Flow Runtime</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-flow-runtime-differ-from-other-solutions-">#</a></h2>
 <p>The vast majority of JS validation libraries have a focus on validating user input of one kind or another, whereas Flow Runtime is all about program correctness. To do this, we have to be able to represent the type of any possible JavaScript value, e.g., the shape of a class, or whether a generator function yields the right type of object.</p>

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -31,36 +31,36 @@
 <p>As discussed in the <a href="/webpack/output/targets/">Build Targets</a> chapter, webpack allows you to build your application as a worker itself. To get the idea of web workers better, you&#39;ll learn how to build a small worker using <a href="https://www.npmjs.com/package/worker-loader">worker-loader</a>.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-worker-loader" id="setting-up-worker-loader"></a><span class="text">Setting Up Worker Loader</span><a class="header-anchor-select" href="#setting-up-worker-loader">#</a></h2>
 <p>To get started, install <em>worker-loader</em> to the project:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> worker-loader --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> worker-loader --save-dev
 </code></pre>
 <p>Instead of pushing the loader definition to webpack configuration, you can use inline loader definitions to keep the demonstration minimal. See the <a href="/webpack/loading/loader-definitions/">Loader Definitions</a> chapter for more information about the alternatives.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-worker" id="setting-up-a-worker"></a><span class="text">Setting Up a Worker</span><a class="header-anchor-select" href="#setting-up-a-worker">#</a></h2>
 <p>A worker has to do two things: listen to messages and respond. Between those two actions, it can perform a computation. In this case, you accept text data, append it to itself, and send the result:</p>
 <p><strong>app/worker.js</strong></p>
-<pre><code class="lang-javascript">self<span class="token punctuation" >.</span>onmessage <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> data<span class="token punctuation" >:</span> <span class="token punctuation" >{</span> text <span class="token punctuation" >}</span> <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  self<span class="token punctuation" >.</span><span class="token function" >postMessage</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> text<span class="token punctuation" >:</span> text <span class="token operator" >+</span> text <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">self<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> data<span class="token punctuation">:</span> <span class="token punctuation">{</span> text <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  self<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token punctuation">:</span> text <span class="token operator">+</span> text <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-host" id="setting-up-a-host"></a><span class="text">Setting Up a Host</span><a class="header-anchor-select" href="#setting-up-a-host">#</a></h2>
 <p>The host has to instantiate the worker and the communicate with it. The idea is almost the same except the host has the control:</p>
 <p><strong>app/component.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> Worker <span class="token keyword" >from</span> <span class="token string" >"worker-loader!./worker"</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> Worker <span class="token keyword">from</span> <span class="token string">"worker-loader!./worker"</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> element <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >"h1"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token keyword" >const</span> worker <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Worker</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token keyword" >const</span> state <span class="token operator" >=</span> <span class="token punctuation" >{</span> text<span class="token punctuation" >:</span> <span class="token string" >"foo"</span> <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> worker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> text<span class="token punctuation">:</span> <span class="token string">"foo"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  worker<span class="token punctuation" >.</span><span class="token function" >addEventListener</span><span class="token punctuation" >(</span><span class="token string" >"message"</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> data<span class="token punctuation" >:</span> <span class="token punctuation" >{</span> text <span class="token punctuation" >}</span> <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-    state<span class="token punctuation" >.</span>text <span class="token operator" >=</span> text<span class="token punctuation" >;</span>
-    element<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> text<span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  worker<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> data<span class="token punctuation">:</span> <span class="token punctuation">{</span> text <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">.</span>text <span class="token operator">=</span> text<span class="token punctuation">;</span>
+    element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> text<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  element<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> state<span class="token punctuation" >.</span>text<span class="token punctuation" >;</span>
-  element<span class="token punctuation" >.</span>onclick <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> worker<span class="token punctuation" >.</span><span class="token function" >postMessage</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> text<span class="token punctuation" >:</span> state<span class="token punctuation" >.</span>text <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> state<span class="token punctuation">.</span>text<span class="token punctuation">;</span>
+  element<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> worker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token punctuation">:</span> state<span class="token punctuation">.</span>text <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> element<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>After you have these two set up, it should work. As you click the text, it should mutate the application state as the worker completes its execution. To demonstrate the asynchronous nature of workers, you could try adding delay to the answer and see what happens.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/webworkify-webpack">webworkify-webpack</a> is an alternative to <em>worker-loader</em>. The API allows you to use the worker as a regular JavaScript module as well given you avoid the <code>self</code> requirement visible in the example solution. <a href="https://www.npmjs.com/package/webpack-worker">webpack-worker</a> is another option to study.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

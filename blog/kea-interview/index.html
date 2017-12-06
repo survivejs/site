@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -54,218 +54,218 @@ Sure! I&#39;m Marius. I was born in Estonia and now live in Belgium. I work as t
 <p>Let&#39;s look at the simplest example: a counter that can be incremented and decremented with the push of a button.</p>
 <p>It&#39;s built in the &quot;inline kea&quot; style, where we create a logic store and immediately attach it to a React component. I&#39;m using ES decorators here for extra smoothness, but you don&#39;t necessarily have to use them.</p>
 <p>I will assume you&#39;re familiar with the concepts in Redux. If not, please check out <a href="/blog/redux-interview/">the interview with Dan Abramov</a> for some much-needed context... although you&#39;ll surely understand the code without it:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> Component <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> PropTypes <span class="token keyword" >from</span> <span class="token string" >'prop-types'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> kea <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'kea'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> PropTypes <span class="token keyword">from</span> <span class="token string">'prop-types'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> kea <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'kea'</span><span class="token punctuation">;</span>
 
-@<span class="token function" >kea</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  actions<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    increment<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>amount<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> amount <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    decrement<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>amount<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> amount <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+@<span class="token function">kea</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  actions<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    increment<span class="token punctuation">:</span> <span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> amount <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    decrement<span class="token punctuation">:</span> <span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> amount <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  reducers<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> actions <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    counter<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >,</span> PropTypes<span class="token punctuation" >.</span>number<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>increment<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span>state<span class="token punctuation" >,</span> payload<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-        state <span class="token operator" >+</span> payload<span class="token punctuation" >.</span>amount
-      <span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>decrement<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span>state<span class="token punctuation" >,</span> payload<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-        state <span class="token operator" >-</span> payload<span class="token punctuation" >.</span>amount
-      <span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Counter</span> <span class="token keyword" >extends</span> <span class="token class-name" >Component</span> <span class="token punctuation" >{</span>
-  render <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> counter <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> increment<span class="token punctuation" >,</span> decrement <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>actions<span class="token punctuation" >;</span>
+  reducers<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> actions <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    counter<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> PropTypes<span class="token punctuation">.</span>number<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>increment<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        state <span class="token operator">+</span> payload<span class="token punctuation">.</span>amount
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>decrement<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        state <span class="token operator">-</span> payload<span class="token punctuation">.</span>amount
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> counter <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>actions<span class="token punctuation">;</span>
 
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >'kea-counter'</span><span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>p<span class="token operator" >></span>Count<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>counter<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>p<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >increment</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Increment<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >decrement</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Decrement<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'kea-counter'</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>p<span class="token operator">></span>Count<span class="token punctuation">:</span> <span class="token punctuation">{</span>counter<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Increment<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Decrement<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>It&#39;s all very <em>Reduxy</em>. You have actions and reducers. Both are pure functions. The code is very readable, and there&#39;s a clear separation of concerns.</p>
 <p>Compare this to a standard Redux-based approach:</p>
 <p><strong>constants/counter.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >const</span> INCREMENT <span class="token operator" >=</span> <span class="token string" >'INCREMENT'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >export</span> <span class="token keyword" >const</span> DECREMENT <span class="token operator" >=</span> <span class="token string" >'DECREMENT'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">const</span> INCREMENT <span class="token operator">=</span> <span class="token string">'INCREMENT'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> DECREMENT <span class="token operator">=</span> <span class="token string">'DECREMENT'</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>actions/counter.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> INCREMENT<span class="token punctuation" >,</span> DECREMENT <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'../constants/counter'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> INCREMENT<span class="token punctuation">,</span> DECREMENT <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../constants/counter'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >function</span> increment <span class="token punctuation" >(</span>amount <span class="token operator" >=</span> <span class="token number" >1</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
-    type<span class="token punctuation" >:</span> INCREMENT<span class="token punctuation" >,</span>
-    payload<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      amount<span class="token punctuation" >:</span> amount
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">increment</span> <span class="token punctuation">(</span>amount <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> INCREMENT<span class="token punctuation">,</span>
+    payload<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      amount<span class="token punctuation">:</span> amount
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >function</span> decrement <span class="token punctuation" >(</span>amount <span class="token operator" >=</span> <span class="token number" >1</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
-    type<span class="token punctuation" >:</span> DECREMENT<span class="token punctuation" >,</span>
-    payload<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      amount<span class="token punctuation" >:</span> amount
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">decrement</span> <span class="token punctuation">(</span>amount <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> DECREMENT<span class="token punctuation">,</span>
+    payload<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      amount<span class="token punctuation">:</span> amount
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><strong>reducers/counter.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> INCREMENT<span class="token punctuation" >,</span> DECREMENT <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'../constants/counter'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> INCREMENT<span class="token punctuation">,</span> DECREMENT <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../constants/counter'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >function</span> counter <span class="token punctuation" >(</span>state <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >,</span> action<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >switch</span> <span class="token punctuation" >(</span>action<span class="token punctuation" >.</span>type<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >case</span> INCREMENT<span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> state <span class="token operator" >+</span> action<span class="token punctuation" >.</span>payload<span class="token punctuation" >.</span>amount<span class="token punctuation" >;</span>
-    <span class="token keyword" >case</span> DECREMENT<span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> state <span class="token operator" >-</span> action<span class="token punctuation" >.</span>payload<span class="token punctuation" >.</span>amount<span class="token punctuation" >;</span>
-    <span class="token keyword" >default</span><span class="token punctuation" >:</span>
-      <span class="token keyword" >return</span> state<span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">counter</span> <span class="token punctuation">(</span>state <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> INCREMENT<span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state <span class="token operator">+</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>amount<span class="token punctuation">;</span>
+    <span class="token keyword">case</span> DECREMENT<span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state <span class="token operator">-</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>amount<span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><strong>containers/counter.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> connect <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react-redux'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> increment<span class="token punctuation" >,</span> decrement <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'../actions/counter'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../actions/counter'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >import</span> Counter <span class="token keyword" >from</span> <span class="token string" >'../components/counter'</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">'../components/counter'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> mapStateToProps <span class="token operator" >=</span> state <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
-    counter<span class="token punctuation" >:</span> state<span class="token punctuation" >.</span>counter
-  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mapStateToProps</span> <span class="token operator">=</span> state <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    counter<span class="token punctuation">:</span> state<span class="token punctuation">.</span>counter
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> mapDispatchToProps <span class="token operator" >=</span> dispatch <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >{</span>
-    increment<span class="token punctuation" >:</span> amount <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-      <span class="token function" >dispatch</span><span class="token punctuation" >(</span><span class="token function" >increment</span><span class="token punctuation" >(</span>amount<span class="token punctuation" >)</span><span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    decrement<span class="token punctuation" >:</span> amount <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-      <span class="token function" >dispatch</span><span class="token punctuation" >(</span><span class="token function" >decrement</span><span class="token punctuation" >(</span>amount<span class="token punctuation" >)</span><span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mapDispatchToProps</span> <span class="token operator">=</span> dispatch <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    increment<span class="token punctuation">:</span> amount <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    decrement<span class="token punctuation">:</span> amount <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">decrement</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >connect</span><span class="token punctuation" >(</span>
-  mapStateToProps<span class="token punctuation" >,</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  mapStateToProps<span class="token punctuation">,</span>
   mapDispatchToProps
-<span class="token punctuation" >)</span><span class="token punctuation" >(</span>Counter<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation">)</span><span class="token punctuation">(</span>Counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>components/counter.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> Component <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Counter</span> <span class="token keyword" >extends</span> <span class="token class-name" >Component</span> <span class="token punctuation" >{</span>
-  render <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> counter<span class="token punctuation" >,</span> increment<span class="token punctuation" >,</span> decrement <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> counter<span class="token punctuation">,</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >'kea-counter'</span><span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>p<span class="token operator" >></span>Count<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>counter<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>p<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >increment</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Increment<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >decrement</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Decrement<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'kea-counter'</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>p<span class="token operator">></span>Count<span class="token punctuation">:</span> <span class="token punctuation">{</span>counter<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Increment<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Decrement<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><strong>store.js</strong></p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// I'll spare you this part...</span>
+<pre><code class="lang-javascript"><span class="token comment">// I'll spare you this part...</span>
 </code></pre>
 <p>As you can see, the amount of boilerplate you save is HUGE! No more <code>mapStateToProps</code>. No more <code>export const INCREMENT = &#39;INCREMENT&#39;</code>. You just write code that matters while retaining the clear functional approach that makes Redux so powerful.</p>
 <p>Now, an example of this complexity can easily be written with React&#39;s own <code>setState</code>... but what if your specs change and you need access to this data from a different component? Move the state up and pass around a million props? That&#39;s not elegant enough for my taste.</p>
 <p>With Kea, assuming you also need to display the value of <code>counter</code> in your header, you would do as follows:</p>
 <p><strong>logic.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> PropTypes <span class="token keyword" >from</span> <span class="token string" >'prop-types'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> kea <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'kea'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> PropTypes <span class="token keyword">from</span> <span class="token string">'prop-types'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> kea <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'kea'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// no change to the code below</span>
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token function" >kea</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  actions<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    increment<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>amount<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> amount <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    decrement<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>amount<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> amount <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<span class="token comment">// no change to the code below</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">kea</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  actions<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    increment<span class="token punctuation">:</span> <span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> amount <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    decrement<span class="token punctuation">:</span> <span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> amount <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  reducers<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> actions <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    counter<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token number" >0</span><span class="token punctuation" >,</span> PropTypes<span class="token punctuation" >.</span>number<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>increment<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span>state<span class="token punctuation" >,</span> payload<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-        state <span class="token operator" >+</span> payload<span class="token punctuation" >.</span>amount
-      <span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>decrement<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span>state<span class="token punctuation" >,</span> payload<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-        state <span class="token operator" >-</span> payload<span class="token punctuation" >.</span>amount
-      <span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+  reducers<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> actions <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    counter<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> PropTypes<span class="token punctuation">.</span>number<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>increment<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        state <span class="token operator">+</span> payload<span class="token punctuation">.</span>amount
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>decrement<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        state <span class="token operator">-</span> payload<span class="token punctuation">.</span>amount
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p><strong>index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> Component <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> connect <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'kea'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'kea'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >import</span> counterLogic <span class="token keyword" >from</span> <span class="token string" >'./logic'</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> counterLogic <span class="token keyword">from</span> <span class="token string">'./logic'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// pull in actions and props from logic stores</span>
-@<span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  actions<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    counterLogic<span class="token punctuation" >,</span> <span class="token punctuation" >[</span>
-      <span class="token string" >'increment'</span><span class="token punctuation" >,</span>
-      <span class="token string" >'decrement'</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-  props<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    counterLogic<span class="token punctuation" >,</span> <span class="token punctuation" >[</span>
-      <span class="token string" >'counter'</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Counter</span> <span class="token keyword" >extends</span> <span class="token class-name" >Component</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// nothing changes here</span>
-  render <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> counter <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> increment<span class="token punctuation" >,</span> decrement <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>actions<span class="token punctuation" >;</span>
+<span class="token comment">// pull in actions and props from logic stores</span>
+@<span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  actions<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    counterLogic<span class="token punctuation">,</span> <span class="token punctuation">[</span>
+      <span class="token string">'increment'</span><span class="token punctuation">,</span>
+      <span class="token string">'decrement'</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  props<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    counterLogic<span class="token punctuation">,</span> <span class="token punctuation">[</span>
+      <span class="token string">'counter'</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token comment">// nothing changes here</span>
+  <span class="token function">render</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> counter <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>actions<span class="token punctuation">;</span>
 
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >'kea-counter'</span><span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>p<span class="token operator" >></span>Count<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>counter<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>p<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >increment</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Increment<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >decrement</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >></span>Decrement<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'kea-counter'</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>p<span class="token operator">></span>Count<span class="token punctuation">:</span> <span class="token punctuation">{</span>counter<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Increment<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Decrement<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><strong>header.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> Component <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> <span class="token punctuation" >{</span> connect <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'kea'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'kea'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >import</span> counterLogic <span class="token keyword" >from</span> <span class="token string" >'./logic'</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> counterLogic <span class="token keyword">from</span> <span class="token string">'./logic'</span><span class="token punctuation">;</span>
 
-@<span class="token function" >connect</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  props<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    counterLogic<span class="token punctuation" >,</span> <span class="token punctuation" >[</span>
-      <span class="token string" >'counter'</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >Counter</span> <span class="token keyword" >extends</span> <span class="token class-name" >Component</span> <span class="token punctuation" >{</span>
-  render <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span> counter <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+@<span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  props<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    counterLogic<span class="token punctuation">,</span> <span class="token punctuation">[</span>
+      <span class="token string">'counter'</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> counter <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
 
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>header<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>strong<span class="token operator" >></span>Kea is awesome<span class="token operator" >!</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>strong<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>span<span class="token operator" >></span>Count<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>counter<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >></span>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>header<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>header<span class="token operator">></span>
+        <span class="token operator">&lt;</span>strong<span class="token operator">></span>Kea is awesome<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>Count<span class="token punctuation">:</span> <span class="token punctuation">{</span>counter<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>header<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This magical <code>@connect(options)</code> helper is actually just a shorthand for <code>@kea({ connect: options })</code>. By replacing <code>@connect</code> with <code>@kea</code>, you can also define new actions and reducers while pulling in existing ones.</p>
 <h3 class="header"><a class="header-anchor" href="#selectors-and-side-effects-in-kea" id="selectors-and-side-effects-in-kea"></a><span class="text">Selectors and Side Effects in Kea</span><a class="header-anchor-select" href="#selectors-and-side-effects-in-kea">#</a></h3>
@@ -275,58 +275,58 @@ Sure! I&#39;m Marius. I was born in Estonia and now live in Belgium. I work as t
 <li>Second, you may use sagas for side-effects. Please read the documentation for <a href="https://redux-saga.js.org">redux-saga</a> to learn more.</li>
 </ul>
 <p>The <a href="https://kea.js.org/guide/github">Github API</a> example is a good demonstration of both features:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> githubLogic <span class="token operator" >=</span> <span class="token function" >kea</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  actions<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    setUsername<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>username<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> username <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    setRepositories<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>repositories<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> repositories <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> githubLogic <span class="token operator">=</span> <span class="token function">kea</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  actions<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    setUsername<span class="token punctuation">:</span> <span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> username <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    setRepositories<span class="token punctuation">:</span> <span class="token punctuation">(</span>repositories<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> repositories <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  reducers<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> actions <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    username<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >'keajs'</span><span class="token punctuation" >,</span> PropTypes<span class="token punctuation" >.</span>string<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>setUsername<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span>_<span class="token punctuation" >,</span> payload<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-        payload<span class="token punctuation" >.</span>username
-      <span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    repositories<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span> PropTypes<span class="token punctuation" >.</span>array<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>setUsername<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >[</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>setRepositories<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >(</span>_<span class="token punctuation" >,</span> payload<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-        payload<span class="token punctuation" >.</span>repositories
-      <span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  reducers<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> actions <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'keajs'</span><span class="token punctuation">,</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>setUsername<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>_<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        payload<span class="token punctuation">.</span>username
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    repositories<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> PropTypes<span class="token punctuation">.</span>array<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>setUsername<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>setRepositories<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>_<span class="token punctuation">,</span> payload<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        payload<span class="token punctuation">.</span>repositories
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  selectors<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> selectors <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// this will only be updated if "repositories" change.</span>
-    sortedRepositories<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >[</span>selectors<span class="token punctuation" >.</span>repositories<span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >(</span>repositories<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> repositories<span class="token punctuation" >.</span><span class="token function" >sort</span><span class="token punctuation" >(</span>
-        <span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> b<span class="token punctuation" >.</span>stargazers_count <span class="token operator" >-</span> a<span class="token punctuation" >.</span>stargazers_count
-      <span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-      PropTypes<span class="token punctuation" >.</span>array
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  selectors<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> selectors <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// this will only be updated if "repositories" change.</span>
+    sortedRepositories<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">[</span>selectors<span class="token punctuation">.</span>repositories<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">(</span>repositories<span class="token punctuation">)</span> <span class="token operator">=></span> repositories<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>
+        <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=></span> b<span class="token punctuation">.</span>stargazers_count <span class="token operator">-</span> a<span class="token punctuation">.</span>stargazers_count
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      PropTypes<span class="token punctuation">.</span>array
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  <span class="token comment" spellcheck="true">// every time a "setUsername" action is called,</span>
-  <span class="token comment" spellcheck="true">// run the "fetchRepositories" worker</span>
-  takeLatest<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> actions<span class="token punctuation" >,</span> workers <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token punctuation" >[</span>actions<span class="token punctuation" >.</span>setUsername<span class="token punctuation" >]</span><span class="token punctuation" >:</span> workers<span class="token punctuation" >.</span>fetchRepositories
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  <span class="token comment">// every time a "setUsername" action is called,</span>
+  <span class="token comment">// run the "fetchRepositories" worker</span>
+  takeLatest<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> actions<span class="token punctuation">,</span> workers <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>actions<span class="token punctuation">.</span>setUsername<span class="token punctuation">]</span><span class="token punctuation">:</span> workers<span class="token punctuation">.</span>fetchRepositories
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  workers<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    <span class="token operator" >*</span> fetchRepositories <span class="token punctuation" >(</span>action<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >const</span> <span class="token punctuation" >{</span> setRepositories <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>actions<span class="token punctuation" >;</span>
-      <span class="token keyword" >const</span> <span class="token punctuation" >{</span> username <span class="token punctuation" >}</span> <span class="token operator" >=</span> action<span class="token punctuation" >.</span>payload<span class="token punctuation" >;</span>
+  workers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">*</span> <span class="token function">fetchRepositories</span> <span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> setRepositories <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>actions<span class="token punctuation">;</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> username <span class="token punctuation">}</span> <span class="token operator">=</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">;</span>
 
-      <span class="token keyword" >yield</span> <span class="token function" >delay</span><span class="token punctuation" >(</span><span class="token number" >100</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// debounce for 100ms</span>
+      <span class="token keyword">yield</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// debounce for 100ms</span>
 
-      <span class="token keyword" >const</span> url <span class="token operator" >=</span> <span class="token template-string" ><span class="token string" >`</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>API_URL<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >/users/</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>username<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >/repos?per_page=250`</span></span><span class="token punctuation" >;</span>
-      <span class="token keyword" >const</span> response <span class="token operator" >=</span> <span class="token keyword" >yield</span> window<span class="token punctuation" >.</span><span class="token function" >fetch</span><span class="token punctuation" >(</span>url<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-      <span class="token keyword" >const</span> json <span class="token operator" >=</span> <span class="token keyword" >yield</span> response<span class="token punctuation" >.</span><span class="token function" >json</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+      <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>API_URL<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/users/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>username<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/repos?per_page=250`</span></span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">yield</span> window<span class="token punctuation">.</span><span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token keyword">yield</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      <span class="token keyword" >yield</span> <span class="token function" >put</span><span class="token punctuation" >(</span><span class="token function" >setRepositories</span><span class="token punctuation" >(</span>json<span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+      <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token function">setRepositories</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Please dive into the <a href="https://kea.js.org">Kea documentation</a> to learn more!</blockquote><h2 class="header"><a class="header-anchor" href="#how-does-kea-differ-from-other-solutions-" id="how-does-kea-differ-from-other-solutions-"></a><span class="text">How does <em>Kea</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-kea-differ-from-other-solutions-">#</a></h2>
 <p>I wrote an <a href="https://medium.com/@mariusandra/kea-vs-setstate-redux-mobx-dva-jumpstate-apollo-etc-4aa26ea11d02">article on Medium describing how Kea differs from Redux</a>, MobX, DVA and other state management solutions. Please check it out for details! :)</p>

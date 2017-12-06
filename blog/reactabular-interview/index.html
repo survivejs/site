@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -47,77 +47,77 @@ I maintain this site and have written a book on React and webpack (available on 
 <p>I didn&#39;t want to grow the core to support every possible use case. Instead I wanted to end up with a design that would allow me to push problems into user space. That said, the packages I&#39;ve implemented cover a lot of ground and depending on your case, not a lot of extra work might be required.</p>
 <h3 class="header"><a class="header-anchor" href="#column-definition" id="column-definition"></a><span class="text">Column Definition</span><a class="header-anchor-select" href="#column-definition">#</a></h3>
 <p>To understand better how Reactabular works, it&#39;s a good idea to dig into the column definition. Consider the following example:</p>
-<pre><code class="lang-jsx"><span class="token keyword" >const</span> columns <span class="token operator" >=</span> <span class="token punctuation" >[</span>
-  <span class="token comment" spellcheck="true">// Map color to the first column</span>
-  <span class="token punctuation" >{</span>
-    property<span class="token punctuation" >:</span> <span class="token string" >'color'</span><span class="token punctuation" >,</span>
-    header<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      label<span class="token punctuation" >:</span> <span class="token string" >'Color'</span><span class="token punctuation" >,</span>
-      transforms<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-        color <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-          <span class="token comment" spellcheck="true">// Show alert when a color header cell is clicked</span>
-          onClick<span class="token punctuation" >:</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >alert</span><span class="token punctuation" >(</span><span class="token template-string" ><span class="token string" >`clicked </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>color<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token punctuation" >)</span>
-        <span class="token punctuation" >}</span><span class="token punctuation" >)</span>
-      <span class="token punctuation" >]</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    cell<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      <span class="token comment" spellcheck="true">// Format color content cells in a special way</span>
-      format<span class="token punctuation" >:</span> color <span class="token operator" >=</span><span class="token operator" >></span> <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>span</span> <span class="token attr-name" >style</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span><span class="token punctuation" >{</span> color <span class="token punctuation" >}</span><span class="token punctuation" >}</span></span><span class="token punctuation" >></span></span><span class="token punctuation" >{</span>color<span class="token punctuation" >}</span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>span</span><span class="token punctuation" >></span></span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token comment" spellcheck="true">// Map name parts to a column</span>
-  <span class="token punctuation" >{</span>
-    header<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      label<span class="token punctuation" >:</span> <span class="token string" >'Name'</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    <span class="token comment" spellcheck="true">// Given a name is given in parts, define separate</span>
-    <span class="token comment" spellcheck="true">// columns for it</span>
-    children<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >{</span>
-        property<span class="token punctuation" >:</span> <span class="token string" >'name.first'</span><span class="token punctuation" >,</span>
-        header<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-          label<span class="token punctuation" >:</span> <span class="token string" >'First Name'</span>
-        <span class="token punctuation" >}</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >{</span>
-        property<span class="token punctuation" >:</span> <span class="token string" >'name.last'</span><span class="token punctuation" >,</span>
-        header<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-          label<span class="token punctuation" >:</span> <span class="token string" >'Last Name'</span>
-        <span class="token punctuation" >}</span>
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >;</span>
+<pre><code class="lang-jsx"><span class="token keyword">const</span> columns <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token comment">// Map color to the first column</span>
+  <span class="token punctuation">{</span>
+    property<span class="token punctuation">:</span> <span class="token string">'color'</span><span class="token punctuation">,</span>
+    header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      label<span class="token punctuation">:</span> <span class="token string">'Color'</span><span class="token punctuation">,</span>
+      transforms<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        color <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+          <span class="token comment">// Show alert when a color header cell is clicked</span>
+          onClick<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`clicked </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>color<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    cell<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Format color content cells in a special way</span>
+      format<span class="token punctuation">:</span> color <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> color <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>color<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// Map name parts to a column</span>
+  <span class="token punctuation">{</span>
+    header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      label<span class="token punctuation">:</span> <span class="token string">'Name'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// Given a name is given in parts, define separate</span>
+    <span class="token comment">// columns for it</span>
+    children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        property<span class="token punctuation">:</span> <span class="token string">'name.first'</span><span class="token punctuation">,</span>
+        header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          label<span class="token punctuation">:</span> <span class="token string">'First Name'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        property<span class="token punctuation">:</span> <span class="token string">'name.last'</span><span class="token punctuation">,</span>
+        header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          label<span class="token punctuation">:</span> <span class="token string">'Last Name'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 <p>A lot of the column definition likely explains itself. There are a couple of parts that will require additional explanation to see the point. Consider <code>format</code> for instance. It allows you to shape value formatting when rendering. This is useful if you want to transform the input into something else or attach extra logic to it.</p>
 <p>While <code>format</code> operates within a cell, <code>transforms</code> operate on a table cell itself. You can use it to attach handlers to it like above. There&#39;s also an interception mechanism that allows us to implement editors through this interface. If a transform returns <code>children</code>, it will override any subsequent result. That&#39;s a powerful mechanism in its simplicity.</p>
 <h3 class="header"><a class="header-anchor" href="#react-definition" id="react-definition"></a><span class="text">React Definition</span><a class="header-anchor-select" href="#react-definition">#</a></h3>
 <p>Besides row data and a column definition, Reactabular requires one more part to work - React definition. To give you an idea of a fairly advanced one, consider the following example where I split data into two bodies while showing a header for both:</p>
-<pre><code class="lang-jsx"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Provider</span> <span class="token attr-name" >columns</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span>columns<span class="token punctuation" >}</span></span><span class="token punctuation" >></span></span>
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Header</span> <span class="token punctuation" >/></span></span>
+<pre><code class="lang-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Provider</span> <span class="token attr-name">columns</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>columns<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Header</span> <span class="token punctuation">/></span></span>
 
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Body</span>
-    <span class="token attr-name" >rows</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span>rows<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>r <span class="token operator" >=</span><span class="token operator" >></span> r<span class="token punctuation" >.</span>name<span class="token punctuation" >.</span>first <span class="token operator" >===</span> <span class="token string" >'Adam'</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span></span>
-    <span class="token attr-name" >rowKey</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>id<span class="token punctuation" >"</span></span>
-  <span class="token punctuation" >/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Body</span>
+    <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>rows<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>r <span class="token operator">=></span> r<span class="token punctuation">.</span>name<span class="token punctuation">.</span>first <span class="token operator">===</span> <span class="token string">'Adam'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+    <span class="token attr-name">rowKey</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span>
+  <span class="token punctuation">/></span></span>
 
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Header</span> <span class="token punctuation" >/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Header</span> <span class="token punctuation">/></span></span>
 
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Body</span>
-    <span class="token attr-name" >rows</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span>rows<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>r <span class="token operator" >=</span><span class="token operator" >></span> r<span class="token punctuation" >.</span>name<span class="token punctuation" >.</span>first <span class="token operator" >===</span> <span class="token string" >'Brian'</span><span class="token punctuation" >)</span><span class="token punctuation" >}</span></span>
-    <span class="token attr-name" >rowKey</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>id<span class="token punctuation" >"</span></span>
-  <span class="token punctuation" >/></span></span>
-<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>Table.Provider</span><span class="token punctuation" >></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Body</span>
+    <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>rows<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>r <span class="token operator">=></span> r<span class="token punctuation">.</span>name<span class="token punctuation">.</span>first <span class="token operator">===</span> <span class="token string">'Brian'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+    <span class="token attr-name">rowKey</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span>
+  <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Table.Provider</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>A minimal definition with an extra <code>className</code> could be like this:</p>
-<pre><code class="lang-jsx"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Provider</span>
-  <span class="token attr-name" >className</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>pure-table</span> <span class="token attr-name" >pure-table-striped"</span>
-  <span class="token attr-name" >columns</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span>columns<span class="token punctuation" >}</span></span>
-<span class="token punctuation" >></span></span>
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Header</span> <span class="token punctuation" >/></span></span>
+<pre><code class="lang-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Provider</span>
+  <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pure-table</span> <span class="token attr-name">pure-table-striped"</span>
+  <span class="token attr-name">columns</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>columns<span class="token punctuation">}</span></span>
+<span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Header</span> <span class="token punctuation">/></span></span>
 
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Table.Body</span> <span class="token attr-name" >rows</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span>rows<span class="token punctuation" >}</span></span> <span class="token attr-name" >rowKey</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>id<span class="token punctuation" >"</span></span> <span class="token punctuation" >/></span></span>
-<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>Table.Provider</span><span class="token punctuation" >></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Table.Body</span> <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>rows<span class="token punctuation">}</span></span> <span class="token attr-name">rowKey</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Table.Provider</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>The table definition is fairly flexible. It generates standard <code>table</code> elements by default. You could add <code>tfoot</code> within the definition and expect it to work without any problems. That&#39;s something handy for generating summaries based on data for example.</p>
 <p>There are also hooks for customizing rendering per row (<code>Table.Body.onRow</code> prop). You can also replace <code>Table.Provider</code> <code>components</code> with your own if you aren&#39;t happy with the defaults. Instead of rendering a regular table, you could render divs. Or you could inject React components. I implemented drag and drop on top of the core this way. The hooks also enabled a performance related feature known as virtualization without a lot of effort.</p>

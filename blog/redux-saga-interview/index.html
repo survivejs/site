@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -53,23 +53,23 @@
 <p>To understand how saga works, I&#39;ll illustrate with a fairly common example and compare with <a href="https://www.npmjs.com/package/redux-thunk">redux-thunk</a>, the idiomatic way to handle async actions in Redux.</p>
 <h3 class="header"><a class="header-anchor" href="#requesting-data-using-redux-thunk-" id="requesting-data-using-redux-thunk-"></a><span class="text">Requesting Data Using <em>redux-thunk</em></span><a class="header-anchor-select" href="#requesting-data-using-redux-thunk-">#</a></h3>
 <p>Suppose we want to request some data from a given url each time an UI Button is clicked. With <em>redux-thunk</em> we&#39;ll write a thunk which will typically look like:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >function</span> <span class="token function" >fetchUrl</span><span class="token punctuation" >(</span>url<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>dispatch<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-    <span class="token function" >dispatch</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      type<span class="token punctuation" >:</span> <span class="token string" >'FETCH_REQUEST'</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">fetchUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>dispatch<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'FETCH_REQUEST'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token function" >fetch</span><span class="token punctuation" >(</span>url<span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation" >(</span>data <span class="token operator" >=</span><span class="token operator" >></span> <span class="token function" >dispatch</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      type<span class="token punctuation" >:</span> <span class="token string" >'FETCH_SUCCESS'</span><span class="token punctuation" >,</span>
+    <span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>data <span class="token operator">=></span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'FETCH_SUCCESS'</span><span class="token punctuation">,</span>
       data
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Then, assuming the thunk middleware is mounted in the Redux store, we can dispatch the above function like this:</p>
-<pre><code class="lang-javascript"><span class="token function" >dispatch</span><span class="token punctuation" >(</span>
-  <span class="token function" >fetchUrl</span><span class="token punctuation" >(</span>url<span class="token punctuation" >)</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >:</span>
+<pre><code class="lang-javascript"><span class="token function">dispatch</span><span class="token punctuation">(</span>
+  <span class="token function">fetchUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span>
 </code></pre>
 <p>That is, You write the <em>task</em> to be performed (the <code>fetchUrl</code> which return the thunk). And you invoke that task directly from UI components.</p>
 <p>If you don&#39;t want to pollute your React components with business logic, then thunks are a the simplest and the most idiomatic way to perform side effects in Redux. However, they may have some drawbacks:</p>
@@ -80,32 +80,32 @@
 </ol>
 <h3 class="header"><a class="header-anchor" href="#requesting-data-using-redux-saga-" id="requesting-data-using-redux-saga-"></a><span class="text">Requesting Data Using <em>redux-saga</em></span><a class="header-anchor-select" href="#requesting-data-using-redux-saga-">#</a></h3>
 <p>In <em>redux-saga</em>, things are slightly different. First, UI Components never invoke the tasks themselves, instead they always dispatch plain object actions to notify that something happened in the UI:</p>
-<pre><code class="lang-javascript"><span class="token function" >dispacth</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  type<span class="token punctuation" >:</span> <span class="token string" >'FETCH_REQUEST'</span><span class="token punctuation" >,</span>
-  url<span class="token punctuation" >:</span> <span class="token comment" spellcheck="true">/* ... */</span><span class="token punctuation" >}</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token function">dispacth</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">'FETCH_REQUEST'</span><span class="token punctuation">,</span>
+  url<span class="token punctuation">:</span> <span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Everything else must be encapsulated inside sagas. To perform the task that will perform the actual fetch, you must create a saga that will <em>watch</em> for the dispatched action <code>FETCH_REQUEST</code> and <em>fork</em> the task whenever we get the desired action:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> take<span class="token punctuation" >,</span> fork<span class="token punctuation" >,</span> call<span class="token punctuation" >,</span> put <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'redux-saga/effects'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> call<span class="token punctuation">,</span> put <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// The watcher: watch actions and coordinate worker tasks</span>
-<span class="token keyword" >function</span><span class="token operator" >*</span> <span class="token function" >watchFetchRequests</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >while</span><span class="token punctuation" >(</span><span class="token boolean" >true</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> action <span class="token operator" >=</span> <span class="token keyword" >yield</span> <span class="token function" >take</span><span class="token punctuation" >(</span><span class="token string" >'FETCH_REQUEST'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// The watcher: watch actions and coordinate worker tasks</span>
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchFetchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'FETCH_REQUEST'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword" >yield</span> <span class="token function" >fork</span><span class="token punctuation" >(</span>fetchUrl<span class="token punctuation" >,</span> action<span class="token punctuation" >.</span>url<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>fetchUrl<span class="token punctuation">,</span> action<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// The worker: perform the requested task</span>
-<span class="token keyword" >function</span><span class="token operator" >*</span> <span class="token function" >fetchUrl</span><span class="token punctuation" >(</span>url<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> data <span class="token operator" >=</span> <span class="token keyword" >yield</span> <span class="token function" >call</span><span class="token punctuation" >(</span>fetch<span class="token punctuation" >,</span> url<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// The worker: perform the requested task</span>
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>fetch<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >yield</span> <span class="token function" >put</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    type<span class="token punctuation" >:</span> <span class="token string" >'FETCH_SUCCESS'</span><span class="token punctuation" >,</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">'FETCH_SUCCESS'</span><span class="token punctuation">,</span>
     data
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Note all the 4 functions we imported from <code>redux-saga/effects</code> are pure functions. I said previously that generators yield plain JavaScript objects called effects. The above functions serve that purpose.</p>
 <p>Each function constructs a particular object which embeds some instruction to be fullfilled by the middleware. For example <code>call(fetchUrl, url)</code> returns an object like <code>{ type: CALL, function: fetchUrl, args: [url] }</code>.</p>
@@ -115,40 +115,40 @@
 <p><code>watchFetchRequests</code> continues listening to other <code>watchFetchRequests</code> actions <em>while</em> the <code>fetchUrl</code> starts doing its work. Of course in reality only on thing can be done at time since JavaScript is single threaded, <em>redux-saga</em> is performing the scheduling behind the scene to make it look like things are done in parallel.</p>
 <p>Similarly, in <code>fetchUrl</code>, we used <code>call(fetch, url)</code> to instruct the middleware to call the <code>fetch</code> function. But this time, the call is <em>blocking</em>, the middleware will suspend the generator until the <code>Promise</code> returned by <code>fetch</code> is resolved (or rejected) then resume the generator with the resolved value (or throw with the rejected error)</p>
 <p>It may sound like a lot of indirection, but this separation between effect creation and execution makes it really simple to test the logic inside generators. For example, we can test <code>fetchUrl</code> simply by iterating over the generator and inspecting the yielded effects:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> generator <span class="token operator" >=</span> <span class="token function" >fetchUrl</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> generator <span class="token operator">=</span> <span class="token function">fetchUrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-assert<span class="token punctuation" >.</span><span class="token function" >deepEqual</span><span class="token punctuation" >(</span>
-  generator<span class="token punctuation" >.</span><span class="token function" >next</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>value<span class="token punctuation" >,</span>
-  <span class="token function" >take</span><span class="token punctuation" >(</span><span class="token string" >'FETCH_RESULT'</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+  generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+  <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'FETCH_RESULT'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// we can easily mock the result of the `take('FETCH_RESULT')` call</span>
-<span class="token keyword" >const</span> mockAction <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  url<span class="token punctuation" >:</span> <span class="token string" >'some url'</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token comment">// we can easily mock the result of the `take('FETCH_RESULT')` call</span>
+<span class="token keyword">const</span> mockAction <span class="token operator">=</span> <span class="token punctuation">{</span>
+  url<span class="token punctuation">:</span> <span class="token string">'some url'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// and inject the result back into the Generator</span>
-assert<span class="token punctuation" >.</span><span class="token function" >deepEqual</span><span class="token punctuation" >(</span>
-  generator<span class="token punctuation" >.</span><span class="token function" >next</span><span class="token punctuation" >(</span>mockAction<span class="token punctuation" >)</span><span class="token punctuation" >.</span>value<span class="token punctuation" >,</span>
-  <span class="token function" >take</span><span class="token punctuation" >(</span><span class="token string" >'FETCH_RESULT'</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// and inject the result back into the Generator</span>
+assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+  generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>mockAction<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+  <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'FETCH_RESULT'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>And since generators are stateful, we have much more flexibility to coordinate concurrent tasks. For example, if we want to cancel any pending fetch whenever we request a new fetch, we can store a reference to the current task in a local variable and use the <code>cancel</code> effect:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> take<span class="token punctuation" >,</span> fork<span class="token punctuation" >,</span> cancel<span class="token punctuation" >,</span> call<span class="token punctuation" >,</span> put <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'redux-saga/effects'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> cancel<span class="token punctuation">,</span> call<span class="token punctuation">,</span> put <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >function</span><span class="token operator" >*</span> <span class="token function" >watchFetchRequests</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >let</span> currentTask<span class="token punctuation" >;</span>
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchFetchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> currentTask<span class="token punctuation">;</span>
 
-  <span class="token keyword" >while</span><span class="token punctuation" >(</span><span class="token boolean" >true</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> action <span class="token operator" >=</span> <span class="token keyword" >yield</span> <span class="token function" >take</span><span class="token punctuation" >(</span><span class="token string" >'FETCH_REQUEST'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'FETCH_REQUEST'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword" >if</span><span class="token punctuation" >(</span>currentTask<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-      <span class="token keyword" >yield</span> <span class="token function" >cancel</span><span class="token punctuation" >(</span>currentTask<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token punctuation" >}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>currentTask<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span>currentTask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    currentTask <span class="token operator" >=</span> <span class="token keyword" >yield</span> <span class="token function" >fork</span><span class="token punctuation" >(</span>fetchUrl<span class="token punctuation" >,</span> action<span class="token punctuation" >.</span>url<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    currentTask <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>fetchUrl<span class="token punctuation">,</span> action<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-redux-saga-differ-from-other-solutions-" id="how-does-redux-saga-differ-from-other-solutions-"></a><span class="text">How does <em>redux-saga</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-redux-saga-differ-from-other-solutions-">#</a></h2>
 <ul>

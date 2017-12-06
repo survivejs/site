@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -37,71 +37,71 @@
 <h2 class="header"><a class="header-anchor" href="#how-does-re-dom-work-" id="how-does-re-dom-work-"></a><span class="text">How does <em>RE:DOM</em> work?</span><a class="header-anchor-select" href="#how-does-re-dom-work-">#</a></h2>
 <p>I gave a more detailed explanation in my <a href="https://www.youtube.com/watch?v=0nh2EK1xveg">talk in HelsinkiJS / Frontend Finland</a>, but basically it allows you to create HTML elements and components really easily with HyperScript syntax. Another thing it does is it helps you to keep a list of components in sync with your data. Check out examples at the <a href="https://redom.js.org">RE:DOM website</a>.</p>
 <p>The basic idea is to use HyperScript to create HTML elements:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> el<span class="token punctuation" >,</span> mount <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'redom'</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> el<span class="token punctuation">,</span> mount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redom'</span>
 
-<span class="token keyword" >const</span> hello <span class="token operator" >=</span> <span class="token function" >el</span><span class="token punctuation" >(</span><span class="token string" >'h1'</span><span class="token punctuation" >,</span> <span class="token string" >'Hello world!'</span><span class="token punctuation" >)</span>
+<span class="token keyword">const</span> hello <span class="token operator">=</span> <span class="token function">el</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> <span class="token string">'Hello world!'</span><span class="token punctuation">)</span>
 
-<span class="token function" >mount</span><span class="token punctuation" >(</span>document<span class="token punctuation" >.</span>body<span class="token punctuation" >,</span> hello<span class="token punctuation" >)</span>
+<span class="token function">mount</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> hello<span class="token punctuation">)</span>
 </code></pre>
 <p>You can also create components by defining an object with <code>el</code> property, which is the HTML element:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> el<span class="token punctuation" >,</span> text<span class="token punctuation" >,</span> mount <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'redom'</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> el<span class="token punctuation">,</span> text<span class="token punctuation">,</span> mount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redom'</span>
 
-<span class="token keyword" >class</span> <span class="token class-name" >Hello</span> <span class="token punctuation" >{</span>
-  constructor <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// how to create a component</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>el <span class="token operator" >=</span> <span class="token function" >el</span><span class="token punctuation" >(</span><span class="token string" >'h1'</span><span class="token punctuation" >,</span>
-      <span class="token string" >'Hello'</span><span class="token punctuation" >,</span>
-      <span class="token keyword" >this</span><span class="token punctuation" >.</span>name <span class="token operator" >=</span> <span class="token function" >text</span><span class="token punctuation" >(</span><span class="token string" >'world'</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-      <span class="token string" >'!'</span>
-    <span class="token punctuation" >)</span>
-  <span class="token punctuation" >}</span>
-  update <span class="token punctuation" >(</span>name<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// how to update it</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>name<span class="token punctuation" >.</span>textContent <span class="token operator" >=</span> name
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">class</span> <span class="token class-name">Hello</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// how to create a component</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>el <span class="token operator">=</span> <span class="token function">el</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span>
+      <span class="token string">'Hello'</span><span class="token punctuation">,</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'world'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">'!'</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">update</span> <span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// how to update it</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">.</span>textContent <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >const</span> hello <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Hello</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>
+<span class="token keyword">const</span> hello <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token function" >mount</span><span class="token punctuation" >(</span>document<span class="token punctuation" >.</span>body<span class="token punctuation" >,</span> hello<span class="token punctuation" >)</span>
+<span class="token function">mount</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> hello<span class="token punctuation">)</span>
 
-<span class="token function" >setTimeout</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  hello<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span><span class="token string" >'RE:DOM'</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token number" >1000</span><span class="token punctuation" >)</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  hello<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string">'RE:DOM'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Keeping lists in sync is also really easy:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> el<span class="token punctuation" >,</span> list<span class="token punctuation" >,</span> mount <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'redom'</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> el<span class="token punctuation">,</span> list<span class="token punctuation">,</span> mount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redom'</span>
 
-<span class="token comment" spellcheck="true">// create some data</span>
-<span class="token keyword" >const</span> data <span class="token operator" >=</span> <span class="token keyword" >new</span> <span class="token class-name" >Array</span><span class="token punctuation" >(</span><span class="token number" >100</span><span class="token punctuation" >)</span>
+<span class="token comment">// create some data</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
 
-<span class="token keyword" >for</span> <span class="token punctuation" >(</span><span class="token keyword" >let</span> i <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >;</span> i <span class="token operator" >&lt;</span> data<span class="token punctuation" >.</span>length<span class="token punctuation" >;</span> i<span class="token operator" >++</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  data<span class="token punctuation" >[</span>i<span class="token punctuation" >]</span> <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-    id<span class="token punctuation" >:</span> i<span class="token punctuation" >,</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >'Item '</span> <span class="token operator" >+</span> i
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> data<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    id<span class="token punctuation">:</span> i<span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">'Item '</span> <span class="token operator">+</span> i
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// define Li component</span>
-<span class="token keyword" >class</span> <span class="token class-name" >Li</span> <span class="token punctuation" >{</span>
-  constructor <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>el <span class="token operator" >=</span> <span class="token function" >el</span><span class="token punctuation" >(</span><span class="token string" >'li'</span><span class="token punctuation" >)</span>
-  <span class="token punctuation" >}</span>
-  update <span class="token punctuation" >(</span><span class="token punctuation" >{</span> name <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span>el<span class="token punctuation" >.</span>textContent <span class="token operator" >=</span> name
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token comment">// define Li component</span>
+<span class="token keyword">class</span> <span class="token class-name">Li</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>el <span class="token operator">=</span> <span class="token function">el</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">update</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>el<span class="token punctuation">.</span>textContent <span class="token operator">=</span> name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// create &lt;ul> list</span>
-<span class="token keyword" >const</span> ul <span class="token operator" >=</span> <span class="token function" >list</span><span class="token punctuation" >(</span><span class="token string" >'ul'</span><span class="token punctuation" >,</span> Li<span class="token punctuation" >,</span> <span class="token string" >'id'</span><span class="token punctuation" >)</span>
+<span class="token comment">// create &lt;ul> list</span>
+<span class="token keyword">const</span> ul <span class="token operator">=</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">,</span> Li<span class="token punctuation">,</span> <span class="token string">'id'</span><span class="token punctuation">)</span>
 
-<span class="token function" >mount</span><span class="token punctuation" >(</span>document<span class="token punctuation" >.</span>body<span class="token punctuation" >,</span> ul<span class="token punctuation" >)</span>
+<span class="token function">mount</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> ul<span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// shuffle it every second</span>
-<span class="token function" >setInterval</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  data<span class="token punctuation" >.</span><span class="token function" >sort</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> Math<span class="token punctuation" >.</span><span class="token function" >random</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >-</span> <span class="token number" >0.5</span><span class="token punctuation" >)</span>
-  ul<span class="token punctuation" >.</span><span class="token function" >update</span><span class="token punctuation" >(</span>data<span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token number" >1000</span><span class="token punctuation" >)</span>
+<span class="token comment">// shuffle it every second</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=></span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">0.5</span><span class="token punctuation">)</span>
+  ul<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-re-dom-differ-from-other-solutions-" id="how-does-re-dom-differ-from-other-solutions-"></a><span class="text">How does <em>RE:DOM</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-re-dom-differ-from-other-solutions-">#</a></h2>
 <p>RE:DOM doesn&#39;t use Virtual DOM, but still allows you to define components and how to update them. For me it&#39;s the best of both worlds: mutability gives great flexibility and performance, but defining a one-directional flow of updates is very close to VDOM-approach.</p>

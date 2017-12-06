@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -31,34 +31,34 @@
 <p>Despite its name, the package works with other services that support hosting from a Git repository as well. But given GitHub is so popular, it can be used to demonstrate the idea. In practice, you would likely have more complicated setup in place that would push the result to other service through a Continuous Integration system.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-gh-pages-" id="setting-up-gh-pages-"></a><span class="text">Setting Up <em>gh-pages</em></span><a class="header-anchor-select" href="#setting-up-gh-pages-">#</a></h3>
 <p>To get started, execute</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> gh-pages --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> gh-pages --save-dev
 </code></pre>
 <p>You are also going to need a script in <em>package.json</em>:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 <div class="leanpub-insert">
-  <span class="token property" >"deploy"</span><span class="token operator" >:</span> <span class="token string" >"gh-pages -d build"</span><span class="token punctuation" >,</span>
+  <span class="token property">"deploy"</span><span class="token operator">:</span> <span class="token string">"gh-pages -d build"</span><span class="token punctuation">,</span>
 </div>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>To make the asset paths work on GitHub Pages, <code>output.publicPath</code> field has to be adjusted. Otherwise, the asset paths end up pointing at the root, and that doesn&#39;t work unless you are hosting behind a domain root (say <code>survivejs.com</code>) directly.</p>
 <p><code>publicPath</code> gives control over the resulting urls you see at <em>index.html</em> for instance. If you are hosting your assets on a CDN, this would be the place to tweak.</p>
 <p>In this case, it&#39;s enough to set it to point the GitHub project as below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-    output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token operator">...</span>
 <div class="leanpub-insert">
-      <span class="token comment" spellcheck="true">// Tweak this to match your GitHub project name</span>
-      publicPath<span class="token punctuation" >:</span> <span class="token string" >"/webpack-demo/"</span><span class="token punctuation" >,</span>
+      <span class="token comment">// Tweak this to match your GitHub project name</span>
+      publicPath<span class="token punctuation">:</span> <span class="token string">"/webpack-demo/"</span><span class="token punctuation">,</span>
 </div>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>After building (<code>npm run build</code>) and deploying (<code>npm run deploy</code>), you should have your application from the <code>build/</code> directory hosted through GitHub Pages. You should find it at <code>https://&lt;name&gt;.github.io/&lt;project&gt;</code> assuming everything went fine.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you need a more elaborate setup, use the Node API that <em>gh-pages</em> provides. The default command line tool it provides is enough for basic purposes, though.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>GitHub Pages allows you to choose the branch where you deploy. It&#39;s possible to use the <code>master</code> branch even as it&#39;s enough for minimal sites that don&#39;t need bundling. You can also point below the <em>./docs</em> directory within your <code>master</code> branch and maintain your site.</blockquote><h3 class="header"><a class="header-anchor" href="#archiving-old-versions" id="archiving-old-versions"></a><span class="text">Archiving Old Versions</span><a class="header-anchor-select" href="#archiving-old-versions">#</a></h3>
@@ -69,7 +69,7 @@
 <li>Copy the old version below <em>build/archive/<version></em></li>
 <li>Set up a script to call <em>gh-pages</em> through Node as below and capture possible errors in the callback:</li>
 </ol>
-<pre><code class="lang-javascript">ghpages<span class="token punctuation" >.</span><span class="token function" >publish</span><span class="token punctuation" >(</span>path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"build"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span> add<span class="token punctuation" >:</span> <span class="token boolean" >true</span> <span class="token punctuation" >}</span><span class="token punctuation" >,</span> cb<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">ghpages<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"build"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> add<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> cb<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#deploying-to-other-environments" id="deploying-to-other-environments"></a><span class="text">Deploying to Other Environments</span><a class="header-anchor-select" href="#deploying-to-other-environments">#</a></h2>
 <p>Even though you can push the problem of deployment outside of webpack, there are a couple of webpack specific utilities that come in handy:</p>

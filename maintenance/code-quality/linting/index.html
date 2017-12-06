@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -29,20 +29,20 @@
 <h2 class="header"><a class="header-anchor" href="#why-to-lint" id="why-to-lint"></a><span class="text">Why to Lint</span><a class="header-anchor-select" href="#why-to-lint">#</a></h2>
 <p>Good code style can save you from a bug one day. Consider this code:</p>
 <!-- prettier-ignore -->
-<pre><code class="lang-js"><span class="token keyword" >if</span> <span class="token punctuation" >(</span>mealType <span class="token operator" >===</span> BREAKFAST<span class="token punctuation" >)</span>
-  <span class="token function" >drinkCoffee</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token function" >eatCroissant</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>mealType <span class="token operator">===</span> BREAKFAST<span class="token punctuation">)</span>
+  <span class="token function">drinkCoffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">eatCroissant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Can you spot the issue? <code>eatCroissant();</code> gets evaluated with <em>any</em> <code>mealType</code> value.</p>
 <p>Many popular JavaScript code styles require curly braces around all blocks and consistent indentation for this reason. Doing this forces you to write the correct code:</p>
-<pre><code class="lang-js"><span class="token keyword" >if</span> <span class="token punctuation" >(</span>mealType <span class="token operator" >===</span> BREAKFAST<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token function" >drinkCoffee</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token function" >eatCroissant</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>mealType <span class="token operator">===</span> BREAKFAST<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">drinkCoffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">eatCroissant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>You can enforce code style in your project or even autoformat code with linters and code formatting tools. Linting can also capture mistakes in your code before you even run it — thanks to IDE and editor integration.</p>
 <p>Code style is subjective and automation can reduce pointless discussions and improve team productivity. It also simplifies switching between different projects and reduces time to ramp up on a new project.</p>
-<h2 class="header"><a class="header-anchor" href="#linting-javascript-with-eslint" id="linting-javascript-with-eslint"></a><span class="text">Linting JavaScript with ESLint</span><a class="header-anchor-select" href="#linting-javascript-with-eslint">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#linting-javascript-with-eslint" id="linting-javascript-with-eslint"></a><span class="text">Linting JavaScript With ESLint</span><a class="header-anchor-select" href="#linting-javascript-with-eslint">#</a></h2>
 <p><a href="http://eslint.org/">ESLint</a> is a popular linter for JavaScript. It’s primarily used to capture language related issues but can be used to enforce code style and good practices. It can fix many issues automatically, especially code style. You can write your own rules to ensure code consistency across your team or organization.</p>
 <p>JavaScript doesn’t have an official coding style but the community maintains a few. <a href="https://github.com/airbnb/javascript">Airbnb</a> and <a href="http://standardjs.com/">Standard</a> are especially popular: Airbnb is detailed and pragmatic, Standard is a bit controversial because it doesn’t use semicolons. <a href="https://www.npmjs.com/package/semistandard">Semistandard</a> is a variant that fixes that issue. These options use two spaces for indentation.</p>
 <p>ESLint is unopinionated and doesn’t have any rules by default so you should enable them manually or use a configuration like <a href="https://www.npmjs.com/package/eslint-config-airbnb-base">eslint-config-airbnb-base</a>, that implements Airbnb style guide. To get started, use <code>eslint --init</code> and let it generate a starting point for you.</p>
@@ -54,103 +54,103 @@
 <li><a href="https://www.npmjs.com/package/eslint-plugin-react">eslint-plugin-react</a> contains best practices for React, JSX code style.</li>
 <li><a href="https://www.npmjs.com/package/eslint-plugin-security">eslint-plugin-security</a> finds potential security issues in Node code.</li>
 </ul>
-<h3 class="header"><a class="header-anchor" href="#setting-up-eslint" id="setting-up-eslint"></a><span class="text">Setting Up ESLint</span><a class="header-anchor-select" href="#setting-up-eslint">#</a></h3>
+<h3 class="header"><a class="header-anchor" href="#setting-up-eslint" id="setting-up-eslint"></a><span class="text">Setting up ESLint</span><a class="header-anchor-select" href="#setting-up-eslint">#</a></h3>
 <p>Let’s install ESLint with the Airbnb config:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> eslint eslint-config-airbnb-base eslint-plugin-import --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> eslint eslint-config-airbnb-base eslint-plugin-import --save-dev
 </code></pre>
 <p>Update your <em>package.json</em> as follows to run ESLint against the project. The setup will fix any errors it&#39;s able to fix thanks to the <code>--fix</code> flag:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    "lint<span class="token operator" >:</span>js"<span class="token operator" >:</span> <span class="token string" >"eslint . --fix"</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    "lint<span class="token operator">:</span>js"<span class="token operator">:</span> <span class="token string">"eslint . --fix"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Create a config file, <em>.eslintrc</em>:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token string">"airbnb-base"</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>And finally run:</p>
-<pre><code class="lang-bash">npm run lint:js
+<pre><code class="lang-bash"><span class="token function">npm</span> run lint:js
 </code></pre>
 <p>You may need to tweak your <em>.eslintrc</em> according to your project needs:</p>
 <p><strong>.eslintrc</strong></p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"parserOptions"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    // ECMAScript version<span class="token operator" >:</span> <span class="token number" >3</span>—<span class="token number" >8</span> (or <span class="token number" >2015</span>—<span class="token number" >2017</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> defaults to <span class="token number" >5</span>
-    <span class="token property" >"ecmaVersion"</span><span class="token operator" >:</span> <span class="token number" >6</span><span class="token punctuation" >,</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token string">"airbnb-base"</span><span class="token punctuation">,</span>
+  <span class="token property">"parserOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    // ECMAScript version<span class="token operator">:</span> <span class="token number">3</span>—<span class="token number">8</span> (or <span class="token number">2015</span>—<span class="token number">2017</span><span class="token punctuation">)</span><span class="token punctuation">,</span> defaults to <span class="token number">5</span>
+    <span class="token property">"ecmaVersion"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
 
-    // Treat source files as ECMAScript modules<span class="token punctuation" >,</span> defaults to <span class="token string" >"script"</span>
-    <span class="token property" >"sourceType"</span><span class="token operator" >:</span> <span class="token string" >"module"</span><span class="token punctuation" >,</span>
-    <span class="token property" >"ecmaFeatures"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+    // Treat source files as ECMAScript modules<span class="token punctuation">,</span> defaults to <span class="token string">"script"</span>
+    <span class="token property">"sourceType"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
+    <span class="token property">"ecmaFeatures"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       // Enable JSX
-      <span class="token property" >"jsx"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+      <span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
-      // Enable object rest/spread properties<span class="token operator" >:</span> <span class="token punctuation" >{</span>...a<span class="token punctuation" >,</span> ...b<span class="token punctuation" >}</span>
-      <span class="token property" >"experimentalObjectRestSpread"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+      // Enable object rest/spread properties<span class="token operator">:</span> <span class="token punctuation">{</span>...a<span class="token punctuation">,</span> ...b<span class="token punctuation">}</span>
+      <span class="token property">"experimentalObjectRestSpread"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   // If you’re using Flow or experimental ECMAScript features
-  // not supported by ESLint<span class="token punctuation" >,</span> enable babel-eslint parser
-  <span class="token property" >"parser"</span><span class="token operator" >:</span> <span class="token string" >"babel-eslint"</span><span class="token punctuation" >,</span>
+  // not supported by ESLint<span class="token punctuation">,</span> enable babel-eslint parser
+  <span class="token property">"parser"</span><span class="token operator">:</span> <span class="token string">"babel-eslint"</span><span class="token punctuation">,</span>
 
   // Predefined sets of global variables
-  <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"browser"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    <span class="token property" >"es6"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    <span class="token property" >"jest"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+  <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"browser"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"node"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"es6"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"jest"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>See <a href="http://eslint.org/docs/user-guide/configuring">ESLint docs on configuring</a> for more information.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>To get most value out of linting tools during development, make sure you have installed related editor plugins. This way you can get feedback realtime as you develop and can spot potential issues earlier.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/maintenance/appendices/customizing-eslint/">Customizing ESLint</a> appendix discusses how to get more out of ESLint.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint">Use Mrm</a> to add ESLint to your project with a single command.</blockquote><h3 class="header"><a class="header-anchor" href="#eslint-configuration-formats" id="eslint-configuration-formats"></a><span class="text">ESLint Configuration Formats</span><a class="header-anchor-select" href="#eslint-configuration-formats">#</a></h3>
 <p><em>.eslintrc</em> supports <a href="http://json5.org/">JSON5</a> format by default. It&#39;s a proposed extension to JSON that enables features like commenting and trailing commas.</p>
 <p>ESLint configuration can be written in other formats, such as YAML or JavaScript, as well. JSON5 is a good default, though, given it&#39;s a good format for other tools to consume.</p>
-<h2 class="header"><a class="header-anchor" href="#linting-typescript-with-tslint" id="linting-typescript-with-tslint"></a><span class="text">Linting TypeScript with TSLint</span><a class="header-anchor-select" href="#linting-typescript-with-tslint">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#linting-typescript-with-tslint" id="linting-typescript-with-tslint"></a><span class="text">Linting TypeScript With TSLint</span><a class="header-anchor-select" href="#linting-typescript-with-tslint">#</a></h2>
 <p><a href="https://palantir.github.io/tslint/">TSLint</a> is a linter for TypeScript. It has a much smaller community than ESLint and overall experience is not as nice but otherwise it’s like ESLint.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/eslint/typescript-eslint-parser">TypeScript support</a> for ESLint is experimental and has known issues.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-tslint" id="setting-up-tslint"></a><span class="text">Setting Up TSLint</span><a class="header-anchor-select" href="#setting-up-tslint">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/eslint/typescript-eslint-parser">TypeScript support</a> for ESLint is experimental and has known issues.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-tslint" id="setting-up-tslint"></a><span class="text">Setting up TSLint</span><a class="header-anchor-select" href="#setting-up-tslint">#</a></h3>
 <p>Let’s install TSLint with the Airbnb config:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> tslint tslint-config-airbnb --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> tslint tslint-config-airbnb --save-dev
 </code></pre>
 <p>Update your <em>package.json</em> like this:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    "lint<span class="token operator" >:</span>ts"<span class="token operator" >:</span> "tslint --fix 'src/**/*.ts'"
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    "lint<span class="token operator">:</span>ts"<span class="token operator">:</span> "tslint --fix 'src/**/*.ts'"
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Create a config file, <em>tslint.json</em>:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"tslint-config-airbnb"</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token string">"tslint-config-airbnb"</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>And finally run:</p>
-<pre><code class="lang-bash">npm run lint:ts
+<pre><code class="lang-bash"><span class="token function">npm</span> run lint:ts
 </code></pre>
-<h2 class="header"><a class="header-anchor" href="#linting-css-with-stylelint" id="linting-css-with-stylelint"></a><span class="text">Linting CSS with Stylelint</span><a class="header-anchor-select" href="#linting-css-with-stylelint">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#linting-css-with-stylelint" id="linting-css-with-stylelint"></a><span class="text">Linting CSS With Stylelint</span><a class="header-anchor-select" href="#linting-css-with-stylelint">#</a></h2>
 <p><a href="https://stylelint.io/">Stylelint</a> is a CSS linting tool, it’s like ESLint but for CSS. Stylelint understands CSS, including the latest features like custom properties, and SCSS. Sass-like indented syntaxes are supported using PostCSS <a href="https://github.com/postcss/sugarss">SugarSS</a>. It also has an experimental support for Less.</p>
 <p><a href="https://www.npmjs.com/package/stylelint-config-standard">stylelint-config-standard</a> is a config maintained by stylelint team and follows CSS style guides of GitHub, Google and Airbnb.</p>
-<h3 class="header"><a class="header-anchor" href="#setting-up-stylelint" id="setting-up-stylelint"></a><span class="text">Setting Up Stylelint</span><a class="header-anchor-select" href="#setting-up-stylelint">#</a></h3>
+<h3 class="header"><a class="header-anchor" href="#setting-up-stylelint" id="setting-up-stylelint"></a><span class="text">Setting up Stylelint</span><a class="header-anchor-select" href="#setting-up-stylelint">#</a></h3>
 <p>Let’s install stylelint:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> stylelint stylelint-config-standard --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> stylelint stylelint-config-standard --save-dev
 </code></pre>
 <p>Add a script to your <em>package.json</em> like this:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    "lint<span class="token operator" >:</span>css"<span class="token operator" >:</span> "stylelint --fix '**/*.scss'"
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    "lint<span class="token operator">:</span>css"<span class="token operator">:</span> "stylelint --fix '**/*.scss'"
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Create a config file, <em>.stylelintrc</em>:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"stylelint-config-standard"</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token string">"stylelint-config-standard"</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>And finally run:</p>
-<pre><code class="lang-bash">npm run lint:css
+<pre><code class="lang-bash"><span class="token function">npm</span> run lint:css
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-stylelint">Use Mrm</a> to add stylelint to your project with a single command.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Code style is an important aspect of code quality and you can enforce code style through tooling. Doing so forces contributors to code using the same standard and this also keeps the source consistent to read. Pushing code style to configuration also avoids arguments about which conventions to apply.</p>

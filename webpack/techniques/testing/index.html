@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -34,79 +34,79 @@
 <p><a href="https://www.npmjs.com/package/mocha-loader">mocha-loader</a> allows running Mocha tests through webpack. <a href="https://www.npmjs.com/package/mocha-webpack">mocha-webpack</a> is another option that aims to provide more functionality.</p>
 <h3 class="header"><a class="header-anchor" href="#configuring-mocha-loader-with-webpack" id="configuring-mocha-loader-with-webpack"></a><span class="text">Configuring <em>mocha-loader</em> with Webpack</span><a class="header-anchor-select" href="#configuring-mocha-loader-with-webpack">#</a></h3>
 <p>To get started, include Mocha and <em>mocha-loader</em> to your project:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> mocha mocha-loader --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> mocha mocha-loader --save-dev
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#setting-up-code-to-test" id="setting-up-code-to-test"></a><span class="text">Setting Up Code to Test</span><a class="header-anchor-select" href="#setting-up-code-to-test">#</a></h3>
 <p>To have something to test, set up a function:</p>
 <p><strong>tests/add.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> a <span class="token operator" >+</span> b<span class="token punctuation" >;</span>
+<pre><code class="lang-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
 </code></pre>
 <p>Then, to test that, set up a small test suite:</p>
 <p><strong>tests/add.test.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> assert <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"assert"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> add <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"./add"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> assert <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"assert"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> add <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./add"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token function" >describe</span><span class="token punctuation" >(</span><span class="token string" >"Demo"</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token function" >it</span><span class="token punctuation" >(</span><span class="token string" >"should add correctly"</span><span class="token punctuation" >,</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-    assert<span class="token punctuation" >.</span><span class="token function" >equal</span><span class="token punctuation" >(</span><span class="token function" >add</span><span class="token punctuation" >(</span><span class="token number" >1</span><span class="token punctuation" >,</span> <span class="token number" >1</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Demo"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">"should add correctly"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#configuring-mocha" id="configuring-mocha"></a><span class="text">Configuring Mocha</span><a class="header-anchor-select" href="#configuring-mocha">#</a></h3>
 <p>To run Mocha against the test, add a script:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  "test<span class="token operator" >:</span>mocha"<span class="token operator" >:</span> <span class="token string" >"mocha tests"</span><span class="token punctuation" >,</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  "test<span class="token operator">:</span>mocha"<span class="token operator">:</span> <span class="token string">"mocha tests"</span><span class="token punctuation">,</span>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>If you execute <code>npm run test:mocha</code> now, you should see output:</p>
 <pre><code>Demo
   should add correctly
 
 
-1 passing <span class="token punctuation" >(</span>5ms<span class="token punctuation" >)</span>
+1 passing <span class="token punctuation">(</span>5ms<span class="token punctuation">)</span>
 </code></pre><p>Mocha also provides a watch mode which you can activate through <code>npm run test:mocha -- --watch</code>. It runs the test suite as you modify the code.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><code>--grep &lt;pattern&gt;</code> can be used for constraining the behavior if you want to focus only on a particular set of tests.</blockquote><h3 class="header"><a class="header-anchor" href="#configuring-webpack" id="configuring-webpack"></a><span class="text">Configuring Webpack</span><a class="header-anchor-select" href="#configuring-webpack">#</a></h3>
 <p>Webpack can provide similar functionality through a web interface. The hard parts of the problem have been solved earlier in this book, what remain is combining those solutions together through configuration.</p>
 <p>To tell webpack which tests to run, they need to be imported somehow. The <a href="/webpack/techniques/dynamic-loading/">Dynamic Loading</a> chapter discussed <code>require.context</code> that allows to aggregate files based on a rule. It&#39;s ideal here. Set up an entry point as follows:</p>
 <p><strong>tests/index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// Skip execution in Node</span>
-<span class="token keyword" >if</span> <span class="token punctuation" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> context <span class="token operator" >=</span> require<span class="token punctuation" >.</span><span class="token function" >context</span><span class="token punctuation" >(</span>
-    <span class="token string" >"mocha-loader!./"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Process through mocha-loader</span>
-    <span class="token boolean" >false</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// Skip recursive processing</span>
-    <span class="token regex" >/\.test.js$/</span> <span class="token comment" spellcheck="true">// Pick only files ending with .test.js</span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token comment">// Skip execution in Node</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>module<span class="token punctuation">.</span>hot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> context <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">context</span><span class="token punctuation">(</span>
+    <span class="token string">"mocha-loader!./"</span><span class="token punctuation">,</span> <span class="token comment">// Process through mocha-loader</span>
+    <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// Skip recursive processing</span>
+    <span class="token operator">/</span>\<span class="token punctuation">.</span>test<span class="token punctuation">.</span>js$<span class="token operator">/</span> <span class="token comment">// Pick only files ending with .test.js</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token comment" spellcheck="true">// Execute each test suite</span>
-  context<span class="token punctuation" >.</span><span class="token function" >keys</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >forEach</span><span class="token punctuation" >(</span>context<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token comment">// Execute each test suite</span>
+  context<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>To allow webpack to pick this up, a small amount of configuration is required:</p>
 <p><strong>webpack.mocha.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"path"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> merge <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"webpack-merge"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> merge <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"webpack-merge"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> parts <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"./webpack.parts"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> parts <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./webpack.parts"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >devServer</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    title<span class="token punctuation" >:</span> <span class="token string" >"Mocha demo"</span><span class="token punctuation" >,</span>
-    entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      tests<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"tests"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  parts<span class="token punctuation">.</span><span class="token function">devServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> <span class="token string">"Mocha demo"</span><span class="token punctuation">,</span>
+    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      tests<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"tests"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>See the <a href="/webpack/developing/composing-configuration/">Composing Configuration</a> chapter for the full <code>devServer</code> setup. The page setup is explained in the <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter.</blockquote><p>Add a helper script to make it convenient to run:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  "test<span class="token operator" >:</span>mocha<span class="token operator" >:</span>watch"<span class="token operator" >:</span>
-    <span class="token string" >"webpack-dev-server --hot --config webpack.mocha.js"</span><span class="token punctuation" >,</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  "test<span class="token operator">:</span>mocha<span class="token operator">:</span>watch"<span class="token operator">:</span>
+    <span class="token string">"webpack-dev-server --hot --config webpack.mocha.js"</span><span class="token punctuation">,</span>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand what <code>--hot</code> does better, see the <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> appendix.</blockquote><p>If you execute the server now and navigate to <code>http://localhost:8080/</code>, you should see the test:</p>
 <p><img src="/f845229e1cd70b6f4598df7dd1d20a80.png" alt="Mocha in browser" class="" width="" height="" /></p>
@@ -121,142 +121,142 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p><img src="/4952dcf144de24b920a11e7f678a1333.png" alt="Karma" class="" width="" height="" /></p>
 <p><a href="https://karma-runner.github.io/">Karma</a> is a test runner that allows you to run tests against real devices and <a href="http://phantomjs.org/">PhantomJS</a>, a headless browser. <a href="https://www.npmjs.com/package/karma-webpack">karma-webpack</a> is a Karma preprocessor that allows you to connect Karma with webpack. The same benefits as before apply still. This time around, however, there is more control over the test environment.</p>
 <p>To get started, install Karma, Mocha, <em>karma-mocha</em> reporter, and <em>karma-webpack</em>:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> karma mocha karma-mocha karma-webpack --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> karma mocha karma-mocha karma-webpack --save-dev
 </code></pre>
 <p>Like webpack, Karma relies on a configuration convention as well. Set up a file as follows to make it pick up the tests:</p>
 <p><strong>karma.conf.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> parts <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"./webpack.parts"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> parts <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./webpack.parts"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> config <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> tests <span class="token operator" >=</span> <span class="token string" >"tests/*.test.js"</span><span class="token punctuation" >;</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> config <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> tests <span class="token operator">=</span> <span class="token string">"tests/*.test.js"</span><span class="token punctuation">;</span>
 
-  config<span class="token punctuation" >.</span><span class="token keyword" >set</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    frameworks<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"mocha"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    files<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >{</span>
-        pattern<span class="token punctuation" >:</span> tests<span class="token punctuation" >,</span>
-      <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    preprocessors<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      <span class="token punctuation" >[</span>tests<span class="token punctuation" >]</span><span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"webpack"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-    webpack<span class="token punctuation" >:</span> parts<span class="token punctuation" >.</span><span class="token function" >loadJavaScript</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    singleRun<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  config<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    frameworks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mocha"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    files<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        pattern<span class="token punctuation">:</span> tests<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    preprocessors<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">[</span>tests<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"webpack"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    webpack<span class="token punctuation">:</span> parts<span class="token punctuation">.</span><span class="token function">loadJavaScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    singleRun<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>The setup generates a bundle per each test. If you have a large amount of tests and want to improve performance, set up <code>require.context</code> as for Mocha above. See <a href="https://github.com/webpack-contrib/karma-webpack/issues/23">karma-webpack issue 23</a> for more details.</blockquote><p>Add an npm shortcut:</p>
 <pre><code class="lang-json">...
-<span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  "test<span class="token operator" >:</span>karma"<span class="token operator" >:</span> <span class="token string" >"karma start"</span><span class="token punctuation" >,</span>
+<span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  "test<span class="token operator">:</span>karma"<span class="token operator">:</span> <span class="token string">"karma start"</span><span class="token punctuation">,</span>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 ...
 </code></pre>
 <p>If you execute <code>npm run test:karma</code> now, you should see terminal output:</p>
-<pre><code><span class="token punctuation" >..</span>.
+<pre><code><span class="token punctuation">..</span>.
 webpack: Compiled successfully.
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>karma<span class="token punctuation" >]</span>: Karma v1.7.1 server started at http://0.0.0.0:9876/
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>karma<span class="token punctuation">]</span>: Karma v1.7.1 server started at http://0.0.0.0:9876/
 </code></pre><p>This means Karma is in a waiting state and you have to visit that url to run the tests. As per configuration (<code>singleRun: true</code>), Karma terminates execution after that:</p>
-<pre><code><span class="token punctuation" >..</span>.
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>karma<span class="token punctuation" >]</span>: Karma v1.7.1 server started at http://0.0.0.0:9876/
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>Chrome 61<span class="token punctuation" >..</span>.<span class="token punctuation" >]</span>: Connected on socket D<span class="token punctuation" >..</span>.A with <span class="token function" >id</span> manual-73
-Chrome 61<span class="token punctuation" >..</span>.<span class="token punctuation" >)</span>: Executed 1 of 1 SUCCESS <span class="token punctuation" >(</span>0.003 secs / 0 secs<span class="token punctuation" >)</span>
+<pre><code><span class="token punctuation">..</span>.
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>karma<span class="token punctuation">]</span>: Karma v1.7.1 server started at http://0.0.0.0:9876/
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>Chrome 61<span class="token punctuation">..</span>.<span class="token punctuation">]</span>: Connected on socket D<span class="token punctuation">..</span>.A with <span class="token function">id</span> manual-73
+Chrome 61<span class="token punctuation">..</span>.<span class="token punctuation">)</span>: Executed 1 of 1 SUCCESS <span class="token punctuation">(</span>0.003 secs / 0 secs<span class="token punctuation">)</span>
 </code></pre><p>Given running tests this way can become annoying, it&#39;s a good idea to configure alternative ways. Using PhantomJS is one option.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can point Karma to specific browsers through the <code>browsers</code> field. Example: <code>browsers: [&#39;Chrome&#39;]</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#running-tests-through-phantomjs" id="running-tests-through-phantomjs"></a><span class="text">Running Tests Through PhantomJS</span><a class="header-anchor-select" href="#running-tests-through-phantomjs">#</a></h3>
 <p>Running tests through PhantomJS requires a couple of dependencies:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> karma-phantomjs-launcher phantomjs-prebuilt --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> karma-phantomjs-launcher phantomjs-prebuilt --save-dev
 </code></pre>
 <p>To make Karma run tests through Phantom, adjust its configuration as follows:</p>
 <p><strong>karma.conf.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> config <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> config <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
 
-  config<span class="token punctuation" >.</span><span class="token keyword" >set</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  config<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
 <div class="leanpub-insert">
-    browsers<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"PhantomJS"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
+    browsers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"PhantomJS"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If you execute the tests again (<code>npm run test:karma</code>), you should get output without having to visit an url:</p>
-<pre><code><span class="token punctuation" >..</span>.
+<pre><code><span class="token punctuation">..</span>.
 webpack: Compiled successfully.
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>karma<span class="token punctuation" >]</span>: Karma v1.7.1 server started at http://0.0.0.0:9876/
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>launcher<span class="token punctuation" >]</span>: Launching browser PhantomJS with unlimited concurrency
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>launcher<span class="token punctuation" >]</span>: Starting browser PhantomJS
-<span class="token punctuation" >..</span>.:INFO <span class="token punctuation" >[</span>PhantomJS <span class="token punctuation" >..</span>.<span class="token punctuation" >]</span>: Connected on socket 7<span class="token punctuation" >..</span>.A with <span class="token function" >id</span> 123
-PhantomJS <span class="token punctuation" >..</span>.: Executed 1 of 1 SUCCESS <span class="token punctuation" >(</span>0.005 secs / 0.001 secs<span class="token punctuation" >)</span>
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>karma<span class="token punctuation">]</span>: Karma v1.7.1 server started at http://0.0.0.0:9876/
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>launcher<span class="token punctuation">]</span>: Launching browser PhantomJS with unlimited concurrency
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>launcher<span class="token punctuation">]</span>: Starting browser PhantomJS
+<span class="token punctuation">..</span>.:INFO <span class="token punctuation">[</span>PhantomJS <span class="token punctuation">..</span>.<span class="token punctuation">]</span>: Connected on socket 7<span class="token punctuation">..</span>.A with <span class="token function">id</span> 123
+PhantomJS <span class="token punctuation">..</span>.: Executed 1 of 1 SUCCESS <span class="token punctuation">(</span>0.005 secs / 0.001 secs<span class="token punctuation">)</span>
 </code></pre><p>Given running tests after the change can get boring after a while, Karma provides a watch mode.</p>
 <blockquote class="warning"><i class="icon-attention"></i>PhantomJS does not support ES2015 features yet so you have to preprocess the code for tests using them. ES2015 support is planned for PhantomJS 2.5.</blockquote><h3 class="header"><a class="header-anchor" href="#watch-mode-with-karma" id="watch-mode-with-karma"></a><span class="text">Watch Mode with Karma</span><a class="header-anchor-select" href="#watch-mode-with-karma">#</a></h3>
 <p>Accessing Karma&#39;s watch mode is possible as follows:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 <div class="leanpub-insert">
-  "test<span class="token operator" >:</span>karma<span class="token operator" >:</span>watch"<span class="token operator" >:</span> <span class="token string" >"karma start --auto-watch --no-single-run"</span><span class="token punctuation" >,</span>
+  "test<span class="token operator">:</span>karma<span class="token operator">:</span>watch"<span class="token operator">:</span> <span class="token string">"karma start --auto-watch --no-single-run"</span><span class="token punctuation">,</span>
 </div>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>If you execute <code>npm run test:karma:watch</code> now, you should see watch behavior.</p>
 <h3 class="header"><a class="header-anchor" href="#generating-coverage-reports" id="generating-coverage-reports"></a><span class="text">Generating Coverage Reports</span><a class="header-anchor-select" href="#generating-coverage-reports">#</a></h3>
 <p>To know how much of the code the tests cover, it can be a good idea to generate coverage reports. Doing this requires code-level instrumentation. Also, the added information has to be reported. This can be done through HTML and LCOV reports.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>LCOV integrates well with visualization services. You can send coverage information to an external service through a continuous integration environment and track the status in one place.</blockquote><p><a href="https://www.npmjs.com/package/isparta">isparta</a> is a popular, ES2015 compatible code coverage tool. Connecting it with Karma requires configuration. Most importantly the code has to be instrumented through <a href="https://www.npmjs.com/package/babel-plugin-istanbul">babel-plugin-istanbul</a>. Doing this requires a small amount of webpack configuration as well due to the setup. <a href="https://www.npmjs.com/package/karma-coverage">karma-coverage</a> is required for the reporting portion of the problem.</p>
 <p>Install the dependencies first:</p>
-<pre><code>npm <span class="token function" >install</span> babel-plugin-istanbul karma-coverage --save-dev
+<pre><code><span class="token function">npm</span> <span class="token function">install</span> babel-plugin-istanbul karma-coverage --save-dev
 </code></pre><p>Connect the Babel plugin so that the instrumentation happens when Karma is run:</p>
 <p><strong>.babelrc</strong></p>
 <pre><code class="lang-json">...
 <div class="leanpub-insert">
-<span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  <span class="token property" >"karma"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"plugins"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
-      <span class="token punctuation" >[</span>
-        <span class="token string" >"istanbul"</span><span class="token punctuation" >,</span>
-        <span class="token punctuation" >{</span> <span class="token property" >"exclude"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"tests/*.test.js"</span><span class="token punctuation" >]</span> <span class="token punctuation" >}</span>
-      <span class="token punctuation" >]</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"karma"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span>
+        <span class="token string">"istanbul"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token property">"exclude"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"tests/*.test.js"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </div>
 </code></pre>
 <p>Make sure to set Babel environment, so it picks up the plugin:</p>
 <p><strong>karma.conf.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> config <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> config <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
 
 <div class="leanpub-insert">
-  process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>BABEL_ENV <span class="token operator" >=</span> <span class="token string" >"karma"</span><span class="token punctuation" >;</span>
+  process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>BABEL_ENV <span class="token operator">=</span> <span class="token string">"karma"</span><span class="token punctuation">;</span>
 </div>
 
-  config<span class="token punctuation" >.</span><span class="token keyword" >set</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  config<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand the <code>env</code> idea, see the <a href="/webpack/loading/javascript/">Loading JavaScript</a> chapter.</blockquote><p>On Karma side, reporting has to be set up and Karma configuration has to be connected with webpack. <em>karma-webpack</em> provides two fields for this purpose: <code>webpack</code> and <code>webpackMiddleware</code>. You should use the former in this case to make sure the code gets processed through Babel.</p>
 <p><strong>karma.conf.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"path"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </div>
 
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token operator">...</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> config <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> config <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
 
-  config<span class="token punctuation" >.</span><span class="token keyword" >set</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+  config<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
 <div class="leanpub-insert">
-    reporters<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token string" >"coverage"</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    coverageReporter<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-      dir<span class="token punctuation" >:</span> <span class="token string" >"build"</span><span class="token punctuation" >,</span>
-      reporters<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token punctuation" >{</span> type<span class="token punctuation" >:</span> <span class="token string" >"html"</span> <span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token punctuation" >{</span> type<span class="token punctuation" >:</span> <span class="token string" >"lcov"</span> <span class="token punctuation" >}</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+    reporters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"coverage"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    coverageReporter<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      dir<span class="token punctuation">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+      reporters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"html"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"lcov"</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 </div>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to emit the reports to specific directories below <code>dir</code>, set <code>subdir</code> per each report.</blockquote><p>If you execute karma now (<code>npm run test:karma</code>), you should see a new directory below <em>build</em> containing coverage reports. The HTML report can be examined through the browser.</p>
 <p><img src="/bf72d674a93bdd4100a43d1e39f06c61.png" alt="Coverage in browser" class="" width="" height="" /></p>
@@ -266,16 +266,16 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 <p>Facebook&#39;s <a href="https://facebook.github.io/jest/">Jest</a> is an opinionated alternative that encapsulates functionality, including coverage and mocking, with minimal setup. It can capture snapshots of data making it valuable for projects where you have the behavior you would like to record and retain.</p>
 <p>Jest tests follow <a href="https://www.npmjs.com/package/jasmine">Jasmine</a> test framework semantics, and it supports Jasmine-style assertions out of the box. Especially the suite definition is close enough to Mocha so that the current test should work without any adjustments to the test code itself. Jest provides <a href="https://www.npmjs.com/package/jest-codemods">jest-codemods</a> for migrating more complex projects to Jest semantics.</p>
 <p>Install Jest first:</p>
-<pre><code>npm <span class="token function" >install</span> jest --save-dev
+<pre><code><span class="token function">npm</span> <span class="token function">install</span> jest --save-dev
 </code></pre><p>Jest captures tests through <em>package.json</em> <a href="https://facebook.github.io/jest/docs/en/configuration.html">configuration</a>. It detects tests within a <em><strong>tests</strong></em> directory it also happens to capture the naming pattern the project is using by default:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 <div class="leanpub-insert">
-  "test<span class="token operator" >:</span>jest<span class="token operator" >:</span>watch"<span class="token operator" >:</span> <span class="token string" >"jest --watch"</span><span class="token punctuation" >,</span>
-  "test<span class="token operator" >:</span>jest"<span class="token operator" >:</span> <span class="token string" >"jest"</span><span class="token punctuation" >,</span>
+  "test<span class="token operator">:</span>jest<span class="token operator">:</span>watch"<span class="token operator">:</span> <span class="token string">"jest --watch"</span><span class="token punctuation">,</span>
+  "test<span class="token operator">:</span>jest"<span class="token operator">:</span> <span class="token string">"jest"</span><span class="token punctuation">,</span>
 </div>
   ...
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>Now you have two new commands: one to run tests once and other to run them in a watch mode. To capture coverage information, you have to set <code>&quot;collectCoverage&quot;: true</code> at <code>&quot;jest&quot;</code> settings in <em>package.json</em> or pass <code>--coverage</code> flag to Jest. It emits the coverage reports below <em>coverage</em> directory by default.</p>
 <p>Given generating coverage reports comes with a performance overhead, enabling the behavior through the flag can be a good idea. This way you can control exactly when to capture the information.</p>
@@ -293,11 +293,11 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 </ul>
 <h2 class="header"><a class="header-anchor" href="#removing-files-from-tests" id="removing-files-from-tests"></a><span class="text">Removing Files From Tests</span><a class="header-anchor-select" href="#removing-files-from-tests">#</a></h2>
 <p>If you execute tests through webpack, you may want to alter the way it treats assets like images. This can be done by matching them and then using a <code>noop</code> function to replace the modules as follows:</p>
-<pre><code class="lang-javascript">plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-  <span class="token keyword" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>NormalModuleReplacementPlugin</span><span class="token punctuation" >(</span>
-    <span class="token regex" >/\.(gif|png|scss|css)$/</span><span class="token punctuation" >,</span> <span class="token string" >"lodash/noop"</span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >]</span>
+<pre><code class="lang-javascript">plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>NormalModuleReplacementPlugin</span><span class="token punctuation">(</span>
+    <span class="token regex">/\.(gif|png|scss|css)$/</span><span class="token punctuation">,</span> <span class="token string">"lodash/noop"</span>
+  <span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Webpack can be configured to work with a large variety of testing tools. Each tool has its sweet spots, but they also have quite a bit of common ground.</p>

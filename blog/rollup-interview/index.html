@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -43,7 +43,7 @@ I&#39;m a graphics editor at the New York Times, working on the investigations t
 <h2 class="header"><a class="header-anchor" href="#how-does-rollup-work-" id="how-does-rollup-work-"></a><span class="text">How does <em>Rollup</em> work?</span><a class="header-anchor-select" href="#how-does-rollup-work-">#</a></h2>
 <p>You give it an entry point — let&#39;s say <code>index.js</code>. Rollup will read that file and parse it using Acorn — this gives us something called an abstract syntax tree (AST). Once you have the AST you can discover lots of things about the code, such as which <code>import</code> declarations it contains.</p>
 <p>Let&#39;s say <code>index.js</code> has this line at the top:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> foo <span class="token keyword" >from</span> <span class="token string" >'./foo.js'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> foo <span class="token keyword">from</span> <span class="token string">'./foo.js'</span><span class="token punctuation">;</span>
 </code></pre>
 <p>That means that Rollup needs to resolve <code>./foo.js</code> relative to <code>index.js</code>, load it, parse it, analyse it, lather, rinse and repeat until there are no more modules to import. Crucially, all these steps are pluggable, so you can augment Rollup with the ability to import from <code>node_modules</code> or compile ES2015 to ES5 in a sourcemap-aware way, for example.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-rollup-differ-from-other-solutions-" id="how-does-rollup-differ-from-other-solutions-"></a><span class="text">How does <em>Rollup</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-rollup-differ-from-other-solutions-">#</a></h2>

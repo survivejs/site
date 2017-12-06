@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -70,19 +70,19 @@ I&#39;ve been developing and writing actual software since I was 15 years old, b
 <li>Inferno doesn&#39;t have an InfernoDOM - the DOM is baked into the core. Inferno will never have an Inferno Native, so it made a lot of sense (improved performance and bundle size by unifying the two).</li>
 <li>A <a href="https://github.com/trueadm/inferno/blob/master/README.md#linkevent-package-inferno"><code>linkEvent</code></a> helper for passing <code>state</code>/<code>props</code>/<code>this</code> to an event callback without needing to use arrow functions or <code>bind()</code>. Not only is it a lot faster than the alternatives, but you can use it on functional components too:</li>
 </ul>
-<pre><code class="lang-jsx"><span class="token keyword" >import</span> Inferno<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> linkEvent <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'inferno'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-jsx"><span class="token keyword">import</span> Inferno<span class="token punctuation">,</span> <span class="token punctuation">{</span> linkEvent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'inferno'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >function</span> <span class="token function" >handleClick</span><span class="token punctuation" >(</span>props<span class="token punctuation" >,</span> event<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  props<span class="token punctuation" >.</span><span class="token function" >validateValue</span><span class="token punctuation" >(</span>event<span class="token punctuation" >.</span>target<span class="token punctuation" >.</span>value<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">function</span> <span class="token function">handleClick</span><span class="token punctuation">(</span>props<span class="token punctuation">,</span> event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  props<span class="token punctuation">.</span><span class="token function">validateValue</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword" >function</span> <span class="token function" >MyComponent</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>input</span> <span class="token attr-name" >type</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>text<span class="token punctuation" >"</span></span> <span class="token attr-name" >onClick</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span><span class="token function" >linkEvent</span><span class="token punctuation" >(</span>props<span class="token punctuation" >,</span> handleClick<span class="token punctuation" >)</span><span class="token punctuation" >}</span></span> <span class="token punctuation" >/></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token function">linkEvent</span><span class="token punctuation">(</span>props<span class="token punctuation">,</span> handleClick<span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#why-did-you-develop-inferno-" id="why-did-you-develop-inferno-"></a><span class="text">Why did you develop <em>Inferno</em>?</span><a class="header-anchor-select" href="#why-did-you-develop-inferno-">#</a></h2>
 <p>I developed Inferno because (1) curiosity/research and (2) I ran into too many performance issues too often while trying to build a highly complex mobile web app.</p>

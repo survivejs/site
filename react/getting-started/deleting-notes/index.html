@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -30,50 +30,50 @@
 <h2 class="header"><a class="header-anchor" href="#separating-note" id="separating-note"></a><span class="text">Separating <code>Note</code></span><a class="header-anchor-select" href="#separating-note">#</a></h2>
 <p>To keep the list formatting aspect separate from a <code>Note</code> we can model it using a <code>div</code> like this:</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token operator" >&lt;</span>div<span class="token operator" >></span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
 </code></pre>
 <p>Remember that this declaration is equivalent to:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token operator" >&lt;</span>div<span class="token operator" >></span><span class="token punctuation" >{</span>props<span class="token punctuation" >.</span>task<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>task<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
 </code></pre>
 <p>As you can see, destructuring removes some noise from the code and keeps our implementation simple.</p>
 <p>To make our application use the new component, we need to patch <code>Notes</code> as well:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <div class="leanpub-insert">
-<span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Note'</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> Note <span class="token keyword">from</span> <span class="token string">'./Note'</span><span class="token punctuation">;</span>
 </div>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token operator" >&lt;</span>ul<span class="token operator" >></span><span class="token punctuation" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>ul<span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>note <span class="token operator">=></span>
 <div class="leanpub-delete">
-    <span class="token operator" >&lt;</span>li key<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>task<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
+    <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
 </div>
 <div class="leanpub-insert">
-    <span class="token operator" >&lt;</span>li key<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >&lt;</span>Note task<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>task<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
+    <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">&lt;</span>Note task<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
 </div>
-  <span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >></span>
-<span class="token punctuation" >)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+<span class="token punctuation">)</span>
 </code></pre>
 <p>The application should look exactly the same after these changes. Now we have room to expand it further.</p>
 <h2 class="header"><a class="header-anchor" href="#adding-a-stub-for-ondelete-callback" id="adding-a-stub-for-ondelete-callback"></a><span class="text">Adding a Stub for <code>onDelete</code> Callback</span><a class="header-anchor-select" href="#adding-a-stub-for-ondelete-callback">#</a></h2>
 <p>To capture the intent to delete a <code>Note</code>, we&#39;ll need to extend it to include a button that triggers a <code>onDelete</code> callback. We can connect our logic with that after this step is complete. Consider the code below:</p>
 <p><strong>app/components/Note.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
 <div class="leanpub-delete">
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token operator" >&lt;</span>div<span class="token operator" >></span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>task<span class="token punctuation" >,</span> onDelete<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
-    <span class="token operator" >&lt;</span>span<span class="token operator" >></span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >></span>
-    <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span>onDelete<span class="token punctuation" >}</span><span class="token operator" >></span>x<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-  <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>task<span class="token punctuation">,</span> onDelete<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDelete<span class="token punctuation">}</span><span class="token operator">></span>x<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </div>
 </code></pre>
 <p>You should see small &quot;x&quot;s next to each Note:</p>
@@ -84,68 +84,68 @@
 <p><img src="/60653440d647ef8a558550b5a273cedb.png" alt="`onDelete` flow" class="" width="" height="" /></p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>That <code>e</code> represents a DOM event you might be used to. We can do things like stop event propagation through it. This will come in handy as we want more control over the application behavior.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a> allows us to set the function context (first parameter) and arguments (following parameters). This gives us a technique known as <strong>partial application</strong>.</blockquote><p>To achieve the scheme, we are going to need a new prop at <code>Notes</code>. We will also need to <code>bind</code> the id of each note to the <code>onDelete</code> callback to match the logic. Here&#39;s the full implementation of <code>Notes</code>:</p>
 <p><strong>app/components/Notes.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> Note <span class="token keyword" >from</span> <span class="token string" >'./Note'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Note <span class="token keyword">from</span> <span class="token string">'./Note'</span><span class="token punctuation">;</span>
 
 <div class="leanpub-delete">
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token operator" >&lt;</span>ul<span class="token operator" >></span><span class="token punctuation" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span>
-    <span class="token operator" >&lt;</span>li key<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>id<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >&lt;</span>Note task<span class="token operator" >=</span><span class="token punctuation" >{</span>note<span class="token punctuation" >.</span>task<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span><span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >></span>
-<span class="token punctuation" >)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>ul<span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>note <span class="token operator">=></span>
+    <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">&lt;</span>Note task<span class="token operator">=</span><span class="token punctuation">{</span>note<span class="token punctuation">.</span>task<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+<span class="token punctuation">)</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >,</span> onDelete<span class="token operator" >=</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span><span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token operator" >&lt;</span>ul<span class="token operator" >></span><span class="token punctuation" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation" >(</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>id<span class="token punctuation" >,</span> task<span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span>
-    <span class="token operator" >&lt;</span>li key<span class="token operator" >=</span><span class="token punctuation" >{</span>id<span class="token punctuation" >}</span><span class="token operator" >></span>
-      <span class="token operator" >&lt;</span>Note
-        onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span>onDelete<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation" >(</span><span class="token keyword" >null</span><span class="token punctuation" >,</span> id<span class="token punctuation" >)</span><span class="token punctuation" >}</span>
-        task<span class="token operator" >=</span><span class="token punctuation" >{</span>task<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
-    <span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >></span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >></span>
-<span class="token punctuation" >)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>notes<span class="token punctuation">,</span> <span class="token function-variable function">onDelete</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>ul<span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span>id<span class="token punctuation">,</span> task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+    <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>id<span class="token punctuation">}</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>Note
+        onDelete<span class="token operator">=</span><span class="token punctuation">{</span>onDelete<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span>
+        task<span class="token operator">=</span><span class="token punctuation">{</span>task<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+<span class="token punctuation">)</span>
 </div>
 </code></pre>
 <p>To keep our code from crashing if <code>onDelete</code> is not provided, I defined a dummy callback for it. Another good way to handle this would have been to go through <code>propTypes</code> as discussed in the <em>Typing with React</em> chapter.</p>
 <p>Now that we have the hooks in place, we can use them at <code>App</code>:</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> React <span class="token keyword" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> uuid <span class="token keyword" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
-<span class="token keyword" >import</span> Notes <span class="token keyword" >from</span> <span class="token string" >'./Notes'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> uuid <span class="token keyword">from</span> <span class="token string">'uuid'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Notes <span class="token keyword">from</span> <span class="token string">'./Notes'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token keyword" >class</span> <span class="token class-name" >App</span> <span class="token keyword" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation" >{</span>
-  <span class="token function" >constructor</span><span class="token punctuation" >(</span>props<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >}</span>
-  <span class="token function" >render</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token keyword" >const</span> <span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>notes<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
 
-    <span class="token keyword" >return</span> <span class="token punctuation" >(</span>
-      <span class="token operator" >&lt;</span>div<span class="token operator" >></span>
-        <span class="token operator" >&lt;</span>button onClick<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>addNote<span class="token punctuation" >}</span><span class="token operator" >></span><span class="token operator" >+</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>addNote<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
 <div class="leanpub-delete">
-        <span class="token operator" >&lt;</span>Notes notes<span class="token operator" >=</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+        <span class="token operator">&lt;</span>Notes notes<span class="token operator">=</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
 </div>
 <div class="leanpub-insert">
-        <span class="token operator" >&lt;</span>Notes notes<span class="token operator" >=</span><span class="token punctuation" >{</span>notes<span class="token punctuation" >}</span> onDelete<span class="token operator" >=</span><span class="token punctuation" >{</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>deleteNote<span class="token punctuation" >}</span> <span class="token operator" >/</span><span class="token operator" >></span>
+        <span class="token operator">&lt;</span>Notes notes<span class="token operator">=</span><span class="token punctuation">{</span>notes<span class="token punctuation">}</span> onDelete<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>deleteNote<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
 </div>
-      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-    <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-  addNote <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-    <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-  <span class="token punctuation" >}</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function-variable function">addNote</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
 <div class="leanpub-insert">
-  deleteNote <span class="token operator" >=</span> <span class="token punctuation" >(</span>id<span class="token punctuation" >,</span> e<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Avoid bubbling to edit</span>
-    e<span class="token punctuation" >.</span><span class="token function" >stopPropagation</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+  <span class="token function-variable function">deleteNote</span> <span class="token operator">=</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span> e<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Avoid bubbling to edit</span>
+    e<span class="token punctuation">.</span><span class="token function">stopPropagation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      notes<span class="token punctuation" >:</span> <span class="token keyword" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >.</span>notes<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>note <span class="token operator" >=</span><span class="token operator" >></span> note<span class="token punctuation" >.</span>id <span class="token operator" >!==</span> id<span class="token punctuation" >)</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      notes<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>notes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>note <span class="token operator">=></span> note<span class="token punctuation">.</span>id <span class="token operator">!==</span> id<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 </div>
-<span class="token punctuation" >}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After refreshing the browser, you should be able to delete notes. To prepare for the future I added an extra line in form of <code>e.stopPropagation()</code>. The idea of this is to tell the DOM to stop bubbling events. In short, we&#39;ll avoid triggering possible other events elsewhere in the structure if we delete a note.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -29,23 +29,23 @@
 <p>It&#39;s possible to get a more controlled environment by using a solution such as <a href="https://www.docker.com/">Docker</a>, <a href="https://www.vagrantup.com/">Vagrant</a> or <a href="https://www.npmjs.com/package/nvm">nvm</a>. Vagrant comes with a performance penalty as it relies on a virtual machine. Vagrant is valuable in a team: each developer can have the same environment that is usually close to production.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The completed configuration is available at <a href="https://github.com/survivejs-demos/webpack-demo">GitHub</a>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>If you are using an older version than Node 6, you have to adapt the code or process your webpack configuration through Babel as discussed in the <a href="/webpack/loading/javascript/">Loading JavaScript</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-the-project" id="setting-up-the-project"></a><span class="text">Setting Up the Project</span><a class="header-anchor-select" href="#setting-up-the-project">#</a></h2>
 <p>To get a starting point, you should create a directory for the project and set up a <em>package.json</em> there. npm uses that to manage project dependencies. Here are the basic commands:</p>
-<pre><code class="lang-bash"><span class="token function" >mkdir</span> webpack-demo
-<span class="token function" >cd</span> webpack-demo
-npm init -y <span class="token comment" spellcheck="true"># -y generates *package.json*, skip for more control</span>
+<pre><code class="lang-bash"><span class="token function">mkdir</span> webpack-demo
+<span class="token function">cd</span> webpack-demo
+<span class="token function">npm</span> init -y <span class="token comment"># -y generates *package.json*, skip for more control</span>
 </code></pre>
 <p>You can tweak the generated <em>package.json</em> manually to make further changes to it even though a part of the operations modify the file automatically for you. The official documentation explains <a href="https://docs.npmjs.com/files/package.json">package.json options</a> in more detail.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can set those <code>npm init</code> defaults at <em>~/.npmrc</em>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>This is a good place to set up version control using <a href="https://git-scm.com/">Git</a>. You can create a commit per step and tag per chapter, so it&#39;s easier to move back and forth if you want.</blockquote><h2 class="header"><a class="header-anchor" href="#installing-webpack" id="installing-webpack"></a><span class="text">Installing Webpack</span><a class="header-anchor-select" href="#installing-webpack">#</a></h2>
 <p>Even though webpack can be installed globally (<code>npm install webpack -g</code>), it&#39;s a good idea to maintain it as a dependency of your project to avoid issues, as then you have control over the exact version you are running. The approach works nicely in <strong>Continuous Integration</strong> (CI) setups as well. A CI system can install your local dependencies, compile your project using them, and then push the result to a server.</p>
 <p>To add webpack to the project, execute:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> webpack --save-dev <span class="token comment" spellcheck="true"># -D if you want to save typing</span>
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> webpack --save-dev <span class="token comment"># -D if you want to save typing</span>
 </code></pre>
 <p>You should see webpack at your <em>package.json</em> <code>devDependencies</code> section after this. In addition to installing the package locally below the <em>node_modules</em> directory, npm also generates an entry for the executable.</p>
 <h2 class="header"><a class="header-anchor" href="#executing-webpack" id="executing-webpack"></a><span class="text">Executing Webpack</span><a class="header-anchor-select" href="#executing-webpack">#</a></h2>
 <p>You can display the exact path of the executables using <code>npm bin</code>. Most likely it points at <em>./node_modules/.bin</em>. Try running webpack from there through the terminal using <code>node_modules/.bin/webpack</code> or a similar command.</p>
 <p>After running, you should see a version, a link to the command line interface guide and an extensive list of options. Most aren&#39;t used in this project, but it&#39;s good to know that this tool is packed with functionality if nothing else.</p>
 <pre><code class="lang-bash">webpack-demo $ node_modules/.bin/webpack
-No configuration <span class="token function" >file</span> found and no output filename configured via CLI option.
-A configuration <span class="token function" >file</span> could be named <span class="token string" >'webpack.config.js'</span> <span class="token keyword" >in</span> the current directory.
+No configuration <span class="token function">file</span> found and no output filename configured via CLI option.
+A configuration <span class="token function">file</span> could be named <span class="token string">'webpack.config.js'</span> <span class="token keyword">in</span> the current directory.
 Use --help to display the CLI options.
 </code></pre>
 <p>To get a quick idea of webpack output, try this:</p>
@@ -70,55 +70,55 @@ Use --help to display the CLI options.
 <h2 class="header"><a class="header-anchor" href="#setting-up-assets" id="setting-up-assets"></a><span class="text">Setting Up Assets</span><a class="header-anchor-select" href="#setting-up-assets">#</a></h2>
 <p>As you never get tired of <code>Hello world</code>, you will model a variant of that. Set up a component:</p>
 <p><strong>app/component.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span>text <span class="token operator" >=</span> <span class="token string" >"Hello world"</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> element <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >"div"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token string">"Hello world"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  element<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> text<span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> text<span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> element<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Next, you are going to need an entry point for the application. It uses <code>import</code> against the component and renders it through the DOM:</p>
 <p><strong>app/index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> component <span class="token keyword" >from</span> <span class="token string" >"./component"</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> component <span class="token keyword">from</span> <span class="token string">"./component"</span><span class="token punctuation">;</span>
 
-document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >appendChild</span><span class="token punctuation" >(</span><span class="token function" >component</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#setting-up-webpack-configuration" id="setting-up-webpack-configuration"></a><span class="text">Setting Up Webpack Configuration</span><a class="header-anchor-select" href="#setting-up-webpack-configuration">#</a></h2>
 <p>You need to tell webpack how to deal with the assets that were set up. For this purpose, you have to develop a <em>webpack.config.js</em> file. Webpack and its development server are able to discover this file through a convention.</p>
 <p>To keep things convenient to maintain, you can use your first plugin: <a href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</a>. <code>HtmlWebpackPlugin</code> generates an <em>index.html</em> for the application and adds a <code>script</code> tag to load the generated bundle. Install it:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> html-webpack-plugin --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> html-webpack-plugin --save-dev
 </code></pre>
 <p>At a minimum, it&#39;s nice to have at least <code>entry</code> and <code>output</code> fields in your configuration. Often you see a lot more as you specify how webpack deals with different file types and how it resolves them.</p>
 <p>Entries tell webpack where to start parsing the application. In multi-page applications, you have an entry per page. Or you could have a configuration per entry as discussed later in this chapter.</p>
 <p>All output related paths you see in the configuration are resolved against the <code>output.path</code> field. If you had an output relation option somewhere and wrote <code>styles/[name].css</code>, that would be expanded so that you get <code>&lt;output.path&gt; + &lt;specific path&gt;</code>. Example: <em>~/webpack-demo/build/styles/main.css</em>.</p>
 <p>To illustrate how to connect <code>entry</code> and <code>output</code> with <code>HtmlWebpackPlugin</code>, consider the code below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"path"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"html-webpack-plugin"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"html-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"app"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  build<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"build"</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> PATHS <span class="token operator">=</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"app"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  build<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"build"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// Entries have to resolve to files! They rely on Node</span>
-  <span class="token comment" spellcheck="true">// convention by default so if a directory contains *index.js*,</span>
-  <span class="token comment" spellcheck="true">// it resolves to that.</span>
-  entry<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  output<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
-    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].js"</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span>
-    <span class="token keyword" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-      title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span><span class="token punctuation" >,</span>
-    <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Entries have to resolve to files! They rely on Node</span>
+  <span class="token comment">// convention by default so if a directory contains *index.js*,</span>
+  <span class="token comment">// it resolves to that.</span>
+  entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    app<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>build<span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">"[name].js"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The <code>entry</code> path could be given as a relative one using the <a href="https://webpack.js.org/configuration/entry-context/#context">context</a> field used to configure that lookup. However, given plenty of places expect absolute paths, preferring them over relative paths everywhere avoids confusion.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><strong>Trailing commas</strong> are used in the book examples on purpose as it gives cleaner diffs for the code examples.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><code>[name]</code> is a placeholder. Placeholders are discussed in detail in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter, but they are effectively tokens that will be replaced when the string is evaluated. In this case <code>[name]</code> will be replaced by the name of the entry - &#39;app&#39;.</blockquote><p>If you execute <code>node_modules/.bin/webpack</code>, you should see output:</p>
@@ -126,14 +126,14 @@ module<span class="token punctuation" >.</span>exports <span class="token operat
 Version: webpack 3.8.1
 Time: 344ms
      Asset       Size  Chunks             Chunk Names
-    app.js    3.07 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-index.html  180 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 77 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>1<span class="token punctuation" >]</span> ./app/component.js 142 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-Child html-webpack-plugin <span class="token keyword" >for</span> <span class="token string" >"index.html"</span><span class="token keyword" >:</span>
+    app.js    3.07 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+index.html  180 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 77 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>1<span class="token punctuation">]</span> ./app/component.js 142 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+Child html-webpack-plugin <span class="token keyword">for</span> <span class="token string">"index.html"</span><span class="token keyword">:</span>
      1 asset
-       <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span> <span class="token punctuation" >(</span>webpack<span class="token punctuation" >)</span>/buildin/global.js 488 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-       <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> <span class="token punctuation" >(</span>webpack<span class="token punctuation" >)</span>/buildin/module.js 495 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
+       <span class="token punctuation">[</span>2<span class="token punctuation">]</span> <span class="token punctuation">(</span>webpack<span class="token punctuation">)</span>/buildin/global.js 488 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+       <span class="token punctuation">[</span>3<span class="token punctuation">]</span> <span class="token punctuation">(</span>webpack<span class="token punctuation">)</span>/buildin/module.js 495 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
         + 2 hidden modules
 </code></pre>
 <p>The output tells a lot:</p>
@@ -151,9 +151,9 @@ Child html-webpack-plugin <span class="token keyword" >for</span> <span class="t
 <p>Given executing <code>node_modules/.bin/webpack</code> is verbose, you should do something about it. This is where npm and <em>package.json</em> can be used for running tasks.</p>
 <p>Adjust the file as follows:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>Run <code>npm run build</code> to see the same output as before. This works because npm adds <em>node_modules/.bin</em> temporarily to the path. As a result, rather than having to write <code>&quot;build&quot;: &quot;node_modules/.bin/webpack&quot;</code>, you can do <code>&quot;build&quot;: &quot;webpack&quot;</code>.</p>
 <p>You can execute this kind of scripts through <em>npm run</em> and you can use <em>npm run</em> anywhere within your project. If you run the command as is, it gives you the listing of available scripts.</p>

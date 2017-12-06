@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -45,15 +45,15 @@ Well, over the years of trying to answer this question, I narrowed it down to th
 <p>I think this question can be answered from multiple perspectives: how it works internally, what it exposes externally, and how it works in the context of an engineering team.</p>
 <p>It primarily revolves around the concept of an input field. I started with the familiar idea of an HTML input tag with its <code>name</code>, <code>value</code>, and <code>onchange</code> attributes and then applied these to all fields. Fields may also have sub-fields. In some cases, a form is one large field.</p>
 <p>The big idea here is to work with the grain of engineers&#39; understanding of forms. Engineers think of forms as a bucket of input fields that spits out a blob of data which we then retrieve and send to the server. A+ forms provide this the type of developer experience. For example:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> Form<span class="token punctuation" >,</span> TextInput<span class="token punctuation" >,</span> PasswordInput <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'a-plus-forms'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form<span class="token punctuation">,</span> TextInput<span class="token punctuation">,</span> PasswordInput <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'a-plus-forms'</span><span class="token punctuation">;</span>
 
-cosnt sendToServer <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> username<span class="token punctuation" >,</span> password <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span> <span class="token comment" spellcheck="true">/* ... */</span> <span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+cosnt <span class="token function-variable function">sendToServer</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> username<span class="token punctuation">,</span> password <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token operator" >&lt;</span>Form onSubmit<span class="token operator" >=</span><span class="token punctuation" >{</span>sendToServer<span class="token punctuation" >}</span><span class="token operator" >></span>
-  <span class="token operator" >&lt;</span>TextInput name<span class="token operator" >=</span><span class="token string" >"username"</span> label<span class="token operator" >=</span><span class="token string" >"Username"</span> <span class="token operator" >/</span><span class="token operator" >></span>
-  <span class="token operator" >&lt;</span>PasswordInput name<span class="token operator" >=</span><span class="token string" >"password"</span> label<span class="token operator" >=</span><span class="token string" >"Password"</span> <span class="token operator" >/</span><span class="token operator" >></span>
-  <span class="token operator" >&lt;</span>button type<span class="token operator" >=</span><span class="token string" >"submit"</span><span class="token operator" >></span>Sign In<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >></span>
-<span class="token operator" >&lt;</span><span class="token operator" >/</span>Form<span class="token operator" >></span>
+<span class="token operator">&lt;</span>Form onSubmit<span class="token operator">=</span><span class="token punctuation">{</span>sendToServer<span class="token punctuation">}</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>TextInput name<span class="token operator">=</span><span class="token string">"username"</span> label<span class="token operator">=</span><span class="token string">"Username"</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>PasswordInput name<span class="token operator">=</span><span class="token string">"password"</span> label<span class="token operator">=</span><span class="token string">"Password"</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>button type<span class="token operator">=</span><span class="token string">"submit"</span><span class="token operator">></span>Sign In<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">></span>
 </code></pre>
 <p>The above is just a simple example that doesn&#39;t do justice to the level of complexity A+ forms can handle. But it demonstrates the principle behind the library:</p>
 <blockquote>

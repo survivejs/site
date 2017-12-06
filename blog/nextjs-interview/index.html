@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -46,38 +46,38 @@ I started working with JavaScript while I was studying at university. After this
 <h2 class="header"><a class="header-anchor" href="#how-does-next-js-work-" id="how-does-next-js-work-"></a><span class="text">How does <em>Next.js</em> work?</span><a class="header-anchor-select" href="#how-does-next-js-work-">#</a></h2>
 <p>Let me show you with an example.</p>
 <p>We first create our project and initialize an npm package.json:</p>
-<pre><code class="lang-bash"><span class="token function" >mkdir</span> hello-next
-<span class="token function" >cd</span> hello-next
-npm init -y
+<pre><code class="lang-bash"><span class="token function">mkdir</span> hello-next
+<span class="token function">cd</span> hello-next
+<span class="token function">npm</span> init -y
 </code></pre>
 <p>Then we install <em>Next.js</em> and the React dependencies and create a <code>pages</code> directory:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> --save next react react-dom
-<span class="token function" >mkdir</span> pages
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> --save next react react-dom
+<span class="token function">mkdir</span> pages
 </code></pre>
 <p>In the pages directory, we create a file at <code>pages/index.js</code> with the following content:</p>
-<pre><code class="lang-jsx"><span class="token keyword" >import</span> Link <span class="token keyword" >from</span> <span class="token string" >'next/link'</span>
+<pre><code class="lang-jsx"><span class="token keyword">import</span> Link <span class="token keyword">from</span> <span class="token string">'next/link'</span>
 
-<span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>p</span><span class="token punctuation" >></span></span>Welcome<span class="token punctuation" >,</span> <span class="token keyword" >this</span> is the home page<span class="token punctuation" >.</span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>p</span><span class="token punctuation" >></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>Link</span> <span class="token attr-name" >href</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>/about<span class="token punctuation" >"</span></span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>a</span><span class="token punctuation" >></span></span>About Page<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>a</span><span class="token punctuation" >></span></span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>Link</span><span class="token punctuation" >></span></span>
-  <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
-<span class="token punctuation" >)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Welcome<span class="token punctuation">,</span> <span class="token keyword">this</span> is the home page<span class="token punctuation">.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/about<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token punctuation">></span></span>About Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span>
 </code></pre>
 <p>We also make a file called <code>pages/about.js</code> containing this code:</p>
-<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span>
-  <span class="token operator" >&lt;</span>div<span class="token operator" >></span>This is the about page<span class="token punctuation" >.</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >></span>
-<span class="token punctuation" >)</span>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">></span>This is the about page<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span>
 </code></pre>
 <p>We add a script for the development server to the <code>package.json</code>:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"dev"</span><span class="token operator" >:</span> <span class="token string" >"next"</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"next"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Finally, we run that script to start the development server:</p>
-<pre><code class="lang-bash">npm run dev
+<pre><code class="lang-bash"><span class="token function">npm</span> run dev
 </code></pre>
 <p>The app will be started on <code>https://localhost:3000</code>. Any changes to pages and content will be updated instantly in the browser by webpack&#39;s Hot Module Replacement (HMR).</p>
 <p>Above is just the beginning. You can do a lot with <em>Next.js</em>. You can even customize the base webpack and Babel configuration too.</p>

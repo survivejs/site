@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -44,36 +44,36 @@ I am Giulio Canti, a mathematician turned frontend developer 15 years ago. I liv
 <p>Finally, it&#39;s performance friendly, since asserts and &quot;freezes&quot; are only present in development mode and stripped out in production builds.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-tcomb-work-" id="how-does-tcomb-work-"></a><span class="text">How does <em>tcomb</em> work?</span><a class="header-anchor-select" href="#how-does-tcomb-work-">#</a></h2>
 <p>tcomb defines a set of basic types (e.g. <code>t.String</code>, <code>t.Number</code>, <code>t.Boolean</code>, ...) and a set of type combinators, i.e. functions that return a new type (e.g. <code>t.list</code>, <code>t.maybe</code>, <code>t.interface</code>, ...). The power of tcomb, comes from the composition of combinators:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> t <span class="token keyword" >from</span> <span class="token string" >'tcomb'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> t <span class="token keyword">from</span> <span class="token string">'tcomb'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// the maybe combinator returns a new type</span>
-<span class="token comment" spellcheck="true">// that represents an optional value</span>
-<span class="token keyword" >const</span> MyOptString <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token function" >maybe</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span>String<span class="token punctuation" >)</span><span class="token punctuation" >;</span>  <span class="token comment" spellcheck="true">// an optional string</span>
+<span class="token comment">// the maybe combinator returns a new type</span>
+<span class="token comment">// that represents an optional value</span>
+<span class="token keyword">const</span> MyOptString <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">maybe</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// an optional string</span>
 
-<span class="token comment" spellcheck="true">// the list combinator returns a new type</span>
-<span class="token comment" spellcheck="true">// that represents a list of values</span>
-<span class="token keyword" >const</span> MyList <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token function" >list</span><span class="token punctuation" >(</span>MyOptString<span class="token punctuation" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true">// a list of optional strings</span>
+<span class="token comment">// the list combinator returns a new type</span>
+<span class="token comment">// that represents a list of values</span>
+<span class="token keyword">const</span> MyList <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">list</span><span class="token punctuation">(</span>MyOptString<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a list of optional strings</span>
 </code></pre>
 <p>Using combinators like <code>t.interface</code> or utilities like <code>t.assert</code>, you can model your own domain and its invariants:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> t <span class="token keyword" >from</span> <span class="token string" >'tcomb'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> t <span class="token keyword">from</span> <span class="token string">'tcomb'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// a domain model</span>
-<span class="token keyword" >const</span> Person <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token keyword" >interface</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  name<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span>String<span class="token punctuation" >,</span>
-  surname<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span><span class="token function" >maybe</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span>String<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  age<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span>Number<span class="token punctuation" >,</span>
-  tags<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span><span class="token function" >list</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span>String<span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token string" >'Person'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// a domain model</span>
+<span class="token keyword">const</span> Person <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token keyword">interface</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> t<span class="token punctuation">.</span>String<span class="token punctuation">,</span>
+  surname<span class="token punctuation">:</span> t<span class="token punctuation">.</span><span class="token function">maybe</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>String<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  age<span class="token punctuation">:</span> t<span class="token punctuation">.</span>Number<span class="token punctuation">,</span>
+  tags<span class="token punctuation">:</span> t<span class="token punctuation">.</span><span class="token function">list</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>String<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'Person'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >function</span> <span class="token function" >getFullName</span><span class="token punctuation" >(</span>person<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token comment" spellcheck="true">// an invariant</span>
-  t<span class="token punctuation" >.</span><span class="token function" >assert</span><span class="token punctuation" >(</span>
-    Person<span class="token punctuation" >.</span><span class="token function" >is</span><span class="token punctuation" >(</span>person<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-    <span class="token string" >'Invalid argument person supplied to getFullName'</span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">function</span> <span class="token function">getFullName</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// an invariant</span>
+  t<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>
+    Person<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'Invalid argument person supplied to getFullName'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> <span class="token template-string" ><span class="token string" >`</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>name<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" > </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>surname<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>surname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>When an assert fails, the default behavior throws a <code>TypeError</code> with a descriptive message, so you can leverage the power of the debugger, inspect the stack and find out what&#39;s wrong with little effort.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-tcomb-differ-from-other-solutions-" id="how-does-tcomb-differ-from-other-solutions-"></a><span class="text">How does <em>tcomb</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-tcomb-differ-from-other-solutions-">#</a></h2>
@@ -81,17 +81,17 @@ I am Giulio Canti, a mathematician turned frontend developer 15 years ago. I liv
 <p>It&#39;s also an extremely flexible tool and its strength comes from two unique features: refinements and runtime type introspection:</p>
 <h3 class="header"><a class="header-anchor" href="#refinements" id="refinements"></a><span class="text">Refinements</span><a class="header-anchor-select" href="#refinements">#</a></h3>
 <p>A refinement type is a type endowed with a predicate which must hold for all instances of the refined type. Here&#39;s a simple example:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> t <span class="token keyword" >from</span> <span class="token string" >'tcomb'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> t <span class="token keyword">from</span> <span class="token string">'tcomb'</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> Integer <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token function" >refinement</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span>Number<span class="token punctuation" >,</span> <span class="token punctuation" >(</span>n<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> n <span class="token operator" >%</span> <span class="token number" >1</span> <span class="token operator" >===</span> <span class="token number" >0</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> PositiveInteger <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token function" >refinement</span><span class="token punctuation" >(</span>Integer<span class="token punctuation" >,</span> <span class="token punctuation" >(</span>n<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> n <span class="token operator" >>=</span> <span class="token number" >0</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> Integer <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">refinement</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>Number<span class="token punctuation">,</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">=></span> n <span class="token operator">%</span> <span class="token number">1</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> PositiveInteger <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">refinement</span><span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">=></span> n <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >const</span> Person <span class="token operator" >=</span> t<span class="token punctuation" >.</span><span class="token keyword" >interface</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  name<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span>String<span class="token punctuation" >,</span>
-  surname<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span><span class="token function" >maybe</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span>String<span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  age<span class="token punctuation" >:</span> PositiveInteger<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true">// &lt;= much better!</span>
-  tags<span class="token punctuation" >:</span> t<span class="token punctuation" >.</span><span class="token function" >list</span><span class="token punctuation" >(</span>t<span class="token punctuation" >.</span>String<span class="token punctuation" >)</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span> <span class="token string" >'Person'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> Person <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token keyword">interface</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> t<span class="token punctuation">.</span>String<span class="token punctuation">,</span>
+  surname<span class="token punctuation">:</span> t<span class="token punctuation">.</span><span class="token function">maybe</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>String<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  age<span class="token punctuation">:</span> PositiveInteger<span class="token punctuation">,</span> <span class="token comment">// &lt;= much better!</span>
+  tags<span class="token punctuation">:</span> t<span class="token punctuation">.</span><span class="token function">list</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>String<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'Person'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>This means you can narrow your types defining <em>precise</em> invariants, something that static type checkers can do only partially.</p>
 <h3 class="header"><a class="header-anchor" href="#runtime-type-introspection" id="runtime-type-introspection"></a><span class="text">Runtime Type Introspection</span><a class="header-anchor-select" href="#runtime-type-introspection">#</a></h3>
@@ -102,16 +102,16 @@ I am Giulio Canti, a mathematician turned frontend developer 15 years ago. I liv
 <p>I&#39;m really excited about my last project, a <a href="https://github.com/gcanti/babel-plugin-tcomb">babel plugin</a> for combining static and runtime type checking using <a href="https://github.com/facebook/flow">Flow</a> and tcomb.</p>
 <p>It allows to define your tcomb types (refinements included!) as type annotations fully compatible with Flow. This means you can run them side by side, statically checking your code with Flow and catching the remaining mistakes with tcomb at runtime: the best of the two worlds!</p>
 <p>Here&#39;s the first example we&#39;ve seen above, rewritten leveraging the plugin:</p>
-<pre><code class="lang-js">type Person <span class="token operator" >=</span> <span class="token punctuation" >{</span>
-  name<span class="token punctuation" >:</span> string<span class="token punctuation" >,</span>
-  surname<span class="token punctuation" >:</span> <span class="token operator" >?</span>string
-  age<span class="token punctuation" >:</span> number
-  tags<span class="token punctuation" >:</span> Array<span class="token operator" >&lt;</span>string<span class="token operator" >></span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js">type Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> string<span class="token punctuation">,</span>
+  surname<span class="token punctuation">:</span> <span class="token operator">?</span>string
+  age<span class="token punctuation">:</span> number
+  tags<span class="token punctuation">:</span> Array<span class="token operator">&lt;</span>string<span class="token operator">></span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >function</span> <span class="token function" >getFullName</span><span class="token punctuation" >(</span>person<span class="token punctuation" >:</span> Person<span class="token punctuation" >)</span><span class="token punctuation" >:</span> string <span class="token punctuation" >{</span>
-  <span class="token keyword" >return</span> <span class="token template-string" ><span class="token string" >`</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>name<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" > </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span><span class="token keyword" >this</span><span class="token punctuation" >.</span>surname<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">function</span> <span class="token function">getFullName</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> Person<span class="token punctuation">)</span><span class="token punctuation">:</span> string <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>surname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Flow can typecheck this, but you can also turn it off and let tcomb check it at runtime. This simple example may not be particularly useful, but, once you start using type refinements, the mixed approach really starts to shine!</p>
 <h2 class="header"><a class="header-anchor" href="#what-does-the-future-look-like-for-tcomb-and-web-development-in-general-can-you-see-any-particular-trends-" id="what-does-the-future-look-like-for-tcomb-and-web-development-in-general-can-you-see-any-particular-trends-"></a><span class="text">What does the future look like for <em>tcomb</em> and web development in general? Can you see any particular trends?</span><a class="header-anchor-select" href="#what-does-the-future-look-like-for-tcomb-and-web-development-in-general-can-you-see-any-particular-trends-">#</a></h2>

@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -30,27 +30,27 @@
 <p><a href="https://www.npmjs.com/package/uncss">uncss</a> is a good alternative to PurifyCSS. It operates through PhantomJS and performs its work in a different manner. You can use uncss itself as a PostCSS plugin.</p>
 <blockquote class="warning"><i class="icon-attention"></i>You have to be careful if you are using CSS Modules. You have to <strong>whitelist</strong> the related classes as discussed in <a href="https://github.com/webpack-contrib/purifycss-webpack#usage-with-css-modules">purifycss-webpack readme</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-pure-css" id="setting-up-pure-css"></a><span class="text">Setting Up Pure.css</span><a class="header-anchor-select" href="#setting-up-pure-css">#</a></h2>
 <p>To make the demo more realistic, let&#39;s install <a href="http://purecss.io/">Pure.css</a>, a small CSS framework, as well and refer to it from the project so that you can see PurifyCSS in action. These two projects aren&#39;t related in any way despite the naming.</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> purecss --save
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> purecss --save
 </code></pre>
 <p>To make the project aware of Pure.css, <code>import</code> it:</p>
 <p><strong>app/index.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword" >import</span> <span class="token string" >"purecss"</span><span class="token punctuation" >;</span>
+<span class="token keyword">import</span> <span class="token string">"purecss"</span><span class="token punctuation">;</span>
 </div>
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token operator">...</span>
 </code></pre>
 <p>You should also make the demo component use a Pure.css class, so there is something to work with:</p>
 <p><strong>app/component.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword" >export</span> <span class="token keyword" >default</span> <span class="token punctuation" >(</span>text <span class="token operator" >=</span> <span class="token string" >"Hello world"</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> element <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation" >(</span><span class="token string" >"div"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>text <span class="token operator">=</span> <span class="token string">"Hello world"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <div class="leanpub-insert">
-  element<span class="token punctuation" >.</span>className <span class="token operator" >=</span> <span class="token string" >"pure-button"</span><span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">"pure-button"</span><span class="token punctuation">;</span>
 </div>
-  element<span class="token punctuation" >.</span>innerHTML <span class="token operator" >=</span> text<span class="token punctuation" >;</span>
+  element<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> text<span class="token punctuation">;</span>
 
-  <span class="token keyword" >return</span> element<span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >;</span>
+  <span class="token keyword">return</span> element<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If you run the application (<code>npm start</code>), the &quot;Hello world&quot; should look like a button.</p>
 <p><img src="/87867743fcd1cad168f3e5bccce23f99.png" alt="Styled hello" class="" width="" height="" /></p>
@@ -59,61 +59,61 @@
 Version: webpack 3.8.1
 Time: 1029ms
      Asset       Size  Chunks             Chunk Names
-    app.js    3.76 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-   app.css    16.9 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-index.html  218 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 117 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> ./app/component.js 180 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
+    app.js    3.76 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+   app.css    16.9 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+index.html  218 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 117 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>2<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>3<span class="token punctuation">]</span> ./app/component.js 180 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
 </code></pre>
 <p>As you can see, the size of the CSS file grew. This is something to fix with PurifyCSS.</p>
 <h2 class="header"><a class="header-anchor" href="#enabling-purifycss" id="enabling-purifycss"></a><span class="text">Enabling PurifyCSS</span><a class="header-anchor-select" href="#enabling-purifycss">#</a></h2>
 <p>Using PurifyCSS can lead to significant savings. In the official example of the project, they purify and minify Bootstrap (140 kB) in an application using ~40% of its selectors to mere ~35 kB. That&#39;s a big difference.</p>
 <p><a href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</a> allows to achieve similar results. You should use the <code>ExtractTextPlugin</code> with it for the best results. Install it and a <a href="https://www.npmjs.org/package/glob">glob</a> helper first:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> glob purifycss-webpack purify-css --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> glob purifycss-webpack purify-css --save-dev
 </code></pre>
 <p>You also need PurifyCSS configuration as below:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
-<span class="token keyword" >const</span> PurifyCSSPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"purifycss-webpack"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token operator">...</span>
+<span class="token keyword">const</span> PurifyCSSPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"purifycss-webpack"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-exports<span class="token punctuation" >.</span>purifyCSS <span class="token operator" >=</span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span> paths <span class="token punctuation" >}</span><span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation" >[</span><span class="token keyword" >new</span> <span class="token class-name" >PurifyCSSPlugin</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span> paths <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">purifyCSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> paths <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">PurifyCSSPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span> paths <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Next, the part has to be connected with the configuration. It&#39;s important the plugin is used <em>after</em> the <code>ExtractTextPlugin</code>; otherwise it doesn&#39;t work:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<pre><code class="lang-javascript"><span class="token operator">...</span>
 <div class="leanpub-insert">
-<span class="token keyword" >const</span> glob <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"glob"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> glob <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"glob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </div>
 
-<span class="token keyword" >const</span> parts <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >"./webpack.parts"</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword">const</span> parts <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./webpack.parts"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token operator">...</span>
 
-<span class="token keyword" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation" >(</span><span class="token punctuation" >[</span>
-  <span class="token punctuation" >.</span><span class="token punctuation" >.</span><span class="token punctuation" >.</span>
+<span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token operator">...</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation" >.</span><span class="token function" >purifyCSS</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-    paths<span class="token punctuation" >:</span> glob<span class="token punctuation" >.</span><span class="token function" >sync</span><span class="token punctuation" >(</span>`$<span class="token punctuation" >{</span>PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >}</span><span class="token comment" spellcheck="true">/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span>js`<span class="token punctuation" >,</span> <span class="token punctuation" >{</span> nodir<span class="token punctuation" >:</span> <span class="token boolean" >true</span> <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >,</span>
+  parts<span class="token punctuation">.</span><span class="token function">purifyCSS</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    paths<span class="token punctuation">:</span> glob<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>PATHS<span class="token punctuation">.</span>app<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/**/*.js`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> nodir<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 </div>
-<span class="token punctuation" >]</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>The order matters. CSS extraction has to happen before purifying.</blockquote><p>If you execute <code>npm run build</code> now, you should see something:</p>
 <pre><code class="lang-bash">Hash: 20c680ed670eff9c69c9
 Version: webpack 3.8.1
 Time: 1126ms
      Asset       Size  Chunks             Chunk Names
-    app.js    3.76 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-   app.css    2.38 kB       0  <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>  app
-index.html  218 bytes          <span class="token punctuation" >[</span>emitted<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>0<span class="token punctuation" >]</span> ./app/index.js 117 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>2<span class="token punctuation" >]</span> ./app/main.css 41 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-   <span class="token punctuation" >[</span>3<span class="token punctuation" >]</span> ./app/component.js 180 bytes <span class="token punctuation" >{</span>0<span class="token punctuation" >}</span> <span class="token punctuation" >[</span>built<span class="token punctuation" >]</span>
-<span class="token punctuation" >..</span>.
+    app.js    3.76 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+   app.css    2.38 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+index.html  218 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 117 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>2<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+   <span class="token punctuation">[</span>3<span class="token punctuation">]</span> ./app/component.js 180 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
+<span class="token punctuation">..</span>.
 </code></pre>
 <p>The size of the style has decreased noticeably. Instead of 16k, you have roughly 2k now. The difference would be even bigger for heavier CSS frameworks.</p>
 <p>PurifyCSS supports <a href="https://github.com/purifycss/purifycss#the-optional-options-argument">additional options</a> including <code>minify</code>. You can enable these through the <code>purifyOptions</code> field when instantiating the plugin. Given PurifyCSS cannot pick all of the classes you are using always, you should use <code>purifyOptions.whitelist</code> array to define selectors which it should leave in the result no matter what.</p>

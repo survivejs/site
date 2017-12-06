@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -43,28 +43,28 @@ I&#39;m an engineer at Increments, Inc, based in Tokyo, Japan. We build <a href=
 <h2 class="header"><a class="header-anchor" href="#how-does-hyperapp-work-" id="how-does-hyperapp-work-"></a><span class="text">How does <em>HyperApp</em> work?</span><a class="header-anchor-select" href="#how-does-hyperapp-work-">#</a></h2>
 <p>We have extensive <a href="https://github.com/hyperapp/hyperapp/wiki">documentation</a> to help newcomers get started and learn how to create a build setup from scratch using Browserify, webpack, and Rollup.</p>
 <p>A typical Hello World example looks like this:</p>
-<pre><code class="lang-jsx"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> h<span class="token punctuation" >,</span> app <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >"hyperapp"</span>
+<pre><code class="lang-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"hyperapp"</span>
 
-<span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  model<span class="token punctuation" >:</span> <span class="token string" >"Hello World"</span><span class="token punctuation" >,</span>
-  view<span class="token punctuation" >:</span> model <span class="token operator" >=</span><span class="token operator" >></span> <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>h1</span><span class="token punctuation" >></span></span><span class="token punctuation" >{</span>model<span class="token punctuation" >}</span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>h1</span><span class="token punctuation" >></span></span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+<span class="token function">app</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  model<span class="token punctuation">:</span> <span class="token string">"Hello World"</span><span class="token punctuation">,</span>
+  view<span class="token punctuation">:</span> model <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>model<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p><a href="http://codepen.io/jbucaran/pen/Qdwpxy?editors=0010">CodePen</a></p>
 <p>And here is a bound text input:</p>
-<pre><code class="lang-jsx"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> h<span class="token punctuation" >,</span> app <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >"hyperapp"</span>
+<pre><code class="lang-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"hyperapp"</span>
 
-<span class="token function" >app</span><span class="token punctuation" >(</span><span class="token punctuation" >{</span>
-  model<span class="token punctuation" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
-  actions<span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-    text<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>_<span class="token punctuation" >,</span> value<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> value
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  view<span class="token punctuation" >:</span> <span class="token punctuation" >(</span>model<span class="token punctuation" >,</span> actions<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>div</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>h1</span><span class="token punctuation" >></span></span>Hi<span class="token punctuation" >{</span>model <span class="token operator" >?</span> <span class="token string" >" "</span> <span class="token operator" >+</span> model <span class="token punctuation" >:</span> <span class="token string" >""</span><span class="token punctuation" >}</span><span class="token punctuation" >.</span><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>h1</span><span class="token punctuation" >></span></span>
-      <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>input</span> <span class="token attr-name" >onInput</span><span class="token script language-javascript" ><span class="token punctuation" >=</span><span class="token punctuation" >{</span>e <span class="token operator" >=</span><span class="token operator" >></span> actions<span class="token punctuation" >.</span><span class="token function" >text</span><span class="token punctuation" >(</span>e<span class="token punctuation" >.</span>target<span class="token punctuation" >.</span>value<span class="token punctuation" >)</span><span class="token punctuation" >}</span></span> <span class="token punctuation" >/></span></span>
-    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>div</span><span class="token punctuation" >></span></span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span>
+<span class="token function">app</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  model<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    text<span class="token punctuation">:</span> <span class="token punctuation">(</span>_<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">=></span> value
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  view<span class="token punctuation">:</span> <span class="token punctuation">(</span>model<span class="token punctuation">,</span> actions<span class="token punctuation">)</span> <span class="token operator">=></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hi<span class="token punctuation">{</span>model <span class="token operator">?</span> <span class="token string">" "</span> <span class="token operator">+</span> model <span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">onInput</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>e <span class="token operator">=></span> actions<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <p><a href="http://codepen.io/jbucaran/pen/qRMEGX?editors=0010">CodePen</a></p>
 <p>HyperApp offers a single, immutable model. The model can be anything that makes sense for your application. It&#39;s usually an object or an array of objects, but it can be a JavaScript primitive type like a <code>Number</code> or a <code>String</code> too.</p>

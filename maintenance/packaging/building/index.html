@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -38,9 +38,9 @@
 <h2 class="header"><a class="header-anchor" href="#communicating-where-code-should-work" id="communicating-where-code-should-work"></a><span class="text">Communicating Where Code Should Work</span><a class="header-anchor-select" href="#communicating-where-code-should-work">#</a></h2>
 <p>To communicate in which Node environments your package should work, you should set <em>package.json</em> <code>engines</code> field. It accepts a range in a similar way as for dependencies. Consider the example adapted from <a href="https://docs.npmjs.com/files/package.json#engines">npm documentation</a>:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"engines"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-  <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >">= 4"</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token property">"engines"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"node"</span><span class="token operator">:</span> <span class="token string">">= 4"</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>The same idea works for npm version and you can control it by setting <code>engines.npm</code> field like <code>engines.node</code> above.</p>
 <p>You can also document operating system in which the code should run through the <code>os</code> field. You can specify the CPU architecture through the <code>cpu</code> field. Both of these are niche cases and come into play only if you have platform specific code.</p>
@@ -50,67 +50,67 @@
 <p>During this process, it will also shim the code appropriately so that the features work as they should. It&#39;s important to note that the shimming process isn&#39;t perfect and you may still have to include <a href="https://babeljs.io/docs/usage/polyfill/">Babel polyfill</a> or at least advice consumers to use it.</p>
 <p>To configure <em>babel-preset-env</em> to work with Node, set it up as follows:</p>
 <p><strong>.babelrc</strong></p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
-    <span class="token punctuation" >[</span>
-      <span class="token string" >"env"</span><span class="token punctuation" >,</span>
-      <span class="token punctuation" >{</span>
-        <span class="token property" >"targets"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-          <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >"4"</span>
-        <span class="token punctuation" >}</span>
-      <span class="token punctuation" >}</span>
-    <span class="token punctuation" >]</span>
-  <span class="token punctuation" >]</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span>
+      <span class="token string">"env"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"targets"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"node"</span><span class="token operator">:</span> <span class="token string">"4"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After this change, Babel will pick up any features not supported by the specified version and transform them into a form that works.</p>
 <p>To see the configuration in action, install <strong>babel-cli</strong> to your project, and invoke <code>babel ./src --out-dir ./lib</code>. The command picks up the source and writes it below <code>./lib</code> directory. You should set <code>&quot;main&quot;: &quot;lib&quot;,</code> and also ignore <code>lib</code> at <strong>.gitignore</strong> to avoid including it in source control by accident.</p>
 <p>To make sure the code gets generated before you publish it to npm, set up hooks as below:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   ...
-  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"babel ./src --out-dir ./lib"</span><span class="token punctuation">,</span>
+  <span class="token property">"preversion"</span><span class="token operator">:</span> <span class="token string">"npm test"</span><span class="token punctuation">,</span>
+  <span class="token property">"prepublishOnly"</span><span class="token operator">:</span> <span class="token string">"npm run build"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>The code should work in the current Node after these changes. There&#39;s one problem, though. If you try to consume a package that relies on a build script like this, it won&#39;t work if you try to use it directly through Git. For this reason customization is required.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>It can be convenient to set up a watch process using <code>babel --watch</code> to generate the build during development. <a href="https://www.npmjs.com/package/npm-watch">npm-watch</a> gives more control if needed.</blockquote><h2 class="header"><a class="header-anchor" href="#generating-a-build-on-postinstall" id="generating-a-build-on-postinstall"></a><span class="text">Generating a Build on <code>postinstall</code></span><a class="header-anchor-select" href="#generating-a-build-on-postinstall">#</a></h2>
 <p>To consume a package like this from Git, you have to make sure the consumer can generate the missing build. To make this happen, you have to write a small <code>postinstall</code> script that does exactly this. To get started, point the hook to a custom script:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   ...
   /* Point to the script that generates the missing source. */
-  <span class="token property" >"postinstall"</span><span class="token operator" >:</span> <span class="token string" >"node lib/postinstall.js"</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token property">"postinstall"</span><span class="token operator">:</span> <span class="token string">"node lib/postinstall.js"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>Write a script as below that will check if a build exists and then generates it if it doesn&#39;t:</p>
 <p><strong>lib/postinstall.js</strong></p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">/* eslint-disable */</span>
-<span class="token comment" spellcheck="true">// adapted based on rackt/history (MIT)</span>
-<span class="token comment" spellcheck="true">// Node 4+</span>
-<span class="token keyword" >const</span> execSync <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'child_process'</span><span class="token punctuation" >)</span><span class="token punctuation" >.</span>execSync<span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> fs <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'fs'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token comment">/* eslint-disable */</span>
+<span class="token comment">// adapted based on rackt/history (MIT)</span>
+<span class="token comment">// Node 4+</span>
+<span class="token keyword">const</span> execSync <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'child_process'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>execSync<span class="token punctuation">;</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// This could be read from package.json</span>
-<span class="token keyword" >const</span> distDirectory <span class="token operator" >=</span> <span class="token string" >'dist-modules'</span><span class="token punctuation" >;</span>
+<span class="token comment">// This could be read from package.json</span>
+<span class="token keyword">const</span> distDirectory <span class="token operator">=</span> <span class="token string">'dist-modules'</span><span class="token punctuation">;</span>
 
-fs<span class="token punctuation" >.</span><span class="token function" >stat</span><span class="token punctuation" >(</span>distDirectory<span class="token punctuation" >,</span> <span class="token punctuation" >(</span>error<span class="token punctuation" >,</span> stat<span class="token punctuation" >)</span> <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>error <span class="token operator" >||</span> <span class="token operator" >!</span>stat<span class="token punctuation" >.</span><span class="token function" >isDirectory</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Create a directory to avoid getting stuck</span>
-    <span class="token comment" spellcheck="true">// in postinstall loop</span>
-    fs<span class="token punctuation" >.</span><span class="token function" >mkdirSync</span><span class="token punctuation" >(</span>distDirectory<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token function" >exec</span><span class="token punctuation" >(</span><span class="token string" >'npm install --only=dev'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-    <span class="token function" >exec</span><span class="token punctuation" >(</span><span class="token string" >'npm run build'</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+fs<span class="token punctuation">.</span><span class="token function">stat</span><span class="token punctuation">(</span>distDirectory<span class="token punctuation">,</span> <span class="token punctuation">(</span>error<span class="token punctuation">,</span> stat<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token operator">||</span> <span class="token operator">!</span>stat<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Create a directory to avoid getting stuck</span>
+    <span class="token comment">// in postinstall loop</span>
+    fs<span class="token punctuation">.</span><span class="token function">mkdirSync</span><span class="token punctuation">(</span>distDirectory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'npm install --only=dev'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'npm run build'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword" >function</span> <span class="token function" >exec</span><span class="token punctuation" >(</span>command<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token function" >execSync</span><span class="token punctuation" >(</span>command<span class="token punctuation" >,</span> <span class="token punctuation" >{</span>
-    <span class="token comment" spellcheck="true">// Print stdin/stdout/stderr</span>
-    stdio<span class="token punctuation" >:</span> <span class="token string" >'inherit'</span><span class="token punctuation" >,</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token keyword">function</span> <span class="token function">exec</span><span class="token punctuation">(</span>command<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">execSync</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Print stdin/stdout/stderr</span>
+    stdio<span class="token punctuation">:</span> <span class="token string">'inherit'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>After these two steps, you have a build that should work regardless whether consume it through npm or not.</p>
 <h2 class="header"><a class="header-anchor" href="#configuring-babel-for-tree-shaking" id="configuring-babel-for-tree-shaking"></a><span class="text">Configuring Babel for Tree Shaking</span><a class="header-anchor-select" href="#configuring-babel-for-tree-shaking">#</a></h2>
@@ -119,54 +119,54 @@ fs<span class="token punctuation" >.</span><span class="token function" >stat</s
 <p>For this reason, you have to set up another process to generate tree shaking compatible code. You have to disable its module processing in Babel for this reason. Also, you have to point <strong>package.json</strong> <code>module</code> field to the generated source. The existing tooling relies on this convention and can pick up the tree-shakeable code if the field is set.</p>
 <p>The technique requires two steps. Set up helper scripts first:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   ...
 <div class="leanpub-delete">
-  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span>
+  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"babel ./src --out-dir ./lib"</span><span class="token punctuation">,</span>
+  <span class="token property">"preversion"</span><span class="token operator">:</span> <span class="token string">"npm test"</span><span class="token punctuation">,</span>
+  <span class="token property">"prepublishOnly"</span><span class="token operator">:</span> <span class="token string">"npm run build"</span>
 </div>
 <div class="leanpub-insert">
-  "build<span class="token operator" >:</span>all"<span class="token operator" >:</span> <span class="token string" >"npm run build &amp;&amp; npm run build:tree-shaking"</span><span class="token punctuation" >,</span>
-  "build<span class="token operator" >:</span>tree-shaking"<span class="token operator" >:</span> <span class="token string" >"cross-env BABEL_ENV=tree-shaking
-    babel ./src --out-dir ./dist-modules"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"cross-env BABEL_ENV=build babel ./src --out-dir ./lib"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build:all"</span>
+  "build<span class="token operator">:</span>all"<span class="token operator">:</span> <span class="token string">"npm run build &amp;&amp; npm run build:tree-shaking"</span><span class="token punctuation">,</span>
+  "build<span class="token operator">:</span>tree-shaking"<span class="token operator">:</span> <span class="token string">"cross-env BABEL_ENV=tree-shaking
+    babel ./src --out-dir ./dist-modules"</span><span class="token punctuation">,</span>
+  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"cross-env BABEL_ENV=build babel ./src --out-dir ./lib"</span><span class="token punctuation">,</span>
+  <span class="token property">"preversion"</span><span class="token operator">:</span> <span class="token string">"npm test"</span><span class="token punctuation">,</span>
+  <span class="token property">"prepublishOnly"</span><span class="token operator">:</span> <span class="token string">"npm run build:all"</span>
 </div>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>The example relies on the <em>cross-env</em> tool discussed later in this chapter. If you are on Unix only, you can skip it.</blockquote><p>To make sure Babel&#39;s module processing gets disabled during processing, set it up as follows:</p>
 <p><strong>.babelrc</strong></p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
   ...
-  <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"tree-shaking"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-      <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
-        <span class="token string" >"env"</span><span class="token punctuation" >,</span>
-        <span class="token punctuation" >{</span>
-          <span class="token property" >"targets"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-            <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >"current"</span>
-          <span class="token punctuation" >}</span>
-        <span class="token punctuation" >}</span>
-      <span class="token punctuation" >]</span>
-    <span class="token punctuation" >}</span>
-    <span class="token property" >"tree-shaking"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-      <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span>
-        <span class="token string" >"env"</span><span class="token punctuation" >,</span>
-        <span class="token punctuation" >{</span>
-          <span class="token property" >"modules"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
-          <span class="token property" >"targets"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-            <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token string" >"current"</span>
-          <span class="token punctuation" >}</span>
-        <span class="token punctuation" >}</span>
-      <span class="token punctuation" >]</span>
-    <span class="token punctuation" >}</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+  <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"tree-shaking"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"env"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"targets"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"node"</span><span class="token operator">:</span> <span class="token string">"current"</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token property">"tree-shaking"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"env"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"modules"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+          <span class="token property">"targets"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"node"</span><span class="token operator">:</span> <span class="token string">"current"</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Now it should build both a version of the package for Node and a version for tree shaking compatible environments. You should make the <em>postinstall</em> script point at <code>build:all</code> to build both targets to finish the setup.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>There is <a href="https://www.npmjs.com/package/webpack-common-shake">an experimental CommonJS based tree shaking approach for webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#using-other-languages-than-javascript" id="using-other-languages-than-javascript"></a><span class="text">Using Other Languages than JavaScript</span><a class="header-anchor-select" href="#using-other-languages-than-javascript">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>There is <a href="https://www.npmjs.com/package/webpack-common-shake">an experimental CommonJS based tree shaking approach for webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#using-other-languages-than-javascript" id="using-other-languages-than-javascript"></a><span class="text">Using Other Languages Than JavaScript</span><a class="header-anchor-select" href="#using-other-languages-than-javascript">#</a></h2>
 <p>You cannot avoid a compilation process as above with languages other than JavaScript. The idea is similar and in this case you may end up with additional build artifacts, such as type definitions, that you may want to include in the distributed version of the package.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/maintenance/code-quality/typing/">Typing</a> chapter covers a few popular options including Flow and TypeScript.</blockquote><h2 class="header"><a class="header-anchor" href="#cross-platform-concerns" id="cross-platform-concerns"></a><span class="text">Cross-Platform Concerns</span><a class="header-anchor-select" href="#cross-platform-concerns">#</a></h2>
 <p>To make sure your npm scripts work across different platforms, you cannot rely on environment specific tools. This can be solved by using a task runner to hide the differences. Alternately, you can use a collection of npm packages which expose small CLI interface. The list below contains several of them:</p>

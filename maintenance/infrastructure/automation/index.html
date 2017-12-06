@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -42,41 +42,41 @@
 <li>Footer (optional): breaking changes, GitHub issues references, etc.</li>
 </ul>
 <p>For example:</p>
-<pre><code class="lang-bash">feat<span class="token punctuation" >(</span><span class="token variable" >$compile</span><span class="token punctuation" >)</span>: simplify isolate scope bindings
+<pre><code class="lang-bash">feat<span class="token punctuation">(</span><span class="token variable">$compile</span><span class="token punctuation">)</span>: simplify isolate scope bindings
 
 Changed the isolate scope binding options to:
-  - @attr - attribute binding <span class="token punctuation" >(</span>including interpolation<span class="token punctuation" >)</span>
-  - <span class="token operator" >=</span>model - by-directional model binding
-  - <span class="token operator" >&amp;</span><span class="token function" >expr</span> - expression execution binding
+  - @attr - attribute binding <span class="token punctuation">(</span>including interpolation<span class="token punctuation">)</span>
+  - <span class="token operator">=</span>model - by-directional model binding
+  - <span class="token operator">&amp;</span><span class="token function">expr</span> - expression execution binding
 
 This change simplifies the terminology as well as
 number of choices available to the developer. It
 also supports local name aliasing from the parent.
 
 BREAKING CHANGE: isolate scope bindings definition has changed and
-the inject option <span class="token keyword" >for</span> the directive controller injection was removed.
+the inject option <span class="token keyword">for</span> the directive controller injection was removed.
 
 To migrate the code follow the example below:
 
 Before:
 
-scope: <span class="token punctuation" >{</span>
-  myAttr: <span class="token string" >'attribute'</span>,
-  myBind: <span class="token string" >'bind'</span>,
-  myExpression: <span class="token string" >'expression'</span>,
-  myEval: <span class="token string" >'evaluate'</span>,
-  myAccessor: <span class="token string" >'accessor'</span>
-<span class="token punctuation" >}</span>
+scope: <span class="token punctuation">{</span>
+  myAttr: <span class="token string">'attribute'</span>,
+  myBind: <span class="token string">'bind'</span>,
+  myExpression: <span class="token string">'expression'</span>,
+  myEval: <span class="token string">'evaluate'</span>,
+  myAccessor: <span class="token string">'accessor'</span>
+<span class="token punctuation">}</span>
 
 After:
 
-scope: <span class="token punctuation" >{</span>
-  myAttr: <span class="token string" >'@'</span>,
-  myBind: <span class="token string" >'@'</span>,
-  myExpression: <span class="token string" >'&amp;'</span>,
-  // myEval - usually not useful, but <span class="token keyword" >in</span> cases where the expression is assignable, you can use <span class="token string" >'='</span>
-  myAccessor: <span class="token string" >'='</span> // <span class="token keyword" >in</span> directive's template change myAccessor<span class="token punctuation" >(</span><span class="token punctuation" >)</span> to myAccessor
-<span class="token punctuation" >}</span>
+scope: <span class="token punctuation">{</span>
+  myAttr: <span class="token string">'@'</span>,
+  myBind: <span class="token string">'@'</span>,
+  myExpression: <span class="token string">'&amp;'</span>,
+  // myEval - usually not useful, but <span class="token keyword">in</span> cases where the expression is assignable, you can use <span class="token string">'='</span>
+  myAccessor: <span class="token string">'='</span> // <span class="token keyword">in</span> directive's template change myAccessor<span class="token punctuation">(</span><span class="token punctuation">)</span> to myAccessor
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Messages can be descriptive like this when they capture a big change. During development smaller messages representing meaningful changes are enough. Messages as the one above can be written as the work gets merged to the release branch of the project.</p>
 <p>The advantage of doing this is that it makes it easier for other developers to tell what&#39;s going on. Some of the information can be reused for documentation purposes in project main documentation and change logs.</p>
@@ -91,7 +91,7 @@ scope: <span class="token punctuation" >{</span>
 <li>Publishes change log to GitHub Releases page.</li>
 </ul>
 <p>To use semantic-release you need to install its command line tool:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> -g semantic-release-cli
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> -g semantic-release-cli
 </code></pre>
 <p>Then run it in your project folder:</p>
 <pre><code class="lang-bash">semantic-release-cli setup
@@ -102,34 +102,34 @@ scope: <span class="token punctuation" >{</span>
 <p>Git provides a set of hooks that trigger for example before pushing or committing a change. These hooks are ideal for quick checks and they allow you to adjust your source before finally pushing by using <code>git rebase --interactive</code> (or <code>git rebase -i</code>). Rebase workflow is good to know as it allows you to fix mistakes before they get shared with other developers.</p>
 <p>Git hooks can be used in a JavaScript project with a package such as <a href="https://www.npmjs.com/package/husky">husky</a>. It connects Git hook interface with npm <code>scripts</code>. Consider the example below:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   ...
-  <span class="token property" >"prepush"</span><span class="token operator" >:</span> <span class="token string" >"npm test"</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >,</span>
+  <span class="token property">"prepush"</span><span class="token operator">:</span> <span class="token string">"npm test"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
 </code></pre>
 <p>The package will do all the wiring required and run project tests before pushing to the repository.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>Note that if you have set up Git hooks manually, it might not work! It&#39;s better to let husky control the Git side entirely.</blockquote><h2 class="header"><a class="header-anchor" href="#automating-linting-with-lint-staged" id="automating-linting-with-lint-staged"></a><span class="text">Automating Linting with lint-staged</span><a class="header-anchor-select" href="#automating-linting-with-lint-staged">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Note that if you have set up Git hooks manually, it might not work! It&#39;s better to let husky control the Git side entirely.</blockquote><h2 class="header"><a class="header-anchor" href="#automating-linting-with-lint-staged" id="automating-linting-with-lint-staged"></a><span class="text">Automating Linting With lint-staged</span><a class="header-anchor-select" href="#automating-linting-with-lint-staged">#</a></h2>
 <p><a href="https://github.com/okonet/lint-staged">lint-staged</a> runs linters only for changed files before each commit which makes linting mandatory and fast. It uses <code>pre-commit</code> Git hook and you can map any file extension to a shell command. You can also configure it to autofix code.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>lint-staged works with <a href="https://github.com/facebook/flow/releases/tag/v0.48.0">Flow since v0.48.0</a>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>You still need to run linters on your CI server: it’s possible to avoid the <code>pre-commit</code> hook with <code>git commit --no-verify</code> in the GitHub UI.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-lint-staged" id="setting-up-lint-staged"></a><span class="text">Setting Up lint-staged</span><a class="header-anchor-select" href="#setting-up-lint-staged">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>lint-staged works with <a href="https://github.com/facebook/flow/releases/tag/v0.48.0">Flow since v0.48.0</a>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>You still need to run linters on your CI server: it’s possible to avoid the <code>pre-commit</code> hook with <code>git commit --no-verify</code> in the GitHub UI.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-lint-staged" id="setting-up-lint-staged"></a><span class="text">Setting up lint-staged</span><a class="header-anchor-select" href="#setting-up-lint-staged">#</a></h3>
 <p>Let’s install lint-staged and <a href="https://www.npmjs.com/package/husky">husky</a> to manage Git hooks:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> lint-staged husky --save-dev
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> lint-staged husky --save-dev
 </code></pre>
 <p>Update your <em>package.json</em> like this:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"precommit"</span><span class="token operator" >:</span> <span class="token string" >"lint-staged"</span>
-  <span class="token punctuation" >}</span><span class="token punctuation" >,</span>
-  <span class="token property" >"lint-staged"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    "*.js"<span class="token operator" >:</span> <span class="token punctuation" >[</span>
-      <span class="token string" >"eslint --fix"</span><span class="token punctuation" >,</span>
-      <span class="token string" >"jest --bail --findRelatedTests"</span><span class="token punctuation" >,</span>
-      <span class="token string" >"prettier --write"</span><span class="token punctuation" >,</span>
-      <span class="token string" >"git add"</span>
-    <span class="token punctuation" >]</span><span class="token punctuation" >,</span>
-    "*.scss"<span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"stylelint --fix"</span><span class="token punctuation" >,</span> <span class="token string" >"prettier --write"</span><span class="token punctuation" >,</span> <span class="token string" >"git add"</span><span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"precommit"</span><span class="token operator">:</span> <span class="token string">"lint-staged"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"lint-staged"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    "*.js"<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"eslint --fix"</span><span class="token punctuation">,</span>
+      <span class="token string">"jest --bail --findRelatedTests"</span><span class="token punctuation">,</span>
+      <span class="token string">"prettier --write"</span><span class="token punctuation">,</span>
+      <span class="token string">"git add"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    "*.scss"<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"stylelint --fix"</span><span class="token punctuation">,</span> <span class="token string">"prettier --write"</span><span class="token punctuation">,</span> <span class="token string">"git add"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>This configuration will perform the following steps:</p>
 <p><strong>Every time you commit a <em>.js</em> file:</strong></p>
@@ -168,54 +168,54 @@ scope: <span class="token punctuation" >{</span>
 <p>Danger has no default rules but it has a JavaScript API that allows you to inspect source code changes, pull request metadata, build log, post comments on the pull request and mark the build as failed.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Two good examples of relatively complex Dangerfiles are <a href="https://github.com/styled-components/styled-components/blob/master/dangerfile.js">Styled Components</a> and <a href="https://github.com/ReactiveX/rxjs/blob/master/dangerfile.js">RxJS</a>.</blockquote><p>To use Danger you need a GitHub bot user. Each GitHub user is allowed to create one bot user. You do it the same way you’ve created your own account but you can use this user for automation, like posting comments using a script.</p>
 <p>Let’s install Danger:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> --save-dev danger
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev danger
 </code></pre>
 <p>Create a Dangerfile, <em>dangerfile.js</em> in your project root folder, like this:</p>
-<pre><code class="lang-js"><span class="token keyword" >import</span> <span class="token punctuation" >{</span> danger<span class="token punctuation" >,</span> warn<span class="token punctuation" >,</span> fail <span class="token punctuation" >}</span> <span class="token keyword" >from</span> <span class="token string" >'danger'</span><span class="token punctuation" >;</span>
+<pre><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> danger<span class="token punctuation">,</span> warn<span class="token punctuation">,</span> fail <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'danger'</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// Warn (won’t fail the CI, just post a comment) if the PR has</span>
-<span class="token comment" spellcheck="true">// changes in package.json but no changes in package-lock.json</span>
-<span class="token keyword" >const</span> packageChanged <span class="token operator" >=</span> danger<span class="token punctuation" >.</span>git<span class="token punctuation" >.</span>modified_files<span class="token punctuation" >.</span><span class="token function" >includes</span><span class="token punctuation" >(</span>
-  <span class="token string" >'package.json'</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >const</span> lockfileChanged <span class="token operator" >=</span> danger<span class="token punctuation" >.</span>git<span class="token punctuation" >.</span>modified_files<span class="token punctuation" >.</span><span class="token function" >includes</span><span class="token punctuation" >(</span>
-  <span class="token string" >'package-lock.json'</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword" >if</span> <span class="token punctuation" >(</span>packageChanged <span class="token operator" >&amp;&amp;</span> <span class="token operator" >!</span>lockfileChanged<span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-  <span class="token function" >warn</span><span class="token punctuation" >(</span>
-    <span class="token string" >'Changes were made to package.json, but not to '</span> <span class="token operator" >+</span>
-      <span class="token string" >'package-lock.json.'</span> <span class="token operator" >+</span>
-      <span class="token string" >'Perhaps you need to run `npm install` and commit changes '</span> <span class="token operator" >+</span>
-      <span class="token string" >'in package-lock.json. Make sure you’re using npm 5+.'</span>
-  <span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-<span class="token punctuation" >}</span>
+<span class="token comment">// Warn (won’t fail the CI, just post a comment) if the PR has</span>
+<span class="token comment">// changes in package.json but no changes in package-lock.json</span>
+<span class="token keyword">const</span> packageChanged <span class="token operator">=</span> danger<span class="token punctuation">.</span>git<span class="token punctuation">.</span>modified_files<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>
+  <span class="token string">'package.json'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> lockfileChanged <span class="token operator">=</span> danger<span class="token punctuation">.</span>git<span class="token punctuation">.</span>modified_files<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>
+  <span class="token string">'package-lock.json'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>packageChanged <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>lockfileChanged<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">warn</span><span class="token punctuation">(</span>
+    <span class="token string">'Changes were made to package.json, but not to '</span> <span class="token operator">+</span>
+      <span class="token string">'package-lock.json.'</span> <span class="token operator">+</span>
+      <span class="token string">'Perhaps you need to run `npm install` and commit changes '</span> <span class="token operator">+</span>
+      <span class="token string">'in package-lock.json. Make sure you’re using npm 5+.'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// Fail the CI when test shorcuts are found</span>
-<span class="token keyword" >const</span> jsTestChanges <span class="token operator" >=</span> danger<span class="token punctuation" >.</span>git<span class="token punctuation" >.</span>modified_files<span class="token punctuation" >.</span><span class="token function" >filter</span><span class="token punctuation" >(</span>f <span class="token operator" >=</span><span class="token operator" >></span>
-  f<span class="token punctuation" >.</span><span class="token function" >endsWith</span><span class="token punctuation" >(</span><span class="token string" >'.spec.js'</span><span class="token punctuation" >)</span>
-<span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-jsTestChanges<span class="token punctuation" >.</span><span class="token function" >forEach</span><span class="token punctuation" >(</span>file <span class="token operator" >=</span><span class="token operator" >></span> <span class="token punctuation" >{</span>
-  <span class="token keyword" >const</span> content <span class="token operator" >=</span> fs<span class="token punctuation" >.</span><span class="token function" >readFileSync</span><span class="token punctuation" >(</span>file<span class="token punctuation" >)</span><span class="token punctuation" >.</span><span class="token function" >toString</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token keyword" >if</span> <span class="token punctuation" >(</span>
-    content<span class="token punctuation" >.</span><span class="token function" >includes</span><span class="token punctuation" >(</span><span class="token string" >'it.only'</span><span class="token punctuation" >)</span> <span class="token operator" >||</span>
-    content<span class="token punctuation" >.</span><span class="token function" >includes</span><span class="token punctuation" >(</span><span class="token string" >'describe.only'</span><span class="token punctuation" >)</span>
-  <span class="token punctuation" >)</span> <span class="token punctuation" >{</span>
-    <span class="token function" >fail</span><span class="token punctuation" >(</span><span class="token template-string" ><span class="token string" >`An \`.only\` was left in tests (</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>file<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >)`</span></span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span><span class="token punctuation" >)</span><span class="token punctuation" >;</span>
+<span class="token comment">// Fail the CI when test shorcuts are found</span>
+<span class="token keyword">const</span> jsTestChanges <span class="token operator">=</span> danger<span class="token punctuation">.</span>git<span class="token punctuation">.</span>modified_files<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>f <span class="token operator">=></span>
+  f<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'.spec.js'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+jsTestChanges<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>file <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> content <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>
+    content<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'it.only'</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+    content<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'describe.only'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fail</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`An \`.only\` was left in tests (</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>file<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Add a new script to your <em>package.json</em>:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
-    <span class="token property" >"danger"</span><span class="token operator" >:</span> <span class="token string" >"danger"</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"danger"</span><span class="token operator">:</span> <span class="token string">"danger"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Update your <em>.travis.yml</em> to make it run on Travis CI:</p>
-<pre><code class="lang-yaml">language<span class="token punctuation" >:</span> node_js
-<span class="token key atrule" >node_js</span><span class="token punctuation" >:</span>
-  <span class="token punctuation" >-</span> <span class="token number" >8</span>
-<span class="token key atrule" >script</span><span class="token punctuation" >:</span>
+<pre><code class="lang-yaml"><span class="token key atrule">language</span><span class="token punctuation">:</span> node_js
+<span class="token key atrule">node_js</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token number">8</span>
+<span class="token key atrule">script</span><span class="token punctuation">:</span>
   npm run test
   npm run danger
 </code></pre>
@@ -228,28 +228,28 @@ jsTestChanges<span class="token punctuation" >.</span><span class="token functio
 <li><a href="https://www.npmjs.com/package/danger-plugin-no-test-shortcuts">no-test-shortcuts</a> — check for test shortcuts;</li>
 <li><a href="https://www.npmjs.com/package/danger-plugin-spellcheck">spellcheck</a> — spell checks created or modified Markdown files.</li>
 </ul>
-<h2 class="header"><a class="header-anchor" href="#configuration-automation" id="configuration-automation"></a><span class="text">Configuration automation</span><a class="header-anchor-select" href="#configuration-automation">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#configuration-automation" id="configuration-automation"></a><span class="text">Configuration Automation</span><a class="header-anchor-select" href="#configuration-automation">#</a></h2>
 <p>Most of the tools described in this book require some configuration. But maintaining this configuration is far from easy, especially if you want up-to-date configs in all your projects.</p>
 <p><a href="https://github.com/sapegin/mrm">Mrm</a> tries to solve this problem. It works like <a href="https://www.sitepoint.com/getting-started-with-codemods/">codemods</a>: it doesn’t use templates that would overwrite everything, you’re describing in code how to <em>modify</em> or create files to achieve the desired state.</p>
 <p>Mrm has <a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-preset-default">many tasks</a> out of the box: CodeCov, EditorConfig, ESLint, .gitignore, Jest, lint-staged, Prettier, semantic-release, React Styleguidist, stylelint, Travis CI, TypeScript, package.json, contributing guidelines, license and readme file. You can create your own task or combine multiple tasks using aliases.</p>
 <p>Mrm tries to do minimal changes by inferring indentation style or read it from the EditorConfig and keeping comments in JSON files. It has minimal required configuration by inferring values from the project itself or from the environment, like reading your name and email from your Git or npm configs.</p>
 <p>Mrm has utilities to work with the most popular config file formats: JSON, YAML, INI and new line separated text files; install and uninstall npm modules; and file operations.</p>
 <p>Let’s install Mrm:</p>
-<pre><code class="lang-bash">npm <span class="token function" >install</span> -g mrm
+<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> -g mrm
 </code></pre>
 <p>And run like this:</p>
 <pre><code class="lang-bash">mrm gitignore
 mrm license --config:licenseFile README
 </code></pre>
 <p>Optionally, create a config file at <code>~/.mrm/config.json</code> or <code>~/dotfiles/mrm/config.json</code> instead of passing values via command line:</p>
-<pre><code class="lang-json"><span class="token punctuation" >{</span>
-  <span class="token property" >"github"</span><span class="token operator" >:</span> <span class="token string" >"sapegin"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"eslintPreset"</span><span class="token operator" >:</span> <span class="token string" >"airbnb"</span><span class="token punctuation" >,</span>
-  <span class="token property" >"aliases"</span><span class="token operator" >:</span> <span class="token punctuation" >{</span>
+<pre><code class="lang-json5"><span class="token punctuation">{</span>
+  <span class="token property">"github"</span><span class="token operator">:</span> <span class="token string">"sapegin"</span><span class="token punctuation">,</span>
+  <span class="token property">"eslintPreset"</span><span class="token operator">:</span> <span class="token string">"airbnb"</span><span class="token punctuation">,</span>
+  <span class="token property">"aliases"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     // Aliases to run multiple tasks at once
-    <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token punctuation" >[</span><span class="token string" >"license"</span><span class="token punctuation" >,</span> <span class="token string" >"readme"</span><span class="token punctuation" >,</span> <span class="token string" >"editorconfig"</span><span class="token punctuation" >,</span> <span class="token string" >"gitignore"</span><span class="token punctuation" >]</span>
-  <span class="token punctuation" >}</span>
-<span class="token punctuation" >}</span>
+    <span class="token property">"node"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"license"</span><span class="token punctuation">,</span> <span class="token string">"readme"</span><span class="token punctuation">,</span> <span class="token string">"editorconfig"</span><span class="token punctuation">,</span> <span class="token string">"gitignore"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>See more usage examples and options <a href="https://github.com/sapegin/mrm#usage">in the docs</a>.</p>
 <h2 class="header"><a class="header-anchor" href="#bots" id="bots"></a><span class="text">Bots</span><a class="header-anchor-select" href="#bots">#</a></h2>

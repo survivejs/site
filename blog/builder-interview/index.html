@@ -16,7 +16,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.348a86fd3ec78750ddea.css" rel="stylesheet">
+      <link href="/site.f6de50602112895187be.css" rel="stylesheet">
     
 
     <link
@@ -40,54 +40,54 @@ I am the CTO and co-founder of <a href="http://formidable.com/">Formidable</a>, 
 <p>Builder is a tool for wrangling build infrastructures and workflows for a collection of similar projects. It leverages the modern development trend of <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/"><code>npm</code>-based workflows</a> with better scalability and flexibility.</p>
 <h3 class="header"><a class="header-anchor" href="#how-does-builder-work-" id="how-does-builder-work-"></a><span class="text">How does <em>builder</em> work?</span><a class="header-anchor-select" href="#how-does-builder-work-">#</a></h3>
 <p>Let&#39;s walk through a basic example. Imagine that we have two projects with identical <code>npm</code> tasks:</p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// &lt;project1>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-  <span class="token string" >"foo"</span><span class="token punctuation" >:</span> <span class="token string" >"echo FOO"</span><span class="token punctuation" >,</span>
-  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo BAR"</span><span class="token punctuation" >,</span>
-  <span class="token string" >"foobar"</span><span class="token punctuation" >:</span> <span class="token string" >"npm run foo &amp;&amp; npm run bar"</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span>
+<pre><code class="lang-javascript"><span class="token comment">// &lt;project1>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token string">"foo"</span><span class="token punctuation">:</span> <span class="token string">"echo FOO"</span><span class="token punctuation">,</span>
+  <span class="token string">"bar"</span><span class="token punctuation">:</span> <span class="token string">"echo BAR"</span><span class="token punctuation">,</span>
+  <span class="token string">"foobar"</span><span class="token punctuation">:</span> <span class="token string">"npm run foo &amp;&amp; npm run bar"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// &lt;project2>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-  <span class="token string" >"foo"</span><span class="token punctuation" >:</span> <span class="token string" >"echo FOO"</span><span class="token punctuation" >,</span>
-  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo BAR"</span><span class="token punctuation" >,</span>
-  <span class="token string" >"foobar"</span><span class="token punctuation" >:</span> <span class="token string" >"npm run foo &amp;&amp; npm run bar"</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span>
+<span class="token comment">// &lt;project2>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token string">"foo"</span><span class="token punctuation">:</span> <span class="token string">"echo FOO"</span><span class="token punctuation">,</span>
+  <span class="token string">"bar"</span><span class="token punctuation">:</span> <span class="token string">"echo BAR"</span><span class="token punctuation">,</span>
+  <span class="token string">"foobar"</span><span class="token punctuation">:</span> <span class="token string">"npm run foo &amp;&amp; npm run bar"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>which allows us to:</p>
-<pre><code class="lang-bash">$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project1<span class="token operator" >></span>
-$ npm run foobar
+<pre><code class="lang-bash">$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project1<span class="token operator">></span>
+$ <span class="token function">npm</span> run foobar
 FOO
 BAR
 
-$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project2<span class="token operator" >></span>
-$ npm run foobar
+$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project2<span class="token operator">></span>
+$ <span class="token function">npm</span> run foobar
 FOO
 BAR
 </code></pre>
 <p>Great! Unfortunately, as the number of projects increases and these similar tasks change, we end up with a bit of a maintenance nightmare -- keeping up with and updating the latest task set across all projects.</p>
 <p>Builder solves this problem with the notion of an <a href="http://formidable.com/open-source/builder/#archetypes">&quot;archetype&quot;</a> -- a separate npm module responsible for abstracting and managing the common tasks, configurations, and dependencies. Builder allows us to move common <code>scripts</code> tasks and <code>dependencies</code> / <code>devDependencies</code> for those tasks into an archetype project. The archetype can then be published and consumed just like any normal Node.js module.</p>
 <p>The builder version of the above example would be:</p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// &lt;project1>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+<pre><code class="lang-javascript"><span class="token comment">// &lt;project1>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// &lt;project2>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+<span class="token comment">// &lt;project2>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// &lt;archetype>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-  <span class="token string" >"foo"</span><span class="token punctuation" >:</span> <span class="token string" >"echo FOO"</span><span class="token punctuation" >,</span>
-  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo BAR"</span><span class="token punctuation" >,</span>
-  <span class="token string" >"foobar"</span><span class="token punctuation" >:</span> <span class="token string" >"builder run foo &amp;&amp; builder run bar"</span><span class="token punctuation" >,</span>
-<span class="token punctuation" >}</span>
+<span class="token comment">// &lt;archetype>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token string">"foo"</span><span class="token punctuation">:</span> <span class="token string">"echo FOO"</span><span class="token punctuation">,</span>
+  <span class="token string">"bar"</span><span class="token punctuation">:</span> <span class="token string">"echo BAR"</span><span class="token punctuation">,</span>
+  <span class="token string">"foobar"</span><span class="token punctuation">:</span> <span class="token string">"builder run foo &amp;&amp; builder run bar"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Note that we&#39;re now using <code>builder run &lt;task&gt;</code> in the place of <code>npm run &lt;task&gt;</code>. We can execute the tasks with:</p>
-<pre><code class="lang-bash">$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project1<span class="token operator" >></span>
+<pre><code class="lang-bash">$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project1<span class="token operator">></span>
 $ builder run foobar
 FOO
 BAR
 
-$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project2<span class="token operator" >></span>
+$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project2<span class="token operator">></span>
 $ builder run foobar
 FOO
 BAR
@@ -102,30 +102,30 @@ BAR
 <p>while still mostly behaving &quot;just like <code>npm</code>&quot;.</p>
 <p>Builder also provides critical <em>flexibility</em> for tasks. Many meta / build frameworks are great when you follow the given workflows, but break down when a project goes &quot;off script&quot;. By contrast, builder supports projects doing sub-tasks differently as a first class concern and at a very granular level.</p>
 <p>Let&#39;s tweak our example so that <code>&lt;project2&gt;</code> has a slightly different <code>bar</code> task like:</p>
-<pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// &lt;project1>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span><span class="token punctuation" >}</span>
+<pre><code class="lang-javascript"><span class="token comment">// &lt;project1>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// &lt;project2>/package.json</span>
-<span class="token string" >"scripts"</span><span class="token punctuation" >:</span> <span class="token punctuation" >{</span>
-  <span class="token string" >"bar"</span><span class="token punctuation" >:</span> <span class="token string" >"echo \"I'M GONNA BE DIFFERENT\""</span>
-<span class="token punctuation" >}</span>
+<span class="token comment">// &lt;project2>/package.json</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token string">"bar"</span><span class="token punctuation">:</span> <span class="token string">"echo \"I'M GONNA BE DIFFERENT\""</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>If we run the specific tasks, we get the correct overrides:</p>
-<pre><code class="lang-bash">$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project1<span class="token operator" >></span>
+<pre><code class="lang-bash">$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project1<span class="token operator">></span>
 $ builder run bar
 BAR
 
-$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project2<span class="token operator" >></span>
+$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project2<span class="token operator">></span>
 $ builder run bar
 I'M GONNA BE DIFFERENT
 </code></pre>
 <p>Builder resolves tasks starting with the root project and then moves up to the archetype on a <em>per task</em> basis. This means that composed tasks like <code>foobar</code> will pick up root overrides together with existing archetype commands giving us:</p>
-<pre><code class="lang-bash">$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project1<span class="token operator" >></span>
+<pre><code class="lang-bash">$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project1<span class="token operator">></span>
 $ builder run foobar
 FOO
 BAR
 
-$ <span class="token function" >cd</span> <span class="token operator" >&lt;</span>project2<span class="token operator" >></span>
+$ <span class="token function">cd</span> <span class="token operator">&lt;</span>project2<span class="token operator">></span>
 $ builder run foobar
 FOO
 I'M GONNA BE DIFFERENT
@@ -148,8 +148,8 @@ I'M GONNA BE DIFFERENT
 <p>Once these are defined in an archetype, <code>builder-init</code> can then create a new project via any means that <code>npm</code> can install a module:</p>
 <pre><code class="lang-bash">$ builder-init builder-react-component
 $ builder-init builder-react-component@0.3.3
-$ builder-init FormidableLabs/builder-react-component<span class="token comment" spellcheck="true">#v0.3.3</span>
-$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git<span class="token comment" spellcheck="true">#v0.3.3</span>
+$ builder-init FormidableLabs/builder-react-component<span class="token comment">#v0.3.3</span>
+$ builder-init git+ssh://git@github.com:FormidableLabs/builder-react-component.git<span class="token comment">#v0.3.3</span>
 $ builder-init /FULL/PATH/TO/builder-react-component
 </code></pre>
 <p>This is a great way to keep your new project boilerplate always up to date. Additionally, we utilize <code>builder-init</code> in the <a href="https://github.com/FormidableLabs/builder-react-component/blob/master/.travis.yml#L35-L58">CI for the archetype</a> to check that the archetype works as expected in consuming projects. It&#39;s a fantastic sanity check on your boilerplate to ensure it&#39;s always ready to ship.</p>
