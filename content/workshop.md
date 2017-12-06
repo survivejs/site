@@ -9,6 +9,8 @@ To prepare for my tour, I took the webpack book material and turned it into two 
 
 > If you go through the slides, you can reach the actual book through them if you find something interesting.
 
+> 20% of webpack workshop income goes to Tobias Koppers, the main developer of webpack. I do this to support the project and enable its future growth.
+
 ### What's Covered?
 
 The workshop can take a day or two depending on the depth and the amount of hands-on experience. If you already know webpack well, the ideas of the first day can be gone through swiftly before the advanced ideas.
@@ -24,15 +26,14 @@ I cover the following ideas in [the first presentation](http://presentations.sur
 * Styling - Handle styling related aspects with webpack
 * Loading Assets - Learn to manage webpack loaders and handle assets like images and fonts
 * Building - Understand techniques like **bundle splitting** and **code splitting**
+* Build Analysis and Troubleshooting - Learn to understand the build results and troubleshoot webpack
 
 [The second presentation](http://presentations.survivejs.com/webpack-from-journeyman-to-master) is more advanced but also more free form:
 
 * Optimizing - How to optimize your build and webpack execution
 * Output - What kind of output you can get from webpack
 * Techniques - Learn about webpack specific techniques and topics like testing
-* Packages - How to consume and author packages
 * Extending - How to extend webpack
-* Appendices (bonus) - How to set up Hot Module Replacement and assorted topics
 
 > It's possible to get Tobias Koppers, the creator of the tool, involved in the advanced session if you prefer.
 

@@ -59,11 +59,9 @@ module.exports = () => ({
         `/${sectionName}/${clean.chapterName(fileName)}/`,
       redirects: require("./redirects/blog"),
     },
-    clinic: () =>
-      require("./layouts/IndexPage").default({
-        type: "Clinic",
-        content: require("./content/clinic.md").body,
-      }),
+    clinic: {
+      redirects: require("./redirects/clinic"),
+    },
     training: () =>
       require("./layouts/IndexPage").default({
         type: "Training",
