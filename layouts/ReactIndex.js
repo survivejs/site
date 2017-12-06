@@ -40,7 +40,7 @@ const ReactIndex = () => (
           <h2>SurviveJS - React</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/react.md").body,
+              __html: require("../content/descriptions/react.md").body,
             }}
           />
         </div>
@@ -48,13 +48,13 @@ const ReactIndex = () => (
           <h2>About the Author</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./authors/juho.md").body,
+              __html: require("../content/authors/juho.md").body,
             }}
           />
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./gets/react.md").body,
+              __html: require("../content/gets/react.md").body,
             }}
           />
         </div>

@@ -60,19 +60,19 @@ module.exports = () => ({
       redirects: require("./redirects/blog"),
     },
     clinic: () =>
-      require("./components/IndexPage").default({
+      require("./layouts/IndexPage").default({
         type: "Clinic",
-        content: require("./layouts/clinic.md").body,
+        content: require("./content/clinic.md").body,
       }),
     training: () =>
-      require("./components/IndexPage").default({
+      require("./layouts/IndexPage").default({
         type: "Training",
-        content: require("./layouts/training.md").body,
+        content: require("./content/training.md").body,
       }),
     workshop: () =>
-      require("./components/IndexPage").default({
+      require("./layouts/IndexPage").default({
         type: "Workshop",
-        content: require("./layouts/workshop.md").body,
+        content: require("./content/workshop.md").body,
       }),
     maintenance: {
       content: () =>

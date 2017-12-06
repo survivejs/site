@@ -14,9 +14,7 @@ const MaintenanceIndex = () => (
             <span className="first"> - Maintenance</span>
           </div>
 
-          <h1 className="front-header">
-            Streamline JavaScript Workflow
-          </h1>
+          <h1 className="front-header">Streamline JavaScript Workflow</h1>
 
           <div className="front-button-wrapper">
             <span className="read-free">
@@ -42,7 +40,7 @@ const MaintenanceIndex = () => (
           <h2>SurviveJS - Maintenance</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./descriptions/maintenance.md").body,
+              __html: require("../content/descriptions/maintenance.md").body,
             }}
           />
         </div>
@@ -50,19 +48,19 @@ const MaintenanceIndex = () => (
           <h2>About the Authors</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./authors/juho.md").body,
+              __html: require("../content/authors/juho.md").body,
             }}
           />
           <hr />
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./authors/artem.md").body,
+              __html: require("../content/authors/artem.md").body,
             }}
           />
           <h2>Getting the Book</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("./gets/maintenance.md").body,
+              __html: require("../content/gets/maintenance.md").body,
             }}
           />
         </div>

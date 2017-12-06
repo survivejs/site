@@ -30,7 +30,7 @@ const IndexPage = ({ type, content }) => {
           <h2>About the Trainer</h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../layouts/authors/juho.md").body,
+              __html: require("../content/authors/juho.md").body,
             }}
           />
         </section>
