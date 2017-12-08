@@ -36,7 +36,7 @@ Finally, you can start the development server:
 npm start
 ```
 
-Now you can go to `http://localhost:8000`.
+Now you can go to [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
 
