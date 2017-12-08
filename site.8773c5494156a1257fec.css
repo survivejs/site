@@ -539,8 +539,13 @@ html {
   font-weight: 400; }
 
 body, button, input {
-  color: #222;
-  -webkit-font-smoothing: antialiased; }
+  color: #222; }
+
+button, input {
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif; }
+
+input {
+  padding: 2px 4px; }
 
 ::-moz-selection {
   background: #5bbac3;
@@ -558,8 +563,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Avenir Next", "Helvetica Neue", sans-serif;
   color: #222;
   font-weight: 600;
-  letter-spacing: 1px;
-  text-rendering: optimizeLegibility; }
+  line-height: 1.2; }
 
 /* remove code formatting from headers */
 h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
@@ -1301,8 +1305,6 @@ h6 {
   padding: 0.5em;
   background: rgba(0, 0, 0, 0.01);
   max-width: 300px; }
-  .toc-nav__wrapper h4 {
-    margin-top: 2em; }
   .toc-nav__wrapper .toc-nav {
     margin-bottom: 2em;
     list-style: none;
@@ -1310,7 +1312,12 @@ h6 {
   .toc-nav__wrapper .toc-nav > li:before {
     content: ''; }
   .toc-nav__wrapper .toc-nav--header {
-    margin-top: 2em; }
+    margin-top: 0;
+    margin-bottom: 0.5em; }
+  .toc-nav__wrapper .toc-nav__section {
+    margin-bottom: 2.5em; }
+  .toc-nav__wrapper .toc-nav__search {
+    width: 100%; }
   .toc-nav__wrapper li.toc-part {
     margin-top: 0.5em; }
   .toc-nav__wrapper li.toc-chapter {
