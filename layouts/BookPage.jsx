@@ -45,17 +45,22 @@ const BookPage = ({
     )}
 
     <div className="toc-nav__wrapper">
-      <h4 className="search-nav--header">Search</h4>
+      <div className="toc-nav__section">
+        <input id="search" className="toc-nav__search" placeholder="Search" />
+      </div>
 
-      <input id="search" />
+      <div className="toc-nav__section">
+        <h4 className="toc-nav--header">Table of Contents</h4>
+        <Toc sectionPages={section.pages} title={title} />
+      </div>
 
-      <h4 className="toc-nav--header">Table of Contents</h4>
+      <div className="toc-nav__section">
+        <Resources resources={resources} />
+      </div>
 
-      <Toc sectionPages={section.pages} title={title} />
-
-      <Resources resources={resources} />
-
-      <Buy sectionName={section.name} />
+      <div className="toc-nav__section">
+        <Buy sectionName={section.name} />
+      </div>
     </div>
 
     <div className="chapter">

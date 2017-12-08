@@ -6,8 +6,16 @@ html{
 
 body, button, input {
   color: $font-color;
-  -webkit-font-smoothing: antialiased;
 }
+
+button, input {
+  font-family: $small-font;
+}
+
+input {
+  padding: 2px 4px;
+}
+
 ::selection {
   background: mix($action-color, $font-color, $fat-tint);
   color: $background-color;
@@ -21,8 +29,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font;
   color: $heading-color;
   font-weight: $bold;
-  letter-spacing: 1px;
-  text-rendering: optimizeLegibility;
+  line-height: 1.2;
 }
 /* remove code formatting from headers */
 h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
