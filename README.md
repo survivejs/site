@@ -54,6 +54,6 @@ npm run deploy
 
 ## License
 
-The site source is available under [CC BY-NC-ND license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode). So as long as there's a proper attribution you can reuse the content. Ideally you would contribute your improvements back but that's not absolutely necessary.
+The site content is available under [CC BY-NC-ND license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode). So as long as there's a proper attribution you can reuse the content. Ideally you would contribute your improvements back but that's not absolutely necessary.
 
 The site source is available under [MIT license](./LICENSE).
