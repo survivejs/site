@@ -10,9 +10,9 @@ First, clone this repository and the book ones:
 
 ```
 git clone https://github.com/survivejs/site
-git clone https://github.com/survivejs/webpack-book site/webpack-book
-git clone https://github.com/survivejs/react-book site/react-book
-git clone https://github.com/survivejs/maintenance-book site/maintenance-book
+git clone https://github.com/survivejs/webpack-book site/books/webpack-book
+git clone https://github.com/survivejs/react-book site/books/react-book
+git clone https://github.com/survivejs/maintenance-book site/books/maintenance-book
 ```
 
 Then, you need to build each project (it is needed to build the site):
@@ -26,7 +26,7 @@ npm install
 Now going back to the `site` project, you need to install the dependencies:
 
 ```
-cd ../../site
+cd ../..
 npm install
 ```
 
