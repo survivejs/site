@@ -32,9 +32,9 @@ function parseCustomQuote(token, match, className) {
 
       return {
         type: "html",
-        text: `<blockquote class="${className}"><i class="${
-          icon
-        }"></i>${text.slice(2).trim()}</blockquote>`,
+        text: `<blockquote class="${className}"><i class="${icon}"></i>${text
+          .slice(2)
+          .trim()}</blockquote>`,
       };
     }
   }
