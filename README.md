@@ -6,31 +6,19 @@ This is the source of [https://survivejs.com/](https://survivejs.com/).
 
 **You need [git-lfs](https://github.com/git-lfs/git-lfs) to clone this repository.**
 
-First, clone this repository and the book ones:
+First, clone this repository:
 
 ```
 git clone https://github.com/survivejs/site
-git clone https://github.com/survivejs/webpack-book site/books/webpack-book
-git clone https://github.com/survivejs/react-book site/books/react-book
-git clone https://github.com/survivejs/maintenance-book site/books/maintenance-book
 ```
 
-Then, you need to build each project (it is needed to build the site):
+Then, bootstrap the project:
 
 ```
-cd site/react-book/project_source
-npm install
-./build_all.js
+npm run bootstrap
 ```
 
-Now going back to the `site` project, you need to install the dependencies:
-
-```
-cd ../..
-npm install
-```
-
-Finally, you can start the development server:
+Finally, start the development server:
 
 ```
 npm start

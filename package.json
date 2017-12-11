@@ -9,6 +9,7 @@
     "build": "npm run fetch:books && node ./antwar.bootstrap.js build && npm run sitemap && npm run copy:all",
     "deploy": "gh-pages -d build && npm run purge_cf",
     "fetch:books": "scripts/fetch-books.sh",
+    "bootstrap": "scripts/bootstrap.sh",
     "sitemap": "cd build && sitemap-static --prefix=https://survivejs.com/ > sitemap.xml",
     "lint": "eslint . --ext js --ext jsx --ignore-path .gitignore --cache",
     "purge_cf": "node ./utils/purge_cf.js",
