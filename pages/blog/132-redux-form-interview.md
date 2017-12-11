@@ -77,7 +77,7 @@ You just have to build something and ask questions when you run into problems, w
 
 ## Who should I interview next?
 
-I think the person I'd most like to see gain exposure from a site like this is [Eric Berry](https://twitter.com/coderberry), the creator of [CodeSponsor](https://codesponsor.io), he's valiantly attempting to do the impossible: make open source sustainable and avoid developer burnout.
+I think the person I'd most like to see gain exposure from a site like this is [Eric Berry](https://twitter.com/coderberry), the creator of [Code Sponsor](https://codesponsor.io), he's valiantly attempting to do the impossible: make open source sustainable and avoid developer burnout.
 
 How much money would companies have to invest to update their code base if the sole developer of a popular OSS library were to quit and walk away? Thousands upon thousands of dollars worldwide.
 
