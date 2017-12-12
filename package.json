@@ -6,17 +6,19 @@
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "scripts": {
     "start": "node ./antwar.bootstrap.js develop",
-    "build": "npm run fetch:books && node ./antwar.bootstrap.js build && npm run sitemap && npm run copy:all",
+    "build":
+      "npm run fetch:books && node ./antwar.bootstrap.js build && npm run sitemap && npm run copy:all",
     "deploy": "gh-pages -d build && npm run purge_cf",
     "fetch:books": "scripts/fetch-books.sh",
     "bootstrap": "scripts/bootstrap.sh",
-    "sitemap": "cd build && sitemap-static --prefix=https://survivejs.com/ > sitemap.xml",
+    "sitemap":
+      "cd build && sitemap-static --prefix=https://survivejs.com/ > sitemap.xml",
     "lint": "eslint . --ext js --ext jsx --ignore-path .gitignore --cache",
     "purge_cf": "node ./utils/purge_cf.js",
     "test": "npm run lint",
     "check:links": "hyperlink build/index.html -r",
     "prepush": "npm test",
-    "copy:all": "npm run copy:demos && npm run copy:extra",
+    "copy:all": "npm run copy:extra",
     "copy:demos": "cp -rf ../react/project_source/builds/ build/demos/",
     "copy:extra": "cp -rf assets/extra/ build/"
   },
@@ -82,9 +84,6 @@
   "bugs": {
     "url": "https://github.com/survivejs/site/issues"
   },
-  "keywords": [
-    "site",
-    "antwar"
-  ],
+  "keywords": ["site", "antwar"],
   "licenses": "MIT"
 }
