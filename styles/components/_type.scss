@@ -2,6 +2,7 @@ html{
   font:#{($base-font-size/16px)*1em}/#{$line-height-ratio} $body-font;
   line-height: $base-line-height;
   font-weight: $normal;
+  hyphens: auto;
 }
 
 body, button, input {
@@ -13,7 +14,9 @@ button, input {
 }
 
 input {
-  padding: 2px 4px;
+  padding: 3px 6px;
+  border: 1px solid $border-color;
+  border-radius: $brand-round;
 }
 
 ::selection {
@@ -66,11 +69,14 @@ pre, code {
   background-color: $background-alt-color;
   border-radius: $brand-round;
   padding: $half-spacing-unit / 2;
-  @include font-size($centi-size);
+}
+code {
+  @include font-size($deci-size);
 }
 pre {
   margin-bottom: $base-spacing-unit;
   overflow-y: auto;
+  @include font-size($centi-size);
   @include media-query('palm') {
     border-radius: 0;
   }
