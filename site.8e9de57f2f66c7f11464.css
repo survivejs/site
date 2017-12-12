@@ -536,7 +536,10 @@ body:after {
 html {
   font: 1.125em/1.5 "Lora", "Merriweather", "Georgia", serif;
   line-height: 27px;
-  font-weight: 400; }
+  font-weight: 400;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto; }
 
 body, button, input {
   color: #222; }
@@ -545,7 +548,9 @@ button, input {
   font-family: "Avenir Next", "Helvetica Neue", sans-serif; }
 
 input {
-  padding: 2px 4px; }
+  padding: 3px 6px;
+  border: 1px solid #dedede;
+  border-radius: 3px; }
 
 ::-moz-selection {
   background: #5bbac3;
@@ -574,36 +579,36 @@ h1 {
   font-size: 1.5vw;
   font-weight: 700;
   margin-top: 54px; }
-  @media (max-width: 1990.656px) {
+  @media (max-width: 2441.40625px) {
     h1 {
-      font-size: 29.85984px; } }
+      font-size: 36.62109px; } }
 
 h2 {
   font-size: 1.5vw;
   font-weight: 700; }
-  @media (max-width: 1658.88px) {
+  @media (max-width: 1953.125px) {
     h2 {
-      font-size: 24.8832px; } }
+      font-size: 29.29688px; } }
 
 h3 {
   font-size: 1.5vw; }
-  @media (max-width: 1382.4px) {
+  @media (max-width: 1562.5px) {
     h3 {
-      font-size: 20.736px; } }
+      font-size: 23.4375px; } }
 
 h4 {
   font-size: 1.5vw; }
-  @media (max-width: 1152px) {
+  @media (max-width: 1250px) {
     h4 {
-      font-size: 17.28px; } }
+      font-size: 18.75px; } }
 
 h5 {
   font-size: 1.5vw;
   text-transform: uppercase;
   margin-bottom: 0; }
-  @media (max-width: 960px) {
+  @media (max-width: 1000px) {
     h5 {
-      font-size: 14.4px; } }
+      font-size: 15px; } }
 
 p {
   margin-bottom: 27px; }
@@ -612,15 +617,20 @@ pre, code {
   font-family: "Input Sans Narrow", "Source Code Pro", "Input Sans", "Inconsolata", monospace;
   font-weight: 400;
   background-color: #eee;
-  border-radius: 7px;
-  padding: 6.75px;
-  font-size: 13px;
-  font-size: 0.72222rem;
-  line-height: 2.07692; }
+  border-radius: 3px;
+  padding: 6.75px; }
+
+code {
+  font-size: 15px;
+  font-size: 0.83333rem;
+  line-height: 1.8; }
 
 pre {
   margin-bottom: 27px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  font-size: 13px;
+  font-size: 0.72222rem;
+  line-height: 2.07692; }
   @media only screen and (max-width: 649px) {
     pre {
       border-radius: 0; } }
@@ -633,7 +643,7 @@ pre > code {
   padding: 0; }
 
 blockquote {
-  font-size: 20.736px;
+  font-size: 23.4375px;
   font-style: italic;
   padding: 27px 0;
   color: #8f8f8f; }
@@ -650,9 +660,9 @@ blockquote {
   font-weight: 300; }
 
 .bigger {
-  font-size: 20.736px;
-  font-size: 1.152rem;
-  line-height: 1.30208;
+  font-size: 23.4375px;
+  font-size: 1.30208rem;
+  line-height: 1.152;
   line-height: 40.5px; }
 
 .centi {
@@ -993,7 +1003,7 @@ main {
   background-color: transparent;
   padding: 0 27px;
   border-radius: 100px;
-  font-size: 17.28px;
+  font-size: 18.75px;
   line-height: 50px;
   -webkit-transition: background-color cubic-bezier(0.23, 1, 0.32, 1) 0.3s, color cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
   transition: background-color cubic-bezier(0.23, 1, 0.32, 1) 0.3s, color cubic-bezier(0.23, 1, 0.32, 1) 0.3s; }
@@ -1295,16 +1305,16 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 27px;
+  margin-top: 40.5px;
   margin-bottom: 13.5px; }
 
 .toc-nav__wrapper {
   float: left;
-  margin: 1em;
-  margin-left: 2em;
-  padding: 0.5em;
+  margin-top: -1em;
+  padding: 1em;
+  padding-top: 2.5em;
   background: rgba(0, 0, 0, 0.01);
-  max-width: 300px; }
+  max-width: 350px; }
   .toc-nav__wrapper .toc-nav {
     margin-bottom: 2em;
     list-style: none;
@@ -1316,7 +1326,8 @@ h6 {
     margin-bottom: 0.5em; }
   .toc-nav__wrapper .toc-nav__section {
     margin-bottom: 2.5em; }
-  .toc-nav__wrapper .toc-nav__search {
+  .toc-nav__wrapper .toc-nav__search,
+  .toc-nav__wrapper .algolia-autocomplete {
     width: 100%; }
   .toc-nav__wrapper li.toc-part {
     margin-top: 0.5em; }
@@ -1985,9 +1996,9 @@ hr {
   font-family: "Avenir Next", "Helvetica Neue", sans-serif;
   position: absolute;
   top: 0;
-  left: 0;
-  margin-top: calc(42vh);
-  margin-left: calc(5vh);
+  right: 0;
+  margin-top: 42vh;
+  margin-right: 3.5vh;
   z-index: 400;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
@@ -2005,11 +2016,12 @@ hr {
 
 .previous-page,
 .next-page {
+  position: fixed;
+  top: 0.5em;
   font-family: "Avenir Next", "Helvetica Neue", sans-serif;
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
-  top: calc(50%);
-  position: fixed; }
+  z-index: 199; }
 
 .previous-page {
   left: 1em; }
