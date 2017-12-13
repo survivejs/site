@@ -1206,14 +1206,42 @@ blockquote {
   display: inline-block;
   text-decoration: line-through; }
 
-.social-links .subscribe-header {
-  margin: 0; }
+.social-links {
+  margin-bottom: 3em; }
 
-.social-form .social-input-container, .social-form .social-subscribe-container {
-  display: inline;
-  margin-left: 1em; }
+.social-links__header {
+  margin-top: 0; }
 
-.social-form .social-subscribe-container input:hover {
+.social-links__tip {
+  margin-top: 0.5em; }
+
+.social-form__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.social-form__input-container {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-right: 0.5em; }
+
+.social-form__input {
+  display: block;
+  width: 100%; }
+
+.social-form__subscribe {
+  line-height: 2em;
+  background-color: #fefefe; }
+
+.social-form__subscribe:hover {
   background-color: #eee; }
 
 .github-fork-ribbon-wrapper.ribbon {
@@ -1311,6 +1339,7 @@ h6 {
 .toc-nav__wrapper {
   float: left;
   margin-top: -1em;
+  margin-right: 1em;
   padding: 1em;
   padding-top: 2.5em;
   background: rgba(0, 0, 0, 0.01);
@@ -1339,28 +1368,18 @@ h6 {
 
 @media only screen and (min-width: 650px) and (max-width: 1349px) {
   .toc-nav__wrapper {
-    margin-left: 1em;
     max-width: 200px; } }
 
 @media only screen and (max-width: lap) {
   .toc-nav__wrapper {
-    margin-left: 1em;
     max-width: 200px; } }
 
 @media only screen and (max-width: 649px) {
   .toc-nav__wrapper {
-    /*
-    float: inherit;
-    max-width: 100%;
-    */
     display: none; } }
 
 @media only screen and (max-width: palm) {
   .toc-nav__wrapper {
-    /*
-    float: inherit;
-    max-width: 100%;
-    */
     display: none; } }
 
 .buy-container {
@@ -1646,7 +1665,7 @@ h6 {
       .post__wrapper .post {
         padding: 0; } }
   .post__wrapper .post__content {
-    margin: 0 auto;
+    margin: 0 auto 3em;
     position: relative; }
     @media only screen and (max-width: 649px) {
       .post__wrapper .post__content h1,
