@@ -8,9 +8,9 @@ import {
   PrevNext,
   PrevNextMini,
   RelatedPosts,
-  SocialLinks,
 } from "@survivejs/components";
 
+import SocialLinks from "../components/SocialLinks";
 import getRelatedPosts from "../utils/get-related-posts";
 
 const BlogPage = ({
@@ -71,7 +71,9 @@ const BlogPage = ({
           )}
           {date && <Moment className="post__moment" datetime={date} />}
           {postAuthor && <Author author={postAuthor} />}
+        </div>
 
+        <div className="post__content">
           <SocialLinks type="blog post" />
 
           <PrevNext
