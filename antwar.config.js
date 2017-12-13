@@ -98,7 +98,7 @@ module.exports = () => ({
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                return console.error("Failed to find", fileName, pages);
+                throw new Error("Failed to find", fileName, pages);
               }
 
               return result;
@@ -130,7 +130,7 @@ module.exports = () => ({
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                return console.error("Failed to find", fileName, pages);
+                throw new Error("Failed to find", fileName, pages);
               }
 
               return result;
@@ -165,7 +165,7 @@ module.exports = () => ({
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                return console.error("Failed to find", fileName, pages);
+                throw new Error("Failed to find", fileName, pages);
               }
 
               return result;

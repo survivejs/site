@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 "use strict";
 var express = require("express");
 var serveStatic = require("serve-static");

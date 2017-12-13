@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // TODO: generalize
 const headers = require("../redirects/webpack");
 

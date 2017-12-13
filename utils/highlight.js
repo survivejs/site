@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Ported from webpack.js.org
 const Prism = require("prismjs");
 const languages = require("prism-languages");
