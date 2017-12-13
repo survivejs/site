@@ -106,6 +106,7 @@ module.exports = () => ({
         ),
       url: ({ sectionName, fileName }) =>
         `/${sectionName}/${clean.chapterName(fileName)}/`,
+      redirects: require("./redirects/maintenance"),
     },
     react: {
       content: () =>

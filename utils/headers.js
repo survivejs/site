@@ -75,6 +75,12 @@ module.exports = {
     license: "Public Domain",
     image: "snakes.jpg",
   },
+  "managing-dependencies": {
+    author: "blickpixel",
+    source: "https://pixabay.com/en/python-snake-green-tree-python-564817/",
+    license: "Public Domain",
+    image: "snakes.jpg",
+  },
   "code-formatting": {
     author: "Bluesnap",
     source: "https://pixabay.com/en/air-show-aircraft-formation-389965/",
