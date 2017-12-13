@@ -9,8 +9,7 @@ import {
   PrevNextMini,
   RelatedPosts,
 } from "@survivejs/components";
-
-import SocialLinks from "../components/SocialLinks";
+import { SocialLinks } from "../components";
 import getRelatedPosts from "../utils/get-related-posts";
 
 const BlogPage = ({

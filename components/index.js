@@ -1,4 +1,5 @@
 import Buy from "./Buy";
 import Search from "./Search";
+import SocialLinks from "./SocialLinks";
 
-export { Buy, Search };
+export { Buy, Search, SocialLinks };
