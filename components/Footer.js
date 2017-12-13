@@ -1,5 +1,6 @@
 import React from "react";
 import { Teaser } from "@survivejs/components";
+import Buy from "./Buy";
 
 const Footer = ({ section }) => (
   <footer>
@@ -77,6 +78,11 @@ const Footer = ({ section }) => (
           <h3>From the Blog</h3>
 
           <Teaser pages={section.pages("blog").slice(0, 7)} />
+        </div>
+      </div>
+      <div className="footer-content-wrapper">
+        <div className="footer-buy">
+          <Buy />
         </div>
       </div>
     </div>

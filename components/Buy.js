@@ -1,36 +1,10 @@
 import React from "react";
 
-const Buy = ({ sectionName }) => {
-  if (sectionName === "webpack") {
-    return (
-      <div>
-        <BuyWebpack />
-
-        <h3>See also</h3>
-        <BuyMaintenance />
-        <BuyReact />
-      </div>
-    );
-  }
-
-  if (sectionName === "maintenance") {
-    return (
-      <div>
-        <BuyMaintenance />
-
-        <h3>See also</h3>
-        <BuyReact />
-        <BuyWebpack />
-      </div>
-    );
-  }
-
+const Buy = () => {
   return (
     <div>
-      <BuyReact />
-
-      <h3>See also</h3>
       <BuyMaintenance />
+      <BuyReact />
       <BuyWebpack />
     </div>
   );
@@ -48,14 +22,14 @@ const BuyMaintenance = () => (
       />
     </a>
 
-    <p>
+    <div className="buy-buttons">
       <a
         className="btn btn--normal btn--buy"
         href="https://leanpub.com/survivejs-maintenance"
       >
         Buy at Leanpub
       </a>
-    </p>
+    </div>
   </div>
 );
 
@@ -71,14 +45,14 @@ const BuyReact = () => (
       />
     </a>
 
-    <p>
+    <div className="buy-buttons">
       <a
         className="btn btn--normal btn--buy"
         href="https://leanpub.com/survivejs-react"
       >
         Buy at Leanpub
       </a>
-    </p>
+    </div>
   </div>
 );
 
@@ -94,7 +68,7 @@ const BuyWebpack = () => (
       />
     </a>
 
-    <p>
+    <div className="buy-buttons">
       <a
         className="btn btn--normal btn--buy"
         href="https://leanpub.com/survivejs-webpack"
@@ -113,7 +87,7 @@ const BuyWebpack = () => (
       >
         Buy for Kindle
       </a>
-    </p>
+    </div>
   </div>
 );
 

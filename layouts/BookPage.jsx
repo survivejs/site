@@ -9,7 +9,7 @@ import {
   Resources,
   Toc,
 } from "@survivejs/components";
-import { Buy, SocialLinks } from "../components";
+import { SocialLinks } from "../components";
 
 const BookPage = ({
   page: {
@@ -55,10 +55,6 @@ const BookPage = ({
 
       <div className="toc-nav__section">
         <Resources resources={resources} />
-      </div>
-
-      <div className="toc-nav__section">
-        <Buy sectionName={section.name} />
       </div>
     </div>
 
