@@ -30,7 +30,7 @@ const navigationPages = [
     url: "/webpack/",
   },
   {
-    title: "Get training",
+    title: "Hire me",
     url: "/training/",
   },
   {
