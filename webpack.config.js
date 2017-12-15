@@ -19,6 +19,7 @@ module.exports = env => {
 
 function commonConfig() {
   return {
+    stats: "minimal",
     module: {
       rules: [
         {
