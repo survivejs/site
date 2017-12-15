@@ -5,11 +5,10 @@ import {
   Disqus,
   Moment,
   Author,
-  PrevNext,
   PrevNextMini,
   RelatedPosts,
 } from "@survivejs/components";
-import { SocialLinks } from "../components";
+import { PrevNext, SocialLinks } from "../components";
 import getRelatedPosts from "../utils/get-related-posts";
 
 const BlogPage = ({

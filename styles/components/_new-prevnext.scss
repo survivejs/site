@@ -1,59 +1,46 @@
 .new-prevnext {
-  min-height: 4em;
-  margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: $space-xl;
+}
 
-  letter-spacing: 1px;
+.new-prevnext__next,
+.new-prevnext__prev {
+  flex-basis: 300px;
+  flex-grow: 1;
+}
 
-  .new-prevnext__bg {
-      height: 100%;
-  }
+.new-prevnext__next {
+  padding-left: $space-m;
+  text-align: right;
+}
 
-  .new-prevnext__next,
-  .new-prevnext__prev {
-    vertical-align: top;
-    display: inline-block;
-    position: relative;
+.new-prevnext__prev {
+  padding-right: $space-m;
+}
 
-    width: 50%;
-    height: 15em;
+.new-prevnext__title {
+  margin-bottom: $space-xxs;
+  font-weight: bold;
+}
 
-    color: #fff;
-    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
-    padding: 27px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .new-prevnext__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.new-prevnext__link {
+  display: block;
+  position: relative;
+}
 
-    background-color: #434343;
-    background-size: cover;
-    background-position: 50% 50%;
+.new-prevnext__link::before {
+  font-family: $heading-font;
+  position: absolute;
+  margin-top: 0.15em;
+}
 
-    z-index: 0;
+.new-prevnext__prev .new-prevnext__link::before {
+  content: "←";
+  left: -1.2em;
+}
 
-    filter: brightness(0.25);
-  }
-  .new-prevnext__info {
-    display: block;
-  }
-  .new-prevnext__info, .new-prevnext__link {
-    position: relative;
-    z-index: 1;
-
-    padding: 0.5em;
-  }
-
-  @include media-query(portable) {
-    .new-prevnext__next,
-    .new-prevnext__prev {
-      width: 100%;
-    }
-  }
+.new-prevnext__next .new-prevnext__link::before {
+  content: "→";
+  right: -1.2em;
 }
