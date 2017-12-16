@@ -1,24 +1,24 @@
 import React from "react";
 import styled from "react-emotion";
 import { Link as LinkBase } from "@survivejs/components";
-import t from "../styles/theme";
+import theme from "../styles/theme";
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: ${t.space.xl};
+  margin-bottom: ${theme.space.xl};
 `;
 
-const Panel = styled("div")`
+const Panel = styled.div`
   flex-basis: 300px;
   flex-grow: 1;
-  padding-left: ${p => (p.next ? t.space.m : undefined)};
-  padding-right: ${p => (p.prev ? t.space.m : undefined)};
-  text-align: ${p => (p.prev ? "left" : "right")};
+  /* padding-left: ${p => (p.next ? theme.space.m : undefined)}; */
+  /* padding-right: ${p => (p.prev ? theme.space.m : undefined)}; */
+  /* text-align: ${p => (p.prev ? "left" : "right")}; */
 `;
 
-const Title = styled("h4")`
-  margin-bottom: ${t.space.xxs};
+const Title = styled.h4`
+  margin-bottom: ${theme.space.xxs};
   font-weight: bold;
 `;
 
@@ -27,12 +27,12 @@ const Link = styled(LinkBase)`
   position: relative;
 
   &::before {
-    font-family: ${t.font.heading};
+    font-family: ${theme.font.heading};
     position: absolute;
     margin-top: 0.15em;
-    content: "${p => (p.prev ? "←" : "→")}";
-    left: ${p => (p.prev ? "-1.2em" : undefined)};
-    right: ${p => (p.prev ? undefined : "-1.2em")};
+    /* content: "${p => (p.prev ? "←" : "→")}"; */
+    /* left: ${p => (p.prev ? "-1.2em" : undefined)}; */
+    /* right: ${p => (p.prev ? undefined : "-1.2em")}; */
   }
 `;
 

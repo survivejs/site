@@ -1,5 +1,5 @@
 const space = 8;
-export default {
+module.exports = {
   font: {
     heading: '"Avenir Next", "Helvetica Neue", sans-serif',
     body: '"Lora", "Merriweather", "Georgia", serif',
