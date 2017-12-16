@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "react-emotion";
+import { css } from "emotion";
+import cx from "classnames";
 import { Link as LinkBase } from "@survivejs/components";
 import theme from "../styles/theme";
 
@@ -9,32 +11,62 @@ const Container = styled.div`
   margin-bottom: ${theme.space.xl};
 `;
 
-const Panel = styled.div`
+const panel = css`
   flex-basis: 300px;
   flex-grow: 1;
-  /* padding-left: ${p => (p.next ? theme.space.m : undefined)}; */
-  /* padding-right: ${p => (p.prev ? theme.space.m : undefined)}; */
-  /* text-align: ${p => (p.prev ? "left" : "right")}; */
 `;
+const panelPrev = css`
+  padding-right: ${theme.space.m};
+`;
+const panelNext = css`
+  padding-left: ${theme.space.m};
+  text-align: right;
+`;
+const Panel = ({ prev, next, ...props }) => (
+  <div
+    className={cx(panel, {
+      [panelPrev]: prev,
+      [panelNext]: next,
+    })}
+    {...props}
+  />
+);
 
-const Title = styled.h4`
+const Title = styled.div`
   margin-bottom: ${theme.space.xxs};
   font-weight: bold;
 `;
 
-const Link = styled(LinkBase)`
+const link = css`
   display: block;
   position: relative;
-
   &::before {
     font-family: ${theme.font.heading};
     position: absolute;
     margin-top: 0.15em;
-    /* content: "${p => (p.prev ? "←" : "→")}"; */
-    /* left: ${p => (p.prev ? "-1.2em" : undefined)}; */
-    /* right: ${p => (p.prev ? undefined : "-1.2em")}; */
   }
 `;
+const linkPrev = css`
+  &::before {
+    content: "←";
+    left: -1.2em;
+  }
+`;
+const linkNext = css`
+  &::before {
+    content: "→";
+    right: -1.2em;
+  }
+`;
+const Link = ({ prev, next, ...props }) => (
+  <LinkBase
+    className={cx(link, {
+      [linkPrev]: prev,
+      [linkNext]: next,
+    })}
+    {...props}
+  />
+);
 
 const PrevNext = ({
   next,
