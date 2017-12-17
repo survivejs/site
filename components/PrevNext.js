@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "react-emotion";
-import cx from "classnames";
+import styled, { css, cx } from "react-emotion";
 import { Link as LinkBase } from "@survivejs/components";
 import theme from "../styles/theme";
 
