@@ -1,14 +1,9 @@
 import _ from "lodash";
 import React from "react";
 
-import {
-  Disqus,
-  Moment,
-  Author,
-  PrevNextMini,
-  RelatedPosts,
-} from "@survivejs/components";
+import { Moment, Author, RelatedPosts } from "@survivejs/components";
 import { PrevNext, SocialLinks } from "../components";
+import Page from "./Page";
 import getRelatedPosts from "../utils/get-related-posts";
 
 const BlogPage = ({
@@ -37,63 +32,43 @@ const BlogPage = ({
     postAuthor = postAuthor();
   }
 
-  return (
-    <div className="post__wrapper">
-      {headerImage && (
-        <div
-          className="header-image"
-          style={{
-            backgroundImage: `url(${headerImage})`,
-          }}
-        />
-      )}
+  const toc = (
+    <div className="toc-nav__wrapper">
+      <RelatedPosts
+        title={title}
+        posts={relatedPosts}
+        headers={relatedHeaders}
+      />
+    </div>
+  );
 
-      <h1 className="post__heading">{title}</h1>
+  const footer = (
+    <React.Fragment>
+      <SocialLinks type="blog post" />
 
-      <div className="toc-nav__wrapper">
-        <RelatedPosts
-          title={title}
-          posts={relatedPosts}
-          headers={relatedHeaders}
-        />
-      </div>
-
-      <div className="post">
-        <div className="post__content">
-          <div dangerouslySetInnerHTML={{ __html: body }} />
-          {headerExtra && (
-            <div
-              className="header-extra"
-              dangerouslySetInnerHTML={{ __html: headerExtra }}
-            />
-          )}
-          {date && <Moment className="post__moment" datetime={date} />}
-          {postAuthor && <Author author={postAuthor} />}
-        </div>
-
-        <div className="post__content">
-          <SocialLinks type="blog post" />
-
-          <PrevNext
-            previous={previous}
-            next={next}
-            previousText="Previous post"
-            nextText="Next post"
-            getTitle={page => page.file.title}
-          />
-
-          <div id="disqus_thread" />
-        </div>
-      </div>
-
-      <PrevNextMini
+      <PrevNext
         previous={previous}
         next={next}
+        previousText="Previous post"
+        nextText="Next post"
         getTitle={page => page.file.title}
       />
+    </React.Fragment>
+  );
 
-      <Disqus shortname="survivejs" />
-    </div>
+  return (
+    <Page
+      headerImage={headerImage}
+      title={title}
+      previous={previous}
+      next={next}
+      sidebar={toc}
+      footer={footer}
+    >
+      <div dangerouslySetInnerHTML={{ __html: body }} />
+      {date && <Moment className="post__moment" datetime={date} />}
+      {postAuthor && <Author author={postAuthor} />}
+    </Page>
   );
 };
 

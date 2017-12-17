@@ -27,10 +27,10 @@ hr {
 }
 
 .header-image,
-.header-image + .post__heading {
+.header-image + .page__heading {
   z-index: 0; /* make sure they are behind nav */
 }
-.header-image + .post__heading {
+.header-image + .page__heading {
   padding-left: 1em;
   padding-right: 1em;
 }
@@ -71,13 +71,13 @@ hr {
   margin-bottom: 1em;
 }
 
-.header-image + .post__heading {
-  margin-top: calc(24vh);
+.header-image + .page__heading {
+  margin-top: 24vh;
 }
 .header-image {
   height: 48vh;
 }
-.header-image + .post__heading + .post__content {
+.header-image + .page__heading + .post__content {
   margin-top: 50vh;
   padding-top: 5vh;
 }
@@ -86,12 +86,6 @@ hr {
   .post__content pre {
     /* low resolutions need this */
     word-break: break-all;
-  }
-}
-
-@media screen and (min-width: 1150px) {
-  .post__heading {
-    font-size: 54px;
   }
 }
 
@@ -145,10 +139,6 @@ hr {
   }
 }
 @include media-query(portable) {
-  .post__heading h1 {
-    margin: 0;
-  }
-
   .prevnext-pages {
     position: inherit;
     height: auto;
@@ -169,31 +159,12 @@ hr {
     border: none;
   }
 
-  .chapter-content {
-    margin: 1em;
-    padding: 0;
-  }
-
   #disqus_thread {
     margin: 1em;
   }
 
   .gitter-open-chat-button {
     display: none;
-  }
-}
-
-.chapter-content {
-  padding: 0;
-
-  // TODO: push to _table.scss?
-  table {
-    margin-top: 1em;
-    margin-bottom: 1em;
-
-    td {
-      padding: 0.5em;
-    }
   }
 }
 

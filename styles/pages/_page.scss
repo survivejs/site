@@ -1,0 +1,84 @@
+.page {
+	margin-top: 48vh;
+
+	.latestpost {
+		margin-top: 0;
+	}
+
+	.author {
+		float: right;
+		margin-left: $space-m;
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+	}
+}
+
+.page__heading {
+    padding: 0 $space-l;
+    line-height: 1;
+}
+
+@media screen and (min-width: 1150px) {
+	.page__heading {
+		font-size: 54px;
+	}
+}
+
+.page__container {
+	display: flex;
+}
+
+.page__sidebar {
+	max-width: 350px;
+    padding: $space-l;
+    background: rgba(0,0,0,0.01);
+}
+
+@include media-query(lap) {
+    .page__sidebar {
+        max-width: 250px;
+    }
+}
+
+@include media-query(palm) {
+    .page__sidebar {
+        display: none;
+    }
+}
+  
+
+.page__main {
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: $space-l;
+
+	> * {
+		@include media-query("palm") {
+			@include font-size(16px);
+		}
+	}
+
+	// TODO: push to _table.scss?
+	table {
+		margin-top: 1em;
+		margin-bottom: 1em;
+
+		td {
+			padding: 0.5em;
+		}
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	.inline-img {
+		width: 100%;
+		left: auto;
+	}
+}
+
+.page__section {
+	margin-bottom: $space-xl;
+}
