@@ -18,56 +18,54 @@ TODO: I'll fill this up and link to your Twitter
 ## Can you tell a bit about yourself?
 
 <p>
-
-<span class="author">
-  <img src="https://www.gravatar.com/avatar/94bd558238b69c45d3d3e15797ae94f7?s=200" alt="Jeremy Fairbank" class="author" width="100" height="100" />
-</span>
-
+  <span class="author">
+    <img src="https://www.gravatar.com/avatar/94bd558238b69c45d3d3e15797ae94f7?s=200" alt="Jeremy Fairbank" class="author" width="100" height="100" />
+  </span>
 </p>
 
 I'm a software engineer and consultant with [Test Double](https://testdouble.com/). We believe that software is broken, and we're here to fix it. Our mission is to improve how the world builds software.
 
-I've been doing front-end development for almost ten years now and really enjoy the paradigms that React and Redux helped introduce to the front-end world. I've created a few open source projects that work well with the React and Redux world such as [revalidate](https://github.com/jfairbank/revalidate), [redux-saga-router](https://github.com/jfairbank/redux-saga-router), and of course [*redux-saga-test-plan*](https://github.com/jfairbank/redux-saga-test-plan).
+I've been doing front-end development for almost ten years now and really enjoy the paradigms that React and Redux helped introduce to the front-end world. I've created a few open source projects that work well with the React and Redux ecosystem such as [revalidate](https://github.com/jfairbank/revalidate), [redux-saga-router](https://github.com/jfairbank/redux-saga-router), and, the topic of this interview, [_redux-saga-test-plan_](https://github.com/jfairbank/redux-saga-test-plan).
 
-I'm also a huge fan of functional programming and Elm. In fact, I'm currently writing a book on Elm with the [Pragmatic Programmers](https://pragprog.com/) called _Programming Elm: Build Safe and Maintainable Front-End Applications_. The book is over halfway complete and should be available sometime in spring 2018.
+I'm a huge fan of functional programming and Elm. In fact, I'm currently writing a book on Elm with [The Pragmatic Programmers](https://pragprog.com/) called _Programming Elm: Build Safe and Maintainable Front-End Applications_. The book is over halfway complete and should be available sometime in spring 2018.
 
-## How would you describe *redux-saga-test-plan* to someone who has never heard of it?
+## How would you describe _redux-saga-test-plan_ to someone who has never heard of it?
 
-[*redux-saga-test-plan*](https://redux-saga-test-plan.jeremyfairbank.com/) is a library for easily testing [redux-saga](https://redux-saga.js.org/). If you're unfamiliar with redux-saga, check out this [previous interview](https://survivejs.com/blog/redux-saga-interview/) with Yassine Elouafi, its creator.
+[_redux-saga-test-plan_](https://redux-saga-test-plan.jeremyfairbank.com/) is a library for easily testing [redux-saga](https://redux-saga.js.org/). If you're unfamiliar with redux-saga, check out [the redux-saga interview](https://survivejs.com/blog/redux-saga-interview/) with creator Yassine Elouafi.
 
-*redux-saga-test-plan* removes the headache of manually testing saga generator functions that couple your tests to their implementations. It offers a declarative, chainable API for testing that your saga yields certain effects without worrying about other effects or the order effects were yielded. It also runs your saga with redux-saga's runtime, so you can write integration tests, or you can use *redux-saga-test-plan's* built-in effect mocking to write unit tests too.
+_redux-saga-test-plan_ removes the headache of manually testing saga generator functions that couple your tests to their implementations. It offers a declarative, chainable API for testing that your saga yields certain effects without worrying about other effects or the order effects were yielded. It also runs your saga with redux-saga's runtime, so you can write integration tests, or you can use _redux-saga-test-plan's_ built-in effect mocking to write unit tests too.
 
-## How does *redux-saga-test-plan* work?
+## How does _redux-saga-test-plan_ work?
 
-Let's look at some example sagas to see how *redux-saga-test-plan* makes it easy to test them.
+Let's look at some example sagas to see how _redux-saga-test-plan_ makes it easy to test them.
 
 ### Simple API Saga
 
 Given this simple saga for fetching an array of users:
 
 ```js
-import { call, put } from 'redux-saga/effects';
+import { call, put } from "redux-saga/effects";
 
 function* fetchUsersSaga(api) {
   const users = yield call(api.getUsers);
-  yield put({ type: 'FETCH_USERS_SUCCESS', payload: users });
+  yield put({ type: "FETCH_USERS_SUCCESS", payload: users });
 }
 ```
 
-You can test it with *redux-saga-test-plan* like this:
+You can test it with _redux-saga-test-plan_ like this:
 
 ```js
-import { expectSaga } from 'redux-saga-test-plan';
+import { expectSaga } from "redux-saga-test-plan";
 
-it('fetches users', () => {
-  const users = ['Jeremy', 'Tucker'];
+it("fetches users", () => {
+  const users = ["Jeremy", "Tucker"];
 
   const api = {
     getUsers: () => users,
   };
 
   return expectSaga(fetchUsersSaga, api)
-    .put({ type: 'FETCH_USERS_SUCCESS', payload: users })
+    .put({ type: "FETCH_USERS_SUCCESS", payload: users })
     .run();
 });
 ```
@@ -76,90 +74,85 @@ The `expectSaga` function accepts a saga as an argument as well as any additiona
 
 `expectSaga` returns a chainable API with lots of useful methods. The `put` method is an assertion that the saga will eventually yield a `put` effect with the given `FETCH_USERS_SUCCESS` action.
 
-The `run` method starts the saga. *redux-saga-test-plan* uses redux-saga's `runSaga` function to run the saga like it would be run in your application. `expectSaga` tracks any effects your saga yields, so you can assert them like we
-do with `put` here.
+The `run` method starts the saga. _redux-saga-test-plan_ uses redux-saga's `runSaga` function to run the saga like it would be run in your application. `expectSaga` tracks any effects your saga yields, so you can assert them like we do with `put` here.
 
-Sagas are inherently asynchronous, so *redux-saga-test-plan* returns a promise from the `run` method. You need that promise to know when the test is complete. In this example, we're using Jest, so we can return the promise directly to it. Because *redux-saga-test-plan* runs asynchronously, it times out your saga after a set amount of time. You can [configure the timeout length](http://redux-saga-test-plan.jeremyfairbank.com/integration-testing/timeout.html#adjusting-timeout).
+Sagas are inherently asynchronous, so _redux-saga-test-plan_ returns a promise from the `run` method. You need that promise to know when the test is complete. In this example, we're using Jest, so we can return the promise directly to it. Because _redux-saga-test-plan_ runs asynchronously, it times out your saga after a set amount of time. You can [configure the timeout length](http://redux-saga-test-plan.jeremyfairbank.com/integration-testing/timeout.html#adjusting-timeout).
 
 ### Built-in Mocking
 
 If you don't inject dependencies like the `api` object, you can use `expectSaga`'s built-in mocking mechanism called _providers_. Let's say you import `api` from another file and use it like this instead:
 
 ```js
-import { call, put } from 'redux-saga/effects';
-import api from './api';
+import { call, put } from "redux-saga/effects";
+import api from "./api";
 
 function* fetchUsersSaga() {
   const users = yield call(api.getUsers);
-  yield put({ type: 'FETCH_USERS_SUCCESS', payload: users });
+  yield put({ type: "FETCH_USERS_SUCCESS", payload: users });
 }
 ```
 
 You can mock it with the `provide` method like this:
 
 ```js
-import { expectSaga } from 'redux-saga-test-plan';
-import api from './api';
+import { expectSaga } from "redux-saga-test-plan";
+import api from "./api";
 
-it('fetches users', () => {
-  const users = ['Jeremy', 'Tucker'];
+it("fetches users", () => {
+  const users = ["Jeremy", "Tucker"];
 
   return expectSaga(fetchUsersSaga)
-    .provide([
-      [call(api.getUsers), users],
-    ])
-    .put({ type: 'FETCH_USERS_SUCCESS', payload: users })
+    .provide([[call(api.getUsers), users]])
+    .put({ type: "FETCH_USERS_SUCCESS", payload: users })
     .run();
 });
 ```
 
-The `provide` method takes an array of matcher-value pairs. Each matcher-value pair is an array with an effect to match and a fake value to return. *redux-saga-test-plan* will intercept effects that match and return the fake value instead of letting redux-saga handle the effect. In this example, we match any `call` effects to `api.getUsers` and return a fake array of users instead.
+The `provide` method takes an array of matcher-value pairs. Each matcher-value pair is an array with an effect to match and a fake value to return. _redux-saga-test-plan_ will intercept effects that match and return the fake value instead of letting redux-saga handle the effect. In this example, we match any `call` effects to `api.getUsers` and return a fake array of users instead.
 
 ### Dispatching Effects and Forked Sagas
 
-*redux-saga-test-plan* can handle more complex saga relationships like this:
+_redux-saga-test-plan_ can handle more complex saga relationships like this:
 
 ```js
-import { call, put, takeLatest } from 'redux-saga/effects';
-import api from './api';
+import { call, put, takeLatest } from "redux-saga/effects";
+import api from "./api";
 
 function* fetchUserSaga(action) {
   const id = action.payload;
   const user = yield call(api.getUser, id);
 
-  yield put({ type: 'FETCH_USER_SUCCESS', payload: user });
+  yield put({ type: "FETCH_USER_SUCCESS", payload: user });
 }
 
 function* watchFetchUserSaga() {
-  yield takeLatest('FETCH_USER_REQUEST', fetchUserSaga);
+  yield takeLatest("FETCH_USER_REQUEST", fetchUserSaga);
 }
 ```
 
-In this example, `watchFetchUserSaga` uses `takeLatest` to handle the latest `FETCH_USER_REQUEST` action. If something dispatches `FETCH_USER_REQUEST`, then redux-saga forks `fetchUserSaga` to handle the action and fetch a user by id from the action's `payload`. You can test these sagas with *redux-saga-test-plan* like this:
+In this example, `watchFetchUserSaga` uses `takeLatest` to handle the latest `FETCH_USER_REQUEST` action. If something dispatches `FETCH_USER_REQUEST`, then redux-saga forks `fetchUserSaga` to handle the action and fetch a user by id from the action's `payload`. You can test these sagas with _redux-saga-test-plan_ like this:
 
 ```js
-import { expectSaga } from 'redux-saga-test-plan';
-import api from './api';
+import { expectSaga } from "redux-saga-test-plan";
+import api from "./api";
 
-it('fetches a user', () => {
+it("fetches a user", () => {
   const id = 42;
-  const user = { id, name: 'Jeremy' };
+  const user = { id, name: "Jeremy" };
 
   return expectSaga(watchFetchUserSaga)
-    .provide([
-      [call(api.getUser, id), user],
-    ])
-    .put({ type: 'FETCH_USER_SUCCESS', payload: user })
-    .dispatch({ type: 'FETCH_USER_REQUEST', payload: id })
+    .provide([[call(api.getUser, id), user]])
+    .put({ type: "FETCH_USER_SUCCESS", payload: user })
+    .dispatch({ type: "FETCH_USER_REQUEST", payload: id })
     .silentRun();
 });
 ```
 
-*redux-saga-test-plan* captures effects from forked sagas too. Notice that we call `expectSaga` with `watchFetchUserSaga` but still test the behavior of `fetchUserSaga` with the `put` assertion.
+_redux-saga-test-plan_ captures effects from forked sagas too. Notice that we call `expectSaga` with `watchFetchUserSaga` but still test the behavior of `fetchUserSaga` with the `put` assertion.
 
 We use the `dispatch` method to dispatch a `FETCH_USER_REQUEST` action with a `payload` id of `42` to `watchFetchUserSaga`. redux-saga then forks and runs `fetchUserSaga`.
 
-`takeLatest` runs in a loop, so *redux-saga-test-plan* will time out the saga with a warning message. You can safely silence the warning with the alternative `silentRun` method since we expect a timeout here.
+`takeLatest` runs in a loop, so _redux-saga-test-plan_ will time out the saga with a warning message. You can safely silence the warning with the alternative `silentRun` method since we expect a timeout here.
 
 ### Error Handling
 
@@ -169,9 +162,9 @@ You can use providers to test your saga's error handling too. Take this new vers
 function* fetchUsersSaga() {
   try {
     const users = yield call(api.getUsers);
-    yield put({ type: 'FETCH_USERS_SUCCESS', payload: users });
+    yield put({ type: "FETCH_USERS_SUCCESS", payload: users });
   } catch (e) {
-    yield put({ type: 'FETCH_USERS_FAIL', payload: e });
+    yield put({ type: "FETCH_USERS_FAIL", payload: e });
   }
 }
 ```
@@ -179,17 +172,15 @@ function* fetchUsersSaga() {
 You can import `throwError` from `redux-saga-test-plan/providers` to simulate an error in the `provide` method:
 
 ```js
-import { expectSaga } from 'redux-saga-test-plan';
-import { throwError } from 'redux-saga-test-plan/providers';
+import { expectSaga } from "redux-saga-test-plan";
+import { throwError } from "redux-saga-test-plan/providers";
 
-it('handles errors', () => {
-  const error = new Error('Whoops');
+it("handles errors", () => {
+  const error = new Error("Whoops");
 
   return expectSaga(fetchUsersSaga)
-    .provide([
-      [call(api.getUsers), throwError(error)],
-    ])
-    .put({ type: 'FETCH_USERS_FAIL', payload: error })
+    .provide([[call(api.getUsers), throwError(error)]])
+    .put({ type: "FETCH_USERS_FAIL", payload: error })
     .run();
 });
 ```
@@ -203,7 +194,7 @@ const INITIAL_STATE = { users: [] };
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'FETCH_USERS_SUCCESS':
+    case "FETCH_USERS_SUCCESS":
       return { ...state, users: action.payload };
     default:
       return state;
@@ -214,16 +205,14 @@ function reducer(state = INITIAL_STATE, action) {
 You can use the `withReducer` method to hook up your reducer and then assert the final state with `hasFinalState`:
 
 ```js
-import { expectSaga } from 'redux-saga-test-plan';
+import { expectSaga } from "redux-saga-test-plan";
 
-it('fetches the users into the store state', () => {
-  const users = ['Jeremy', 'Tucker'];
+it("fetches the users into the store state", () => {
+  const users = ["Jeremy", "Tucker"];
 
   return expectSaga(fetchUsersSaga)
     .withReducer(reducer)
-    .provide([
-      [call(api.getUsers), users],
-    ])
+    .provide([[call(api.getUsers), users]])
     .hasFinalState({ users })
     .run();
 });
@@ -258,7 +247,7 @@ Here are the other effect assertions available for testing.
 * [Negated assertions](https://redux-saga-test-plan.jeremyfairbank.com/integration-testing/partial-matching.html)
 * [Assert a saga's return value](https://redux-saga-test-plan.jeremyfairbank.com/integration-testing/return-value.html)
 
-## How does *redux-saga-test-plan* differ from other solutions?
+## How does _redux-saga-test-plan_ differ from other solutions?
 
 * Only test the effects you're interested in with `expectSaga`. You don't have to manually iterate through your saga's yielded effects, which decouples your test from the implementation.
 * A declarative, chainable API with less setup for testing sagas. Other options that I've seen use imperative APIs with more setup steps and only let you test certain effects.
@@ -268,25 +257,25 @@ Here are the other effect assertions available for testing.
 * [Negated assertions](https://redux-saga-test-plan.jeremyfairbank.com/integration-testing/partial-matching.html). You can test that your saga did **not** yield a particular effect.
 * [Partial assertions](https://redux-saga-test-plan.jeremyfairbank.com/integration-testing/partial-matching.html). For example, you can test that your saga `put` a particular `type` of action without worrying about the action payload.
 
-## Why did you develop *redux-saga-test-plan*?
+## Why did you develop _redux-saga-test-plan_?
 
 I grew tired of manually testing sagas by iterating through yielded effects like this:
 
 ```js
 function* fetchUsersSaga() {
   const users = yield call(api.getUsers);
-  yield put({ type: 'FETCH_USERS_SUCCESS', payload: users });
+  yield put({ type: "FETCH_USERS_SUCCESS", payload: users });
 }
 
-it('fetches users', () => {
-  const users = ['Jeremy', 'Tucker']
+it("fetches users", () => {
+  const users = ["Jeremy", "Tucker"];
   const iter = fetchUsersSaga();
 
-  expect(iter.next().value)
-    .toEqual(call(api.getUsers));
+  expect(iter.next().value).toEqual(call(api.getUsers));
 
-  expect(iter.next(users).value)
-    .toEqual(put({ type: 'FETCH_USERS_SUCCESS', payload: users }));
+  expect(iter.next(users).value).toEqual(
+    put({ type: "FETCH_USERS_SUCCESS", payload: users })
+  );
 });
 ```
 
@@ -296,17 +285,17 @@ I finally set out to create a more user-friendly API that removed most of the bo
 
 ## What next?
 
-Writing my Elm book is currently consuming a lot of my time, so I've had to take a short break from *redux-saga-test-plan*. However, the next big plan is to support redux-saga v1, which adds support for effect middlewares. Effect middlewares let you intercept effects to return back a mock value. I hope to simplify `expectSaga`'s implementation of providers with effect middlewares.
+Writing my Elm book is currently consuming a lot of my time, so I've had to take a short break from _redux-saga-test-plan_. However, the next big plan is to support redux-saga v1, which adds support for effect middlewares. Effect middlewares let you intercept effects to return back a mock value. I hope to simplify `expectSaga`'s implementation of providers with effect middlewares.
 
 There's a nice backlog of issues for other cool features like new helpful assertions and integrating with a full Redux store too.
 
 Contributors are welcome!
 
-## What does the future look like for *redux-saga-test-plan* and web development in general? Can you see any particular trends?
+## What does the future look like for _redux-saga-test-plan_ and web development in general? Can you see any particular trends?
 
 I'm not entirely sure because it depends on the life of redux-saga. [Mateusz Burzyński](https://github.com/Andarist) and all the contributors have been doing a great job maintaining it. It's a great sign that they're working toward v1. But front-end development can move and change so fast. For example, we've seen a huge rise in the popularity of [RxJS](https://github.com/ReactiveX/rxjs) and [redux-observable](https://github.com/redux-observable/redux-observable).
 
-As long as there is wide support for redux-saga in front-end applications, I think *redux-saga-test-plan* will stick around and fill a much needed testing niche. Testing saga generators is hard, so *redux-saga-test-plan* will hopefully continue to make it easy. That being said, I don't always get to use redux-saga with my client projects, so I could definitely use the support of other contributors to make *redux-saga-test-plan* the best it can be for testing.
+As long as there is wide support for redux-saga in front-end applications, I think _redux-saga-test-plan_ will stick around and fill a much needed testing niche. Testing saga generators is hard, so _redux-saga-test-plan_ will hopefully continue to make it easy. That being said, I don't always get to use redux-saga with my client projects, so I could definitely use the support of other contributors to make _redux-saga-test-plan_ the best it can be for testing.
 
 As far as trends, I think front-end development is heading toward better maintainability and safety with static typing. Elm, TypeScript, and Flow are making it easier to build robust front-end applications. Static types can catch so many simple bugs and mistakes to help you refactor code more confidently.
 
