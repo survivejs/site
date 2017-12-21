@@ -3,8 +3,8 @@ import React from "react";
 
 import { Moment, Author, RelatedPosts } from "@survivejs/components";
 import { PrevNext, SocialLinks } from "../components";
-import Page from "./Page";
 import getRelatedPosts from "../utils/get-related-posts";
+import Page from "./Page";
 
 const BlogPage = ({
   page: {
