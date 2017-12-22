@@ -16,4 +16,12 @@ module.exports = {
     xl: `${space * 8}px`,
     xxl: `${space * 16}px`,
   },
+  color: {
+    base: "#222",
+    heading: "#222",
+    quiet: "#999",
+    background: "#fff",
+    backgroundAlt: "#eee",
+    backgroundLight: "#fafafa",
+  },
 };

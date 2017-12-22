@@ -19,7 +19,8 @@ module.exports = env => {
 
 function commonConfig() {
   return {
-    stats: "minimal",
+    stats: "errors-only",
+    devtool: "cheap-eval-source-map ",
     module: {
       rules: [
         {
