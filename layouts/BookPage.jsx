@@ -4,12 +4,11 @@ import {
   Disqus,
   LatestPost,
   Meta,
-  PrevNext,
   PrevNextMini,
   Resources,
   Toc,
 } from "@survivejs/components";
-import { SocialLinks } from "../components";
+import { PrevNext, SocialLinks } from "../components";
 import Page from "./Page";
 
 const BookPage = ({
