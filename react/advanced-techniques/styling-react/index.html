@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -65,23 +65,23 @@
 <p>There are various approaches for React that allow us to push styling to the component level. It may sound heretical. React, being an iconoclast, may lead the way here.</p>
 <h3 class="header"><a class="header-anchor" href="#inline-styles-to-rescue" id="inline-styles-to-rescue"></a><span class="text">Inline Styles to Rescue</span><a class="header-anchor-select" href="#inline-styles-to-rescue">#</a></h3>
 <p>Ironically, the way solutions based on React solve this is through inline styles. Getting rid of inline styles was one of the main reasons for using separate CSS files in the first place. Now we are back there. This means that instead of something like this:</p>
-<pre><code class="lang-javascript"><span class="token function">render</span><span class="token punctuation">(</span>props<span class="token punctuation">,</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation" >,</span> context<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-const" >const</span> notes <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>notes<span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>ul className<span class="token operator">=</span><span class="token string">'notes'</span><span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>renderNote<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>ul className<span class="token operator" >=</span><span class="token string" >'notes'</span><span class="token operator" >&gt;</span><span class="token punctuation brackets-braces" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>renderNote<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>and accompanying CSS, we&#39;ll do something like this:</p>
-<pre><code class="lang-javascript"><span class="token function">render</span><span class="token punctuation">(</span>props<span class="token punctuation">,</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
-  <span class="token keyword">const</span> style <span class="token operator">=</span> <span class="token punctuation">{</span>
-    margin<span class="token punctuation">:</span> <span class="token string">'0.5em'</span><span class="token punctuation">,</span>
-    paddingLeft<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    listStyle<span class="token punctuation">:</span> <span class="token string">'none'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation" >,</span> context<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-const" >const</span> notes <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>notes<span class="token punctuation" >;</span>
+  <span class="token keyword keyword-const" >const</span> style <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+    margin<span class="token punctuation" >:</span> <span class="token string" >'0.5em'</span><span class="token punctuation" >,</span>
+    paddingLeft<span class="token punctuation" >:</span> <span class="token number" >0</span><span class="token punctuation" >,</span>
+    listStyle<span class="token punctuation" >:</span> <span class="token string" >'none'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>ul style<span class="token operator">=</span><span class="token punctuation">{</span>style<span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>notes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>renderNote<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>ul style<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>style<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span><span class="token punctuation brackets-braces" >{</span>notes<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>renderNote<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Like with HTML attribute names, we are using the same camelcase convention for CSS properties.</p>
 <p>Now that we have styling at the component level, we can implement logic that also alters the styles easily. One classic way to do this has been to alter class names based on the outlook we want. Now we can adjust the properties we want directly.</p>
@@ -99,121 +99,121 @@
 <p>I will cover some of the available libraries to give you a better idea how they work. See <a href="https://github.com/MicheleBertoli/css-in-js">Michele&#39;s list</a> for a more a comprehensive outlook of the situation.</p>
 <h3 class="header"><a class="header-anchor" href="#radium" id="radium"></a><span class="text">Radium</span><a class="header-anchor-select" href="#radium">#</a></h3>
 <p><a href="http://projects.formidablelabs.com/radium/">Radium</a> has certain valuable ideas that are worth highlighting. Most importantly it provides abstractions required to deal with media queries and pseudo classes (e.g., <code>:hover</code>). It expands the basic syntax as follows:</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token punctuation">{</span>
-  button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    padding<span class="token punctuation">:</span> <span class="token string">'1em'</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> styles <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  button<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    padding<span class="token punctuation" >:</span> <span class="token string" >'1em'</span><span class="token punctuation" >,</span>
 
-    <span class="token string">':hover'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      border<span class="token punctuation">:</span> <span class="token string">'1px solid black'</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string" >':hover'</span><span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      border<span class="token punctuation" >:</span> <span class="token string" >'1px solid black'</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 
-    <span class="token string">'@media (max-width: 200px)'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      width<span class="token punctuation">:</span> <span class="token string">'100%'</span><span class="token punctuation">,</span>
+    <span class="token string" >'@media (max-width: 200px)'</span><span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      width<span class="token punctuation" >:</span> <span class="token string" >'100%'</span><span class="token punctuation" >,</span>
 
-      <span class="token string">':hover'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        background<span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  primary<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    background<span class="token punctuation">:</span> <span class="token string">'green'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  warning<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    background<span class="token punctuation">:</span> <span class="token string">'yellow'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token string" >':hover'</span><span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        background<span class="token punctuation" >:</span> <span class="token string" >'white'</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  primary<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    background<span class="token punctuation" >:</span> <span class="token string" >'green'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  warning<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    background<span class="token punctuation" >:</span> <span class="token string" >'yellow'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-<span class="token operator">&lt;</span>button style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span>styles<span class="token punctuation">.</span>button<span class="token punctuation">,</span> styles<span class="token punctuation">.</span>primary<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">></span>Confirm<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token operator" >&lt;</span>button style<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-square" >[</span>styles<span class="token punctuation" >.</span>button<span class="token punctuation" >,</span> styles<span class="token punctuation" >.</span>primary<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span>Confirm<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span>
 </code></pre>
 <p>For <code>style</code> prop to work, you&#39;ll need to annotate your classes using <code>@Radium</code> decorator.</p>
 <h3 class="header"><a class="header-anchor" href="#react-style" id="react-style"></a><span class="text">React Style</span><a class="header-anchor-select" href="#react-style">#</a></h3>
 <p><a href="https://github.com/js-next/react-style">React Style</a> uses the same syntax as React Native <a href="https://facebook.github.io/react-native/docs/stylesheet.html#content">StyleSheet</a>. It expands the basic definition by introducing additional keys for fragments.</p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> StyleSheet <span class="token keyword">from</span> <span class="token string">'react-style'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> StyleSheet <span class="token keyword keyword-from" >from</span> <span class="token string" >'react-style'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  primary<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    background<span class="token punctuation">:</span> <span class="token string">'green'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  warning<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    background<span class="token punctuation">:</span> <span class="token string">'yellow'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    padding<span class="token punctuation">:</span> <span class="token string">'1em'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token comment">// media queries</span>
-  <span class="token string">'@media (max-width: 200px)'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      width<span class="token punctuation">:</span> <span class="token string">'100%'</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> styles <span class="token operator" >=</span> StyleSheet<span class="token punctuation" >.</span><span class="token function" >create</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  primary<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    background<span class="token punctuation" >:</span> <span class="token string" >'green'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  warning<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    background<span class="token punctuation" >:</span> <span class="token string" >'yellow'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  button<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    padding<span class="token punctuation" >:</span> <span class="token string" >'1em'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token comment" spellcheck="true" >// media queries</span>
+  <span class="token string" >'@media (max-width: 200px)'</span><span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    button<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      width<span class="token punctuation" >:</span> <span class="token string" >'100%'</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-<span class="token operator">&lt;</span>button styles<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span>styles<span class="token punctuation">.</span>button<span class="token punctuation">,</span> styles<span class="token punctuation">.</span>primary<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">></span>Confirm<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token operator" >&lt;</span>button styles<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-square" >[</span>styles<span class="token punctuation" >.</span>button<span class="token punctuation" >,</span> styles<span class="token punctuation" >.</span>primary<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span>Confirm<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span>
 </code></pre>
 <p>As you can see, we can use individual fragments to get the same effect as Radium modifiers. Also media queries are supported. React Style expects that you manipulate browser states (e.g., <code>:hover</code>) through JavaScript. Also CSS animations won&#39;t work. Instead, it&#39;s preferred to use some other solution for that.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/js-next/react-style-webpack-plugin">React Style plugin for Webpack</a> can extract CSS declarations into a separate bundle. Now we are closer to the world we&#39;re used to, but without cascades. We also have our style declarations on the component level.</blockquote><h3 class="header"><a class="header-anchor" href="#jss" id="jss"></a><span class="text">JSS</span><a class="header-anchor-select" href="#jss">#</a></h3>
 <p><a href="https://github.com/jsstyles/jss">JSS</a> is a JSON to StyleSheet compiler. It can be convenient to represent styling using JSON structures as this gives us easy namespacing. Furthermore it is possible to perform transformations over the JSON to gain features, such as autoprefixing. JSS provides a plugin interface just for this.</p>
 <p>JSS can be used with React through <a href="https://www.npmjs.com/package/react-jss">react-jss</a>.  You can use JSS through <em>react-jss</em> like this:</p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">import</span> classnames <span class="token keyword">from</span> <span class="token string">'classnames'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> useSheet <span class="token keyword">from</span> <span class="token string">'react-jss'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-import" >import</span> classnames <span class="token keyword keyword-from" >from</span> <span class="token string" >'classnames'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> useSheet <span class="token keyword keyword-from" >from</span> <span class="token string" >'react-jss'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token punctuation">{</span>
-  button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    padding<span class="token punctuation">:</span> <span class="token string">'1em'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token string">'media (max-width: 200px)'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    button<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      width<span class="token punctuation">:</span> <span class="token string">'100%'</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  primary<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    background<span class="token punctuation">:</span> <span class="token string">'green'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  warning<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    background<span class="token punctuation">:</span> <span class="token string">'yellow'</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> styles <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  button<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    padding<span class="token punctuation" >:</span> <span class="token string" >'1em'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token string" >'media (max-width: 200px)'</span><span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    button<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      width<span class="token punctuation" >:</span> <span class="token string" >'100%'</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  primary<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    background<span class="token punctuation" >:</span> <span class="token string" >'green'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  warning<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    background<span class="token punctuation" >:</span> <span class="token string" >'yellow'</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-@<span class="token function">useSheet</span><span class="token punctuation">(</span>styles<span class="token punctuation">)</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">ConfirmButton</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span>classes<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>sheet<span class="token punctuation">;</span>
+@<span class="token function" >useSheet</span><span class="token punctuation brackets-parentheses" >(</span>styles<span class="token punctuation brackets-parentheses" >)</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-class" >class</span> <span class="token class-name" >ConfirmButton</span> <span class="token keyword keyword-extends" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-const" >const</span> <span class="token punctuation brackets-braces" >{</span>classes<span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>sheet<span class="token punctuation" >;</span>
 
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button
-      className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token function">classnames</span><span class="token punctuation">(</span>classes<span class="token punctuation">.</span>button<span class="token punctuation">,</span> classes<span class="token punctuation">.</span>primary<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>
+    <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>button
+      className<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span><span class="token function" >classnames</span><span class="token punctuation brackets-parentheses" >(</span>classes<span class="token punctuation" >.</span>button<span class="token punctuation" >,</span> classes<span class="token punctuation" >.</span>primary<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span>
         Confirm
-      <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+      <span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>The approach supports pseudoselectors, i.e., you could define a selector within, such as <code>&amp;:hover</code>, within a definition and it would just work.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>There&#39;s a <a href="https://www.npmjs.com/package/jss-loader">jss-loader</a> for Webpack.</blockquote><h3 class="header"><a class="header-anchor" href="#react-inline" id="react-inline"></a><span class="text">React Inline</span><a class="header-anchor-select" href="#react-inline">#</a></h3>
 <p><a href="https://github.com/martinandert/react-inline">React Inline</a> is an interesting twist on StyleSheet. It generates CSS based on <code>className</code> prop of elements where it is used. The example above could be adapted to React Inline like this:</p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> cx <span class="token keyword">from</span> <span class="token string">'classnames'</span><span class="token punctuation">;</span>
-<span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> cx <span class="token keyword keyword-from" >from</span> <span class="token string" >'classnames'</span><span class="token punctuation" >;</span>
+<span class="token operator" >...</span>
 
-<span class="token keyword">class</span> <span class="token class-name">ConfirmButton</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span>className<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
-    <span class="token keyword">const</span> classes <span class="token operator">=</span> <span class="token function">cx</span><span class="token punctuation">(</span>styles<span class="token punctuation">.</span>button<span class="token punctuation">,</span> styles<span class="token punctuation">.</span>primary<span class="token punctuation">,</span> className<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-class" >class</span> <span class="token class-name" >ConfirmButton</span> <span class="token keyword keyword-extends" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-const" >const</span> <span class="token punctuation brackets-braces" >{</span>className<span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >;</span>
+    <span class="token keyword keyword-const" >const</span> classes <span class="token operator" >=</span> <span class="token function" >cx</span><span class="token punctuation brackets-parentheses" >(</span>styles<span class="token punctuation" >.</span>button<span class="token punctuation" >,</span> styles<span class="token punctuation" >.</span>primary<span class="token punctuation" >,</span> className<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token punctuation">{</span>classes<span class="token punctuation">}</span><span class="token operator">></span>Confirm<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>classes<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span>Confirm<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Unlike React Style, the approach supports browser states (e.g., <code>:hover</code>). Unfortunately, it relies on its own custom tooling to generate React code and CSS which it needs to work.</p>
 <h3 class="header"><a class="header-anchor" href="#jsxstyle" id="jsxstyle"></a><span class="text">jsxstyle</span><a class="header-anchor-select" href="#jsxstyle">#</a></h3>
 <p>Pete Hunt&#39;s <a href="https://github.com/petehunt/jsxstyle">jsxstyle</a> aims to mitigate some problems of React Style&#39;s approach. As you saw in previous examples, we still have style definitions separate from the component markup. jsxstyle merges these two concepts. Consider the following example:</p>
-<pre><code class="lang-javascript"><span class="token comment">// PrimaryButton component</span>
-<span class="token operator">&lt;</span>button
-  padding<span class="token operator">=</span><span class="token string">'1em'</span>
-  background<span class="token operator">=</span><span class="token string">'green'</span>
-<span class="token operator">></span>Confirm<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// PrimaryButton component</span>
+<span class="token operator" >&lt;</span>button
+  padding<span class="token operator" >=</span><span class="token string" >'1em'</span>
+  background<span class="token operator" >=</span><span class="token string" >'green'</span>
+<span class="token operator" >&gt;</span>Confirm<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span>
 </code></pre>
 <p>The approach is still in its early days. For instance, support for media queries is missing. Instead of defining modifiers as above, you&#39;ll end up defining more components to support your use cases.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Just like React Style, jsxstyle comes with a Webpack loader that can extract CSS into a separate file.</blockquote><h2 class="header"><a class="header-anchor" href="#css-modules" id="css-modules"></a><span class="text">CSS Modules</span><a class="header-anchor-select" href="#css-modules">#</a></h2>
@@ -222,36 +222,36 @@
 <p>This itself solves a large amount of problems libraries above try to solve in their own ways. If we need global styles, we can still get them. We still might want to have some around for some higher level styling after all. This time we&#39;re being explicit about it.</p>
 <p>To give you a better idea, consider the example below:</p>
 <p><strong>style.css</strong></p>
-<pre><code class="lang-css"><span class="token selector"><span class="token class">.primary</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token string">'green'</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-css"><span class="token selector" ><span class="token class" >.primary</span> </span><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >background</span><span class="token punctuation" >:</span> <span class="token string" >'green'</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token selector"><span class="token class">.warning</span> </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token string">'yellow'</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token selector" ><span class="token class" >.warning</span> </span><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >background</span><span class="token punctuation" >:</span> <span class="token string" >'yellow'</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token selector"><span class="token class">.button</span> </span><span class="token punctuation">{</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">1</span>em<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token selector" ><span class="token class" >.button</span> </span><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >padding</span><span class="token punctuation" >:</span> <span class="token number" >1</span>em<span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token selector"><span class="token class">.primaryButton</span> </span><span class="token punctuation">{</span>
-  <span class="token property">composes</span><span class="token punctuation">:</span> primary button<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token selector" ><span class="token class" >.primaryButton</span> </span><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >composes</span><span class="token punctuation" >:</span> primary button<span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector"><span class="token class">.primaryButton</span> </span><span class="token punctuation">{</span>
-    <span class="token property">composes</span><span class="token punctuation">:</span> primary button<span class="token punctuation">;</span>
+<span class="token atrule" ><span class="token rule" >@media</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token property" >max-width</span><span class="token punctuation" >:</span> <span class="token number" >200</span>px<span class="token punctuation brackets-parentheses" >)</span></span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token selector" ><span class="token class" >.primaryButton</span> </span><span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >composes</span><span class="token punctuation" >:</span> primary button<span class="token punctuation" >;</span>
 
-    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    <span class="token property" >width</span><span class="token punctuation" >:</span> <span class="token number" >100%</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p><strong>button.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> styles <span class="token keyword">from</span> <span class="token string">'./style.css'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> styles <span class="token keyword keyword-from" >from</span> <span class="token string" >'./style.css'</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-<span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>styles<span class="token punctuation">.</span>primaryButton<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token operator">></span>Confirm<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token template-string" ><span class="token string" >`</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>styles<span class="token punctuation" >.</span>primaryButton<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token operator" >&gt;</span>Confirm<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span>
 </code></pre>
 <p>As you can see, this approach provides a balance between what people are familiar with and what React specific libraries do. It would not surprise me a lot if this approach gained popularity even though it&#39;s still in its early days. See <a href="https://css-modules.github.io/webpack-demo/">CSS Modules Webpack Demo</a> for more examples.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can use other processors, such as Sass, in front of CSS Modules, in case you want more functionality.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/gajus/react-css-modules">gajus/react-css-modules</a> makes it even more convenient to use CSS Modules with React. Using it, you don&#39;t need to refer to the <code>styles</code> object anymore, and you are not forced to use camelCase for naming.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Glen Maddern discusses the topic in greater detail in his article named <a href="http://glenmaddern.com/articles/css-modules">CSS Modules - Welcome to the Future</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

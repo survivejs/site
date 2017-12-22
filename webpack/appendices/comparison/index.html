@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -42,64 +42,64 @@
 <p><a href="https://en.wikipedia.org/wiki/Make_%28software%29">Make</a> goes way back, as it was initially released in 1977. Even though it&#39;s an old tool, it has remained relevant. Make allows you to write separate tasks for various purposes. For instance, you could have different tasks for creating a production build, minifying your JavaScript or running tests. You can find the same idea in many other tools.</p>
 <p>Even though Make is mostly used with C projects, it&#39;s not tied to C in any way. James Coglan discusses in detail <a href="https://blog.jcoglan.com/2014/02/05/building-javascript-projects-with-make/">how to use Make with JavaScript</a>. Consider the abbreviated code based on James&#39; post below:</p>
 <p><strong>Makefile</strong></p>
-<pre><code class="lang-makefile">PATH  <span class="token operator">:=</span> node_modules/.bin<span class="token punctuation">:</span><span class="token variable">$</span><span class="token punctuation">(</span>PATH<span class="token punctuation">)</span>
-SHELL <span class="token operator">:=</span> /bin/bash
+<pre><code class="lang-makefile">PATH  <span class="token operator" >:=</span> node_modules/.bin<span class="token punctuation" >:</span><span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>PATH<span class="token punctuation brackets-parentheses" >)</span>
+SHELL <span class="token operator" >:=</span> /bin/bash
 
-source_files <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">wildcard</span> lib/*.coffee<span class="token punctuation">)</span>
-build_files  <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>source_files<span class="token punctuation">:</span>%.coffee<span class="token operator">=</span>build/%.js<span class="token punctuation">)</span>
-app_bundle   <span class="token operator">:=</span> build/app.js
-spec_coffee  <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">wildcard</span> spec/*.coffee<span class="token punctuation">)</span>
-spec_js      <span class="token operator">:=</span> <span class="token variable">$</span><span class="token punctuation">(</span>spec_coffee<span class="token punctuation">:</span>%.coffee<span class="token operator">=</span>build/%.js<span class="token punctuation">)</span>
+source_files <span class="token operator" >:=</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-wildcard" >wildcard</span> lib/*.coffee<span class="token punctuation brackets-parentheses" >)</span>
+build_files  <span class="token operator" >:=</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>source_files<span class="token punctuation" >:</span>%.coffee<span class="token operator" >=</span>build/%.js<span class="token punctuation brackets-parentheses" >)</span>
+app_bundle   <span class="token operator" >:=</span> build/app.js
+spec_coffee  <span class="token operator" >:=</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-wildcard" >wildcard</span> spec/*.coffee<span class="token punctuation brackets-parentheses" >)</span>
+spec_js      <span class="token operator" >:=</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>spec_coffee<span class="token punctuation" >:</span>%.coffee<span class="token operator" >=</span>build/%.js<span class="token punctuation brackets-parentheses" >)</span>
 
-libraries    <span class="token operator">:=</span> vendor/jquery.js
+libraries    <span class="token operator" >:=</span> vendor/jquery.js
 
-<span class="token builtin">.PHONY</span><span class="token punctuation">:</span> all clean test
+<span class="token builtin" >.PHONY</span><span class="token punctuation" >:</span> all clean test
 
-<span class="token symbol">all</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>app_bundle<span class="token punctuation">)</span>
+<span class="token symbol" >all</span><span class="token punctuation" >:</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>app_bundle<span class="token punctuation brackets-parentheses" >)</span>
 
-<span class="token symbol">build/%.js</span><span class="token punctuation">:</span> %.coffee
-    coffee -co <span class="token variable">$</span><span class="token punctuation">(</span><span class="token keyword">dir</span> <span class="token variable">$@</span><span class="token punctuation">)</span> <span class="token variable">$&lt;</span>
+<span class="token symbol" >build/%.js</span><span class="token punctuation" >:</span> %.coffee
+    coffee -co <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-dir" >dir</span> <span class="token variable" >$@</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token variable" >$&lt;</span>
 
-<span class="token symbol"><span class="token variable">$</span>(app_bundle)</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>libraries<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>build_files<span class="token punctuation">)</span>
-    uglifyjs -cmo <span class="token variable">$@</span> <span class="token variable">$^</span>
+<span class="token symbol" ><span class="token variable" >$</span>(app_bundle)</span><span class="token punctuation" >:</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>libraries<span class="token punctuation brackets-parentheses" >)</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>build_files<span class="token punctuation brackets-parentheses" >)</span>
+    uglifyjs -cmo <span class="token variable" >$@</span> <span class="token variable" >$^</span>
 
-<span class="token symbol">test</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>app_bundle<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>spec_js<span class="token punctuation">)</span>
+<span class="token symbol" >test</span><span class="token punctuation" >:</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>app_bundle<span class="token punctuation brackets-parentheses" >)</span> <span class="token variable" >$</span><span class="token punctuation brackets-parentheses" >(</span>spec_js<span class="token punctuation brackets-parentheses" >)</span>
     phantomjs phantom.js
 
-<span class="token symbol">clean</span><span class="token punctuation">:</span>
+<span class="token symbol" >clean</span><span class="token punctuation" >:</span>
     rm -rf build
 </code></pre>
 <p>With Make, you model your tasks using Make-specific syntax and terminal commands making it possible to integrate with webpack.</p>
 <h2 class="header"><a class="header-anchor" href="#requirejs" id="requirejs"></a><span class="text">RequireJS</span><a class="header-anchor-select" href="#requirejs">#</a></h2>
 <p><a href="http://requirejs.org/">RequireJS</a> was perhaps the first script loader that became genuinely popular. It gave the first proper look at what modular JavaScript on the web could be. Its greatest attraction was AMD. It introduced a <code>define</code> wrapper:</p>
-<pre><code class="lang-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"./MyModule.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>MyModule<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// Export at module root</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >define</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token string" >"./MyModule.js"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token keyword keyword-function" >function</span> <span class="token punctuation brackets-parentheses" >(</span>MyModule<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// Export at module root</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// or</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"./MyModule.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>MyModule<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    hello<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// Export as a module function</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// or</span>
+<span class="token function" >define</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token string" >"./MyModule.js"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token keyword keyword-function" >function</span> <span class="token punctuation brackets-parentheses" >(</span>MyModule<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-braces" >{</span>
+    hello<span class="token punctuation" >:</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Export as a module function</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Incidentally, it&#39;s possible to use <code>require</code> within the wrapper:</p>
-<pre><code class="lang-javascript"><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"require"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>require<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> MyModule <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./MyModule.js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >define</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token string" >"require"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token keyword keyword-function" >function</span> <span class="token punctuation brackets-parentheses" >(</span>require<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-var" >var</span> MyModule <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./MyModule.js"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>This latter approach eliminates a part of the clutter. You still end up with code that feels redundant. ES2015 and other standards solve this.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Jamund Ferguson has written an excellent blog series on how to port from <a href="https://gist.github.com/xjamundx/b1c800e9282e16a6a18e">RequireJS to webpack</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#npm-scripts-as-a-task-runner" id="npm-scripts-as-a-task-runner"></a><span class="text">npm <code>scripts</code> as a Task Runner</span><a class="header-anchor-select" href="#npm-scripts-as-a-task-runner">#</a></h2>
 <p>Even though npm CLI wasn&#39;t primarily designed to be used as a task runner, it works as such thanks to <em>package.json</em> <code>scripts</code> field. Consider the example below:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token property">"stats"</span><span class="token operator">:</span> <span class="token string">"webpack --env production --json > stats.json"</span><span class="token punctuation">,</span>
-  <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"webpack-dev-server --env development"</span><span class="token punctuation">,</span>
-  <span class="token property">"deploy"</span><span class="token operator">:</span> <span class="token string">"gh-pages -d build"</span><span class="token punctuation">,</span>
-  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack --env production"</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"stats"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env production --json &gt; stats.json"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server --env development"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"deploy"</span><span class="token operator" >:</span> <span class="token string" >"gh-pages -d build"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env production"</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>These scripts can be listed using <code>npm run</code> and then executed using <code>npm run &lt;script&gt;</code>. You can also namespace your scripts using a convention like <code>test:watch</code>. The problem with this approach is that it takes care to keep it cross-platform.</p>
 <p>Instead of <code>rm -rf</code>, you likely want to use utilities such as <a href="https://www.npmjs.com/package/rimraf">rimraf</a> and so on. It&#39;s possible to invoke other tasks runners here to hide the fact that you are using one. This way you can refactor your tooling while keeping the interface as the same.</p>
@@ -108,27 +108,27 @@ libraries    <span class="token operator">:=</span> vendor/jquery.js
 <p><a href="http://gruntjs.com/">Grunt</a> was the first popular task runner for frontend developers. Its plugin architecture contributed towards its popularity. Plugins are often complex by themselves. As a result, when configuration grows, it can become difficult to understand what&#39;s going on.</p>
 <p>Here&#39;s an example from <a href="http://gruntjs.com/sample-gruntfile">Grunt documentation</a>. In this configuration, you define a linting and a watcher tasks. When the <em>watch</em> task gets run, it triggers the <em>lint</em> task as well. This way, as you run Grunt, you get warnings in real-time in the terminal as you edit the source code.</p>
 <p><strong>Gruntfile.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> grunt <span class="token operator">=></span> <span class="token punctuation">{</span>
-  grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    lint<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      files<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Gruntfile.js"</span><span class="token punctuation">,</span> <span class="token string">"src/**/*.js"</span><span class="token punctuation">,</span> <span class="token string">"test/**/*.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        globals<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-          jQuery<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      files<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"&lt;%= lint.files %>"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      tasks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"lint"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> grunt <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  grunt<span class="token punctuation" >.</span><span class="token function" >initConfig</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+    lint<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      files<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"Gruntfile.js"</span><span class="token punctuation" >,</span> "src<span class="token comment" spellcheck="true" >/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span>js<span class="token string" >", "</span>test<span class="token comment" spellcheck="true" >/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span>js"<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        globals<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+          jQuery<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    watch<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      files<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"&lt;%= lint.files %&gt;"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      tasks<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"lint"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-  grunt<span class="token punctuation">.</span><span class="token function">loadNpmTasks</span><span class="token punctuation">(</span><span class="token string">"grunt-contrib-jshint"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  grunt<span class="token punctuation">.</span><span class="token function">loadNpmTasks</span><span class="token punctuation">(</span><span class="token string">"grunt-contrib-watch"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation" >.</span><span class="token function" >loadNpmTasks</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"grunt-contrib-jshint"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  grunt<span class="token punctuation" >.</span><span class="token function" >loadNpmTasks</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"grunt-contrib-watch"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-  grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">"default"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"lint"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation" >.</span><span class="token function" >registerTask</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"default"</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"lint"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>In practice, you would have many small tasks for specific purposes, such as building the project. An important part of the power of Grunt is that it hides a lot of the wiring from you.</p>
 <p>Taken too far, this can get problematic. It can become hard to understand what&#39;s going on under the hood. That&#39;s the architectural lesson to take from Grunt.</p>
@@ -137,38 +137,38 @@ libraries    <span class="token operator">:=</span> vendor/jquery.js
 <p><a href="http://gulpjs.com/">Gulp</a> takes a different approach. Instead of relying on configuration per plugin, you deal with actual code. If you are familiar with Unix and piping, you&#39;ll like Gulp. You have <em>sources</em> to match files, <em>filters</em> to operate on these sources, and <em>sinks</em> to pipe the build results.</p>
 <p>Here&#39;s an abbreviated sample <em>Gulpfile</em> adapted from the project&#39;s README to give you a better idea of the approach:</p>
 <p><strong>Gulpfile.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> gulp <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gulp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gulp-coffee"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> concat <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gulp-concat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> uglify <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gulp-uglify"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> sourcemaps <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gulp-sourcemaps"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> del <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"del"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> gulp <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"gulp"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> coffee <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"gulp-coffee"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> concat <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"gulp-concat"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> uglify <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"gulp-uglify"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> sourcemaps <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"gulp-sourcemaps"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> del <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"del"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> paths <span class="token operator">=</span> <span class="token punctuation">{</span>
-  scripts<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"client/js/**/*.coffee"</span><span class="token punctuation">,</span> <span class="token string">"!client/external/**/*.coffee"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> paths <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  scripts<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>"client<span class="token operator" >/</span>js<span class="token comment" spellcheck="true" >/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span>coffee<span class="token string" >", "</span><span class="token operator" >!</span>client<span class="token operator" >/</span>external<span class="token comment" spellcheck="true" >/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span>coffee"<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Not all tasks need to use streams.</span>
-<span class="token comment">// A gulpfile is another node program</span>
-<span class="token comment">// and you can use all packages available on npm.</span>
-gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">"clean"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"build"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">"scripts"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"clean"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
-  <span class="token comment">// Minify and copy all JavaScript (except vendor scripts)</span>
-  <span class="token comment">// with sourcemaps all the way down.</span>
+<span class="token comment" spellcheck="true" >// Not all tasks need to use streams.</span>
+<span class="token comment" spellcheck="true" >// A gulpfile is another node program</span>
+<span class="token comment" spellcheck="true" >// and you can use all packages available on npm.</span>
+gulp<span class="token punctuation" >.</span><span class="token function" >task</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"clean"</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token function" >del</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token string" >"build"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+gulp<span class="token punctuation" >.</span><span class="token function" >task</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"scripts"</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"clean"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span>
+  <span class="token comment" spellcheck="true" >// Minify and copy all JavaScript (except vendor scripts)</span>
+  <span class="token comment" spellcheck="true" >// with sourcemaps all the way down.</span>
   gulp
-    <span class="token punctuation">.</span><span class="token function">src</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>scripts<span class="token punctuation">)</span>
-    <span class="token comment">// Pipeline within pipeline</span>
-    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>sourcemaps<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">uglify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">"all.min.js"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>sourcemaps<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>gulp<span class="token punctuation">.</span><span class="token function">dest</span><span class="token punctuation">(</span><span class="token string">"build/js"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">"watch"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> gulp<span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span>paths<span class="token punctuation">.</span>scripts<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"scripts"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation" >.</span><span class="token function" >src</span><span class="token punctuation brackets-parentheses" >(</span>paths<span class="token punctuation" >.</span>scripts<span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token comment" spellcheck="true" >// Pipeline within pipeline</span>
+    <span class="token punctuation" >.</span><span class="token function" >pipe</span><span class="token punctuation brackets-parentheses" >(</span>sourcemaps<span class="token punctuation" >.</span><span class="token function" >init</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >pipe</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >coffee</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >pipe</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >uglify</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >pipe</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >concat</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"all.min.js"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >pipe</span><span class="token punctuation brackets-parentheses" >(</span>sourcemaps<span class="token punctuation" >.</span><span class="token function" >write</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >pipe</span><span class="token punctuation brackets-parentheses" >(</span>gulp<span class="token punctuation" >.</span><span class="token function" >dest</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"build/js"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+gulp<span class="token punctuation" >.</span><span class="token function" >task</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"watch"</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> gulp<span class="token punctuation" >.</span><span class="token function" >watch</span><span class="token punctuation brackets-parentheses" >(</span>paths<span class="token punctuation" >.</span>scripts<span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"scripts"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// The default task (called when you run `gulp` from CLI).</span>
-gulp<span class="token punctuation">.</span><span class="token function">task</span><span class="token punctuation">(</span><span class="token string">"default"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"watch"</span><span class="token punctuation">,</span> <span class="token string">"scripts"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// The default task (called when you run `gulp` from CLI).</span>
+gulp<span class="token punctuation" >.</span><span class="token function" >task</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"default"</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"watch"</span><span class="token punctuation" >,</span> <span class="token string" >"scripts"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Given the configuration is code, you can always hack it if you run into troubles. You can wrap existing Node packages as Gulp plugins, and so on. Compared to Grunt, you have a clearer idea of what&#39;s going on. You still end up writing a lot of boilerplate for casual tasks, though. That is where newer approaches come in.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/webpack-stream">webpack-stream</a> allows you to use webpack in a Gulp environment.</blockquote><h2 class="header"><a class="header-anchor" href="#browserify" id="browserify"></a><span class="text">Browserify</span><a class="header-anchor-select" href="#browserify">#</a></h2>
@@ -182,27 +182,27 @@ gulp<span class="token punctuation">.</span><span class="token function">task</s
 <h2 class="header"><a class="header-anchor" href="#brunch" id="brunch"></a><span class="text">Brunch</span><a class="header-anchor-select" href="#brunch">#</a></h2>
 <p><img src="/fad9d5a215f0183f22d0667c00df4720.png" alt="Brunch" class="" width="" height="" /></p>
 <p>Compared to Gulp, <a href="http://brunch.io/">Brunch</a> operates on a higher level of abstraction. It uses a declarative approach similar to webpack&#39;s. To give you an example, consider the following configuration adapted from the Brunch site:</p>
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  files<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    javascripts<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      joinTo<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">"vendor.js"</span><span class="token punctuation">:</span> <span class="token regex">/^(?!app)/</span><span class="token punctuation">,</span>
-        <span class="token string">"app.js"</span><span class="token punctuation">:</span> <span class="token regex">/^app/</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    stylesheets<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      joinTo<span class="token punctuation">:</span> <span class="token string">"app.css"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    babel<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      presets<span class="token punctuation">:</span> <span class="token punctuation">[</span>react<span class="token string">", "</span>env"<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    postcss<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      processors<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"autoprefixer"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  files<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    javascripts<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      joinTo<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        <span class="token string" >"vendor.js"</span><span class="token punctuation" >:</span> <span class="token regex" >/^(?!app)/</span><span class="token punctuation" >,</span>
+        <span class="token string" >"app.js"</span><span class="token punctuation" >:</span> <span class="token regex" >/^app/</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    stylesheets<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      joinTo<span class="token punctuation" >:</span> <span class="token string" >"app.css"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    babel<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      presets<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>react<span class="token string" >", "</span>env"<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    postcss<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      processors<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"autoprefixer"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Brunch comes with commands like <code>brunch new</code>, <code>brunch watch --server</code>, and <code>brunch build --production</code>. It contains a lot out of the box and can be extended using plugins.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>There is an experimental <a href="https://www.npmjs.com/package/hmr-brunch">Hot Module Reloading runtime</a> for Brunch.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack" id="webpack"></a><span class="text">Webpack</span><a class="header-anchor-select" href="#webpack">#</a></h2>

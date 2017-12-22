@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -43,34 +43,34 @@
 <h3 class="header"><a class="header-anchor" href="#enabling-source-maps-in-webpack" id="enabling-source-maps-in-webpack"></a><span class="text">Enabling Source Maps in Webpack</span><a class="header-anchor-select" href="#enabling-source-maps-in-webpack">#</a></h3>
 <p>To get started, you can wrap the core idea within a configuration part. You can convert this to use the plugins later if you want:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">generateSourceMaps</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  devtool<span class="token punctuation">:</span> type<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span><span class="token function-variable function" >generateSourceMaps</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> type <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  devtool<span class="token punctuation" >:</span> type<span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Webpack supports a wide variety of source map types. These vary based on quality and build speed. For now, you can enable <code>eval-source-map</code> for development and <code>source-map</code> for production. This way you get good quality while trading off performance, especially during development.</p>
 <p>Set these up as follows:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">generateSourceMaps</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">"source-map"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >generateSourceMaps</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> type<span class="token punctuation" >:</span> <span class="token string" >"source-map"</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> developmentConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+<span class="token keyword keyword-const" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
 <div class="leanpub-insert">
-  <span class="token punctuation">{</span>
-    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      devtoolModuleFilenameTemplate<span class="token punctuation">:</span>
-        <span class="token string">"webpack:///[absolute-resource-path]"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  parts<span class="token punctuation">.</span><span class="token function">generateSourceMaps</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    type<span class="token punctuation">:</span> <span class="token string">"cheap-module-eval-source-map"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    output<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      devtoolModuleFilenameTemplate<span class="token punctuation" >:</span>
+        "webpack<span class="token punctuation" >:</span><span class="token operator" >/</span><span class="token comment" spellcheck="true" >//[absolute-resource-path]",</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >generateSourceMaps</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+    type<span class="token punctuation" >:</span> <span class="token string" >"cheap-module-eval-source-map"</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p><code>eval-source-map</code> builds slowly initially, but it provides fast rebuild speed. More rapid development specific options, such as <code>cheap-module-eval-source-map</code> and <code>eval</code>, produce lower quality source maps. All <code>eval</code> options emit source maps as a part of your JavaScript code.</p>
 <p><code>source-map</code> is the slowest and highest quality option of them all, but that&#39;s fine for a production build.</p>
@@ -79,22 +79,22 @@
 Version: webpack 3.8.1
 Time: 2006ms
         Asset       Size  Chunks                    Chunk Names
-  <span class="token punctuation">..</span>.font.eot     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.font.woff2    77.2 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
- <span class="token punctuation">..</span>.font.woff      98 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-  <span class="token punctuation">..</span>.font.svg     444 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  <span class="token punctuation">[</span>big<span class="token punctuation">]</span>
-  <span class="token punctuation">..</span>.font.ttf     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-       app.js    4.46 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
-      app.css    3.89 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
+  <span class="token punctuation" >..</span>.font.eot     166 kB          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.font.woff2    77.2 kB          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+ <span class="token punctuation" >..</span>.font.woff      98 kB          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation" >..</span>.font.svg     444 kB          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  <span class="token punctuation brackets-square" >[</span>big<span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation" >..</span>.font.ttf     166 kB          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+       app.js    4.46 kB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>         app
+      app.css    3.89 kB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>         app
 <div class="leanpub-insert">
-   app.js.map    4.15 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
-  app.css.map   84 bytes       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
+   app.js.map    4.15 kB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>         app
+  app.css.map   84 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>         app
 </div>
-   index.html  218 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 160 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>3<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>4<span class="token punctuation">]</span> ./app/component.js 275 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
+   index.html  218 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>0<span class="token punctuation brackets-square" >]</span> ./app/index.js 160 bytes <span class="token punctuation brackets-braces" >{</span>0<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>3<span class="token punctuation brackets-square" >]</span> ./app/main.css 41 bytes <span class="token punctuation brackets-braces" >{</span>0<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>4<span class="token punctuation brackets-square" >]</span> ./app/component.js 275 bytes <span class="token punctuation brackets-braces" >{</span>0<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.
 </code></pre>
 <p>Take a good look at those <em>.map</em> files. That&#39;s where the mapping between the generated and the original source happens. During development, it writes the mapping information in the bundle itself.</p>
 <h3 class="header"><a class="header-anchor" href="#enabling-source-maps-in-browsers" id="enabling-source-maps-in-browsers"></a><span class="text">Enabling Source Maps in Browsers</span><a class="header-anchor-select" href="#enabling-source-maps-in-browsers">#</a></h3>
@@ -117,82 +117,82 @@ Time: 2006ms
 <p>To get a better idea of the available options, they are listed below while providing a small example for each. The source code contains only a single <code>console.log(&#39;Hello world&#39;)</code> and <code>webpack.NamedModulesPlugin</code> is used to keep the output easier to understand. In practice, you would see a lot more code to handle the mapping.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><code>webpack.NamedModulesPlugin</code> replaces number based module IDs with paths. It&#39;s discussed in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</blockquote><h3 class="header"><a class="header-anchor" href="#devtool-eval-" id="devtool-eval-"></a><span class="text"><code>devtool: &quot;eval&quot;</code></span><a class="header-anchor-select" href="#devtool-eval-">#</a></h3>
 <p><code>eval</code> generates code in which each module is wrapped within an <code>eval</code> function:</p>
-<pre><code class="lang-javascript"><span class="token function">webpackJsonp</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  <span class="token string">"./app/index.js"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> exports<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">eval</span><span class="token punctuation">(</span>"console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n<span class="token comment">//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1\n\n//# sourceURL=webpack:///./app/index.js?")</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"./app/index.js"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >webpackJsonp</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token number" >1</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token string" >"./app/index.js"</span><span class="token punctuation" >:</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span>module<span class="token punctuation" >,</span> exports<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token function" >eval</span><span class="token punctuation brackets-parentheses" >(</span>"console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Hello world'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>\n\n<span class="token comment" spellcheck="true" >//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1\n\n//# sourceURL=webpack:///./app/index.js?")</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"./app/index.js"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#devtool-cheap-eval-source-map-" id="devtool-cheap-eval-source-map-"></a><span class="text"><code>devtool: &quot;cheap-eval-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-cheap-eval-source-map-">#</a></h3>
 <p><code>cheap-eval-source-map</code> goes a step further and it includes base64 encoded version of the code as a data url. The result includes only line data while losing column mappings.</p>
-<pre><code class="lang-javascript"><span class="token function">webpackJsonp</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  <span class="token string">"./app/index.js"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> exports<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">eval</span><span class="token punctuation">(</span>"console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hcHAvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvaW5kZXguanM/MGUwNCJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygnSGVsbG8gd29ybGQnKTtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL2FwcC9pbmRleC5qc1xuLy8gbW9kdWxlIGlkID0gLi9hcHAvaW5kZXguanNcbi8vIG1vZHVsZSBjaHVua3MgPSAxIl0sIm1hcHBpbmdzIjoiQUFBQSIsInNvdXJjZVJvb3QiOiIifQ==")</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"./app/index.js"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >webpackJsonp</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token number" >1</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token string" >"./app/index.js"</span><span class="token punctuation" >:</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span>module<span class="token punctuation" >,</span> exports<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token function" >eval</span><span class="token punctuation brackets-parentheses" >(</span>"console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Hello world'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span><span class="token comment" spellcheck="true" >//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hcHAvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvaW5kZXguanM/MGUwNCJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygnSGVsbG8gd29ybGQnKTtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyAuL2FwcC9pbmRleC5qc1xuLy8gbW9kdWxlIGlkID0gLi9hcHAvaW5kZXguanNcbi8vIG1vZHVsZSBjaHVua3MgPSAxIl0sIm1hcHBpbmdzIjoiQUFBQSIsInNvdXJjZVJvb3QiOiIifQ==")</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"./app/index.js"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you decode that base64 string, you get output containing the mapping:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"file"</span><span class="token operator">:</span> <span class="token string">"./app/index.js.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token string">"AAAA"</span><span class="token punctuation">,</span>
-  <span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpack:///./app/index.js?0e04"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourcesContent"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    "console.<span class="token function">log<span class="token punctuation">(</span></span>'Hello world'<span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n\n//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = <span class="token number">1</span>"
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"file"</span><span class="token operator" >:</span> <span class="token string" >"./app/index.js.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"mappings"</span><span class="token operator" >:</span> <span class="token string" >"AAAA"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourceRoot"</span><span class="token operator" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sources"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpack:///./app/index.js?0e04"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourcesContent"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"console.log('Hello world');\n\n\n//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token number" >3</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#devtool-cheap-module-eval-source-map-" id="devtool-cheap-module-eval-source-map-"></a><span class="text"><code>devtool: &quot;cheap-module-eval-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-cheap-module-eval-source-map-">#</a></h3>
 <p><code>cheap-module-eval-source-map</code> is the same idea, except with higher quality and lower performance:</p>
-<pre><code class="lang-javascript"><span class="token function">webpackJsonp</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  <span class="token string">"./app/index.js"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> exports<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">eval</span><span class="token punctuation">(</span>"console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hcHAvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwL2luZGV4LmpzPzIwMTgiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc29sZS5sb2coJ0hlbGxvIHdvcmxkJyk7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIGFwcC9pbmRleC5qcyJdLCJtYXBwaW5ncyI6IkFBQUEiLCJzb3VyY2VSb290IjoiIn0=")</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"./app/index.js"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >webpackJsonp</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token number" >1</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token string" >"./app/index.js"</span><span class="token punctuation" >:</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span>module<span class="token punctuation" >,</span> exports<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token function" >eval</span><span class="token punctuation brackets-parentheses" >(</span>"console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Hello world'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span><span class="token comment" spellcheck="true" >//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hcHAvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwL2luZGV4LmpzPzIwMTgiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc29sZS5sb2coJ0hlbGxvIHdvcmxkJyk7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIGFwcC9pbmRleC5qcyJdLCJtYXBwaW5ncyI6IkFBQUEiLCJzb3VyY2VSb290IjoiIn0=")</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"./app/index.js"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Again, decoding the data reveals more:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"file"</span><span class="token operator">:</span> <span class="token string">"./app/index.js.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token string">"AAAA"</span><span class="token punctuation">,</span>
-  <span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpack:///app/index.js?2018"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourcesContent"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    "console.<span class="token function">log<span class="token punctuation">(</span></span>'Hello world'<span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n\n// WEBPACK FOOTER //\n// app/index.js"
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"file"</span><span class="token operator" >:</span> <span class="token string" >"./app/index.js.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"mappings"</span><span class="token operator" >:</span> <span class="token string" >"AAAA"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourceRoot"</span><span class="token operator" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sources"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpack:///app/index.js?2018"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourcesContent"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"console.log('Hello world');\n\n\n// WEBPACK FOOTER //\n// app/index.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token number" >3</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>In this particular case, the difference between the options is minimal.</p>
 <h3 class="header"><a class="header-anchor" href="#devtool-eval-source-map-" id="devtool-eval-source-map-"></a><span class="text"><code>devtool: &quot;eval-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-eval-source-map-">#</a></h3>
 <p><code>eval-source-map</code> is the highest quality option of the inline options. It&#39;s also the slowest one as it emits the most data:</p>
-<pre><code class="lang-javascript"><span class="token function">webpackJsonp</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  <span class="token string">"./app/index.js"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>module<span class="token punctuation">,</span> exports<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">eval</span><span class="token punctuation">(</span>"console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvaW5kZXguanM/ZGFkYyJdLCJuYW1lcyI6WyJjb25zb2xlIiwibG9nIl0sIm1hcHBpbmdzIjoiQUFBQUEsUUFBUUMsR0FBUixDQUFZLGFBQVoiLCJmaWxlIjoiLi9hcHAvaW5kZXguanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygnSGVsbG8gd29ybGQnKTtcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9hcHAvaW5kZXguanMiXSwic291cmNlUm9vdCI6IiJ9")</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"./app/index.js"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >webpackJsonp</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token number" >1</span><span class="token punctuation" >,</span> <span class="token number" >2</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token string" >"./app/index.js"</span><span class="token punctuation" >:</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span>module<span class="token punctuation" >,</span> exports<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token function" >eval</span><span class="token punctuation brackets-parentheses" >(</span>"console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Hello world'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span><span class="token comment" spellcheck="true" >//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvaW5kZXguanM/ZGFkYyJdLCJuYW1lcyI6WyJjb25zb2xlIiwibG9nIl0sIm1hcHBpbmdzIjoiQUFBQUEsUUFBUUMsR0FBUixDQUFZLGFBQVoiLCJmaWxlIjoiLi9hcHAvaW5kZXguanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygnSGVsbG8gd29ybGQnKTtcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9hcHAvaW5kZXguanMiXSwic291cmNlUm9vdCI6IiJ9")</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"./app/index.js"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>This time around there&#39;s more mapping data available for the browser:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"file"</span><span class="token operator">:</span> <span class="token string">"./app/index.js.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token string">"AAAAA,QAAQC,GAAR,CAAY,aAAZ"</span><span class="token punctuation">,</span>
-  <span class="token property">"names"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"console"</span><span class="token punctuation">,</span>
-    <span class="token string">"log"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpack:///./app/index.js?dadc"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourcesContent"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    "console.<span class="token function">log<span class="token punctuation">(</span></span>'Hello world'<span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n\n// WEBPACK FOOTER //\n// ./app/index.js"
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"file"</span><span class="token operator" >:</span> <span class="token string" >"./app/index.js.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"mappings"</span><span class="token operator" >:</span> <span class="token string" >"AAAAA,QAAQC,GAAR,CAAY,aAAZ"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"names"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"console"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"log"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourceRoot"</span><span class="token operator" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sources"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpack:///./app/index.js?dadc"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourcesContent"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"console.log('Hello world');\n\n\n// WEBPACK FOOTER //\n// ./app/index.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token number" >3</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#separate-source-map-types" id="separate-source-map-types"></a><span class="text">Separate Source Map Types</span><a class="header-anchor-select" href="#separate-source-map-types">#</a></h2>
 <p>Webpack can also generate production usage friendly source maps. These end up in separate files ending with <code>.map</code> extension and are loaded by the browser only when required. This way your users get good performance while it&#39;s easier for you to debug the application.</p>
@@ -200,75 +200,75 @@ Time: 2006ms
 <h3 class="header"><a class="header-anchor" href="#devtool-cheap-source-map-" id="devtool-cheap-source-map-"></a><span class="text"><code>devtool: &quot;cheap-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-cheap-source-map-">#</a></h3>
 <p><code>cheap-source-map</code> is similar to the cheap options above. The result is going to miss column mappings. Also, source maps from loaders, such as <em>css-loader</em>, are not going to be used.</p>
 <p>Examining the <code>.map</code> file reveals the following output in this case:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"file"</span><span class="token operator">:</span> <span class="token string">"app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token string">"AAAA"</span><span class="token punctuation">,</span>
-  <span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpack:///app.9aff3b1eced1f089ef18.js"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourcesContent"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpackJsonp([1,2],{\"</span>./app/index.js\"<span class="token operator">:</span><span class="token function">function<span class="token punctuation">(</span></span>o<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">{</span>console.<span class="token function">log<span class="token punctuation">(</span></span>\<span class="token string">"Hello world\"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">[</span>\<span class="token string">"./app/index.js\"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n\n// WEBPACK FOOTER //\n// app.9aff3b1eced1f089ef18.js"
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"file"</span><span class="token operator" >:</span> <span class="token string" >"app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"mappings"</span><span class="token operator" >:</span> <span class="token string" >"AAAA"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourceRoot"</span><span class="token operator" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sources"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpack:///app.9aff3b1eced1f089ef18.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourcesContent"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpackJsonp([1,2],{\"./app/index.js\":function(o,n){console.log(\"Hello world\")}},[\"./app/index.js\"]);\n\n\n// WEBPACK FOOTER //\n// app.9aff3b1eced1f089ef18.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token number" >3</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>The original source contains <code>//# sourceMappingURL=app.9a...18.js.map</code> kind of comment at its end to map to this file.</p>
 <h3 class="header"><a class="header-anchor" href="#devtool-cheap-module-source-map-" id="devtool-cheap-module-source-map-"></a><span class="text"><code>devtool: &quot;cheap-module-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-cheap-module-source-map-">#</a></h3>
 <p><code>cheap-module-source-map</code> is the same as previous except source maps from loaders are simplified to a single mapping per line. It yields the following output in this case:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"file"</span><span class="token operator">:</span> <span class="token string">"app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token string">"AAAA"</span><span class="token punctuation">,</span>
-  <span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpack:///app.9aff3b1eced1f089ef18.js"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"file"</span><span class="token operator" >:</span> <span class="token string" >"app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"mappings"</span><span class="token operator" >:</span> <span class="token string" >"AAAA"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourceRoot"</span><span class="token operator" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sources"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpack:///app.9aff3b1eced1f089ef18.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token number" >3</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i><code>cheap-module-source-map</code> is <a href="https://github.com/webpack/webpack/issues/4176">currently broken if minification is used</a> and this is a good reason to avoid the option for now.</blockquote><h3 class="header"><a class="header-anchor" href="#devtool-hidden-source-map-" id="devtool-hidden-source-map-"></a><span class="text"><code>devtool: &quot;hidden-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-hidden-source-map-">#</a></h3>
 <p><code>hidden-source-map</code> is the same as <code>source-map</code> except it doesn&#39;t write references to the source maps to the source files. If you don&#39;t want to expose source maps to development tools directly while you want proper stack traces, this is handy.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://webpack.js.org/configuration/devtool/#devtool">The official documentation</a> contains more information about <code>devtool</code> options.</blockquote><h3 class="header"><a class="header-anchor" href="#devtool-source-map-" id="devtool-source-map-"></a><span class="text"><code>devtool: &quot;source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-source-map-">#</a></h3>
 <p><code>source-map</code> provides the best quality with the complete result, but it&#39;s also the slowest option. The output reflects this:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"file"</span><span class="token operator">:</span> <span class="token string">"app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token string">"AAAAA,cAAc,EAAE,IAEVC,iBACA,SAAUC,EAAQC,GCHxBC,QAAQC,IAAI,kBDST"</span><span class="token punctuation">,</span>
-  <span class="token property">"names"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpackJsonp"</span><span class="token punctuation">,</span>
-    <span class="token string">"./app/index.js"</span><span class="token punctuation">,</span>
-    <span class="token string">"module"</span><span class="token punctuation">,</span>
-    <span class="token string">"exports"</span><span class="token punctuation">,</span>
-    <span class="token string">"console"</span><span class="token punctuation">,</span>
-    <span class="token string">"log"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourceRoot"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpack:///app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation">,</span>
-    <span class="token string">"webpack:///./app/index.js"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"sourcesContent"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"webpackJsonp([1,2],{\n\n/***/ \"</span>./app/index.js\"<span class="token operator">:</span>\n/***/ (<span class="token function">function<span class="token punctuation">(</span></span>module<span class="token punctuation">,</span> exports<span class="token punctuation">)</span> <span class="token punctuation">{</span>\n\nconsole.<span class="token function">log<span class="token punctuation">(</span></span>'Hello world'<span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n/***/ <span class="token punctuation">}</span><span class="token punctuation">)</span>\n\n<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">[</span>\<span class="token string">"./app/index.js\"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n\n// WEBPACK FOOTER //\n// app.9aff3b1eced1f089ef18.js<span class="token string">",
-    "</span>console.<span class="token function">log<span class="token punctuation">(</span></span>'Hello world'<span class="token punctuation">)</span><span class="token punctuation">;</span>\n\n\n// WEBPACK FOOTER //\n// ./app/index.js"
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">3</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"file"</span><span class="token operator" >:</span> <span class="token string" >"app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"mappings"</span><span class="token operator" >:</span> <span class="token string" >"AAAAA,cAAc,EAAE,IAEVC,iBACA,SAAUC,EAAQC,GCHxBC,QAAQC,IAAI,kBDST"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"names"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpackJsonp"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"./app/index.js"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"module"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"exports"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"console"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"log"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourceRoot"</span><span class="token operator" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sources"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpack:///app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"webpack:///./app/index.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"sourcesContent"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"webpackJsonp([1,2],{\n\n/***/ \"./app/index.js\":\n/***/ (function(module, exports) {\n\nconsole.log('Hello world');\n\n/***/ })\n\n},[\"./app/index.js\"]);\n\n\n// WEBPACK FOOTER //\n// app.9aff3b1eced1f089ef18.js"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"console.log('Hello world');\n\n\n// WEBPACK FOOTER //\n// ./app/index.js"</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token number" >3</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#other-source-map-options" id="other-source-map-options"></a><span class="text">Other Source Map Options</span><a class="header-anchor-select" href="#other-source-map-options">#</a></h2>
 <p>There are a couple of other options that affect source map generation:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// Modify the name of the generated source map file.</span>
-    <span class="token comment">// You can use [file], [id], and [hash] replacements here.</span>
-    <span class="token comment">// The default option is enough for most use cases.</span>
-    sourceMapFilename<span class="token punctuation">:</span> <span class="token string">'[file].map'</span><span class="token punctuation">,</span> <span class="token comment">// Default</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  output<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token comment" spellcheck="true" >// Modify the name of the generated source map file.</span>
+    <span class="token comment" spellcheck="true" >// You can use [file], [id], and [hash] replacements here.</span>
+    <span class="token comment" spellcheck="true" >// The default option is enough for most use cases.</span>
+    sourceMapFilename<span class="token punctuation" >:</span> <span class="token string" >'[file].map'</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Default</span>
 
-    <span class="token comment">// This is the source map filename template. It's default</span>
-    <span class="token comment">// format depends on the devtool option used. You don't</span>
-    <span class="token comment">// need to modify this often.</span>
-    devtoolModuleFilenameTemplate<span class="token punctuation">:</span>
-      <span class="token string">'webpack:///[resource-path]?[loaders]'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true" >// This is the source map filename template. It's default</span>
+    <span class="token comment" spellcheck="true" >// format depends on the devtool option used. You don't</span>
+    <span class="token comment" spellcheck="true" >// need to modify this often.</span>
+    devtoolModuleFilenameTemplate<span class="token punctuation" >:</span>
+      'webpack<span class="token punctuation" >:</span><span class="token operator" >/</span><span class="token comment" spellcheck="true" >//[resource-path]?[loaders]'</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="https://webpack.js.org/configuration/output/#output-sourcemapfilename">official documentation</a> digs into <code>output</code> specifics.</blockquote><blockquote class="warning"><i class="icon-attention"></i>If you are using any <code>UglifyJsPlugin</code> and still want source maps, you need to enable <code>sourceMap: true</code> for the plugin. Otherwise, the result isn&#39;t be what you expect because UglifyJS will perform a further transformation on the code, breaking the mapping. The same has to be done with other plugins and loaders performing transformations. <em>css-loader</em> and related loaders are a good example.</blockquote><h2 class="header"><a class="header-anchor" href="#sourcemapdevtoolplugin-and-evalsourcemapdevtoolplugin" id="sourcemapdevtoolplugin-and-evalsourcemapdevtoolplugin"></a><span class="text"><code>SourceMapDevToolPlugin</code> and <code>EvalSourceMapDevToolPlugin</code></span><a class="header-anchor-select" href="#sourcemapdevtoolplugin-and-evalsourcemapdevtoolplugin">#</a></h2>
 <p>If you want more control over source map generation, it&#39;s possible to use the <a href="https://webpack.js.org/plugins/source-map-dev-tool-plugin/">SourceMapDevToolPlugin</a> or <code>EvalSourceMapDevToolPlugin</code> instead. The latter is a more limited alternative, and as stated by its name, it&#39;s handy for generating <code>eval</code> based source maps.</p>

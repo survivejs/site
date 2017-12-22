@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -55,67 +55,67 @@ My name is Gajus Kuizinas. I am a consultant software engineer, living in London
 <p>This is how when you <code>require(&#39;./app&#39;)</code> we are able to render the entire application as if that code was executed in the browser.</p>
 <h2 class="header"><a class="header-anchor" href="#what-does-it-take-to-make-an-existing-webpack-application-isomorphic-using-isomorphic-webpack-" id="what-does-it-take-to-make-an-existing-webpack-application-isomorphic-using-isomorphic-webpack-"></a><span class="text">What does it take to make an existing <em>webpack</em> application isomorphic using <strong>isomorphic-webpack</strong>?</span><a class="header-anchor-select" href="#what-does-it-take-to-make-an-existing-webpack-application-isomorphic-using-isomorphic-webpack-">#</a></h2>
 <p>Suppose that this is your existing webpack application:</p>
-<pre><code class="lang-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> webpack <span class="token keyword">from</span> <span class="token string">'webpack'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> webpackDevMiddleware <span class="token keyword">from</span> <span class="token string">'webpack-dev-middleware'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> webpackConfiguration <span class="token keyword">from</span> <span class="token string">'../webpack.configuration'</span><span class="token punctuation">;</span>
+<pre><code class="lang-js"><span class="token keyword keyword-import" >import</span> express <span class="token keyword keyword-from" >from</span> <span class="token string" >'express'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> webpack <span class="token keyword keyword-from" >from</span> <span class="token string" >'webpack'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> webpackDevMiddleware <span class="token keyword keyword-from" >from</span> <span class="token string" >'webpack-dev-middleware'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> webpackConfiguration <span class="token keyword keyword-from" >from</span> <span class="token string" >'../webpack.configuration'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> compiler <span class="token operator">=</span> <span class="token function">webpack</span><span class="token punctuation">(</span>webpackConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> compiler <span class="token operator" >=</span> <span class="token function" >webpack</span><span class="token punctuation brackets-parentheses" >(</span>webpackConfiguration<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> app <span class="token operator" >=</span> <span class="token function" >express</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">webpackDevMiddleware</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token function" >use</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >webpackDevMiddleware</span><span class="token punctuation brackets-parentheses" >(</span>compiler<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`
-  &lt;!doctype html>
-  &lt;html>
-    &lt;head>&lt;/head>
-    &lt;body>
-      &lt;div id='app'>&lt;/div>
-      &lt;script src='/static/app.js'>&lt;/script>
-    &lt;/body>
-  &lt;/html>
-  `</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token keyword keyword-get" >get</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'/'</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> `
+  <span class="token operator" >&lt;</span><span class="token operator" >!</span>doctype html<span class="token operator" >&gt;</span>
+  <span class="token operator" >&lt;</span>html<span class="token operator" >&gt;</span>
+    <span class="token operator" >&lt;</span>head<span class="token operator" >&gt;</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>head<span class="token operator" >&gt;</span>
+    <span class="token operator" >&lt;</span>body<span class="token operator" >&gt;</span>
+      <span class="token operator" >&lt;</span>div id<span class="token operator" >=</span><span class="token string" >'app'</span><span class="token operator" >&gt;</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >&gt;</span>
+      <span class="token operator" >&lt;</span>script src<span class="token operator" >=</span><span class="token string" >'/static/app.js'</span><span class="token operator" >&gt;</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>script<span class="token operator" >&gt;</span>
+    <span class="token operator" >&lt;</span><span class="token operator" >/</span>body<span class="token operator" >&gt;</span>
+  <span class="token operator" >&lt;</span><span class="token operator" >/</span>html<span class="token operator" >&gt;</span>
+  `<span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token function" >listen</span><span class="token punctuation brackets-parentheses" >(</span><span class="token number" >8000</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>It doesn&#39;t matter whats in the <em>webpack.configuration.js</em>, because the same configuration is used for client- and server-side.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Note: webpack-dev-middleware is not a dependency of isomorphic-webpack. It is used here to deliver the client-side bundle.</blockquote><p>To make the above webpack server render the application server-side, all you need is to create isomorphic-webpack compiler and render the application using <code>react-dom/server</code>:</p>
-<pre><code class="lang-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> webpack <span class="token keyword">from</span> <span class="token string">'webpack'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> webpackDevMiddleware <span class="token keyword">from</span> <span class="token string">'webpack-dev-middleware'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>
+<pre><code class="lang-js"><span class="token keyword keyword-import" >import</span> express <span class="token keyword keyword-from" >from</span> <span class="token string" >'express'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> webpack <span class="token keyword keyword-from" >from</span> <span class="token string" >'webpack'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> webpackDevMiddleware <span class="token keyword keyword-from" >from</span> <span class="token string" >'webpack-dev-middleware'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> <span class="token punctuation brackets-braces" >{</span>
   createIsomorphicWebpack
-<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'isomorphic-webpack'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>
+<span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-from" >from</span> <span class="token string" >'isomorphic-webpack'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> <span class="token punctuation brackets-braces" >{</span>
   renderToString
-<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom/server'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> webpackConfiguration <span class="token keyword">from</span> <span class="token string">'../webpack.configuration'</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-from" >from</span> <span class="token string" >'react-dom/server'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> webpackConfiguration <span class="token keyword keyword-from" >from</span> <span class="token string" >'../webpack.configuration'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> compiler <span class="token operator">=</span> <span class="token function">webpack</span><span class="token punctuation">(</span>webpackConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> compiler <span class="token operator" >=</span> <span class="token function" >webpack</span><span class="token punctuation brackets-parentheses" >(</span>webpackConfiguration<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> app <span class="token operator" >=</span> <span class="token function" >express</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">webpackDevMiddleware</span><span class="token punctuation">(</span>compiler<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token function" >use</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >webpackDevMiddleware</span><span class="token punctuation brackets-parentheses" >(</span>compiler<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token function">createIsomorphicWebpack</span><span class="token punctuation">(</span>webpackConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function" >createIsomorphicWebpack</span><span class="token punctuation brackets-parentheses" >(</span>webpackConfiguration<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`
-  &lt;!doctype html>
-  &lt;html>
-    &lt;head>&lt;/head>
-    &lt;body>
-      &lt;div id='app'>
-        </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">renderToString</span><span class="token punctuation">(</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../app'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
-      &lt;/div>
-      &lt;script src='/static/app.js'>&lt;/script>
-    &lt;/body>
-  &lt;/html>
-  `</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token keyword keyword-get" >get</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'/'</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> `
+  <span class="token operator" >&lt;</span><span class="token operator" >!</span>doctype html<span class="token operator" >&gt;</span>
+  <span class="token operator" >&lt;</span>html<span class="token operator" >&gt;</span>
+    <span class="token operator" >&lt;</span>head<span class="token operator" >&gt;</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>head<span class="token operator" >&gt;</span>
+    <span class="token operator" >&lt;</span>body<span class="token operator" >&gt;</span>
+      <span class="token operator" >&lt;</span>div id<span class="token operator" >=</span><span class="token string" >'app'</span><span class="token operator" >&gt;</span>
+        $<span class="token punctuation brackets-braces" >{</span><span class="token function" >renderToString</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'../app'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >.</span><span class="token keyword keyword-default" >default</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span>
+      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >&gt;</span>
+      <span class="token operator" >&lt;</span>script src<span class="token operator" >=</span><span class="token string" >'/static/app.js'</span><span class="token operator" >&gt;</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>script<span class="token operator" >&gt;</span>
+    <span class="token operator" >&lt;</span><span class="token operator" >/</span>body<span class="token operator" >&gt;</span>
+  <span class="token operator" >&lt;</span><span class="token operator" >/</span>html<span class="token operator" >&gt;</span>
+  `<span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token function" >listen</span><span class="token punctuation brackets-parentheses" >(</span><span class="token number" >8000</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-isomorphic-webpack-differ-from-other-solutions-" id="how-does-isomorphic-webpack-differ-from-other-solutions-"></a><span class="text">How does <em>isomorphic-webpack</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-isomorphic-webpack-differ-from-other-solutions-">#</a></h2>
 <p>I have added a <a href="https://github.com/gajus/isomorphic-webpack#what-makes-isomorphic-webpack-different-from-webpack-isomorphic-tools-universal-webpack-">comparison table</a> to the main repository. The key difference is that <code>isomorphic-webpack</code> does not require a separate configuration for client- and server-side code and all <code>webpack</code> loaders and dependencies work out of the box.</p>

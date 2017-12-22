@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -54,17 +54,17 @@ I&#39;ve been working as a full-stack web developer for about 12 years, mostly o
 <h2 class="header"><a class="header-anchor" href="#how-does-nwb-do-it-" id="how-does-nwb-do-it-"></a><span class="text">How does <em>nwb</em> do it?</span><a class="header-anchor-select" href="#how-does-nwb-do-it-">#</a></h2>
 <p>To provide a workflow around these capabilities, nwb can generate very basic skeleton projects. For example, <code>nwb init react-app &amp;&amp; nwb serve --auto-install</code> will initialise a simple React app in the current directory and start a hot-reloading development server which will automatically install new dependencies as you import them.</p>
 <p>If you need to tweak the default configuration, you can add an <code>nwb.config.js</code> file to your project which I&#39;ve tried to keep as declarative as possible. For example, if you want to tweak configuration of the default set of Webpack loaders, each loader has a unique id associated with it. e.g. to enable <a href="https://github.com/css-modules/css-modules">CSS Modules</a> in the <code>css-loader</code> which is part of the default style pipeline nwb sets up:</p>
-<pre><code class="lang-js"><span class="token punctuation">{</span>
-  webpack<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      css<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-          modules<span class="token punctuation">:</span> <span class="token boolean">true</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-js"><span class="token punctuation brackets-braces" >{</span>
+  webpack<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      css<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        query<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+          modules<span class="token punctuation" >:</span> <span class="token boolean" >true</span>
+        <span class="token punctuation brackets-braces" >}</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#what-makes-nwb-different-compared-to-other-solutions-" id="what-makes-nwb-different-compared-to-other-solutions-"></a><span class="text">What makes <em>nwb</em> different compared to other solutions?</span><a class="header-anchor-select" href="#what-makes-nwb-different-compared-to-other-solutions-">#</a></h2>
 <p>Compared to other solutions, nwb is focused almost entirely on reducing tooling boilerplate for common tasks and making the config it generates tweakable, whereas others get deeper into how you architect your React apps.</p>

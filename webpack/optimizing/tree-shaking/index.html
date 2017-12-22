@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -35,19 +35,19 @@
 <blockquote class="tip"><i class="icon-attention-circled"></i>Tree shaking works to an extent through <a href="https://www.npmjs.com/package/webpack-common-shake">webpack-common-shake</a> against CommonJS module definition. This is important as a majority of npm packages have been authored using the older definition.</blockquote><h2 class="header"><a class="header-anchor" href="#demonstrating-tree-shaking" id="demonstrating-tree-shaking"></a><span class="text">Demonstrating Tree Shaking</span><a class="header-anchor-select" href="#demonstrating-tree-shaking">#</a></h2>
 <p>To shake code, you have to define a module and use only a part of its code. Set one up:</p>
 <p><strong>app/shake.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">shake</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"shake"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token function-variable function">bake</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bake"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >shake</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"shake"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >bake</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bake"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">export</span> <span class="token punctuation">{</span> shake<span class="token punctuation">,</span> bake <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token punctuation brackets-braces" >{</span> shake<span class="token punctuation" >,</span> bake <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>To make sure you use a part of the code, alter the application entry point:</p>
 <p><strong>app/index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> bake <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./shake"</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-import" >import</span> <span class="token punctuation brackets-braces" >{</span> bake <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-from" >from</span> <span class="token string" >"./shake"</span><span class="token punctuation" >;</span>
 
-<span class="token function">bake</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function" >bake</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 </code></pre>
 <p>If you build the project again (<code>npm run build</code>) and examine the build (<em>build/app.js</em>), it should contain <code>console.log(&quot;bake&quot;)</code>, but miss <code>console.log(&quot;shake&quot;)</code>. That&#39;s tree shaking in action.</p>
 <p>To get a better idea of what webpack is using for tree shaking, run it through <code>npm run build -- --display-used-exports</code>. You should see additional output like <code>[no exports used]</code> or <code>[only some exports used: bake]</code> in the terminal.</p>

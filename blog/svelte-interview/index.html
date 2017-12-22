@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -48,19 +48,19 @@ I&#39;m an interactive editor at <a href="https://theguardian.com">theguardian.c
 <p>It&#39;s less magical than it sounds. You write components in HTML files, which can optionally include <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> elements to encapsulate CSS and behaviours. Svelte&#39;s template syntax takes a few minutes to learn.</p>
 <p>These component files are converted into modules by Svelte&#39;s compiler, using the <a href="https://github.com/sveltejs/svelte-cli">command line interface</a> or one of the various <a href="https://github.com/sveltejs/svelte/#svelte">build tool integrations</a>. These modules contain what you might call &#39;vanilla JS&#39; – i.e. low-level DOM manipulation specific to your app – meaning there&#39;s no data-binding or DOM diffing or any of the other tricks frameworks have to use to render your UI.</p>
 <p><strong>HelloWorld.html</strong></p>
-<pre><code class="lang-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hello {{name}}!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<pre><code class="lang-html"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>h1</span><span class="token punctuation" >&gt;</span></span>Hello {{name}}!<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>h1</span><span class="token punctuation" >&gt;</span></span>
 </code></pre>
 <p><strong>app.js</strong></p>
-<pre><code class="lang-js"><span class="token keyword">import</span> HelloWorld <span class="token keyword">from</span> <span class="token string">'./HelloWorld.html'</span><span class="token punctuation">;</span>
+<pre><code class="lang-js"><span class="token keyword keyword-import" >import</span> HelloWorld <span class="token keyword keyword-from" >from</span> <span class="token string" >'./HelloWorld.html'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  target<span class="token punctuation">:</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'world'</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var" >var</span> app <span class="token operator" >=</span> <span class="token keyword keyword-new" >new</span> <span class="token class-name" >HelloWorld</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  target<span class="token punctuation" >:</span> document<span class="token punctuation" >.</span><span class="token function" >querySelector</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'main'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  data<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    name<span class="token punctuation" >:</span> <span class="token string" >'world'</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'SurviveJS'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation" >.</span><span class="token keyword keyword-set" >set</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> name<span class="token punctuation" >:</span> <span class="token string" >'SurviveJS'</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-svelte-differ-from-other-solutions-" id="how-does-svelte-differ-from-other-solutions-"></a><span class="text">How does <em>Svelte</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-svelte-differ-from-other-solutions-">#</a></h2>
 <p>To the end user, the biggest difference is speed. Svelte is lighter and faster than alternative solutions because the browser has a lot less work to do (benchmarks coming soon!). Our <a href="https://svelte-todomvc.surge.sh/">TodoMVC implementation</a> is just 3.6 kB gzipped, which is tiny.</p>

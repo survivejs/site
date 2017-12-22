@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -39,64 +39,64 @@
 <blockquote class="warning"><i class="icon-attention"></i>npm doesn’t support comments in JSON even though we’re using them below. Some tools use extended notations, such as <a href="http://json5.org/">JSON5</a>, that do.</blockquote><h3 class="header"><a class="header-anchor" href="#description-fields" id="description-fields"></a><span class="text">Description Fields</span><a class="header-anchor-select" href="#description-fields">#</a></h3>
 <p>The description fields describe who created the package, what it does, search keywords, and more.</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   /* Name of the project */
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"react-component-boilerplate"</span><span class="token punctuation">,</span>
+  <span class="token property" >"name"</span><span class="token operator" >:</span> <span class="token string" >"react-component-boilerplate"</span><span class="token punctuation" >,</span>
 
   /* Brief description */
-  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Boilerplate for React.js components"</span><span class="token punctuation">,</span>
+  <span class="token property" >"description"</span><span class="token operator" >:</span> <span class="token string" >"Boilerplate for React.js components"</span><span class="token punctuation" >,</span>
 
   /* Who is the author + optional email + optional site */
-  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Juho Vepsäläinen &lt;email goes here> (site goes here)"</span><span class="token punctuation">,</span>
+  <span class="token property" >"author"</span><span class="token operator" >:</span> <span class="token string" >"Juho Vepsäläinen &lt;email goes here&gt; (site goes here)"</span><span class="token punctuation" >,</span>
 
   /* Version of the package */
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property" >"version"</span><span class="token operator" >:</span> <span class="token string" >"0.0.0"</span><span class="token punctuation" >,</span>
 
-  /* Do not allow publishing<span class="token punctuation">,</span> useful for apps or private packages */
-  <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  /* Do not allow publishing<span class="token punctuation" >,</span> useful for apps or private packages */
+  <span class="token property" >"private"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
 
   /* Keywords related to package. */
   /* Fill this well to make the package discoverable. */
-  <span class="token property">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"react"</span><span class="token punctuation">,</span> <span class="token string">"reactjs"</span><span class="token punctuation">,</span> <span class="token string">"boilerplate"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property" >"keywords"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"react"</span><span class="token punctuation" >,</span> <span class="token string" >"reactjs"</span><span class="token punctuation" >,</span> <span class="token string" >"boilerplate"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 
   /* Files to include to npm distribution. */
-  /* Relative patterns like <span class="token string">"./src"</span> fail! */
-  <span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"dist/"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+  /* Relative patterns like <span class="token string" >"./src"</span> fail! */
+  <span class="token property" >"files"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"dist/"</span><span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#scripts" id="scripts"></a><span class="text">Scripts</span><a class="header-anchor-select" href="#scripts">#</a></h3>
 <p>npm can be used as a task runner through <code>npm run</code> command. Running the command shows all available scripts. The scripts are commonly used for different build tasks.</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json">/* `npm run &lt;name>` - `npm run` to get the available commands */
-<span class="token punctuation">{</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    /* You don’t need to write node_modules/.bin/catalog<span class="token punctuation">,</span> npm will */
+<pre><code class="lang-json">/* `npm run &lt;name&gt;` - `npm run` to get the available commands */
+<span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    /* You don’t need to write node_modules/.bin/catalog<span class="token punctuation" >,</span> npm will */
     /* automatically call locally-installed package. */
-    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"catalog start docs"</span><span class="token punctuation">,</span>
+    <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"catalog start docs"</span><span class="token punctuation" >,</span>
 
-    /* Namespacing (namespace<span class="token operator">:</span>task<span class="token punctuation">)</span> is a convention used for */
+    /* Namespacing (namespace<span class="token operator" >:</span>task<span class="token punctuation brackets-parentheses" >)</span> is a convention used for */
     /* grouping. */
-    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest"</span><span class="token punctuation">,</span>
-    "test<span class="token operator">:</span>coverage"<span class="token operator">:</span> <span class="token string">"jest --coverage"</span><span class="token punctuation">,</span>
-    "test<span class="token operator">:</span>watch"<span class="token operator">:</span> <span class="token string">"jest --watch"</span><span class="token punctuation">,</span>
-    "test<span class="token operator">:</span>lint"<span class="token operator">:</span> <span class="token string">"eslint . --ignore-path .gitignore"</span><span class="token punctuation">,</span>
+    <span class="token property" >"test"</span><span class="token operator" >:</span> <span class="token string" >"jest"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"test:coverage"</span><span class="token operator" >:</span> <span class="token string" >"jest --coverage"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"test:watch"</span><span class="token operator" >:</span> <span class="token string" >"jest --watch"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"test:lint"</span><span class="token operator" >:</span> <span class="token string" >"eslint . --ignore-path .gitignore"</span><span class="token punctuation" >,</span>
 
-    <span class="token property">"gh-pages"</span><span class="token operator">:</span> <span class="token string">"catalog build docs"</span><span class="token punctuation">,</span>
-    "gh-pages<span class="token operator">:</span>deploy"<span class="token operator">:</span> <span class="token string">"gh-pages -d docs/build"</span><span class="token punctuation">,</span>
+    <span class="token property" >"gh-pages"</span><span class="token operator" >:</span> <span class="token string" >"catalog build docs"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"gh-pages:deploy"</span><span class="token operator" >:</span> <span class="token string" >"gh-pages -d docs/build"</span><span class="token punctuation" >,</span>
 
-    "dist<span class="token operator">:</span>es6"<span class="token operator">:</span> <span class="token string">"del-cli ./dist-es6 &amp;&amp;
-      cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6"</span><span class="token punctuation">,</span>
-    "dist<span class="token operator">:</span>modules"<span class="token operator">:</span> <span class="token string">"del-cli ./dist-modules &amp;&amp;
-      cross-env BABEL_ENV=modules babel ./src --out-dir ./dist-modules"</span><span class="token punctuation">,</span>
+    <span class="token property" >"dist:es6"</span><span class="token operator" >:</span> "del-cli ./dist-es6 &amp;&amp;
+      cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6"<span class="token punctuation" >,</span>
+    <span class="token property" >"dist:modules"</span><span class="token operator" >:</span> "del-cli ./dist-modules &amp;&amp;
+      cross-env BABEL_ENV=modules babel ./src --out-dir ./dist-modules"<span class="token punctuation" >,</span>
 
-    <span class="token property">"preversion"</span><span class="token operator">:</span> <span class="token string">"npm run test"</span><span class="token punctuation">,</span>
-    <span class="token property">"prepublishOnly"</span><span class="token operator">:</span> <span class="token string">"npm run dist:es6 &amp;&amp; npm run dist:modules"</span><span class="token punctuation">,</span>
-    <span class="token property">"postpublish"</span><span class="token operator">:</span> <span class="token string">"npm run gh-pages &amp;&amp; npm run gh-pages:deploy"</span><span class="token punctuation">,</span>
+    <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm run test"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run dist:es6 &amp;&amp; npm run dist:modules"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"postpublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run gh-pages &amp;&amp; npm run gh-pages:deploy"</span><span class="token punctuation" >,</span>
 
-    /* If your library is installed through Git<span class="token punctuation">,</span> compile it */
-    <span class="token property">"postinstall"</span><span class="token operator">:</span> <span class="token string">"node lib/post_install.js"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    /* If your library is installed through Git<span class="token punctuation" >,</span> compile it */
+    <span class="token property" >"postinstall"</span><span class="token operator" >:</span> <span class="token string" >"node lib/post_install.js"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Certain scripts, such as <code>start</code> and <code>test</code>, have shortcuts in npm. Examples:</p>
 <ul>
@@ -114,73 +114,73 @@
 <li>To ES5 except ECMAScript modules (ESM), and use it as the <code>module</code> entry point. It will be used by bundlers, like webpack. This will allow them to do tree shaking.</li>
 </ul>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   /* Entry point for command line interface. */
   /* Don't set this unless you intend to allow command line usage */
-  <span class="token property">"bin"</span><span class="token operator">:</span> <span class="token string">"bin/index.js"</span><span class="token punctuation">,</span>
+  <span class="token property" >"bin"</span><span class="token operator" >:</span> <span class="token string" >"bin/index.js"</span><span class="token punctuation" >,</span>
 
-  /* Main entry point (defaults to index.js<span class="token punctuation">)</span> */
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"dist/"</span><span class="token punctuation">,</span>
+  /* Main entry point (defaults to index.js<span class="token punctuation brackets-parentheses" >)</span> */
+  <span class="token property" >"main"</span><span class="token operator" >:</span> <span class="token string" >"dist/"</span><span class="token punctuation" >,</span>
 
   /* ESM-based entry point for bundlers. */
-  <span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"dist-modules/"</span>
-<span class="token punctuation">}</span>
+  <span class="token property" >"module"</span><span class="token operator" >:</span> <span class="token string" >"dist-modules/"</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Use <a href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</a> to apply only necessary transformations for Node versions or browsers you support.</blockquote><p>On small projects, it’s enough to have all code in <code>index.js</code> in the root folder. On larger ones, you likely want to start splitting it up and move into a directory. Having all code in a directory will make compilation easier.</p>
 <h3 class="header"><a class="header-anchor" href="#dependencies" id="dependencies"></a><span class="text">Dependencies</span><a class="header-anchor-select" href="#dependencies">#</a></h3>
 <p>An npm package can have different types of dependencies. We discuss them in the <em>Types of Dependencies</em> section.</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   /* Dependencies required to use the package. */
-  <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property" >"dependencies"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
     /* ... */
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 
   /* Dependencies needed to develop/compile the package. */
-  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property" >"devDependencies"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
     /* ... */
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 
   /* Package peer dependencies. The consumer chooses exact versions. */
-  <span class="token property">"peerDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"lodash"</span><span class="token operator">:</span> <span class="token string">">= 3.5.0 &lt; 4.0.0"</span><span class="token punctuation">,</span>
-    <span class="token property">"react"</span><span class="token operator">:</span> <span class="token string">">= 0.14.0 &lt; 17.0.0"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+  <span class="token property" >"peerDependencies"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"lodash"</span><span class="token operator" >:</span> <span class="token string" >"&gt;= 3.5.0 &lt; 4.0.0"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"react"</span><span class="token operator" >:</span> <span class="token string" >"&gt;= 0.14.0 &lt; 17.0.0"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#links" id="links"></a><span class="text">Links</span><a class="header-anchor-select" href="#links">#</a></h3>
 <p>A package should link to its repository, homepage, and issue tracker. The fields are optional but they are good to have as it will make it easier for the users to find these through npm site.</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  /* Links to homepage<span class="token punctuation">,</span> repository<span class="token punctuation">,</span> and issue tracker */
-  <span class="token property">"homepage"</span><span class="token operator">:</span> <span class="token string">"https://&lt;organization/user>.github.io/&lt;project>/"</span><span class="token punctuation">,</span>
-  <span class="token property">"repository"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"git"</span><span class="token punctuation">,</span>
-    <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://github.com/&lt;organization/user>/&lt;project>.git"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"bugs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://github.com/&lt;organization/user>/&lt;project>/issues"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  /* Links to homepage<span class="token punctuation" >,</span> repository<span class="token punctuation" >,</span> and issue tracker */
+  <span class="token property" >"homepage"</span><span class="token operator" >:</span> <span class="token string" >"https://&lt;organization/user&gt;.github.io/&lt;project&gt;/"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"repository"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"type"</span><span class="token operator" >:</span> <span class="token string" >"git"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"url"</span><span class="token operator" >:</span> <span class="token string" >"https://github.com/&lt;organization/user&gt;/&lt;project&gt;.git"</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token property" >"bugs"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"url"</span><span class="token operator" >:</span> <span class="token string" >"https://github.com/&lt;organization/user&gt;/&lt;project&gt;/issues"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>If you use GitHub, you can simplify like this:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   /* GitHub issues URL will be inferred from the repository URL */
-  <span class="token property">"homepage"</span><span class="token operator">:</span> <span class="token string">"https://&lt;organization/user>.github.io/&lt;project>/"</span><span class="token punctuation">,</span>
-  <span class="token property">"repository"</span><span class="token operator">:</span>
-    <span class="token string">"https://github.com/&lt;organization/user>/&lt;project>.git"</span>
-<span class="token punctuation">}</span>
+  <span class="token property" >"homepage"</span><span class="token operator" >:</span> <span class="token string" >"https://&lt;organization/user&gt;.github.io/&lt;project&gt;/"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"repository"</span><span class="token operator" >:</span>
+    <span class="token string" >"https://github.com/&lt;organization/user&gt;/&lt;project&gt;.git"</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#license" id="license"></a><span class="text">License</span><a class="header-anchor-select" href="#license">#</a></h3>
 <p>You should always <a href="https://docs.npmjs.com/files/package.json#license">specify</a> a license of your package, otherwise people will not know if they are allowed to use it. If you don’t specify any license, it means nobody can use your package.</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"license"</span><span class="token operator" >:</span> <span class="token string" >"MIT"</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>You can use an <a href="https://spdx.org/licenses/">SPDX license identifier</a> or a file with a custom license:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"SEE LICENSE IN &lt;filename>"</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"license"</span><span class="token operator" >:</span> <span class="token string" >"SEE LICENSE IN &lt;filename&gt;"</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Also GitHub will use this field to show detailed license information in the repository:</p>
 <p><img src="/fb21c52e57a361f946d95bc0989d729a.png" alt="License explanation on GitHub" class="" width="" height="" /></p>

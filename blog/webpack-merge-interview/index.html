@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -35,84 +35,84 @@
 <p>Given <em>webpack-merge</em> reached 1.0 milestone recently, I&#39;m going to talk a bit more about the project.</p>
 <h2 class="header"><a class="header-anchor" href="#how-would-you-describe-webpack-merge-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-webpack-merge-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>webpack-merge</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-webpack-merge-to-someone-who-has-never-heard-of-it-">#</a></h2>
 <p>It&#39;s easiest to understand <em>webpack-merge</em> in terms of input and output. If you give a standard <code>merge</code> function a structure containing arrays and objects, it will override them like this:</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./main.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style'</span><span class="token punctuation">,</span> <span class="token string">'css'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./other.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'babel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> a <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'./main.js'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> b <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'./other.js'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'babel'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Avoid mutating a</span>
-<span class="token comment">// Object.assign({}, a, b);</span>
-<span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./other.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'babel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Avoid mutating a</span>
+<span class="token comment" spellcheck="true" >// Object.assign({}, a, b);</span>
+<span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'./other.js'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'babel'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>As you can see, the default output isn&#39;t that useful. If you wanted useful output, you would have to merge very carefully and apply <code>concat</code> here and there. That approach has potential to get messy very fast.</p>
 <p>What if you could do just this?</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./main.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style'</span><span class="token punctuation">,</span> <span class="token string">'css'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./other.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'babel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> a <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'./main.js'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> b <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'./other.js'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'babel'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// merge(a, b);</span>
-<span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./main.js'</span><span class="token punctuation">,</span> <span class="token string">'./other.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style'</span><span class="token punctuation">,</span> <span class="token string">'css'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'babel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// merge(a, b);</span>
+<span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'./main.js'</span><span class="token punctuation" >,</span> <span class="token string" >'./other.js'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'style'</span><span class="token punctuation" >,</span> <span class="token string" >'css'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+        loaders<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >'babel'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>That looks far more useful. This is essentially what <em>webpack-merge</em> does. It concatenates arrays (append by default) and merges objects while creating a new object to play with.</p>
 <p><em>webpack-merge</em> implements also something known as <em>smart merging</em>. This process folds your webpack configuration into a smaller format (i.e., multiple loader definitions might become a single). There are also strategies available to allow you to control the merging process so instead of appending it might prepend or replace content.</p>

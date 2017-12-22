@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -52,90 +52,90 @@
 <p>It’s written in Python but we recommend using it via a <a href="https://www.npmjs.com/package/proselint">JavaScript wrapper</a> for better UI.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>To check Markdown syntax and consistency, try <a href="https://www.npmjs.com/package/remark-lint">remark-lint</a>.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-textlint" id="setting-up-textlint"></a><span class="text">Setting up Textlint</span><a class="header-anchor-select" href="#setting-up-textlint">#</a></h3>
 <p>Let’s install Textlint with several rules:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev textlint textlint-rule-terminology textlint-rule-common-misspellings textlint-rule-write-good textlint-rule-no-dead-link
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> --save-dev textlint textlint-rule-terminology textlint-rule-common-misspellings textlint-rule-write-good textlint-rule-no-dead-link
 </code></pre>
 <p>Add a script to your <em>package.json</em> like this:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    "lint<span class="token operator">:</span>text"<span class="token operator">:</span> "textlint '**/*.md'"
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"lint:text"</span><span class="token operator" >:</span> <span class="token string" >"textlint '**/*.md'"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Create a config file, <code>.textlintrc</code>:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"terminology"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"common-misspellings"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"write-good"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token property">"adverb"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      <span class="token property">"passive"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      <span class="token property">"tooWordy"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      <span class="token property">"weasel"</span><span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token property">"no-dead-link"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"rules"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"terminology"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"common-misspellings"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"write-good"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token property" >"adverb"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+      <span class="token property" >"passive"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+      <span class="token property" >"tooWordy"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+      <span class="token property" >"weasel"</span><span class="token operator" >:</span> <span class="token boolean" >false</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token property" >"no-dead-link"</span><span class="token operator" >:</span> <span class="token boolean" >true</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>And finally run:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> run lint:text
+<pre><code class="lang-bash"><span class="token function" >npm</span> run lint:text
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can run Textlint with autofixing like this: <code>npm run lint:text -- --fix</code>. Don’t forget to commit your texts first because autofixing may introduce changes you don’t want to keep.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-proselint" id="setting-up-proselint"></a><span class="text">Setting up Proselint</span><a class="header-anchor-select" href="#setting-up-proselint">#</a></h3>
 <p>Let’s install Proselint:</p>
-<pre><code class="lang-bash">pip <span class="token function">install</span> proselint
-<span class="token function">npm</span> <span class="token function">install</span> --save-dev proselint
+<pre><code class="lang-bash">pip <span class="token function" >install</span> proselint
+<span class="token function" >npm</span> <span class="token function" >install</span> --save-dev proselint
 </code></pre>
 <p>Add a script to your <em>package.json</em> like this:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    "lint<span class="token operator">:</span>prose"<span class="token operator">:</span> "proselintjs '**/*.md'"
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"lint:prose"</span><span class="token operator" >:</span> <span class="token string" >"proselintjs '**/*.md'"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>And finally run:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> run lint:prose
+<pre><code class="lang-bash"><span class="token function" >npm</span> run lint:prose
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#formatting-markdown-with-prettier" id="formatting-markdown-with-prettier"></a><span class="text">Formatting Markdown With Prettier</span><a class="header-anchor-select" href="#formatting-markdown-with-prettier">#</a></h2>
 <p>We’re discussed Prettier in great detail in the <a href="/maintenance/code-quality/code-formatting/">Code Formatting</a> chapter but it can do more. It can format your Markdown files, and not only text but also code example for languages it supports: JavaScript, TypeScript, CSS, Less, SCSS, JSON, GraphQL, and Markdown.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-prettier" id="setting-up-prettier"></a><span class="text">Setting up Prettier</span><a class="header-anchor-select" href="#setting-up-prettier">#</a></h3>
 <p>Let’s install Prettier:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev prettier
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> --save-dev prettier
 </code></pre>
 <p>Add a script to your <em>package.json</em> like this:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"prettier"</span><span class="token operator">:</span> "prettier --write '**/*.md'"
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"prettier"</span><span class="token operator" >:</span> <span class="token string" >"prettier --write '**/*.md'"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Create a config file, <code>.prettierrc</code>:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">68</span><span class="token punctuation">,</span>
-  <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"es5"</span><span class="token punctuation">,</span>
-  <span class="token property">"proseWrap"</span><span class="token operator">:</span> <span class="token string">"never"</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"printWidth"</span><span class="token operator" >:</span> <span class="token number" >68</span><span class="token punctuation" >,</span>
+  <span class="token property" >"singleQuote"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  <span class="token property" >"trailingComma"</span><span class="token operator" >:</span> <span class="token string" >"es5"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"proseWrap"</span><span class="token operator" >:</span> <span class="token string" >"never"</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>If you’re using Prettier to format your code, you may want to define different rules for code inside Markdown files:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
-  <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"es5"</span><span class="token punctuation">,</span>
-  <span class="token property">"useTabs"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"proseWrap"</span><span class="token operator">:</span> <span class="token string">"never"</span><span class="token punctuation">,</span>
-  <span class="token property">"overrides"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      <span class="token property">"files"</span><span class="token operator">:</span> <span class="token string">"*.md"</span><span class="token punctuation">,</span>
-      <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">68</span><span class="token punctuation">,</span>
-        <span class="token property">"useTabs"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"none"</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"printWidth"</span><span class="token operator" >:</span> <span class="token number" >100</span><span class="token punctuation" >,</span>
+  <span class="token property" >"singleQuote"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  <span class="token property" >"trailingComma"</span><span class="token operator" >:</span> <span class="token string" >"es5"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"useTabs"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  <span class="token property" >"proseWrap"</span><span class="token operator" >:</span> <span class="token string" >"never"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"overrides"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      <span class="token property" >"files"</span><span class="token operator" >:</span> <span class="token string" >"*.md"</span><span class="token punctuation" >,</span>
+      <span class="token property" >"options"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        <span class="token property" >"printWidth"</span><span class="token operator" >:</span> <span class="token number" >68</span><span class="token punctuation" >,</span>
+        <span class="token property" >"useTabs"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+        <span class="token property" >"trailingComma"</span><span class="token operator" >:</span> <span class="token string" >"none"</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>And finally run:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> run prettier
+<pre><code class="lang-bash"><span class="token function" >npm</span> run prettier
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Documentation linting is as important as code linting: it helps you to improve quality, find mistakes and keep formatting consistent.</p>

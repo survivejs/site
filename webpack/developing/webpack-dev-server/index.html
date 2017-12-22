@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -42,24 +42,24 @@
 <p>Even though it&#39;s good that WDS operates in-memory by default for performance reasons, sometimes it can be good to emit files to the file system. This applies in particular, if you are integrating with another server that expects to find the files. <a href="https://www.npmjs.com/package/webpack-disk-plugin">webpack-disk-plugin</a>, <a href="https://www.npmjs.com/package/write-file-webpack-plugin">write-file-webpack-plugin</a>, and more specifically <a href="https://www.npmjs.com/package/html-webpack-harddisk-plugin">html-webpack-harddisk-plugin</a> can achieve this.</p>
 <blockquote class="warning"><i class="icon-attention"></i>You should use WDS strictly for development. If you want to host your application, consider other standard solutions, such as Apache or Nginx.</blockquote><h2 class="header"><a class="header-anchor" href="#getting-started-with-wds" id="getting-started-with-wds"></a><span class="text">Getting Started with WDS</span><a class="header-anchor-select" href="#getting-started-with-wds">#</a></h2>
 <p>To get started with WDS, install it first:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> webpack-dev-server --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> webpack-dev-server --save-dev
 </code></pre>
 <p>As before, this command generates a command below the <code>npm bin</code> directory and you could run <a href="/webpack/developing/webpack-dev-server/">webpack-dev-server</a> from there. After running the WDS, you have a development server running at <code>http://localhost:8080</code>. Automatic browser refresh is in place now, although at a basic level.</p>
 <h2 class="header"><a class="header-anchor" href="#attaching-wds-to-the-project" id="attaching-wds-to-the-project"></a><span class="text">Attaching WDS to the Project</span><a class="header-anchor-select" href="#attaching-wds-to-the-project">#</a></h2>
 <p>To integrate WDS to the project, define an npm script for launching it. To follow npm conventions, call it as <em>start</em>. To tell the targets apart, pass information about the environment to webpack configuration so you can specialize as needed:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-insert">
-  <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"webpack-dev-server --env development"</span><span class="token punctuation">,</span>
-  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack --env production"</span>
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server --env development"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env production"</span>
 </div>
 <div class="leanpub-delete">
-  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack"</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span>
 </div>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>WDS picks up configuration like webpack itself. The same rules apply.</blockquote><p>If you execute either <em>npm run start</em> or <em>npm start</em> now, you should see something in the terminal:</p>
-<pre><code class="lang-bash"><span class="token operator">></span> webpack-dev-server --env development
+<pre><code class="lang-bash"><span class="token operator" >&gt;</span> webpack-dev-server --env development
 
 Project is running at http://localhost:8080/
 webpack output is served from /
@@ -67,9 +67,9 @@ Hash: 2bf6813b1d90a3b0653a
 Version: webpack 3.8.1
 Time: 689ms
      Asset       Size  Chunks                    Chunk Names
-    app.js     328 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  <span class="token punctuation">[</span>big<span class="token punctuation">]</span>  app
-index.html  180 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
+    app.js     328 kB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  <span class="token punctuation brackets-square" >[</span>big<span class="token punctuation brackets-square" >]</span>  app
+index.html  180 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.
 webpack: bundle is now VALID.
 </code></pre>
 <p>The server is running and if you open <code>http://localhost:8080/</code> at your browser, you should see something familiar:</p>
@@ -80,51 +80,51 @@ webpack: bundle is now VALID.
 <p>To customize WDS functionality it&#39;s possible to define a <code>devServer</code> field at webpack configuration. You can set most of these options through the CLI as well, but managing them through webpack is a good approach.</p>
 <p>Enable additional functionality as below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
 
 <div class="leanpub-delete">
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token comment">// Entries have to resolve to files! It relies on Node.js</span>
-  <span class="token comment">// convention by default so if a directory contains *index.js*,</span>
-  <span class="token comment">// it resolves to that.</span>
+module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Entries have to resolve to files! It relies on Node.js</span>
+  <span class="token comment" spellcheck="true" >// convention by default so if a directory contains *index.js*,</span>
+  <span class="token comment" spellcheck="true" >// it resolves to that.</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
 <div class="leanpub-insert">
-<span class="token keyword">const</span> <span class="token function-variable function">productionConfig</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> commonConfig<span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >productionConfig</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> commonConfig<span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">developmentConfig</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-    devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      <span class="token comment">// Display only errors to reduce the amount of output.</span>
-      stats<span class="token punctuation">:</span> <span class="token string">"errors-only"</span><span class="token punctuation">,</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >developmentConfig</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-const" >const</span> config <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+    devServer<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token comment" spellcheck="true" >// Display only errors to reduce the amount of output.</span>
+      stats<span class="token punctuation" >:</span> <span class="token string" >"errors-only"</span><span class="token punctuation" >,</span>
 
-      <span class="token comment">// Parse host and port from env to allow customization.</span>
-      <span class="token comment">//</span>
-      <span class="token comment">// If you use Docker, Vagrant or Cloud9, set</span>
-      <span class="token comment">// host: options.host || "0.0.0.0";</span>
-      <span class="token comment">//</span>
-      <span class="token comment">// 0.0.0.0 is available to all network devices</span>
-      <span class="token comment">// unlike default `localhost`.</span>
-      host<span class="token punctuation">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>HOST<span class="token punctuation">,</span> <span class="token comment">// Defaults to `localhost`</span>
-      port<span class="token punctuation">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>PORT<span class="token punctuation">,</span> <span class="token comment">// Defaults to 8080</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true" >// Parse host and port from env to allow customization.</span>
+      <span class="token comment" spellcheck="true" >//</span>
+      <span class="token comment" spellcheck="true" >// If you use Docker, Vagrant or Cloud9, set</span>
+      <span class="token comment" spellcheck="true" >// host: options.host || "0.0.0.0";</span>
+      <span class="token comment" spellcheck="true" >//</span>
+      <span class="token comment" spellcheck="true" >// 0.0.0.0 is available to all network devices</span>
+      <span class="token comment" spellcheck="true" >// unlike default `localhost`.</span>
+      host<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>HOST<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Defaults to `localhost`</span>
+      port<span class="token punctuation" >:</span> process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>PORT<span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Defaults to 8080</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> commonConfig<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> Object<span class="token punctuation" >.</span><span class="token function" >assign</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> commonConfig<span class="token punctuation" >,</span> config<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> env <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"production"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token function">productionConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> env <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>env <span class="token operator" >===</span> <span class="token string" >"production"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token function" >productionConfig</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
 
-  <span class="token keyword">return</span> <span class="token function">developmentConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token function" >developmentConfig</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </div>
 </code></pre>
 <p>After this change, you can configure the server host and port options through environment parameters. The merging portion of the code (<code>Object.assign</code>) is tricky (shallow merge) and it will be fixed in the <em>Splitting Configuration</em> chapter.</p>
@@ -133,27 +133,27 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/dotenv">dotenv</a> allows you to define environment variables through a <em>.env</em> file. <em>dotenv</em> allows you to control the host and port setting of the setup quickly.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Enable <code>devServer.historyApiFallback</code> if you are using HTML5 History API based routing.</blockquote><h3 class="header"><a class="header-anchor" href="#understanding-env" id="understanding-env"></a><span class="text">Understanding <code>--env</code></span><a class="header-anchor-select" href="#understanding-env">#</a></h3>
 <p>Even though <code>--env</code> allows to pass strings to the configuration, it can do a bit more. Consider the following example:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"webpack-dev-server --env development"</span><span class="token punctuation">,</span>
-  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack --env.target production"</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server --env development"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env.target production"</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>Instead of a string, you should receive an object <code>{ target: &quot;production&quot; }</code> at configuration now. You could pass more key-value pairs, and they would go to the <code>env</code> object. If you set <code>--env foo</code> while setting <code>--env.target</code>, the string wins. Webpack relies on <a href="http://yargs.js.org/docs/#parsing-tricks-dot-notation">yargs</a> for parsing underneath.</p>
 <h2 class="header"><a class="header-anchor" href="#enabling-error-overlay" id="enabling-error-overlay"></a><span class="text">Enabling Error Overlay</span><a class="header-anchor-select" href="#enabling-error-overlay">#</a></h2>
 <p>WDS provides an overlay for capturing warnings and errors:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> config <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  devServer<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token operator" >...</span>
 <div class="leanpub-insert">
-    <span class="token comment">// overlay: true is equivalent</span>
-    overlay<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      errors<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      warnings<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true" >// overlay: true is equivalent</span>
+    overlay<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      errors<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+      warnings<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Run the server now (<code>npm start</code>) and break the code to see an overlay in the browser:</p>
 <p><img src="/45bea51d3959fd5c9493aa7210d2acc8.png" alt="Error overlay" class="" width="" height="" /></p>
@@ -166,38 +166,38 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <p>WDS will handle restarting the server when you change a bundled file, but what about when you edit the webpack config? Restarting the development server each time you make a change tends to get boring after a while. This can be automated as <a href="https://github.com/webpack/webpack-dev-server/issues/440#issuecomment-205757892">discussed in GitHub</a> by using <a href="https://www.npmjs.com/package/nodemon">nodemon</a> monitoring tool.</p>
 <p>To get it to work, you have to install it first through <code>npm install nodemon --save-dev</code>. After that, you can make it watch webpack config and restart WDS on change. Here&#39;s the script if you want to give it a go:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"nodemon --watch webpack.config.js --exec \"</span>webpack-dev-server --env development\<span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack --env production"</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\""</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env production"</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>It&#39;s possible WDS <a href="https://github.com/webpack/webpack/issues/3153">will support the functionality</a> itself in the future. If you want to make it reload itself on change, you should implement this workaround for now.</p>
 <h2 class="header"><a class="header-anchor" href="#polling-instead-of-watching-files" id="polling-instead-of-watching-files"></a><span class="text">Polling Instead of Watching Files</span><a class="header-anchor-select" href="#polling-instead-of-watching-files">#</a></h2>
 <p>Sometimes the file watching setup provided by WDS won&#39;t work on your system. It can be problematic on older versions of Windows, Ubuntu, Vagrant, and Docker. Enabling polling is a good option then:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> developmentConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
 <div class="leanpub-insert">
-  <span class="token punctuation">{</span>
-    devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      watchOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token comment">// Delay the rebuild after the first change</span>
-        aggregateTimeout<span class="token punctuation">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    devServer<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      watchOptions<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        <span class="token comment" spellcheck="true" >// Delay the rebuild after the first change</span>
+        aggregateTimeout<span class="token punctuation" >:</span> <span class="token number" >300</span><span class="token punctuation" >,</span>
 
-        <span class="token comment">// Poll using interval (in ms, accepts boolean too)</span>
-        poll<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token comment">// Ignore node_modules so CPU usage with poll</span>
-      <span class="token comment">// watching drops significantly.</span>
-      <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>WatchIgnorePlugin</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-        path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"node_modules"</span><span class="token punctuation">)</span>
-      <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true" >// Poll using interval (in ms, accepts boolean too)</span>
+        poll<span class="token punctuation" >:</span> <span class="token number" >1000</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token comment" spellcheck="true" >// Ignore node_modules so CPU usage with poll</span>
+      <span class="token comment" spellcheck="true" >// watching drops significantly.</span>
+      <span class="token keyword keyword-new" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>WatchIgnorePlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+        path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation brackets-parentheses" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"node_modules"</span><span class="token punctuation brackets-parentheses" >)</span>
+      <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The setup is more resource intensive than the default but it&#39;s worth trying out.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>There are more details in <a href="/webpack/developing/webpack-dev-server/">webpack-dev-server</a> issue <a href="https://github.com/webpack/webpack-dev-server/issues/155">#155</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#alternate-ways-to-use-webpack-dev-server-" id="alternate-ways-to-use-webpack-dev-server-"></a><span class="text">Alternate Ways to Use <a href="/webpack/developing/webpack-dev-server/">webpack-dev-server</a></span><a class="header-anchor-select" href="#alternate-ways-to-use-webpack-dev-server-">#</a></h2>

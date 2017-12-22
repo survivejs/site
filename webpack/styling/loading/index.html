@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -38,48 +38,48 @@
 <p>The matched files can be processed through loaders like <a href="https://www.npmjs.com/package/file-loader">file-loader</a> or <a href="https://www.npmjs.com/package/url-loader">url-loader</a> and these possibilities are discussed in the <a href="/webpack/loading/">Loading Assets</a> part of the book.</p>
 <p>Since inlining CSS isn&#39;t a good idea for production usage, it makes sense to use <code>ExtractTextPlugin</code> to generate a separate CSS file. You will do this in the next chapter.</p>
 <p>To get started, invoke</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> css-loader style-loader --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> css-loader style-loader --save-dev
 </code></pre>
 <p>Now let&#39;s make sure webpack is aware of them. Add a new function at the end of the part definition:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">loadCSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-        include<span class="token punctuation">,</span>
-        exclude<span class="token punctuation">,</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span><span class="token function-variable function" >loadCSS</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> include<span class="token punctuation" >,</span> exclude <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+        include<span class="token punctuation" >,</span>
+        exclude<span class="token punctuation" >,</span>
 
-        use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"style-loader"</span><span class="token punctuation" >,</span> <span class="token string" >"css-loader"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>You also need to connect the fragment with the main configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">loadCSS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >loadCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The added configuration means that files ending with <code>.css</code> should invoke the given loaders. <code>test</code> matches against a JavaScript-style regular expression.</p>
 <p>Loaders are transformations that are applied to source files, and return the new source and can be chained together like a pipe in Unix. They evaluated from right to left. This means that <code>loaders: [&quot;style-loader&quot;, &quot;css-loader&quot;]</code> can be read as <code>styleLoader(cssLoader(input))</code>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to disable <em>css-loader</em> <code>url</code> parsing, set <code>url: false</code>. The same idea applies to <code>@import</code> as to disable parsing imports you can set <code>import: false</code> through the loader options.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-the-initial-css" id="setting-up-the-initial-css"></a><span class="text">Setting Up the Initial CSS</span><a class="header-anchor-select" href="#setting-up-the-initial-css">#</a></h2>
 <p>You are missing the CSS still:</p>
 <p><strong>app/main.css</strong></p>
-<pre><code class="lang-css"><span class="token selector">body </span><span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> cornsilk<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-css"><span class="token selector" >body </span><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >background</span><span class="token punctuation" >:</span> cornsilk<span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Also, you need to make webpack aware of it. Without having an entry pointing to it somehow, webpack is not able to find the file:</p>
 <p><strong>app/index.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword">import</span> <span class="token string">"./main.css"</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import" >import</span> <span class="token string" >"./main.css"</span><span class="token punctuation" >;</span>
 </div>
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 </code></pre>
 <p>Execute <code>npm start</code> now. Browse to <code>http://localhost:8080</code> if you are using the default port and open up <em>main.css</em> and change the background color to something like <code>lime</code> (<code>background: lime</code>). Develop styles as needed to make it look a nicer.</p>
 <p>You continue from here in the next chapter. Before that, though, you&#39;ll learn about styling-related techniques.</p>
@@ -88,83 +88,83 @@
 <p><img src="/9c96eb3ca778baf3a930c75926c51f1c.png" alt="Less" class="" width="" height="" /></p>
 <p><a href="http://lesscss.org/">Less</a> is a CSS processor packed with functionality. Using Less doesn&#39;t take a lot of effort through webpack as <a href="https://www.npmjs.com/package/less-loader">less-loader</a> deals with the heavy lifting. You should install <a href="https://www.npmjs.com/package/less">less</a> as well given it&#39;s a peer dependency of <em>less-loader</em>.</p>
 <p>Consider the following minimal setup:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.less$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token string">"less-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.less$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"style-loader"</span><span class="token punctuation" >,</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span> <span class="token string" >"less-loader"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>The loader supports Less plugins, source maps, and so on. To understand how those work you should check out the project itself.</p>
 <h2 class="header"><a class="header-anchor" href="#loading-sass" id="loading-sass"></a><span class="text">Loading Sass</span><a class="header-anchor-select" href="#loading-sass">#</a></h2>
 <p><img src="/ecdc6b5ac4e41f237df0b1a796d6e3ac.png" alt="Sass" class="" width="" height="" /></p>
 <p><a href="http://sass-lang.com/">Sass</a> is a widely used CSS preprocessor. You should use <a href="https://www.npmjs.com/package/sass-loader">sass-loader</a> with it. Remember to install <a href="https://www.npmjs.com/package/node-sass">node-sass</a> to your project as it&#39;s a peer dependency.</p>
 <p>Webpack doesn&#39;t take much configuration:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.scss$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token string">"sass-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.scss$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"style-loader"</span><span class="token punctuation" >,</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span> <span class="token string" >"sass-loader"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want more performance, especially during development, check out <a href="https://www.npmjs.com/package/fast-sass-loader">fast-sass-loader</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#loading-stylus-and-yeticss" id="loading-stylus-and-yeticss"></a><span class="text">Loading Stylus and Yeticss</span><a class="header-anchor-select" href="#loading-stylus-and-yeticss">#</a></h2>
 <p><img src="/edd6c36d59fc85102755b731109cd523.png" alt="Stylus" class="" width="" height="" /></p>
 <p><a href="http://stylus-lang.com/">Stylus</a> is yet another example of a CSS processor. It works well through <a href="https://www.npmjs.com/package/stylus-loader">stylus-loader</a>. <a href="https://www.npmjs.com/package/yeticss">yeticss</a> is a pattern library that works well with it.</p>
 <p>Consider the following configuration:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  <span class="token operator">...</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.styl$/</span><span class="token punctuation">,</span>
-        use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-          <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-          <span class="token string">"css-loader"</span><span class="token punctuation">,</span>
-          <span class="token punctuation">{</span>
-            loader<span class="token punctuation">:</span> <span class="token string">"stylus-loader"</span><span class="token punctuation">,</span>
-            options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-              use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"yeticss"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token operator" >...</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.styl$/</span><span class="token punctuation" >,</span>
+        use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+          <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+          <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+          <span class="token punctuation brackets-braces" >{</span>
+            loader<span class="token punctuation" >:</span> <span class="token string" >"stylus-loader"</span><span class="token punctuation" >,</span>
+            options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+              use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"yeticss"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+            <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+          <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>To start using yeticss with Stylus, you must import it to one of your app&#39;s <em>.styl</em> files:</p>
-<pre><code class="lang-javascript">@<span class="token keyword">import</span> <span class="token string">"yeticss"</span>
-<span class="token comment">//or</span>
-@<span class="token keyword">import</span> <span class="token string">"yeticss/components/type"</span>
+<pre><code class="lang-javascript">@<span class="token keyword keyword-import" >import</span> <span class="token string" >"yeticss"</span>
+<span class="token comment" spellcheck="true" >//or</span>
+@<span class="token keyword keyword-import" >import</span> <span class="token string" >"yeticss/components/type"</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#postcss" id="postcss"></a><span class="text">PostCSS</span><a class="header-anchor-select" href="#postcss">#</a></h2>
 <p><img src="/6a4638d8a038abef68cdc020771c604d.png" alt="PostCSS" class="" width="" height="" /></p>
 <p><a href="http://postcss.org/">PostCSS</a> allows you to perform transformations over CSS through JavaScript plugins. You can even find plugins that provide you Sass-like features. PostCSS is the equivalent of Babel for styling. <a href="https://www.npmjs.com/package/postcss-loader">postcss-loader</a> allows using it with webpack.</p>
 <p>The example below illustrates how to set up autoprefixing using PostCSS. It also sets up <a href="https://www.npmjs.com/package/precss">precss</a>, a PostCSS plugin that allows you to use Sass-like markup in your CSS. You can mix this technique with other loaders to allow autoprefixing there.</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-    <span class="token string">"css-loader"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-      loader<span class="token punctuation">:</span> <span class="token string">"postcss-loader"</span><span class="token punctuation">,</span>
-      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        plugins<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">[</span>
-          <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"autoprefixer"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"precss"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      loader<span class="token punctuation" >:</span> <span class="token string" >"postcss-loader"</span><span class="token punctuation" >,</span>
+      options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+          <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"autoprefixer"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+          <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"precss"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>You have to remember to include <a href="https://www.npmjs.com/package/autoprefixer">autoprefixer</a> and <a href="https://www.npmjs.com/package/precss">precss</a> to your project for this to work. The technique is discussed in detail in the <a href="/webpack/styling/autoprefixing/">Autoprefixing</a> chapter.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>PostCSS supports <em>postcss.config.js</em> based configuration. It relies on <a href="https://www.npmjs.com/package/cosmiconfig">cosmiconfig</a> internally for other formats.</blockquote><h3 class="header"><a class="header-anchor" href="#cssnext" id="cssnext"></a><span class="text">cssnext</span><a class="header-anchor-select" href="#cssnext">#</a></h3>
 <p><a href="http://cssnext.io/">cssnext</a> is a PostCSS plugin that allows to experience the future now with certain restrictions. You can use it through <a href="https://www.npmjs.com/package/postcss-cssnext">postcss-cssnext</a> and enable it as follows:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loader<span class="token punctuation">:</span> <span class="token string">"postcss-loader"</span><span class="token punctuation">,</span>
-    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      plugins<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"postcss-cssnext"</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loader<span class="token punctuation" >:</span> <span class="token string" >"postcss-loader"</span><span class="token punctuation" >,</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-square" >[</span><span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"postcss-cssnext"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>See <a href="http://cssnext.io/usage/">the usage documentation</a> for available options.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>cssnext includes <em>autoprefixer</em>! You don&#39;t have to configure autoprefixing separately for it to work in this case.</blockquote><h2 class="header"><a class="header-anchor" href="#understanding-lookups" id="understanding-lookups"></a><span class="text">Understanding Lookups</span><a class="header-anchor-select" href="#understanding-lookups">#</a></h2>
@@ -173,27 +173,27 @@
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/resolve-url-loader">resolve-url-loader</a> comes in handy if you use Sass or Less. It adds support for relative imports to the environments.</blockquote><h3 class="header"><a class="header-anchor" href="#processing-css-loader-imports" id="processing-css-loader-imports"></a><span class="text">Processing <em>css-loader</em> Imports</span><a class="header-anchor-select" href="#processing-css-loader-imports">#</a></h3>
 <p>If you want to process <em>css-loader</em> imports in a specific way, you should set up <code>importLoaders</code> option to a number that tells the loader how many loaders after the <em>css-loader</em> should be executed against the imports found. If you import other CSS files from your CSS through the <code>@import</code> statement and want to process the imports through specific loaders, this technique is essential.</p>
 <p>Consider the following import from a CSS file:</p>
-<pre><code class="lang-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">"./variables.sass"</span><span class="token punctuation">;</span></span>
+<pre><code class="lang-css"><span class="token atrule" ><span class="token rule" >@import</span> <span class="token string" >"./variables.sass"</span><span class="token punctuation" >;</span></span>
 </code></pre>
 <p>To process the Sass file, you would have to write configuration:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-      loader<span class="token punctuation">:</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span>
-      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        importLoaders<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token string">"sass-loader"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      loader<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+      options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        importLoaders<span class="token punctuation" >:</span> <span class="token number" >1</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token string" >"sass-loader"</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>If you added more loaders, such as <em>postcss-loader</em>, to the chain, you would have to adjust the <code>importLoaders</code> option accordingly.</p>
 <h3 class="header"><a class="header-anchor" href="#loading-from-node_modules-directory" id="loading-from-node_modules-directory"></a><span class="text">Loading from <em>node_modules</em> Directory</span><a class="header-anchor-select" href="#loading-from-node_modules-directory">#</a></h3>
 <p>You can load files directly from your node_modules directory. Consider Bootstrap and its usage for example:</p>
-<pre><code class="lang-less"><span class="token variable">@import</span> <span class="token string">"~bootstrap/less/bootstrap"</span><span class="token punctuation">;</span>
+<pre><code class="lang-less"><span class="token variable" >@import</span> <span class="token string" >"~bootstrap/less/bootstrap"</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The tilde character (<code>~</code>) tells webpack that it&#39;s not a relative import as by default. If tilde is included, it performs a lookup against <code>node_modules</code> (default setting) although this is configurable through the <a href="https://webpack.js.org/configuration/resolve/#resolve-modules">resolve.modules</a> field.</p>
 <blockquote class="warning"><i class="icon-attention"></i>If you are using <em>postcss-loader</em>, you can skip using <code>~</code> as discussed in <a href="https://github.com/postcss/postcss-loader/issues/166">postcss-loader issue tracker</a>. <em>postcss-loader</em> can resolve the imports without a tilde.</blockquote><h2 class="header"><a class="header-anchor" href="#enabling-source-maps" id="enabling-source-maps"></a><span class="text">Enabling Source Maps</span><a class="header-anchor-select" href="#enabling-source-maps">#</a></h2>

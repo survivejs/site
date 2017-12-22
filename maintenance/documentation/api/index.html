@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -35,92 +35,92 @@
 <h2 class="header"><a class="header-anchor" href="#documenting-apis-in-code" id="documenting-apis-in-code"></a><span class="text">Documenting APIs in Code</span><a class="header-anchor-select" href="#documenting-apis-in-code">#</a></h2>
 <h3 class="header"><a class="header-anchor" href="#javascript" id="javascript"></a><span class="text">JavaScript</span><a class="header-anchor-select" href="#javascript">#</a></h3>
 <p>The most popular format for documenting JavaScript APIs is <a href="http://usejsdoc.org/">JSDoc</a>. It uses a special comment syntax:</p>
-<pre><code class="lang-javascript"><span class="token comment">/**
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >/**
  * Bake pizzas.
  * @param {string} type Type of the pizza.
  * @param {number} [quantity=1] How many pizzas to make.
  * @returns {string}
  */</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">bakePizzas</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> quantity <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`- Pizza </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n`</span></span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>quantity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-function" >function</span> <span class="token function" >bakePizzas</span><span class="token punctuation brackets-parentheses" >(</span>type<span class="token punctuation" >,</span> quantity <span class="token operator" >=</span> <span class="token number" >1</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token template-string" ><span class="token string" >`- Pizza </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>type<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >\n`</span></span><span class="token punctuation" >.</span><span class="token function" >repeat</span><span class="token punctuation brackets-parentheses" >(</span>quantity<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="http://speakingjs.com/es5/ch29.html">Read more about JSDoc</a> in Axel Rauschmayer’s book, Speaking JavaScript.</blockquote><h3 class="header"><a class="header-anchor" href="#typescript-and-flow" id="typescript-and-flow"></a><span class="text">TypeScript and Flow</span><a class="header-anchor-select" href="#typescript-and-flow">#</a></h3>
 <p>If you use TypeScript or Flow, half of the work on documenting your APIs is done: most likely you already have type annotations for all your public functions. The only missing thing is textual comments:</p>
-<pre><code class="lang-typescript"><span class="token comment">/**
+<pre><code class="lang-typescript"><span class="token comment" spellcheck="true" >/**
  * Bake pizzas.
  * @param type Type of the pizza.
  * @param quantity How many pizzas to make.
  */</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">bakePizzas</span><span class="token punctuation">(</span><span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">,</span> quantity <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">string</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`- Pizza </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n`</span></span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>quantity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-function" >function</span> <span class="token function" >bakePizzas</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-type" >type</span><span class="token punctuation" >:</span> <span class="token keyword keyword-string" >string</span><span class="token punctuation" >,</span> quantity <span class="token operator" >=</span> <span class="token number" >1</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >:</span> <span class="token keyword keyword-string" >string</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token template-string" ><span class="token string" >`- Pizza </span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>type<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >\n`</span></span><span class="token punctuation" >.</span><span class="token function" >repeat</span><span class="token punctuation brackets-parentheses" >(</span>quantity<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#other-types-of-documentation" id="other-types-of-documentation"></a><span class="text">Other Types of Documentation</span><a class="header-anchor-select" href="#other-types-of-documentation">#</a></h3>
 <p>One example is using <a href="https://www.npmjs.com/package/prop-types">PropTypes</a> to document React components:</p>
-<pre><code class="lang-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> PropTypes <span class="token keyword">from</span> <span class="token string">'prop-types'</span><span class="token punctuation">;</span>
+<pre><code class="lang-jsx"><span class="token keyword keyword-import" >import</span> React <span class="token keyword keyword-from" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> PropTypes <span class="token keyword keyword-from" >from</span> <span class="token string" >'prop-types'</span><span class="token punctuation" >;</span>
 
-<span class="token comment">/**
+<span class="token comment" spellcheck="true" >/**
  * The only true button.
  */</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Button</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  size<span class="token punctuation">,</span>
-  onClick<span class="token punctuation">,</span>
-  children<span class="token punctuation">,</span>
-  <span class="token operator">...</span>rest
-<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token string">`button button--size-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>size<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">}</span></span> <span class="token attr-name">{...rest}</span><span class="token punctuation">></span></span>
-      <span class="token punctuation">{</span>children<span class="token punctuation">}</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-Button<span class="token punctuation">.</span>propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token comment">/** Button label. */</span>
-  children<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span>node<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
-  <span class="token comment">/** The size of the button. */</span>
-  size<span class="token punctuation">:</span> PropTypes<span class="token punctuation">.</span><span class="token function">oneOf</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'small'</span><span class="token punctuation">,</span> <span class="token string">'normal'</span><span class="token punctuation">,</span> <span class="token string">'large'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-Button<span class="token punctuation">.</span>defaultProps <span class="token operator">=</span> <span class="token punctuation">{</span>
-  size<span class="token punctuation">:</span> <span class="token string">'normal'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-function" >function</span> <span class="token function" >Button</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  size<span class="token punctuation" >,</span>
+  onClick<span class="token punctuation" >,</span>
+  children<span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>rest
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-parentheses" >(</span>
+    <span class="token operator" >&lt;</span>button className<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span><span class="token template-string" ><span class="token string" >`button button--size-</span><span class="token interpolation" ><span class="token interpolation-punctuation punctuation" >${</span>size<span class="token interpolation-punctuation punctuation" >}</span></span><span class="token string" >`</span></span><span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span>rest<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span>
+      <span class="token punctuation brackets-braces" >{</span>children<span class="token punctuation brackets-braces" >}</span>
+    <span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>button</span><span class="token punctuation" >&gt;</span></span>
+  <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
+Button<span class="token punctuation" >.</span>propTypes <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >/** Button label. */</span>
+  children<span class="token punctuation" >:</span> PropTypes<span class="token punctuation" >.</span>node<span class="token punctuation" >.</span>isRequired<span class="token punctuation" >,</span>
+  <span class="token comment" spellcheck="true" >/** The size of the button. */</span>
+  size<span class="token punctuation" >:</span> PropTypes<span class="token punctuation" >.</span><span class="token function" >oneOf</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token string" >'small'</span><span class="token punctuation" >,</span> <span class="token string" >'normal'</span><span class="token punctuation" >,</span> <span class="token string" >'large'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+Button<span class="token punctuation" >.</span>defaultProps <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  size<span class="token punctuation" >:</span> <span class="token string" >'normal'</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#generating-documentation" id="generating-documentation"></a><span class="text">Generating Documentation</span><a class="header-anchor-select" href="#generating-documentation">#</a></h2>
 <h3 class="header"><a class="header-anchor" href="#documentation-js" id="documentation-js"></a><span class="text">documentation.js</span><a class="header-anchor-select" href="#documentation-js">#</a></h3>
 <p><a href="http://documentation.js.org/">documentation.js</a> generates HTML, Markdown or JSON using JSDoc or Flow annotations and can infer things like types of function parameters. It supports ES2017 syntax and JSX. It understands which functions you export and won’t generate documentation for your private APIs.</p>
 <p>Markdown output looks like this:</p>
-<pre><code class="lang-markdown"><span class="token comment">&lt;!-- Generated by documentation.js. Update this documentation by updating the source code. --></span>
+<pre><code class="lang-markdown"><span class="token comment" spellcheck="true" >&lt;!-- Generated by documentation.js. Update this documentation by updating the source code. --&gt;</span>
 
-<span class="token title important"><span class="token punctuation">###</span> Table of Contents</span>
+### Table of Contents
 
-<span class="token list punctuation">*</span> <span class="token url">[bakePizzas](#bakepizzas)</span>
+* [bakePizzas](#bakepizzas)
 
-<span class="token title important"><span class="token punctuation">##</span> bakePizzas</span>
+## bakePizzas
 
 Bake pizzas.
 
-<span class="token bold"><span class="token punctuation">**</span>Parameters<span class="token punctuation">**</span></span>
+**Parameters**
 
-* <span class="token code keyword">`type`</span> <span class="token bold"><span class="token punctuation">**</span><span class="token url">[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)</span><span class="token punctuation">**</span></span> Type of the pizza.
-* <span class="token code keyword">`quantity`</span> <span class="token bold"><span class="token punctuation">**</span><span class="token url">[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)</span><span class="token punctuation">**</span></span> How many pizzas to make. (optional, default <span class="token code keyword">`1`</span>)
+* `type` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Type of the pizza.
+* `quantity` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** How many pizzas to make. (optional, default `1`)
 
-Returns <span class="token bold"><span class="token punctuation">**</span><span class="token url">[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)</span><span class="token punctuation">**</span></span>
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)**
 </code></pre>
 <p>And HTML output you’ll find in the next section.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>See how to embed one Markdown into another in the <a href="/maintenance/documentation/readme/">README</a> section.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Read an <a href="https://survivejs.com/blog/documentationjs-interview/">interview with documentation.js creator</a>, Tom MacWright.</blockquote><h4 class="header"><a class="header-anchor" href="#setting-up-documentation-js" id="setting-up-documentation-js"></a><span class="text">Setting up documentation.js</span><a class="header-anchor-select" href="#setting-up-documentation-js">#</a></h4>
 <p>Let’s install documentation.js:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev documentation
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> --save-dev documentation
 </code></pre>
 <p>Add a new script to your <em>package.json</em>.</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"docs"</span><span class="token operator">:</span> "documentation build 'src/**' -f html -o docs"
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"docs"</span><span class="token operator" >:</span> <span class="token string" >"documentation build 'src/**' -f html -o docs"</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Then run:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> run docs
+<pre><code class="lang-bash"><span class="token function" >npm</span> run docs
 </code></pre>
 <p>And in the <em>docs</em> folder you’ll find an HTML file with documentation for your project:</p>
 <p><img src="/f44397ea23e24b0247bbf447c2a72be2.png" alt="documentation.js" class="" width="" height="" /></p>

@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -48,29 +48,29 @@
 <h2 class="header"><a class="header-anchor" href="#generating-a-build-using-rollup" id="generating-a-build-using-rollup"></a><span class="text">Generating a Build Using Rollup</span><a class="header-anchor-select" href="#generating-a-build-using-rollup">#</a></h2>
 <p>To illustrate bundling and UMD, set up an entry point for the demo as below:</p>
 <p><strong>index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'demo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-function" >function</span> <span class="token function" >demo</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'demo'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> demo<span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> demo<span class="token punctuation" >;</span>
 </code></pre>
 <p>Define a small <strong>package.json</strong> to contain the build script:</p>
 <p><strong>package.json</strong></p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"umd-demo"</span><span class="token punctuation">,</span>
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"rollup ./index.js --format umd --name Demo
-      --output dist/demo.umd.js"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"name"</span><span class="token operator" >:</span> <span class="token string" >"umd-demo"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"main"</span><span class="token operator" >:</span> <span class="token string" >"index.js"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"build"</span><span class="token operator" >:</span> "rollup ./index.js --format umd --name Demo
+      --output dist/demo.umd.js"
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Install Rollup to the project:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> rollup --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> rollup --save-dev
 </code></pre>
 <p>To prove that the setup works, execute <code>npm run build</code> and examine the generated <strong>./dist</strong> directory. It should contain a new file with transformed code and the UMD wrapper. You can import the file from Node REPL like this:</p>
 <pre><code class="lang-bash">node
-<span class="token operator">></span> require<span class="token punctuation">(</span><span class="token string">'./dist/demo.umd'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator" >&gt;</span> require<span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'./dist/demo.umd'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span>
 demo
 undefined
 </code></pre>

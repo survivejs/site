@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -54,28 +54,28 @@ I was born and raised in Rotterdam, the Netherlands. I got into programming at a
 </ul>
 <h2 class="header"><a class="header-anchor" href="#how-does-fluture-work-" id="how-does-fluture-work-"></a><span class="text">How does <em>Fluture</em> work?</span><a class="header-anchor-select" href="#how-does-fluture-work-">#</a></h2>
 <p>In it&#39;s simplest form, it&#39;s a function which takes a function and returns it wrapped in an object with the name &quot;fork&quot;, perhaps best explained through code:</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Future</span> <span class="token operator">=</span> fork <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>fork<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >Future</span> <span class="token operator" >=</span> fork <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>fork<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token function">Future</span><span class="token punctuation">(</span><span class="token punctuation">(</span>rej<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">res</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fork</span><span class="token punctuation">(</span>
-  console<span class="token punctuation">.</span>error<span class="token punctuation">,</span> console<span class="token punctuation">.</span>log
-<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token function" >Future</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span>rej<span class="token punctuation" >,</span> res<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token function" >res</span><span class="token punctuation brackets-parentheses" >(</span><span class="token number" >1</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >.</span><span class="token function" >fork</span><span class="token punctuation brackets-parentheses" >(</span>
+  console<span class="token punctuation" >.</span>error<span class="token punctuation" >,</span> console<span class="token punctuation" >.</span>log
+<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// 1</span>
 </code></pre>
 <p>This structure becomes interesting once you add higher order functions like <code>map</code>:</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Future</span> <span class="token operator">=</span> fork <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  fork<span class="token punctuation">,</span>
-  map<span class="token punctuation">:</span> f <span class="token operator">=></span> <span class="token function">Future</span><span class="token punctuation">(</span>
-    <span class="token punctuation">(</span>reject<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-      <span class="token function">fork</span><span class="token punctuation">(</span>
-        reject<span class="token punctuation">,</span>
-        x <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-      <span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >Future</span> <span class="token operator" >=</span> fork <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  fork<span class="token punctuation" >,</span>
+  map<span class="token punctuation" >:</span> f <span class="token operator" >=&gt;</span> <span class="token function" >Future</span><span class="token punctuation brackets-parentheses" >(</span>
+    <span class="token punctuation brackets-parentheses" >(</span>reject<span class="token punctuation" >,</span> resolve<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token function" >fork</span><span class="token punctuation brackets-parentheses" >(</span>
+        reject<span class="token punctuation" >,</span>
+        x <span class="token operator" >=&gt;</span> <span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span><span class="token function" >f</span><span class="token punctuation brackets-parentheses" >(</span>x<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+      <span class="token punctuation brackets-parentheses" >)</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-parentheses" >)</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token function">Future</span><span class="token punctuation">(</span><span class="token punctuation">(</span>reject<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>x <span class="token operator">=></span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">fork</span><span class="token punctuation">(</span>console<span class="token punctuation">.</span>error<span class="token punctuation">,</span> console<span class="token punctuation">.</span>log<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token function" >Future</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span>reject<span class="token punctuation" >,</span> resolve<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span><span class="token number" >1</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span>x <span class="token operator" >=&gt;</span> x <span class="token operator" >+</span> <span class="token number" >1</span><span class="token punctuation brackets-parentheses" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >fork</span><span class="token punctuation brackets-parentheses" >(</span>console<span class="token punctuation" >.</span>error<span class="token punctuation" >,</span> console<span class="token punctuation" >.</span>log<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// 2</span>
 </code></pre>
 <p>The idea that you can <code>map</code> over a Future similarly to how one might <code>map</code> over an <code>Array</code> comes from the research into &quot;algebraic data types&quot; brought to JavaScript most prominently by <a href="https://github.com/fantasyland/fantasy-land">Fantasy Land</a>.</p>
 <p>Fluture builds on top of these ideas to add:</p>

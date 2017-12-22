@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -37,74 +37,74 @@
 <p>Due to this process, <code>ExtractTextPlugin</code> comes with overhead during the compilation phase. It doesn&#39;t work with Hot Module Replacement by design. Given the plugin is used only for production, that is not a problem.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>This same technique can be employed with other assets, like templates, too.</blockquote><blockquote class="warning"><i class="icon-attention"></i>It can be potentially dangerous to use inline styles within JavaScript in production as it represents an attack vector. <strong>Critical path rendering</strong> embraces the idea and inlines the critical CSS to the initial HTML payload improving perceived performance of the site. In limited contexts inlining a small amount of CSS can be a viable option to speed up the initial load (fewer requests).</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-extracttextplugin" id="setting-up-extracttextplugin"></a><span class="text">Setting Up <code>ExtractTextPlugin</code></span><a class="header-anchor-select" href="#setting-up-extracttextplugin">#</a></h2>
 <p>Install the plugin first:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> extract-text-webpack-plugin --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> extract-text-webpack-plugin --save-dev
 </code></pre>
 <p><code>ExtractTextPlugin</code> includes a loader, <code>ExtractTextPlugin.extract</code> that marks the assets to be extracted. Then a plugin performs its work based on this annotation.</p>
 <p><code>ExtractTextPlugin.extract</code> accepts <code>use</code> and <code>fallback</code> definitions. <code>ExtractTextPlugin</code> processes content through <code>use</code> only from <strong>initial chunks</strong> by default and it uses <code>fallback</code> for the rest. It doesn&#39;t touch any split bundles unless <code>allChunks: true</code> is set true. The <a href="/webpack/building/bundle-splitting/">Bundle Splitting</a> chapter digs into greater detail.</p>
 <p>If you wanted to extract CSS from a more involved format, like Sass, you would have to pass multiple loaders to the <code>use</code> option. Both <code>use</code> and <code>fallback</code> accept a loader (string), a loader definition, or an array of loader definitions.</p>
 <p>The idea can be modeled as below:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> ExtractTextPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"extract-text-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> ExtractTextPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"extract-text-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-exports<span class="token punctuation">.</span><span class="token function-variable function">extractCSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude<span class="token punctuation">,</span> use <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// Output extracted CSS to a file</span>
-  <span class="token keyword">const</span> plugin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token comment">// `allChunks` is needed with CommonsChunkPlugin to extract</span>
-    <span class="token comment">// from extracted chunks as well.</span>
-    allChunks<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    filename<span class="token punctuation">:</span> <span class="token string">"[name].css"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation" >.</span><span class="token function-variable function" >extractCSS</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> include<span class="token punctuation" >,</span> exclude<span class="token punctuation" >,</span> use <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Output extracted CSS to a file</span>
+  <span class="token keyword keyword-const" >const</span> plugin <span class="token operator" >=</span> <span class="token keyword keyword-new" >new</span> <span class="token class-name" >ExtractTextPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+    <span class="token comment" spellcheck="true" >// `allChunks` is needed with CommonsChunkPlugin to extract</span>
+    <span class="token comment" spellcheck="true" >// from extracted chunks as well.</span>
+    allChunks<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].css"</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span>
-          test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-          include<span class="token punctuation">,</span>
-          exclude<span class="token punctuation">,</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-braces" >{</span>
+    module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+        <span class="token punctuation brackets-braces" >{</span>
+          test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+          include<span class="token punctuation" >,</span>
+          exclude<span class="token punctuation" >,</span>
 
-          use<span class="token punctuation">:</span> plugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            use<span class="token punctuation">,</span>
-            fallback<span class="token punctuation">:</span> <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>plugin<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+          use<span class="token punctuation" >:</span> plugin<span class="token punctuation" >.</span><span class="token function" >extract</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+            use<span class="token punctuation" >,</span>
+            fallback<span class="token punctuation" >:</span> <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+          <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>plugin<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 </code></pre>
 <p>That <code>[name]</code> placeholder uses the name of the entry where the CSS is referred. Placeholders and hashing are discussed in detail in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</p>
 <p>It would be possible to have multiple <code>plugin.extract</code> calls against different file types. This would allow you to aggregate them to a single CSS file. Another option would be to extract multiple CSS files through separate plugin definitions and then concatenate them using <a href="https://www.npmjs.com/package/merge-files-webpack-plugin">merge-files-webpack-plugin</a>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you wanted to output the resulting file to a specific directory, you could do it by passing a path. Example: <code>filename: &quot;styles/[name].css&quot;</code>.</blockquote><h3 class="header"><a class="header-anchor" href="#connecting-with-configuration" id="connecting-with-configuration"></a><span class="text">Connecting with Configuration</span><a class="header-anchor-select" href="#connecting-with-configuration">#</a></h3>
 <p>Connect the function with the configuration as below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
 <div class="leanpub-delete">
-  parts<span class="token punctuation">.</span><span class="token function">loadCSS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >loadCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
 <div class="leanpub-delete">
-<span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  parts<span class="token punctuation">.</span><span class="token function">extractCSS</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    use<span class="token punctuation">:</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >extractCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+    use<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
 
-<span class="token keyword">const</span> developmentConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
+<span class="token keyword keyword-const" >const</span> developmentConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">loadCSS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >loadCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Using this setup, you can still benefit from the HMR during development. For a production build, it&#39;s possible to generate a separate CSS, though. <code>HtmlWebpackPlugin</code> picks it up automatically and injects it into <code>index.html</code>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you are using <a href="/webpack/appendices/css-modules/">CSS Modules</a>, remember to tweak <code>use</code> accordingly as discussed in the <a href="/webpack/styling/loading/">Loading Styles</a> chapter. You can maintain separate setups for normal CSS and CSS Modules so that they get loaded through separate logic.</blockquote><p>After running <code>npm run build</code>, you should see output similar to the following:</p>
@@ -112,44 +112,44 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 Version: webpack 3.8.1
 Time: 659ms
      Asset       Size  Chunks             Chunk Names
-    app.js     3.4 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
-   app.css   33 bytes       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
-index.html  218 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>0<span class="token punctuation">]</span> ./app/index.js 99 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>1<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>2<span class="token punctuation">]</span> ./app/component.js 142 bytes <span class="token punctuation">{</span>0<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>3<span class="token punctuation">]</span> ./node_modules/css-loader<span class="token operator">!</span>./app/main.css 199 bytes <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
+    app.js     3.4 kB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
+   app.css   33 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
+index.html  218 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>0<span class="token punctuation brackets-square" >]</span> ./app/index.js 99 bytes <span class="token punctuation brackets-braces" >{</span>0<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>1<span class="token punctuation brackets-square" >]</span> ./app/main.css 41 bytes <span class="token punctuation brackets-braces" >{</span>0<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>2<span class="token punctuation brackets-square" >]</span> ./app/component.js 142 bytes <span class="token punctuation brackets-braces" >{</span>0<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>3<span class="token punctuation brackets-square" >]</span> ./node_modules/css-loader<span class="token operator" >!</span>./app/main.css 199 bytes <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.
 </code></pre>
 <p>Now styling has been pushed to a separate CSS file. Thus, the JavaScript bundle has become slightly smaller. You also avoid the FOUC problem. The browser doesn&#39;t have to wait for JavaScript to load to get styling information. Instead, it can process the CSS separately, avoiding the flash.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you are getting <code>Module build failed: CssSyntaxError:</code> or <code>Module build failed: Unknown word</code> error, make sure your <code>common</code> configuration doesn&#39;t have a CSS-related section set up.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="/webpack/appendices/hmr/">Hot Module Replacement</a> can be combined with <code>ExtractTextPlugin</code> if you use <a href="https://www.npmjs.com/package/css-hot-loader">css-hot-loader</a>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/extract-loader">extract-loader</a> is a light alternative to <code>ExtractTextPlugin</code>. It does less, but can be enough for basic extraction needs.</blockquote><h2 class="header"><a class="header-anchor" href="#managing-styles-outside-of-javascript" id="managing-styles-outside-of-javascript"></a><span class="text">Managing Styles Outside of JavaScript</span><a class="header-anchor-select" href="#managing-styles-outside-of-javascript">#</a></h2>
 <p>Even though referring to styling through JavaScript and then bundling is the recommended option, it&#39;s possible to achieve the same result through an <code>entry</code> and <a href="https://www.npmjs.com/package/glob">globbing</a>:</p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">const</span> glob <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"glob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-const" >const</span> glob <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"glob"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Glob CSS files as an array of CSS files. This can be</span>
-<span class="token comment">// problematic due to CSS rule ordering so be careful!</span>
-<span class="token keyword">const</span> PATHS <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token operator">...</span>
+<span class="token comment" spellcheck="true" >// Glob CSS files as an array of CSS files. This can be</span>
+<span class="token comment" spellcheck="true" >// problematic due to CSS rule ordering so be careful!</span>
+<span class="token keyword keyword-const" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token operator" >...</span>
 <div class="leanpub-insert">
-  style<span class="token punctuation">:</span> glob<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token string">"./app/**/*.css"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  style<span class="token punctuation" >:</span> glob<span class="token punctuation" >.</span><span class="token function" >sync</span><span class="token punctuation brackets-parentheses" >(</span>"<span class="token punctuation" >.</span><span class="token operator" >/</span>app<span class="token comment" spellcheck="true" >/**/</span><span class="token operator" >*</span><span class="token punctuation" >.</span>css"<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-<span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token punctuation">{</span>
-    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      <span class="token operator">...</span>
+<span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token operator" >...</span>
 <div class="leanpub-insert">
-      style<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>style<span class="token punctuation">,</span>
+      style<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>style<span class="token punctuation" >,</span>
 </div>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token operator">...</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token operator" >...</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>After this type of change, you would not have to refer to styling from your application code. It also means that CSS Modules stop working. As a result, you should get both <em>style.css</em> and <em>style.js</em>. The latter file contains content like <code>webpackJsonp([1,3],[function(n,c){}]);</code> and it doesn&#39;t do anything as discussed in the <a href="https://github.com/webpack/webpack/issues/1967">webpack issue 1967</a>.</p>
 <p>If you want strict control over the ordering, you can set up a single CSS entry and then use <code>@import</code> to bring the rest to the project through it. Another option would be to set up a JavaScript entry and go through <code>import</code> to get the same effect.</p>

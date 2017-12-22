@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -36,106 +36,106 @@
 <p>Doing this defers the loading and moves it to a place where it&#39;s more acceptable for performance. Given the initial search is slower than the subsequent ones, you should display a loading indicator. But that&#39;s fine from the user point of view. Webpack&#39;s <a href="/webpack/building/code-splitting/">Code Splitting</a> feature allows to do this.</p>
 <h2 class="header"><a class="header-anchor" href="#implementing-search-with-code-splitting" id="implementing-search-with-code-splitting"></a><span class="text">Implementing Search with Code Splitting</span><a class="header-anchor-select" href="#implementing-search-with-code-splitting">#</a></h2>
 <p>To implement code splitting, you need to decide where to put the split point, put it there, and then handle the <code>Promise</code>:</p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"./asset"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>asset <span class="token operator">=></span> <span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=></span> <span class="token operator">...</span><span class="token punctuation">)</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./asset"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation brackets-parentheses" >(</span>asset <span class="token operator" >=&gt;</span> <span class="token operator" >...</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >.</span><span class="token keyword keyword-catch" >catch</span><span class="token punctuation brackets-parentheses" >(</span>err <span class="token operator" >=&gt;</span> <span class="token operator" >...</span><span class="token punctuation brackets-parentheses" >)</span>
 </code></pre>
 <p>The nice thing is that this gives error handling in case something goes wrong (network is down etc.) and gives a chance to recover. You can also use <code>Promise</code> based utilities like <code>Promise.all</code> for composing more complicated queries.</p>
 <p>In this case, you need to detect when the user selects the search element, load the data unless it has been loaded already, and then execute search logic against it. Consider the React implementation below:</p>
 <p><strong>App.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> React <span class="token keyword keyword-from" >from</span> <span class="token string" >"react"</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-class" >class</span> <span class="token class-name" >App</span> <span class="token keyword keyword-extends" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-super" >super</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-      index<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-      value<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-      lines<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      results<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> results<span class="token punctuation">,</span> value <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+    <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+      index<span class="token punctuation" >:</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation" >,</span>
+      value<span class="token punctuation" >:</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+      lines<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      results<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+  <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-const" >const</span> <span class="token punctuation brackets-braces" >{</span> results<span class="token punctuation" >,</span> value <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
 
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"app-container"</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"search-container"</span><span class="token operator">></span>
-          <span class="token operator">&lt;</span>label<span class="token operator">></span>Search against README<span class="token punctuation">:</span><span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">></span>
-          <span class="token operator">&lt;</span>input
-            type<span class="token operator">=</span><span class="token string">"text"</span>
-            value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span>
-            onChange<span class="token operator">=</span><span class="token punctuation">{</span>e <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onChange</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">}</span>
-          <span class="token operator">/</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"results-container"</span><span class="token operator">></span>
-          <span class="token operator">&lt;</span>Results results<span class="token operator">=</span><span class="token punctuation">{</span>results<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token function">onChange</span><span class="token punctuation">(</span><span class="token punctuation">{</span> target<span class="token punctuation">:</span> <span class="token punctuation">{</span> value <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> index<span class="token punctuation">,</span> lines <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-parentheses" >(</span>
+      <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"app-container"</span><span class="token operator" >&gt;</span>
+        <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"search-container"</span><span class="token operator" >&gt;</span>
+          <span class="token operator" >&lt;</span>label<span class="token operator" >&gt;</span>Search against README<span class="token punctuation" >:</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>label<span class="token operator" >&gt;</span>
+          <span class="token operator" >&lt;</span>input
+            type<span class="token operator" >=</span><span class="token string" >"text"</span>
+            value<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>value<span class="token punctuation brackets-braces" >}</span>
+            onChange<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>e <span class="token operator" >=&gt;</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >onChange</span><span class="token punctuation brackets-parentheses" >(</span>e<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span>
+          <span class="token operator" >/</span><span class="token operator" >&gt;</span>
+        <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >&gt;</span>
+        <span class="token operator" >&lt;</span>div className<span class="token operator" >=</span><span class="token string" >"results-container"</span><span class="token operator" >&gt;</span>
+          <span class="token operator" >&lt;</span>Results results<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>results<span class="token punctuation brackets-braces" >}</span> <span class="token operator" >/</span><span class="token operator" >&gt;</span>
+        <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >&gt;</span>
+      <span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >&gt;</span>
+    <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+  <span class="token function" >onChange</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> target<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span> value <span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-const" >const</span> <span class="token punctuation brackets-braces" >{</span> index<span class="token punctuation" >,</span> lines <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation" >;</span>
 
-    <span class="token comment">// Set captured value to input</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true" >// Set captured value to input</span>
+    <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> value <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-    <span class="token comment">// Search against lines and index if they exist</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>lines <span class="token operator">&amp;&amp;</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-        results<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>lines<span class="token punctuation">,</span> index<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true" >// Search against lines and index if they exist</span>
+    <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>lines <span class="token operator" >&amp;&amp;</span> index<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-return" >return</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+        results<span class="token punctuation" >:</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >search</span><span class="token punctuation brackets-parentheses" >(</span>lines<span class="token punctuation" >,</span> index<span class="token punctuation" >,</span> value<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
 
-    <span class="token comment">// If the index doesn't exist, it has to be set it up.</span>
-    <span class="token comment">// You could show loading indicator here as loading might</span>
-    <span class="token comment">// take a while depending on the size of the index.</span>
-    <span class="token function">loadIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span> index<span class="token punctuation">,</span> lines <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        <span class="token comment">// Search against the index now.</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-          index<span class="token punctuation">,</span>
-          lines<span class="token punctuation">,</span>
-          results<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>lines<span class="token punctuation">,</span> index<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token function">search</span><span class="token punctuation">(</span>lines<span class="token punctuation">,</span> index<span class="token punctuation">,</span> query<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// Search against index and match README lines.</span>
-    <span class="token keyword">return</span> index
-      <span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>query<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>match <span class="token operator">=></span> lines<span class="token punctuation">[</span>match<span class="token punctuation">.</span>ref<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true" >// If the index doesn't exist, it has to be set it up.</span>
+    <span class="token comment" spellcheck="true" >// You could show loading indicator here as loading might</span>
+    <span class="token comment" spellcheck="true" >// take a while depending on the size of the index.</span>
+    <span class="token function" >loadIndex</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span>
+      <span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> index<span class="token punctuation" >,</span> lines <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+        <span class="token comment" spellcheck="true" >// Search against the index now.</span>
+        <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+          index<span class="token punctuation" >,</span>
+          lines<span class="token punctuation" >,</span>
+          results<span class="token punctuation" >:</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >search</span><span class="token punctuation brackets-parentheses" >(</span>lines<span class="token punctuation" >,</span> index<span class="token punctuation" >,</span> value<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span>
+      <span class="token punctuation" >.</span><span class="token keyword keyword-catch" >catch</span><span class="token punctuation brackets-parentheses" >(</span>err <span class="token operator" >=&gt;</span> console<span class="token punctuation" >.</span><span class="token function" >error</span><span class="token punctuation brackets-parentheses" >(</span>err<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+  <span class="token function" >search</span><span class="token punctuation brackets-parentheses" >(</span>lines<span class="token punctuation" >,</span> index<span class="token punctuation" >,</span> query<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token comment" spellcheck="true" >// Search against index and match README lines.</span>
+    <span class="token keyword keyword-return" >return</span> index
+      <span class="token punctuation" >.</span><span class="token function" >search</span><span class="token punctuation brackets-parentheses" >(</span>query<span class="token punctuation" >.</span><span class="token function" >trim</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span>
+      <span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span>match <span class="token operator" >=&gt;</span> lines<span class="token punctuation brackets-square" >[</span>match<span class="token punctuation" >.</span>ref<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">Results</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> results <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>results<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token operator">&lt;</span>ul<span class="token operator">></span>
-        <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">&lt;</span>li key<span class="token operator">=</span><span class="token punctuation">{</span>i<span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >Results</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> results <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>results<span class="token punctuation" >.</span>length<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-parentheses" >(</span>
+      <span class="token operator" >&lt;</span>ul<span class="token operator" >&gt;</span>
+        <span class="token punctuation brackets-braces" >{</span>results<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span>result<span class="token punctuation" >,</span> i<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token operator" >&lt;</span>li key<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>i<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&gt;</span><span class="token punctuation brackets-braces" >{</span>result<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>li<span class="token operator" >&gt;</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span>
+      <span class="token operator" >&lt;</span><span class="token operator" >/</span>ul<span class="token operator" >&gt;</span>
+    <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
 
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>span<span class="token operator">></span>No results<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>span<span class="token operator" >&gt;</span>No results<span class="token operator" >&lt;</span><span class="token operator" >/</span>span<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">function</span> <span class="token function">loadIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// Here's the magic. Set up `import` to tell Webpack</span>
-  <span class="token comment">// to split here and load our search index dynamically.</span>
-  <span class="token comment">//</span>
-  <span class="token comment">// Note that you will need to shim Promise.all for</span>
-  <span class="token comment">// older browsers and Internet Explorer!</span>
-  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-    <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"lunr"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"../search_index.json"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> Index <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> index<span class="token punctuation">,</span> lines <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      index<span class="token punctuation">:</span> Index<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      lines<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword keyword-function" >function</span> <span class="token function" >loadIndex</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Here's the magic. Set up `import` to tell Webpack</span>
+  <span class="token comment" spellcheck="true" >// to split here and load our search index dynamically.</span>
+  <span class="token comment" spellcheck="true" >//</span>
+  <span class="token comment" spellcheck="true" >// Note that you will need to shim Promise.all for</span>
+  <span class="token comment" spellcheck="true" >// older browsers and Internet Explorer!</span>
+  <span class="token keyword keyword-return" >return</span> Promise<span class="token punctuation" >.</span><span class="token function" >all</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+    <span class="token keyword keyword-import" >import</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"lunr"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    <span class="token keyword keyword-import" >import</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"../search_index.json"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >.</span><span class="token function" >then</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token punctuation brackets-braces" >{</span> Index <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-braces" >{</span> index<span class="token punctuation" >,</span> lines <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-braces" >{</span>
+      index<span class="token punctuation" >:</span> Index<span class="token punctuation" >.</span><span class="token function" >load</span><span class="token punctuation brackets-parentheses" >(</span>index<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+      lines<span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>In the example, webpack detects the <code>import</code> statically. It can generate a separate bundle based on this split point. Given it relies on static analysis, you cannot generalize <code>loadIndex</code> in this case and pass the search index path as a parameter.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

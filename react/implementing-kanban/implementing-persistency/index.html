@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -46,19 +46,19 @@
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can support Safari in private mode by trying to write into <code>localStorage</code> first. If that fails, you can use Safari&#39;s in-memory store instead, or just let the user know about the situation. See <a href="https://stackoverflow.com/questions/14555347/html5-localstorage-error-with-safari-quota-exceeded-err-dom-exception-22-an">Stack Overflow</a> for details.</blockquote><h2 class="header"><a class="header-anchor" href="#implementing-a-wrapper-for-localstorage" id="implementing-a-wrapper-for-localstorage"></a><span class="text">Implementing a Wrapper for <code>localStorage</code></span><a class="header-anchor-select" href="#implementing-a-wrapper-for-localstorage">#</a></h2>
 <p>To keep things simple and manageable, we will implement a little wrapper for <code>storage</code> to wrap the complexity. The API will consist of <code>get(k)</code> to fetch items from the storage and <code>set(k, v)</code> to set them. Given the underlying API is string based, we&#39;ll use <code>JSON.parse</code> and <code>JSON.stringify</code> for serialization. Since <code>JSON.parse</code> can fail, that&#39;s something we need to take into account. Consider the implementation below:</p>
 <p><strong>app/libs/storage.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> storage <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token keyword">get</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">try</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>storage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">set</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    storage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> storage <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-get" >get</span><span class="token punctuation brackets-parentheses" >(</span>k<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-try" >try</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-return" >return</span> JSON<span class="token punctuation" >.</span><span class="token function" >parse</span><span class="token punctuation brackets-parentheses" >(</span>storage<span class="token punctuation" >.</span><span class="token function" >getItem</span><span class="token punctuation brackets-parentheses" >(</span>k<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+    <span class="token keyword keyword-catch" >catch</span><span class="token punctuation brackets-parentheses" >(</span>e<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-return" >return</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token keyword keyword-set" >set</span><span class="token punctuation brackets-parentheses" >(</span>k<span class="token punctuation" >,</span> v<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    storage<span class="token punctuation" >.</span><span class="token function" >setItem</span><span class="token punctuation brackets-parentheses" >(</span>k<span class="token punctuation" >,</span> JSON<span class="token punctuation" >.</span><span class="token function" >stringify</span><span class="token punctuation brackets-parentheses" >(</span>v<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span>
 </code></pre>
 <p>The implementation is enough for our purposes. It&#39;s not foolproof and it will fail if we put too much data into a storage. To overcome these problems without having to solve them yourself, it would be possible to use a wrapper such as <a href="https://github.com/mozilla/localForage">localForage</a> to hide the complexity.</p>
 <h2 class="header"><a class="header-anchor" href="#persisting-the-application-using-finalstore" id="persisting-the-application-using-finalstore"></a><span class="text">Persisting the Application Using <code>FinalStore</code></span><a class="header-anchor-select" href="#persisting-the-application-using-finalstore">#</a></h2>
@@ -71,38 +71,38 @@
 <p>Given bootstrapping could fail for an unknown reason, we catch a possible error. It can still be a good idea to proceed with starting the application even if something horrible happens at this point. The snapshot portion is easier as we just need to check for the <code>debug</code> flag there and then set data if the flag is not active.</p>
 <p>The implementation below illustrates the ideas:</p>
 <p><strong>app/libs/persist.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span>alt<span class="token punctuation">,</span> storage<span class="token punctuation">,</span> storageName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">try</span> <span class="token punctuation">{</span>
-    alt<span class="token punctuation">.</span><span class="token function">bootstrap</span><span class="token punctuation">(</span>storage<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>storageName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Failed to bootstrap data'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span>alt<span class="token punctuation" >,</span> storage<span class="token punctuation" >,</span> storageName<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-try" >try</span> <span class="token punctuation brackets-braces" >{</span>
+    alt<span class="token punctuation" >.</span><span class="token function" >bootstrap</span><span class="token punctuation brackets-parentheses" >(</span>storage<span class="token punctuation" >.</span><span class="token keyword keyword-get" >get</span><span class="token punctuation brackets-parentheses" >(</span>storageName<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+  <span class="token keyword keyword-catch" >catch</span><span class="token punctuation brackets-parentheses" >(</span>e<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >error</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Failed to bootstrap data'</span><span class="token punctuation" >,</span> e<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
 
-  alt<span class="token punctuation">.</span>FinalStore<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>storage<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'debug'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      storage<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>storageName<span class="token punctuation">,</span> alt<span class="token punctuation">.</span><span class="token function">takeSnapshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+  alt<span class="token punctuation" >.</span>FinalStore<span class="token punctuation" >.</span><span class="token function" >listen</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-if" >if</span><span class="token punctuation brackets-parentheses" >(</span><span class="token operator" >!</span>storage<span class="token punctuation" >.</span><span class="token keyword keyword-get" >get</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'debug'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      storage<span class="token punctuation" >.</span><span class="token keyword keyword-set" >set</span><span class="token punctuation brackets-parentheses" >(</span>storageName<span class="token punctuation" >,</span> alt<span class="token punctuation" >.</span><span class="token function" >takeSnapshot</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>You would end up with something similar in other state management systems. You&#39;ll need to find equivalent hooks to initialize the system with data loaded from the <code>localStorage</code> and write the state there when it happens to change.</p>
 <h2 class="header"><a class="header-anchor" href="#connecting-persistency-logic-with-the-application" id="connecting-persistency-logic-with-the-application"></a><span class="text">Connecting Persistency Logic with the Application</span><a class="header-anchor-select" href="#connecting-persistency-logic-with-the-application">#</a></h2>
 <p>We are still missing one part to make this work. We&#39;ll need to connect the logic with our application. Fortunately there&#39;s a suitable place for this, the setup. Tweak as follows:</p>
 <p><strong>app/components/Provider/setup.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword">import</span> storage <span class="token keyword">from</span> <span class="token string">'../../libs/storage'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> persist <span class="token keyword">from</span> <span class="token string">'../../libs/persist'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import" >import</span> storage <span class="token keyword keyword-from" >from</span> <span class="token string" >'../../libs/storage'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> persist <span class="token keyword keyword-from" >from</span> <span class="token string" >'../../libs/persist'</span><span class="token punctuation" >;</span>
 </div>
-<span class="token keyword">import</span> NoteStore <span class="token keyword">from</span> <span class="token string">'../../stores/NoteStore'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import" >import</span> NoteStore <span class="token keyword keyword-from" >from</span> <span class="token string" >'../../stores/NoteStore'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> alt <span class="token operator">=></span> <span class="token punctuation">{</span>
-  alt<span class="token punctuation">.</span><span class="token function">addStore</span><span class="token punctuation">(</span><span class="token string">'NoteStore'</span><span class="token punctuation">,</span> NoteStore<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> alt <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  alt<span class="token punctuation" >.</span><span class="token function" >addStore</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'NoteStore'</span><span class="token punctuation" >,</span> NoteStore<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
 <div class="leanpub-insert">
-  <span class="token function">persist</span><span class="token punctuation">(</span>alt<span class="token punctuation">,</span> <span class="token function">storage</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function" >persist</span><span class="token punctuation brackets-parentheses" >(</span>alt<span class="token punctuation" >,</span> <span class="token function" >storage</span><span class="token punctuation brackets-parentheses" >(</span>localStorage<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span> <span class="token string" >'app'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
-<span class="token punctuation">}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>If you try refreshing the browser now, the application should retain its state. Given the solution is generic, adding more state to the system shouldn&#39;t be a problem. We could also integrate a proper back-end through the same hooks if we wanted.</p>
 <p>If we had a real back-end, we could pass the initial payload as a part of the HTML and load it from there. This would avoid a round trip. If we rendered the initial markup of the application as well, we would end up implementing basic <strong>universal rendering</strong> approach. Universal rendering is a powerful technique that allows you to use React to improve the performance of your application while gaining SEO benefits.</p>
@@ -110,32 +110,32 @@
 <p>Before moving on, it would be a good idea to clean up <code>NoteStore</code>. There&#39;s still some code hanging around from our earlier experiments. Given persistency works now, we might as well start from a blank slate. Even if we wanted some initial data, it would be better to handle that at a higher level, such as application initialization. Adjust <code>NoteStore</code> as follows:</p>
 <p><strong>app/stores/NoteStore.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-delete">
-<span class="token keyword">import</span> uuid <span class="token keyword">from</span> <span class="token string">'uuid'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import" >import</span> uuid <span class="token keyword keyword-from" >from</span> <span class="token string" >'uuid'</span><span class="token punctuation" >;</span>
 </div>
-<span class="token keyword">import</span> NoteActions <span class="token keyword">from</span> <span class="token string">'../actions/NoteActions'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import" >import</span> NoteActions <span class="token keyword keyword-from" >from</span> <span class="token string" >'../actions/NoteActions'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">NoteStore</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">bindActions</span><span class="token punctuation">(</span>NoteActions<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-class" >class</span> <span class="token class-name" >NoteStore</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token function" >constructor</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >bindActions</span><span class="token punctuation brackets-parentheses" >(</span>NoteActions<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
 <div class="leanpub-delete">
-    <span class="token keyword">this</span><span class="token punctuation">.</span>notes <span class="token operator">=</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        id<span class="token punctuation">:</span> uuid<span class="token punctuation">.</span><span class="token function">v4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        task<span class="token punctuation">:</span> <span class="token string">'Learn React'</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">{</span>
-        id<span class="token punctuation">:</span> uuid<span class="token punctuation">.</span><span class="token function">v4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        task<span class="token punctuation">:</span> <span class="token string">'Do laundry'</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>notes <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'Learn React'</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        id<span class="token punctuation" >:</span> uuid<span class="token punctuation" >.</span><span class="token function" >v4</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        task<span class="token punctuation" >:</span> <span class="token string" >'Do laundry'</span>
+      <span class="token punctuation brackets-braces" >}</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
 </div>
 <div class="leanpub-insert">
-    <span class="token keyword">this</span><span class="token punctuation">.</span>notes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>notes <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
 </div>
-  <span class="token punctuation">}</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">}</span>
+  <span class="token punctuation brackets-braces" >}</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>This is enough for now. Now our application should start from a blank slate.</p>
 <h2 class="header"><a class="header-anchor" href="#alternative-implementations" id="alternative-implementations"></a><span class="text">Alternative Implementations</span><a class="header-anchor-select" href="#alternative-implementations">#</a></h2>

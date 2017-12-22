@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -55,15 +55,15 @@
 <h2 class="header"><a class="header-anchor" href="#refs" id="refs"></a><span class="text">Refs</span><a class="header-anchor-select" href="#refs">#</a></h2>
 <p>React&#39;s <a href="https://facebook.github.io/react/docs/more-about-refs.html">refs</a> allow you to access the underlying DOM structure easily. Using them will bind your code to the web, but sometimes there&#39;s no way around this if you are measuring components for instance.</p>
 <p>Refs need a backing instance. This means they will work only with <code>React.createClass</code> or class based component definitions. The basic idea goes as follows:</p>
-<pre><code class="lang-javascript"><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> ref<span class="token operator">=</span><span class="token string">"input"</span> <span class="token operator">/</span><span class="token operator">></span>
+<pre><code class="lang-javascript"><span class="token operator" >&lt;</span>input type<span class="token operator" >=</span><span class="token string" >"text"</span> ref<span class="token operator" >=</span><span class="token string" >"input"</span> <span class="token operator" >/</span><span class="token operator" >&gt;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-<span class="token comment">// Access somewhere</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>refs<span class="token punctuation">.</span>input
+<span class="token comment" spellcheck="true" >// Access somewhere</span>
+<span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>refs<span class="token punctuation" >.</span>input
 </code></pre>
 <p>In addition to strings, refs support a callback that gets called right after the component is mounted. You can do some initialization here or capture the reference:</p>
-<pre><code class="lang-javascript"><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> ref<span class="token operator">=</span><span class="token punctuation">{</span>element <span class="token operator">=></span> element<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+<pre><code class="lang-javascript"><span class="token operator" >&lt;</span>input type<span class="token operator" >=</span><span class="token string" >"text"</span> ref<span class="token operator" >=</span><span class="token punctuation brackets-braces" >{</span>element <span class="token operator" >=&gt;</span> element<span class="token punctuation" >.</span><span class="token function" >focus</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span> <span class="token operator" >/</span><span class="token operator" >&gt;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#custom-properties-and-methods" id="custom-properties-and-methods"></a><span class="text">Custom Properties and Methods</span><a class="header-anchor-select" href="#custom-properties-and-methods">#</a></h2>
 <p>Beyond the lifecycle methods and refs, there are a variety of <a href="https://facebook.github.io/react/docs/component-specs.html">properties and methods</a> you should be aware of especially if you are going to use <code>React.createClass</code>:</p>
@@ -75,31 +75,31 @@
 <li><code>mixins</code> - <code>mixins</code> contains an array of mixins to apply to components.</li>
 <li><code>statics</code> - <code>statics</code> contains static properties and method for a component. In ES6 you can assign them to the class as below:</li>
 </ul>
-<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Note</span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token operator">...</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-Note<span class="token punctuation">.</span><span class="token function-variable function">willTransitionTo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-class" >class</span> <span class="token class-name" >Note</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token operator" >...</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
+Note<span class="token punctuation" >.</span><span class="token function-variable function" >willTransitionTo</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> Note<span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> Note<span class="token punctuation" >;</span>
 </code></pre>
 <p>This could also be written as:</p>
-<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Note</span> <span class="token punctuation">{</span>
-  <span class="token keyword">static</span> <span class="token function">willTransitionTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token operator">...</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-class" >class</span> <span class="token class-name" >Note</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-static" >static</span> <span class="token function" >willTransitionTo</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token punctuation brackets-braces" >}</span>
+  <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token operator" >...</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> Note<span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> Note<span class="token punctuation" >;</span>
 </code></pre>
 <p>Some libraries, such as React DnD, rely on static methods to provide transition hooks. They allow you to control what happens when a component is shown or hidden. By definition statics are available through the class itself.</p>
 <p>React components allow you to document the interface of your component using <code>propTypes</code> as below.</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Note</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span>task<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
-Note<span class="token punctuation">.</span>propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
-  task<span class="token punctuation">:</span> React<span class="token punctuation">.</span>PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">.</span>isRequired
-<span class="token punctuation">}</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >Note</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>task<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token operator" >&lt;</span>div<span class="token operator" >&gt;</span><span class="token punctuation brackets-braces" >{</span>task<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>div<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+Note<span class="token punctuation" >.</span>propTypes <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  task<span class="token punctuation" >:</span> React<span class="token punctuation" >.</span>PropTypes<span class="token punctuation" >.</span>string<span class="token punctuation" >.</span>isRequired
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>To understand <code>propTypes</code> better, read the <em>Typing with React</em> chapter.</p>
 <h2 class="header"><a class="header-anchor" href="#react-component-conventions" id="react-component-conventions"></a><span class="text">React Component Conventions</span><a class="header-anchor-select" href="#react-component-conventions">#</a></h2>

@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -36,29 +36,29 @@
 <p>The greatest benefit of decorators is that they allow us to wrap behavior into simple, reusable chunks while cutting down the amount of noise. It is definitely possible to code without them. They just make certain tasks neater, as we saw with drag and drop related annotations.</p>
 <h2 class="header"><a class="header-anchor" href="#implementing-a-logging-decorator" id="implementing-a-logging-decorator"></a><span class="text">Implementing a Logging Decorator</span><a class="header-anchor-select" href="#implementing-a-logging-decorator">#</a></h2>
 <p>Sometimes, it is useful to know how methods are being called. You could of course attach <code>console.log</code> there but it&#39;s more fun to implement <code>@log</code>. That&#39;s a more controllable way to deal with it. Consider the example below:</p>
-<pre><code class="lang-javascript"><span class="token keyword">class</span> <span class="token class-name">Math</span> <span class="token punctuation">{</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-class" >class</span> <span class="token class-name" >Math</span> <span class="token punctuation brackets-braces" >{</span>
   @log
-  <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+  <span class="token function" >add</span><span class="token punctuation brackets-parentheses" >(</span>a<span class="token punctuation" >,</span> b<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> a <span class="token operator" >+</span> b<span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> name<span class="token punctuation">,</span> descriptor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> oldValue <span class="token operator">=</span> descriptor<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+<span class="token keyword keyword-function" >function</span> <span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span>target<span class="token punctuation" >,</span> name<span class="token punctuation" >,</span> descriptor<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-var" >var</span> oldValue <span class="token operator" >=</span> descriptor<span class="token punctuation" >.</span>value<span class="token punctuation" >;</span>
 
-  descriptor<span class="token punctuation">.</span><span class="token function-variable function">value</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`Calling "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">" with`</span></span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  descriptor<span class="token punctuation" >.</span><span class="token function-variable function" >value</span> <span class="token operator" >=</span> <span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span>`Calling <span class="token string" >"${name}"</span> <span class="token keyword keyword-with" >with</span>`<span class="token punctuation" >,</span> arguments<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-    <span class="token keyword">return</span> oldValue<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return" >return</span> oldValue<span class="token punctuation" >.</span><span class="token function" >apply</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-null" >null</span><span class="token punctuation" >,</span> arguments<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+  <span class="token keyword keyword-return" >return</span> descriptor<span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token keyword">const</span> math <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Math</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> math <span class="token operator" >=</span> <span class="token keyword keyword-new" >new</span> <span class="token class-name" >Math</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// passed parameters should get logged now</span>
-math<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// passed parameters should get logged now</span>
+math<span class="token punctuation" >.</span><span class="token function" >add</span><span class="token punctuation brackets-parentheses" >(</span><span class="token number" >2</span><span class="token punctuation" >,</span> <span class="token number" >4</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The idea is that our <code>log</code> decorator wraps the original function, triggers a <code>console.log</code>, and finally, calls it again while passing the original <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/arguments">arguments</a> to it. Especially if you haven&#39;t seen <code>arguments</code> or <code>apply</code> before, it might seem a little strange.</p>
 <p><code>apply</code> can be thought as an another way to invoke a function while passing its context (<code>this</code>) and parameters as an array. <code>arguments</code> receives function parameters implicitly so it&#39;s ideal for this case.</p>
@@ -69,81 +69,81 @@ math<span class="token punctuation">.</span><span class="token function">add</sp
 <li><code>name</code> contains the name of the method being decorated.</li>
 <li><code>descriptor</code> is the most interesting piece as it allows us to annotate the method and manipulate its behavior. It could look like this:</li>
 </ul>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> descriptor <span class="token operator">=</span> <span class="token punctuation">{</span>
-  value<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  enumerable<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  configurable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  writable<span class="token punctuation">:</span> <span class="token boolean">true</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> descriptor <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  value<span class="token punctuation" >:</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  enumerable<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+  configurable<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  writable<span class="token punctuation" >:</span> <span class="token boolean" >true</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>As you saw above, <code>value</code> makes it possible to shape the behavior. The rest allows you to modify behavior on method level. For instance, a <code>@readonly</code> decorator could limit access. <code>@memoize</code> is another interesting example as that allows you to implement easy caching for methods.</p>
 <h2 class="header"><a class="header-anchor" href="#implementing-connect" id="implementing-connect"></a><span class="text">Implementing <code>@connect</code></span><a class="header-anchor-select" href="#implementing-connect">#</a></h2>
 <p><code>@connect</code> will wrap our component in another component. That, in turn, will deal with the connection logic (<code>listen/unlisten/setState</code>). It will maintain the store state internally and then pass it to the child component that we are wrapping. During this process, it will pass the state through props. The implementation below illustrates the idea:</p>
 <p><strong>app/decorators/connect.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> React <span class="token keyword keyword-from" >from</span> <span class="token string" >'react'</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">connect</span> <span class="token operator">=</span> <span class="token punctuation">(</span>Component<span class="token punctuation">,</span> store<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">class</span> <span class="token class-name">Connect</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-    <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >connect</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>Component<span class="token punctuation" >,</span> store<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token keyword keyword-class" >class</span> <span class="token class-name" >Connect</span> <span class="token keyword keyword-extends" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token function" >constructor</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-super" >super</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-      <span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>storeChanged <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>storeChanged<span class="token punctuation" >.</span><span class="token function" >bind</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-this" >this</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+      <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>state <span class="token operator" >=</span> store<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-      store<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">componentWillUnmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      store<span class="token punctuation">.</span><span class="token function">unlisten</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>storeChanged<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">storeChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span>store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+      store<span class="token punctuation" >.</span><span class="token function" >listen</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>storeChanged<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+    <span class="token function" >componentWillUnmount</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      store<span class="token punctuation" >.</span><span class="token function" >unlisten</span><span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>storeChanged<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+    <span class="token function" >storeChanged</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span><span class="token function" >setState</span><span class="token punctuation brackets-parentheses" >(</span>store<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+    <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>Component <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-braces" >{</span><span class="token operator" >...</span><span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>state<span class="token punctuation brackets-braces" >}</span> <span class="token operator" >/</span><span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>store<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">connect</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> store<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token punctuation brackets-parentheses" >(</span>store<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-parentheses" >(</span>target<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token function" >connect</span><span class="token punctuation brackets-parentheses" >(</span>target<span class="token punctuation" >,</span> store<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Can you see the wrapping idea? Our decorator tracks store state. After that, it passes the state to the component contained through props.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><code>...</code> is known as a <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">spread operator</a>. It expands the given object to separate key-value pairs, or props, as in this case.</blockquote><p>You can connect the decorator with <code>App</code> like this:</p>
 <p><strong>app/components/App.jsx</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">import</span> connect <span class="token keyword">from</span> <span class="token string">'../decorators/connect'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-import" >import</span> connect <span class="token keyword keyword-from" >from</span> <span class="token string" >'../decorators/connect'</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-@<span class="token function">connect</span><span class="token punctuation">(</span>NoteStore<span class="token punctuation">)</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> notes <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>notes<span class="token punctuation">;</span>
+@<span class="token function" >connect</span><span class="token punctuation brackets-parentheses" >(</span>NoteStore<span class="token punctuation brackets-parentheses" >)</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-class" >class</span> <span class="token class-name" >App</span> <span class="token keyword keyword-extends" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token function" >render</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-const" >const</span> notes <span class="token operator" >=</span> <span class="token keyword keyword-this" >this</span><span class="token punctuation" >.</span>props<span class="token punctuation" >.</span>notes<span class="token punctuation" >;</span>
 
-    <span class="token operator">...</span>
-  <span class="token punctuation">}</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">}</span>
+    <span class="token operator" >...</span>
+  <span class="token punctuation brackets-braces" >}</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Pushing the logic to a decorator allows us to keep our components simple. If we wanted to add more stores to the system and connect them to components, it would be trivial now. Even better, we could connect multiple stores to a single component easily.</p>
 <h2 class="header"><a class="header-anchor" href="#decorator-ideas" id="decorator-ideas"></a><span class="text">Decorator Ideas</span><a class="header-anchor-select" href="#decorator-ideas">#</a></h2>
 <p>We can build new decorators for various functionalities, such as undo, in this manner. They allow us to keep our components tidy and push common logic elsewhere out of sight. Well designed decorators can be used across projects.</p>
 <h3 class="header"><a class="header-anchor" href="#alt-s-connecttostores" id="alt-s-connecttostores"></a><span class="text">Alt&#39;s <code>@connectToStores</code></span><a class="header-anchor-select" href="#alt-s-connecttostores">#</a></h3>
 <p>Alt provides a similar decorator known as <code>@connectToStores</code>. It relies on static methods.  Rather than normal methods that are bound to a specific instance, these are bound on class level. This means you can call them through the class itself (i.e., <code>App.getStores()</code>). The example below shows how we might integrate <code>@connectToStores</code> into our application.</p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">import</span> connectToStores <span class="token keyword">from</span> <span class="token string">'alt-utils/lib/connectToStores'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-import" >import</span> connectToStores <span class="token keyword keyword-from" >from</span> <span class="token string" >'alt-utils/lib/connectToStores'</span><span class="token punctuation" >;</span>
 
 @connectToStores
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token keyword">static</span> <span class="token function">getStores</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">[</span>NoteStore<span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token keyword">static</span> <span class="token function">getPropsFromStores</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> NoteStore<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">}</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token keyword keyword-class" >class</span> <span class="token class-name" >App</span> <span class="token keyword keyword-extends" >extends</span> <span class="token class-name" >React<span class="token punctuation" >.</span>Component</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-static" >static</span> <span class="token function" >getStores</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-square" >[</span>NoteStore<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+  <span class="token keyword keyword-static" >static</span> <span class="token function" >getPropsFromStores</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> NoteStore<span class="token punctuation" >.</span><span class="token function" >getState</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>This more verbose approach is roughly equivalent to our implementation. It actually does more as it allows you to connect to multiple stores at once. It also provides more control over the way you can shape store state to props.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

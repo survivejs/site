@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -40,38 +40,38 @@ Version: webpack 3.8.1
 Time: 2398ms
         Asset       Size  Chunks                    Chunk Names
 <div class="leanpub-insert">
-    vendor.js    83.7 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         vendor
+    vendor.js    83.7 kB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>         vendor
 </div>
-       app.js    2.49 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>         app
-<span class="token punctuation">..</span>.
-   index.html  274 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>6<span class="token punctuation">]</span> ./app/index.js 176 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>14<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>15<span class="token punctuation">]</span> ./app/component.js 464 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
+       app.js    2.49 kB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>         app
+<span class="token punctuation" >..</span>.
+   index.html  274 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+    <span class="token punctuation brackets-square" >[</span>6<span class="token punctuation brackets-square" >]</span> ./app/index.js 176 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>14<span class="token punctuation brackets-square" >]</span> ./app/main.css 41 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>15<span class="token punctuation brackets-square" >]</span> ./app/component.js 464 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.
 </code></pre>
 <p>83 kB for a vendor bundle is a lot! Minification should bring the size down.</p>
 <h2 class="header"><a class="header-anchor" href="#enabling-a-performance-budget" id="enabling-a-performance-budget"></a><span class="text">Enabling a Performance Budget</span><a class="header-anchor-select" href="#enabling-a-performance-budget">#</a></h2>
 <p>Webpack allows you to define a <strong>performance budget</strong>. The idea is that it gives your build size constraint which it has to follow. The feature is disabled by default and the calculation includes extracted chunks to entry calculation. If a budget isn&#39;t met and it has been configured to emit an error, it would terminate the entire build.</p>
 <p>To integrate the feature into the project, adjust the configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
 <div class="leanpub-insert">
-  <span class="token punctuation">{</span>
-    performance<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      hints<span class="token punctuation">:</span> <span class="token string">"warning"</span><span class="token punctuation">,</span> <span class="token comment">// "error" or false are valid too</span>
-      maxEntrypointSize<span class="token punctuation">:</span> <span class="token number">50000</span><span class="token punctuation">,</span> <span class="token comment">// in bytes, default 250k</span>
-      maxAssetSize<span class="token punctuation">:</span> <span class="token number">450000</span><span class="token punctuation">,</span> <span class="token comment">// in bytes</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    performance<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      hints<span class="token punctuation" >:</span> <span class="token string" >"warning"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// "error" or false are valid too</span>
+      maxEntrypointSize<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// in bytes, default 250k</span>
+      maxAssetSize<span class="token punctuation" >:</span> <span class="token number" >450000</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// in bytes</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>In practice you want to maintain lower limits. The current ones are enough for this demonstration. If you build now (<code>npm run build</code>), you should see a warning:</p>
-<pre><code class="lang-bash">WARNING <span class="token keyword">in</span> entrypoint size limit: The following entrypoint<span class="token punctuation">(</span>s<span class="token punctuation">)</span> combined asset size exceeds the recommended limit <span class="token punctuation">(</span>50 kB<span class="token punctuation">)</span>. This can impact web performance.
+<pre><code class="lang-bash">WARNING <span class="token keyword keyword-in" >in</span> entrypoint size limit: The following entrypoint<span class="token punctuation brackets-parentheses" >(</span>s<span class="token punctuation brackets-parentheses" >)</span> combined asset size exceeds the recommended limit <span class="token punctuation brackets-parentheses" >(</span>50 kB<span class="token punctuation brackets-parentheses" >)</span>. This can impact web performance.
 Entrypoints:
-  app <span class="token punctuation">(</span>89.5 kB<span class="token punctuation">)</span>
+  app <span class="token punctuation brackets-parentheses" >(</span>89.5 kB<span class="token punctuation brackets-parentheses" >)</span>
       vendor.js
       app.js
       app.css
@@ -84,27 +84,27 @@ Entrypoints:
 <h3 class="header"><a class="header-anchor" href="#setting-up-javascript-minification" id="setting-up-javascript-minification"></a><span class="text">Setting Up JavaScript Minification</span><a class="header-anchor-select" href="#setting-up-javascript-minification">#</a></h3>
 <p><a href="https://www.npmjs.com/package/uglifyjs-webpack-plugin">uglifyjs-webpack-plugin</a> allows you to use ES2015 syntax out of the box and minify it.</p>
 <p>To get started, include the plugin to the project:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> uglifyjs-webpack-plugin --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> uglifyjs-webpack-plugin --save-dev
 </code></pre>
 <p>To attach it to the configuration, define a part for it first:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">const</span> UglifyWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"uglifyjs-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-const" >const</span> UglifyWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"uglifyjs-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-exports<span class="token punctuation">.</span><span class="token function-variable function">minifyJavaScript</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">UglifyWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation" >.</span><span class="token function-variable function" >minifyJavaScript</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >UglifyWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The plugin exposes more functionality, but having the possibility of toggling source maps is enough. Hook it up with the configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
-  parts<span class="token punctuation">.</span><span class="token function">clean</span><span class="token punctuation">(</span>PATHS<span class="token punctuation">.</span>build<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >clean</span><span class="token punctuation brackets-parentheses" >(</span>PATHS<span class="token punctuation" >.</span>build<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">minifyJavaScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >minifyJavaScript</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you execute <code>npm run build</code> now, you should see smaller results:</p>
 <pre><code class="lang-bash">Hash: 9164f800e257bf1d9791
@@ -112,19 +112,19 @@ Version: webpack 3.8.1
 Time: 3165ms
         Asset       Size  Chunks             Chunk Names
 <div class="leanpub-insert">
-    vendor.js    28.1 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+    vendor.js    28.1 kB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
 </div>
-       app.js  675 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
-<span class="token punctuation">..</span>.
-  app.css.map   84 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+       app.js  675 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
+<span class="token punctuation" >..</span>.
+  app.css.map   84 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
 <div class="leanpub-insert">
-vendor.js.map   86 bytes       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+vendor.js.map   86 bytes       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
 </div>
-   index.html  274 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>6<span class="token punctuation">]</span> ./app/index.js 176 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>15<span class="token punctuation">]</span> ./app/main.css 41 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>16<span class="token punctuation">]</span> ./app/component.js 464 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
+   index.html  274 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+    <span class="token punctuation brackets-square" >[</span>6<span class="token punctuation brackets-square" >]</span> ./app/index.js 176 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>15<span class="token punctuation brackets-square" >]</span> ./app/main.css 41 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>16<span class="token punctuation brackets-square" >]</span> ./app/component.js 464 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.
 </code></pre>
 <p>Given it needs to do more work, it took longer to execute the build. But on the plus side, the build is now smaller, the size limit warning disappeared, and the vendor build went from 83 kB to roughly 28 kB.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Source maps are disabled by default. You can enable them through the <code>sourceMap</code> flag. You should check <em>uglifyjs-webpack-plugin</em> for more options.</blockquote><h2 class="header"><a class="header-anchor" href="#other-ways-to-minify-javascript" id="other-ways-to-minify-javascript"></a><span class="text">Other Ways to Minify JavaScript</span><a class="header-anchor-select" href="#other-ways-to-minify-javascript">#</a></h2>
@@ -150,59 +150,59 @@ vendor.js.map   86 bytes       2  <span class="token punctuation">[</span>emitte
 <p><a href="https://www.npmjs.com/package/optimize-css-assets-webpack-plugin">optimize-css-assets-webpack-plugin</a> is a plugin based option that applies a chosen minifier on CSS assets. Using <code>ExtractTextPlugin</code> can lead to duplicated CSS given it only merges text chunks. <code>OptimizeCSSAssetsPlugin</code> avoids this problem by operating on the generated result and thus can lead to a better result.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-css-minification" id="setting-up-css-minification"></a><span class="text">Setting Up CSS Minification</span><a class="header-anchor-select" href="#setting-up-css-minification">#</a></h3>
 <p>Out of the available solutions, <code>OptimizeCSSAssetsPlugin</code> composes the best. To attach it to the setup, install it and <a href="http://cssnano.co/">cssnano</a> first:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> optimize-css-assets-webpack-plugin cssnano --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> optimize-css-assets-webpack-plugin cssnano --save-dev
 </code></pre>
 <p>Like for JavaScript, you can wrap the idea in a configuration part:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">const</span> OptimizeCSSAssetsPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>
-  <span class="token string">"optimize-css-assets-webpack-plugin"</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> cssnano <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"cssnano"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-const" >const</span> OptimizeCSSAssetsPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token string" >"optimize-css-assets-webpack-plugin"</span>
+<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> cssnano <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"cssnano"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-exports<span class="token punctuation">.</span><span class="token function-variable function">minifyCSS</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> options <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token keyword">new</span> <span class="token class-name">OptimizeCSSAssetsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      cssProcessor<span class="token punctuation">:</span> cssnano<span class="token punctuation">,</span>
-      cssProcessorOptions<span class="token punctuation">:</span> options<span class="token punctuation">,</span>
-      canPrint<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation" >.</span><span class="token function-variable function" >minifyCSS</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> options <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token keyword keyword-new" >new</span> <span class="token class-name" >OptimizeCSSAssetsPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      cssProcessor<span class="token punctuation" >:</span> cssnano<span class="token punctuation" >,</span>
+      cssProcessorOptions<span class="token punctuation" >:</span> options<span class="token punctuation" >,</span>
+      canPrint<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>If you use <code>--json</code> output with webpack as discussed in the <a href="/webpack/optimizing/build-analysis/">Build Analysis</a> chapter, you should set <code>canPrint: false</code> for the plugin.</blockquote><p>Then, connect with main configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
-  parts<span class="token punctuation">.</span><span class="token function">minifyJavaScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >minifyJavaScript</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">minifyCSS</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      discardComments<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        removeAll<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token comment">// Run cssnano in safe mode to avoid</span>
-      <span class="token comment">// potentially unsafe transformations.</span>
-      safe<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >minifyCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      discardComments<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        removeAll<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token comment" spellcheck="true" >// Run cssnano in safe mode to avoid</span>
+      <span class="token comment" spellcheck="true" >// potentially unsafe transformations.</span>
+      safe<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you build the project now (<code>npm run build</code>), you should notice that CSS has become smaller as it&#39;s missing comments:</p>
 <pre><code class="lang-bash">Hash: 9164f800e257bf1d9791
 Version: webpack 3.8.1
 Time: 3254ms
         Asset       Size  Chunks             Chunk Names
-<span class="token punctuation">..</span>.
-  <span class="token punctuation">..</span>.font.ttf     166 kB          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
+<span class="token punctuation" >..</span>.
+  <span class="token punctuation" >..</span>.font.ttf     166 kB          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
 <div class="leanpub-insert">
-      app.css    2.25 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
+      app.css    2.25 kB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
 </div>
-     0.js.map    2.07 kB       0  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-   app.js.map    1.64 kB       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
-<span class="token punctuation">..</span>.
+     0.js.map    2.07 kB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+   app.js.map    1.64 kB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
+<span class="token punctuation" >..</span>.
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#minifying-images" id="minifying-images"></a><span class="text">Minifying Images</span><a class="header-anchor-select" href="#minifying-images">#</a></h2>
 <p>Image size can be reduced by using <a href="https://www.npmjs.com/package/img-loader">img-loader</a>, <a href="https://www.npmjs.com/package/imagemin-webpack">imagemin-webpack</a>, and <a href="https://www.npmjs.com/package/imagemin-webpack-plugin">imagemin-webpack-plugin</a>. The packages use image optimizers underneath.</p>

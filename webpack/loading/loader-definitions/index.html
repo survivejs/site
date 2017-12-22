@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -38,148 +38,148 @@
 <p>Webpack supports a large variety of formats through <em>loaders</em>. Also, it supports a couple of JavaScript module formats out of the box. The idea is the same. You always set up a loader, or loaders, and connect those with your directory structure.</p>
 <p>Consider the example below where webpack processes JavaScript through Babel:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token operator">...</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        <span class="token comment">// **Conditions** to match files using RegExp, function.</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token operator" >...</span>
+  module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        <span class="token comment" spellcheck="true" >// **Conditions** to match files using RegExp, function.</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
 
-        <span class="token comment">// **Restrictions**</span>
-        <span class="token comment">// Restrict matching to a directory. This</span>
-        <span class="token comment">// also accepts an array of paths or a function.</span>
-        <span class="token comment">// The same applies to `exclude`.</span>
-        include<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"app"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token function">exclude</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token comment">// You can perform more complicated checks  as well.</span>
-          <span class="token keyword">return</span> path<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/node_modules/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment" spellcheck="true" >// **Restrictions**</span>
+        <span class="token comment" spellcheck="true" >// Restrict matching to a directory. This</span>
+        <span class="token comment" spellcheck="true" >// also accepts an array of paths or a function.</span>
+        <span class="token comment" spellcheck="true" >// The same applies to `exclude`.</span>
+        include<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation brackets-parentheses" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"app"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        <span class="token function" >exclude</span><span class="token punctuation brackets-parentheses" >(</span>path<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+          <span class="token comment" spellcheck="true" >// You can perform more complicated checks  as well.</span>
+          <span class="token keyword keyword-return" >return</span> path<span class="token punctuation" >.</span><span class="token function" >match</span><span class="token punctuation brackets-parentheses" >(</span><span class="token regex" >/node_modules/</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 
-        <span class="token comment">// **Actions** to apply loaders to the matched files.</span>
-        use<span class="token punctuation">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true" >// **Actions** to apply loaders to the matched files.</span>
+        use<span class="token punctuation" >:</span> <span class="token string" >"babel-loader"</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you are not sure how a particular RegExp matches, consider using an online tool, such as <a href="https://regex101.com/">regex101</a>, <a href="http://regexr.com/">RegExr</a>, or <a href="https://regexper.com">Regexper</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#loader-evaluation-order" id="loader-evaluation-order"></a><span class="text">Loader Evaluation Order</span><a class="header-anchor-select" href="#loader-evaluation-order">#</a></h2>
 <p>It&#39;s good to keep in mind that webpack&#39;s loaders are always evaluated from right to left and from bottom to top (separate definitions). The right-to-left rule is easier to remember when you think about as functions. You can read definition <code>use: [&quot;style-loader&quot;, &quot;css-loader&quot;]</code> as <code>style(css(input))</code> based on this rule.</p>
 <p>To see the rule in action, consider the example below:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"style-loader"</span><span class="token punctuation" >,</span> <span class="token string" >"css-loader"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>Based on the right to left rule, the example can be split up while keeping it equivalent:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#enforcing-order" id="enforcing-order"></a><span class="text">Enforcing Order</span><a class="header-anchor-select" href="#enforcing-order">#</a></h3>
 <p>Even though it would be possible to develop an arbitrary configuration using the rule above, it can be convenient to be able to force certain rules to be applied before or after regular ones. The <code>enforce</code> field can come in handy here. It can be set to either <code>pre</code> or <code>post</code> to push processing either before or after other loaders.</p>
 <p>Linting is a good example as the build should fail before it does anything else. Using <code>enforce: &quot;post&quot;</code> is rarer and it would imply you want to perform a check against the built source. Performing analysis against the built source is one potential example.</p>
 <p>The basic syntax goes as below:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  <span class="token comment">// Conditions</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-  enforce<span class="token punctuation">:</span> <span class="token string">"pre"</span><span class="token punctuation">,</span> <span class="token comment">// "post" too</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Conditions</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+  enforce<span class="token punctuation" >:</span> <span class="token string" >"pre"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// "post" too</span>
 
-  <span class="token comment">// Actions</span>
-  use<span class="token punctuation">:</span> <span class="token string">"eslint-loader"</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true" >// Actions</span>
+  use<span class="token punctuation" >:</span> <span class="token string" >"eslint-loader"</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>It would be possible to write the same configuration without <code>enforce</code> if you chained the declaration with other loaders related to the <code>test</code> carefully. Using <code>enforce</code> removes the necessity for that allows you to split loader execution into separate stages that are easier to compose.</p>
 <h2 class="header"><a class="header-anchor" href="#passing-parameters-to-a-loader" id="passing-parameters-to-a-loader"></a><span class="text">Passing Parameters to a Loader</span><a class="header-anchor-select" href="#passing-parameters-to-a-loader">#</a></h2>
 <p>There&#39;s a query format that allows passing parameters to loaders:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  <span class="token comment">// Conditions</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-  include<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Conditions</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+  include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
 
-  <span class="token comment">// Actions</span>
-  use<span class="token punctuation">:</span> <span class="token string">"babel-loader?presets[]=env"</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true" >// Actions</span>
+  use<span class="token punctuation" >:</span> <span class="token string" >"babel-loader?presets[]=env"</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>This style of configuration works in entries and source imports too as webpack picks it up. The format comes in handy in certain individual cases, but often you are better off using more readable alternatives.</p>
 <p>It&#39;s preferable to go through <code>use</code>:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  <span class="token comment">// Conditions</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-  include<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Conditions</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+  include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
 
-  <span class="token comment">// Actions</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loader<span class="token punctuation">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span>
-    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      presets<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"env"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true" >// Actions</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loader<span class="token punctuation" >:</span> <span class="token string" >"babel-loader"</span><span class="token punctuation" >,</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      presets<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"env"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>If you wanted to use more than one loader, you could pass an array to <code>use</code> and expand from there:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-  include<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+  include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
 
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      loader<span class="token punctuation">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span>
-      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        presets<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"env"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token comment">// Add more loaders here</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      loader<span class="token punctuation" >:</span> <span class="token string" >"babel-loader"</span><span class="token punctuation" >,</span>
+      options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        presets<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"env"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token comment" spellcheck="true" >// Add more loaders here</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#branching-at-use-using-a-function" id="branching-at-use-using-a-function"></a><span class="text">Branching at <code>use</code> Using a Function</span><a class="header-anchor-select" href="#branching-at-use-using-a-function">#</a></h2>
 <p>In the book setup, you compose configuration on a higher level. Another option to achieve similar results would be to branch at <code>use</code> as webpack&#39;s loader definitions accept functions that allow you to branch depending on the environment. Consider the example below:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
 
-  <span class="token comment">// `resource` refers to the resource path matched.</span>
-  <span class="token comment">// `resourceQuery` contains possible query passed to it</span>
-  <span class="token comment">// `issuer` tells about match context path</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> resource<span class="token punctuation">,</span> resourceQuery<span class="token punctuation">,</span> issuer <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token comment">// You have to return something falsy, object, or a</span>
-    <span class="token comment">// string (i.e., "style-loader") from here.</span>
-    <span class="token comment">//</span>
-    <span class="token comment">// Returning an array fails! Nest rules instead.</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"development"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-          loader<span class="token punctuation">:</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token comment">// css-loader first</span>
-          rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-            <span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token comment">// style-loader after</span>
-          <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true" >// `resource` refers to the resource path matched.</span>
+  <span class="token comment" spellcheck="true" >// `resourceQuery` contains possible query passed to it</span>
+  <span class="token comment" spellcheck="true" >// `issuer` tells about match context path</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> resource<span class="token punctuation" >,</span> resourceQuery<span class="token punctuation" >,</span> issuer <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token comment" spellcheck="true" >// You have to return something falsy, object, or a</span>
+    <span class="token comment" spellcheck="true" >// string (i.e., "style-loader") from here.</span>
+    <span class="token comment" spellcheck="true" >//</span>
+    <span class="token comment" spellcheck="true" >// Returning an array fails! Nest rules instead.</span>
+    <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>env <span class="token operator" >===</span> <span class="token string" >"development"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-braces" >{</span>
+        use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+          loader<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// css-loader first</span>
+          rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+            <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// style-loader after</span>
+          <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>Carefully applied, this technique allows different means of composition.</p>
 <h2 class="header"><a class="header-anchor" href="#inline-definitions" id="inline-definitions"></a><span class="text">Inline Definitions</span><a class="header-anchor-select" href="#inline-definitions">#</a></h2>
 <p>Even though configuration level loader definitions are preferable, it&#39;s possible to write loader definitions inline:</p>
-<pre><code class="lang-javascript"><span class="token comment">// Process foo.png through url-loader and other</span>
-<span class="token comment">// possible matches.</span>
-<span class="token keyword">import</span> <span class="token string">"url-loader!./foo.png"</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// Process foo.png through url-loader and other</span>
+<span class="token comment" spellcheck="true" >// possible matches.</span>
+<span class="token keyword keyword-import" >import</span> <span class="token string" >"url-loader!./foo.png"</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Override possible higher level match completely</span>
-<span class="token keyword">import</span> <span class="token string">"!!url-loader!./bar.png"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// Override possible higher level match completely</span>
+<span class="token keyword keyword-import" >import</span> <span class="token string" >"!!url-loader!./bar.png"</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The problem with this approach is that it couples your source with webpack. But it&#39;s a good form to know still. Since configuration entries go through the same mechanism, the same forms work there as well:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    app<span class="token punctuation">:</span> <span class="token string">"babel-loader!./app"</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    app<span class="token punctuation" >:</span> <span class="token string" >"babel-loader!./app"</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#alternate-ways-to-match-files" id="alternate-ways-to-match-files"></a><span class="text">Alternate Ways to Match Files</span><a class="header-anchor-select" href="#alternate-ways-to-match-files">#</a></h2>
 <p><code>test</code> combined with <code>include</code> or <code>exclude</code> to constrain the match is the most common approach to match files. These accept the data types as listed below:</p>
@@ -200,36 +200,36 @@
 </ul>
 <h2 class="header"><a class="header-anchor" href="#loading-based-on-resourcequery" id="loading-based-on-resourcequery"></a><span class="text">Loading Based on <code>resourceQuery</code></span><a class="header-anchor-select" href="#loading-based-on-resourcequery">#</a></h2>
 <p><code>oneOf</code> field makes it possible to route webpack to a specific loader based on a resource related match:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.png$/</span><span class="token punctuation">,</span>
-  oneOf<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      resourceQuery<span class="token punctuation">:</span> <span class="token regex">/inline/</span><span class="token punctuation">,</span>
-      use<span class="token punctuation">:</span> <span class="token string">"url-loader"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-      resourceQuery<span class="token punctuation">:</span> <span class="token regex">/external/</span><span class="token punctuation">,</span>
-      use<span class="token punctuation">:</span> <span class="token string">"file-loader"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.png$/</span><span class="token punctuation" >,</span>
+  oneOf<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      resourceQuery<span class="token punctuation" >:</span> <span class="token regex" >/inline/</span><span class="token punctuation" >,</span>
+      use<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      resourceQuery<span class="token punctuation" >:</span> <span class="token regex" >/external/</span><span class="token punctuation" >,</span>
+      use<span class="token punctuation" >:</span> <span class="token string" >"file-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>If you wanted to embed the context information to the filename, the rule could use <code>resourcePath</code> over <code>resourceQuery</code>.</p>
 <h2 class="header"><a class="header-anchor" href="#loading-based-on-issuer" id="loading-based-on-issuer"></a><span class="text">Loading Based on <code>issuer</code></span><a class="header-anchor-select" href="#loading-based-on-issuer">#</a></h2>
 <p><code>issuer</code> can be used to control behavior based on where a resource was imported. In the example below adapted from <a href="https://github.com/webpack-contrib/css-loader/pull/287#issuecomment-261269199">css-loader issue 287</a>, <em>style-loader</em> is applied only when webpack captures a CSS file from a JavaScript import:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
 
-  rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      issuer<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
-      use<span class="token punctuation">:</span> <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-      use<span class="token punctuation">:</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      issuer<span class="token punctuation" >:</span> <span class="token regex" >/\.js$/</span><span class="token punctuation" >,</span>
+      use<span class="token punctuation" >:</span> <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      use<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#understanding-loader-behavior" id="understanding-loader-behavior"></a><span class="text">Understanding Loader Behavior</span><a class="header-anchor-select" href="#understanding-loader-behavior">#</a></h2>
 <p>Loader behavior can be understood in greater detail by inspecting them. <a href="https://www.npmjs.com/package/loader-runner">loader-runner</a> allows you to run them in isolation without webpack. Webpack uses this package internally and <a href="/webpack/extending/loaders/">Extending with Loaders</a> chapter covers it in detail.</p>

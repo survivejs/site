@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -45,154 +45,154 @@
 <h3 class="header"><a class="header-anchor" href="#abstracting-pages" id="abstracting-pages"></a><span class="text">Abstracting Pages</span><a class="header-anchor-select" href="#abstracting-pages">#</a></h3>
 <p>To initialize a page, it should receive page title, output path, and an optional template at least. Each page should receive optional output path, and a template for customization. The idea can be modeled as a configuration part:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"html-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-const" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"html-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-exports<span class="token punctuation">.</span>page <span class="token operator">=</span> <span class="token punctuation">(</span>
-  <span class="token punctuation">{</span>
-    path <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    template <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>
-      <span class="token string">"html-webpack-plugin/default_index.ejs"</span>
-    <span class="token punctuation">)</span><span class="token punctuation">,</span>
-    title<span class="token punctuation">,</span>
-  <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      filename<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path <span class="token operator">&amp;&amp;</span> path <span class="token operator">+</span> <span class="token string">"/"</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">index.html`</span></span><span class="token punctuation">,</span>
-      template<span class="token punctuation">,</span>
-      title<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation" >.</span>page <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    path <span class="token operator" >=</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+    template <span class="token operator" >=</span> require<span class="token punctuation" >.</span><span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span>
+      <span class="token string" >"html-webpack-plugin/default_index.ejs"</span>
+    <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    title<span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token keyword keyword-new" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      filename<span class="token punctuation" >:</span> `$<span class="token punctuation brackets-braces" >{</span>path <span class="token operator" >&amp;&amp;</span> path <span class="token operator" >+</span> <span class="token string" >"/"</span><span class="token punctuation brackets-braces" >}</span>index<span class="token punctuation" >.</span>html`<span class="token punctuation" >,</span>
+      template<span class="token punctuation" >,</span>
+      title<span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#integrating-to-configuration" id="integrating-to-configuration"></a><span class="text">Integrating to Configuration</span><a class="header-anchor-select" href="#integrating-to-configuration">#</a></h3>
 <p>To incorporate the idea to the configuration, the way it&#39;s composed has to change. Also, a page definition is required. To get started, let&#39;s reuse the same JavaScript logic for each page for now:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"webpack"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"webpack"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"path"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 <div class="leanpub-delete">
-<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"html-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> HtmlWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"html-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
 
-<span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token punctuation">{</span>
-    <span class="token operator">...</span>
+<span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    <span class="token operator" >...</span>
 <div class="leanpub-delete">
-    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token keyword keyword-new" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+        title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span>env<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>env<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-delete">
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"production"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> productionConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>env <span class="token operator" >===</span> <span class="token string" >"production"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-return" >return</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span>commonConfig<span class="token punctuation" >,</span> productionConfig<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
 
-  <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> developmentConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span>commonConfig<span class="token punctuation" >,</span> developmentConfig<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
 <div class="leanpub-insert">
-  <span class="token keyword">const</span> pages <span class="token operator">=</span> <span class="token punctuation">[</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">:</span> <span class="token string">"Another demo"</span><span class="token punctuation">,</span> path<span class="token punctuation">:</span> <span class="token string">"another"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> config <span class="token operator">=</span>
-    env <span class="token operator">===</span> <span class="token string">"production"</span> <span class="token operator">?</span> productionConfig <span class="token punctuation">:</span> developmentConfig<span class="token punctuation">;</span>
+  <span class="token keyword keyword-const" >const</span> pages <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> title<span class="token punctuation" >:</span> <span class="token string" >"Another demo"</span><span class="token punctuation" >,</span> path<span class="token punctuation" >:</span> <span class="token string" >"another"</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+  <span class="token keyword keyword-const" >const</span> config <span class="token operator" >=</span>
+    env <span class="token operator" >===</span> <span class="token string" >"production"</span> <span class="token operator" >?</span> productionConfig <span class="token punctuation" >:</span> developmentConfig<span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> pages<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>page <span class="token operator">=></span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> config<span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> pages<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span>page <span class="token operator" >=&gt;</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span>commonConfig<span class="token punctuation" >,</span> config<span class="token punctuation" >,</span> page<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>After this change you should have two pages in the application: <code>/</code> and <code>/another</code>. It should be possible to navigate to both while seeing the same output.</p>
 <h3 class="header"><a class="header-anchor" href="#injecting-different-script-per-page" id="injecting-different-script-per-page"></a><span class="text">Injecting Different Script per Page</span><a class="header-anchor-select" href="#injecting-different-script-per-page">#</a></h3>
 <p>The question is, how to inject a different script per each page. In the current configuration, the same <code>entry</code> is shared by both. To solve the problem, you should move <code>entry</code> configuration to lower level and manage it per page. To have a script to test with, set up another entry point:</p>
 <p><strong>app/another.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token string">"./main.css"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> component <span class="token keyword">from</span> <span class="token string">"./component"</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> <span class="token string" >"./main.css"</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> component <span class="token keyword keyword-from" >from</span> <span class="token string" >"./component"</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">const</span> demoComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"Another"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const" >const</span> demoComponent <span class="token operator" >=</span> <span class="token function" >component</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"Another"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>demoComponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >appendChild</span><span class="token punctuation brackets-parentheses" >(</span>demoComponent<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The file could go to a directory of its own. Here the existing code is reused to get something to show up. Webpack configuration has to point to this file:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> commonConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token punctuation">{</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-delete">
-    entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      app<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </div>
-    <span class="token operator">...</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator" >...</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token operator">...</span>
+<span class="token operator" >...</span>
 
-module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span>env<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>env<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-delete">
-  <span class="token keyword">const</span> pages <span class="token operator">=</span> <span class="token punctuation">[</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">:</span> <span class="token string">"Another demo"</span><span class="token punctuation">,</span> path<span class="token punctuation">:</span> <span class="token string">"another"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-const" >const</span> pages <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> title<span class="token punctuation" >:</span> <span class="token string" >"Another demo"</span><span class="token punctuation" >,</span> path<span class="token punctuation" >:</span> <span class="token string" >"another"</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
 </div>
 <div class="leanpub-insert">
-  <span class="token keyword">const</span> pages <span class="token operator">=</span> <span class="token punctuation">[</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span><span class="token punctuation">,</span>
-      entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        app<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> <span class="token string">"Another demo"</span><span class="token punctuation">,</span>
-      path<span class="token punctuation">:</span> <span class="token string">"another"</span><span class="token punctuation">,</span>
-      entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        another<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span> <span class="token string">"another.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-const" >const</span> pages <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span><span class="token punctuation" >,</span>
+      entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      title<span class="token punctuation" >:</span> <span class="token string" >"Another demo"</span><span class="token punctuation" >,</span>
+      path<span class="token punctuation" >:</span> <span class="token string" >"another"</span><span class="token punctuation" >,</span>
+      entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        another<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation brackets-parentheses" >(</span>PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span> <span class="token string" >"another.js"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
 </div>
-  <span class="token keyword">const</span> config <span class="token operator">=</span>
-    env <span class="token operator">===</span> <span class="token string">"production"</span> <span class="token operator">?</span> productionConfig <span class="token punctuation">:</span> developmentConfig<span class="token punctuation">;</span>
+  <span class="token keyword keyword-const" >const</span> config <span class="token operator" >=</span>
+    env <span class="token operator" >===</span> <span class="token string" >"production"</span> <span class="token operator" >?</span> productionConfig <span class="token punctuation" >:</span> developmentConfig<span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> pages<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>page <span class="token operator">=></span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> config<span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> pages<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span>page <span class="token operator" >=&gt;</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span>commonConfig<span class="token punctuation" >,</span> config<span class="token punctuation" >,</span> page<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The tweak also requires a change at the related part so that <code>entry</code> gets included in the configuration:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation">.</span>page <span class="token operator">=</span> <span class="token punctuation">(</span>
-  <span class="token punctuation">{</span>
-    path <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    template <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>
-      <span class="token string">"html-webpack-plugin/default_index.ejs"</span>
-    <span class="token punctuation">)</span><span class="token punctuation">,</span>
-    title<span class="token punctuation">,</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>page <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    path <span class="token operator" >=</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+    template <span class="token operator" >=</span> require<span class="token punctuation" >.</span><span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span>
+      <span class="token string" >"html-webpack-plugin/default_index.ejs"</span>
+    <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    title<span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-    entry<span class="token punctuation">,</span>
+    entry<span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-insert">
-  entry<span class="token punctuation">,</span>
+  entry<span class="token punctuation" >,</span>
 </div>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      filename<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path <span class="token operator">&amp;&amp;</span> path <span class="token operator">+</span> <span class="token string">"/"</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">index.html`</span></span><span class="token punctuation">,</span>
-      title<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token keyword keyword-new" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      filename<span class="token punctuation" >:</span> `$<span class="token punctuation brackets-braces" >{</span>path <span class="token operator" >&amp;&amp;</span> path <span class="token operator" >+</span> <span class="token string" >"/"</span><span class="token punctuation brackets-braces" >}</span>index<span class="token punctuation" >.</span>html`<span class="token punctuation" >,</span>
+      title<span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>After these changes <code>/another</code> should show something familiar:</p>
 <p><img src="/64eb71e58fc06940d2c1eefbf9f312cd.png" alt="Another page shows up" class="" width="" height="" /></p>
@@ -211,64 +211,64 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <h3 class="header"><a class="header-anchor" href="#adjusting-configuration" id="adjusting-configuration"></a><span class="text">Adjusting Configuration</span><a class="header-anchor-select" href="#adjusting-configuration">#</a></h3>
 <p>To reach a code sharing setup, a minor adjustment is needed. Most of the code can remain the same. The way you expose it to webpack has to change so that it receives a single configuration object. As <code>HtmlWebpackPlugin</code> picks up all chunks by default, you have to adjust it to pick up only the chunks that are related to each page:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> env <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> pages <span class="token operator">=</span> <span class="token punctuation">[</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> <span class="token string">"Webpack demo"</span><span class="token punctuation">,</span>
-      entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        app<span class="token punctuation">:</span> PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> env <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-const" >const</span> pages <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span><span class="token punctuation" >,</span>
+      entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        app<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-      chunks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"app"</span><span class="token punctuation">,</span> <span class="token string">"manifest"</span><span class="token punctuation">,</span> <span class="token string">"vendor"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      chunks<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"app"</span><span class="token punctuation" >,</span> <span class="token string" >"manifest"</span><span class="token punctuation" >,</span> <span class="token string" >"vendor"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 </div>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    parts<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> <span class="token string">"Another demo"</span><span class="token punctuation">,</span>
-      path<span class="token punctuation">:</span> <span class="token string">"another"</span><span class="token punctuation">,</span>
-      entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        another<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>PATHS<span class="token punctuation">.</span>app<span class="token punctuation">,</span> <span class="token string">"another.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      title<span class="token punctuation" >:</span> <span class="token string" >"Another demo"</span><span class="token punctuation" >,</span>
+      path<span class="token punctuation" >:</span> <span class="token string" >"another"</span><span class="token punctuation" >,</span>
+      entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        another<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation brackets-parentheses" >(</span>PATHS<span class="token punctuation" >.</span>app<span class="token punctuation" >,</span> <span class="token string" >"another.js"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-      chunks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"another"</span><span class="token punctuation">,</span> <span class="token string">"manifest"</span><span class="token punctuation">,</span> <span class="token string">"vendor"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      chunks<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"another"</span><span class="token punctuation" >,</span> <span class="token string" >"manifest"</span><span class="token punctuation" >,</span> <span class="token string" >"vendor"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 </div>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> config <span class="token operator">=</span>
-    env <span class="token operator">===</span> <span class="token string">"production"</span> <span class="token operator">?</span> productionConfig <span class="token punctuation">:</span> developmentConfig<span class="token punctuation">;</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+  <span class="token keyword keyword-const" >const</span> config <span class="token operator" >=</span>
+    env <span class="token operator" >===</span> <span class="token string" >"production"</span> <span class="token operator" >?</span> productionConfig <span class="token punctuation" >:</span> developmentConfig<span class="token punctuation" >;</span>
 
 <div class="leanpub-delete">
-  <span class="token keyword">return</span> pages<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>page <span class="token operator">=></span> <span class="token function">merge</span><span class="token punctuation">(</span>commonConfig<span class="token punctuation">,</span> config<span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> pages<span class="token punctuation" >.</span><span class="token function" >map</span><span class="token punctuation brackets-parentheses" >(</span>page <span class="token operator" >=&gt;</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span>commonConfig<span class="token punctuation" >,</span> config<span class="token punctuation" >,</span> page<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
 <div class="leanpub-insert">
-  <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>commonConfig<span class="token punctuation">,</span> config<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>pages<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>commonConfig<span class="token punctuation" >,</span> config<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >.</span><span class="token function" >concat</span><span class="token punctuation brackets-parentheses" >(</span>pages<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The page-specific configuration requires a small tweak as well:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation">.</span>page <span class="token operator">=</span> <span class="token punctuation">(</span>
-  <span class="token punctuation">{</span>
-    path <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    template <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>
-      <span class="token string">"html-webpack-plugin/default_index.ejs"</span>
-    <span class="token punctuation">)</span><span class="token punctuation">,</span>
-    title<span class="token punctuation">,</span>
-    entry<span class="token punctuation">,</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span>page <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    path <span class="token operator" >=</span> <span class="token string" >""</span><span class="token punctuation" >,</span>
+    template <span class="token operator" >=</span> require<span class="token punctuation" >.</span><span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span>
+      <span class="token string" >"html-webpack-plugin/default_index.ejs"</span>
+    <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    title<span class="token punctuation" >,</span>
+    entry<span class="token punctuation" >,</span>
 <div class="leanpub-insert">
-    chunks<span class="token punctuation">,</span>
+    chunks<span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  entry<span class="token punctuation">,</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  entry<span class="token punctuation" >,</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token keyword keyword-new" >new</span> <span class="token class-name" >HtmlWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-insert">
-      chunks<span class="token punctuation">,</span>
+      chunks<span class="token punctuation" >,</span>
 </div>
-      <span class="token operator">...</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token operator" >...</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you generate a build (<code>npm run build</code>), you should notice that something is different compared to the first multiple page build you did. Instead of two manifest files, you can find only one. If you examine it, you notice it contains references to all files that were generated.</p>
 <p>Studying the entry specific files in detail reveals more. You can see that they point to different parts of the manifest. The manifest runs different code depending on the entry. Multiple separate manifests are not needed.</p>

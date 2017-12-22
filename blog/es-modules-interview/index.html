@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -49,14 +49,14 @@ I am a Software Engineer at GoDaddy these days but have been at several startups
 <p>The nature of if ES Modules are async or sync is unspecified in the JavaScript specification; so even though all environments are targeting making async module systems, someone could make a sync module system using them.</p>
 <p>Consider the example below:</p>
 <p><strong>index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token comment">// Request the `foo` variable from `./foo` be put into scope</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> foo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./foo'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// Request the `foo` variable from `./foo` be put into scope</span>
+<span class="token keyword keyword-import" >import</span> <span class="token punctuation brackets-braces" >{</span> foo <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-from" >from</span> <span class="token string" >'./foo'</span><span class="token punctuation" >;</span>
 </code></pre>
 <p><strong>foo.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> foo <span class="token operator" >=</span> <span class="token string" >'foo'</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Mark `foo` as being exported</span>
-<span class="token keyword">export</span> <span class="token punctuation">{</span> foo  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// Mark `foo` as being exported</span>
+<span class="token keyword keyword-export" >export</span> <span class="token punctuation brackets-braces" >{</span> foo  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-do-es-modules-work-" id="how-do-es-modules-work-"></a><span class="text">How do <em>ES Modules</em> work?</span><a class="header-anchor-select" href="#how-do-es-modules-work-">#</a></h2>
 <p>Being a new mode of JavaScript, the first thing is that you have to get your environment to parse ES Modules. In ES2015 the plans for how to use ES Modules was in the specification. However, with no loading mechanism, there was no clear plan for browsers or servers as to how to load modules.</p>
@@ -73,27 +73,27 @@ I am a Software Engineer at GoDaddy these days but have been at several startups
 <h3 class="header"><a class="header-anchor" href="#new-parser-and-evaluation-system" id="new-parser-and-evaluation-system"></a><span class="text">New Parser and Evaluation System</span><a class="header-anchor-select" href="#new-parser-and-evaluation-system">#</a></h3>
 <p>ES Modules use a new parser and evaluation system in the JavaScript specification. They automatically make your code have the same rules as <code>&quot;use strict&quot;</code>, reserve <code>await</code> as a keyword, and have some changes to how scoping works.</p>
 <p>ES Modules are a statically linked module system. Unlike CommonJS or AMD, all dependencies must be known and parsed before <em>any</em> user code evaluating.</p>
-<pre><code class="lang-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Never evaluates</span>
-<span class="token keyword">import</span> <span class="token string">'./doesNotExist'</span><span class="token punctuation">;</span> <span class="token comment">// Will error</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> doesNotExist <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./doesExist'</span><span class="token punctuation">;</span> <span class="token comment">// Will error</span>
+<pre><code class="lang-javascript">console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Hello World!'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// Never evaluates</span>
+<span class="token keyword keyword-import" >import</span> <span class="token string" >'./doesNotExist'</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// Will error</span>
+<span class="token keyword keyword-import" >import</span> <span class="token punctuation brackets-braces" >{</span> doesNotExist <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-from" >from</span> <span class="token string" >'./doesExist'</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// Will error</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#variable-bindings-not-value-bindings" id="variable-bindings-not-value-bindings"></a><span class="text">Variable Bindings, Not Value Bindings</span><a class="header-anchor-select" href="#variable-bindings-not-value-bindings">#</a></h3>
 <p>ES Modules work with variable bindings, not values. Other module systems share values, ES Modules share variables. That means, if a variable is updated, all files sharing that variable see the update.</p>
-<pre><code class="lang-javascript"><span class="token comment">// Every file will see `uptime` change over time</span>
-<span class="token keyword">export</span> <span class="token keyword">let</span> uptime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> uptime<span class="token operator">++</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// Every file will see `uptime` change over time</span>
+<span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-let" >let</span> uptime <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >;</span>
+<span class="token function" >setInterval</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> uptime<span class="token operator" >++</span><span class="token punctuation" >,</span> <span class="token number" >1000</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>ES Modules are being implemented as asynchronous. CommonJS is a synchronous module system that stops executing code while dependencies load.</p>
 <p>To be compatible with performance concerns on the web, ES Modules are asynchronous in all future implementations. Due to this, you can have code executing while loading a module graph. It also means that ES Module graphs can be loaded in parallel, even if they overlap.</p>
 <h3 class="header"><a class="header-anchor" href="#specifiers-are-url-based-strings" id="specifiers-are-url-based-strings"></a><span class="text">Specifiers are URL Based Strings</span><a class="header-anchor-select" href="#specifiers-are-url-based-strings">#</a></h3>
 <p>ES Modules specifiers are being treated as URL based strings. In some module systems like CommonJS <code>./hello?world=earth</code> would be treated as a file path. These are now always URLs.</p>
 <p>ES Modules always evaluate for each URL that is different. That means implementations would always load the file for <code>./hello</code> but then add the query string to the file metadata. <code>./hello?world=moon</code> would load a second time after <code>earth</code>!</p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token string">'./echo?msg=hi'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'./echo?msg=there'</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> <span class="token string" >'./echo?msg=hi'</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-import" >import</span> <span class="token string" >'./echo?msg=there'</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Prints:</span>
-<span class="token comment">// > hi</span>
-<span class="token comment">// > there</span>
+<span class="token comment" spellcheck="true" >// Prints:</span>
+<span class="token comment" spellcheck="true" >// &gt; hi</span>
+<span class="token comment" spellcheck="true" >// &gt; there</span>
 </code></pre>
 <p>ES Modules are idempotent. Within a given source text, <code>import { foo } from &quot;./foo&quot;;</code> will <em>always</em> return the same variable <code>foo</code>. Tools can treat multiple imports are referring to the same variable and it also means that even if someone uses <code>import(&#39;foo&#39;);</code> it will return the same set of variables every time.</p>
 <h2 class="header"><a class="header-anchor" href="#why-to-use-es-modules-" id="why-to-use-es-modules-"></a><span class="text">Why to use <em>ES Modules</em>?</span><a class="header-anchor-select" href="#why-to-use-es-modules-">#</a></h2>

@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -37,54 +37,54 @@
 <p>This issue can be resolved either by using a webpack plugin or solving it outside of it. You could trigger <code>rm -rf ./build &amp;&amp; webpack</code> or <code>rimraf ./build &amp;&amp; webpack</code> in an npm script to keep it cross-platform. A task runner could work for this purpose as well.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-cleanwebpackplugin" id="setting-up-cleanwebpackplugin"></a><span class="text">Setting Up <code>CleanWebpackPlugin</code></span><a class="header-anchor-select" href="#setting-up-cleanwebpackplugin">#</a></h3>
 <p>Install the <a href="https://www.npmjs.com/package/clean-webpack-plugin">clean-webpack-plugin</a> first:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> clean-webpack-plugin --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> clean-webpack-plugin --save-dev
 </code></pre>
 <p>Next, you need to define a function to wrap the basic idea. You could use the plugin directly, but this feels like something that could be used across projects, so it makes sense to push it to the library:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">const</span> CleanWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"clean-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-const" >const</span> CleanWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"clean-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-exports<span class="token punctuation">.</span><span class="token function-variable function">clean</span> <span class="token operator">=</span> path <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">[</span>path<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation" >.</span><span class="token function-variable function" >clean</span> <span class="token operator" >=</span> path <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >CleanWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>path<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Connect it with the project:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">clean</span><span class="token punctuation">(</span>PATHS<span class="token punctuation">.</span>build<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >clean</span><span class="token punctuation brackets-parentheses" >(</span>PATHS<span class="token punctuation" >.</span>build<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token operator">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>After this change, the <code>build</code> directory should remain nice and tidy while building. You can verify this by building the project and making sure no old files remained in the output directory.</p>
 <h2 class="header"><a class="header-anchor" href="#attaching-a-revision-to-the-build" id="attaching-a-revision-to-the-build"></a><span class="text">Attaching a Revision to the Build</span><a class="header-anchor-select" href="#attaching-a-revision-to-the-build">#</a></h2>
 <p>Attaching information related to the current build revision to the build files themselves can be used for debugging. <a href="https://webpack.js.org/plugins/banner-plugin/">webpack.BannerPlugin</a> allows you to achieve this. It can be used in combination with <a href="https://www.npmjs.com/package/git-revision-webpack-plugin">git-revision-webpack-plugin</a> to generate a small comment at the beginning of the generated files.</p>
 <h3 class="header"><a class="header-anchor" href="#setting-up-bannerplugin-and-gitrevisionplugin" id="setting-up-bannerplugin-and-gitrevisionplugin"></a><span class="text">Setting Up <code>BannerPlugin</code> and <code>GitRevisionPlugin</code></span><a class="header-anchor-select" href="#setting-up-bannerplugin-and-gitrevisionplugin">#</a></h3>
 <p>To get started, install the revision plugin:</p>
-<pre><code class="lang-bash"><span class="token function">npm</span> <span class="token function">install</span> git-revision-webpack-plugin --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> git-revision-webpack-plugin --save-dev
 </code></pre>
 <p>Then define a part to wrap the idea:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator">...</span>
-<span class="token keyword">const</span> GitRevisionPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"git-revision-webpack-plugin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+<span class="token keyword keyword-const" >const</span> GitRevisionPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"git-revision-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-exports<span class="token punctuation">.</span><span class="token function-variable function">attachRevision</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>BannerPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      banner<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">GitRevisionPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation" >.</span><span class="token function-variable function" >attachRevision</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token keyword keyword-new" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>BannerPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+      banner<span class="token punctuation" >:</span> <span class="token keyword keyword-new" >new</span> <span class="token class-name" >GitRevisionPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >.</span><span class="token function" >version</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>And connect it to the main configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">attachRevision</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >attachRevision</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you build the project (<code>npm run build</code>), you should notice the built files contain comments like <code>/*! 0b5bb05 */</code> or <code>/*! v1.7.0-9-g5f82fe8 */</code> in the beginning.</p>
 <p>The output can be customized further by adjusting the banner. You can also pass revision information to the application using <code>webpack.DefinePlugin</code>. This technique is discussed in detail in the <a href="/webpack/optimizing/environment-variables/">Environment Variables</a> chapter.</p>

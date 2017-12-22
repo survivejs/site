@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -46,98 +46,98 @@ I&#39;ve been interested in software since school. I&#39;ve spent a big part of 
 
 <h2 class="header"><a class="header-anchor" href="#how-would-you-describe-ajv-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-ajv-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>Ajv</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-ajv-to-someone-who-has-never-heard-of-it-">#</a></h2>
 <p><a href="https://github.com/epoberezkin/ajv">Ajv</a> implements <a href="http://json-schema.org">JSON Schema</a> - a standard to describe and validate a JSON document using a schema. For example, the schema below describes an object that must have two properties: &quot;first_name&quot; and &quot;last_name&quot;.</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"object"</span><span class="token punctuation">,</span>
-  <span class="token property">"required"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"first_name"</span><span class="token punctuation">,</span> <span class="token string">"last_name"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"first_name"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"string"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token property">"last_name"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"string"</span> <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"type"</span><span class="token operator" >:</span> <span class="token string" >"object"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"required"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"first_name"</span><span class="token punctuation" >,</span> <span class="token string" >"last_name"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"properties"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"first_name"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span> <span class="token property" >"type"</span><span class="token operator" >:</span> <span class="token string" >"string"</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token property" >"last_name"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span> <span class="token property" >"type"</span><span class="token operator" >:</span> <span class="token string" >"string"</span> <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>To comply with the schema, you could write a definition like this:</p>
-<pre><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
-  <span class="token property">"last_name"</span><span class="token operator">:</span> <span class="token string">"Doe"</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"first_name"</span><span class="token operator" >:</span> <span class="token string" >"John"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"last_name"</span><span class="token operator" >:</span> <span class="token string" >"Doe"</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Assuming you provided a wrong type or failed to pass a required field to the schema, the validation step would fail. This way you can know for sure that your data is exactly the way you expect it to be. Beyond simple field definitions, you could describe how data relates to each other. Even more complex invariants are possible.</p>
 <p>Ajv implements several extensions to JSON Schema specification (e.g., <a href="https://github.com/epoberezkin/ajv#data-reference">$data reference</a>) and allows users to define their own custom keywords. <a href="https://github.com/epoberezkin/ajv-keywords">ajv-keywords</a> defines several useful keywords, some of which will be included in the next versions of JSON Schema specification - <code>propertyNames</code> is included in draft-06 (soon to be published) and <code>if/then/else</code> is considered for draft-07.</p>
 <h2 class="header"><a class="header-anchor" href="#how-does-ajv-work-" id="how-does-ajv-work-"></a><span class="text">How does <em>Ajv</em> work?</span><a class="header-anchor-select" href="#how-does-ajv-work-">#</a></h2>
 <p>Ajv compiles JSON Schema into JavaScript - it generates the code used to validate user data against the constraints defined in the original JSON Schema (and creates a validation function using the <code>Function</code> constructor).</p>
 <p>For example, use this code to compile the above schema to a validation function:</p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> Ajv <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'Ajv'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> ajv <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Ajv</span><span class="token punctuation">(</span><span class="token punctuation">{</span>allErrors<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> Ajv <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'Ajv'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token keyword keyword-const" >const</span> ajv <span class="token operator" >=</span> <span class="token keyword keyword-new" >new</span> <span class="token class-name" >Ajv</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>allErrors<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Schema from the example above</span>
-<span class="token keyword">const</span> validate <span class="token operator">=</span> ajv<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// Schema from the example above</span>
+<span class="token keyword keyword-const" >const</span> validate <span class="token operator" >=</span> ajv<span class="token punctuation" >.</span><span class="token function" >compile</span><span class="token punctuation brackets-parentheses" >(</span>schema<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>validate<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span>validate<span class="token punctuation" >.</span><span class="token function" >toString</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>The result of the compilation is a JavaScript function:</p>
-<pre><code class="lang-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span>data <span class="token comment">/*, ... */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token string">'use strict'</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> vErrors <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> errors <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-function" >function</span><span class="token punctuation brackets-parentheses" >(</span>data <span class="token comment" spellcheck="true" >/*, ... */</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token string" >'use strict'</span><span class="token punctuation" >;</span>
+  <span class="token keyword keyword-var" >var</span> vErrors <span class="token operator" >=</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation" >;</span>
+  <span class="token keyword keyword-var" >var</span> errors <span class="token operator" >=</span> <span class="token number" >0</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>data <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> data <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>first_name <span class="token operator">===</span> undefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> err <span class="token operator">=</span> <span class="token punctuation">{</span> keyword<span class="token punctuation">:</span> <span class="token string">'required'</span> <span class="token comment">/*, ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >(</span>data <span class="token operator" >&amp;&amp;</span> <span class="token keyword keyword-typeof" >typeof</span> data <span class="token operator" >===</span> <span class="token string" >"object"</span> <span class="token operator" >&amp;&amp;</span> <span class="token operator" >!</span>Array<span class="token punctuation" >.</span><span class="token function" >isArray</span><span class="token punctuation brackets-parentheses" >(</span>data<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>data<span class="token punctuation" >.</span>first_name <span class="token operator" >===</span> undefined<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-var" >var</span> err <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span> keyword<span class="token punctuation" >:</span> <span class="token string" >'required'</span> <span class="token comment" spellcheck="true" >/*, ... */</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>vErrors <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        vErrors <span class="token operator">=</span> <span class="token punctuation">[</span>err<span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        vErrors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
+      <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>vErrors <span class="token operator" >===</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>err<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation brackets-parentheses" >(</span>err<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span>
 
-      errors<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> data<span class="token punctuation">.</span>first_name <span class="token operator">!==</span> <span class="token string">"string"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> err <span class="token operator">=</span> <span class="token punctuation">{</span> keyword<span class="token punctuation">:</span> <span class="token string">'type'</span> <span class="token comment">/*, ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      errors<span class="token operator" >++</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-typeof" >typeof</span> data<span class="token punctuation" >.</span>first_name <span class="token operator" >!==</span> <span class="token string" >"string"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-var" >var</span> err <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span> keyword<span class="token punctuation" >:</span> <span class="token string" >'type'</span> <span class="token comment" spellcheck="true" >/*, ... */</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>vErrors <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        vErrors <span class="token operator">=</span> <span class="token punctuation">[</span>err<span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        vErrors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
+      <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>vErrors <span class="token operator" >===</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>err<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation brackets-parentheses" >(</span>err<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span>
 
-      errors<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>last_name <span class="token operator">===</span> undefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> err <span class="token operator">=</span> <span class="token punctuation">{</span> keyword<span class="token punctuation">:</span> <span class="token string">'required'</span> <span class="token comment">/*, ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      errors<span class="token operator" >++</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+    <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>data<span class="token punctuation" >.</span>last_name <span class="token operator" >===</span> undefined<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-var" >var</span> err <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span> keyword<span class="token punctuation" >:</span> <span class="token string" >'required'</span> <span class="token comment" spellcheck="true" >/*, ... */</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>vErrors <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        vErrors <span class="token operator">=</span> <span class="token punctuation">[</span>err<span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        vErrors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
+      <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>vErrors <span class="token operator" >===</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>err<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation brackets-parentheses" >(</span>err<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span>
 
-      errors<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> data<span class="token punctuation">.</span>last_name <span class="token operator">!==</span> <span class="token string">"string"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">var</span> err <span class="token operator">=</span> <span class="token punctuation">{</span> keyword<span class="token punctuation">:</span> <span class="token string">'type'</span> <span class="token comment">/*, ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      errors<span class="token operator" >++</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token keyword keyword-typeof" >typeof</span> data<span class="token punctuation" >.</span>last_name <span class="token operator" >!==</span> <span class="token string" >"string"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token keyword keyword-var" >var</span> err <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span> keyword<span class="token punctuation" >:</span> <span class="token string" >'type'</span> <span class="token comment" spellcheck="true" >/*, ... */</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>vErrors <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        vErrors <span class="token operator">=</span> <span class="token punctuation">[</span>err<span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        vErrors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
+      <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>vErrors <span class="token operator" >===</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>err<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+        vErrors<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation brackets-parentheses" >(</span>err<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span>
 
-      errors<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> err <span class="token operator">=</span> <span class="token punctuation">{</span> keyword<span class="token punctuation">:</span> <span class="token string">'type'</span> <span class="token comment">/*, ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      errors<span class="token operator" >++</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-var" >var</span> err <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span> keyword<span class="token punctuation" >:</span> <span class="token string" >'type'</span> <span class="token comment" spellcheck="true" >/*, ... */</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>vErrors <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      vErrors <span class="token operator">=</span> <span class="token punctuation">[</span>err<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      vErrors<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>vErrors <span class="token operator" >===</span> <span class="token keyword keyword-null" >null</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+      vErrors <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>err<span class="token punctuation brackets-square" >]</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+      vErrors<span class="token punctuation" >.</span><span class="token function" >push</span><span class="token punctuation brackets-parentheses" >(</span>err<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+    <span class="token punctuation brackets-braces" >}</span>
 
-    errors<span class="token operator">++</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+    errors<span class="token operator" >++</span><span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span>
 
-  validate<span class="token punctuation">.</span>errors <span class="token operator">=</span> vErrors<span class="token punctuation">;</span>
-  <span class="token keyword">return</span> errors <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+  validate<span class="token punctuation" >.</span>errors <span class="token operator" >=</span> vErrors<span class="token punctuation" >;</span>
+  <span class="token keyword keyword-return" >return</span> errors <span class="token operator" >===</span> <span class="token number" >0</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>The generated function performs validation against exactly the schema above without using the schema itself - all the keywords are translated into code.</p>
 <p>The generated code is verbose. However, it is very efficient as it has no loops or function calls. The developer does not need to see the generated code to use it, so the size doesn&#39;t matter.</p>

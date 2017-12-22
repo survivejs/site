@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -36,76 +36,76 @@
 <p>You can find packages that rely on this behavior. React is perhaps the most known example of an early adopter of the technique. Using <code>DefinePlugin</code> can bring down the size of your React production build somewhat as a result, and you can see a similar effect with other packages as well.</p>
 <h2 class="header"><a class="header-anchor" href="#the-basic-idea-of-defineplugin" id="the-basic-idea-of-defineplugin"></a><span class="text">The Basic Idea of <code>DefinePlugin</code></span><a class="header-anchor-select" href="#the-basic-idea-of-defineplugin">#</a></h2>
 <p>To understand the idea of <code>DefinePlugin</code> better, consider the example below:</p>
-<pre><code class="lang-javascript"><span class="token keyword">var</span> foo<span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-var" >var</span> foo<span class="token punctuation" >;</span>
 
-<span class="token comment">// Not free due to "foo" above, not ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Not free due to "foo" above, not ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>foo <span class="token operator" >===</span> <span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token comment">// Free since you don't refer to "bar", ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>bar <span class="token operator">===</span> <span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Free since you don't refer to "bar", ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>bar <span class="token operator" >===</span> <span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>If you replaced <code>bar</code> with a string like <code>&quot;foobar&quot;</code>, then you would end up with code as below:</p>
-<pre><code class="lang-javascript"><span class="token keyword">var</span> foo<span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-var" >var</span> foo<span class="token punctuation" >;</span>
 
-<span class="token comment">// Not free due to "foo" above, not ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Not free due to "foo" above, not ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>foo <span class="token operator" >===</span> <span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token comment">// Free since you don't refer to "bar", ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"foobar"</span> <span class="token operator">===</span> <span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Free since you don't refer to "bar", ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"foobar"</span> <span class="token operator" >===</span> <span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Further analysis shows that <code>&quot;foobar&quot; === &quot;bar&quot;</code> equals <code>false</code> so a minifier gives the following:</p>
-<pre><code class="lang-javascript"><span class="token keyword">var</span> foo<span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-var" >var</span> foo<span class="token punctuation" >;</span>
 
-<span class="token comment">// Not free due to "foo" above, not ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Not free due to "foo" above, not ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>foo <span class="token operator" >===</span> <span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token comment">// Free since you don't refer to "bar", ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Free since you don't refer to "bar", ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token boolean" >false</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>A minifier eliminates the <code>if</code> statement as it has become dead code:</p>
-<pre><code class="lang-javascript"><span class="token keyword">var</span> foo<span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-var" >var</span> foo<span class="token punctuation" >;</span>
 
-<span class="token comment">// Not free, not ok to replace</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true" >// Not free, not ok to replace</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>foo <span class="token operator" >===</span> <span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  console<span class="token punctuation" >.</span><span class="token function" >log</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"bar"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 
-<span class="token comment">// if (false) means the block can be dropped entirely</span>
+<span class="token comment" spellcheck="true" >// if (false) means the block can be dropped entirely</span>
 </code></pre>
 <p>Elimination is the core idea of <code>DefinePlugin</code> and it allows toggling. A minifier performs analysis and toggles entire portions of the code.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-process-env-node_env" id="setting-process-env-node_env"></a><span class="text">Setting <code>process.env.NODE_ENV</code></span><a class="header-anchor-select" href="#setting-process-env-node_env">#</a></h2>
 <p>Given you are using React in the project and it happens to use the technique, you can try to enable <code>DefinePlugin</code> and see what it does to the production build.</p>
 <p>As before, encapsulate this idea to a function. Due to the way webpack replaces the free variable, you should push it through <code>JSON.stringify</code>. You end up with a string like <code>&#39;&quot;demo&quot;&#39;</code> and then webpack inserts that into the slots it finds:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">setFreeVariable</span> <span class="token operator">=</span> <span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> env <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  env<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span><span class="token function-variable function" >setFreeVariable</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>key<span class="token punctuation" >,</span> value<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-const" >const</span> env <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+  env<span class="token punctuation brackets-square" >[</span>key<span class="token punctuation brackets-square" >]</span> <span class="token operator" >=</span> JSON<span class="token punctuation" >.</span><span class="token function" >stringify</span><span class="token punctuation brackets-parentheses" >(</span>value<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-braces" >{</span>
+    plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>DefinePlugin</span><span class="token punctuation brackets-parentheses" >(</span>env<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>You can connect this with the configuration:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">const</span> productionConfig <span class="token operator">=</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token operator">...</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
 <div class="leanpub-insert">
-  parts<span class="token punctuation">.</span><span class="token function">setFreeVariable</span><span class="token punctuation">(</span><span class="token string">"process.env.NODE_ENV"</span><span class="token punctuation">,</span> <span class="token string">"production"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  parts<span class="token punctuation" >.</span><span class="token function" >setFreeVariable</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"process.env.NODE_ENV"</span><span class="token punctuation" >,</span> <span class="token string" >"production"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>Execute <code>npm run build</code> and you should see improved results:</p>
 <pre><code class="lang-bash">Hash: 7ed744e79c0813f45427
@@ -113,15 +113,15 @@ Version: webpack 3.8.1
 Time: 2740ms
         Asset       Size  Chunks             Chunk Names
 <div class="leanpub-insert">
-    vendor.js    8.36 kB       2  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  vendor
+    vendor.js    8.36 kB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
 </div>
-       app.js  802 bytes       1  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  app
-<span class="token punctuation">..</span>.
-   index.html  274 bytes          <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>
-   <span class="token punctuation">[</span>4<span class="token punctuation">]</span> ./~/object-assign/index.js 2.11 kB <span class="token punctuation">{</span>2<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-  <span class="token punctuation">[</span>14<span class="token punctuation">]</span> ./app/component.js 461 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-  <span class="token punctuation">[</span>15<span class="token punctuation">]</span> ./app/shake.js 138 bytes <span class="token punctuation">{</span>1<span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
+       app.js  802 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  app
+<span class="token punctuation" >..</span>.
+   index.html  274 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+   <span class="token punctuation brackets-square" >[</span>4<span class="token punctuation brackets-square" >]</span> ./~/object-assign/index.js 2.11 kB <span class="token punctuation brackets-braces" >{</span>2<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-square" >[</span>14<span class="token punctuation brackets-square" >]</span> ./app/component.js 461 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+  <span class="token punctuation brackets-square" >[</span>15<span class="token punctuation brackets-square" >]</span> ./app/shake.js 138 bytes <span class="token punctuation brackets-braces" >{</span>1<span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-square" >[</span>built<span class="token punctuation brackets-square" >]</span>
+<span class="token punctuation" >..</span>.
 </code></pre>
 <p>You went from 83 kB to 28 kB, and finally, to 8 kB. The final build is faster than the previous one as well.</p>
 <p>Given the 8 kB can be served gzipped, it&#39;s somewhat reasonable. gzipping drops around another 40%, and it&#39;s well supported by browsers. It comes with a performance overhead on mobile usage, though.</p>
@@ -129,18 +129,18 @@ Time: 2740ms
 <p><a href="https://www.npmjs.com/package/babel-plugin-transform-inline-environment-variables">babel-plugin-transform-inline-environment-variables</a> can be used to achieve the same effect. <a href="https://www.npmjs.com/package/babel-plugin-transform-define">babel-plugin-transform-define</a> and <a href="https://www.npmjs.com/package/babel-plugin-minify-replace">babel-plugin-minify-replace</a> are other alternatives for Babel.</p>
 <h2 class="header"><a class="header-anchor" href="#choosing-which-module-to-use" id="choosing-which-module-to-use"></a><span class="text">Choosing Which Module to Use</span><a class="header-anchor-select" href="#choosing-which-module-to-use">#</a></h2>
 <p>The techniques discussed in this chapter can be used to choose entire modules depending on the environment. As seen above, <code>DefinePlugin</code> based splitting allows you to choose which branch of code to use and which to discard. This idea can be used to implement branching on module level. Consider the file structure below:</p>
-<pre><code class="lang-bash"><span class="token keyword">.</span>
+<pre><code class="lang-bash"><span class="token keyword keyword-." >.</span>
 └── store
     ├── index.js
     ├── store.dev.js
     └── store.prod.js
 </code></pre>
 <p>The idea is that you choose either <code>dev</code> or <code>prod</code> version of the store depending on the environment. It&#39;s that <em>index.js</em> which does the hard work:</p>
-<pre><code class="lang-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">===</span> <span class="token string">"production"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./store.prod"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./store.dev"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>process<span class="token punctuation" >.</span>env<span class="token punctuation" >.</span>NODE_ENV <span class="token operator" >===</span> <span class="token string" >"production"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./store.prod"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span> <span class="token keyword keyword-else" >else</span> <span class="token punctuation brackets-braces" >{</span>
+  module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./store.dev"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Webpack can pick the right code based on the <code>DefinePlugin</code> declaration and this code. You have to use CommonJS module definition style here as ES2015 <code>import</code>s don&#39;t allow dynamic behavior by design.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>A related technique, <strong>aliasing</strong>, is discussed in the <em>Package Consuming Techniques</em> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack-optimization-plugins" id="webpack-optimization-plugins"></a><span class="text">Webpack Optimization Plugins</span><a class="header-anchor-select" href="#webpack-optimization-plugins">#</a></h2>

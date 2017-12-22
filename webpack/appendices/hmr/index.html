@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -43,21 +43,21 @@
 </ol>
 <p>Using <code>webpack-dev-server --hot</code> solves the first two problems. In this case you have to handle only the last one yourself if you want to patch JavaScript application code. Skipping the <code>--hot</code> flag and going through webpack configuration gives more flexibility.</p>
 <p>The following listing contains the most important parts related to this approach. You will have to adapt from here to match your configuration style:</p>
-<pre><code class="lang-javascript"><span class="token punctuation">{</span>
-  devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// Don't refresh if hot loading fails. Good while</span>
-    <span class="token comment">// implementing the client interface.</span>
-    hotOnly<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  devServer<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token comment" spellcheck="true" >// Don't refresh if hot loading fails. Good while</span>
+    <span class="token comment" spellcheck="true" >// implementing the client interface.</span>
+    hotOnly<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
 
-    <span class="token comment">// If you want to refresh on errors too, set</span>
-    <span class="token comment">// hot: true,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token comment">// Enable the plugin to let webpack communicate changes</span>
-    <span class="token comment">// to WDS. --hot sets this automatically!</span>
-    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>HotModuleReplacementPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true" >// If you want to refresh on errors too, set</span>
+    <span class="token comment" spellcheck="true" >// hot: true,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token comment" spellcheck="true" >// Enable the plugin to let webpack communicate changes</span>
+    <span class="token comment" spellcheck="true" >// to WDS. --hot sets this automatically!</span>
+    <span class="token keyword keyword-new" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>HotModuleReplacementPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>If you implement configuration like above without implementing the client interface, you will most likely end up with an error:</p>
 <p><img src="/a03a946ae63f18b68b0782a30b4a3705.png" alt="No refresh" class="" width="" height="" /></p>
@@ -66,24 +66,24 @@
 <p>Webpack exposes the HMR interface through a global variable: <code>module.hot</code>. It provides updates through <code>module.hot.accept(&lt;path to watch&gt;, &lt;handler&gt;)</code> function and you need to patch the application there.</p>
 <p>The following implementation illustrates the idea against the tutorial application:</p>
 <p><strong>app/index.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword">import</span> component <span class="token keyword">from</span> <span class="token string">"./component"</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> component <span class="token keyword keyword-from" >from</span> <span class="token string" >"./component"</span><span class="token punctuation" >;</span>
 
-<span class="token keyword">let</span> demoComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-let" >let</span> demoComponent <span class="token operator" >=</span> <span class="token function" >component</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>demoComponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >appendChild</span><span class="token punctuation brackets-parentheses" >(</span>demoComponent<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// HMR interface</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>module<span class="token punctuation">.</span>hot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// Capture hot update</span>
-  module<span class="token punctuation">.</span>hot<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token string">"./component"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> nextComponent <span class="token operator">=</span> <span class="token function">component</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// HMR interface</span>
+<span class="token keyword keyword-if" >if</span> <span class="token punctuation brackets-parentheses" >(</span>module<span class="token punctuation" >.</span>hot<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token comment" spellcheck="true" >// Capture hot update</span>
+  module<span class="token punctuation" >.</span>hot<span class="token punctuation" >.</span><span class="token function" >accept</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./component"</span><span class="token punctuation" >,</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token keyword keyword-const" >const</span> nextComponent <span class="token operator" >=</span> <span class="token function" >component</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-    <span class="token comment">// Replace old content with the hot loaded one</span>
-    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">replaceChild</span><span class="token punctuation">(</span>nextComponent<span class="token punctuation">,</span> demoComponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true" >// Replace old content with the hot loaded one</span>
+    document<span class="token punctuation" >.</span>body<span class="token punctuation" >.</span><span class="token function" >replaceChild</span><span class="token punctuation brackets-parentheses" >(</span>nextComponent<span class="token punctuation" >,</span> demoComponent<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-    demoComponent <span class="token operator">=</span> nextComponent<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+    demoComponent <span class="token operator" >=</span> nextComponent<span class="token punctuation" >;</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>If you refresh the browser, try to modify <em>app/component.js</em> after this change, and alter the text to something else, you should notice that the browser does not refresh at all. Instead, it should replace the DOM node while retaining the rest of the application as is.</p>
 <p>The image below shows possible output:</p>
@@ -91,19 +91,19 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
 <p>The idea is the same with styling, React, Redux, and other technologies. Sometimes you don&#39;t have to implement the interface yourself even as available tooling takes care of that for you.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>To prove that HMR retains application state, set up <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">a checkbox</a> based component next to the original. The <code>module.hot.accept</code> code has to evolve to capture changes to it as well.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The <code>if(module.hot)</code> block is eliminated entirely from the production build as minifier picks it up. The <a href="/webpack/optimizing/minifying/">Minifying</a> chapter delves deeper into this topic.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-wds-entry-points-manually" id="setting-wds-entry-points-manually"></a><span class="text">Setting WDS Entry Points Manually</span><a class="header-anchor-select" href="#setting-wds-entry-points-manually">#</a></h2>
 <p>In the setup above, the WDS-related entries were injected automatically. Assuming you are using WDS through Node, you would have to set them yourself as the Node API doesn&#39;t support injecting. The example below illustrates how to achieve this:</p>
-<pre><code class="lang-javascript">entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-  hmr<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token comment">// Include the client code. Note host/post.</span>
-    <span class="token string">"webpack-dev-server/client?http://localhost:8080"</span><span class="token punctuation">,</span>
+<pre><code class="lang-javascript">entry<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+  hmr<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token comment" spellcheck="true" >// Include the client code. Note host/post.</span>
+    <span class="token string" >"webpack-dev-server/client?http://localhost:8080"</span><span class="token punctuation" >,</span>
 
-    <span class="token comment">// Hot reload only when compiled successfully</span>
-    <span class="token string">"webpack/hot/only-dev-server"</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true" >// Hot reload only when compiled successfully</span>
+    <span class="token string" >"webpack/hot/only-dev-server"</span><span class="token punctuation" >,</span>
 
-    <span class="token comment">// Alternative with refresh on failure</span>
-    <span class="token comment">// "webpack/hot/dev-server",</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token operator">...</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true" >// Alternative with refresh on failure</span>
+    <span class="token comment" spellcheck="true" >// "webpack/hot/dev-server",</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>HMR is one of those aspects of webpack that makes it attractive for developers and webpack has taken its implementation far. To work, HMR requires both client and server side support. For this purpose, webpack-dev-server provides both. Often you have to implement the client side interface although loaders like <em>style-loader</em> implement it for you.</p>

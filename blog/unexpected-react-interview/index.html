@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -45,34 +45,34 @@ I&#39;m originally from the UK, but I&#39;ve lived in Germany for the last seven
 <h2 class="header"><a class="header-anchor" href="#how-would-you-describe-unexpected-react-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-unexpected-react-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>unexpected-react</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-unexpected-react-to-someone-who-has-never-heard-of-it-">#</a></h2>
 <p>If you want to write tests for your React components, you can use <em>unexpected-react</em> to validate that the components render what they should, and respond to events in the right way. It&#39;s based on JSX, so you assert that a component renders to a certain JSX template, and any differences are highlighted in a JSX diff. You can render using the shallow renderer, render to the DOM or render using the test renderer - the assertions stay the same.</p>
 <p><strong>A simple example:</strong></p>
-<pre><code class="lang-javascript"><span class="token function">expect</span><span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>MyButtonComponent <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token string">'to render as'</span><span class="token punctuation">,</span>
-  <span class="token operator">&lt;</span>button<span class="token operator">></span>Click me<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >expect</span><span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token operator" >&lt;</span>MyButtonComponent <span class="token operator" >/</span><span class="token operator" >&gt;</span><span class="token punctuation" >,</span>
+  <span class="token string" >'to render as'</span><span class="token punctuation" >,</span>
+  <span class="token operator" >&lt;</span>button<span class="token operator" >&gt;</span>Click me<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span>
+<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>This example uses the <a href="https://reactjs.org/docs/shallow-renderer.html">React shallow renderer</a> to render the <code>MyButtonComponent</code> and compares the output to <code>&lt;button&gt;Click me&lt;/button&gt;</code>. If the output is different, you&#39;ll see something like the following as output:</p>
-<pre><code class="lang-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token operator">-</span>Click me<span class="token operator">!</span>
-  <span class="token operator">+</span>Click me
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<pre><code class="lang-jsx"><span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;</span>button</span> <span class="token attr-name" >className</span><span class="token attr-value" ><span class="token punctuation" >=</span><span class="token punctuation" >"</span>btn<span class="token punctuation" >"</span></span><span class="token punctuation" >&gt;</span></span>
+  <span class="token operator" >-</span>Click me<span class="token operator" >!</span>
+  <span class="token operator" >+</span>Click me
+<span class="token tag" ><span class="token tag" ><span class="token punctuation" >&lt;/</span>button</span><span class="token punctuation" >&gt;</span></span>
 </code></pre>
 <p>By default, it ignores extra props and extra child elements, so your test still passes as your component functionality expands (unless of course, you break something!).</p>
 <p><strong>A more complex example:</strong></p>
-<pre><code class="lang-javascript"><span class="token function">expect</span><span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>MyApp <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token string">'when deeply rendered'</span><span class="token punctuation">,</span>
-  <span class="token string">'with event'</span><span class="token punctuation">,</span> <span class="token string">'change'</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    target<span class="token punctuation">:</span> <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'foo'</span> <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token string">'on'</span><span class="token punctuation">,</span>
-  <span class="token operator">&lt;</span>input <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token string">'with event'</span><span class="token punctuation">,</span> <span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token string">'on'</span><span class="token punctuation">,</span>
-  <span class="token operator">&lt;</span>button<span class="token operator">></span>Submit<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token punctuation">,</span>
-  <span class="token string">'to contain'</span><span class="token punctuation">,</span>
-  <span class="token operator">&lt;</span>LoadingSpinner <span class="token operator">/</span><span class="token operator">></span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token function" >expect</span><span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token operator" >&lt;</span>MyApp <span class="token operator" >/</span><span class="token operator" >&gt;</span><span class="token punctuation" >,</span>
+  <span class="token string" >'when deeply rendered'</span><span class="token punctuation" >,</span>
+  <span class="token string" >'with event'</span><span class="token punctuation" >,</span> <span class="token string" >'change'</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    target<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span> value<span class="token punctuation" >:</span> <span class="token string" >'foo'</span> <span class="token punctuation brackets-braces" >}</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token string" >'on'</span><span class="token punctuation" >,</span>
+  <span class="token operator" >&lt;</span>input <span class="token operator" >/</span><span class="token operator" >&gt;</span><span class="token punctuation" >,</span>
+  <span class="token string" >'with event'</span><span class="token punctuation" >,</span> <span class="token string" >'click'</span><span class="token punctuation" >,</span> <span class="token string" >'on'</span><span class="token punctuation" >,</span>
+  <span class="token operator" >&lt;</span>button<span class="token operator" >&gt;</span>Submit<span class="token operator" >&lt;</span><span class="token operator" >/</span>button<span class="token operator" >&gt;</span><span class="token punctuation" >,</span>
+  <span class="token string" >'to contain'</span><span class="token punctuation" >,</span>
+  <span class="token operator" >&lt;</span>LoadingSpinner <span class="token operator" >/</span><span class="token operator" >&gt;</span>
+<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>This test renders the component to the DOM, triggers a <code>change</code> event with an argument on the <code>input</code> component, then clicks the <code>&lt;button&gt;</code> with the text <code>Submit</code>, and finally checks that the resulting render contains a component called <code>LoadingSpinner</code>.</p>
 <p>That last assertion highlights one of my favorite features of unexpected-react, which is that when you use the DOM renderer, you can assert on the full virtual DOM (the same tree you see in the <a href="https://github.com/facebook/react-devtools">React Developer Tools</a>), with all the HTML elements and all your custom components.</p>

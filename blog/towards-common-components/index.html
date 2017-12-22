@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -46,21 +46,21 @@
 <p>Although Web Components might be the longer term solution, there could be something that could be achieved for <strong>HTML in JavaScript</strong> type libraries like React, Deku, or Cycle. After all, even a small win is a win. And anything we can do to battle unnecessary fragmentation is good in my eyes.</p>
 <p>Currently any component I develop for React is useful only within React context. I find this a little problematic as I would love to share my work with a larger amount of people. I am sure this applies to other component authors too, and this would benefit the JavaScript community on the whole.</p>
 <p><a href="https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html">React 0.14</a> introduced a feature known as stateless functional components. To give you an example, consider the one from their release notes (slightly modified for readability):</p>
-<pre><code class="lang-javascript"><span class="token comment">// A functional component using an ES2015 (ES6) arrow function:</span>
-<span class="token keyword">const</span> <span class="token function-variable function">Aquarium</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> fish <span class="token operator">=</span> <span class="token function">getFish</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>species<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// A functional component using an ES2015 (ES6) arrow function:</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >Aquarium</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token keyword keyword-const" >const</span> fish <span class="token operator" >=</span> <span class="token function" >getFish</span><span class="token punctuation brackets-parentheses" >(</span>props<span class="token punctuation" >.</span>species<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>Tank<span class="token operator">></span><span class="token punctuation">{</span>fish<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>Tank<span class="token operator">></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return" >return</span> <span class="token operator" >&lt;</span>Tank<span class="token operator" >&gt;</span><span class="token punctuation brackets-braces" >{</span>fish<span class="token punctuation brackets-braces" >}</span><span class="token operator" >&lt;</span><span class="token operator" >/</span>Tank<span class="token operator" >&gt;</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Or with destructuring and an implicit return, simply:</span>
-<span class="token keyword">const</span> <span class="token function-variable function">Aquarium</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>species<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
-  <span class="token operator">&lt;</span>Tank<span class="token operator">></span>
-    <span class="token punctuation">{</span><span class="token function">getFish</span><span class="token punctuation">(</span>species<span class="token punctuation">)</span><span class="token punctuation">}</span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>Tank<span class="token operator">></span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true" >// Or with destructuring and an implicit return, simply:</span>
+<span class="token keyword keyword-const" >const</span> <span class="token function-variable function" >Aquarium</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>species<span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span>
+  <span class="token operator" >&lt;</span>Tank<span class="token operator" >&gt;</span>
+    <span class="token punctuation brackets-braces" >{</span><span class="token function" >getFish</span><span class="token punctuation brackets-parentheses" >(</span>species<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-braces" >}</span>
+  <span class="token operator" >&lt;</span><span class="token operator" >/</span>Tank<span class="token operator" >&gt;</span>
+<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
-<span class="token comment">// Then use: &lt;Aquarium species="rainbowfish" /></span>
+<span class="token comment" spellcheck="true" >// Then use: &lt;Aquarium species="rainbowfish" /&gt;</span>
 </code></pre>
 <p>If the definition looks simple, that&#39;s because it is. A function based component like this cannot do much, but they are still highly useful! The best feature is that the syntax can be seen as something React agnostic! You could compile that JSX to Hyperscript and use that as an intermediate format to mediate between libraries.</p>
 <p>Components like this don&#39;t require a direct dependency on React thanks to <a href="https://www.npmjs.com/package/babel-plugin-react-require">babel-plugin-react-require</a>. The plugin injects <code>import React from &#39;react&#39;;</code> so that the JSX transpilation process works. It would be possible to pull this off with other libraries as well.</p>

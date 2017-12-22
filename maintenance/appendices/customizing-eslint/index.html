@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ec38f5652917476cc2a0.css" rel="stylesheet">
+      <link href="/site.2dbc4c7c029edce7a057.css" rel="stylesheet">
     
 
     <link
@@ -38,21 +38,21 @@
 <blockquote class="tip"><i class="icon-attention-circled"></i>You can find <a href="https://medium.com/@Pinterest_Engineering/introducing-esprint-a-fast-open-source-eslint-cli-19a470cd1c7d">more technical details about esprint in its introduction post</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#skipping-eslint-rules" id="skipping-eslint-rules"></a><span class="text">Skipping ESLint Rules</span><a class="header-anchor-select" href="#skipping-eslint-rules">#</a></h2>
 <p>ESLint allows you to skip rules on several levels. Consider the following examples:</p>
 <!-- textlint-disable -->
-<pre><code class="lang-javascript"><span class="token comment">// everything</span>
-<span class="token comment">/* eslint-disable */</span>
-<span class="token comment">// ...</span>
-<span class="token comment">/* eslint-enable */</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// everything</span>
+<span class="token comment" spellcheck="true" >/* eslint-disable */</span>
+<span class="token comment" spellcheck="true" >// ...</span>
+<span class="token comment" spellcheck="true" >/* eslint-enable */</span>
 </code></pre>
-<pre><code class="lang-javascript"><span class="token comment">// specific rule</span>
-<span class="token comment">/* eslint-disable no-unused-vars */</span>
-<span class="token comment">// ...</span>
-<span class="token comment">/* eslint-enable no-unused-vars */</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// specific rule</span>
+<span class="token comment" spellcheck="true" >/* eslint-disable no-unused-vars */</span>
+<span class="token comment" spellcheck="true" >// ...</span>
+<span class="token comment" spellcheck="true" >/* eslint-enable no-unused-vars */</span>
 </code></pre>
-<pre><code class="lang-javascript"><span class="token comment">// tweaking a rule</span>
-<span class="token comment">/* eslint no-comma-dangle:1 */</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// tweaking a rule</span>
+<span class="token comment" spellcheck="true" >/* eslint no-comma-dangle:1 */</span>
 </code></pre>
-<pre><code class="lang-javascript"><span class="token comment">// disable rule per line</span>
-<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eslint-disable-line no-alert</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >// disable rule per line</span>
+<span class="token function" >alert</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >'foo'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span> <span class="token comment" spellcheck="true" >// eslint-disable-line no-alert</span>
 </code></pre>
 <!-- textlint-enable -->
 <p>The rule specific examples assume you have the rules in your configuration in the first place! You cannot specify new rules here. Instead, you can modify the behavior of existing rules.</p>
@@ -60,19 +60,19 @@
 <p>Sometimes, you want to run ESLint in a specific environment, such as Node or Mocha. These environments have certain conventions of their own. For instance, Mocha relies on custom keywords (e.g., <code>describe</code>, <code>it</code>) and it’s good if the linter doesn’t choke on those.</p>
 <p>ESLint provides two ways to deal with this: local and global. To set it per file, you can use a declaration at the beginning of a file:</p>
 <!-- textlint-disable -->
-<pre><code class="lang-javascript"><span class="token comment">/*eslint-env node, mocha */</span>
+<pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >/*eslint-env node, mocha */</span>
 </code></pre>
 <p>Global configuration is possible as well. In this case, you can use <code>env</code> key:</p>
 <p><strong>.eslintrc.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  env<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    browser<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    commonjs<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    es6<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    node<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  env<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    browser<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    commonjs<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    es6<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    node<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token comment" spellcheck="true" >// ...</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <!-- textlint-enable -->
 <h2 class="header"><a class="header-anchor" href="#writing-eslint-plugins" id="writing-eslint-plugins"></a><span class="text">Writing ESLint Plugins</span><a class="header-anchor-select" href="#writing-eslint-plugins">#</a></h2>
@@ -88,32 +88,32 @@
 </ol>
 <p>You can get started with a skeleton as below:</p>
 <p><strong>eslint-plugin-custom/index.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  rules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    demo<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      docs<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        description<span class="token punctuation">:</span> <span class="token string">'Demo rule'</span><span class="token punctuation">,</span>
-        category<span class="token punctuation">:</span> <span class="token string">'Best Practices'</span><span class="token punctuation">,</span>
-        recommended<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      schema<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span>
-          type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
-          <span class="token comment">// JSON Schema to describe properties</span>
-          properties<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-          additionalProperties<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token function">create</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token punctuation">{</span>
-          <span class="token function">Identifier</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            context<span class="token punctuation">.</span><span class="token function">report</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> <span class="token string">'This is unexpected!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    demo<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      docs<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        description<span class="token punctuation" >:</span> <span class="token string" >'Demo rule'</span><span class="token punctuation" >,</span>
+        category<span class="token punctuation" >:</span> <span class="token string" >'Best Practices'</span><span class="token punctuation" >,</span>
+        recommended<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      schema<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+        <span class="token punctuation brackets-braces" >{</span>
+          type<span class="token punctuation" >:</span> <span class="token string" >'object'</span><span class="token punctuation" >,</span>
+          <span class="token comment" spellcheck="true" >// JSON Schema to describe properties</span>
+          properties<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+          additionalProperties<span class="token punctuation" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+      <span class="token function" >create</span><span class="token punctuation brackets-parentheses" >(</span>context<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+        <span class="token keyword keyword-return" >return</span> <span class="token punctuation brackets-braces" >{</span>
+          <span class="token function" >Identifier</span><span class="token punctuation brackets-parentheses" >(</span>node<span class="token punctuation brackets-parentheses" >)</span> <span class="token punctuation brackets-braces" >{</span>
+            context<span class="token punctuation" >.</span><span class="token function" >report</span><span class="token punctuation brackets-parentheses" >(</span>node<span class="token punctuation" >,</span> <span class="token string" >'This is unexpected!'</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+          <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+        <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>In this case, you report for every identifier found. In practice, you likely want to do something more complex than this, but this is a good starting point.</p>
 <p>Next, you need to execute <code>npm link</code> within <code>eslint-plugin-custom</code> to make your plugin visible to your system. <code>npm link</code> allows you to consume a development version of a library you are developing. To reverse the link, you can execute <code>npm unlink</code> when you feel like it.</p>
@@ -121,21 +121,21 @@
 <p><strong>.eslintrc.js</strong></p>
 <!-- textlint-disable -->
 <!-- skip-example -->
-<pre><code class="lang-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token operator">...</span>
-  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token operator">...</span>
+<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token operator" >...</span>
+  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token operator" >...</span>
 <div class="leanpub-insert">
-    <span class="token string">'custom'</span>
+    <span class="token string" >'custom'</span>
 </div>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  rules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token operator">...</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token operator" >...</span>
 <div class="leanpub-insert">
-    <span class="token string">'custom/demo'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string" >'custom/demo'</span><span class="token punctuation" >:</span> <span class="token number" >1</span><span class="token punctuation" >,</span>
 </div>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation brackets-braces" >}</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <!-- textlint-enable -->
 <p>If you invoke ESLint now, you should see a bunch of warnings. Of course, the rule doesn’t do anything impressive yet. To move forward, check out the <a href="http://eslint.org/docs/developer-guide/working-with-plugins.html">official plugin documentation</a> and <a href="http://eslint.org/docs/developer-guide/working-with-rules.html">rules</a>.</p>
