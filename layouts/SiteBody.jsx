@@ -45,7 +45,7 @@ const SiteBody = ({ children, section, location: { pathname } }) => (
 
     <Navigation pages={navigationPages} pathname={pathname} />
 
-    <Footer section={section} />
+    <Footer section={section} pathname={pathname} />
 
     <GitterChat sectionName={section.name} />
 

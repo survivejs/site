@@ -72,7 +72,7 @@ const LinkItem = ({ href, children }) => (
   </LinkItemContainer>
 );
 
-const Footer = ({ section }) => (
+const Footer = ({ section, pathname }) => (
   <Container>
     <Links>
       {socialLinks.map(({ caption, href }) => (
@@ -81,11 +81,13 @@ const Footer = ({ section }) => (
         </LinkItem>
       ))}
     </Links>
-    <Section>
-      <Heading>From the Blog</Heading>
-      <Teaser pages={section.pages("blog").slice(0, 7)} />
-    </Section>
-    <Buy />
+    {pathname !== "/blog/" && (
+      <Section>
+        <Heading>From the Blog</Heading>
+        <Teaser pages={section.pages("blog").slice(0, 7)} />
+      </Section>
+    )}
+    {pathname !== "/" && <Buy />}
   </Container>
 );
 
