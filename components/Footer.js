@@ -1,92 +1,94 @@
 import React from "react";
+import styled from "react-emotion";
 import { Teaser } from "@survivejs/components";
 import Buy from "./Buy";
+import HorizontalList from "./HorizontalList";
+import HorizontalListItem from "./HorizontalListItem";
 
-const Footer = ({ section }) => (
-  <footer>
-    <div className="footer-wrapper">
-      <div className="footer-content-wrapper">
-        <div className="footer-social">
-          <h3>Social</h3>
-          <ul>
-            <li>
-              <a
-                href="https://twitter.com/survivejs"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                @survivejs
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://eepurl.com/bth1v5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Mailing List
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://gitter.im/survivejs"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Gitter Chat
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/survivejs"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://presentations.survivejs.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Presentations
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://goo.gl/forms/OWdGIOdHm9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Contact
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/survivejs/ama/issues"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ask Me Anything
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-blog">
-          <h3>From the Blog</h3>
+import theme from "../styles/theme";
 
-          <Teaser pages={section.pages("blog").slice(0, 7)} />
-        </div>
-      </div>
-      <div className="footer-content-wrapper">
-        <div className="footer-buy">
-          <Buy />
-        </div>
-      </div>
-    </div>
-  </footer>
+const socialLinks = [
+  {
+    caption: "@survivejs",
+    href: "https://twitter.com/survivejs",
+  },
+  {
+    caption: "Mailing List",
+    href: "http://eepurl.com/bth1v5",
+  },
+  {
+    caption: "Gitter Chat",
+    href: "https://gitter.im/survivejs",
+  },
+  {
+    caption: "GitHub",
+    href: "https://github.com/survivejs",
+  },
+  {
+    caption: "Presentations",
+    href: "https://presentations.survivejs.com",
+  },
+  {
+    caption: "Contact",
+    href: "http://goo.gl/forms/OWdGIOdHm9",
+  },
+  {
+    caption: "Ask Me Anything",
+    href: "https://github.com/survivejs/ama/issues",
+  },
+];
+
+const Container = styled.footer`
+  padding: ${theme.space.l} ${theme.space.m};
+  background: ${theme.color.backgroundLight};
+  background-image: url("../assets/img/dust.png");
+`;
+
+const Section = styled.div`
+  margin-bottom: ${theme.space.m};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Heading = styled.h3`
+  margin-top: 0;
+  margin-bottom: ${theme.space.m};
+`;
+
+const Links = styled(HorizontalList)`
+  margin-bottom: ${theme.space.l};
+`;
+
+const LinkItemContainer = styled(HorizontalListItem)`
+  margin-bottom: ${theme.space.m};
+`;
+
+const LinkItem = ({ href, children }) => (
+  <LinkItemContainer>
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  </LinkItemContainer>
+);
+
+const Footer = ({ section, pathname }) => (
+  <Container>
+    <Links>
+      {socialLinks.map(({ caption, href }) => (
+        <LinkItem key={href} href={href}>
+          {caption}
+        </LinkItem>
+      ))}
+    </Links>
+    {pathname !== "/blog/" && (
+      <Section>
+        <Heading>From the Blog</Heading>
+        <Teaser pages={section.pages("blog").slice(0, 7)} />
+      </Section>
+    )}
+    {pathname !== "/" && <Buy />}
+  </Container>
 );
 
 export default Footer;
