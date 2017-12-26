@@ -1,41 +1,6 @@
 /* eslint-disable no-console */
 const { addLanguage, addPlugin, highlight } = require("illuminate-js");
-const { bash } = require("illuminate-js/lib/languages/bash");
-const { css } = require("illuminate-js/lib/languages/css");
-const { diff } = require("illuminate-js/lib/languages/diff");
-const { ini } = require("illuminate-js/lib/languages/ini");
-const { javascript } = require("illuminate-js/lib/languages/javascript");
-const { json } = require("illuminate-js/lib/languages/json");
-const { jsx } = require("illuminate-js/lib/languages/jsx");
-const { less } = require("illuminate-js/lib/languages/less");
-const { makefile } = require("illuminate-js/lib/languages/makefile");
-const { markup } = require("illuminate-js/lib/languages/markup");
-const { scss } = require("illuminate-js/lib/languages/scss");
-const { typescript } = require("illuminate-js/lib/languages/typescript");
-const { yaml } = require("illuminate-js/lib/languages/yaml");
-
-const languages = {
-  bash,
-  css,
-  diff,
-  ini,
-  javascript,
-  js: javascript,
-  json,
-  json5: json,
-  jsx,
-  less,
-  makefile,
-  haskell: markup, // XXX
-  markdown: markup, // XXX
-  html: markup,
-  xml: markup,
-  sass: scss, // XXX
-  scss,
-  typescript,
-  ts: typescript,
-  yaml,
-};
+const languages = require("illuminate-js/lib/languages");
 
 Object.keys(languages).forEach(language => {
   addLanguage(language, languages[language]);
