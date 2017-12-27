@@ -2,7 +2,7 @@
 title: 'MobX - Reactive React - Interview with Michel Weststrate'
 date: 2015-08-19
 headerImage: 'assets/img/city.jpg'
-keywords: ['interview', 'react']
+keywords: ['interview', 'react', 'state-management']
 ---
 
 As React deals only with the view layer you will often have to complement it with something else. [Flux architecture](https://facebook.github.io/flux/docs/overview.html) is one answer but not the only one. [MobX](https://mobxjs.github.io/mobx/) by [Michel Weststrate](https://github.com/mweststrate) is a refreshing alternative. But what is it really about?

@@ -2,7 +2,7 @@
 title: 'redux-saga-test-plan - Test Redux Saga with an easy plan - Interview with Jeremy Fairbank'
 date: 2017-12-20
 headerImage: 'assets/img/plan.jpg'
-keywords: ['interview', 'redux', 'redux-saga', 'testing']
+keywords: ['interview', 'redux', 'redux-saga', 'testing', 'state-management']
 editors: ['bebraw', 'karlhorky']
 ---
 

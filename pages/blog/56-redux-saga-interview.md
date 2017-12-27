@@ -2,7 +2,7 @@
 title: 'redux-saga - Saga Middleware for Redux to Handle Side Effects - Interview with Yassine Elouafi'
 date: 2016-07-18
 headerImage: 'assets/img/dice.jpg'
-keywords: ['interview', 'react', 'redux', 'redux-saga']
+keywords: ['interview', 'react', 'redux', 'redux-saga', 'state-management']
 ---
 
 When developing front-ends, handling asynchronous behavior is always bit of a challenge. [Yassine Elouafi](https://twitter.com/YassineElouafi2)'s [redux-saga](https://www.npmjs.com/package/redux-saga) provides one solution to this problem. Read on to learn more about sagas and **redux-saga** in particular.

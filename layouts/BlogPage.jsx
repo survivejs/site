@@ -25,6 +25,7 @@ const BlogPage = ({
   const relatedHeaders = {
     interview: "Interviews",
     opinion: "Opinions",
+    "state-management": "State management",
     publishing: "Publishing thoughts",
   };
 

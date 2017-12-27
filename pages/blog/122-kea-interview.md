@@ -2,7 +2,7 @@
 title: 'Kea - High level abstraction between React and Redux - Interview with Marius Andra'
 date: 2017-09-18
 headerImage: 'assets/img/kea.jpg'
-keywords: ['interview', 'reactjs', 'redux']
+keywords: ['interview', 'reactjs', 'redux', 'state-management']
 ---
 
 Redux took the React world by a storm when it was introduced. The simple idea provided a guideline for the community and "solved" state management for a lot of different kinds of applications.
