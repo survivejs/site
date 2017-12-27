@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.d8653f19fc050f1a96db.css" rel="stylesheet">
+      <link href="/site.e71b81e901618afdd79b.css" rel="stylesheet">
     
 
     <link
@@ -211,7 +211,25 @@ module<span class="token punctuation" >.</span><span class="token function-varia
 <h3 class="header"><a class="header-anchor" href="#adjusting-configuration" id="adjusting-configuration"></a><span class="text">Adjusting Configuration</span><a class="header-anchor-select" href="#adjusting-configuration">#</a></h3>
 <p>To reach a code sharing setup, a minor adjustment is needed. Most of the code can remain the same. The way you expose it to webpack has to change so that it receives a single configuration object. As <code>HtmlWebpackPlugin</code> picks up all chunks by default, you have to adjust it to pick up only the chunks that are related to each page:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> env <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
+
+<span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token punctuation brackets-braces" >{</span>
+    output<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      path<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>build<span class="token punctuation" >,</span>
+      filename<span class="token punctuation" >:</span> <span class="token string" >"[name].js"</span><span class="token punctuation" >,</span>
+<div class="leanpub-insert">
+      <span class="token comment" spellcheck="true" >// Needed for code splitting to work in nested paths</span>
+      publicPath<span class="token punctuation" >:</span> <span class="token string" >"/"</span><span class="token punctuation" >,</span>
+</div>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+
+<span class="token operator" >...</span>
+
+module<span class="token punctuation" >.</span><span class="token function-variable function" >exports</span> <span class="token operator" >=</span> env <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
   <span class="token keyword keyword-const" >const</span> pages <span class="token operator" >=</span> <span class="token punctuation brackets-square" >[</span>
     parts<span class="token punctuation" >.</span><span class="token function" >page</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
       title<span class="token punctuation" >:</span> <span class="token string" >"Webpack demo"</span><span class="token punctuation" >,</span>

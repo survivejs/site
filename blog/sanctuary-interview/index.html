@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.d8653f19fc050f1a96db.css" rel="stylesheet">
+      <link href="/site.e71b81e901618afdd79b.css" rel="stylesheet">
     
 
     <link
@@ -72,7 +72,7 @@ map <span class="token punctuation" >:</span><span class="token punctuation" >:<
 </code></pre>
 <p><code>a</code> is a type variable. We can replace it with any type we choose, but we must replace every occurrence of <code>a</code> in a type signature with the same type.</p>
 <p>Before we consider the <code>Functor f =&gt;</code> bit, let&#39;s consider a similar function which operates exclusively on arrays:</p>
-<pre><code class="lang-haskell">arrayMap :: (a -&gt; b) -&gt; Array a -&gt; Array b
+<pre><code class="lang-haskell"><span class="token hvariable" >arrayMap</span> <span class="token operator" >::</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token hvariable" >a</span> <span class="token operator" >-&gt;</span> <span class="token hvariable" >b</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token hvariable" >a</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token hvariable" >b</span>
 </code></pre>
 <p>So, <code>arrayMap</code> takes as its argument a value of type <code>(a -&gt; b)</code>, a function from <code>a</code> to <code>b</code>. It returns a value of type <code>Array a -&gt; Array b</code>. We would use it like so:</p>
 <pre><code class="lang-javascript"><span class="token operator" >&gt;</span> <span class="token function" >arrayMap</span><span class="token punctuation brackets-parentheses" >(</span>s <span class="token operator" >=&gt;</span> s<span class="token punctuation" >.</span>length<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span><span class="token string" >'foo'</span><span class="token punctuation" >,</span> <span class="token string" >'bar'</span><span class="token punctuation" >,</span> <span class="token string" >'baz'</span><span class="token punctuation" >,</span> <span class="token string" >'quux'</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span>
@@ -83,16 +83,16 @@ JavaScript, as we can dispatch to a method with a particular name.</p>
 <p>The method name, in this case, is <code>fantasy-land/map</code>. We wish to express that <code>S.map</code> can operate on a value of any type which provides a <code>fantasy-land/map</code> method. <code>Functor f =&gt;</code> is a constraint on the type variable <code>f</code>. It states that <code>f</code> can be replaced with any type which provides <code>fantasy-land/map</code>.</p>
 <p>Let&#39;s <em>specialize</em> the type of <code>S.map</code> in the expression
 <code>S.map(s =&gt; s.length)([&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39;quux&#39;])</code>. Here&#39;s the general type again:</p>
-<pre><code class="lang-haskell">S.map :: Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+<pre><code class="lang-haskell"><span class="token constant" >S</span><span class="token punctuation" >.</span><span class="token builtin" >map</span> <span class="token operator" >::</span> <span class="token constant" >Functor</span> <span class="token hvariable" >f</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token hvariable" >a</span> <span class="token operator" >-&gt;</span> <span class="token hvariable" >b</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >-&gt;</span> <span class="token hvariable" >f</span> <span class="token hvariable" >a</span> <span class="token operator" >-&gt;</span> <span class="token hvariable" >f</span> <span class="token hvariable" >b</span>
 </code></pre>
 <p><code>f</code> is <code>Array</code>, in this case:</p>
-<pre><code class="lang-haskell">S.map :: (a -&gt; b) -&gt; Array a -&gt; Array b
+<pre><code class="lang-haskell"><span class="token constant" >S</span><span class="token punctuation" >.</span><span class="token builtin" >map</span> <span class="token operator" >::</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token hvariable" >a</span> <span class="token operator" >-&gt;</span> <span class="token hvariable" >b</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token hvariable" >a</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token hvariable" >b</span>
 </code></pre>
 <p><code>a</code> is <code>String</code>, as we&#39;re operating on an array of strings:</p>
-<pre><code class="lang-haskell">S.map :: (String -&gt; b) -&gt; Array String -&gt; Array b
+<pre><code class="lang-haskell"><span class="token constant" >S</span><span class="token punctuation" >.</span><span class="token builtin" >map</span> <span class="token operator" >::</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token constant" >String</span> <span class="token operator" >-&gt;</span> <span class="token hvariable" >b</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token constant" >String</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token hvariable" >b</span>
 </code></pre>
 <p><code>b</code> is <code>Number</code>, since the provided function returns the length of its string argument:</p>
-<pre><code class="lang-haskell">S.map :: (String -&gt; Number) -&gt; Array String -&gt; Array Number
+<pre><code class="lang-haskell"><span class="token constant" >S</span><span class="token punctuation" >.</span><span class="token builtin" >map</span> <span class="token operator" >::</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token constant" >String</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Number</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token constant" >String</span> <span class="token operator" >-&gt;</span> <span class="token constant" >Array</span> <span class="token constant" >Number</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-sanctuary-differ-from-other-solutions-" id="how-does-sanctuary-differ-from-other-solutions-"></a><span class="text">How does <em>Sanctuary</em> differ from other solutions?</span><a class="header-anchor-select" href="#how-does-sanctuary-differ-from-other-solutions-">#</a></h2>
 <p>Sanctuary is most similar to Ramda. In <a href="https://github.com/sanctuary-js/sanctuary/issues/377">sanctuary-js/sanctuary#377</a>

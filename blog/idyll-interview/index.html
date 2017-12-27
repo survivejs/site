@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.d8653f19fc050f1a96db.css" rel="stylesheet">
+      <link href="/site.e71b81e901618afdd79b.css" rel="stylesheet">
     
 
     <link
@@ -45,13 +45,13 @@ I&#39;m currently working on my Ph.D. with <a href="https://homes.cs.washington.
 <h2 class="header"><a class="header-anchor" href="#how-would-you-describe-idyll-to-someone-who-has-never-heard-of-it-" id="how-would-you-describe-idyll-to-someone-who-has-never-heard-of-it-"></a><span class="text">How would you describe <em>Idyll</em> to someone who has never heard of it?</span><a class="header-anchor-select" href="#how-would-you-describe-idyll-to-someone-who-has-never-heard-of-it-">#</a></h2>
 <p>Idyll is a markup language for creating and publishing interactive narratives — think posts on websites like <a href="https://distill.pub/"><em>Distill</em></a>, <a href="https://www.nytimes.com/section/upshot"><em>The Upshot</em></a>, <a href="https://fivethirtyeight.com"><em>FiveThirtyEight</em></a>, and <a href="https://pudding.cool/"><em>The Pudding</em></a>. With Idyll you write markup in a text file, which is then compiled into an interactive webpage. Idyll takes a lot of inspiration (and borrows a lot of syntax) from <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, while trying to extend these ideas beyond static text.</p>
 <p>One of the main points of Idyll is to make it very easy to embed JavaScript components inline with your text, and even have these components responsively update based on a reader&#39;s actions or scrolls. For example, a short Idyll file might look like this:</p>
-<pre><code class="lang-markdown"># This is my title
-### This is my subheading
+<pre><code class="lang-markdown"><span class="token title important" ><span class="token punctuation" >#</span> This is my title</span>
+<span class="token title important" ><span class="token punctuation" >###</span> This is my subheading</span>
 
 This is the main body of my article. Here is a scatter plot, rendered with JavaScript:
 
-[data name:&quot;exampleData&quot; source:&quot;example-data.csv&quot; /]
-[Chart type:&quot;scatter&quot; data:exampleData /]
+[data name:"exampleData" source:"example-data.csv" /]
+[Chart type:"scatter" data:exampleData /]
 
 And here is some more text after the chart.
 </code></pre>
@@ -63,11 +63,11 @@ And here is some more text after the chart.
 </ul>
 <p>Idyll ships with a <a href="https://idyll-lang.github.io/components-built-in">set of standard components</a> that can be invoked in the markup. Because Idyll is built on top of <a href="https://facebook.github.io/react/">React</a>, any React component can be installed from <code>npm</code> and used without any additional configuration. It is also straightforward for users to write their own <a href="https://idyll-lang.github.io/components-custom">custom components</a>.</p>
 <p>Everything in Idyll is reactive, so when anything changes the document automatically updates. For example, if we wanted to have a chart toggle between a scatter and a line plot, we could add a variable that changes when a button is pressed:</p>
-<pre><code class="lang-markdown">[var name:&quot;showScatter&quot; value:true /]
+<pre><code class="lang-markdown">[var name:"showScatter" value:true /]
 
-[Chart type:`showScatter ? &quot;scatter&quot; : &quot;line&quot;` data:exampleData /]
+[Chart type:<span class="token code keyword" >`showScatter ? "scatter" : "line"`</span> data:exampleData /]
 
-[Button onClick:`showScatter = !showScatter`] Toggle Scatter [/Button]
+[Button onClick:<span class="token code keyword" >`showScatter = !showScatter`</span>] Toggle Scatter [/Button]
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#how-does-idyll-work-" id="how-does-idyll-work-"></a><span class="text">How does <em>Idyll</em> work?</span><a class="header-anchor-select" href="#how-does-idyll-work-">#</a></h2>
 <p>As is typical with any programming language, Idyll starts with a compiler that does lexing and parsing of the input file. We rely heavily on existing open-source tools to help with this task, namely <a href="https://github.com/aaditmshah/lexer">lex</a> for the lexing and <a href="https://github.com/Hardmath123/nearley">nearley</a> to do the parsing. The compiler then spits out an <em>abstract syntax tree</em> (AST) that represents the hierarchy of elements that belong in the document.</p>

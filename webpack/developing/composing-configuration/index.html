@@ -22,7 +22,7 @@
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.d8653f19fc050f1a96db.css" rel="stylesheet">
+      <link href="/site.e71b81e901618afdd79b.css" rel="stylesheet">
     
 
     <link
@@ -39,7 +39,7 @@
 <li>Maintain configuration in multiple files for each environment and point webpack to each through the <code>--config</code> parameter, sharing configuration through module imports. You can see this approach in action at <a href="https://github.com/webpack/react-starter">webpack/react-starter</a>.</li>
 <li>Push configuration to a library, which you then consume. Examples: <a href="https://www.npmjs.com/package/hjs-webpack">hjs-webpack</a>, <a href="https://neutrino.js.org/">Neutrino</a>, <a href="https://www.npmjs.com/package/webpack-blocks">webpack-blocks</a>.</li>
 <li>Push configuration to a tool. Examples: <a href="https://www.npmjs.com/package/create-react-app">create-react-app</a>, <a href="https://www.npmjs.com/package/kyt">kyt</a>, <a href="https://www.npmjs.com/package/nwb">nwb</a>.</li>
-<li>Maintain all configuration within a single file and branch there and by relying on the <code>--env</code> parameter.</li>
+<li>Maintain all configuration within a single file and branch there and rely on the <code>--env</code> parameter. This approach is explained in detail later in this chapter.</li>
 </ul>
 <p>These approaches can be combined to create a higher level configuration that is then composed of smaller parts. Those parts could then be added to a library which you then use through npm making it possible to consume the same configuration across multiple projects.</p>
 <h2 class="header"><a class="header-anchor" href="#composing-configuration-by-merging" id="composing-configuration-by-merging"></a><span class="text">Composing Configuration by Merging</span><a class="header-anchor-select" href="#composing-configuration-by-merging">#</a></h2>
@@ -121,8 +121,30 @@ module<span class="token punctuation" >.</span><span class="token function-varia
   <span class="token keyword keyword-return" >return</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span>commonConfig<span class="token punctuation" >,</span> developmentConfig<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>After this change, the build should behave the same way as before. This time, however, you have room to expand, and you don&#39;t have to worry about how to combine different parts of the configuration.</p>
+<p>Instead of returning a configuration directly, a function capturing <code>env</code> is returned. This is a special parameter supported by webpack. To use it, <em>package.json</em> needs tweaking.</p>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+<div class="leanpub-insert">
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server --env development"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env production"</span>
+</div>
+<div class="leanpub-delete">
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack"</span>
+</div>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>After these changes, the build should behave the same way as before. This time, however, you have room to expand, and you don&#39;t have to worry about how to combine different parts of the configuration.</p>
 <p>You can add more targets by expanding the <em>package.json</em> definition and branching at <em>webpack.config.js</em> based on the need. <em>webpack.parts.js</em> grows to contain specific techniques you can then use to compose the configuration.</p>
+<h3 class="header"><a class="header-anchor" href="#understanding-env" id="understanding-env"></a><span class="text">Understanding <code>--env</code></span><a class="header-anchor-select" href="#understanding-env">#</a></h3>
+<p>Even though <code>--env</code> allows to pass strings to the configuration, it can do a bit more. Consider the following example:</p>
+<p><strong>package.json</strong></p>
+<pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"start"</span><span class="token operator" >:</span> <span class="token string" >"webpack-dev-server --env development"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"webpack --env.target production"</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>Instead of a string, you should receive an object <code>{ target: &quot;production&quot; }</code> at configuration now. You could pass more key-value pairs, and they would go to the <code>env</code> object. If you set <code>--env foo</code> while setting <code>--env.target</code>, the string wins. Webpack relies on <a href="http://yargs.js.org/docs/#parsing-tricks-dot-notation">yargs</a> for parsing underneath.</p>
 <h2 class="header"><a class="header-anchor" href="#benefits-of-composing-configuration" id="benefits-of-composing-configuration"></a><span class="text">Benefits of Composing Configuration</span><a class="header-anchor-select" href="#benefits-of-composing-configuration">#</a></h2>
 <p>Splitting configuration allows you to keep on expanding the setup. The biggest win is the fact that you can extract commonalities between different targets. You can also identify smaller configuration parts to compose. These configuration parts can be pushed to packages of their own to consume across projects.</p>
 <p>Instead of duplicating similar configuration across multiple projects, you can manage configuration as a dependency now. As you figure out better ways to perform tasks, all your projects receive the improvements.</p>
@@ -161,6 +183,7 @@ module<span class="token punctuation" >.</span><span class="token function-varia
 <ul>
 <li>Given webpack configuration is JavaScript code underneath, there are many ways to manage it.</li>
 <li>You should choose a method to compose configuration that makes the most sense to you. <a href="https://www.npmjs.com/package/webpack-merge">webpack-merge</a> was developed to provide a light approach for composition, but you can find many other options in the wild.</li>
+<li>Webpack&#39;s <code>--env</code> parameter allows you to control configuration target through terminal. You receive the passed <code>env</code> through a function interface.</li>
 <li>Composition can enable configuration sharing. Instead of having to maintain a custom configuration per repository, you can share it across repositories this way. Using npm packages enables this. Developing configuration is close to developing any other code. This time, however, you codify your practices as packages.</li>
 </ul>
 <p>The next parts of this book cover different techniques, and <em>webpack.parts.js</em> sees a lot of action as a result. The changes to <em>webpack.config.js</em> fortunately remain minimal.</p>
