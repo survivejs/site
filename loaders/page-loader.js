@@ -88,7 +88,9 @@ function generatePreview(file, body) {
 
 function generateDescription(file) {
   if (file.attributes) {
-    return file.attributes.description || file.attributes.preview;
+    return (
+      file.attributes.description || file.attributes.preview || file.preview
+    );
   }
 
   return file.preview;
