@@ -1,7 +1,7 @@
 ---
 title: 'SurviveJS - Summary of 2017'
-date: 2017-12-28
-headerImage: 'assets/img/XXX.jpg'
+date: 2017-12-31
+headerImage: 'assets/img/finland.jpg'
 keywords: ['survivejs']
 ---
 
@@ -23,7 +23,7 @@ One of the more interesting sessions for me personally was the one about how I g
 
 ## Business
 
-Business-wise the year wasn't as good one as the first one but the advanced on the personal side more than made up for that. I think I've finally found a business model that makes sense to me. I realized that I should do a mix of consulting/training and writing. I can use the consulting income to allow me to write while writing allows me to get those consulting clients. What's missing is stronger integration between these two.
+Business-wise the year wasn't as good one as the first one but the advances on the personal side more than made up for that. I think I've finally found a business model that makes sense to me. I realized that I should do a mix of consulting/training and writing. I can use the consulting income to allow me to write while writing allows me to get those consulting clients. What's missing is stronger integration between these two.
 
 While doing my webpack workshops, I realized it's convenient to build them on top of the book. I need to be more intentional about this, though and modularize all the content so that it works for multiple purposes like this. The webpack book and the maintenance book are quite close to this goal. The point is that done right; this would allow me to provide an online course offering to support the model.
 
