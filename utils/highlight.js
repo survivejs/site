@@ -1,37 +1,26 @@
 /* eslint-disable no-console */
 const { addLanguage, addPlugin, highlight } = require("illuminate-js");
 const languages = require("illuminate-js/lib/languages");
+const replacePlugin = require("./replace-plugin");
 
 Object.keys(languages).forEach(language => {
   addLanguage(language, languages[language]);
 });
 
-addPlugin(addHook => {
-  addHook("before-highlight", env => {
-    env.code = env.code.replace(/leanpub-start-insert/gi, function(match) {
-      return "_LEANPUB_START_INSERT";
-    });
-
-    env.code = env.code.replace(/leanpub-end-insert/gi, function(match) {
-      return "_LEANPUB_END";
-    });
-
-    env.code = env.code.replace(/leanpub-start-delete/gi, function(match) {
-      return "_LEANPUB_START_DELETE";
-    });
-
-    env.code = env.code.replace(/leanpub-end-delete/gi, function(match) {
-      return "_LEANPUB_END";
-    });
-  });
-
-  addHook("after-highlight", env => {
-    env.highlightedCode = env.highlightedCode
-      .replace(/_LEANPUB_START_INSERT/g, '<div class="leanpub-insert">')
-      .replace(/_LEANPUB_START_DELETE/g, '<div class="leanpub-delete">')
-      .replace(/_LEANPUB_END/g, "</div>");
-  });
-});
+addPlugin(
+  replacePlugin({
+    start: "leanpub-start-insert",
+    end: "leanpub-end-insert",
+    className: "leanpub-insert",
+  })
+);
+addPlugin(
+  replacePlugin({
+    start: "leanpub-start-delete",
+    end: "leanpub-end-delete",
+    className: "leanpub-delete",
+  })
+);
 
 // XXX: Note naming to avoid recursion
 module.exports = function highlightIlluminate(code, language = "bash") {
