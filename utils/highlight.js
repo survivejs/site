@@ -47,24 +47,3 @@ module.exports = function highlightIlluminate(code, language = "bash") {
 
   return code;
 };
-
-function attachPrismHooks(Prism) {
-  // detect leanpub specific syntax
-  Prism.hooks.add("before-highlight", function(env) {
-    env.code = env.code.replace(/leanpub-start-insert/gi, function(match) {
-      return "_LEANPUB_START_INSERT";
-    });
-
-    env.code = env.code.replace(/leanpub-end-insert/gi, function(match) {
-      return "_LEANPUB_END";
-    });
-
-    env.code = env.code.replace(/leanpub-start-delete/gi, function(match) {
-      return "_LEANPUB_START_DELETE";
-    });
-
-    env.code = env.code.replace(/leanpub-end-delete/gi, function(match) {
-      return "_LEANPUB_END";
-    });
-  });
-}
