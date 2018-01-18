@@ -36,6 +36,10 @@ const socialLinks = [
     caption: "Ask Me Anything",
     href: "https://github.com/survivejs/ama/issues",
   },
+  {
+    caption: "RSS",
+    href: "/atom.xml",
+  },
 ];
 
 const Container = styled.footer`
