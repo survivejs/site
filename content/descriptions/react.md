@@ -6,11 +6,9 @@
 
 Combined with [webpack](https://webpack.github.io/), a bundling tool, you have a powerful frontend development environment in your hands. The SurviveJS effort consists of two books that help you to adopt these technologies. They are available as [a bundle](https://leanpub.com/b/survivejs-webpack-react).
 
-<p>
-  ![React book cover|255|329|front-cover](assets/img/react_title_page_small.png)
+![React book cover|255|329|front-cover](assets/img/react_title_page_small.png)
 
-  **SurviveJS - React** shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29). The idea is that if you can build a simple application, you can probably build something more complex after that. The first application is always the hardest.
-</p>
+**SurviveJS - React** shows you how to build a simple [Kanban](https://en.wikipedia.org/wiki/Kanban_%28development%29). The idea is that if you can build a simple application, you can probably build something more complex after that. The first application is always the hardest.
 
 In addition to fundamental React knowledge, you will pick up design techniques as you develop a kanban application step by step and learn to understand it in detail.
 
