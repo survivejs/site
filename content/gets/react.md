@@ -4,5 +4,5 @@ The easiest way to get started with the material is to check out [the free onlin
 
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-react'>Buy at Leanpub</a>
-<a class='btn btn--normal btn--buy' href='/react/introduction/'>Read the free version</a>
+<a class='btn btn--normal btn--buy' href='/react/introduction/'>Read for free</a>
 </p>

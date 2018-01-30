@@ -8,5 +8,5 @@ About a third of the income goes to Tobias Koppers, the author of webpack. This 
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
 <a class='btn btn--normal btn--buy' href='https://www.amazon.com/dp/9526868803'>Buy at Amazon</a>
 <a class='btn btn--normal btn--buy' href='https://www.amazon.com/dp/B06XWZZGBS'>Buy for Kindle</a>
-<a class='btn btn--normal btn--buy' href='/webpack/foreword/'>Read the free version</a>
+<a class='btn btn--normal btn--buy' href='/webpack/foreword/'>Read for free</a>
 </p>

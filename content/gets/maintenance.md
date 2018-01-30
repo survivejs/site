@@ -6,5 +6,5 @@ The profit is split between the authors apart after Leanpub has taken its cut. T
 
 <p>
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-maintenance'>Buy at Leanpub</a>
-<a class='btn btn--normal btn--buy' href='/maintenance/preface/'>Read the free version</a>
+<a class='btn btn--normal btn--buy' href='/maintenance/preface/'>Read for free</a>
 </p>
