@@ -3,6 +3,9 @@ const { addLanguage, addPlugin, highlight } = require("illuminate-js");
 const languages = require("illuminate-js/lib/languages");
 const replacePlugin = require("./replace-plugin");
 
+// Alias sass
+languages.sass = languages.scss;
+
 Object.keys(languages).forEach(language => {
   addLanguage(language, languages[language]);
 });
