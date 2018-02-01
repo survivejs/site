@@ -2,7 +2,7 @@
 title: 'Experiences on React Next 2017'
 date: 2017-09-15
 headerImage: 'assets/img/react-next/event.jpg'
-keywords: ['event', 'reactjs', 'webpack']
+keywords: ['conference', 'reactjs', 'webpack']
 ---
 
 I had the privilege to participate in [React Next 2017](http://react-next.com/) as an invited speaker. Participation gave me a good chance to learn more about Israel and also a good excuse to showcase webpack to a wider audience. I also gave a surprise talk about my site generator before the event and even sponsored it a bit.
