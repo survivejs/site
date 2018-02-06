@@ -7,7 +7,7 @@ keywords: ['conference', 'javascript']
 
 I was invited to [AgentConf 2018](https://www.agent.sh/) on its second iteration about a month ago as one of the organizers saw [a presentation of mine about npm packaging](https://presentations.survivejs.com/the-whys-hows-and-whats-of-npm-packaging/). I gained free entry to the conference against a lightning talk but more on that later.
 
-The concept is simple. After two days of single track talks in Dornbirn, there are two days of skiing (alpine, not cross-country) in Lech. Skiing is optional, but at least for me, it was the highlight even if the talks were good quality. There were around 150 people in the main conference, and roughly 40 remained for skiing.
+The concept is simple. After two days of single track talks in Dornbirn, there are two days of skiing (alpine, not cross-country) in Lech. Skiing is optional, but at least for me, it was the highlight even if the talks were good quality. There were around 180 people in the main conference, and roughly 50 remained for skiing.
 
 ## The Arrival Day
 
