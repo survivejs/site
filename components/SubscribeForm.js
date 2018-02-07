@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "react-emotion";
+import styled, { cx, css } from "react-emotion";
 import theme from "../styles/theme";
 
 const ACTION_URL =
@@ -18,23 +18,39 @@ const Pocket = ({ children }) => (
 );
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @media (min-width: 500px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
-const Input = styled.input`
-  flex-grow: 1;
+const baseStyle = css`
+  display: block;
+  width: 100%;
   height: ${theme.form.size};
+  margin-bottom: ${theme.space.s};
   padding: 0.6em 1em;
   background-color: ${theme.color.background};
   border: ${theme.border.width} solid ${theme.color.action};
-  border-right: 0;
-  border-radius: ${theme.form.size} 0 0 ${theme.form.size};
-  color: ${theme.color.base};
+  border-radius: ${theme.form.size};
   text-transform: uppercase;
   font-size: ${theme.fontSize.delta};
   outline: none;
+
+  @media (min-width: 500px) {
+    width: auto;
+  }
+`;
+
+const inputStyle = css`
+  flex-grow: 1;
+  color: ${theme.color.base};
+
+  @media (min-width: 500px) {
+    border-right: 0;
+    border-radius: ${theme.form.size} 0 0 ${theme.form.size};
+  }
 
   &:focus,
   &:focus ~ input {
@@ -42,27 +58,31 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.input`
-  height: ${theme.form.size};
-  padding: 0.6em 1em;
-  background-color: ${theme.color.background};
-  border: ${theme.border.width} solid ${theme.color.action};
-  border-radius: 0 ${theme.form.size} ${theme.form.size} 0;
-  text-transform: uppercase;
+const Input = props => (
+  <input className={cx(baseStyle, inputStyle)} {...props} />
+);
+
+const buttonStyle = css`
   letter-spacing: 0.05em;
-  color: ${theme.color.actionDark};
-  font-size: ${theme.fontSize.delta};
   font-weight: ${theme.fontWeight.fat};
-  outline: none;
+  color: ${theme.color.actionDark};
   transition: background-color ${theme.transition.easing}
       ${theme.transition.speed},
     color ${theme.transition.easing} ${theme.transition.speed};
+
+  @media (min-width: 500px) {
+    border-radius: 0 ${theme.form.size} ${theme.form.size} 0;
+  }
 
   &:hover {
     color: ${theme.color.actionLight};
     background-color: ${theme.color.actionAlpha};
   }
 `;
+
+const Button = props => (
+  <input type="submit" className={cx(baseStyle, buttonStyle)} {...props} />
+);
 
 const SubscribeForm = () => {
   return (
@@ -82,7 +102,7 @@ const SubscribeForm = () => {
           value=""
         />
       </Pocket>
-      <Button type="submit" value="Subscribe" name="subscribe" />
+      <Button value="Subscribe" name="subscribe" />
     </Form>
   );
 };
