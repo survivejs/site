@@ -1,55 +1,48 @@
 @mixin triangle($direction, $color, $size) {
+  @if $direction == "left" {
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    border-top: $size solid transparent;
+  } @else if $direction == "right" {
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    border-top: $size solid transparent;
+  } @else if $direction == "up" {
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  } @else if $direction == "down" {
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+    border-top: $size solid $color;
+  }
 
-	@if $direction == "left" {
-		border-bottom: $size solid transparent;
-		border-right: $size solid $color;
-		border-top: $size solid transparent;
-	}
-	@else if $direction == "right" {
-		border-bottom: $size solid transparent;
-		border-left: $size solid $color;
-		border-top: $size solid transparent;
-	}
-	@else if $direction == "up" {
-		border-bottom: $size solid $color;
-		border-left: $size solid transparent;
-		border-right: $size solid transparent;
-	}
-	@else if $direction == "down" {
-		border-right: $size solid transparent;
-		border-left: $size solid transparent;
-		border-top: $size solid $color;
-	}
-
-	height: 0;
-	width: 0;
+  height: 0;
+  width: 0;
 }
 
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
-    $responsive-unitless: $responsive / ($responsive - $responsive + 1);
-    $dimension: if(unit($responsive) == 'vh', 'height', 'width');
-    $min-breakpoint: $min / $responsive-unitless * 100;
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == "vh", "height", "width");
+  $min-breakpoint: $min / $responsive-unitless * 100;
 
-    @media (max-#{$dimension}: #{$min-breakpoint}) {
-        font-size: $min;
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
     }
+  }
 
-    @if $max {
-        $max-breakpoint: $max / $responsive-unitless * 100;
-
-        @media (min-#{$dimension}: #{$max-breakpoint}) {
-            font-size: $max;
-        }
-    }
-
-    @if $fallback {
-        font-size: $fallback;
-    }
-    font-size: $responsive;
+  @if $fallback {
+    font-size: $fallback;
+  }
+  font-size: $responsive;
 }
-
-
-
 
 /*------------------------------------*\
 	$MIXINS
@@ -63,14 +56,14 @@
  * Thanks to @redclov3r for the `line-height` Sass:
  * twitter.com/redclov3r/status/250301539321798657
  */
- @mixin font-size($font-size, $line-height:true){
-	font-size:$font-size;
-	font-size:($font-size / $base-font-size)*1rem;
-	@if $line-height == true{
-		line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
-	}
- }
-
+@mixin font-size($font-size, $line-height:true) {
+  font-size: $font-size;
+  font-size: ($font-size / $base-font-size)*1rem;
+  @if $line-height == true {
+    line-height: ceil($font-size / $base-line-height) * ($base-line-height /
+          $font-size);
+  }
+}
 
 /**
  * Force overly long spans of text to truncate, e.g.:
@@ -79,13 +72,12 @@
  *
  * Where `$truncation-boundary` is a united measurement.
  */
- @mixin truncate($truncation-boundary){
-	max-width:$truncation-boundary;
-	white-space:nowrap;
-	overflow-x:hidden;
-	text-overflow:ellipsis;
- }
-
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
 
 /**
  * CSS arrows!!! But... before you read on, you might want to grab a coffee...
@@ -122,209 +114,195 @@
 	 }
  *
  */
- @mixin arrow($arrow-edge, $arrow-location, $arrow-color, $border-color: $arrow-color){
+@mixin arrow($arrow-edge, $arrow-location, $arrow-color, $border-color: $arrow-color) {
+  $arrow-size: $half-spacing-unit!default;
+  $arrow-border: 1!default;
+  $border: $arrow-size;
+  $arrow: $arrow-size - $arrow-border;
 
-	$arrow-size:            $half-spacing-unit!default;
-	$arrow-border:          1!default;
-	$border:                $arrow-size;
-	$arrow:                 $arrow-size - $arrow-border;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    border-collapse: separate;
+  }
+  &:before {
+    border: $border solid transparent;
+  }
+  &:after {
+    border: $arrow solid transparent;
+  }
+  @if $arrow-edge == top {
+    &:before,
+    &:after {
+      bottom: 100%;
+    }
+    &:before {
+      border-bottom-color: $border-color !important;
+    }
 
+    &:after {
+      border-bottom-color: $arrow-color !important;
+    }
 
+    @if $arrow-location == left {
+      &:before {
+        left: $arrow;
+      }
+      &:after {
+        left: $border;
+      }
+    }
 
-	&:before,
-	&:after{
-		content:"";
-		position:absolute;
-		border-collapse:separate;
-	}
-	&:before{
-		border:$border solid transparent;
-	}
-	&:after{
-		border:$arrow solid transparent;
-	}
-	@if $arrow-edge == top{
+    @if $arrow-location == center {
+      &:before,
+      &:after {
+        left: 50%;
+        margin-left: -$border;
+      }
+      &:after {
+        margin-left: -$arrow;
+      }
+    }
 
-		&:before,
-		&:after{
-			bottom:100%;
-		}
-		&:before{
-			border-bottom-color:$border-color!important;
-		}
+    @if $arrow-location == right {
+      &:before {
+        right: $arrow;
+      }
+      &:after {
+        right: $border;
+      }
+    }
+  }
 
-		&:after{
-			border-bottom-color:$arrow-color!important;
-		}
+  @if $arrow-edge == right {
+    &:before,
+    &:after {
+      left: 100%;
+    }
 
-		@if $arrow-location == left {
-			&:before{
-				left:$arrow;
-			}
-			&:after{
-				left:$border;
-			}
-		}
+    &:before {
+      border-left-color: $border-color !important;
+    }
 
-		@if $arrow-location == center {
-			&:before,
-			&:after {
-				left:50%;
-				margin-left:-$border;
-			}
-			&:after {
-				margin-left:-$arrow;
-			}
-		}
+    &:after {
+      border-left-color: $arrow-color !important;
+    }
 
-		@if $arrow-location == right {
-			&:before{
-				right:$arrow;
-			}
-			&:after{
-				right:$border;
-			}
-		}
+    @if $arrow-location == top {
+      &:before {
+        top: $arrow;
+      }
+      &:after {
+        top: $border;
+      }
+    }
 
-	}
+    @if $arrow-location == center {
+      &:before,
+      &:after {
+        top: 50%;
+        margin-top: -$border;
+      }
+      &:after {
+        margin-top: -$arrow;
+      }
+    }
 
-	@if $arrow-edge == right{
+    @if $arrow-location == bottom {
+      &:before {
+        bottom: $arrow;
+      }
+      &:after {
+        bottom: $border;
+      }
+    }
+  }
 
-		&:before,
-		&:after{
-			left:100%;
-		}
+  @if $arrow-edge == bottom {
+    &:before,
+    &:after {
+    }
 
-		&:before{
-			border-left-color:$border-color!important;
-		}
+    &:before {
+      bottom: -$base-spacing-unit;
+      border-top-color: $border-color !important;
+    }
 
-		&:after{
-			border-left-color:$arrow-color!important;
-		}
+    &:after {
+      border-top-color: $arrow-color !important;
+      bottom: -$base-spacing-unit + 2;
+    }
 
-		@if $arrow-location == top{
-			&:before{
-				top:$arrow;
-			}
-			&:after{
-				top:$border;
-			}
-		}
+    @if $arrow-location == left {
+      &:before {
+        left: $arrow;
+      }
+      &:after {
+        left: $border;
+      }
+    }
 
-		@if $arrow-location == center{
-			&:before,
-			&:after{
-				top:50%;
-				margin-top:-$border;
-			}
-			&:after{
-				margin-top:-$arrow;
-			}
-		}
+    @if $arrow-location == center {
+      &:before,
+      &:after {
+        left: 50%;
+        margin-left: -$border;
+      }
+      &:after {
+        margin-left: -$arrow;
+      }
+    }
 
-		@if $arrow-location == bottom{
-			&:before{
-				bottom:$arrow;
-			}
-			&:after{
-				bottom:$border;
-			}
-		}
+    @if $arrow-location == right {
+      &:before {
+        right: $arrow;
+      }
+      &:after {
+        right: $border;
+      }
+    }
+  }
 
-	}
+  @if $arrow-edge == left {
+    &:before {
+      border-right-color: $border-color !important;
+    }
 
-	@if $arrow-edge == bottom {
+    &:after {
+      border-right-color: $arrow-color !important;
+    }
 
-		&:before,
-		&:after{
-		}
+    @if $arrow-location == top {
+      &:before {
+        top: $arrow;
+      }
+      &:after {
+        top: $border;
+      }
+    }
 
-		&:before{
-			bottom: -$base-spacing-unit;
-			border-top-color:$border-color!important;
-		}
+    @if $arrow-location == center {
+      &:before,
+      &:after {
+        top: 50%;
+        margin-top: -$border;
+      }
+      &:after {
+        margin-top: -$arrow;
+      }
+    }
 
-		&:after{
-			border-top-color:$arrow-color!important;
-			bottom: -$base-spacing-unit + 2;
-		}
-
-		@if $arrow-location == left{
-			&:before {
-				left:$arrow;
-			}
-			&:after{
-				left:$border;
-			}
-		}
-
-		@if $arrow-location == center{
-			&:before,
-			&:after{
-				left:50%;
-				margin-left:-$border;
-			}
-			&:after{
-				margin-left:-$arrow;
-			}
-		}
-
-		@if $arrow-location == right{
-			&:before{
-				right:$arrow;
-			}
-			&:after{
-				right:$border;
-			}
-		}
-
-	}
-
-	@if $arrow-edge == left{
-
-
-		&:before{
-			border-right-color:$border-color!important;
-		}
-
-		&:after{
-			border-right-color:$arrow-color!important;
-		}
-
-		@if $arrow-location == top{
-			&:before{
-				top:$arrow;
-			}
-			&:after{
-				top:$border;
-			}
-		}
-
-		@if $arrow-location == center{
-			&:before,
-			&:after{
-				top:50%;
-				margin-top:-$border;
-			}
-			&:after{
-				margin-top:-$arrow;
-			}
-		}
-
-		@if $arrow-location == bottom{
-			&:before{
-				bottom:$arrow;
-			}
-			&:after{
-				bottom:$border;
-			}
-		}
-
-	}
-
- }
-
+    @if $arrow-location == bottom {
+      &:before {
+        bottom: $arrow;
+      }
+      &:after {
+        bottom: $border;
+      }
+    }
+  }
+}
 
 /**
  * Media query mixin.
@@ -352,72 +330,68 @@
  *
  * We work out your end points for you:
  */
- $lap-end:               $desk-start - 1px!default;
- $palm-end:              $lap-start - 1px !default;
+$lap-end: $desk-start - 1px!default;
+$palm-end: $lap-start - 1px !default;
 
- @mixin media-query($media-query){
+@mixin media-query($media-query) {
+  @if $media-query == palm {
+    @media only screen and (max-width: $palm-end) {
+      @content;
+    }
+  }
 
-	@if $media-query == palm{
+  @if $media-query == lap {
+    @media only screen and (min-width: $lap-start) and (max-width: $lap-end) {
+      @content;
+    }
+  }
 
-		@media only screen and (max-width:$palm-end) { @content; }
+  @if $media-query == lap-and-up {
+    @media only screen and (min-width: $lap-start) {
+      @content;
+    }
+  }
 
-	}
+  @if $media-query == portable {
+    @media only screen and (max-width: $lap-end) {
+      @content;
+    }
+  }
 
-	@if $media-query == lap{
+  @if $media-query == desk {
+    @media only screen and (min-width: $desk-start) {
+      @content;
+    }
+  }
 
-		@media only screen and (min-width:$lap-start) and (max-width:$lap-end) { @content; }
-
-	}
-
-	@if $media-query == lap-and-up{
-
-		@media only screen and (min-width:$lap-start) { @content; }
-
-	}
-
-	@if $media-query == portable{
-
-		@media only screen and (max-width:$lap-end) { @content; }
-
-	}
-
-	@if $media-query == desk{
-
-		@media only screen and (min-width:$desk-start) { @content; }
-
-	}
-
-	@if $media-query == desk-wide{
-
-		@media only screen and (min-width: $desk-wide-start) { @content; }
-
-	}
-
-	@else {
-		@media only screen and (max-width: $media-query) { @content; }
-	}
-
- }
-
+  @if $media-query == desk-wide {
+    @media only screen and (min-width: $desk-wide-start) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $media-query) {
+      @content;
+    }
+  }
+}
 
 @mixin layer {
-	backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @mixin touch-scroll {
-	overflow-y: auto;
-	.touch & {
-		overflow-y: scroll; /* has to be scroll, not auto */
-		-webkit-overflow-scrolling: touch;
-	}
+  overflow-y: auto;
+  .touch & {
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
-
 @mixin tap {
-	&:active,
-	&:active:hover,
-	&.touch-feedback:hover,
-	&.touch-feedback {
-		@content;
-	}
+  &:active,
+  &:active:hover,
+  &.touch-feedback:hover,
+  &.touch-feedback {
+    @content;
+  }
 }
