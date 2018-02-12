@@ -1,3 +1,5 @@
+$toc-link-height: 32px;
+
 .page {
   margin-top: 48vh;
 
@@ -29,6 +31,15 @@
   display: flex;
 }
 
+.page__sidebar-container {
+  display: block;
+}
+
+.page__sidebar-show,
+.page__sidebar-checkbox {
+  display: none;
+}
+
 .page__sidebar {
   max-width: 350px;
   padding: $space-l;
@@ -45,8 +56,50 @@
   .page__container {
     display: block;
   }
+
+  .page__sidebar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: $toc-link-height;
+    z-index: 100000;
+  }
+
+  .page__sidebar-show {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: $toc-link-height;
+    text-align: center;
+    line-height: $toc-link-height;
+    color: darken($action-color, 30%);
+    background: $background-color;
+    font-family: $small-font;
+    font-size: $deci-size;
+    border: 0;
+    z-index: 100001;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.05);
+  }
+
   .page__sidebar {
-    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    text-align-last: left;
+    background: $background-color;
+    overflow: auto;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all $transition-easing $transition-speed;
+  }
+
+  .page__sidebar-checkbox:checked + .page__sidebar {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

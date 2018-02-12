@@ -32,7 +32,21 @@ const Page = ({
       )}
 
       <div className="page__container">
-        <div className="page__sidebar">{sidebar}</div>
+        <div className="page__sidebar-container">
+          <label
+            type="button"
+            for="page__sidebar"
+            className="page__sidebar-show"
+          >
+            Table of contents
+          </label>
+          <input
+            type="checkbox"
+            id="page__sidebar"
+            className="page__sidebar-checkbox"
+          />
+          <div className="page__sidebar">{sidebar}</div>
+        </div>
         <div className="page__main">
           <div className="page__section">{children}</div>
           <div className="page__section">
