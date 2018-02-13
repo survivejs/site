@@ -27,12 +27,12 @@ const Body = styled.div`
   background: ${theme.color.background};
   overflow: auto;
   transform: translateY(100%);
-  opacity: 0;
-  transition: all ${theme.transition.easing} ${theme.transition.speed};
+  transition: transform ease-in 0.3s;
+  will-change: transform;
 
   input[type="checkbox"]:checked + & {
     transform: translateY(0);
-    opacity: 1;
+    transition: transform ${theme.transition.easing} 0.4s;
   }
 
   @media (min-width: ${theme.breakpoint.m}) {
@@ -40,7 +40,6 @@ const Body = styled.div`
     max-width: 250px;
     height: 100%;
     transform: none;
-    opacity: 1;
     background: rgba(0, 0, 0, 0.01);
   }
 
