@@ -54,4 +54,10 @@ module.exports = {
     speed: "0.3s",
     easing: "cubic-bezier(.23, 1, .32, 1)",
   },
+  breakpoint: {
+    s: "500px",
+    m: "650px",
+    l: "1150px",
+    xl: "1350px",
+  },
 };
