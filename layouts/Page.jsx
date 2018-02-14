@@ -1,5 +1,6 @@
 import React from "react";
 import { Disqus, PrevNextMini } from "@survivejs/components";
+import Sidebar from "../components/Sidebar";
 
 const Page = ({
   headerImage,
@@ -32,7 +33,7 @@ const Page = ({
       )}
 
       <div className="page__container">
-        <div className="page__sidebar">{sidebar}</div>
+        <Sidebar>{sidebar}</Sidebar>
         <div className="page__main">
           <div className="page__section">{children}</div>
           <div className="page__section">

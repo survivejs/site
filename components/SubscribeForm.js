@@ -18,7 +18,7 @@ const Pocket = ({ children }) => (
 );
 
 const Form = styled.form`
-  @media (min-width: 500px) {
+  @media (min-width: ${theme.breakpoint.s}) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,7 +38,7 @@ const baseStyle = css`
   font-size: ${theme.fontSize.delta};
   outline: none;
 
-  @media (min-width: 500px) {
+  @media (min-width: ${theme.breakpoint.s}) {
     width: auto;
   }
 `;
@@ -47,7 +47,7 @@ const inputStyle = css`
   flex-grow: 1;
   color: ${theme.color.base};
 
-  @media (min-width: 500px) {
+  @media (min-width: ${theme.breakpoint.s}) {
     border-right: 0;
     border-radius: ${theme.form.size} 0 0 ${theme.form.size};
   }
@@ -70,7 +70,7 @@ const buttonStyle = css`
       ${theme.transition.speed},
     color ${theme.transition.easing} ${theme.transition.speed};
 
-  @media (min-width: 500px) {
+  @media (min-width: ${theme.breakpoint.s}) {
     border-radius: 0 ${theme.form.size} ${theme.form.size} 0;
   }
 

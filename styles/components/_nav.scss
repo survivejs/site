@@ -28,15 +28,14 @@ $line-height: 3px;
   @include layer;
   @include media-query(palm) {
     transform: translateY(-100%);
-    opacity: 0;
     background-color: #fff;
-    transition: all $transition-easing $transition-speed;
+    transition: transform ease-in 0.2s;
+    will-change: transform;
     pointer-events: all;
     .nav__toggle:checked ~ & {
-      opacity: 1;
       transform: translateY(0);
+      transition: all $transition-easing $transition-speed;
       box-shadow: 0 0 8px rgba(#000, 0.1);
-      // visibility: visible;
     }
   }
 }
