@@ -7,7 +7,7 @@ keywords: ['interview', 'state-management']
 
 State management is one of those topics that divides opinions. So far we've seen a couple of options so far.
 
-In this post, we'll cover Parket, a solution by [Leah Ullmann](https://twitter.com/@hrmny_).
+In this post, we'll cover Parket, a solution by [Leah Ullmann](https://twitter.com/hrmny_).
 
 ## Can you tell a bit about yourself?
 
