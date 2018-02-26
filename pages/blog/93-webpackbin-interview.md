@@ -7,9 +7,11 @@ keywords: ['interview', 'webpack']
 
 Online tools are great for prototyping ideas and even workshops. You avoid the pain of setup while giving up some degree of control. Often this is a good trade-off, though.
 
-The interview series covered [CodeSandbox, an online React playground](/blog/codesandbox-interview) earlier. This time around it's time to look into another alternative, [WebpackBin](https://www.webpackbin.com/) by [Christian Alfoni](https://twitter.com/christianalfoni).
+The interview series covered [CodeSandbox, an online React playground](/blog/codesandbox-interview) earlier. This time around it's time to look into another alternative, WebpackBin by [Christian Alfoni](https://twitter.com/christianalfoni).
 
 T> If you have been following the series, you might remember an earlier interview of Christian. That time around we [discussed his state management solution, cerebral](/blog/cerebral-interview).
+
+T> **Editor's note:** WebpackBin isn't online anymore. You can still read the blog post but don't expect the service to work!
 
 ## Can you tell a bit about yourself?
 
@@ -157,4 +159,4 @@ Well, I guess I should encourage you to check out [Cerebral 2.0](http://www.cere
 
 Thanks for the interview Christian! I remember using WebpackBin on my early workshops and it was particularly great to see the recent upgrades made to the service. If you haven't tried it in a while, it's worth another look.
 
-You can find the service at [webpackbin.com](https://www.webpackbin.com/). If you want to check out the source, see [webpackbin on GitHub](https://github.com/cerebral/webpackbin).
+If you want to check out the source, see [webpackbin on GitHub](https://github.com/cerebral/webpackbin). The service itself isn't online anymore.

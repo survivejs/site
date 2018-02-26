@@ -71,8 +71,6 @@ document.body.innerHTML = `
 `
 ```
 
-T> [Play with it on webpackbin](https://www.webpackbin.com/bins/-KlrNqkpZZmKIz0eYwIk).
-
 **Example using [React-JSS](http://cssinjs.org/react-jss)**
 
 ```js
@@ -94,8 +92,6 @@ const Button = ({ classes }) => (
 const StyledButton = injectSheet(styles)(Button)
 ```
 
-T> [Play with it on webpackbin](https://www.webpackbin.com/bins/-Kn90iijPuAJO48ItgF-).
-
 **Example using [Styled-JSS](http://cssinjs.org/styled-jss)**
 
 ```js
@@ -106,8 +102,6 @@ const MyButton = styled('button')({
   color: 'red'
 })
 ```
-
-T> [Play with it on webpackbin](https://www.webpackbin.com/bins/-KlrbQuwAZSK5eSzpCSy).
 
 ## How does JSS differ from other solutions?
 

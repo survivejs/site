@@ -41,7 +41,7 @@ I cover the following ideas in [the first presentation](http://presentations.sur
 
 My React training is tailored per client need. You can get a good idea of how this works from my [React presentations](https://presentations.survivejs.com/#/1). I can cover a wide range of topics starting from basics to more advanced.
 
-All the sessions have been split into smaller sections most of which contain hands-on exercises so you get experience with the ideas discussed. It's expected each participant has LTS version of Node installed and can run `node` and `npm` through terminal. Most of the React portion can be done through [CodeSandbox](https://codesandbox.io/) or [WebpackBin](https://www.webpackbin.com/).
+All the sessions have been split into smaller sections most of which contain hands-on exercises so you get experience with the ideas discussed. It's expected each participant has LTS version of Node installed and can run `node` and `npm` through terminal. Most of the React portion can be done through [CodeSandbox](https://codesandbox.io/).
 
 ### Example React Day
 
