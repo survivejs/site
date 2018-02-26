@@ -25,7 +25,6 @@ const Body = styled.div`
   right: 0;
   padding: ${theme.space.l};
   background: ${theme.color.background};
-  overflow: auto;
   transform: translateY(100%);
   transition: transform ease-in 0.3s;
   will-change: transform;
