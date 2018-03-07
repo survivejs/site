@@ -25,7 +25,7 @@ As discussed in the maintenance book, typing your code can be valuable in many w
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.c2b79d91a6beb41de0a9.css" rel="stylesheet">
+      <link href="/site.bd1c3c52eabd8c0b1770.css" rel="stylesheet">
     
 
     <link
@@ -97,7 +97,7 @@ stringOrNumber<span class="token punctuation" >.</span><span class="token functi
 <p>We were modernizing a pretty large, sprawling JavaScript codebase for one of our customers back in 2014 when Facebook launched Flow, and after a bit of experimentation we were sold entirely - it&#39;s an excellent technology. However, at the time it was still pretty rough around the edges and didn&#39;t support a lot of the newer ES6 features we were using.</p>
 <p>We also found introducing a type system to an existing project pretty challenging. You have to make a lot of assumptions about the untyped code, and you don&#39;t start seeing the benefit until the overwhelming majority of the codebase is converted.</p>
 <p>The core problem is that your nice, newly typed codebase touches untyped code so often that static analysis is defeated - it&#39;s entirely possible to write fully annotated code that Flow happily accepts and is completely wrong because the real-world input does not match your expectations. So if we can&#39;t find these problems at compile time, the only way to find them is at runtime.</p>
-<p>Out of this idea came my first effort - <a href="https://github.comc/codemix/babel-plugin-typecheck">babel-plugin-typecheck</a> which compiles Flow type annotations into type checks. It generates all the code inline which makes it very hard to develop for and maintain. As Flow matured and continued getting better, it became clear that we needed a different approach if we were ever going to be compatible, and so flow-runtime was born.</p>
+<p>Out of this idea came my first effort - <a href="https://github.com/codemix/babel-plugin-typecheck">babel-plugin-typecheck</a> which compiles Flow type annotations into type checks. It generates all the code inline which makes it very hard to develop for and maintain. As Flow matured and continued getting better, it became clear that we needed a different approach if we were ever going to be compatible, and so flow-runtime was born.</p>
 <h2 class="header"><a class="header-anchor" href="#what-next-" id="what-next-"></a><span class="text">What next?</span><a class="header-anchor-select" href="#what-next-">#</a></h2>
 <p>I&#39;d like to produce a webpack plugin to make it easier to work with external type definitions. Right now you have to use a separate package called <code>flow-runtime-cli</code> which generates a file that you can later import, and it&#39;s all a bit messy. I also want to simplify some of the internals to make it easier for people to contribute.</p>
 <h2 class="header"><a class="header-anchor" href="#what-does-the-future-look-like-for-flow-runtime-and-web-development-in-general-can-you-see-any-particular-trends-" id="what-does-the-future-look-like-for-flow-runtime-and-web-development-in-general-can-you-see-any-particular-trends-"></a><span class="text">What does the future look like for <em>Flow Runtime</em> and web development in general? Can you see any particular trends?</span><a class="header-anchor-select" href="#what-does-the-future-look-like-for-flow-runtime-and-web-development-in-general-can-you-see-any-particular-trends-">#</a></h2>
