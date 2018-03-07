@@ -5,7 +5,7 @@ headerImage: 'assets/img/mikey.jpg'
 keywords: ['interview', 'boilerplate', 'react', 'redux']
 ---
 
-It is tedious and boring to do the same thing over and over. That's where generator tools come in as they take some grunt work out of coding. [Mikey](https://github.com/Mikeysax/mikey) by [Michael Farrell](https://twitter.com/FarrellJazz) is a tool like that for React and Redux. To learn more about the tool, read on.
+It is tedious and boring to do the same thing over and over. That's where generator tools come in as they take some grunt work out of coding. [Mikey](https://github.com/Mikeysax/mikey) by [Michael Farrell](https://twitter.com/MichaelMFarrell) is a tool like that for React and Redux. To learn more about the tool, read on.
 
 ## Can you tell a bit about yourself?
 

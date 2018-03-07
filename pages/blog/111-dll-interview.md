@@ -197,7 +197,7 @@ You can find [d-l-l on GitHub](https://github.com/fliphub/d-l-l).
 See also the following resources for further information:
 
 - [Official webpack DLL example](https://github.com/webpack/webpack/tree/master/examples/dll)
-- [Robert Knight's article on the DllPlugin](https://robertknight.github.io/posts/webpack-dll-plugins/)
+- [Robert Knight's article on the DllPlugin](https://robertknight.me.uk/posts/webpack-dll-plugins/)
 - [InVision on optimizing webpack builds with the DllPlugin](http://engineering.invisionapp.com/post/optimizing-webpack/)
 - [Caching assets long term with the DllPlugin](https://medium.com/connect-the-dots/caching-assets-long-term-with-webpack-5ad24a4c39bd)
 - [DllPlugin question and answer on Stack Overflow](https://stackoverflow.com/questions/36986460/selecting-webpack-dll-bundle-via-scope-mode)

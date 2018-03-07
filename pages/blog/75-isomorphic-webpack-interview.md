@@ -147,7 +147,7 @@ Behind these numbers there hides the good and the bad: the good is that there ar
 
 I hope to see more collaboration in the open-source world, more community driven development and maintenance of the existing projects.
 
-Furthermore, JavaScript has a growing number of projects focused on the developer experience, e.g. webpack enables [Hot Module Replacement (HMR)](https://webpack.github.io/docs/hot-module-replacement.html), [react-storybook](https://github.com/storybooks/react-storybook) sandboxes UI component development and [redux-devtools](https://github.com/gaearon/redux-devtools) enables inspection of Redux application state, just to name a few.
+Furthermore, JavaScript has a growing number of projects focused on the developer experience, e.g. webpack enables [Hot Module Replacement (HMR)](/webpack/appendices/hmr/), [react-storybook](https://github.com/storybooks/react-storybook) sandboxes UI component development and [redux-devtools](https://github.com/gaearon/redux-devtools) enables inspection of Redux application state, just to name a few.
 
 This is super important – after all, good DX is what "recruits" the new talents, it is what makes companies to adopt the language. However, I'd like to see a wider adoption of strict code styles, usage of immutable constructs and strict-type checking.
 

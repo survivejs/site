@@ -69,4 +69,4 @@ Jimmy and Jason would have more current insight to the affairs of React-Bootstra
 
 ## Conclusion
 
-Thanks a lot for the interview Matt! I hope React-Bootstrap will have a bright future and more people will find the project. There's a [getting started guide](https://react-bootstrap.github.io/getting-started.html) for those interested. Also check out [the component listing](https://react-bootstrap.github.io/components.html) to get a better idea of the capabilities of the library.
+Thanks a lot for the interview Matt! I hope React-Bootstrap will have a bright future and more people will find the project. There's a [getting started guide](https://react-bootstrap.github.io/getting-started/introduction) for those interested. Also check out [the component listing](https://react-bootstrap.github.io/components/alerts/) to get a better idea of the capabilities of the library.

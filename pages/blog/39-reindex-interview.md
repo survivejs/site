@@ -78,4 +78,4 @@ Thanks for the interview Ville! If Reindex or GraphQL sounds something that's in
 
 * [Reindex docs](https://www.reindex.io/docs/)
 * [Reindex examples](https://github.com/reindexio/reindex-examples)
-* [Relay docs](https://facebook.github.io/relay/docs/getting-started.html)
+* [Relay docs](https://facebook.github.io/relay/)

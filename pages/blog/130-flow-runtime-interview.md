@@ -101,7 +101,7 @@ We also found introducing a type system to an existing project pretty challengin
 
 The core problem is that your nice, newly typed codebase touches untyped code so often that static analysis is defeated - it's entirely possible to write fully annotated code that Flow happily accepts and is completely wrong because the real-world input does not match your expectations. So if we can't find these problems at compile time, the only way to find them is at runtime.
 
-Out of this idea came my first effort - [babel-plugin-typecheck](https://github.comc/codemix/babel-plugin-typecheck) which compiles Flow type annotations into type checks. It generates all the code inline which makes it very hard to develop for and maintain. As Flow matured and continued getting better, it became clear that we needed a different approach if we were ever going to be compatible, and so flow-runtime was born.
+Out of this idea came my first effort - [babel-plugin-typecheck](https://github.com/codemix/babel-plugin-typecheck) which compiles Flow type annotations into type checks. It generates all the code inline which makes it very hard to develop for and maintain. As Flow matured and continued getting better, it became clear that we needed a different approach if we were ever going to be compatible, and so flow-runtime was born.
 
 ## What next?
 

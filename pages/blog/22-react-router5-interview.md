@@ -61,7 +61,7 @@ The biggest trend right now is functional programming. At the component level, i
 
 I mentioned above having routes in a tree to help with building mental pictures, having an application state as a tree is also very beneficial in that sense, and I believe in global application states. I am currently using redux on a greenfield project and released [redux-router5](https://github.com/router5/redux-router5).
 
-I also like Baobab a lot and follow what Christian Alfoni is doing with Cerebral, and what Andre Staltz is doing with CycleJs. I recently wrote an article about [understanding the functional revolution in front-end applications](http://blog.reactandbethankful.com/posts/2015/09/15/understanding-the-functional-revolution/).
+I also like Baobab a lot and follow what Christian Alfoni is doing with Cerebral, and what Andre Staltz is doing with CycleJs.
 
 For React, the future will be towards stateless, context-less, this-less functional components. It only started with 0.14.
 

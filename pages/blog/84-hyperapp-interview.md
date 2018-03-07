@@ -30,7 +30,7 @@ Hyperapp supports IE10+ out of the box, it's `1KB`-ish minified and gzipped; it'
 
 ## How does _Hyperapp_ work?
 
-We have [documentation](https://github.com/hyperapp/hyperapp/blob/master/docs/README.md#documentation) to help newcomers get started and learn how to get started with Hyperapp.
+We have [documentation](https://hyperapp.js.org/) to help newcomers get started and learn how to get started with Hyperapp.
 
 A typical Hello World example looks like this:
 
@@ -113,7 +113,7 @@ Choo and yo-yo were lovely too. Both projects were a big source of inspiration f
 
 ## What next?
 
-* Server side rendering (SSR). There have been a few [SSR prototypes](https://github.com/hyperapp/hyperapp/pull/28) developed by members of the community so far, but I'd like to offer this out of the box. Hyperapp offers [SSR re-hydration out of the box as of 1.0](https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/hydration.md).
+* Server side rendering (SSR). There have been a few [SSR prototypes](https://github.com/hyperapp/hyperapp/pull/28) developed by members of the community so far, but I'd like to offer this out of the box. Hyperapp offers SSR re-hydration out of the box as of 1.0.
 
 * More examples. We currently lack an official website or a REPL. All are coming near you soon!
 
@@ -137,4 +137,4 @@ My perceptions are largely biased by my likes and dislikes. I don't know what's 
 
 Thanks for the interview Jorge! I think it's time to do round two with Simon as we did a [Snabbdom interview](/blog/snabbdom-interview) earlier. :)
 
-Learn more about Hyperapp from its [documentation](https://github.com/hyperapp/hyperapp/tree/master/docs#documentationg) and [examples](https://codepen.io/hyperapp/). Check out the [project at GitHub](https://github.com/hyperapp/hyperapp).
+Learn more about Hyperapp from its [documentation](https://hyperapp.js.org/) and [examples](https://codepen.io/hyperapp/). Check out the [project at GitHub](https://github.com/hyperapp/hyperapp).

@@ -87,4 +87,4 @@ React broke a lot of barriers as a "view layer". Composability enables us to foc
 
 Thanks a lot for the interview Bruno! It is definitely an exciting time to be a web developer. Projects like Relax are a good example of that.
 
-If you want to take a better look at Relax, check out the [GitHub repository](https://github.com/relax/relax) and the [online demo](http://demo.getrelax.io/admin) (demo/demo). There is also [Slack](http://slack-relax.herokuapp.com/) if you want to chat about the topic with the authors.
+If you want to take a better look at Relax, check out the [GitHub repository](https://github.com/relax/relax). There is also [Slack](http://slack-relax.herokuapp.com/) if you want to chat about the topic with the authors.

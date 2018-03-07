@@ -7,7 +7,7 @@ keywords: ['interview', 'react']
 
 Writing a little HTML table isn't particularly hard. It all gets more complex when you need logic like filtering, pagination, or fixed headers. A simple problem becomes difficult fast as requirements appear.
 
-When it comes to React, there are a few established alternatives out there. Consider Facebook's [fixed-data-table](https://facebook.github.io/fixed-data-table/), [Griddle](https://griddlegriddle.github.io/Griddle/), [react-bootstrap-table](https://allenfang.github.io/react-bootstrap-table/), [rc-table](https://react-component.github.io/table/), [react virtualized](https://bvaughn.github.io/react-virtualized/), or [Reactable](https://glittershark.github.io/reactable/) for a few examples.
+When it comes to React, there are a few established alternatives out there. Consider Facebook's [fixed-data-table](https://www.npmjs.com/package/fixed-data-table), [Griddle](https://griddlegriddle.github.io/Griddle/), [react-bootstrap-table](https://allenfang.github.io/react-bootstrap-table/), [rc-table](https://react-component.github.io/table/), [react virtualized](https://bvaughn.github.io/react-virtualized/), or [Reactable](https://glittershark.github.io/reactable/) for a few examples.
 
 Today I'm going to discuss an alternative which I developed during the Summer. The project actually goes way back, but a client made this work possible. Read on to learn what makes [Reactabular](http://reactabular.js.org/) different.
 

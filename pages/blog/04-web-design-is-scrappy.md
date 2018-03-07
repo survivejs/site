@@ -16,7 +16,7 @@ The design is scrappy in sense that I integrated ideas from various sources. Som
 
 ## Services to Support Scrappy Design
 
-Besides asking for feedback from friends and sometimes total strangers I used a couple of services with varying results. Out of the services [criticue](http://www.criticue.com/) worked the best for me. Often it's the negative feedback that helps you the most. Criticue helped me to prune out the worst mishaps.
+Besides asking for feedback from friends and sometimes total strangers I used a couple of services with varying results. Out of the services ~~criticue~~ (now defunct) worked the best for me. Often it's the negative feedback that helps you the most. Criticue helped me to prune out the worst mishaps.
 
 As I had good experiences of Feedback roulette (defunct now) in the past I set it up too. Unfortunately I have yet to receive single useful round of feedback even though I have a single credit for testing.
 

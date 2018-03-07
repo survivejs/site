@@ -35,7 +35,7 @@ Secondly, I read a book on Erlang when I was a teenager, and it said something t
 
 Thirdly, I was in awe of Bret Victor’s videos.
 
-At some point I was reading Webpack docs and it described something mysterious called [hot module replacement](http://webpack.github.io/docs/hot-module-replacement.html). I [asked about it](http://stackoverflow.com/q/24581873), and [Tobias answered](http://stackoverflow.com/a/24587740). I realized I could mix HMR with React, and this was the birth of React Hot Loader.
+At some point I was reading Webpack docs and it described something mysterious called [hot module replacement](/webpack/appendices/hmr/). I [asked about it](http://stackoverflow.com/q/24581873), and [Tobias answered](http://stackoverflow.com/a/24587740). I realized I could mix HMR with React, and this was the birth of React Hot Loader.
 
 I don’t think React Hot Loader is important as a piece of tech—it’s really not—but I definitely see people’s expectations of web tooling capabilities raise, and I’m happy if my work helped this. [Elm](https://github.com/elm-lang/elm-reactor) and [ClojureScript](https://github.com/bhauman/lein-figwheel) community are doing exciting work in this field, and I’m happy that JavaScript community is now paying more attention to the functional programming and developer experience it enables.
 
@@ -80,7 +80,7 @@ And then—who knows?—I might even take a day job!
 
 I am not the right person to ask, as I have not used them. I’m definitely in awe of the work Christian has been putting into Cerebral and the [developer experience behind it](http://www.youtube.com/watch?v=xCIv4-Q2dtA). Its concept of signals and expressing async flow declaratively is [also very interesting](https://github.com/reactjs/redux/issues/343).
 
-My hope with Redux is that it’s extensible enough that great ideas and patterns find its way into it as userland extensions like [Redux middleware](http://redux.js.org/docs/advanced/Middleware.html). My other hope is that migrating *from* Redux to something better won’t be difficult because of its tiny API surface.
+My hope with Redux is that it’s extensible enough that great ideas and patterns find its way into it as userland extensions like [Redux middleware](https://redux.js.org/introduction/ecosystem#middleware). My other hope is that migrating *from* Redux to something better won’t be difficult because of its tiny API surface.
 
 ## What does the future look like for React? Can you see any particular trends?
 

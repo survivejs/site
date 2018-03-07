@@ -141,7 +141,7 @@ There's also an emerging category of React Native books and the first book has a
 
 ### Learning React Native
 
-[Learning React Native](http://shop.oreilly.com/product/0636920041511.do) by [Bonnie Eisenman](http://blog.bonnieeisenman.com/) is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is available for $32.59 and is expected to deliver at December. The book is around 200 pages long.
+Learning React Native by [Bonnie Eisenman](http://blog.bonnieeisenman.com/) is available through O'Reilly and Amazon. At O'Reilly digital early access version costs $33.99 while print goes for $39.99. At Amazon print is available for $32.59 and is expected to deliver at December. The book is around 200 pages long.
 
 ### React Quickly
 
