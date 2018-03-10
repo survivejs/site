@@ -2,8 +2,7 @@
 // useful for linking
 const parseChapters = require("./parse-chapters");
 
-const maintenanceUrl = require("../../antwar.config.js")().paths.maintenance
-  .url;
+const maintenanceUrl = require("../../antwar.config.js").paths.maintenance.url;
 
 let cache = {};
 
