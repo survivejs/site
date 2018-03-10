@@ -1,6 +1,7 @@
 const _ = require("lodash");
 const path = require("path");
 const moment = require("moment");
+const React = require("react");
 const rssPlugin = require("antwar-rss-plugin");
 const generateAdjacent = require("./utils/generate-adjacent");
 const clean = require("./utils/clean");
@@ -9,9 +10,16 @@ const clean = require("./utils/clean");
 // TODO: fix page descriptions
 // TODO: fix react extras + source links
 // TODO: add source links to webpack book
-module.exports = () => ({
+module.exports = {
   template: {
     file: path.resolve(__dirname, "templates/page.ejs"),
+  },
+  blog: {
+    author: React.createElement(
+      "a",
+      { href: "https://twitter.com/bebraw" },
+      "Juho Vepsäläinen"
+    ),
   },
   output: "build",
   plugins: [
@@ -179,4 +187,4 @@ module.exports = () => ({
       redirects: require("./redirects/webpack_react"),
     },
   },
-});
+};

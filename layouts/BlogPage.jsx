@@ -66,6 +66,7 @@ const BlogPage = ({
       sidebar={toc}
       footer={footer}
     >
+      {date && <Moment className="post__moment" datetime={date} />}
       <div dangerouslySetInnerHTML={{ __html: body }} />
       {date && <Moment className="post__moment" datetime={date} />}
       {postAuthor && <Author author={postAuthor} />}
