@@ -25,7 +25,7 @@ Webpack processes ES2015 module definitions by default and transforms them into 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -80,18 +80,7 @@ __webpack_require__<span class="token punctuation" >.</span><span class="token f
 <p>Next, you need to connect this to the main configuration. If you are using a modern browser for development, you can consider processing only the production code through Babel. It&#39;s used for both production and development environments in this case. Also, only application code is processed through Babel.</p>
 <p>Adjust as below:</p>
 <p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword keyword-const" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"path"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
-</div>
-<span class="token operator" >...</span>
-
-<div class="leanpub-insert">
-<span class="token keyword keyword-const" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
-  app<span class="token punctuation" >:</span> <span class="token string" >"./src"</span><span class="token punctuation" >,</span>
-<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
-</div>
-
-<span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
   <span class="token operator" >...</span>
 <div class="leanpub-insert">
   parts<span class="token punctuation" >.</span><span class="token function" >loadJavaScript</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> include<span class="token punctuation" >:</span> PATHS<span class="token punctuation" >.</span>app <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
@@ -118,7 +107,7 @@ __webpack_require__<span class="token punctuation" >.</span><span class="token f
   <span class="token punctuation brackets-square" >]</span>
 <span class="token punctuation brackets-braces" >}</span>
 </code></pre>
-<p>If you execute <code>npm run build --devtool false --mode development</code> now and examine <em>dist/main.js</em>, you will see something different based on your <code>.browserslistrc</code> file.</p>
+<p>If you execute <code>npm run build -- --devtool false --mode development</code> now and examine <em>dist/main.js</em>, you will see something different based on your <code>.browserslistrc</code> file.</p>
 <p>Try to include only a definition like <code>IE 8</code> there, and the code should change accordingly:</p>
 <p><strong>dist/main.js</strong></p>
 <pre><code class="lang-javascript"><span class="token operator" >...</span>
@@ -146,13 +135,15 @@ __webpack_require__<span class="token punctuation" >.</span><span class="token f
 <p>There are other possible <a href="https://babeljs.io/docs/usage/options/"><em>.babelrc</em> options</a> beyond the ones covered here. Like ESLint, <em>.babelrc</em> supports <a href="https://www.npmjs.com/package/json5">JSON5</a> as its configuration format meaning you can include comments in your source, use single quoted strings, and so on.</p>
 <p>Sometimes you want to use experimental features that fit your project. Although you can find a lot of them within so-called stage presets, it&#39;s a good idea to enable them one by one and even organize them to a preset of their own unless you are working on a throwaway project. If you expect your project to live a long time, it&#39;s better to document the features you are using well.</p>
 <p>Babel isn&#39;t the only option although it&#39;s the most popular one. <a href="https://buble.surge.sh">Buble</a> by Rich Harris is another compiler worth checking out. There&#39;s experimental <a href="https://www.npmjs.com/package/buble-loader">buble-loader</a> that allows you to use it with webpack. Buble doesn&#39;t support ES2015 modules, but that&#39;s not a problem as webpack provides that functionality.</p>
-<h2 class="header"><a class="header-anchor" href="#babel-presets-and-plugins" id="babel-presets-and-plugins"></a><span class="text">Babel Presets and Plugins</span><a class="header-anchor-select" href="#babel-presets-and-plugins">#</a></h2>
-<p>Perhaps the greatest thing about Babel is that it&#39;s possible to extend with presets and plugins:</p>
+<h2 class="header"><a class="header-anchor" href="#babel-plugins" id="babel-plugins"></a><span class="text">Babel Plugins</span><a class="header-anchor-select" href="#babel-plugins">#</a></h2>
+<p>Perhaps the greatest thing about Babel is that it&#39;s possible to extend with plugins:</p>
 <ul>
 <li><a href="https://www.npmjs.com/package/babel-plugin-import">babel-plugin-import</a> rewrites module imports so that you can use a form such as <code>import { Button } from &quot;antd&quot;;</code> instead of pointing to the module through an exact path.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-import-asserts">babel-plugin-import-asserts</a> asserts that your imports have been defined.</li>
+<li><a href="https://www.npmjs.com/package/babel-plugin-jsdoc-to-assert">babel-plugin-jsdoc-to-assert</a> converts <a href="http://usejsdoc.org/">JSDoc</a> annotations to runnable assertions.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-log-deprecated">babel-plugin-log-deprecated</a> adds <code>console.warn</code> to functions that have <code>@deprecate</code> annotation in their comment.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-annotate-console-log">babel-plugin-annotate-console-log</a> annotates <code>console.log</code> calls with information about invocation context, so it&#39;s easier to see where they logged.</li>
+<li><a href="https://www.npmjs.com/package/babel-plugin-sitrep">babel-plugin-sitrep</a> logs all assignments of a function and prints them.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-webpack-loaders">babel-plugin-webpack-loaders</a> allows you to use certain webpack loaders through Babel.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-syntax-trailing-function-commas">babel-plugin-syntax-trailing-function-commas</a> adds trailing comma support for functions.</li>
 <li><a href="https://www.npmjs.com/package/babel-plugin-transform-react-remove-prop-types">babel-plugin-transform-react-remove-prop-types</a> allows you to remove <code>propType</code> related code from your production build. It also allows component authors to generate code that&#39;s wrapped so that setting environment at <code>DefinePlugin</code> can kick in as discussed in the book.</li>

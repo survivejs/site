@@ -25,7 +25,7 @@ Currently, the production version of the application is a single JavaScript file
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -38,7 +38,7 @@ Currently, the production version of the application is a single JavaScript file
 <p>It would be better to download only the changed portion. If the vendor dependencies change, then the client should fetch only the vendor dependencies. The same goes for actual application code. <strong>Bundle splitting</strong> can be achieved using <code>optimization.splitChunks.cacheGroups</code>. When running in production mode, <a href="https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693">webpack 4 can perform a series of splits out of the box</a> but in this case, we&#39;ll do something manually.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>To invalidate the bundles correctly, you have to attach hashes to the generated bundles as discussed in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#the-idea-of-bundle-splitting" id="the-idea-of-bundle-splitting"></a><span class="text">The Idea of Bundle Splitting</span><a class="header-anchor-select" href="#the-idea-of-bundle-splitting">#</a></h2>
 <p>With bundle splitting, you can push the vendor dependencies to a bundle of their own and benefit from client level caching. The process can be done in such a way that the whole size of the application remains the same. Given there are more requests to perform, there&#39;s a slight overhead. But the benefit of caching makes up for this cost.</p>
-<p>To give you a quick example, instead of having <em>app.js</em> (100 kB), you could end up with <em>app.js</em> (10 kB) and <em>vendor.js</em> (90 kB). Now changes made to the application are cheap for the clients that have already used the application earlier.</p>
+<p>To give you a quick example, instead of having <em>main.js</em> (100 kB), you could end up with <em>main.js</em> (10 kB) and <em>vendor.js</em> (90 kB). Now changes made to the application are cheap for the clients that have already used the application earlier.</p>
 <p>Caching comes with its problems. One of those is cache invalidation. A potential approach related to that is discussed in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</p>
 <p>Bundle splitting isn&#39;t the only way out. The <a href="/webpack/building/code-splitting/">Code Splitting</a> chapter discusses another, more granular way.</p>
 <h2 class="header"><a class="header-anchor" href="#adding-something-to-split" id="adding-something-to-split"></a><span class="text">Adding Something to Split</span><a class="header-anchor-select" href="#adding-something-to-split">#</a></h2>
@@ -53,24 +53,64 @@ Currently, the production version of the application is a single JavaScript file
 </div>
 <span class="token punctuation" >..</span>.
 </code></pre><p>Execute <code>npm run build</code> to get a baseline build. You should end up with something as below:</p>
-<pre><code class="lang-bash">Hash: 436945c5084fdcad74a6
-Version: webpack 4.0.1
-Time: 3061ms
-Built at: 3/1/2018 10:16:36 AM
+<pre><code class="lang-bash">Hash: 80f9bb6fc04c54949644
+Version: webpack 4.1.1
+Time: 3276ms
+Built at: 3/16/2018 4:59:25 PM
        Asset       Size  Chunks             Chunk Names
 <div class="leanpub-insert">
-     main.js     97 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+     main.js   97.5 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
 </div>
-    main.css   3.52 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+    main.css   3.49 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
  main.js.map    240 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
 main.css.map   85 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
   index.html  220 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
 Entrypoint main <span class="token operator" >=</span> main.js main.css main.js.map main.css.map
 <span class="token punctuation" >..</span>.
 </code></pre>
-<p>As you can see, <em>app.js</em> is big. That is something to fix next.</p>
+<p>As you can see, <em>main.js</em> is big. That is something to fix next.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-vendor-bundle" id="setting-up-a-vendor-bundle"></a><span class="text">Setting Up a <code>vendor</code> Bundle</span><a class="header-anchor-select" href="#setting-up-a-vendor-bundle">#</a></h2>
 <p>Before webpack 4, there used to be <code>CommonsChunkPlugin</code> for managing bundle splitting. The plugin has been replaced with automation and configuration. To extract a vendor bundle from the <em>node_modules</em> directory, adjust the code as follows:</p>
+<p><strong>webpack.config.js</strong></p>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
+  <span class="token operator" >...</span>
+<div class="leanpub-insert">
+  <span class="token punctuation brackets-braces" >{</span>
+    optimization<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      splitChunks<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+        chunks<span class="token punctuation" >:</span> <span class="token string" >"initial"</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+</div>
+<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+</code></pre>
+<p>If you try to generate a build now (<code>npm run build</code>), you should see something along this:</p>
+<pre><code class="lang-bash">Hash: 6c499f10237fdbb07378
+Version: webpack 4.1.1
+Time: 3172ms
+Built at: 3/16/2018 5:00:03 PM
+               Asset       Size  Chunks             Chunk Names
+<div class="leanpub-insert">
+     vendors~main.js   96.8 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+</div>
+             main.js   1.35 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+            main.css   1.27 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+<div class="leanpub-insert">
+    vendors~main.css   2.27 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+ vendors~main.js.map    235 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+vendors~main.css.map   93 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+</div>
+         main.js.map   7.11 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+        main.css.map   85 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+          index.html  329 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+Entrypoint main <span class="token operator" >=</span> vendors~main.js vendors~main.css <span class="token punctuation" >..</span>.
+<span class="token punctuation" >..</span>.
+</code></pre>
+<p>Now the bundles look the way they should. The image below illustrates the current situation.</p>
+<p><figure><img src="/cc11f7e53c579fff28de1b3ed5b9f53a.png" alt="Main and vendor bundles after applying configuration" class="" width="" height="" /><figcaption>Main and vendor bundles after applying configuration</figcaption></figure></p>
+<h2 class="header"><a class="header-anchor" href="#controlling-bundle-splitting" id="controlling-bundle-splitting"></a><span class="text">Controlling Bundle Splitting</span><a class="header-anchor-select" href="#controlling-bundle-splitting">#</a></h2>
+<p>The configuration above can be rewritten with an explicit test against <em>node_modules</em> as below:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
   <span class="token operator" >...</span>
@@ -82,7 +122,7 @@ Entrypoint main <span class="token operator" >=</span> main.js main.css main.js.
           commons<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
             test<span class="token punctuation" >:</span> <span class="token regex" >/[\\/]node_modules[\\/]/</span><span class="token punctuation" >,</span>
             name<span class="token punctuation" >:</span> <span class="token string" >"vendor"</span><span class="token punctuation" >,</span>
-            chunks<span class="token punctuation" >:</span> <span class="token string" >"all"</span><span class="token punctuation" >,</span>
+            chunks<span class="token punctuation" >:</span> <span class="token string" >"initial"</span><span class="token punctuation" >,</span>
           <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
         <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
       <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
@@ -91,30 +131,7 @@ Entrypoint main <span class="token operator" >=</span> main.js main.css main.js.
 </div>
 <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>If you try to generate a build now (<code>npm run build</code>), you should see something along this:</p>
-<pre><code class="lang-bash">Hash: 215c041bec0feb9efbda
-Version: webpack 4.0.1
-Time: 1542ms
-Built at: 3/1/2018 10:20:25 AM
-         Asset       Size  Chunks             Chunk Names
-<div class="leanpub-insert">
-     vendor.js   96.3 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-</div>
-       main.js   1.35 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-      main.css   1.29 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-<div class="leanpub-insert">
-    vendor.css   2.26 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
- vendor.js.map    235 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-vendor.css.map   87 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-</div>
-   main.js.map   7.11 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-  main.css.map   85 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-    index.html  317 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
-Entrypoint main <span class="token operator" >=</span> vendor.js vendor.css vendor.js.map <span class="token punctuation" >..</span>.
-<span class="token punctuation" >..</span>.
-</code></pre>
-<p>Now the bundles look the way they should. The image below illustrates the current situation.</p>
-<p><figure><img src="/cc11f7e53c579fff28de1b3ed5b9f53a.png" alt="App and vendor bundles after applying configuration" class="" width="" height="" /><figcaption>App and vendor bundles after applying configuration</figcaption></figure></p>
+<p>Following this format gives you more control over the splitting process if you don&#39;t prefer to rely on automation.</p>
 <h2 class="header"><a class="header-anchor" href="#splitting-and-merging-chunks" id="splitting-and-merging-chunks"></a><span class="text">Splitting and Merging Chunks</span><a class="header-anchor-select" href="#splitting-and-merging-chunks">#</a></h2>
 <p>Webpack provides more control over the generated chunks by two plugins: <code>AggressiveSplittingPlugin</code> and <code>AggressiveMergingPlugin</code>. The former allows you to emit more and smaller bundles. The behavior is handy with HTTP/2 due to the way the new standard works.</p>
 <p>Here&#39;s the basic idea of aggressive splitting:</p>
@@ -148,7 +165,7 @@ Entrypoint main <span class="token operator" >=</span> vendor.js vendor.css vend
 <li><strong>Initial chunks</strong> - Initial chunks are normal chunks that count towards initial loading time of the application. As a user, you don&#39;t have to care about these. It&#39;s the split between entry chunks and normal chunks that is important.</li>
 </ul>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
-<p>The situation is better now compared to the earlier. Note how small <code>app</code> bundle compared to the <code>vendor</code> bundle. To benefit from this split, you set up caching in the next part of this book in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</p>
+<p>The situation is better now compared to the earlier. Note how small <code>main</code> bundle compared to the <code>vendor</code> bundle. To benefit from this split, you set up caching in the next part of this book in the <a href="/webpack/optimizing/adding-hashes-to-filenames/">Adding Hashes to Filenames</a> chapter.</p>
 <p>To recap:</p>
 <ul>
 <li>Webpack allows you to split bundles from configuration entries through the <code>optimization.splitChunks.cacheGroups</code> field. It performs bundle splitting by default in production mode as well.</li>

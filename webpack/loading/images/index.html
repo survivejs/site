@@ -25,7 +25,7 @@ HTTP/1 application can be made slow by loading a lot of small assets as each req
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -41,9 +41,9 @@ HTTP/1 application can be made slow by loading a lot of small assets as each req
 <p><em>url-loader</em> is a good starting point and it&#39;s the perfect option for development purposes, as you don&#39;t have to care about the size of the resulting bundle. It comes with a <em>limit</em> option that can be used to defer image generation to <em>file-loader</em> after an absolute limit is reached. This way you can inline small files to your JavaScript bundles while generating separate files for the bigger ones.</p>
 <p>If you use the limit option, you need to install both <em>url-loader</em> and <em>file-loader</em> to your project. Assuming you have configured your styles correctly, webpack resolves any <code>url()</code> statements your styling contains. You can point to the image assets through your JavaScript code as well.</p>
 <p>In case the <code>limit</code> option is used, <em>url-loader</em> passes possible additional options to <em>file-loader</em> making it possible to configure its behavior further.</p>
-<p>To load <em>.jpg</em>, <em>.png</em>, and <em>.svg</em> files while inlining files below 25kB, you would have to set up a loader:</p>
+<p>To load <em>.jpg</em> and <em>.png</em> files while inlining files below 25kB, you would have to set up a loader:</p>
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png|svg)$/</span><span class="token punctuation" >,</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png)$/</span><span class="token punctuation" >,</span>
   use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
     loader<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
     options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
@@ -52,10 +52,10 @@ HTTP/1 application can be made slow by loading a lot of small assets as each req
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
-<h2 class="header"><a class="header-anchor" href="#setting-up-file-loader-" id="setting-up-file-loader-"></a><span class="text">Setting Up <em>file-loader</em></span><a class="header-anchor-select" href="#setting-up-file-loader-">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you prefer to use another loader than <em>file-loader</em> as the <em>limit</em> is reached, set <code>fallback: &quot;some-loader&quot;</code>. Then webpack will resolve to that instead of the default.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-file-loader-" id="setting-up-file-loader-"></a><span class="text">Setting Up <em>file-loader</em></span><a class="header-anchor-select" href="#setting-up-file-loader-">#</a></h2>
 <p>If you want to skip inlining altogether, you can use <em>file-loader</em> directly. The following setup customizes the resulting filename. By default, <em>file-loader</em> returns the MD5 hash of the file&#39;s contents with the original extension:</p>
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
-  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png|svg)$/</span><span class="token punctuation" >,</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.(jpg|png)$/</span><span class="token punctuation" >,</span>
   use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
     loader<span class="token punctuation" >:</span> <span class="token string" >"file-loader"</span><span class="token punctuation" >,</span>
     options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
@@ -74,7 +74,7 @@ HTTP/1 application can be made slow by loading a lot of small assets as each req
   module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
     rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
       <span class="token punctuation brackets-braces" >{</span>
-        test<span class="token punctuation" >:</span> <span class="token regex" >/\.(png|jpg|svg)$/</span><span class="token punctuation" >,</span>
+        test<span class="token punctuation" >:</span> <span class="token regex" >/\.(png|jpg)$/</span><span class="token punctuation" >,</span>
         include<span class="token punctuation" >,</span>
         exclude<span class="token punctuation" >,</span>
         use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
@@ -116,7 +116,6 @@ HTTP/1 application can be made slow by loading a lot of small assets as each req
   <span class="token property" >background-repeat</span><span class="token punctuation" >:</span> no-repeat<span class="token punctuation" >;</span>
   <span class="token property" >background-position</span><span class="token punctuation" >:</span> center<span class="token punctuation" >;</span>
 </div>
-  <span class="token property" >display</span><span class="token punctuation" >:</span> flex<span class="token punctuation" >;</span>
 <span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>The behavior changes depending on the <code>limit</code> you set. Below the limit, it should inline the image while above it should emit a separate asset and a path to it. The CSS lookup works because of <em>css-loader</em>. You can also try importing the image from JavaScript code and see what happens.</p>

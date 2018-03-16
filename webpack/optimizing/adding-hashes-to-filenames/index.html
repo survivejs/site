@@ -25,7 +25,7 @@ Even though the build generates fine now, the naming it uses is problematic. It 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -38,6 +38,7 @@ Even though the build generates fine now, the naming it uses is problematic. It 
 <h2 class="header"><a class="header-anchor" href="#placeholders" id="placeholders"></a><span class="text">Placeholders</span><a class="header-anchor-select" href="#placeholders">#</a></h2>
 <p>Webpack provides <strong>placeholders</strong> for this purpose. These strings are used to attach specific information to webpack output. The most valuable ones are:</p>
 <ul>
+<li><code>[id]</code> - Returns the chunk id.</li>
 <li><code>[path]</code> - Returns the file path.</li>
 <li><code>[name]</code> - Returns the file name.</li>
 <li><code>[ext]</code> - Returns the extension. <code>[ext]</code> works for most available fields. <code>ExtractTextPlugin</code> is a notable exception to this rule.</li>
@@ -46,7 +47,7 @@ Even though the build generates fine now, the naming it uses is problematic. It 
 <li><code>[contenthash]</code> - Returns a hash specific to content. <code>[contenthash]</code> is available for <code>ExtractTextPlugin</code> only and is the most specific option available.</li>
 </ul>
 <p>It&#39;s preferable to use particularly <code>hash</code> and <code>chunkhash</code> only for production purposes as hashing doesn&#39;t do much good during development.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s possible to slice <code>hash</code> and <code>chunkhash</code> using specific syntax: <code>[chunkhash:8]</code>. Instead of a hash like <code>8c4cbfdb91ff93f3f3c5</code> this would yield <code>8c4cbfdb</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>There are more options available, and you can even modify the hashing and digest type as discussed at <a href="https://www.npmjs.com/package/loader-utils#interpolatename">loader-utils</a> documentation.</blockquote><h3 class="header"><a class="header-anchor" href="#example-placeholders" id="example-placeholders"></a><span class="text">Example Placeholders</span><a class="header-anchor-select" href="#example-placeholders">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s possible to slice <code>hash</code> and <code>chunkhash</code> using specific syntax: <code>[chunkhash:4]</code>. Instead of a hash like <code>8c4cbfdb91ff93f3f3c5</code> this would yield <code>8c4c</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>There are more options available, and you can even modify the hashing and digest type as discussed at <a href="https://www.npmjs.com/package/loader-utils#interpolatename">loader-utils</a> documentation.</blockquote><h3 class="header"><a class="header-anchor" href="#example-placeholders" id="example-placeholders"></a><span class="text">Example Placeholders</span><a class="header-anchor-select" href="#example-placeholders">#</a></h3>
 <p>Assume you have the following configuration:</p>
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
   output<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
@@ -56,11 +57,11 @@ Even though the build generates fine now, the naming it uses is problematic. It 
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
 <p>Webpack would generate filenames like these based on it:</p>
-<pre><code class="lang-bash">app.d587bbd6e38337f5accd.js
+<pre><code class="lang-bash">main.d587bbd6e38337f5accd.js
 vendor.dc746a5db4ed650296e1.js
 </code></pre>
-<p>If the file contents related to a chunk are different, the hash changes as well, thus the cache gets invalidated. More accurately, the browser sends a new request for the new file. If only <code>app</code> bundle gets updated, only that file needs to be requested again.</p>
-<p>The same result can be achieved by generating static filenames and invalidating the cache through a querystring (i.e., <code>app.js?d587bbd6e38337f5accd</code>). The part behind the question mark invalidates the cache. According to <a href="http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">Steve Souders</a>, attaching the hash to the filename is the most performant option.</p>
+<p>If the file contents related to a chunk are different, the hash changes as well, thus the cache gets invalidated. More accurately, the browser sends a new request for the new file. If only <code>main</code> bundle gets updated, only that file needs to be requested again.</p>
+<p>The same result can be achieved by generating static filenames and invalidating the cache through a querystring (i.e., <code>main.js?d587bbd6e38337f5accd</code>). The part behind the question mark invalidates the cache. According to <a href="http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">Steve Souders</a>, attaching the hash to the filename is the most performant option.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-hashing" id="setting-up-hashing"></a><span class="text">Setting Up Hashing</span><a class="header-anchor-select" href="#setting-up-hashing">#</a></h2>
 <p>The build needs tweaking to generate proper hashes. Images and fonts should receive <code>hash</code> while chunks should use <code>chunkhash</code> in their names to invalidate them correctly:</p>
 <p><strong>webpack.config.js</strong></p>
@@ -68,8 +69,8 @@ vendor.dc746a5db4ed650296e1.js
 <div class="leanpub-insert">
   <span class="token punctuation brackets-braces" >{</span>
     output<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-      chunkFilename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash:8].js"</span><span class="token punctuation" >,</span>
-      filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash:8].js"</span><span class="token punctuation" >,</span>
+      chunkFilename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash:4].js"</span><span class="token punctuation" >,</span>
+      filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[chunkhash:4].js"</span><span class="token punctuation" >,</span>
     <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </div>
@@ -81,7 +82,7 @@ vendor.dc746a5db4ed650296e1.js
       name<span class="token punctuation" >:</span> <span class="token string" >"[name].[ext]"</span><span class="token punctuation" >,</span>
 </div>
 <div class="leanpub-insert">
-      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[hash:8].[ext]"</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >"[name].[hash:4].[ext]"</span><span class="token punctuation" >,</span>
 </div>
     <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
@@ -100,7 +101,7 @@ vendor.dc746a5db4ed650296e1.js
     filename<span class="token punctuation" >:</span> <span class="token string" >"[name].css"</span><span class="token punctuation" >,</span>
 </div>
 <div class="leanpub-insert">
-    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[contenthash:8].css"</span><span class="token punctuation" >,</span>
+    filename<span class="token punctuation" >:</span> <span class="token string" >"[name].[contenthash:4].css"</span><span class="token punctuation" >,</span>
 </div>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
@@ -108,74 +109,32 @@ vendor.dc746a5db4ed650296e1.js
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>The hashes have been sliced to make the output fit better in the book. In practice, you can skip slicing them.</blockquote><p>If you generate a build now (<code>npm run build</code>), you should see something:</p>
-<pre><code class="lang-bash">Hash: 3d74e35d7f69c1738a2b
-Version: webpack 4.0.1
-Time: 2556ms
-Built at: 3/1/2018 3:00:46 PM
-                  Asset       Size  Chunks             Chunk Names
-          0.08477a8d.js  126 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
-     vendor.3b5f19b6.js   96.2 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-       main.ae19a118.js   2.21 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-      main.d5d711b1.css   1.26 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-    vendor.3dd53418.css   1.38 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-vendor.3dd53418.css.map   96 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-  main.d5d711b1.css.map   94 bytes       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-             index.html  353 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
-Entrypoint main <span class="token operator" >=</span> vendor.3b5f19b6.js vendor.3dd53418.css <span class="token punctuation" >..</span>.
+<pre><code class="lang-bash">Hash: fb67c5fd35454da1d6ff
+Version: webpack 4.1.1
+Time: 3034ms
+Built at: 3/16/2018 6:18:07 PM
+                   Asset       Size  Chunks             Chunk Names
+               0.0847.js  161 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+    vendors~main.d2f1.js   96.8 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+            main.745c.js   2.25 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+           main.5524.css    1.2 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+   vendors~main.3dd5.css   1.32 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+           0.0847.js.map  203 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+vendors~main.d2f1.js.map    235 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+        main.745c.js.map   11.4 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+              index.html  349 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+Entrypoint main <span class="token operator" >=</span> vendors~main.d2f1.js <span class="token punctuation" >..</span>.
 <span class="token punctuation" >..</span>.
 </code></pre>
 <p>The files have neat hashes now. To prove that it works for styling, you could try altering <em>src/main.css</em> and see what happens to the hashes when you rebuild.</p>
 <p>There&#39;s one problem, though. If you change the application code, it invalidates the vendor file as well! Solving this requires extracting a <strong>manifest</strong>, but before that, you can improve the way the production build handles module IDs.</p>
-<h2 class="header"><a class="header-anchor" href="#enabling-namedmodulesplugin" id="enabling-namedmodulesplugin"></a><span class="text">Enabling <code>NamedModulesPlugin</code></span><a class="header-anchor-select" href="#enabling-namedmodulesplugin">#</a></h2>
-<p>Webpack uses number based IDs for the module code it generates. The problem is that they are difficult to work with and can lead to painful to debug issues, particularly with hashing. For this reason webpack provides two plugins:</p>
-<ul>
-<li><code>NamedModulesPlugin</code> replaces module IDs with paths to the modules making it ideal for development.</li>
-<li><code>HashedModuleIdsPlugin</code> does the same except it hashes the result and hides the path information.</li>
-</ul>
-<p>The process keeps module IDs stable as they aren&#39;t derived based on order. You sacrifice a couple of bytes for a cleaner setup, but the trade-off is well worth it. In this case, you can use <code>NamedModulesPlugin</code> to get a better development experience while fixing the module ID stability issue.</p>
-<p>Tweak the configuration as follows:</p>
-<p><strong>webpack.config.js</strong></p>
-<pre><code class="lang-javascript"><div class="leanpub-insert">
-<span class="token keyword keyword-const" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"webpack"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
-</div>
-<span class="token operator" >...</span>
-
-<span class="token keyword keyword-const" >const</span> commonConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
-  <span class="token punctuation brackets-braces" >{</span>
-    <span class="token operator" >...</span>
-<div class="leanpub-insert">
-    plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >webpack<span class="token punctuation" >.</span>NamedModulesPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
-</div>
-  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
-  <span class="token operator" >...</span>
-<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
-</code></pre>
-<p>As you can see in the build output, the difference is negligible:</p>
-<pre><code class="lang-bash">Hash: 7c3f5a49e2cb31e1072e
-Version: webpack 4.0.1
-Time: 2628ms
-Built at: 3/1/2018 3:02:18 PM
-                  Asset       Size  Chunks             Chunk Names
-          0.554ab1b6.js  141 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
-     vendor.369742c8.js   97.6 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-       main.b1814756.js   2.38 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-      main.d5d711b1.css   1.26 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-    vendor.3dd53418.css   1.38 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-vendor.3dd53418.css.map   96 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-  main.d5d711b1.css.map   94 bytes       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-             index.html  353 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
-Entrypoint main <span class="token operator" >=</span> vendor.369742c8.js vendor.3dd53418.css <span class="token punctuation" >..</span>.
-<span class="token punctuation" >..</span>.
-</code></pre>
-<p>Note how the output has changed, though. Instead of numbers, you can see file paths.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to hide the path information from the client, use <code>HashedModuleIdsPlugin</code>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><code>NamedChunksPlugin</code> achieves a similar result for split points. See <a href="https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31">Predictable long-term caching with Webpack</a> by Tim Sebastian for further details.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Including hashes related to the file contents to their names allows to invalidate them on the client side. If a hash has changed, the client is forced to download the asset again.</p>
 <p>To recap:</p>
 <ul>
 <li>Webpack&#39;s <strong>placeholders</strong> allow you to shape filenames and enable you to include hashes to them.</li>
 <li>The most valuable placeholders are <code>[name]</code>, <code>[chunkhash]</code>, and <code>[ext]</code>. A chunk hash is derived based on the entry in which the asset belongs.</li>
 <li>If you are using <code>ExtractTextPlugin</code>, you should use <code>[contenthash]</code>. This way the generated assets get invalidated only if their content changes.</li>
-<li><code>HashedModuleIdsPlugin</code> generates module IDs based on module paths. Doing this is more stable than relying on the default order based numeric module IDs.</li>
 </ul>
 <p>Even though the project generates hashes now, the output isn&#39;t flawless. The problem is that if the application changes, it invalidates the vendor bundle as well. The next chapter digs deeper into the topic and shows you how to extract a <strong>manifest</strong> to resolve the issue.</p>
 </div></div><div class="page__section"><div class="social-links"><h2 class="social-links__header">Subscribe to the blog updates</h2><blockquote class="tip social-links__tip">If you enjoyed this page, consider subscribing to the mailing list below or following <a href="https://twitter.com/survivejs">@survivejs</a> for occasional updates. There is also <a href="/atom.xml">RSS</a> available for old beards (no pun intended).</blockquote><form action="//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&amp;id=b853b8e786" method="post" target="_blank" class="css-1nfeoes css-va8n550"><input type="email" class="css-baseStyle-1jrw962 css-inputStyle-16d70pc" placeholder="Email" name="EMAIL" id="mce-EMAIL" required=""/><div style="display:none;position:absolute;left:-5000px"><input type="text" name="b_ed40c0084a0c5ba31b3365d65_b853b8e786" tabindex="-1" value=""/></div><input type="submit" class="css-baseStyle-1jrw962 css-buttonStyle-1y781j1" value="Subscribe" name="subscribe"/></form></div><div class="css-r9vozr css-7ic71f0"><div class="css-panel-1asgzqv css-panelPrev-h368eu"><div class="css-1njlj0m css-7ic71f1">Previous chapter</div><a class="css-link-h8hsyv css-linkPrev-966ksh" href="/webpack/optimizing/environment-variables/">Environment Variables</a></div><div class="css-panel-1asgzqv css-panelNext-1i6c957"><div class="css-1njlj0m css-7ic71f1">Next chapter</div><a class="css-link-h8hsyv css-linkNext-1a0mc68" href="/webpack/optimizing/separating-manifest/">Separating a Manifest</a></div></div><blockquote class="tip"><p>This book is available through <a href="https://leanpub.com/survivejs-webpack">Leanpub (digital)</a>, <a href="https://www.amazon.com/dp/9526868803">Amazon (paperback)</a>, and <a href="https://www.amazon.com/dp/B06XWZZGBS">Kindle (digital)</a>. By purchasing the book you support the development of further content. A part of profit (~30%) goes to Tobias Koppers, the author of webpack.</p></blockquote><div id="disqus_thread"></div><script type="text/javascript">var disqus_shortname = 'survivejs';(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script></div><div></div></div></div></div><div class="nav__wrapper"><input type="checkbox" class="nav__toggle" id="nav__toggle"/><label class="nav__toggle-label" for="nav__toggle"></label><nav class="nav"><div class="nav__link"><a href="/">Home</a></div><div class="nav__link"><a href="/blog/">Read the blog</a></div><div class="nav__link"><a href="/maintenance/">Maintenance book</a></div><div class="nav__link"><a href="/react/">React book</a></div><div class="nav__selected__link"><a href="/webpack/">Webpack book</a></div><div class="nav__link"><a href="/training/">Hire me</a></div><div class="nav__link"><a href="https://twitter.com/survivejs">@survivejs</a></div></nav></div><footer class="css-eo7znu css-iscbe10"><ul class="css-jtawwa css-iscbe13 css-6482o6 css-3yjlwf0"><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="https://twitter.com/survivejs" target="_blank" rel="noopener noreferrer">@survivejs</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="http://eepurl.com/bth1v5" target="_blank" rel="noopener noreferrer">Mailing List</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="https://gitter.im/survivejs" target="_blank" rel="noopener noreferrer">Gitter Chat</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="https://github.com/survivejs" target="_blank" rel="noopener noreferrer">GitHub</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="https://presentations.survivejs.com" target="_blank" rel="noopener noreferrer">Presentations</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="http://goo.gl/forms/OWdGIOdHm9" target="_blank" rel="noopener noreferrer">Contact</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="https://github.com/survivejs/ama/issues" target="_blank" rel="noopener noreferrer">Ask Me Anything</a></li><li class="css-haw22i css-iscbe14 css-10ozgd1 css-17pd6qu0"><a href="/atom.xml" target="_blank" rel="noopener noreferrer">RSS</a></li></ul><div class="css-1gd1yml css-iscbe11"><h3 class="css-oi3rzz css-iscbe12">From the Blog</h3><ul class="blog-teasers"><li><a class="blog-teaser" href="/blog/concat-2018/">Experiences on Concat 2018</a></li><li><a class="blog-teaser" href="/blog/verdaccio-interview/">Verdaccio - A lightweight npm proxy registry - Interview with Juan Picado</a></li><li><a class="blog-teaser" href="/blog/parket-interview/">Parket - A state management library inspired by mobx-state-tree - Interview with Leah Ullmann</a></li><li><a class="blog-teaser" href="/blog/substyle-interview/">substyle - Build Styling Agnostic Components for React - Interview with Jan-Felix Schwarz</a></li><li><a class="blog-teaser" href="/blog/agentconf-2018/">Experiences on AgentConf 2018</a></li><li><a class="blog-teaser" href="/blog/scriptconf-2018/">Experiences on ScriptConf 2018</a></li><li><a class="blog-teaser" href="/blog/illuminate-interview/">Illuminate - Syntax highlighter for Node - Interview with Vivek Bansal</a></li></ul></div><ul class="css-6482o6 css-3yjlwf0"><li class="css-jtawwa css-3bvg0c0 css-10ozgd1 css-17pd6qu0"><a href="/maintenance/introduction"><img alt="Maintenance book cover" src="/44f3a3a3dad86956efa57dea740c5d44.png" width="255" height="329" class="css-1d87hyi css-3bvg0c1"/></a><a class="btn btn--normal css-button-v0k0bo" href="https://leanpub.com/survivejs-maintenance">Buy at Leanpub</a></li><li class="css-jtawwa css-3bvg0c0 css-10ozgd1 css-17pd6qu0"><a href="/react/introduction"><img alt="React book cover" src="/b61671d95f81496495f2587a10ddb122.png" width="255" height="329" class="css-1d87hyi css-3bvg0c1"/></a><a class="btn btn--normal css-button-v0k0bo" href="https://leanpub.com/survivejs-react">Buy at Leanpub</a></li><li class="css-jtawwa css-3bvg0c0 css-10ozgd1 css-17pd6qu0"><a href="/webpack/foreword"><img alt="Webpack book cover" src="/8f86c1d07d5536454690030cd1a10b53.png" width="255" height="329" class="css-1d87hyi css-3bvg0c1"/></a><a class="btn btn--normal css-button-v0k0bo" href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</a><a class="btn btn--normal css-button-v0k0bo" href="https://www.amazon.com/dp/9526868803/">Buy at Amazon</a><a class="btn btn--normal css-button-v0k0bo" href="https://www.amazon.com/dp/B06XWZZGBS">Buy for Kindle</a></li></ul></footer><div><div class="gitter-open-chat-button">Need help?</div><script type="text/javascript">

@@ -25,7 +25,7 @@ Since webpack 4, the production output gets minified using UglifyJS by default. 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -46,12 +46,11 @@ Since webpack 4, the production output gets minified using UglifyJS by default. 
 </code></pre>
 <p>To attach it to the configuration, define a part for it first:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator" >...</span>
-<span class="token keyword keyword-const" >const</span> UglifyWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"uglifyjs-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> UglifyWebpackPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"uglifyjs-webpack-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
 exports<span class="token punctuation" >.</span><span class="token function-variable function" >minifyJavaScript</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
   optimization<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    minimizer<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >UglifyWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+    minimizer<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >UglifyWebpackPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> sourceMap<span class="token punctuation" >:</span> <span class="token boolean" >true</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
@@ -93,8 +92,7 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 </code></pre>
 <p>Like for JavaScript, you can wrap the idea in a configuration part:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator" >...</span>
-<span class="token keyword keyword-const" >const</span> OptimizeCSSAssetsPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> OptimizeCSSAssetsPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span>
   <span class="token string" >"optimize-css-assets-webpack-plugin"</span>
 <span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword keyword-const" >const</span> cssnano <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"cssnano"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
@@ -130,24 +128,23 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you build the project now (<code>npm run build</code>), you should notice that CSS has become smaller as it&#39;s missing comments:</p>
-<pre><code class="lang-bash">Hash: bdc71f42a302af2a3e93
-Version: webpack 4.0.1
-Time: 2723ms
-Built at: 3/1/2018 11:54:46 AM
-         Asset       Size  Chunks             Chunk Names
-          0.js  126 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
-     vendor.js   96.2 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-       main.js   2.16 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+<pre><code class="lang-bash">Hash: f51ecf99e0da4db99834
+Version: webpack 4.1.1
+Time: 3125ms
+Built at: 3/16/2018 5:32:55 PM
+           Asset       Size  Chunks             Chunk Names
+      chunk.0.js  162 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+      chunk.1.js   96.8 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
+         main.js   2.19 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
 <div class="leanpub-insert">
-      main.css   1.25 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-    vendor.css   1.37 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
+        main.css    1.2 KiB       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+vendors~main.css   1.32 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
 </div>
-vendor.css.map   87 bytes       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendor
-  main.css.map   85 bytes       2  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-    index.html  317 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+  chunk.0.js.map  204 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
+  chunk.1.js.map    235 KiB       1  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  vendors~main
 <span class="token punctuation" >..</span>.
 </code></pre>
-<h2 class="header"><a class="header-anchor" href="#minifying-images" id="minifying-images"></a><span class="text">Minifying Images</span><a class="header-anchor-select" href="#minifying-images">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/compression-webpack-plugin">compression-webpack-plugin</a> allows you to push the problem of generating compressed files to webpack to potentially save processing time on the server.</blockquote><h2 class="header"><a class="header-anchor" href="#minifying-images" id="minifying-images"></a><span class="text">Minifying Images</span><a class="header-anchor-select" href="#minifying-images">#</a></h2>
 <p>Image size can be reduced by using <a href="https://www.npmjs.com/package/img-loader">img-loader</a>, <a href="https://www.npmjs.com/package/imagemin-webpack">imagemin-webpack</a>, and <a href="https://www.npmjs.com/package/imagemin-webpack-plugin">imagemin-webpack-plugin</a>. The packages use image optimizers underneath.</p>
 <p>It can be a good idea to use <em>cache-loader</em> and <em>thread-loader</em> with these as discussed in the <a href="/webpack/optimizing/performance/">Performance</a> chapter given they can be substantial operations.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>

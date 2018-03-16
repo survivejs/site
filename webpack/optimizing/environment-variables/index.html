@@ -25,7 +25,7 @@ Sometimes a part of your code should execute only during development. Or you cou
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -92,7 +92,9 @@ Sometimes a part of your code should execute only during development. Or you cou
 <h2 class="header"><a class="header-anchor" href="#setting-process-env-node_env" id="setting-process-env-node_env"></a><span class="text">Setting <code>process.env.NODE_ENV</code></span><a class="header-anchor-select" href="#setting-process-env-node_env">#</a></h2>
 <p>As before, encapsulate this idea to a function. Due to the way webpack replaces the free variable, you should push it through <code>JSON.stringify</code>. You end up with a string like <code>&#39;&quot;demo&quot;&#39;</code> and then webpack inserts that into the slots it finds:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript">exports<span class="token punctuation" >.</span><span class="token function-variable function" >setFreeVariable</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>key<span class="token punctuation" >,</span> value<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"webpack"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+
+exports<span class="token punctuation" >.</span><span class="token function-variable function" >setFreeVariable</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span>key<span class="token punctuation" >,</span> value<span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
   <span class="token keyword keyword-const" >const</span> env <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span><span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
   env<span class="token punctuation brackets-square" >[</span>key<span class="token punctuation brackets-square" >]</span> <span class="token operator" >=</span> JSON<span class="token punctuation" >.</span><span class="token function" >stringify</span><span class="token punctuation brackets-parentheses" >(</span>value<span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
@@ -142,15 +144,7 @@ Sometimes a part of your code should execute only during development. Or you cou
 <span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>Webpack can pick the right code based on the <code>DefinePlugin</code> declaration and this code. You have to use CommonJS module definition style here as ES2015 <code>import</code>s don&#39;t allow dynamic behavior by design.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>A related technique, <strong>aliasing</strong>, is discussed in the <em>Package Consuming Techniques</em> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack-optimization-plugins" id="webpack-optimization-plugins"></a><span class="text">Webpack Optimization Plugins</span><a class="header-anchor-select" href="#webpack-optimization-plugins">#</a></h2>
-<p>You can find a collection of optimization-related plugins for webpack:</p>
-<ul>
-<li><a href="https://www.npmjs.com/package/compression-webpack-plugin">compression-webpack-plugin</a> allows you to push the problem of generating compressed files to webpack to potentially save processing time on the server.</li>
-<li><code>webpack.optimize.AggressiveSplittingPlugin</code> allows you to split code into smaller bundles as discussed in the <a href="/webpack/building/bundle-splitting/">Bundle Splitting</a> chapter. The result is ideal for an HTTP/2 environment.</li>
-<li><code>webpack.DefinePlugin</code> allows you to use feature flags in your code and eliminate the redundant code as discussed in this chapter.</li>
-<li><a href="https://www.npmjs.com/package/lodash-webpack-plugin">lodash-webpack-plugin</a> creates smaller Lodash builds by replacing feature sets with smaller alternatives leading to more compact builds.</li>
-</ul>
-<h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>A related technique, <strong>aliasing</strong>, is discussed in the <a href="/webpack/techniques/consuming/">Consuming Packages</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Setting environment variables is a technique that allows you to control which paths of the source are included in the build.</p>
 <p>To recap:</p>
 <ul>

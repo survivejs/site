@@ -25,7 +25,7 @@ It can be challenging to remember which vendor prefixes you have to use for spec
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -51,18 +51,15 @@ It can be challenging to remember which vendor prefixes you have to use for spec
 <p>To connect the loader with <code>ExtractTextPlugin</code>, hook it up as follows:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
-<div class="leanpub-delete">
   parts<span class="token punctuation" >.</span><span class="token function" >extractCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
+<div class="leanpub-delete">
     use<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
-  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
 </div>
 <div class="leanpub-insert">
-<span class="token keyword keyword-const" >const</span> productionConfig <span class="token operator" >=</span> <span class="token function" >merge</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-square" >[</span>
-  parts<span class="token punctuation" >.</span><span class="token function" >extractCSS</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
     use<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"css-loader"</span><span class="token punctuation" >,</span> parts<span class="token punctuation" >.</span><span class="token function" >autoprefix</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
-  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
-<span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
+  <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+  <span class="token operator" >...</span>
 <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>To confirm that the setup works, we have to add something to autoprefix. Adjust the CSS:</p>
@@ -71,7 +68,8 @@ It can be challenging to remember which vendor prefixes you have to use for spec
 
 <div class="leanpub-insert">
 <span class="token class" >.pure-button</span> </span><span class="token punctuation brackets-braces" >{</span>
-  <span class="token property" >display</span><span class="token punctuation" >:</span> flex<span class="token punctuation" >;</span>
+  <span class="token property" >-webkit-border-radius</span><span class="token punctuation" >:</span> <span class="token number" >1</span>em<span class="token punctuation" >;</span>
+  <span class="token property" >border-radius</span><span class="token punctuation" >:</span> <span class="token number" >1</span>em<span class="token punctuation" >;</span>
 <span class="token punctuation brackets-braces" >}</span>
 </div>
 </code></pre>
@@ -81,17 +79,16 @@ It can be challenging to remember which vendor prefixes you have to use for spec
 <pre><code><span class="token operator" >&gt;</span> 1% <span class="token comment" spellcheck="true" ># Browser usage over 1%</span>
 Last 2 versions <span class="token comment" spellcheck="true" ># Or last two versions</span>
 IE 8 <span class="token comment" spellcheck="true" ># Or IE 8</span>
-</code></pre><p>If you build the application now (<code>npm run build</code>) and examine the built CSS, you should be able to find a declaration there:</p>
+</code></pre><p>If you build the application now (<code>npm run build</code>) and examine the built CSS, you should be able to find a declaration there without the webkit portion:</p>
 <pre><code class="lang-css"><span class="token selector" ><span class="token class" >...</span>
 
 <div class="leanpub-insert">
 <span class="token class" >.pure-button</span> </span><span class="token punctuation brackets-braces" >{</span>
-  <span class="token property" >display</span><span class="token punctuation" >:</span> -webkit-box<span class="token punctuation" >;</span>
-  <span class="token property" >display</span><span class="token punctuation" >:</span> -ms-flexbox<span class="token punctuation" >;</span>
-  <span class="token property" >display</span><span class="token punctuation" >:</span> flex<span class="token punctuation" >;</span>
+  <span class="token property" >border-radius</span><span class="token punctuation" >:</span> <span class="token number" >1</span>em<span class="token punctuation" >;</span>
 <span class="token punctuation brackets-braces" >}</span>
 </div>
 </code></pre>
+<p><em>autoprefixer</em> is able to <strong>remove</strong> unnecessary rules and also add rules which are required based on the browser definition.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Autoprefixing is a convenient technique as it decreases the amount of work needed while crafting CSS. You can maintain minimum browser requirements within a <em>.browserslistrc</em> file. The tooling can then use that information to generate optimal output.</p>
 <p>To recap:</p>

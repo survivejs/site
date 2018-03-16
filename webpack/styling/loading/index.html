@@ -25,7 +25,7 @@ Webpack doesn&#39;t handle styling out of the box, and you will have to use load
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -70,7 +70,7 @@ Webpack doesn&#39;t handle styling out of the box, and you will have to use load
 </code></pre>
 <p>The added configuration means that files ending with <code>.css</code> should invoke the given loaders. <code>test</code> matches against a JavaScript-style regular expression.</p>
 <p>Loaders are transformations that are applied to source files, and return the new source and can be chained together like a pipe in Unix. They evaluated from right to left. This means that <code>loaders: [&quot;style-loader&quot;, &quot;css-loader&quot;]</code> can be read as <code>styleLoader(cssLoader(input))</code>.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to disable <em>css-loader</em> <code>url</code> parsing, set <code>url: false</code>. The same idea applies to <code>@import</code> as to disable parsing imports you can set <code>import: false</code> through the loader options.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-the-initial-css" id="setting-up-the-initial-css"></a><span class="text">Setting Up the Initial CSS</span><a class="header-anchor-select" href="#setting-up-the-initial-css">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you want to disable <em>css-loader</em> <code>url</code> parsing, set <code>url: false</code>. The same idea applies to <code>@import</code> as to disable parsing imports you can set <code>import: false</code> through the loader options.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>In case you don&#39;t need HMR capability, support for old Internet Explorer, and source maps, consider using <a href="https://www.npmjs.com/package/micro-style-loader">micro-style-loader</a> instead of <em>style-loader</em>.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-the-initial-css" id="setting-up-the-initial-css"></a><span class="text">Setting Up the Initial CSS</span><a class="header-anchor-select" href="#setting-up-the-initial-css">#</a></h2>
 <p>You are missing the CSS still:</p>
 <p><strong>src/main.css</strong></p>
 <pre><code class="lang-css"><span class="token selector" >body </span><span class="token punctuation brackets-braces" >{</span>

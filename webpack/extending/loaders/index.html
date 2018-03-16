@@ -25,7 +25,7 @@ As you have seen so far, loaders are one of the building blocks of webpack. If y
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -104,9 +104,7 @@ As you have seen so far, loaders are one of the building blocks of webpack. If y
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to return <code>Buffer</code> output, set <code>module.exports.raw = true</code>. The flag overrides the default behavior which expects a string is returned.</blockquote><h2 class="header"><a class="header-anchor" href="#writing-files" id="writing-files"></a><span class="text">Writing Files</span><a class="header-anchor-select" href="#writing-files">#</a></h2>
 <p>Loaders, like <em>file-loader</em>, emit files. Webpack provides a single method, <code>this.emitFile</code>, for this. Given <em>loader-runner</em> does not implement it, you have to mock it:</p>
 <p><strong>run-loader.js</strong></p>
-<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> fs <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"fs"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword keyword-const" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"path"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
-<span class="token keyword keyword-const" >const</span> <span class="token punctuation brackets-braces" >{</span> runLoaders <span class="token punctuation brackets-braces" >}</span> <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"loader-runner"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token operator" >...</span>
 
 <span class="token function" >runLoaders</span><span class="token punctuation brackets-parentheses" >(</span>
   <span class="token punctuation brackets-braces" >{</span>
@@ -210,7 +208,7 @@ module<span class="token punctuation" >.</span><span class="token function-varia
 <p>You can see that the result matches what the loader should have returned. You can try to pass more options to the loader or use query parameters to see what happens with different combinations.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>It&#39;s a good idea to validate options and rather fail hard than silently if the options aren&#39;t what you expect. <a href="https://www.npmjs.com/package/schema-utils">schema-utils</a> has been designed for this purpose.</blockquote><h2 class="header"><a class="header-anchor" href="#connecting-custom-loaders-with-webpack" id="connecting-custom-loaders-with-webpack"></a><span class="text">Connecting Custom Loaders with Webpack</span><a class="header-anchor-select" href="#connecting-custom-loaders-with-webpack">#</a></h2>
 <p>To get most out of loaders, you have to connect them with webpack. To achieve this, you can go through imports:</p>
-<p><strong>app/component.js</strong></p>
+<p><strong>src/component.js</strong></p>
 <pre><code class="lang-javascript"><div class="leanpub-insert">
 <span class="token keyword keyword-import" >import</span> <span class="token string" >"!../loaders/demo-loader?name=foo!./main.css"</span><span class="token punctuation" >;</span>
 </div>

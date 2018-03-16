@@ -25,7 +25,7 @@ Analyzing build statistics is a good step towards understanding webpack better. 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -51,7 +51,7 @@ Analyzing build statistics is a good step towards understanding webpack better. 
 <li><code>--profile</code> to capture timing-related information. The setting is optional but good to set.</li>
 <li><code>--progress</code> to show how long webpack spent in different stages of the build.</li>
 </ul>
-<blockquote class="tip"><i class="icon-attention-circled"></i>To understand why webpack includes a specific module to the build while processing, pass <code>--display-reasons</code> flag to it. Example: <code>npm run build -- --display-reasons</code>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Given you piggyback on the production target in the current setup; this process cleans the build directory! If you want to avoid that, set up a separate destination where you don&#39;t clean.</blockquote><h3 class="header"><a class="header-anchor" href="#node-api" id="node-api"></a><span class="text">Node API</span><a class="header-anchor-select" href="#node-api">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>To understand why webpack includes a specific module to the build while processing, use <a href="https://www.npmjs.com/package/whybundled">whybundled</a> or <a href="https://www.npmjs.com/package/webpack-why">webpack-why</a>. <code>--display-reasons</code> flag gives more information as well. Example: <code>npm run build -- --display-reasons</code>.</blockquote><blockquote class="warning"><i class="icon-attention"></i>Given you piggyback on the production target in the current setup; this process cleans the build directory! If you want to avoid that, set up a separate destination where you don&#39;t clean.</blockquote><h3 class="header"><a class="header-anchor" href="#node-api" id="node-api"></a><span class="text">Node API</span><a class="header-anchor-select" href="#node-api">#</a></h3>
 <p>Stats can be captured through Node. Since stats can contain errors, so it&#39;s a good idea to handle that case separately:</p>
 <pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> webpack <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"webpack"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword keyword-const" >const</span> config <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./webpack.config.js"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"production"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
@@ -69,7 +69,7 @@ Analyzing build statistics is a good step towards understanding webpack better. 
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>This technique can be valuable if you want to do further processing on stats although often the other solutions are enough.</p>
-<h3 class="header"><a class="header-anchor" href="#statswebpackplugin-and-webpackstatsplugin" id="statswebpackplugin-and-webpackstatsplugin"></a><span class="text"><code>StatsWebpackPlugin</code> and <code>WebpackStatsPlugin</code></span><a class="header-anchor-select" href="#statswebpackplugin-and-webpackstatsplugin">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>If you want JSON output from <code>stats</code>, use <code>stats.toJson()</code>. To get <em>verbose</em> output, use <code>stats.toJson(&quot;verbose&quot;)</code>. It follows all stat options webpack supports.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>To mimic the <code>--json</code> flag, use <code>console.log(JSON.stringify(stats.toJson(), null, 2));</code>. The output is formatted to be readable.</blockquote><h3 class="header"><a class="header-anchor" href="#statswebpackplugin-and-webpackstatsplugin" id="statswebpackplugin-and-webpackstatsplugin"></a><span class="text"><code>StatsWebpackPlugin</code> and <code>WebpackStatsPlugin</code></span><a class="header-anchor-select" href="#statswebpackplugin-and-webpackstatsplugin">#</a></h3>
 <p>If you want to manage stats through a plugin, check out <a href="https://www.npmjs.com/package/stats-webpack-plugin">stats-webpack-plugin</a>. It gives you a bit more control over the output. You can use it to exclude specific dependencies from the output.</p>
 <p><a href="https://www.npmjs.com/package/webpack-stats-plugin">webpack-stats-plugin</a> is another option. It allows you to transform the data before outputting it.</p>
 <h2 class="header"><a class="header-anchor" href="#enabling-a-performance-budget" id="enabling-a-performance-budget"></a><span class="text">Enabling a Performance Budget</span><a class="header-anchor-select" href="#enabling-a-performance-budget">#</a></h2>
@@ -149,6 +149,8 @@ css-loader: 1.47 KB <span class="token punctuation brackets-parentheses" >(</spa
     * Extra Bytes <span class="token punctuation brackets-parentheses" >(</span>min<span class="token punctuation brackets-parentheses" >)</span>:   253955
     * Pct of Bundle Size:  15 %
 </code></pre>
+<h3 class="header"><a class="header-anchor" href="#jarvis" id="jarvis"></a><span class="text">Jarvis</span><a class="header-anchor-select" href="#jarvis">#</a></h3>
+<p><a href="https://www.npmjs.com/package/webpack-jarvis">Jarvis</a> is a user interface that has been designed to show all information relevant to your webpack build. For example, it shows the amount of treeshakeable modules in the project and how well your assets perform against different connection types.</p>
 <h3 class="header"><a class="header-anchor" href="#webpack-runtime-analyzer" id="webpack-runtime-analyzer"></a><span class="text">webpack-runtime-analyzer</span><a class="header-anchor-select" href="#webpack-runtime-analyzer">#</a></h3>
 <p><a href="https://www.npmjs.com/package/webpack-runtime-analyzer">webpack-runtime-analyzer</a> gives real-time analysis over webpack bundles. You can see bundle composition in multiple formats through the user interface, bundle sizes, and module details. It combines features of many tools above into a single one.</p>
 <h3 class="header"><a class="header-anchor" href="#webpack-monitor" id="webpack-monitor"></a><span class="text">Webpack Monitor</span><a class="header-anchor-select" href="#webpack-monitor">#</a></h3>

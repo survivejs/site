@@ -25,7 +25,7 @@ Frameworks like Bootstrap tend to come with a lot of CSS. Often you use only a s
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -64,13 +64,13 @@ Frameworks like Bootstrap tend to come with a lot of CSS. Often you use only a s
 <p>If you run the application (<code>npm start</code>), the &quot;Hello world&quot; should look like a button.</p>
 <p><figure><img src="/87867743fcd1cad168f3e5bccce23f99.png" alt="Styled hello" class="" width="" height="" /><figcaption>Styled hello</figcaption></figure></p>
 <p>Building the application (<code>npm run build</code>) should yield output:</p>
-<pre><code class="lang-bash">Hash: 157cae197acf7ebd3a87
-Version: webpack 4.0.1
-Time: 1047ms
-Built at: 2/28/2018 4:23:29 PM
+<pre><code class="lang-bash">Hash: 36bff4e71a3f746d46fa
+Version: webpack 4.1.1
+Time: 739ms
+Built at: 3/16/2018 4:26:49 PM
      Asset       Size  Chunks             Chunk Names
    main.js  747 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-  main.css   16.5 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+  main.css   16.1 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
 index.html  220 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
 <span class="token punctuation" >..</span>.
 </code></pre>
@@ -93,10 +93,17 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token operator" >...</span>
 <div class="leanpub-insert">
+<span class="token keyword keyword-const" >const</span> path <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"path"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 <span class="token keyword keyword-const" >const</span> glob <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"glob"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </div>
 
 <span class="token keyword keyword-const" >const</span> parts <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"./webpack.parts"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+
+<div class="leanpub-insert">
+<span class="token keyword keyword-const" >const</span> PATHS <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
+  app<span class="token punctuation" >:</span> path<span class="token punctuation" >.</span><span class="token function" >join</span><span class="token punctuation brackets-parentheses" >(</span>__dirname<span class="token punctuation" >,</span> <span class="token string" >"src"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+</div>
 
 <span class="token operator" >...</span>
 
@@ -110,13 +117,13 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i>The order matters. CSS extraction has to happen before purifying.</blockquote><p>If you execute <code>npm run build</code> now, you should see something:</p>
-<pre><code class="lang-bash">Hash: 157cae197acf7ebd3a87
-Version: webpack 4.0.1
-Time: 1410ms
-Built at: 2/28/2018 4:25:30 PM
+<pre><code class="lang-bash">Hash: 36bff4e71a3f746d46fa
+Version: webpack 4.1.1
+Time: 695ms
+Built at: 3/16/2018 4:29:54 PM
      Asset       Size  Chunks             Chunk Names
    main.js  747 bytes       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
-  main.css   2.32 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
+  main.css   2.07 KiB       0  <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>  main
 index.html  220 bytes          <span class="token punctuation brackets-square" >[</span>emitted<span class="token punctuation brackets-square" >]</span>
 <span class="token punctuation" >..</span>.
 </code></pre>

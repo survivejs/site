@@ -25,7 +25,7 @@ Web workers allow you to push work outside of main execution thread of JavaScrip
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.6c19584241d92d13dbca.css" rel="stylesheet">
+      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
     
 
     <link
@@ -45,14 +45,14 @@ Web workers allow you to push work outside of main execution thread of JavaScrip
 <p>Instead of pushing the loader definition to webpack configuration, you can use inline loader definitions to keep the demonstration minimal. See the <a href="/webpack/loading/loader-definitions/">Loader Definitions</a> chapter for more information about the alternatives.</p>
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-worker" id="setting-up-a-worker"></a><span class="text">Setting Up a Worker</span><a class="header-anchor-select" href="#setting-up-a-worker">#</a></h2>
 <p>A worker has to do two things: listen to messages and respond. Between those two actions, it can perform a computation. In this case, you accept text data, append it to itself, and send the result:</p>
-<p><strong>app/worker.js</strong></p>
+<p><strong>src/worker.js</strong></p>
 <pre><code class="lang-javascript">self<span class="token punctuation" >.</span><span class="token function-variable function" >onmessage</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> data<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span> text <span class="token punctuation brackets-braces" >}</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
   self<span class="token punctuation" >.</span><span class="token function" >postMessage</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> text<span class="token punctuation" >:</span> text <span class="token operator" >+</span> text <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#setting-up-a-host" id="setting-up-a-host"></a><span class="text">Setting Up a Host</span><a class="header-anchor-select" href="#setting-up-a-host">#</a></h2>
 <p>The host has to instantiate the worker and then communicate with it. The idea is almost the same except the host has the control:</p>
-<p><strong>app/component.js</strong></p>
+<p><strong>src/component.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword keyword-import" >import</span> Worker <span class="token keyword keyword-from" >from</span> <span class="token string" >"worker-loader!./worker"</span><span class="token punctuation" >;</span>
 
 <span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
