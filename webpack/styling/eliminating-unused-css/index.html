@@ -25,7 +25,7 @@ Frameworks like Bootstrap tend to come with a lot of CSS. Often you use only a s
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
+      <link href="/site.1583949403f9198af201.css" rel="stylesheet">
     
 
     <link
@@ -48,7 +48,7 @@ Frameworks like Bootstrap tend to come with a lot of CSS. Often you use only a s
 </div>
 <span class="token operator" >...</span>
 </code></pre>
-<p>You should also make the demo component use a Pure.css class, so there is something to work with:</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>The <code>import</code> works because webpack will resolve against <code>&quot;browser&quot;: &quot;build/pure-min.css&quot;,</code> field in the <em>package.json</em> file of Pure.css due to <a href="https://webpack.js.org/configuration/resolve/#resolve-mainfields">resolve.mainFields</a>. Webpack will try to resolve possible <code>browser</code> and <code>module</code> fields before looking into <code>main</code>.</blockquote><p>You should also make the demo component use a Pure.css class, so there is something to work with:</p>
 <p><strong>src/component.js</strong></p>
 <pre><code class="lang-javascript"><span class="token keyword keyword-export" >export</span> <span class="token keyword keyword-default" >default</span> <span class="token punctuation brackets-parentheses" >(</span>text <span class="token operator" >=</span> <span class="token string" >"Hello world"</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>
   <span class="token keyword keyword-const" >const</span> element <span class="token operator" >=</span> document<span class="token punctuation" >.</span><span class="token function" >createElement</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"div"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
@@ -82,8 +82,7 @@ index.html  220 bytes          <span class="token punctuation brackets-square" >
 </code></pre>
 <p>You also need PurifyCSS configuration as below:</p>
 <p><strong>webpack.parts.js</strong></p>
-<pre><code class="lang-javascript"><span class="token operator" >...</span>
-<span class="token keyword keyword-const" >const</span> PurifyCSSPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"purifycss-webpack"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
+<pre><code class="lang-javascript"><span class="token keyword keyword-const" >const</span> PurifyCSSPlugin <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"purifycss-webpack"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 
 exports<span class="token punctuation" >.</span><span class="token function-variable function" >purifyCSS</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> paths <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span>
   plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token keyword keyword-new" >new</span> <span class="token class-name" >PurifyCSSPlugin</span><span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> paths <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>

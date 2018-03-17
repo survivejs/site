@@ -25,7 +25,7 @@ Webpack is a module bundler. Webpack can take care of bundling alongside a separ
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
+      <link href="/site.1583949403f9198af201.css" rel="stylesheet">
     
 
     <link
@@ -48,7 +48,7 @@ Webpack is a module bundler. Webpack can take care of bundling alongside a separ
 <p>If the resolution pass failed, webpack raises a runtime error. If webpack managed to resolve a file correctly, webpack performs processing over the matched file based on the loader definition. Each loader applies a specific transformation against the module contents.</p>
 <p>The way a loader gets matched against a resolved file can be configured in multiple ways, including by file type and by location within the file system. Webpack&#39;s flexibility even allows you to apply a specific transformation to a file based on <em>where</em> it was imported into the project.</p>
 <p>The same resolution process is performed against webpack&#39;s loaders. Webpack allows you to apply similar logic when determining which loader it should use. Loaders have resolve configurations of their own for this reason. If webpack fails to perform a loader lookup, it will raise a runtime error.</p>
-<h3 class="header"><a class="header-anchor" href="#webpack-resolves-against-any-file-type" id="webpack-resolves-against-any-file-type"></a><span class="text">Webpack Resolves Against Any File Type</span><a class="header-anchor-select" href="#webpack-resolves-against-any-file-type">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i>To resolve, webpack relies on <a href="https://www.npmjs.com/package/enhanced-resolve">enhanced-resolve</a> package underneath.</blockquote><h3 class="header"><a class="header-anchor" href="#webpack-resolves-against-any-file-type" id="webpack-resolves-against-any-file-type"></a><span class="text">Webpack Resolves Against Any File Type</span><a class="header-anchor-select" href="#webpack-resolves-against-any-file-type">#</a></h3>
 <p>Webpack will resolve each module it encounters while constructing the dependency graph. If an entry contains dependencies, the process will be performed recursively against each dependency until the traversal has completed. Webpack can perform this process against any file type, unlike specialized tools like the Babel or Sass compiler.</p>
 <p>Webpack gives you control over how to treat different assets it encounters. For example, you can decide to <strong>inline</strong> assets to your JavaScript bundles to avoid requests. Webpack also allows you to use techniques like CSS Modules to couple styling with components, and to avoid issues of standard CSS styling. This flexibility is what makes webpack so valuable.</p>
 <p>Although webpack is used mainly to bundle JavaScript, it can capture assets like images or fonts and emit separate files for them. Entries are only a starting point of the bundling process. What webpack emits depends entirely on the way you configure it.</p>

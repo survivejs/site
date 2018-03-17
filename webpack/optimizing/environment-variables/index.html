@@ -25,7 +25,7 @@ Sometimes a part of your code should execute only during development. Or you cou
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.c36909d0516d0078b24d.css" rel="stylesheet">
+      <link href="/site.1583949403f9198af201.css" rel="stylesheet">
     
 
     <link
@@ -126,7 +126,7 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you run the application, you should see a new message on the button.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i><code>webpack.EnvironmentPlugin([&quot;NODE_ENV&quot;])</code> is a shortcut that allows you to refer to environment variables. It uses <code>DefinePlugin</code> underneath, and you can achieve the same effect by passing <code>process.env.NODE_ENV</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#replacing-free-variables-through-babel" id="replacing-free-variables-through-babel"></a><span class="text">Replacing Free Variables Through Babel</span><a class="header-anchor-select" href="#replacing-free-variables-through-babel">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/webpack-conditional-loader">webpack-conditional-loader</a> performs something similar based on code comments. It can be used to eliminate entire blocks of code.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><code>webpack.EnvironmentPlugin([&quot;NODE_ENV&quot;])</code> is a shortcut that allows you to refer to environment variables. It uses <code>DefinePlugin</code> underneath, and you can achieve the same effect by passing <code>process.env.NODE_ENV</code>.</blockquote><h2 class="header"><a class="header-anchor" href="#replacing-free-variables-through-babel" id="replacing-free-variables-through-babel"></a><span class="text">Replacing Free Variables Through Babel</span><a class="header-anchor-select" href="#replacing-free-variables-through-babel">#</a></h2>
 <p><a href="https://www.npmjs.com/package/babel-plugin-transform-inline-environment-variables">babel-plugin-transform-inline-environment-variables</a> can be used to achieve the same effect. <a href="https://www.npmjs.com/package/babel-plugin-transform-define">babel-plugin-transform-define</a> and <a href="https://www.npmjs.com/package/babel-plugin-minify-replace">babel-plugin-minify-replace</a> are other alternatives for Babel.</p>
 <h2 class="header"><a class="header-anchor" href="#choosing-which-module-to-use" id="choosing-which-module-to-use"></a><span class="text">Choosing Which Module to Use</span><a class="header-anchor-select" href="#choosing-which-module-to-use">#</a></h2>
 <p>The techniques discussed in this chapter can be used to choose entire modules depending on the environment. As seen above, <code>DefinePlugin</code> based splitting allows you to choose which branch of code to use and which to discard. This idea can be used to implement branching on module level. Consider the file structure below:</p>
