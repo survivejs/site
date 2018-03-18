@@ -25,7 +25,7 @@ Even though the build generates fine now, the naming it uses is problematic. It 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -89,7 +89,7 @@ vendor.dc746a5db4ed650296e1.js
   <span class="token operator" >...</span>
 <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
-<p>If you used <code>chunkhash</code> for the extracted CSS as well, this would lead to problems as the code points to the CSS through JavaScript bringing it to the same entry. That means if the application code or CSS changed, it would invalidate both.</p>
+<blockquote class="warning"><i class="icon-attention"></i><code>[hash]</code> is defined differently for <em>file-loader</em> than for the rest of webpack. It&#39;s calculated based on file <strong>content</strong>. See <a href="https://www.npmjs.com/package/file-loader#placeholders">file-loader documentation</a> for further information.</blockquote><p>If you used <code>chunkhash</code> for the extracted CSS as well, this would lead to problems as the code points to the CSS through JavaScript bringing it to the same entry. That means if the application code or CSS changed, it would invalidate both.</p>
 <p>Therefore, instead of <code>chunkhash</code>, you can use <code>contenthash</code> that is generated based on the extracted content:</p>
 <p><strong>webpack.parts.js</strong></p>
 <pre><code class="lang-javascript">exports<span class="token punctuation" >.</span><span class="token function-variable function" >extractCSS</span> <span class="token operator" >=</span> <span class="token punctuation brackets-parentheses" >(</span><span class="token punctuation brackets-braces" >{</span> include<span class="token punctuation" >,</span> exclude<span class="token punctuation" >,</span> use <span class="token punctuation brackets-braces" >}</span><span class="token punctuation brackets-parentheses" >)</span> <span class="token operator" >=&gt;</span> <span class="token punctuation brackets-braces" >{</span>

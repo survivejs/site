@@ -28,7 +28,7 @@ When your source code has gone through transformations, debugging becomes a prob
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -210,6 +210,8 @@ Entrypoint main <span class="token operator" >=</span> main.js main.css main.js.
 </code></pre>
 <blockquote class="warning"><i class="icon-attention"></i><code>cheap-module-source-map</code> is <a href="https://github.com/webpack/webpack/issues/4176">currently broken if minification is used</a> and this is an excellent reason to avoid the option for now.</blockquote><h3 class="header"><a class="header-anchor" href="#devtool-hidden-source-map-" id="devtool-hidden-source-map-"></a><span class="text"><code>devtool: &quot;hidden-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-hidden-source-map-">#</a></h3>
 <p><code>hidden-source-map</code> is the same as <code>source-map</code> except it doesn&#39;t write references to the source maps to the source files. If you don&#39;t want to expose source maps to development tools directly while you wish proper stack traces, this is handy.</p>
+<h3 class="header"><a class="header-anchor" href="#devtool-nosources-source-map-" id="devtool-nosources-source-map-"></a><span class="text"><code>devtool: &quot;nosources-source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-nosources-source-map-">#</a></h3>
+<p><code>nosources-source-map</code> creates a source map without <code>sourcesContent</code> in it. You still get stack traces, though. The option is useful if you don&#39;t want to expose your source code to the client.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://webpack.js.org/configuration/devtool/#devtool">The official documentation</a> contains more information about <code>devtool</code> options.</blockquote><h3 class="header"><a class="header-anchor" href="#devtool-source-map-" id="devtool-source-map-"></a><span class="text"><code>devtool: &quot;source-map&quot;</code></span><a class="header-anchor-select" href="#devtool-source-map-">#</a></h3>
 <p><code>source-map</code> provides the best quality with the complete result, but it&#39;s also the slowest option. The output reflects this:</p>
 <pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>

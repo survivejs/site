@@ -25,7 +25,7 @@ Using webpack can lead to a variety of runtime warnings or errors. Often a parti
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -63,6 +63,9 @@ Using webpack can lead to a variety of runtime warnings or errors. Often a parti
 <p>This error fits the same category. Parsing the file succeeded, but there was the unknown syntax. Most likely the problem is a typo, but this error can also occur when Webpack has followed an import and encountered syntax it doesn&#39;t understand. Most likely this means that a loader is missing for that particular file type.</p>
 <h2 class="header"><a class="header-anchor" href="#syntaxerror-unexpected-token" id="syntaxerror-unexpected-token"></a><span class="text">SyntaxError: Unexpected token</span><a class="header-anchor-select" href="#syntaxerror-unexpected-token">#</a></h2>
 <p><code>SyntaxError</code> is another error for the same category. This error is possible if you use ES2015 syntax that hasn&#39;t been transpiled alongside UglifyJS. As it encounters a syntax construct it does not recognize, it raises an error.</p>
+<h2 class="header"><a class="header-anchor" href="#deprecationwarning" id="deprecationwarning"></a><span class="text">DeprecationWarning</span><a class="header-anchor-select" href="#deprecationwarning">#</a></h2>
+<p>Node may give a <code>DeprecationWarning</code> especially after webpack has been updated to a new major version. A plugin or a loader you are using may require updates. Often the changes required are minimal. To figure out where the warning is coming from, run webpack through Node: <code>node --trace-deprecation node_modules/.bin/webpack --env production</code>.</p>
+<p>It&#39;s important to pass the <code>--trace-deprecation</code> flag to Node to see where the warning originates from. Using <code>--trace-warnings</code> is another way and it will capture the tracing information for all warnings, not only deprecations.</p>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>These are only examples of errors. Specific errors happen on the webpack side, but the rest comes from the packages it uses through loaders and plugins. Simplifying your project is a good step as that makes it easier to understand where the error happens.</p>
 <p>In most cases, the errors are fast to solve if you know where to look, but in the worst case, you have come upon a bug to fix in the tooling. In that case, you should provide a high-quality report to the project and help to resolve it.</p>

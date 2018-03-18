@@ -25,7 +25,7 @@ Webpack provides multiple ways to set up module loaders. Webpack 2 simplified th
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -233,6 +233,23 @@ Webpack provides multiple ways to set up module loaders. Webpack 2 simplified th
     <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+</code></pre>
+<p>Another approach would be to mix <code>issuer</code> and <code>not</code>:</p>
+<pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
+  test<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span><span class="token punctuation" >,</span>
+
+  rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+    <span class="token comment" spellcheck="true" >// CSS imported from other modules is added to the DOM</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      issuer<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span> not<span class="token punctuation" >:</span> <span class="token regex" >/\.css$/</span> <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+      use<span class="token punctuation" >:</span> <span class="token string" >"style-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token comment" spellcheck="true" >// Apply css-loader against CSS imports to return CSS</span>
+    <span class="token punctuation brackets-braces" >{</span>
+      use<span class="token punctuation" >:</span> <span class="token string" >"css-loader"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+  <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h2 class="header"><a class="header-anchor" href="#understanding-loader-behavior" id="understanding-loader-behavior"></a><span class="text">Understanding Loader Behavior</span><a class="header-anchor-select" href="#understanding-loader-behavior">#</a></h2>
 <p>Loader behavior can be understood in greater detail by inspecting them. <a href="https://www.npmjs.com/package/loader-runner">loader-runner</a> allows you to run them in isolation without webpack. Webpack uses this package internally and <a href="/webpack/extending/loaders/">Extending with Loaders</a> chapter covers it in detail.</p>

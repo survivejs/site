@@ -25,7 +25,7 @@ Before getting started, make sure you are using a recent version of Node. You sh
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -49,7 +49,7 @@ Before getting started, make sure you are using a recent version of Node. You sh
 <pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> webpack webpack-cli --save-dev <span class="token comment" spellcheck="true" ># -D to type less</span>
 </code></pre>
 <p>You should see webpack at your <em>package.json</em> <code>devDependencies</code> section after this. In addition to installing the package locally below the <em>node_modules</em> directory, npm also generates an entry for the executable.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>You can use <code>--save</code> and <code>--save-dev</code> to separate application and development dependencies. The former installs and writes to <em>package.json</em> <code>dependencies</code> field whereas the latter writes to <code>devDependencies</code> instead.</blockquote><h2 class="header"><a class="header-anchor" href="#executing-webpack" id="executing-webpack"></a><span class="text">Executing Webpack</span><a class="header-anchor-select" href="#executing-webpack">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>You can use <code>--save</code> and <code>--save-dev</code> to separate application and development dependencies. The former installs and writes to <em>package.json</em> <code>dependencies</code> field whereas the latter writes to <code>devDependencies</code> instead.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://www.npmjs.com/package/webpack-cli">webpack-cli</a> comes with additional functionality including <code>init</code> and <code>migrate</code> commands that allow you to create new webpack configuration fast and update from an older version to a newer one.</blockquote><h2 class="header"><a class="header-anchor" href="#executing-webpack" id="executing-webpack"></a><span class="text">Executing Webpack</span><a class="header-anchor-select" href="#executing-webpack">#</a></h2>
 <p>You can display the exact path of the executables using <code>npm bin</code>. Most likely it points at <em>./node_modules/.bin</em>. Try running webpack from there through the terminal using <code>node_modules/.bin/webpack</code> or a similar command.</p>
 <p>After running, you should see a version, a link to the command line interface guide and an extensive list of options. Most aren&#39;t used in this project, but it&#39;s good to know that this tool is packed with functionality if nothing else.</p>
 <pre><code class="lang-bash">$ node_modules/.bin/webpack
@@ -165,6 +165,7 @@ Child html-webpack-plugin <span class="token keyword keyword-for" >for</span> <s
 <li><a href="https://www.npmjs.com/package/resource-hints-webpack-plugin">resource-hints-webpack-plugin</a> adds <a href="https://www.w3.org/TR/resource-hints/">resource hints</a> to your HTML files to speed up loading time.</li>
 <li><a href="https://www.npmjs.com/package/preload-webpack-plugin">preload-webpack-plugin</a> enables <code>rel=preload</code> capabilities for scripts and helps with lazy loading, and it combines well with techniques discussed in the <a href="/webpack/building/">Building</a> part of this book.</li>
 <li><a href="https://www.npmjs.com/package/webpack-cdn-plugin">webpack-cdn-plugin</a> allows you to specify which dependencies to load through a Content Delivery Network (CDN). This common technique is used for speeding up loading of popular libraries.</li>
+<li><a href="https://www.npmjs.com/package/dynamic-cdn-webpack-plugin">dynamic-cdn-webpack-plugin</a> achieves a similar result.</li>
 </ul>
 <h2 class="header"><a class="header-anchor" href="#conclusion" id="conclusion"></a><span class="text">Conclusion</span><a class="header-anchor-select" href="#conclusion">#</a></h2>
 <p>Even though you have managed to get webpack up and running, it does not do that much yet. Developing against it would be painful. Each time you wanted to check out the application, you would have to build it manually using <code>npm run build</code> and then refresh the browser. That&#39;s where webpack&#39;s more advanced features come in.</p>

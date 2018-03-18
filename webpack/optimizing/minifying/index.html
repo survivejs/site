@@ -25,7 +25,7 @@ Since webpack 4, the production output gets minified using UglifyJS by default. 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -65,7 +65,7 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 <span class="token punctuation brackets-square" >]</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >;</span>
 </code></pre>
 <p>If you execute <code>npm run build</code> now, you should see result close to the same as before. The outcome may be a slightly better as you are likely using a newer version of UglifyJS this way.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i>Source maps are disabled by default. You can enable them through the <code>sourceMap</code> flag. You should check <em>uglifyjs-webpack-plugin</em> for more options.</blockquote><h2 class="header"><a class="header-anchor" href="#other-ways-to-minify-javascript" id="other-ways-to-minify-javascript"></a><span class="text">Other Ways to Minify JavaScript</span><a class="header-anchor-select" href="#other-ways-to-minify-javascript">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Source maps are disabled by default. You can enable them through the <code>sourceMap</code> flag. You should check <em>uglifyjs-webpack-plugin</em> for more options.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>To strip <code>console.log</code> calls from the resulting source, set <code>uglifyOptions.compress.drop_console</code> to <code>true</code> as <a href="https://stackoverflow.com/questions/49101152/webpack-v4-remove-console-logs-with-webpack-uglify">discussed on Stack Overflow</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#other-ways-to-minify-javascript" id="other-ways-to-minify-javascript"></a><span class="text">Other Ways to Minify JavaScript</span><a class="header-anchor-select" href="#other-ways-to-minify-javascript">#</a></h2>
 <p>Although the defaults and <em>uglifyjs-webpack-plugin</em> works for this use case, there are more options you can consider:</p>
 <ul>
 <li><a href="https://www.npmjs.com/package/babel-minify-webpack-plugin">babel-minify-webpack-plugin</a> relies on <a href="https://www.npmjs.com/package/babel-preset-minify">babel-preset-minify</a> underneath and it has been developed by the Babel team. It&#39;s slower than UglifyJS, though.</li>

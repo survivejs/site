@@ -25,7 +25,7 @@ Even though not a lot has been done with webpack yet, the amount of configuratio
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -124,7 +124,7 @@ module<span class="token punctuation" >.</span><span class="token function-varia
 </code></pre>
 <p>After these changes, the build should behave the same way as before. This time, however, you have room to expand, and you don&#39;t have to worry about how to combine different parts of the configuration.</p>
 <p>You can add more targets by expanding the <em>package.json</em> definition and branching at <em>webpack.config.js</em> based on the need. <em>webpack.parts.js</em> grows to contain specific techniques you can then use to compose the configuration.</p>
-<blockquote class="tip"><i class="icon-attention-circled"></i><code>productionConfig</code> is a stub for now and it will grow later as we expand the configuration further.</blockquote><h3 class="header"><a class="header-anchor" href="#understanding-env" id="understanding-env"></a><span class="text">Understanding <code>--env</code></span><a class="header-anchor-select" href="#understanding-env">#</a></h3>
+<blockquote class="tip"><i class="icon-attention-circled"></i><code>productionConfig</code> is a stub for now and it will grow later as we expand the configuration further.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="https://nodejs.org/api/process.html">process</a> module used in the code is exposed by Node as a global. In addition to <code>env</code>, it provides plenty of other functionality that allows you to get more information of the host system.</blockquote><h3 class="header"><a class="header-anchor" href="#understanding-env" id="understanding-env"></a><span class="text">Understanding <code>--env</code></span><a class="header-anchor-select" href="#understanding-env">#</a></h3>
 <p>Even though <code>--env</code> allows to pass strings to the configuration, it can do a bit more. Consider the following example:</p>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token property" >"scripts"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>

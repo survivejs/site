@@ -25,7 +25,7 @@ Web workers allow you to push work outside of main execution thread of JavaScrip
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.53ea855d3b4be11b8e66.css" rel="stylesheet">
+      <link href="/site.5b28fdbb59b5267b84ca.css" rel="stylesheet">
     
 
     <link
@@ -38,7 +38,7 @@ Web workers allow you to push work outside of main execution thread of JavaScrip
 <p>Moving data between the main thread and the worker comes with communication-related overhead. The split provides isolation that forces workers to focus on logic only as they cannot manipulate the user interface directly.</p>
 <p>The idea of workers is valuable on a more general level. <a href="https://www.npmjs.com/package/parallel-webpack">parallel-webpack</a> uses <a href="https://www.npmjs.com/package/worker-farm">worker-farm</a> underneath to parallelize webpack execution.</p>
 <p>As discussed in the <a href="/webpack/output/targets/">Build Targets</a> chapter, webpack allows you to build your application as a worker itself. To get the idea of web workers better, you&#39;ll learn how to build a small worker using <a href="https://www.npmjs.com/package/worker-loader">worker-loader</a>.</p>
-<h2 class="header"><a class="header-anchor" href="#setting-up-worker-loader" id="setting-up-worker-loader"></a><span class="text">Setting Up Worker Loader</span><a class="header-anchor-select" href="#setting-up-worker-loader">#</a></h2>
+<blockquote class="tip"><i class="icon-attention-circled"></i>Sharing data between the host and the worker may become easier in the future thanks to technologies such as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer">SharedArrayBuffer</a>.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-worker-loader" id="setting-up-worker-loader"></a><span class="text">Setting Up Worker Loader</span><a class="header-anchor-select" href="#setting-up-worker-loader">#</a></h2>
 <p>To get started, install <em>worker-loader</em> to the project:</p>
 <pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> worker-loader --save-dev
 </code></pre>
