@@ -23,12 +23,12 @@ lint-staged is a simple to use tool to enforce code quality in teams.
 
 ## Why did you develop *lint-staged*?
 
-I care a lot about code readability and maintainability. To keep my code in good shape I, use linters and other code analysis tools that help me catch simple bugs earlier. While working with different teams, I noticed that:
+I care a lot about code readability and maintainability. To keep my code in good shape I use linters and other code analysis tools that help me catch simple bugs earlier. While working with different teams I noticed that:
 
 1. Not everyone cares so much about code quality.
-2. Not everyone has proper linter setup in their editors. As a result, even though some people were committed to using linters, the overall quality of the code was far from great, and it wasn’t improving.
+2. Not everyone has proper linter setup in their editors. 
 
-These reasons kept me thinking about how to enhance the quality of code in teams without being a pain.
+As a result, even though some people were committed to using linters, the overall quality of the code was far from great, and it wasn’t improving. This kept me thinking about how to enhance the quality of code in teams without becoming a pain.
 
 The idea behind of lint-staged is to make the setup process for all developers on the team as simple as possible. Instead of writing instructions on “how to setup XXX linter in YYY code editor” and hoping everyone will follow it, you can commit lint-staged configuration to the repository and next time anyone pulls the code from the remote server they will have the proper setup up and running.
 
