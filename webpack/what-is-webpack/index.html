@@ -25,7 +25,7 @@ Webpack is a module bundler. Webpack can take care of bundling alongside a separ
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3faaffffb0880e207903.css" rel="stylesheet">
+      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
     
 
     <link
@@ -38,7 +38,7 @@ Webpack is a module bundler. Webpack can take care of bundling alongside a separ
 <p>React, and <strong>Hot Module Replacement</strong> (HMR) helped to popularize webpack and led to its usage in other environments, such as <a href="https://github.com/rails/webpacker">Ruby on Rails</a>. Despite its name, webpack is not limited to the web alone. It can bundle with other targets as well, as discussed in the <a href="/webpack/output/targets/">Build Targets</a> chapter.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>If you want to understand build tools and their history in better detail, check out the <a href="/webpack/appendices/comparison/">Comparison of Build Tools</a> appendix.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack-relies-on-modules" id="webpack-relies-on-modules"></a><span class="text">Webpack Relies on Modules</span><a class="header-anchor-select" href="#webpack-relies-on-modules">#</a></h2>
 <p>The smallest project you can bundle with webpack consists of <strong>input</strong> and <strong>output</strong>. The bundling process begins from user-defined <strong>entries</strong>. Entries themselves are <strong>modules</strong> and can point to other modules through <strong>imports</strong>.</p>
-<p>When you bundle a project using webpack, it traverses through imports, constructing a <strong>dependency graph</strong> of the project and then generating the <strong>output</strong> based on the configuration. Additionally, it&#39;s possible to define <strong>split points</strong> creating separate bundles within the project code itself.</p>
+<p>When you bundle a project using webpack, it traverses the imports, constructing a <strong>dependency graph</strong> of the project and then generates <strong>output</strong> based on the configuration. Additionally, it&#39;s possible to define <strong>split points</strong> to create separate bundles within the project code itself.</p>
 <p>Webpack supports ES2015, CommonJS, and AMD module formats out of the box. The loader mechanism works for CSS as well, with <code>@import</code> and <code>url()</code> support through <em>css-loader</em>. You can also find plugins for specific tasks, such as minification, internationalization, HMR, and so on.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>A dependency graph is a directed graph that describes how nodes relate to each other. In this case, the graph definition is defined through references (<code>require</code>, <code>import</code>) between files. Webpack statically traverses these without executing the source to generate the graph it needs to create bundles.</blockquote><h2 class="header"><a class="header-anchor" href="#webpack-s-execution-process" id="webpack-s-execution-process"></a><span class="text">Webpack&#39;s Execution Process</span><a class="header-anchor-select" href="#webpack-s-execution-process">#</a></h2>
 <p><figure><img src="/538c4af0d21e375d6d252d38cbb8a993.png" alt="Webpack&#39;s execution process" class="" width="" height="" /><figcaption>Webpack&#39;s execution process</figcaption></figure></p>

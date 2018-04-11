@@ -25,7 +25,7 @@ Tools, such as LiveReload or Browsersync, allow refreshing the browser as you de
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3faaffffb0880e207903.css" rel="stylesheet">
+      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
     
 
     <link
@@ -41,7 +41,7 @@ Tools, such as LiveReload or Browsersync, allow refreshing the browser as you de
 <p>WDS is a development server running <strong>in-memory</strong>, meaning the bundle contents aren&#39;t written out to files but stored in memory. The distinction is important when trying to debug code and styles.</p>
 <p>By default, WDS refreshes content automatically in the browser while you develop your application, so you don&#39;t have to do it yourself. However it also supports an advanced webpack feature, <strong>Hot Module Replacement</strong> (HMR).</p>
 <p>HMR allows patching the browser state without a full refresh making it particularly handy with libraries like React where an update blows away the application state. The <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> appendix covers the feature in detail.</p>
-<p>WDS provides an interface that makes it possible to patch code on the fly, however for this to work efficiently; you have to implement this interface for the client-side code. It&#39;s trivial for something like CSS because it&#39;s stateless, but the problem is harder with JavaScript frameworks and libraries.</p>
+<p>WDS provides an interface that makes it possible to patch code on the fly, however for this to work efficiently you have to implement this interface for the client-side code. It&#39;s trivial for something like CSS because it&#39;s stateless, but the problem is harder with JavaScript frameworks and libraries.</p>
 <h2 class="header"><a class="header-anchor" href="#emitting-files-from-wds" id="emitting-files-from-wds"></a><span class="text">Emitting Files from WDS</span><a class="header-anchor-select" href="#emitting-files-from-wds">#</a></h2>
 <p>Even though it&#39;s good that WDS operates in-memory by default for performance reasons, sometimes it can be good to emit files to the file system. If you are integrating with another server that expects to find the files, this becomes essential. <a href="https://www.npmjs.com/package/write-file-webpack-plugin">write-file-webpack-plugin</a> allows you to do this.</p>
 <blockquote class="warning"><i class="icon-attention"></i>You should use WDS strictly for development. If you want to host your application, consider other standard solutions, such as Apache or Nginx.</blockquote><h2 class="header"><a class="header-anchor" href="#getting-started-with-wds" id="getting-started-with-wds"></a><span class="text">Getting Started with WDS</span><a class="header-anchor-select" href="#getting-started-with-wds">#</a></h2>
@@ -78,7 +78,7 @@ Entrypoint main <span class="token punctuation brackets-square" >[</span>big<spa
 <p><figure><img src="/269f6006ae745ead9a1ba1c57ec37223.png" alt="Hello world" class="" width="" height="" /><figcaption>Hello world</figcaption></figure></p>
 <p>If you try modifying the code, you should see the output in your terminal. The browser should also perform a hard refresh on change.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>WDS tries to run in another port in case the default one is being used. The terminal output tells you where it ends up running. You can debug the situation with a command like <code>netstat -na | grep 8080</code>. If something is running on the port 8080, it should display a message on Unix.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>In addition to <code>production</code> and <code>development</code>, there&#39;s a third mode, <code>none</code>, which disables everything and is close to the behavior you had in versions before webpack 4.</blockquote><h2 class="header"><a class="header-anchor" href="#configuring-wds-through-webpack-configuration" id="configuring-wds-through-webpack-configuration"></a><span class="text">Configuring WDS Through Webpack Configuration</span><a class="header-anchor-select" href="#configuring-wds-through-webpack-configuration">#</a></h2>
-<p>WDS functionality can be customized through the <code>devServer</code> field at webpack configuration. You can set most of these options through the CLI as well, but managing them through webpack is a decent approach.</p>
+<p>WDS functionality can be customized through the <code>devServer</code> field in the webpack configuration. You can set most of these options through the CLI as well, but managing them through webpack is a decent approach.</p>
 <p>Enable additional functionality as below:</p>
 <p><strong>webpack.config.js</strong></p>
 <pre><code class="lang-javascript"><span class="token operator" >...</span>

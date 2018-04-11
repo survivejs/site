@@ -25,7 +25,7 @@ Since webpack 4, the production output gets minified using UglifyJS by default. 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3faaffffb0880e207903.css" rel="stylesheet">
+      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
     
 
     <link
@@ -75,7 +75,7 @@ exports<span class="token punctuation" >.</span><span class="token function-vari
 <h2 class="header"><a class="header-anchor" href="#speeding-up-javascript-execution" id="speeding-up-javascript-execution"></a><span class="text">Speeding Up JavaScript Execution</span><a class="header-anchor-select" href="#speeding-up-javascript-execution">#</a></h2>
 <p>Specific solutions allow you to preprocess code so that it will run faster. They complement the minification technique and can be split into <strong>scope hoisting</strong>, <strong>pre-evaluation</strong>, and <strong>improving parsing</strong>. It&#39;s possible these techniques grow overall bundle size sometimes while allowing faster execution.</p>
 <h3 class="header"><a class="header-anchor" href="#scope-hoisting" id="scope-hoisting"></a><span class="text">Scope Hoisting</span><a class="header-anchor-select" href="#scope-hoisting">#</a></h3>
-<p>Since webpack 4, it applies scope hoisting in production mode by default. It hoists all modules to a single scope instead of writing a separate closure by each. Doing this slows down the build but gives you bundles that are faster to execute. <a href="https://medium.com/webpack/brief-introduction-to-scope-hoisting-in-webpack-8435084c171f">Read more about scope hoisting</a> at the webpack blog.</p>
+<p>Since webpack 4, it applies scope hoisting in production mode by default. It hoists all modules to a single scope instead of writing a separate closure for each. Doing this slows down the build but gives you bundles that are faster to execute. <a href="https://medium.com/webpack/brief-introduction-to-scope-hoisting-in-webpack-8435084c171f">Read more about scope hoisting</a> at the webpack blog.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Pass <code>--display-optimization-bailout</code> flag to webpack to gain debugging information related to hoisting results.</blockquote><h3 class="header"><a class="header-anchor" href="#pre-evaluation" id="pre-evaluation"></a><span class="text">Pre-evaluation</span><a class="header-anchor-select" href="#pre-evaluation">#</a></h3>
 <p><a href="https://www.npmjs.com/package/prepack-webpack-plugin">prepack-webpack-plugin</a> uses <a href="https://prepack.io/">Prepack</a>, a partial JavaScript evaluator. It rewrites computations that can be done compile-time and therefore speeds up code execution. See also <a href="https://www.npmjs.com/package/val-loader">val-loader</a> and <a href="https://www.npmjs.com/package/babel-plugin-preval">babel-plugin-preval</a> for alternative solutions.</p>
 <h3 class="header"><a class="header-anchor" href="#improving-parsing" id="improving-parsing"></a><span class="text">Improving Parsing</span><a class="header-anchor-select" href="#improving-parsing">#</a></h3>

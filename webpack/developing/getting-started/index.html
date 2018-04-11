@@ -25,7 +25,7 @@ Before getting started, make sure you are using a recent version of Node. You sh
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3faaffffb0880e207903.css" rel="stylesheet">
+      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
     
 
     <link
@@ -143,7 +143,7 @@ Child html-webpack-plugin <span class="token keyword keyword-for" >for</span> <s
 <li><code>main.js  679 bytes       0  [emitted]  main</code> - Name of the generated asset, size, the IDs of the <strong>chunks</strong> into which it&#39;s related, status information telling how it was generated, the name of the chunk.</li>
 <li><code>index.html  181 bytes          [emitted]</code> - Another generated asset that was emitted by the process.</li>
 <li><code>[0] ./src/index.js + 1 modules 219 bytes {0} [built]</code> - The ID of the entry asset, name, size, entry chunk ID, the way it was generated.</li>
-<li><code>Child html-webpack-plugin for &quot;index.html&quot;:</code> - This is plugin-related output. In this case <em>html-webpack-plugin</em> is doing the output of its own.</li>
+<li><code>Child html-webpack-plugin for &quot;index.html&quot;:</code> - This is plugin-related output. In this case <em>html-webpack-plugin</em> is creating this output on its own.</li>
 </ul>
 <p>Examine the output below the <code>dist/</code> directory. If you look closely, you can see the same IDs within the source.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>In addition to a configuration object, webpack accepts an array of configurations. You can also return a <code>Promise</code> and eventually <code>resolve</code> to a configuration for example.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>If you want a light alternative to <em>html-webpack-plugin</em>, see <a href="https://www.npmjs.com/package/mini-html-webpack-plugin">mini-html-webpack-plugin</a>. It does less but it&#39;s also simpler to understand.</blockquote><h2 class="header"><a class="header-anchor" href="#adding-a-build-shortcut" id="adding-a-build-shortcut"></a><span class="text">Adding a Build Shortcut</span><a class="header-anchor-select" href="#adding-a-build-shortcut">#</a></h2>
@@ -174,7 +174,7 @@ Child html-webpack-plugin <span class="token keyword keyword-for" >for</span> <s
 <li>It&#39;s a good idea to use a locally installed version of webpack over a globally installed one. This way you can be sure of what version you are using. The local dependency also works in a Continuous Integration environment.</li>
 <li>Webpack provides a command line interface through the <em>webpack-cli</em> package. You can use it even without configuration, but any advanced usage requires configuration.</li>
 <li>To write more complicated setups, you most likely have to write a separate <em>webpack.config.js</em> file.</li>
-<li><code>HtmlWebpackPlugin</code> can be used to generate an HTML entry point to your application. Later in the book, you see how to generate multiple separate pages using. The <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter covers that.</li>
+<li><code>HtmlWebpackPlugin</code> can be used to generate an HTML entry point to your application. In the <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter you will see how to generate multiple separate pages using it.</li>
 <li>It&#39;s handy to use npm <em>package.json</em> scripts to manage webpack. You can use it as a light task runner and use system features outside of webpack.</li>
 </ul>
 <p>In the next chapter, you will learn how to improve the developer experience by enabling automatic browser refresh.</p>
