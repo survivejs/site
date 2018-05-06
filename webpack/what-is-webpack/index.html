@@ -25,7 +25,7 @@ Webpack is a module bundler. Webpack can take care of bundling alongside a separ
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
+      <link href="/site.a35bbb181f87d918f074.css" rel="stylesheet">
     
 
     <link
@@ -55,7 +55,7 @@ Webpack is a module bundler. Webpack can take care of bundling alongside a separ
 <h3 class="header"><a class="header-anchor" href="#evaluation-process" id="evaluation-process"></a><span class="text">Evaluation Process</span><a class="header-anchor-select" href="#evaluation-process">#</a></h3>
 <p>Assuming all loaders were found, webpack evaluates the matched loaders from bottom to top and right to left (<code>styleLoader(cssLoader(&#39;./main.css&#39;))</code>) while running the module through each loader in turn. As a result, you get output which webpack will inject in the resulting <strong>bundle</strong>. The <a href="/webpack/loading/loader-definitions/">Loader Definitions</a> chapter covers the topic in detail.</p>
 <p>If all loader evaluation completed without a runtime error, webpack includes the source in the last bundle. <strong>Plugins</strong> allow you to intercept <strong>runtime events</strong> at different stages of the bundling process.</p>
-<p>Although loaders can do a lot, they don’t provide enough power for advanced tasks. Plugins can intercept <strong>runtime events</strong> supplied by webpack. A good example is bundle extraction performed by the <code>ExtractTextPlugin</code> which, when used with a loader, extracts CSS files out of the bundle and into a separate file. Without this step, CSS would be inlined in the resulting JavaScript, as webpack treats all code as JavaScript by default. The extraction idea is discussed in the <a href="/webpack/styling/separating-css/">Separating CSS</a> chapter.</p>
+<p>Although loaders can do a lot, they don’t provide enough power for advanced tasks. Plugins can intercept <strong>runtime events</strong> supplied by webpack. A good example is bundle extraction performed by the <code>MiniCssExtractPlugin</code> which, when used with a loader, extracts CSS files out of the bundle and into a separate file. Without this step, CSS would be inlined in the resulting JavaScript, as webpack treats all code as JavaScript by default. The extraction idea is discussed in the <a href="/webpack/styling/separating-css/">Separating CSS</a> chapter.</p>
 <h3 class="header"><a class="header-anchor" href="#finishing" id="finishing"></a><span class="text">Finishing</span><a class="header-anchor-select" href="#finishing">#</a></h3>
 <p>After every module has been evaluated, webpack writes <strong>output</strong>. The output includes a bootstrap script with a manifest that describes how to begin executing the result in the browser. The manifest can be extracted to a file of its own, as discussed later in the book. The output differs based on the build target you are using (targeting web is not the only option).</p>
 <p>That’s not all there is to the bundling process. For example, you can define specific <strong>split points</strong> where webpack generates separate bundles that are loaded based on application logic. This idea is discussed in the <a href="/webpack/building/code-splitting/">Code Splitting</a> chapter.</p>

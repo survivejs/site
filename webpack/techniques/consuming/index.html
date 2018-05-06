@@ -25,7 +25,7 @@ Sometimes packages have not been packaged the way you expect, and you have to tw
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
+      <link href="/site.a35bbb181f87d918f074.css" rel="stylesheet">
     
 
     <link
@@ -103,12 +103,14 @@ Sometimes packages have not been packaged the way you expect, and you have to tw
 <p><a href="https://www.npmjs.com/package/imports-loader">imports-loader</a> allows you to inject globals as below:</p>
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
   module<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-      <span class="token comment" spellcheck="true" >// Resolve against package path.</span>
-      <span class="token comment" spellcheck="true" >// require.resolve returns a path to it.</span>
-      test<span class="token punctuation" >:</span> require<span class="token punctuation" >.</span><span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"jquery-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
-      loader<span class="token punctuation" >:</span> <span class="token string" >"imports-loader?$=jquery"</span><span class="token punctuation" >,</span>
-    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
+      <span class="token punctuation brackets-braces" >{</span>
+        <span class="token comment" spellcheck="true" >// Resolve against package path.</span>
+        <span class="token comment" spellcheck="true" >// require.resolve returns a path to it.</span>
+        test<span class="token punctuation" >:</span> require<span class="token punctuation" >.</span><span class="token function" >resolve</span><span class="token punctuation brackets-parentheses" >(</span><span class="token string" >"jquery-plugin"</span><span class="token punctuation brackets-parentheses" >)</span><span class="token punctuation" >,</span>
+        loader<span class="token punctuation" >:</span> <span class="token string" >"imports-loader?$=jquery"</span><span class="token punctuation" >,</span>
+      <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>

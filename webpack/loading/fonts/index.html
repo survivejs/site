@@ -25,7 +25,7 @@ Loading fonts is similar to loading images. It does come with unique challenges,
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
+      <link href="/site.a35bbb181f87d918f074.css" rel="stylesheet">
     
 
     <link
@@ -54,17 +54,19 @@ Loading fonts is similar to loading images. It does come with unique challenges,
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
   <span class="token comment" spellcheck="true" >// Match woff2 in addition to patterns like .woff?v=1.1.1.</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
-  use<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
-  options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    <span class="token comment" spellcheck="true" >// Limit at 50k. Above that it emits separate files</span>
-    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loader<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      <span class="token comment" spellcheck="true" >// Limit at 50k. Above that it emits separate files</span>
+      limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
 
-    <span class="token comment" spellcheck="true" >// url-loader sets mimetype if it's passed.</span>
-    <span class="token comment" spellcheck="true" >// Without this it derives it from the file extension</span>
-    mimetype<span class="token punctuation" >:</span> <span class="token string" >"application/font-woff"</span><span class="token punctuation" >,</span>
+      <span class="token comment" spellcheck="true" >// url-loader sets mimetype if it's passed.</span>
+      <span class="token comment" spellcheck="true" >// Without this it derives it from the file extension</span>
+      mimetype<span class="token punctuation" >:</span> <span class="token string" >"application/font-woff"</span><span class="token punctuation" >,</span>
 
-    <span class="token comment" spellcheck="true" >// Output below fonts directory</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >"./fonts/[name].[ext]"</span><span class="token punctuation" >,</span>
+      <span class="token comment" spellcheck="true" >// Output below fonts directory</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >"./fonts/[name].[ext]"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
@@ -72,9 +74,11 @@ Loading fonts is similar to loading images. It does come with unique challenges,
 <p>In case you want to make sure the site looks good on a maximum amount of browsers, you can use <em>file-loader</em> and forget about inlining. Again, it&#39;s a trade-off as you get extra requests, but perhaps it&#39;s the right move. Here you could end up with a loader configuration:</p>
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.(ttf|eot|woff|woff2)$/</span><span class="token punctuation" >,</span>
-  loader<span class="token punctuation" >:</span> <span class="token string" >"file-loader"</span><span class="token punctuation" >,</span>
-  options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >"fonts/[name].[ext]"</span><span class="token punctuation" >,</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loader<span class="token punctuation" >:</span> <span class="token string" >"file-loader"</span><span class="token punctuation" >,</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >"fonts/[name].[ext]"</span><span class="token punctuation" >,</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>
@@ -94,12 +98,14 @@ Loading fonts is similar to loading images. It does come with unique challenges,
 <pre><code class="lang-javascript"><span class="token punctuation brackets-braces" >{</span>
   <span class="token comment" spellcheck="true" >// Match woff2 and patterns like .woff?v=1.1.1.</span>
   test<span class="token punctuation" >:</span> <span class="token regex" >/\.woff2?(\?v=\d+\.\d+\.\d+)?$/</span><span class="token punctuation" >,</span>
-  loader<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
-  options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
-    mimetype<span class="token punctuation" >:</span> <span class="token string" >"application/font-woff"</span><span class="token punctuation" >,</span>
-    name<span class="token punctuation" >:</span> <span class="token string" >"./fonts/[name].[ext]"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Output below ./fonts</span>
-    publicPath<span class="token punctuation" >:</span> <span class="token string" >"../"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Take the directory into account</span>
+  use<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    loader<span class="token punctuation" >:</span> <span class="token string" >"url-loader"</span><span class="token punctuation" >,</span>
+    options<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
+      limit<span class="token punctuation" >:</span> <span class="token number" >50000</span><span class="token punctuation" >,</span>
+      mimetype<span class="token punctuation" >:</span> <span class="token string" >"application/font-woff"</span><span class="token punctuation" >,</span>
+      name<span class="token punctuation" >:</span> <span class="token string" >"./fonts/[name].[ext]"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Output below ./fonts</span>
+      publicPath<span class="token punctuation" >:</span> <span class="token string" >"../"</span><span class="token punctuation" >,</span> <span class="token comment" spellcheck="true" >// Take the directory into account</span>
+    <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
 </code></pre>

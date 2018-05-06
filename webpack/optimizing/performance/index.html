@@ -25,7 +25,7 @@ Webpack&#39;s performance out of the box is often enough for small projects. Tha
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
+      <link href="/site.a35bbb181f87d918f074.css" rel="stylesheet">
     
 
     <link
@@ -43,6 +43,8 @@ Webpack&#39;s performance out of the box is often enough for small projects. Tha
 <li>Measure impact.</li>
 </ol>
 <p>Sometimes optimizations come with a cost. They can make your configuration harder to understand or tie it to a particular solution. Often the best optimization is to do less work or do it more smartly. The basic directions are covered in the next sections, so you know where to look when it&#39;s time to work on performance.</p>
+<h2 class="header"><a class="header-anchor" href="#measuring-impact" id="measuring-impact"></a><span class="text">Measuring Impact</span><a class="header-anchor-select" href="#measuring-impact">#</a></h2>
+<p>As discussed in the previous chapter, generating stats can be used to measure build time. <a href="https://www.npmjs.com/package/speed-measure-webpack-plugin">speed-measure-webpack-plugin</a> gives more granular information per plugin and loader so you know which take most of the time in your process.</p>
 <h2 class="header"><a class="header-anchor" href="#high-level-optimizations" id="high-level-optimizations"></a><span class="text">High-Level Optimizations</span><a class="header-anchor-select" href="#high-level-optimizations">#</a></h2>
 <p>Webpack uses only a single instance by default meaning you aren&#39;t able to benefit from a multi-core processor without extra effort. This where third-party solutions, such as <a href="https://www.npmjs.com/package/parallel-webpack">parallel-webpack</a> and <a href="https://www.npmjs.com/package/happypack">HappyPack</a> come in.</p>
 <h3 class="header"><a class="header-anchor" href="#parallel-webpack-run-multiple-webpack-instances-in-parallel" id="parallel-webpack-run-multiple-webpack-instances-in-parallel"></a><span class="text">parallel-webpack - Run Multiple Webpack Instances in Parallel</span><a class="header-anchor-select" href="#parallel-webpack-run-multiple-webpack-instances-in-parallel">#</a></h3>

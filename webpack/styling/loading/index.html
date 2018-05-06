@@ -25,7 +25,7 @@ Webpack doesn&#39;t handle styling out of the box, and you will have to use load
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.3c3e36f2204cc715fb49.css" rel="stylesheet">
+      <link href="/site.a35bbb181f87d918f074.css" rel="stylesheet">
     
 
     <link
@@ -39,7 +39,7 @@ Webpack doesn&#39;t handle styling out of the box, and you will have to use load
 <p>To load CSS, you need to use <a href="https://www.npmjs.com/package/css-loader">css-loader</a> and <a href="https://www.npmjs.com/package/style-loader">style-loader</a>. <em>css-loader</em> goes through possible <code>@import</code> and <code>url()</code> lookups within the matched files and treats them as a regular ES2015 <code>import</code>. If an <code>@import</code> points to an external resource, <em>css-loader</em> skips it as only internal resources get processed further by webpack.</p>
 <p><em>style-loader</em> injects the styling through a <code>style</code> element. The way it does this can be customized. It also implements the <a href="/webpack/appendices/hmr/">Hot Module Replacement</a> interface providing for a pleasant development experience.</p>
 <p>The matched files can be processed through loaders like <a href="https://www.npmjs.com/package/file-loader">file-loader</a> or <a href="https://www.npmjs.com/package/url-loader">url-loader</a>, and these possibilities are discussed in the <a href="/webpack/loading/">Loading Assets</a> part of the book.</p>
-<p>Since inlining CSS isn&#39;t a good idea for production usage, it makes sense to use <code>ExtractTextPlugin</code> to generate a separate CSS file. You will do this in the next chapter.</p>
+<p>Since inlining CSS isn&#39;t a good idea for production usage, it makes sense to use <code>MiniCssExtractPlugin</code> to generate a separate CSS file. You will do this in the next chapter.</p>
 <p>To get started, invoke</p>
 <pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> css-loader style-loader --save-dev
 </code></pre>
