@@ -8,8 +8,7 @@ const Page = ({
   title,
   sidebar,
   footer,
-  previous,
-  next,
+  page,
   children,
 }) => {
   return (
@@ -45,8 +44,8 @@ const Page = ({
           </div>
 
           <PrevNextMini
-            previous={previous}
-            next={next}
+            previous={page.previous}
+            next={page.next}
             getTitle={page => page.file.title}
           />
         </div>

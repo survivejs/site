@@ -88,6 +88,7 @@ const BookPage = ({
       title={title}
       sidebar={toc}
       footer={footer}
+      page={{ next, previous }}
     >
       <LatestPost section={section} />
 

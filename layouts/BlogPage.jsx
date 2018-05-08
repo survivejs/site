@@ -65,6 +65,7 @@ const BlogPage = ({
       next={next}
       sidebar={toc}
       footer={footer}
+      page={{ next, previous }}
     >
       {date && <Moment className="post__moment" datetime={date} />}
       <div dangerouslySetInnerHTML={{ __html: body }} />
