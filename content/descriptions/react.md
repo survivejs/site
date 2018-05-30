@@ -1,5 +1,5 @@
 <p>
-  ![React logo|200|200|react-image](assets/img/react.png)
+  ![|200|200|react-image](assets/img/react.png)
 
   Facebook's [React](https://facebook.github.io/react/) powers an increasing amount of sites. There is a good reason for this. It simplifies frontend development greatly.
 </p>
