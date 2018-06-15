@@ -10,6 +10,10 @@ import "../styles/fontello-embedded.css";
 
 const navigationPages = [
   {
+    title: "GraphQL Finland",
+    url: "https://graphql-finland.fi/",
+  },
+  {
     title: "Home",
     url: "/",
   },
