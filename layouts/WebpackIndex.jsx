@@ -3,34 +3,29 @@ import { Testimonial } from "@survivejs/components";
 
 const WebpackIndex = () => (
   <div className="frontpage">
-    <div
-      className="front__heading"
-      style={{ height: "20%", minHeight: "20em" }}
-    >
-      <div className="front-heading-content-wrapper">
-        <div className="front-header-wrapper">
-          <div className="front-name">
-            <span className="first">Survive</span>
-            <span className="second">JS</span>
-            <span className="first"> - Webpack</span>
-          </div>
+    <div className="front__heading">
+      <div className="front-header-wrapper">
+        <div className="front-name">
+          <span className="first">Survive</span>
+          <span className="second">JS</span>
+          <span className="first"> — Webpack</span>
+        </div>
 
-          <h1 className="front-header">From apprentice to master</h1>
+        <h1 className="front-header">From apprentice to master</h1>
 
-          <div className="front-button-wrapper">
-            <span className="read-free">
-              <a href="/webpack/preface/">Read for free</a>
-            </span>
+        <div className="front-button-wrapper">
+          <span className="read-free">
+            <a href="/webpack/preface/">Read for free</a>
+          </span>
 
-            <span className="buy-or">or</span>
+          <span className="buy-or">or</span>
 
-            <a
-              className="btn btn--buy-main"
-              href="https://leanpub.com/survivejs-webpack"
-            >
-              Become a Webpack master
-            </a>
-          </div>
+          <a
+            className="btn btn--buy-main"
+            href="https://leanpub.com/survivejs-webpack"
+          >
+            Become a Webpack master
+          </a>
         </div>
       </div>
     </div>

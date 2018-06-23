@@ -22,7 +22,7 @@
   }
 
   .front-button-wrapper {
-    margin-top: 2em;
+    margin-top: calc(0.6rem + 0.5vh + 1vw);
     color: white;
 
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
@@ -46,19 +46,10 @@
       margin-left: 0.5em;
       margin-right: 0.5em;
     }
-
-    .read-free {
-    }
-  }
-
-  .front-header-wrapper {
-    margin-top: 6em;
-    margin-bottom: 2em;
-    margin-right: 6em;
-    margin-left: 4em;
   }
 
   .front-name {
+    margin-bottom: calc(0.5em + 0.5vh + 1vw);
     text-transform: uppercase;
     font-family: "Avenir Next", "Helvetica Neue", sans-serif;
     font-weight: 700;
@@ -77,28 +68,17 @@
     margin-bottom: 2em;
   }
 
-  .front-header,
-  .front-motto {
-    color: white;
-    margin-bottom: 0.5em;
+  .front-header {
+    margin: 0;
+    color: darken($action-color, 30%);
+    line-height: 1.2;
+    font-size: calc(1rem + 0.5vh + 1vw);
     font-weight: 400;
   }
 
-  .front-header {
-    margin-top: 1em;
-    margin-bottom: 1em;
-
-    color: darken($action-color, 30%);
-
-    font-size: 175%;
-  }
-
   .front-motto {
-    margin-top: 0;
-
-    margin-bottom: 0;
-
-    font-size: 1em;
+    margin-top: calc(1rem + 0.5vh + 1vw);
+    font-size: 20px;
     color: darken(white, 20%);
   }
 
@@ -106,10 +86,19 @@
     background: #323232;
     background-image: url("../assets/img/headers/front.jpg");
     background-size: cover;
+    // Same as in PageHeading
+    height: calc(22vh + 6vw);
+    min-height: 260px;
+  }
 
-    width: 100%;
-    min-height: 20em;
-    height: 35%;
+  .front-header-wrapper {
+    height: inherit;
+    max-width: 1400px;
+    min-height: inherit;
+    margin: 0 auto;
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
   }
 
   .react-image {
@@ -150,21 +139,12 @@
     margin: 0 auto;
     width: 100%;
   }
-  .post--front,
-  .front-heading-content-wrapper {
+  .post--front {
     margin: 0 auto;
     max-width: 1000px;
   }
-  .front-header-wrapper {
-    float: left;
-  }
 
   @include media-query(portable) {
-    .front-header-wrapper {
-      max-width: 100%;
-      margin-right: 0.5em;
-      margin-left: 0.5em;
-    }
 
     .read-free {
       margin-top: 0.5em;
@@ -173,14 +153,6 @@
     }
 
     .post--front {
-      padding: 1em;
-    }
-  }
-
-  @include media-query(palm) {
-    .front-header-wrapper {
-      max-width: 100%;
-      margin: 0;
       padding: 1em;
     }
   }

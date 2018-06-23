@@ -1,27 +1,21 @@
 $line-height: 3px;
 
 .nav__wrapper {
-  position: fixed;
-  bottom: 0;
+  position: sticky;
+  top: 0;
   left: 0;
   right: 0;
-  pointer-events: none;
   z-index: 100;
   @include media-query(palm) {
-    bottom: auto;
-    top: 0;
+    position: fixed;
+    // Ignore pointer events when the menu is positioned off screen
+    pointer-events: none;
   }
 }
 .nav {
-  background: linear-gradient(to top, #fff 0%, #fff 35%, rgba(#fff, 0) 100%);
   width: 100%;
   text-align: center;
-
   padding: 0;
-  top: 0;
-  left: 0;
-  bottom: auto;
-  position: fixed;
   background: white;
   z-index: 1000;
 
@@ -66,6 +60,7 @@ $line-height: 3px;
 .nav__selected__link {
   display: inline-block;
   padding: $quarter-spacing-unit $base-spacing-unit;
+  @include font-size($deci-size);
   @include media-query(palm) {
     text-align: center;
     width: 100%;
@@ -124,16 +119,5 @@ $line-height: 3px;
   }
   @include media-query(palm) {
     display: block;
-  }
-}
-
-@media (max-width: 550px) {
-  .nav {
-    padding-top: 0.5em;
-  }
-
-  .nav__wrapper {
-    z-index: 1000;
-    background: white;
   }
 }

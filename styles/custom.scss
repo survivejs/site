@@ -26,11 +26,6 @@ hr {
   margin-bottom: $base-spacing-unit / 2;
 }
 
-.header-image,
-.header-image + .page__heading {
-  z-index: 0; /* make sure they are behind nav */
-}
-
 .post {
   margin: 0 auto;
 }
@@ -67,38 +62,11 @@ hr {
   margin-bottom: 1em;
 }
 
-.header-image + .page__heading {
-  margin-top: 24vh;
-}
-.header-image {
-  height: 48vh;
-}
-.header-image + .page__heading + .post__content {
-  margin-top: 50vh;
-  padding-top: 5vh;
-}
-
 @media screen and (max-width: 1150px) {
   .post__content pre {
     /* low resolutions need this */
     word-break: break-all;
   }
-}
-
-.header-extra {
-  font-size: small;
-  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 42vh;
-  margin-right: 3.5vh;
-  z-index: 400;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.header-extra a {
-  color: #ddd;
 }
 
 .header-anchor-select {
@@ -194,13 +162,17 @@ table {
   }
 }
 
-.blog-index h1 {
-  margin-top: 2em;
+.blog-index {
+  margin-top: 32px;
 }
-@include media-query(portable) {
-  .blog-index h1 {
-    margin-top: 4em;
-  }
+
+.blog-index h1 {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.blog-index ul {
+  margin: 0;
 }
 
 figcaption {

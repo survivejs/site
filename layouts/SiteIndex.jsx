@@ -1,22 +1,20 @@
 import React from "react";
 import { LatestPost } from "@survivejs/components";
-import { SocialLinks } from "../components";
 
 const SiteIndex = ({ section }) => (
   <div className="frontpage">
     <div className="front__heading">
-      <div className="front-heading-content-wrapper">
-        <div className="front-header-wrapper">
-          <div className="front-name">
-            <span className="first">Survive</span>
-            <span className="second">JS</span>
-          </div>
-
-          <h1 className="front-header">Learn JavaScript</h1>
-          <h3 className="front-motto">
-            SurviveJS will take you from apprentice to master
-          </h3>
+      <div className="front-header-wrapper">
+        <div className="front-name">
+          <span className="first">Survive</span>
+          <span className="second">JS</span>
         </div>
+        <h1 className="front-header">
+          Learn JavaScript
+          <div className="front-motto">
+            SurviveJS will take you from apprentice to master
+          </div>
+        </h1>
       </div>
     </div>
 
