@@ -1,25 +1,30 @@
 import React from "react";
 import { Link } from "@survivejs/components";
+import PrevNextPageMini from "./PrevNextPageMini";
 
-const Navigation = ({ pages, pathname }) => (
-  <div className="nav__wrapper">
+const Navigation = ({ page, pages, pathname }) => (
+  <header className="nav__wrapper">
     <input type="checkbox" className="nav__toggle" id="nav__toggle" />
     <label className="nav__toggle-label" htmlFor="nav__toggle" />
+    {page.previous && <PrevNextPageMini page={page.previous} type="previous" />}
     <nav className="nav">
-      {pages.map(
-        (link, i) =>
-          pathname.startsWith(link.url) && link.url !== "/" ? (
-            <div key={`link-${i}`} className="nav__selected__link">
-              <Link to={link.url}>{link.title}</Link>
-            </div>
-          ) : (
-            <div key={`link-${i}`} className="nav__link">
-              <Link to={link.url}>{link.title}</Link>
-            </div>
-          )
-      )}
+      <ul className="nav__items">
+        {pages.map(
+          link =>
+            pathname.startsWith(link.url) && link.url !== "/" ? (
+              <li key={link.url} className="nav__link nav__link_selected">
+                <Link to={link.url}>{link.title}</Link>
+              </li>
+            ) : (
+              <li key={link.url} className="nav__link">
+                <Link to={link.url}>{link.title}</Link>
+              </li>
+            )
+        )}
+      </ul>
     </nav>
-  </div>
+    {page.next && <PrevNextPageMini page={page.next} type="next" />}
+  </header>
 );
 
 export default Navigation;

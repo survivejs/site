@@ -1,5 +1,5 @@
 import React from "react";
-import { Disqus, PrevNextMini } from "@survivejs/components";
+import { Disqus } from "@survivejs/components";
 import Sidebar from "../components/Sidebar";
 import PageHeading from "../components/PageHeading";
 
@@ -29,12 +29,6 @@ const Page = ({
 
             <Disqus shortname="survivejs" />
           </div>
-
-          <PrevNextMini
-            previous={page.previous}
-            next={page.next}
-            getTitle={page => page.file.title}
-          />
         </div>
       </div>
     </div>

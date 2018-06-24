@@ -43,9 +43,9 @@ const navigationPages = [
   },
 ];
 
-const SiteBody = ({ children, section, location: { pathname } }) => (
+const SiteBody = ({ children, section, page, location: { pathname } }) => (
   <Fragment>
-    <Navigation pages={navigationPages} pathname={pathname} />
+    <Navigation pages={navigationPages} pathname={pathname} page={page} />
 
     {children}
 
