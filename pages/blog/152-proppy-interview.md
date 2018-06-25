@@ -89,7 +89,7 @@ Don't get overwhelmed or distracted by every new framework or library (even [Pro
 
 I am a big fan of Ives van Hoorne and everything that he is doing with CodeSandbox. I would love to know what more exciting things he is working on at the moment.
 
-T> I [interviewed Ives about CodeSandbox earlier](/blog/codesandbox-interview).
+T> [I interviewed Ives about CodeSandbox earlier](/blog/codesandbox-interview).
 
 ## Any last remarks?
 
