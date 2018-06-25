@@ -40,6 +40,7 @@ module.exports = {
     backgroundAlt: "#eee",
     backgroundLight: "#fafafa",
     brandDark: "#434343",
+    backgroundTip: "#f5fffb",
     action: "#6eedf8",
     actionAlpha: "rgba(110, 237, 248, 0.2)",
     actionLight: "#0de1f3",
