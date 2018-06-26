@@ -1,36 +1,13 @@
 import React from "react";
-import styled from "react-emotion";
 import LatestPost from "../components/LatestPost";
-import theme from "../styles/theme";
-
-const Landing = styled.main`
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: ${theme.space.m};
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -${theme.space.m} ${theme.space.m};
-  padding: 0;
-  list-style: none;
-`;
-
-const Column = styled.section`
-  flex: 1;
-  min-width: 400px;
-  margin: 0 0 ${theme.space.m};
-  padding: 0 ${theme.space.m};
-`;
-
-const Books = Container.withComponent("ul");
-
-const Book = Column.withComponent("li");
-
-const Heading = styled.h2`
-  margin: 0 0 ${theme.space.m};
-`;
+import {
+  Landing,
+  Container,
+  Column,
+  Books,
+  Book,
+  Heading,
+} from "../components/Landing";
 
 const SiteIndex = ({ section }) => (
   <div className="frontpage">
