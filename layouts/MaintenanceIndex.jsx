@@ -1,6 +1,38 @@
 import React from "react";
+import styled from "react-emotion";
+import LatestPost from "../components/LatestPost";
+import theme from "../styles/theme";
 
-const MaintenanceIndex = () => (
+const Landing = styled.main`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: ${theme.space.m};
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -${theme.space.m} ${theme.space.m};
+  padding: 0;
+  list-style: none;
+`;
+
+const Column = styled.section`
+  flex: 1;
+  min-width: 400px;
+  margin: 0 0 ${theme.space.m};
+  padding: 0 ${theme.space.m};
+`;
+
+const Books = Container.withComponent("ul");
+
+const Book = Column.withComponent("li");
+
+const Heading = styled.h2`
+  margin: 0 0 ${theme.space.m};
+`;
+
+const MaintenanceIndex = ({ section }) => (
   <div className="frontpage">
     <div className="front__heading">
       <div className="front-header-wrapper">
@@ -29,18 +61,27 @@ const MaintenanceIndex = () => (
       </div>
     </div>
 
-    <div className="post">
-      <section className="post__content landing__content">
-        <div className="landing__block post__description">
-          <h2>SurviveJS - Maintenance</h2>
+    <Landing>
+      <LatestPost section={section} />
+      <Books aria-label="Books">
+        <Book>
+          <Heading>SurviveJS - Maintenance</Heading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/maintenance.md").body,
             }}
           />
-        </div>
-        <div className="landing__block post__authors">
-          <h2>About the Authors</h2>
+          <h3>Getting the Book</h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("../content/gets/maintenance.md").body,
+            }}
+          />
+        </Book>
+      </Books>
+      <Container>
+        <Column>
+          <Heading>About the Authors</Heading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/authors/juho.md").body,
@@ -52,15 +93,25 @@ const MaintenanceIndex = () => (
               __html: require("../content/authors/artem.md").body,
             }}
           />
-          <h2>Getting the Book</h2>
+        </Column>
+        <Column>
+          <Heading>Getting the Books</Heading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/gets/maintenance.md").body,
+              __html: require("../content/descriptions/gettingbooks.md").body,
             }}
           />
-        </div>
-      </section>
-    </div>
+        </Column>
+        <Column>
+          <Heading>Training</Heading>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("../content/descriptions/training.md").body,
+            }}
+          />
+        </Column>
+      </Container>
+    </Landing>
   </div>
 );
 
