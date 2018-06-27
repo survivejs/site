@@ -1,36 +1,12 @@
 import React from "react";
-import styled from "react-emotion";
 import LatestPost from "../components/LatestPost";
-import theme from "../styles/theme";
-
-const Landing = styled.main`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: ${theme.space.m};
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -${theme.space.m} ${theme.space.m};
-  padding: 0;
-  list-style: none;
-`;
-
-const Column = styled.section`
-  flex: 1;
-  min-width: 400px;
-  margin: 0 0 ${theme.space.m};
-  padding: 0 ${theme.space.m};
-`;
-
-const Books = Container.withComponent("ul");
-
-const Book = Column.withComponent("li");
-
-const Heading = styled.h2`
-  margin: 0 0 ${theme.space.m};
-`;
+import {
+  Landing,
+  Container,
+  Column,
+  WideColumn,
+  Heading,
+} from "../components/Landing";
 
 const MaintenanceIndex = ({ section }) => (
   <div className="frontpage">
@@ -63,9 +39,9 @@ const MaintenanceIndex = ({ section }) => (
 
     <Landing>
       <LatestPost section={section} />
-      <Books aria-label="Books">
-        <Book>
-          <Heading>SurviveJS - Maintenance</Heading>
+      <Container>
+        <WideColumn>
+          <Heading>SurviveJS — Maintenance</Heading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/maintenance.md").body,
@@ -77,9 +53,7 @@ const MaintenanceIndex = ({ section }) => (
               __html: require("../content/gets/maintenance.md").body,
             }}
           />
-        </Book>
-      </Books>
-      <Container>
+        </WideColumn>
         <Column>
           <Heading>About the Authors</Heading>
           <div
@@ -93,16 +67,12 @@ const MaintenanceIndex = ({ section }) => (
               __html: require("../content/authors/artem.md").body,
             }}
           />
-        </Column>
-        <Column>
           <Heading>Getting the Books</Heading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/gettingbooks.md").body,
             }}
           />
-        </Column>
-        <Column>
           <Heading>Training</Heading>
           <div
             dangerouslySetInnerHTML={{

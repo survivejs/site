@@ -1,37 +1,13 @@
 import React from "react";
-import styled from "react-emotion";
 import { Testimonial } from "@survivejs/components";
 import LatestPost from "../components/LatestPost";
-import theme from "../styles/theme";
-
-const Landing = styled.main`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: ${theme.space.m};
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -${theme.space.m} ${theme.space.m};
-  padding: 0;
-  list-style: none;
-`;
-
-const Column = styled.section`
-  flex: 1;
-  min-width: 400px;
-  margin: 0 0 ${theme.space.m};
-  padding: 0 ${theme.space.m};
-`;
-
-const Books = Container.withComponent("ul");
-
-const Book = Column.withComponent("li");
-
-const Heading = styled.h2`
-  margin: 0 0 ${theme.space.m};
-`;
+import {
+  Landing,
+  Container,
+  Column,
+  WideColumn,
+  Heading,
+} from "../components/Landing";
 
 const WebpackIndex = ({ section }) => (
   <div className="frontpage">
@@ -89,8 +65,8 @@ const WebpackIndex = ({ section }) => (
 
     <Landing>
       <LatestPost section={section} />
-      <Books aria-label="Books">
-        <Book>
+      <Container>
+        <WideColumn>
           <Heading>SurviveJS - Webpack</Heading>
           <div
             dangerouslySetInnerHTML={{
@@ -103,9 +79,7 @@ const WebpackIndex = ({ section }) => (
               __html: require("../content/gets/webpack.md").body,
             }}
           />
-        </Book>
-      </Books>
-      <Container>
+        </WideColumn>
         <Column>
           <Heading>About the Author</Heading>
           <div
@@ -113,16 +87,12 @@ const WebpackIndex = ({ section }) => (
               __html: require("../content/authors/juho.md").body,
             }}
           />
-        </Column>
-        <Column>
           <Heading>Getting the Books</Heading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/gettingbooks.md").body,
             }}
           />
-        </Column>
-        <Column>
           <Heading>Training</Heading>
           <div
             dangerouslySetInnerHTML={{
