@@ -36,6 +36,7 @@ module.exports = {
     base: "#222",
     heading: "#222",
     quiet: "#999",
+    inverted: "#ccc",
     background: "#fff",
     backgroundAlt: "#eee",
     backgroundLight: "#fafafa",

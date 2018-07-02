@@ -48,38 +48,17 @@
     }
   }
 
-  .front-name {
-    margin-bottom: calc(0.5em + 0.5vh + 1vw);
-    text-transform: uppercase;
-    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
-    font-weight: 700;
-
-    .first {
-      color: #ccc;
-    }
-
-    .second {
-      color: #09b5c4;
-    }
-  }
-
   .front-text-wrapper {
     margin-top: 2em;
     margin-bottom: 2em;
   }
 
-  .front-header {
-    margin: 0;
-    color: darken($action-color, 30%);
-    line-height: 1.2;
-    font-size: calc(1rem + 0.5vh + 1vw);
-    font-weight: 400;
-  }
-
   .front-motto {
     margin-top: calc(1rem + 0.5vh + 1vw);
+    margin-bottom: 0;
     font-size: 20px;
     color: darken(white, 20%);
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
   }
 
   .front__heading {
@@ -169,17 +148,6 @@
     height: 100px;
   }
 
-  .front__testimonials {
-    width: 100%;
-
-    padding-top: 2em;
-    padding-bottom: 1em;
-
-    background: #d6f5f7;
-
-    display: table;
-  }
-
   .btn--buy {
     display: inline-block;
     margin-top: 0.5em;
@@ -188,68 +156,63 @@
     text-align: center;
   }
 
+  .front__testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $space-m;
+    background: #d6f5f7;
+  }
+
   .testimonial {
-    padding-left: 1em;
-    padding-right: 1em;
-    font-size: 75%;
-    display: table-cell;
-    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
-    min-width: 20em;
+    flex: 1;
+    min-width: 320px;
+    padding: $space-m;
+    font-size: $deci-size;
+    font-family: $small-font;
 
     .text-wrapper {
-      padding: 1em;
-      padding-bottom: 2em;
-
+      position: relative;
+      padding: $space-m;
+      padding-bottom: $space-l;
       min-height: 10em;
+      background: $background-color;
+      border: 2px solid $background-alt-color;
+      border-radius: 6px;
 
-      background: white;
-      background-image: url("../assets/img/quotes.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-
-      border: 0.1em solid #ccc;
-      border-radius: 0.5em;
+      &:after {
+        content: "”";
+        position: absolute;
+        right: $space-m;
+        bottom: 0;
+        color: $quiet-font-color;
+        font-family: $body-font;
+        font-size: $h1-size;
+      }
     }
     .photo-wrapper {
       text-align: center;
 
       .photo {
-        border: 0.1em solid #777;
-
+        position: relative;
+        border: 2px solid $quiet-font-color;
         margin-top: -25px;
-
-        border-radius: 25px;
+        border-radius: 50%;
         width: 50px;
         height: 50px;
       }
     }
+
     .name-wrapper {
       text-align: center;
     }
 
     .title-wrapper {
       text-align: center;
-
-      font-size: 85%;
+      font-size: $centi-size;
       font-style: italic;
     }
   }
-  @include media-query(portable) {
-    .testimonial {
-      display: inline-block;
 
-      max-width: 33%;
-
-      .text-wrapper {
-        min-height: 5em;
-      }
-    }
-  }
-  @include media-query(palm) {
-    .testimonial {
-      max-width: 100%;
-    }
-  }
   @media (max-width: 550px) {
     .front-cover {
       display: block;
