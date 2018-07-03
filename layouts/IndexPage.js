@@ -1,16 +1,17 @@
 import React from "react";
+import { PageTitle, PageTitleLogo, PageTitleSub } from "../components/Landing";
 
 const IndexPage = ({ type, content }) => {
   const page = () => (
     <div className="frontpage">
       <div className="front__heading">
         <div className="front-header-wrapper">
-          <div className="front-name">
-            <span className="first">Survive</span>
-            <span className="second">JS</span>
-            <span className="first"> — {type}</span>
-          </div>
-          <h1 className="front-header">From apprentice to master</h1>
+          <PageTitle>
+            <PageTitleLogo>
+              Survive<strong>JS</strong> — {type}
+            </PageTitleLogo>
+            <PageTitleSub>From apprentice to master</PageTitleSub>
+          </PageTitle>
         </div>
       </div>
 

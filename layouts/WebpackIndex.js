@@ -1,25 +1,29 @@
 import React from "react";
 import { Testimonial } from "@survivejs/components";
 import LatestPost from "../components/LatestPost";
+import VisuallyHidden from "../components/VisuallyHidden";
 import {
   Landing,
   Container,
   Column,
   WideColumn,
   Heading,
+  SubHeading,
+  PageTitle,
+  PageTitleLogo,
+  PageTitleSub,
 } from "../components/Landing";
 
 const WebpackIndex = ({ section }) => (
   <div className="frontpage">
     <div className="front__heading">
       <div className="front-header-wrapper">
-        <div className="front-name">
-          <span className="first">Survive</span>
-          <span className="second">JS</span>
-          <span className="first"> — Webpack</span>
-        </div>
-
-        <h1 className="front-header">From apprentice to master</h1>
+        <PageTitle>
+          <PageTitleLogo>
+            Survive<strong>JS</strong> — Webpack
+          </PageTitleLogo>
+          <PageTitleSub>From apprentice to master</PageTitleSub>
+        </PageTitle>
 
         <div className="front-button-wrapper">
           <span className="read-free">
@@ -67,13 +71,15 @@ const WebpackIndex = ({ section }) => (
       <LatestPost section={section} />
       <Container>
         <WideColumn>
-          <Heading>SurviveJS - Webpack</Heading>
+          <VisuallyHidden>
+            <Heading>About the book</Heading>
+          </VisuallyHidden>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/webpack.md").body,
             }}
           />
-          <h3>Getting the Book</h3>
+          <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/gets/webpack.md").body,
@@ -81,25 +87,25 @@ const WebpackIndex = ({ section }) => (
           />
         </WideColumn>
         <Column>
-          <Heading>About the Author</Heading>
+          <SubHeading>About the Author</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/authors/juho.md").body,
             }}
           />
-          <Heading>Getting the Books</Heading>
+          <SubHeading>Getting the Books</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/gettingbooks.md").body,
             }}
           />
-          <Heading>Training</Heading>
+          <SubHeading>Training</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/training.md").body,
             }}
           />
-          <Heading>Translations</Heading>
+          <SubHeading>Translations</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/translations.md").body,

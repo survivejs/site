@@ -7,22 +7,26 @@ import {
   Books,
   Book,
   Heading,
+  SubHeading,
+  PageTitle,
+  PageTitleLogo,
+  PageTitleSub,
 } from "../components/Landing";
 
 const SiteIndex = ({ section }) => (
   <div className="frontpage">
     <div className="front__heading">
       <div className="front-header-wrapper">
-        <div className="front-name">
-          <span className="first">Survive</span>
-          <span className="second">JS</span>
-        </div>
-        <h1 className="front-header">
-          Learn JavaScript
-          <div className="front-motto">
-            SurviveJS will take you from apprentice to master
-          </div>
-        </h1>
+        <PageTitle>
+          <PageTitleLogo>
+            Survive<strong>JS</strong>
+          </PageTitleLogo>
+          <PageTitleSub>Learn JavaScript</PageTitleSub>
+        </PageTitle>
+
+        <p className="front-motto">
+          SurviveJS will take you from apprentice to master
+        </p>
       </div>
     </div>
 
@@ -36,7 +40,7 @@ const SiteIndex = ({ section }) => (
               __html: require("../content/descriptions/maintenance.md").body,
             }}
           />
-          <h3>Getting the Book</h3>
+          <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/gets/maintenance.md").body,
@@ -50,7 +54,7 @@ const SiteIndex = ({ section }) => (
               __html: require("../content/descriptions/react.md").body,
             }}
           />
-          <h3>Getting the Book</h3>
+          <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/gets/react.md").body,
@@ -64,7 +68,7 @@ const SiteIndex = ({ section }) => (
               __html: require("../content/descriptions/webpack.md").body,
             }}
           />
-          <h3>Getting the Book</h3>
+          <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/gets/webpack.md").body,

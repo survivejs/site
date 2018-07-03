@@ -6,7 +6,7 @@ The purpose of this book is to gather development practices that are particularl
 
 I, Juho Vepsäläinen, and my co-author Artem Sapegin, have spent years developing npm packages and JavaScript projects. As a result we have gained insight on how to do it and how **not** to do it. The book combines our experience into a concise format that allows you to improve your development experience.
 
-## What Will You Learn
+### What Will You Learn
 
 Unless you work on fresh greenfield projects all the time, maintenance concerns are something that will come up fast. The book has been structured into small parts where you learn:
 

@@ -8,7 +8,7 @@ During this process I have become a core developer of webpack while learning a l
 
 Webpack, a module bundler, is a powerful tool that helps you to develop complex web applications. It enables techniques, such as **code splitting**. You could say it solves the fundamental problem of web development and it has allowed developers to reach new levels of productivity.
 
-## What Will You Learn
+### What Will You Learn
 
 The book would not have been possible without constant feedback by the community around the book. It has been developed to contain solutions to most bundling related problems you might encounter. You can see the book as a complement to the [official documentation](https://webpack.js.org/) which I helped to create. By reading the book, you will develop [an extensive configuration](https://github.com/survivejs-demos/webpack-demo) you understand.
 
