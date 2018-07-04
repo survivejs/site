@@ -24,15 +24,28 @@ export const Column = styled.section`
 
 export const WideColumn = styled(Column)`
   flex-grow: 2;
-  min-width: ${theme.breakpoint.s};
-  @media (max-width: ${theme.breakpoint.s}) {
-    min-width: 0;
+  min-width: 100%;
+  @media (min-width: ${theme.breakpoint.s}) {
+    min-width: ${theme.breakpoint.s};
   }
 `;
 
 export const Books = Container.withComponent("ul");
 
 export const Book = Column.withComponent("li");
+
+export const Cover = styled.img`
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: ${theme.breakpoint.s}) {
+    float: left;
+    width: 40%;
+    margin-right: ${theme.space.m};
+  }
+`;
 
 export const Heading = styled.h2`
   margin: 0 0 ${theme.space.m};

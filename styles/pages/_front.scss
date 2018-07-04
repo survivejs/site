@@ -82,60 +82,30 @@
   }
 
   .react-image {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: $space-m;
     width: 100px;
     height: 100px;
     float: right;
   }
 
-  .front-cover {
-    float: left;
-    max-width: 100%;
-    width: 40%;
-    height: auto;
-    margin-right: 16px;
-  }
-
-  .front-cover + figcaption {
-    display: none;
-  }
-
-  .kanban-image {
-    height: initial;
-  }
-
-  .post--front {
-    max-width: 100%;
-    width: auto;
-  }
-
   .kanban-animation {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 100%;
     width: auto;
     height: auto;
   }
 
   .post--front {
-    overflow: auto;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .post--front {
-    margin: 0 auto;
     max-width: 1000px;
+    padding: 0 $space-m;
   }
 
   @include media-query(portable) {
-
     .read-free {
       margin-top: 0.5em;
-
       display: inline-block;
-    }
-
-    .post--front {
-      padding: 1em;
     }
   }
 
@@ -210,15 +180,6 @@
       text-align: center;
       font-size: $centi-size;
       font-style: italic;
-    }
-  }
-
-  @media (max-width: 550px) {
-    .front-cover {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      float: none;
     }
   }
 }

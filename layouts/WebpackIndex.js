@@ -7,6 +7,7 @@ import {
   Container,
   Column,
   WideColumn,
+  Cover,
   Heading,
   SubHeading,
   PageTitle,
@@ -74,9 +75,19 @@ const WebpackIndex = ({ section }) => (
           <VisuallyHidden>
             <Heading>About the book</Heading>
           </VisuallyHidden>
+          <Cover
+            src={require("../assets/img/covers/webpack-cover.svg")}
+            alt="Webpack book cover"
+          />
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/webpack.md").body,
+            }}
+          />
+          <SubHeading>What Will You Learn</SubHeading>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("../content/descriptions/webpack-learn.md").body,
             }}
           />
           <SubHeading>Getting the Book</SubHeading>

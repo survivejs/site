@@ -2,7 +2,10 @@ import styled, { css, cx } from "react-emotion";
 import React from "react";
 import HorizontalList from "./HorizontalList";
 import HorizontalListItem from "./HorizontalListItem";
+import VisuallyHidden from "./VisuallyHidden";
 import theme from "../styles/theme";
+
+const Title = VisuallyHidden.withComponent("h4");
 
 const Book = styled(HorizontalListItem)`
   margin-bottom: ${theme.space.l};
@@ -29,7 +32,7 @@ const Button = ({ href, children }) => (
 
 const Buy = () => {
   return (
-    <HorizontalList>
+    <HorizontalList aria-label="Other Juho's books">
       <BuyMaintenance />
       <BuyReact />
       <BuyWebpack />
@@ -40,9 +43,10 @@ const Buy = () => {
 const BuyMaintenance = () => (
   <Book>
     <a href="/maintenance/introduction">
+      <Title>SurviveJS - Maintenance: Streamline JavaScript Workflow</Title>
       <Cover
         alt="Maintenance book cover"
-        src={require("assets/img/maintenance_title_page_small.png")}
+        src={require("assets/img/covers/maintenance-cover.svg")}
         width="255"
         height="329"
       />
@@ -56,9 +60,10 @@ const BuyMaintenance = () => (
 const BuyReact = () => (
   <Book>
     <a href="/react/introduction">
+      <Title>SurviveJS - React: From apprentice to master</Title>
       <Cover
         alt="React book cover"
-        src={require("assets/img/react_title_page_small.png")}
+        src={require("assets/img/covers/react-cover.svg")}
         width="255"
         height="329"
       />
@@ -70,9 +75,10 @@ const BuyReact = () => (
 const BuyWebpack = () => (
   <Book>
     <a href="/webpack/foreword">
+      <Title>SurviveJS - Webpack: From apprentice to master</Title>
       <Cover
         alt="Webpack book cover"
-        src={require("assets/img/webpack_title_page_small.png")}
+        src={require("assets/img/covers/webpack-cover.svg")}
         width="255"
         height="329"
       />
