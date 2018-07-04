@@ -6,6 +6,7 @@ import {
   Container,
   Column,
   WideColumn,
+  Cover,
   Heading,
   SubHeading,
   PageTitle,
@@ -51,6 +52,15 @@ const ReactIndex = ({ section }) => (
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/react.md").body,
+            }}
+          />
+          <Cover
+            src={require("../assets/img/covers/react-cover.svg")}
+            alt="React book cover"
+          />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("../content/descriptions/react-learn.md").body,
             }}
           />
           <SubHeading>Getting the Book</SubHeading>

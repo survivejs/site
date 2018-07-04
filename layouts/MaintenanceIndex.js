@@ -6,6 +6,7 @@ import {
   Container,
   Column,
   WideColumn,
+  Cover,
   Heading,
   SubHeading,
   PageTitle,
@@ -48,9 +49,20 @@ const MaintenanceIndex = ({ section }) => (
           <VisuallyHidden>
             <Heading>About the book</Heading>
           </VisuallyHidden>
+          <Cover
+            src={require("../assets/img/covers/maintenance-cover.svg")}
+            alt="Maintenance book cover"
+          />
           <div
             dangerouslySetInnerHTML={{
               __html: require("../content/descriptions/maintenance.md").body,
+            }}
+          />
+          <SubHeading>What Will You Learn</SubHeading>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: require("../content/descriptions/maintenance-learn.md")
+                .body,
             }}
           />
           <SubHeading>Getting the Book</SubHeading>
