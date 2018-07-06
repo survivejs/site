@@ -40,6 +40,7 @@ export const Cover = styled.img`
   height: auto;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: ${theme.space.m};
   @media (min-width: ${theme.breakpoint.s}) {
     float: left;
     width: 40%;

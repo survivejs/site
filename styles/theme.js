@@ -1,6 +1,6 @@
 const space = 8;
 const scaleBase = 12;
-const scaleRatio = 1.25;
+const scaleRatio = 1.3;
 
 module.exports = {
   font: {
