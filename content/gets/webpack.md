@@ -4,7 +4,7 @@ About a third of the income goes to Tobias Koppers, the author of webpack. This 
 
 > There's a [Gitter chat](https://gitter.im/survivejs/webpack) for support. You can [check out the project at GitHub](https://github.com/survivejs/webpack-book) and [support webpack directly through Open Collective](https://opencollective.com/webpack).
 
-<p>
+<p class="btn-group">
 <a class='btn btn--normal btn--buy' href='https://leanpub.com/survivejs-webpack'>Buy at Leanpub</a>
 <a class='btn btn--normal btn--buy' href='https://www.amazon.com/dp/9526868803'>Buy at Amazon</a>
 <a class='btn btn--normal btn--buy' href='https://www.amazon.com/dp/B06XWZZGBS'>Buy for Kindle</a>
