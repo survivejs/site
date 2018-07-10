@@ -36,6 +36,7 @@ Bigger commitments than this are negotiated per case.
 * [eBay](https://www.ebay.de/)
 * [Kapsch](http://www.kapsch.net/) - "Great and helpful workshops with @bebraw @filipematossilv and @wSokra Thank you, guys. Great work!" [Source](https://twitter.com/aalbericio/status/935574136528818177).
 * [Kitchen Reklamebyrå](http://www.kitchen.no/)
+* [Namics](https://www.namics.com/) - This will bring our Webpack builds to the next level: great workshop with deep knowledge from @bebraw and @wsokra. Thank you guys!"
 * [Sevenval](https://www.sevenval.com/blog/5093/webpack-master-ein-kurzer-ruckblick-auf-unseren-workshop-mit-bebraw/) (in German)
 * [Typeform](https://www.typeform.com/)
 * [Quantifio](http://www.quantifio.no/) - "I learned and understood more of webpack in a two-hour masterclass than all previous training combined. Juho has the skills and repertoire to improvise content and fine tune relevancy - he connected the dots on specific topics in an Electron environment and had the answers you wont find online."
