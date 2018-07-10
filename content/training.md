@@ -39,4 +39,5 @@ Bigger commitments than this are negotiated per case.
 * [Sevenval](https://www.sevenval.com/blog/5093/webpack-master-ein-kurzer-ruckblick-auf-unseren-workshop-mit-bebraw/) (in German)
 * [Typeform](https://www.typeform.com/)
 * [Quantifio](http://www.quantifio.no/) - "I learned and understood more of webpack in a two-hour masterclass than all previous training combined. Juho has the skills and repertoire to improvise content and fine tune relevancy - he connected the dots on specific topics in an Electron environment and had the answers you wont find online."
+* [Wix](https://www.wix.com/) - I did sessions with Wix during [YGLF Kiev](http://yglf.com.ua/).
 * [Xeneta](https://www.xeneta.com/)
