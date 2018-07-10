@@ -21,8 +21,8 @@ T> [Read more about the workshop offering](/workshop/) - Workshops can take anyt
 
 I'm flexible when it comes to pricing. In case you prefer something fixed, consider the following examples that apply to Europe:
 
-* One day workshop - 2500 € (VAT 0)
-* Two day workshop - 4000 € (VAT 0)
+* One day workshop - 1500 € (VAT 0)
+* Two day workshop - 2500 € (VAT 0)
 
 T> If you are based in Vienna, you'll get a 500 € discount.
 
