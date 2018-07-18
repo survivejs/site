@@ -7,7 +7,7 @@ keywords: ['interview', 'javascript']
 
 Let's say you are building a CMS or a blog with an admin interface. It won't take long until you want to upload files to your service. There are standards for this, but eventually, you want to do something more complicated.
 
-That's where solutions like Uppy by [Artur Paikin](https://twitter.com/arturi) come in.
+That's where solutions like Uppy by [Artur Paikin](https://twitter.com/arturi) and the team come in.
 
 ## Can you tell a bit about yourself?
 
@@ -72,7 +72,7 @@ All those things can significantly improve the user experience when uploading is
 
 T> Check out the [live version on CodePen](https://codepen.io/uppy/pen/mKrzrM) and [more examples](https://uppy.io/examples/dashboard/).
 
-Everything is a plugin in Uppy. Start simple, add just what you need (or don’t): uploaders (”regular“ xhr, s3, tus), Redux integration, React components, progress bar, extracting values from the `<form>` element on a page. You name it — we’ve got a plugin for it (if not, send a PR or publish your own, we’ll happily link to it. ;-)
+Everything is a plugin in Uppy. Start simple, add just what you need (or don’t): uploaders (”regular“, xhr, s3, tus), Redux integration, React components, progress bar, extracting values from the `<form>` element on a page. You name it — we’ve got a plugin for it (if not, send a PR or publish your own, we’ll happily link to it. ;-)
 
 ```js
 const uppy = Uppy({
@@ -156,9 +156,10 @@ Recently I’ve been seeing more developers who stick to plain CSS and JavaScrip
 
 I’d like to thank our team! It’s a joy to work on a fantastic open source project with unbelievably talented people: [Kevin](http://github.com/kvz) and [Tim](https://github.com/tim-kos), the founders of Transloadit, who inspired and sponsored the Uppy project:
 
-* [Harry](https://github.com/hedgerh) who we worked with at the beginning of Uppy. [Renée](https://renee.kooi.me/), who — fun fact — I met via GitHub PRs and discussions, and who became an invaluable addition to the team.
+* [Harry](https://github.com/hedgerh) who we worked with at the beginning of Uppy.
+* [Renée](https://renee.kooi.me/), who — fun fact — I met via GitHub PRs and discussions, and who became an invaluable addition to the team.
 * [Ife](https://github.com/ifedapoolarewaju) who maintains Uppy Companion, a server component that enables picking files from Instagram, Google Drive or remote URLs.
-* [Alex](https://zaytsev.io/), who helps design our UI.
+* [Alex](https://zaytsev.io/) who helps design our UI.
 * [Marius](http://github.com/Acconut) who’s made our tech so robust (as the driving force behind [tus.io](https://tus.io).
 
 ## Conclusion
