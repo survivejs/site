@@ -21,4 +21,4 @@ I will go to [JSCamp Barcelona](https://jscamp.tech/) in July. You can [get -10%
 
 ## Conclusion
 
-The Summer is shaping up nicely and more events might come up. It's likely we'll organize local events especially in the context of [ReactVienna](https://www.meetup.com/ReactVienna/).
+The Summer is shaping up nicely and more events might come up. It's likely we'll organize local events especially in the context of [React Vienna](https://www.meetup.com/ReactVienna/).
