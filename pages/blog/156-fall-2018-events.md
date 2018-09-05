@@ -37,10 +37,6 @@ I'll visit [ReactiveConf](https://reactiveconf.com/) in Prague to see what they 
 
 I'll visit [JSConf Armenia](https://jsconf.am/) at the beginning of November. It's my first trip to the country. In my talk, I'll examine the past, present, and the future of React.
 
-## Typeof Porto - 29-30.11.2018
-
-I don't have many details on my trip to Portugal just yet but it looks like there will be a conference and I'm going. More info as I get it.
-
 ## Conclusion
 
 I am a organizer at [React Vienna](https://www.meetup.com/ReactVienna/) so that's one way to spot me. Let me know if you are coming and I'll give you a tour.
