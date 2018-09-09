@@ -25,7 +25,7 @@ A minimal npm package should contain metadata in a package.json file and an asso
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.b793d1ecf21fcc5766f5.css" rel="stylesheet">
+      <link href="/site.ec94c90ee4b28ac32fa4.css" rel="stylesheet">
     
 
     <link
@@ -64,7 +64,7 @@ A minimal npm package should contain metadata in a package.json file and an asso
 
   /* Files to include to npm distribution. */
   /* Relative patterns like <span class="token string" >"./src"</span> fail! */
-  <span class="token property" >"files"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"dist/"</span><span class="token punctuation brackets-square" >]</span>
+  <span class="token property" >"files"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"lib/"</span><span class="token punctuation" >,</span> <span class="token string" >"esm/"</span><span class="token punctuation" >,</span> <span class="token string" >"bin/"</span><span class="token punctuation brackets-square" >]</span>
 <span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <h3 class="header"><a class="header-anchor" href="#scripts" id="scripts"></a><span class="text">Scripts</span><a class="header-anchor-select" href="#scripts">#</a></h3>
@@ -87,13 +87,13 @@ A minimal npm package should contain metadata in a package.json file and an asso
     <span class="token property" >"gh-pages"</span><span class="token operator" >:</span> <span class="token string" >"catalog build docs"</span><span class="token punctuation" >,</span>
     <span class="token property" >"gh-pages:deploy"</span><span class="token operator" >:</span> <span class="token string" >"gh-pages -d docs/build"</span><span class="token punctuation" >,</span>
 
-    <span class="token property" >"dist:es6"</span><span class="token operator" >:</span> "del-cli ./dist-es6 &amp;&amp;
-      cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6"<span class="token punctuation" >,</span>
-    <span class="token property" >"dist:modules"</span><span class="token operator" >:</span> "del-cli ./dist-modules &amp;&amp;
-      cross-env BABEL_ENV=modules babel ./src --out-dir ./dist-modules"<span class="token punctuation" >,</span>
+    <span class="token property" >"build"</span><span class="token operator" >:</span> <span class="token string" >"npm run build:esm &amp;&amp; npm run build:cjs"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"build:esm"</span><span class="token operator" >:</span> <span class="token string" >"babel --delete-dir-on-start -d esm/ src/"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"build:cjs"</span><span class="token operator" >:</span>
+      <span class="token string" >"babel --delete-dir-on-start --env-name cjs -d lib/ src/"</span><span class="token punctuation" >,</span>
 
     <span class="token property" >"preversion"</span><span class="token operator" >:</span> <span class="token string" >"npm run test"</span><span class="token punctuation" >,</span>
-    <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run dist:es6 &amp;&amp; npm run dist:modules"</span><span class="token punctuation" >,</span>
+    <span class="token property" >"prepublishOnly"</span><span class="token operator" >:</span> <span class="token string" >"npm run build"</span><span class="token punctuation" >,</span>
     <span class="token property" >"postpublish"</span><span class="token operator" >:</span> <span class="token string" >"npm run gh-pages &amp;&amp; npm run gh-pages:deploy"</span><span class="token punctuation" >,</span>
 
     /* If your library is installed through Git<span class="token punctuation" >,</span> compile it */
@@ -108,13 +108,13 @@ A minimal npm package should contain metadata in a package.json file and an asso
 </ul>
 <p>npm commands, such as <code>npm install</code>, <code>npm publish</code> or <code>npm version</code>, can have <a href="https://docs.npmjs.com/misc/scripts">hooks</a> attached to them, like in the example above.</p>
 <p>Use <code>pre</code> and <code>post</code> prefixes to group your scripts. For example, <em>npm run test</em> will try to run <code>pretest</code>, <code>test</code>, and then <code>posttest</code> scripts. In the example above, the feature is used to control what happens when <code>npm publish</code> is executed.</p>
-<p>Though for npm namespaces (like, <code>namespace:task</code>) don’t mean anything, some tools support this convention. For example, <a href="https://www.npmjs.com/package/npm-run-all">npm-run-all</a> allows you to run all tasks inside a namespace — <code>npm-run-all dist:*</code>.</p>
+<p>Though for npm namespaces (like, <code>namespace:task</code>) don’t mean anything, some tools support this convention. For example, <a href="https://www.npmjs.com/package/npm-run-all">npm-run-all</a> allows you to run all tasks inside a namespace — <code>npm-run-all build:*</code>.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>The <code>postinstall</code> script and how it works is discussed in detail in the <a href="/maintenance/packaging/building/">Building Packages</a> chapter.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>Before npm 5, people used <code>prepublish</code> instead of <code>prepublishOnly</code>. <a href="https://docs.npmjs.com/misc/scripts">According to the documentation</a>, <code>prepublish</code> is run also on <code>npm install</code>. To overcome this confusing behavior, <code>prepublishOnly</code> was implemented.</blockquote><h3 class="header"><a class="header-anchor" href="#entry-points" id="entry-points"></a><span class="text">Entry Points</span><a class="header-anchor-select" href="#entry-points">#</a></h3>
 <p>The entry points describe how the package should resolve to your code when used from Node or a bundler, like webpack.</p>
 <p>If your code is using JavaScript features not supported by Node, or other language like TypeScript, you should compile the code in two ways:</p>
 <ul>
 <li>To ES5, and use this files as the <code>main</code> entry point. It will be used by Node.</li>
-<li>To ES5 except ECMAScript modules (ESM), and use it as the <code>module</code> entry point. It will be used by bundlers, like webpack. This will allow them to do tree shaking.</li>
+<li>To ES5 except ECMAScript modules (ESM), and use it as the <code>module</code> entry point. It will be used by bundlers. This will allow them to do tree shaking.</li>
 </ul>
 <p><strong>package.json</strong></p>
 <pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
@@ -123,13 +123,13 @@ A minimal npm package should contain metadata in a package.json file and an asso
   <span class="token property" >"bin"</span><span class="token operator" >:</span> <span class="token string" >"bin/index.js"</span><span class="token punctuation" >,</span>
 
   /* Main entry point (defaults to index.js<span class="token punctuation brackets-parentheses" >)</span> */
-  <span class="token property" >"main"</span><span class="token operator" >:</span> <span class="token string" >"dist/"</span><span class="token punctuation" >,</span>
+  <span class="token property" >"main"</span><span class="token operator" >:</span> <span class="token string" >"lib/"</span><span class="token punctuation" >,</span>
 
   /* ESM-based entry point for bundlers. */
-  <span class="token property" >"module"</span><span class="token operator" >:</span> <span class="token string" >"dist-modules/"</span>
+  <span class="token property" >"module"</span><span class="token operator" >:</span> <span class="token string" >"esm/"</span>
 <span class="token punctuation brackets-braces" >}</span>
 </code></pre>
-<blockquote class="tip"><i class="icon-attention-circled"></i>Use <a href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</a> to apply only necessary transformations for Node versions or browsers you support.</blockquote><p>On small projects, it’s enough to have all code in <code>index.js</code> in the root folder. On larger ones, you likely want to start splitting it up and move into a directory. Having all code in a directory will make compilation easier.</p>
+<blockquote class="tip"><i class="icon-attention-circled"></i>See <a href="/maintenance/packaging/building/">Building Packages</a> chapter for more details on building your package for different environments and tree shaking.</blockquote><p>On small projects, it’s enough to have all code in <code>index.js</code> in the root folder. On larger ones, you likely want to start splitting it up and move into a directory. Having all code in a directory will make compilation easier.</p>
 <h3 class="header"><a class="header-anchor" href="#dependencies" id="dependencies"></a><span class="text">Dependencies</span><a class="header-anchor-select" href="#dependencies">#</a></h3>
 <p>An npm package can have different types of dependencies. We discuss them in the <em>Types of Dependencies</em> section.</p>
 <p><strong>package.json</strong></p>
@@ -208,7 +208,7 @@ A minimal npm package should contain metadata in a package.json file and an asso
 <h3 class="header"><a class="header-anchor" href="#what-should-not-be-in-a-package" id="what-should-not-be-in-a-package"></a><span class="text">What Should Not Be in a Package</span><a class="header-anchor-select" href="#what-should-not-be-in-a-package">#</a></h3>
 <p>In larger projects, you often find the following files that should be excluded from an npm distribution:</p>
 <ul>
-<li>Tooling configuration, like <em>.babelrc</em>, <em>.eslintrc.json</em>, <em>.travis.yml</em> or <em>webpack.config.js</em> — files like <em>.babelrc</em> may easily break your user’s build if they try to compile _node<em>modules</em> folder and don’t have one of the plugins listed in your config.</li>
+<li>Tooling configuration, like <em>babel.config.json</em>, <em>.eslintrc.json</em>, <em>.travis.yml</em> or <em>webpack.config.js</em> — files like <em>babel.config.json</em> may easily break your user’s build if they try to compile _node<em>modules</em> folder and don’t have one of the plugins listed in your config.</li>
 <li>Tooling or build artifacts like log files — usually anything you have in <em>.gitignore</em> which npm will use by default unless you have <em>.npmignore</em> file. In the latter case you’ll need to copy these patterns from <em>.gitignore</em>.</li>
 <li>File that are required only for development: build scripts or <em>CONTRIBUTING.md</em>.</li>
 <li>Any big files, like images.</li>
