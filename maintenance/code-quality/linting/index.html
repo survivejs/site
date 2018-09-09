@@ -25,7 +25,7 @@ We read code more often then we write it: sometimes we spend hours looking for w
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ebdc1e877cb858995ea7.css" rel="stylesheet">
+      <link href="/site.b793d1ecf21fcc5766f5.css" rel="stylesheet">
     
 
     <link
@@ -75,7 +75,7 @@ We read code more often then we write it: sometimes we spend hours looking for w
 <span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <p>The <code>--fix</code> flag tells ESLint to fix problems automatically <a href="https://eslint.org/docs/rules/">if it can</a>.</p>
-<p>Create a config file, <em>.eslintrc</em>:</p>
+<p>Create a config file, <em>.eslintrc.json</em>:</p>
 <pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span>
 <span class="token punctuation brackets-braces" >}</span>
@@ -83,8 +83,8 @@ We read code more often then we write it: sometimes we spend hours looking for w
 <p>And finally run:</p>
 <pre><code class="lang-bash"><span class="token function" >npm</span> run lint:js
 </code></pre>
-<p>You may need to tweak your <em>.eslintrc</em> according to your project needs:</p>
-<p><strong>.eslintrc</strong></p>
+<p>You may need to tweak your ESLint config according to your project needs:</p>
+<p><strong>.eslintrc.json</strong></p>
 <pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   <span class="token property" >"extends"</span><span class="token operator" >:</span> <span class="token string" >"airbnb-base"</span><span class="token punctuation" >,</span>
   <span class="token property" >"parserOptions"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
@@ -117,8 +117,8 @@ We read code more often then we write it: sometimes we spend hours looking for w
 </code></pre>
 <p>See <a href="http://eslint.org/docs/user-guide/configuring">ESLint docs on configuring</a> for more information.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>To get most value out of linting tools during development, make sure you have installed editor plugins. This way you can get feedback realtime as you develop and can spot potential issues earlier.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>The <a href="/maintenance/appendices/customizing-eslint/">Customizing ESLint</a> appendix discusses how to get more out of ESLint.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint">Use Mrm</a> to add ESLint to your project with a single command.</blockquote><h3 class="header"><a class="header-anchor" href="#eslint-configuration-formats" id="eslint-configuration-formats"></a><span class="text">ESLint Configuration Formats</span><a class="header-anchor-select" href="#eslint-configuration-formats">#</a></h3>
-<p><em>.eslintrc</em> supports <a href="http://json5.org/">JSON5</a> format by default. It’s a proposed extension to JSON that enables features like comments and trailing commas.</p>
-<p>ESLint supports other formats of config files, such as YAML or JavaScript. JSON5 is a good choice, because other tools can modify such files.</p>
+<p><em>.eslintrc.json</em> supports JavaScript-style comments.</p>
+<p>ESLint supports other formats of config files, such as YAML or JavaScript. JSON is a good choice, because other tools can modify such files.</p>
 <h2 class="header"><a class="header-anchor" href="#linting-typescript-with-tslint" id="linting-typescript-with-tslint"></a><span class="text">Linting TypeScript With TSLint</span><a class="header-anchor-select" href="#linting-typescript-with-tslint">#</a></h2>
 <p><a href="https://palantir.github.io/tslint/">TSLint</a> is a linter for TypeScript. It has a much smaller community than ESLint and overall experience is not as nice but otherwise it’s like ESLint.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/eslint/typescript-eslint-parser">TypeScript support</a> for ESLint is experimental and has known issues.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-tslint" id="setting-up-tslint"></a><span class="text">Setting up TSLint</span><a class="header-anchor-select" href="#setting-up-tslint">#</a></h3>

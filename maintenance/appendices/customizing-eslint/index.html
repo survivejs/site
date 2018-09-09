@@ -25,7 +25,7 @@ Even though you can get far with vanilla ESLint, there are certain techniques yo
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.ebdc1e877cb858995ea7.css" rel="stylesheet">
+      <link href="/site.b793d1ecf21fcc5766f5.css" rel="stylesheet">
     
 
     <link
@@ -66,16 +66,16 @@ Even though you can get far with vanilla ESLint, there are certain techniques yo
 <pre><code class="lang-javascript"><span class="token comment" spellcheck="true" >/*eslint-env node, mocha */</span>
 </code></pre>
 <p>Global configuration is possible as well. In this case, you can use <code>env</code> key:</p>
-<p><strong>.eslintrc.js</strong></p>
-<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
-  env<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    browser<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    commonjs<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    es6<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
-    node<span class="token punctuation" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+<p><strong>.eslintrc.json</strong></p>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  <span class="token property" >"env"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    <span class="token property" >"browser"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"commonjs"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"es6"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
+    <span class="token property" >"node"</span><span class="token operator" >:</span> <span class="token boolean" >true</span><span class="token punctuation" >,</span>
   <span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >,</span>
-  <span class="token comment" spellcheck="true" >// ...</span>
-<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+  // ...
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <!-- textlint-enable -->
 <h2 class="header"><a class="header-anchor" href="#writing-eslint-plugins" id="writing-eslint-plugins"></a><span class="text">Writing ESLint Plugins</span><a class="header-anchor-select" href="#writing-eslint-plugins">#</a></h2>
@@ -121,28 +121,28 @@ Even though you can get far with vanilla ESLint, there are certain techniques yo
 <p>In this case, you report for every identifier found. In practice, you likely want to do something more complex than this, but this is a good starting point.</p>
 <p>Next, you need to execute <code>npm link</code> within <code>eslint-plugin-custom</code> to make your plugin visible to your system. <code>npm link</code> allows you to consume a development version of a library you are developing. To reverse the link, you can execute <code>npm unlink</code> when you feel like it.</p>
 <p>You need to alter the project configuration to make it find the plugin and the rule within.</p>
-<p><strong>.eslintrc.js</strong></p>
+<p><strong>.eslintrc.json</strong></p>
 <!-- textlint-disable -->
 <!-- skip-example -->
-<pre><code class="lang-javascript">module<span class="token punctuation" >.</span>exports <span class="token operator" >=</span> <span class="token punctuation brackets-braces" >{</span>
-  <span class="token operator" >...</span>
-  plugins<span class="token punctuation" >:</span> <span class="token punctuation brackets-square" >[</span>
-    <span class="token operator" >...</span>
+<pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
+  // ...
+  <span class="token property" >"plugins"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
+    // ...
 <div class="leanpub-insert">
-    <span class="token string" >'custom'</span>
+    <span class="token string" >"custom"</span>
 </div>
   <span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
-  rules<span class="token punctuation" >:</span> <span class="token punctuation brackets-braces" >{</span>
-    <span class="token operator" >...</span>
+  <span class="token property" >"rules"</span><span class="token operator" >:</span> <span class="token punctuation brackets-braces" >{</span>
+    // ...
 <div class="leanpub-insert">
-    <span class="token string" >'custom/demo'</span><span class="token punctuation" >:</span> <span class="token number" >1</span><span class="token punctuation" >,</span>
+    <span class="token property" >"custom/demo"</span><span class="token operator" >:</span> <span class="token number" >1</span><span class="token punctuation" >,</span>
 </div>
   <span class="token punctuation brackets-braces" >}</span>
-<span class="token punctuation brackets-braces" >}</span><span class="token punctuation" >;</span>
+<span class="token punctuation brackets-braces" >}</span>
 </code></pre>
 <!-- textlint-enable -->
 <p>If you invoke ESLint now, you should see a bunch of warnings. Of course, the rule doesn’t do anything impressive yet. To move forward, check out the <a href="http://eslint.org/docs/developer-guide/working-with-plugins.html">official plugin documentation</a> and <a href="http://eslint.org/docs/developer-guide/working-with-rules.html">rules</a>.</p>
-<p>You can also check out the existing rules and plugins for inspiration to see how they achieve certain things. ESLint allows you to <a href="http://eslint.org/docs/user-guide/configuring.html#extending-configuration-files">extend these rulesets</a> through <code>extends</code> property. It accepts either a path to it (<code>&quot;extends&quot;: &quot;./node_modules/coding-standard/.eslintrc&quot;</code>) or an array of paths. The entries are applied in the given order, and later ones override the former.</p>
+<p>You can also check out the existing rules and plugins for inspiration to see how they achieve certain things. ESLint allows you to <a href="http://eslint.org/docs/user-guide/configuring.html#extending-configuration-files">extend these rulesets</a> through <code>extends</code> property. It accepts either a path to it (<code>&quot;extends&quot;: &quot;./node_modules/coding-standard/.eslintrc.json&quot;</code>) or an array of paths. The entries are applied in the given order, and later ones override the former.</p>
 <h2 class="header"><a class="header-anchor" href="#eslint-resources" id="eslint-resources"></a><span class="text">ESLint Resources</span><a class="header-anchor-select" href="#eslint-resources">#</a></h2>
 <p>Besides the official documentation available at <a href="http://eslint.org/">eslint.org</a>, you should check out the following blog posts:</p>
 <ul>
