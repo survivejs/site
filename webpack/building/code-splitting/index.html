@@ -25,7 +25,7 @@ Web applications tend to grow big as features are developed. The longer it takes
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.aa4880867c3364535a1b.css" rel="stylesheet">
+      <link href="/site.aa712c4c7e77d43f41c6.css" rel="stylesheet">
     
 
     <link
@@ -66,15 +66,15 @@ Web applications tend to grow big as features are developed. The longer it takes
 <blockquote class="warning"><i class="icon-attention"></i>The syntax works only with JavaScript after configuring it the right way. If you use another environment you may have to use alternatives covered in the following sections.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i>There&#39;s an older syntax, <a href="https://webpack.js.org/api/module-methods/#require-ensure">require.ensure</a>. In practice the new syntax can cover the same functionality. See also <a href="https://webpack.js.org/api/module-methods/#require-include">require.include</a>.</blockquote><blockquote class="tip"><i class="icon-attention-circled"></i><a href="https://github.com/webpack/webpack-pwa">webpack-pwa</a> illustrates the idea on a larger scale and discusses different shell based approaches. You get back to this topic in the <a href="/webpack/output/multiple-pages/">Multiple Pages</a> chapter.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-code-splitting" id="setting-up-code-splitting"></a><span class="text">Setting Up Code Splitting</span><a class="header-anchor-select" href="#setting-up-code-splitting">#</a></h2>
 <p>To demonstrate the idea of code splitting, you can use dynamic <code>import</code>. The Babel setup of the project needs additions to make the syntax work.</p>
 <h3 class="header"><a class="header-anchor" href="#configuring-babel" id="configuring-babel"></a><span class="text">Configuring Babel</span><a class="header-anchor-select" href="#configuring-babel">#</a></h3>
-<p>Given Babel doesn&#39;t support the dynamic <code>import</code> syntax out of the box, it needs <a href="https://www.npmjs.com/package/babel-plugin-syntax-dynamic-import">babel-plugin-syntax-dynamic-import</a> to work.</p>
+<p>Given Babel doesn&#39;t support the dynamic <code>import</code> syntax out of the box, it needs <a href="https://www.npmjs.com/package/@babel/plugin-syntax-dynamic-import">@babel/plugin-syntax-dynamic-import</a> to work.</p>
 <p>Install it first:</p>
-<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> babel-plugin-syntax-dynamic-import --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> @babel/plugin-syntax-dynamic-import --save-dev
 </code></pre>
 <p>To connect it with the project, adjust the configuration as follows:</p>
 <p><strong>.babelrc</strong></p>
 <pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
 <div class="leanpub-insert">
-  <span class="token property" >"plugins"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"syntax-dynamic-import"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
+  <span class="token property" >"plugins"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span><span class="token string" >"@babel/plugin-syntax-dynamic-import"</span><span class="token punctuation brackets-square" >]</span><span class="token punctuation" >,</span>
 </div>
   ...
 <span class="token punctuation brackets-braces" >}</span>

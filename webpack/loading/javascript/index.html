@@ -25,7 +25,7 @@ Webpack processes ES2015 module definitions by default and transforms them into 
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.aa4880867c3364535a1b.css" rel="stylesheet">
+      <link href="/site.aa712c4c7e77d43f41c6.css" rel="stylesheet">
     
 
     <link
@@ -59,8 +59,8 @@ __webpack_require__<span class="token punctuation" >.</span><span class="token f
 <p>You can use Babel with webpack through <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. It can pick up project level Babel configuration, or you can configure it at the webpack loader itself. <a href="https://www.npmjs.com/package/babel-webpack-plugin">babel-webpack-plugin</a> is another lesser-known option.</p>
 <p>Connecting Babel with a project allows you to process webpack configuration through it. To achieve this, name your webpack configuration using the <em>webpack.config.babel.js</em> convention. <a href="https://www.npmjs.com/package/interpret">interpret</a> package enables this, and it supports other compilers as well.</p>
 <blockquote class="tip"><i class="icon-attention-circled"></i>Given that <a href="http://node.green/">Node supports the ES2015 specification well</a> these days, you can use a lot of ES2015 features without having to process configuration through Babel.</blockquote><blockquote class="warning"><i class="icon-attention"></i>If you use <em>webpack.config.babel.js</em>, take care with the <code>&quot;modules&quot;: false,</code> setting. If you want to use ES2015 modules, you could skip the setting in your global Babel configuration and then configure it per environment as discussed below.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-babel-loader-" id="setting-up-babel-loader-"></a><span class="text">Setting Up <em>babel-loader</em></span><a class="header-anchor-select" href="#setting-up-babel-loader-">#</a></h3>
-<p>The first step towards configuring Babel to work with webpack is to set up <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. It takes the code and turns it into a format older browsers can understand. Install <em>babel-loader</em> and include its peer dependency <em>babel-core</em>:</p>
-<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> babel-loader babel-core --save-dev
+<p>The first step towards configuring Babel to work with webpack is to set up <a href="https://www.npmjs.com/package/babel-loader">babel-loader</a>. It takes the code and turns it into a format older browsers can understand. Install <em>babel-loader</em> and include its peer dependency <em>@babel/core</em>:</p>
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> babel-loader @babel/core --save-dev
 </code></pre>
 <p>As usual, let&#39;s define a function for Babel:</p>
 <p><strong>webpack.parts.js</strong></p>
@@ -91,7 +91,7 @@ __webpack_require__<span class="token punctuation" >.</span><span class="token f
 <blockquote class="warning"><i class="icon-attention"></i>If you try to import files <strong>outside</strong> of your configuration root directory and then process them through <em>babel-loader</em>, this fails. It&#39;s <a href="https://github.com/babel/babel-loader/issues/313">a known issue</a>, and there are workarounds including maintaining <em>.babelrc</em> at a higher level in the project and resolving against Babel presets through <code>require.resolve</code> at webpack configuration.</blockquote><h3 class="header"><a class="header-anchor" href="#setting-up-babelrc-" id="setting-up-babelrc-"></a><span class="text">Setting Up <em>.babelrc</em></span><a class="header-anchor-select" href="#setting-up-babelrc-">#</a></h3>
 <p>At a minimum, you need <a href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</a>. It&#39;s a Babel preset that enables the required plugins based on the optional environment definition you pass to it.</p>
 <p>Install the preset first:</p>
-<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> babel-preset-env --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> @babel/preset-env --save-dev
 </code></pre>
 <p>To make Babel aware of the preset, you need to write a <em>.babelrc</em>. Given webpack supports ES2015 modules out of the box, you can tell Babel to skip processing them. Jumping over this step would break webpack&#39;s HMR mechanism although the production build would still work. You can also constrain the build output to work only in recent versions of Chrome.</p>
 <p>Adjust the target definition as you like. As long as you follow <a href="https://www.npmjs.com/package/browserslist">browserslist</a>, it should work. Here&#39;s a sample configuration:</p>
@@ -99,7 +99,7 @@ __webpack_require__<span class="token punctuation" >.</span><span class="token f
 <pre><code class="lang-json"><span class="token punctuation brackets-braces" >{</span>
   <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
     <span class="token punctuation brackets-square" >[</span>
-      <span class="token string" >"env"</span><span class="token punctuation" >,</span>
+      <span class="token string" >"@babel/preset-env"</span><span class="token punctuation" >,</span>
       <span class="token punctuation brackets-braces" >{</span>
         <span class="token property" >"modules"</span><span class="token operator" >:</span> <span class="token boolean" >false</span><span class="token punctuation" >,</span>
       <span class="token punctuation brackets-braces" >}</span>
