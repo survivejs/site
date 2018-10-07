@@ -25,7 +25,7 @@ Server Side Rendering (SSR) is a technique that allows you to serve an initial p
     <link rel='icon' type='image/png' href='/favicon.png'></link>
 
     
-      <link href="/site.aa712c4c7e77d43f41c6.css" rel="stylesheet">
+      <link href="/site.d92784c30c5cae213730.css" rel="stylesheet">
     
 
     <link
@@ -40,7 +40,7 @@ Server Side Rendering (SSR) is a technique that allows you to serve an initial p
 <blockquote class="tip"><i class="icon-attention-circled"></i>SSR isn&#39;t the only solution to the SEO problem. <strong>Prerendering</strong> is an alternate technique that is easier to implement if it fits your use case. The approach won&#39;t work well with highly dynamic data. <a href="https://www.npmjs.com/package/prerender-spa-plugin">prerender-spa-plugin</a> allows you to implement it with webpack.</blockquote><h2 class="header"><a class="header-anchor" href="#setting-up-babel-with-react" id="setting-up-babel-with-react"></a><span class="text">Setting Up Babel with React</span><a class="header-anchor-select" href="#setting-up-babel-with-react">#</a></h2>
 <p>The <a href="/webpack/loading/javascript/">Loading JavaScript</a> chapter covers the essentials of using Babel with webpack. There&#39;s setup that is particular to React you should perform, though. Given most of React projects rely on <a href="https://facebook.github.io/jsx/">JSX</a> format, you have to enable it through Babel.</p>
 <p>To get React, and particularly JSX, work with Babel, install the preset first:</p>
-<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> babel-preset-react --save-dev
+<pre><code class="lang-bash"><span class="token function" >npm</span> <span class="token function" >install</span> @babel/preset-react --save-dev
 </code></pre>
 <p>Connect the preset with Babel configuration as follows:</p>
 <p><strong>.babelrc</strong></p>
@@ -48,7 +48,7 @@ Server Side Rendering (SSR) is a technique that allows you to serve an initial p
   ...
   <span class="token property" >"presets"</span><span class="token operator" >:</span> <span class="token punctuation brackets-square" >[</span>
 <div class="leanpub-insert">
-    <span class="token string" >"react"</span><span class="token punctuation" >,</span>
+    <span class="token string" >"@babel/preset-react"</span><span class="token punctuation" >,</span>
 </div>
     ...
   <span class="token punctuation brackets-square" >]</span>
