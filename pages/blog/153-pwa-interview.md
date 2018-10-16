@@ -13,7 +13,7 @@ Even though the web started from content, it has transformed into an application
 
 <p>
 <span class="author">
-  <img src="http://www.gravatar.com/avatar/26152f965d5974e7a30deaa5ab19641f?s=200&d=wavatar" alt="Maciej Caputa" class="author" width="100" height="100" />
+  <img src="https://www.gravatar.com/avatar/26152f965d5974e7a30deaa5ab19641f?s=200&d=wavatar" alt="Maciej Caputa" class="author" width="100" height="100" />
 </span>
 
 I’m a frontend developer at Netguru – a cool software consultancy that provides design and development services for companies from all over the world. I have four years of experience in web development in various technologies.
