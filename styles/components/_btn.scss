@@ -6,6 +6,7 @@
   -webkit-appearance: none;
   -webkit-appearance: normal;
   outline: none;
+  text-decoration: none;
   background-color: transparent;
   padding: 0.6em 1em;
   border-radius: 2em;
@@ -18,7 +19,10 @@
 .btn--normal {
   border: $border-width $action-color solid;
   color: darken($action-color, 30%);
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
     background-color: rgba($action-color, 0.2);
   }
 }
@@ -26,7 +30,10 @@
 .btn--inverted {
   border: $border-width $background-color solid;
   color: $background-color;
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
     background-color: $background-color;
     color: darken($action-color, 30%);
   }
