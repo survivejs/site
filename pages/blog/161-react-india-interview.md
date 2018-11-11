@@ -61,7 +61,7 @@ First of all, programming is not hard. Despite what people say, you don't have t
 
 I would say keep learning don't look back. Ask for help in the community. There are a lot of people in the community to help. My last advice will be "be determined and focused". Sometimes you will feel on the top of the world, sometimes times you will question yourself.
 
-Whatever highs and lows you face keeping practicing, keep trying, keep learning because that feeling when you achieve something will make you more proud of yourself.
+Whatever highs and lows you face, keep practicing, keep trying, keep learning because that feeling when you achieve something will make you more proud of yourself.
 
 > Always remember - "The hardest path has the greatest payoff."
 
