@@ -62,7 +62,7 @@ Your first work doesn't need to be perfect, and you will learn a lot from your m
 
 ## Who should I interview next?
 
-Even Stensberg @evenstensberg works hard at the webpack-cli.
+Even Stensberg (**@evenstensberg**) works hard at the _webpack-cli_.
 
 ## Conclusion
 
