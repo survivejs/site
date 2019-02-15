@@ -38,7 +38,7 @@ T> See [Christian's article about mutation tracking](https://itnext.io/updating-
 
 In my experience immutability is a technically elegant solution. The problem is that the developer experience tends to suffer because of the amount of boilerplate code required. The issue of boilerplate applies from everything from defining a state change, to mapping state to components, to worrying about render performance if too much state is exposed, and so on.
 
-When `Proxies` became available in all major browsers, I wanted to build a state management library that has as little API surface as possible. It is `state, actions, effects` where you write everyday functions, use the straight forward mutation API of JavaScript.
+When `Proxies` became available in all major browsers, I wanted to build a state management library that has as little API surface as possible. Overmind is based on the concepts of `state`, `actions` and `effects`. You write everyday functions and use the straight forward mutation API of JavaScript
 
 "Mutation is the root of all evil" is like the battle cry of immutability, but with proxies that is not true. Overmind controls where and how mutations occur. It even tells you all about it in the development tool.
 
