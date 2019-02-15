@@ -5,7 +5,7 @@ headerImage: 'assets/img/overmind-header.jpg'
 keywords: ['interview', 'react', 'state-management']
 ---
 
-Although state management solutions like [Redux](link to Redux interview) have become the standard, at least with React, there's still room for innovation in the space.
+Although state management solutions like [Redux](/blog/redux-interview/) have become the standard, at least with React, there's still room for innovation in the space.
 
 Sometimes what happens is that technology becomes reinterpreted. When you can see the technology in context, you can also figure out what went right and what went wrong. It's this process that gives room for innovation.
 
