@@ -106,7 +106,7 @@ Focus on solving a problem that is interesting to you instead of wading through 
 
 ## Who should I interview next?
 
-There's lots of interesting work being done in the WebGL / 3D graphics space. [Mikola Lysenko](https://github.com/mikolalysenko) is doing great work with [regl](https://github.com/regl-project/regl), and [Ricky Reusser](http://rickyreusser.com/) has been using it to make some excellent [data visualizations](https://github.com/rreusser/demos#regl). [Stardust.js](https://stardustjs.github.io/) is also an exciting project for using WebGL to visualize data.
+There's lots of interesting work being done in the WebGL / 3D graphics space. [Mikola Lysenko](https://github.com/mikolalysenko) is doing great work with [regl](https://github.com/regl-project/regl), and [Ricky Reusser](https://rreusser.github.io/) has been using it to make some excellent [data visualizations](https://github.com/rreusser/demos#regl). [Stardust.js](https://stardustjs.github.io/) is also an exciting project for using WebGL to visualize data.
 
 The work on decentralization from folks working on projects like [Beaker Browser](https://github.com/beakerbrowser/beaker) and [Dat](https://datproject.org/) is also exciting.
 
