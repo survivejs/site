@@ -84,8 +84,8 @@ Given you might want stylistic changes as well, you'll need to adjust the compon
 ```javascript
 const AnotherBadge = merge({}, Badge, {
   with: {
-    Name: styled(Badge.with.Name)``
-    Type styled(Badge.with.Name)``
+    Name: styled(Badge.with.Name)`...`
+    Type styled(Badge.with.Name)`...`
   }
 })
 ```
