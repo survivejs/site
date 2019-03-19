@@ -2,7 +2,7 @@
 title: 'DSS - Deterministic Style Sheets - Interview with Giuseppe Gurgone'
 date: 2018-09-05
 headerImage: 'assets/img/dss.png'
-keywords: ['interview', 'styling']
+keywords: ['interview', 'styling', 'cssinjs']
 ---
 
 CSS is perhaps one of the most controversial parts of web development. For some, it's the favorite, for some the least pleasant part. As a result, many solutions have appeared around it to make it more palatable to web developers.

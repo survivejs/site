@@ -2,7 +2,7 @@
 title: 'JSS - Author CSS Using JavaScript as a Host Language - Interview with Oleg Slobodskoi'
 date: 2017-07-07
 headerImage: 'assets/img/clock.jpg'
-keywords: ['interview', 'react', 'styling']
+keywords: ['interview', 'react', 'styling', 'cssinjs']
 editors: ['bebraw', 'karlhorky']
 ---
 
@@ -15,8 +15,7 @@ To understand the topic better, I am interviewing [Oleg Slobodskoi](https://twit
 <span class="author">
   <img src="https://avatars1.githubusercontent.com/u/52824?v=3&s=200" alt="Oleg Slobodskoi" class="author" width="100" height="100" />
 
-Working on web UIs for over a decade, I have realized there are two significant challenges in frontend engineering: understanding the state and styling its representation. Unidirectional data flow has made managing state much easier, but styling components is still painful.
-</span>
+Working on web UIs for over a decade, I have realized there are two significant challenges in frontend engineering: understanding the state and styling its representation. Unidirectional data flow has made managing state much easier, but styling components is still painful. </span>
 
 To improve the situation, I started JSS back in 2014 and haven't stopped learning and developing the project since. Currently, I am working at [Chatgrape](https://www.chatgrape.com/) where we are building a sophisticated client using NLP and deep services integration. All CSS is managed using JSS. Also, I try to talk at conferences from time to time, even if I know I suck at this haha.
 
@@ -49,58 +48,56 @@ The general process goes like this:
 **Example using the low level [core library](https://github.com/cssinjs/jss)**
 
 ```js
-import jss from 'jss'
-import preset from 'jss-preset-default'
+import jss from "jss";
+import preset from "jss-preset-default";
 
 // One-time setup.
-jss.setup(preset())
+jss.setup(preset());
 
 const styles = {
   button: {
-    color: 'red'
-  }
-}
+    color: "red",
+  },
+};
 
 // Compile and render the styles.
-const { classes } = jss.createStyleSheet(styles).attach()
+const { classes } = jss.createStyleSheet(styles).attach();
 
 document.body.innerHTML = `
   <button class="${classes.button}">
     My Button
   </button>
-`
+`;
 ```
 
 **Example using [React-JSS](http://cssinjs.org/react-jss)**
 
 ```js
-import injectSheet from 'react-jss'
+import injectSheet from "react-jss";
 
 const styles = {
   button: {
-    color: 'red'
-  }
-}
+    color: "red",
+  },
+};
 
 const Button = ({ classes }) => (
-  <button className={classes.button}>
-    My Button
-  </button>
-)
+  <button className={classes.button}>My Button</button>
+);
 
 // Function injectSheet generates a HOC, which uses JSS and passes `classes` to the `Button`.
-const StyledButton = injectSheet(styles)(Button)
+const StyledButton = injectSheet(styles)(Button);
 ```
 
 **Example using [Styled-JSS](http://cssinjs.org/styled-jss)**
 
 ```js
-import styled from 'styled-jss'
+import styled from "styled-jss";
 
 // Produces a button which has the styles already applied.
-const MyButton = styled('button')({
-  color: 'red'
-})
+const MyButton = styled("button")({
+  color: "red",
+});
 ```
 
 ## How does JSS differ from other solutions?
@@ -152,7 +149,7 @@ The foremost focus is on making the DX better: better documentation, auto-comple
 
 I am trying to establish a distributed team of people responsible for different parts of this story. To give you an idea, consider the following contributions:
 
-* Styled-JSS was written mostly by [@_lttb](https://twitter.com/_lttb) and theming support is being added now by [@iamstarkov](https://twitter.com/iamstarkov).
+* Styled-JSS was written mostly by [@\_lttb](https://twitter.com/_lttb) and theming support is being added now by [@iamstarkov](https://twitter.com/iamstarkov).
 * [@wikiwi_io](https://twitter.com/wikiwi_io) is working on the next version of our vendor prefixer and documentation site and the jss-expand plugin was developed by [@typical001](https://twitter.com/typical001).
 * Our logo was created by [@okonetchnikov](https://twitter.com/okonetchnikov).
 
@@ -180,7 +177,7 @@ Take open source seriously. I learned 90% of what I know about computers and pro
 
 * [@iamstarkov](https://twitter.com/iamstarkov) created a [unified theming solution](https://github.com/iamstarkov/theming) for React which will be soon used by all the key CSS in JS libraries.
 * [@olivtassinari](https://twitter.com/olivtassinari) is doing a great job persistently maintaining Material UI library.
-* [@_developit](https://twitter.com/_developit) is pushing the boundaries of what is possible within 3Kb.
+* [@\_developit](https://twitter.com/_developit) is pushing the boundaries of what is possible within 3Kb.
 * [@iamsapegin](https://twitter.com/iamsapegin) created a tool called [React Styleguidist](https://react-styleguidist.js.org/) which provides the best dev environment to write components.
 
 T> **Editor's note:** I [interviewed Artem earlier about Styleguidist](/blog/styleguidist-interview/).

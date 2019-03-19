@@ -2,7 +2,7 @@
 title: 'Styletron - Universal, high-performance JavaScript styles - Interview with Ryan Tsao'
 date: 2016-12-26
 headerImage: 'assets/img/highway.jpg'
-keywords: ['interview', 'react', 'styling']
+keywords: ['interview', 'react', 'styling', 'cssinjs']
 ---
 
 Styling is one of those topics that's under flux. My [React styling chapter](/react/advanced-techniques/styling-react/) alone covers quite a few approaches and [Michele Bertoli's list](https://github.com/MicheleBertoli/css-in-js) has a lot more.
@@ -17,32 +17,32 @@ There was [an interview on glamor](/blog/glamor-interview) earlier. It's time to
 </span>
 
 I'm a software engineer living in San Francisco currently working at Uber on the Web Platform team. I first got into web development at the age of 12 when, for whatever reason, I decided that I wanted to build a website.
+
 </p>
 
 The immediacy and accessibility of web programming and its synthesis of coding and visual design and proved tremendously appealing to me and I've been hooked ever since. Most recently, I've been focused on building JavaScript tools and libraries to support Node.js web application development, particularly in the area of UI components and styles.
 
-## How would you describe *Styletron* to someone who has never heard of it?
+## How would you describe _Styletron_ to someone who has never heard of it?
 
 Styletron is a small CSS-in-JS utility designed for server and client-rendered web applications with a focus on scalability and high performance. Like other CSS-in-JS libraries, it's designed to work in conjunction with component-driven web app frameworks.
 
 This includes React where UI logic, markup, and styling are colocated in JavaScript and partitioned by component rather than separated into HMTL, CSS, and JS. Among other things, Styletron makes it easier to treat your views (styling included) as a pure function of state and not worry about side effects or global namespace collisions in CSS.
 
-## How does *Styletron* work?
+## How does _Styletron_ work?
 
 Styletron produces CSS from styles defined in JavaScript. Many different APIs can be built on top of Styletron, but typically, styles are defined somewhere in the render function of a component in the form of object literals, which Styletron turns into corresponding class names.
 
-
 ```js
-import Styletron from 'styletron';
-import { injectStyle } from 'styletron-utils';
+import Styletron from "styletron";
+import { injectStyle } from "styletron-utils";
 
 // Create a Styletron instance
 const styletron = new Styletron();
 
 const className = injectStyle(styletron, {
-  color: 'red',
-  display: 'inline-block',
-  fontSize: '1.6em'
+  color: "red",
+  display: "inline-block",
+  fontSize: "1.6em",
 });
 // Corresponding css is injected into the page
 // and a class name is returned
@@ -53,8 +53,8 @@ During a page render on the server, Styletron accumulates the injected styles in
 In the browser, Styletron will hydrate its cache from the server-rendered styles (to avoid re-rendering these on the initial client render) and any additional styles rendered on the client will be injected into the page.
 
 ```js
-import Styletron from 'styletron';
-import { injectStyle } from 'styletron-utils';
+import Styletron from "styletron";
+import { injectStyle } from "styletron-utils";
 
 // On the server:
 function render() {
@@ -75,7 +75,7 @@ function render() {
 
 // On the client:
 const serverRenderedStyles = document.getElementsByClassName(
-  '_styletron_hydrate_'
+  "_styletron_hydrate_"
 );
 
 // Create Styletron instance on the client,
@@ -84,12 +84,12 @@ const styletron = new Styletron(serverRenderedStyles);
 
 // Inject new styles into the page
 const newClassName = injectStyle(styletron, {
-  color: 'blue',
-  fontSize: '24px'
+  color: "blue",
+  fontSize: "24px",
 });
 ```
 
-## How does *Styletron* differ from other solutions?
+## How does _Styletron_ differ from other solutions?
 
 The traditional CSS-in-JS method involves a straightforward 1:1 conversion of style objects into corresponding scoped CSS classes. Instead, Styletron takes advantage of a novel approach to generating CSS from JavaScript styles.
 
@@ -99,16 +99,16 @@ For example, given styles for two buttons, we get the following class names and 
 
 ```js
 const redButtonClass = injectStyle(styletron, {
-  color: 'red',
-  display: 'inline-block',
-  fontSize: '1.6em'
+  color: "red",
+  display: "inline-block",
+  fontSize: "1.6em",
 });
 // redButtonClass is `a b c`
 
 const blueButtonClass = injectStyle(styletron, {
-  color: 'blue',
-  display: 'inline-block',
-  fontSize: '1.6em'
+  color: "blue",
+  display: "inline-block",
+  fontSize: "1.6em",
 });
 // blueButtonClass is `d b c`
 
@@ -119,14 +119,13 @@ const blueButtonClass = injectStyle(styletron, {
 .c { font-size: 1.6em }
 .d { color: blue }
 */
-
 ```
 
 In addition, since Styletron operates on individual declarations rather than rules, it benefits from more granular memoization which it allows it to avoid extra work.
 
 In large apps, the total number of declarations can dwarf the number of unique declarations, so the de-duplication that Styletron is able to perform can turn out to be quite significant.
 
-## Why did you develop *Styletron*?
+## Why did you develop _Styletron_?
 
 The original impetus for creating Styletron was the lack of unopinonated, low-level CSS-in-JS solutions. Many CSS-in-JS solutions provided some mechanism for rendering styles in both the browser and server, but they were tightly coupled with an opinionated, high-level API for defining and consuming styles in components.
 
@@ -140,7 +139,7 @@ Although in many ways I think CSS-in-JS is already superior to a conventional CS
 
 One thing in particular that I think would be great is type definitions for style object literals, so authoring styles in JavaScript becomes a lot nicer and things like IDE autocomplete become possible. Aside from that, I'm planning further performance optimization and will look into ways to support more CSS features in Styletron. Chrome DevTools integration that makes working with the generated atomic CSS easier would also be awesome.
 
-## What does the future look like for *Styletron* and web development in general? Can you see any particular trends?
+## What does the future look like for _Styletron_ and web development in general? Can you see any particular trends?
 
 I think across the board, there's a been a renewed focus on application size and parse times, which can have an outsized impact on mobile devices. In the JS module bundler space, bundle-splitting and tree-shaking have been much-heralded features.
 
