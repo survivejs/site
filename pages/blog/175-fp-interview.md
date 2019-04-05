@@ -168,7 +168,7 @@ We often have to deal with `null` in our programs. It is often done via option t
 let guess: u32 = match guess.trim().parse()
 ```
 
-What happens when we get a string such as `"12a"`? The parse can return `null` which we can check in an `if` condition. However, we can forget to do that. Also, the compiler is not enforcing that check. In Rust, here's how we do it:
+What happens when we get a string such as `"12a"`? Most languages will either return `null` (or equivalent) or throw an exception. We can check for the nullness in an `if` condition or wrap the line in a `try-catch`. However, we can forget to do that. Also, the compiler is not enforcing that check. In Rust, here's how we do it:
 
 ```
 let guess: u32 = match guess.trim().parse() {
@@ -177,7 +177,7 @@ let guess: u32 = match guess.trim().parse() {
 };
 ```
 
-We add a block that pattern matches on two types `Ok` and `Err` for successful values and errors respectively. Also, if you forget the `Err` part or even the whole block, the compiler can issue a warning that you have potentially unhandled edge cases.
+In most functional languages, `null` does not exist. Its concept is often implemented via something called Option type. In the above Rust code, we add a block that pattern matches on two types `Ok` and `Err` for successful values and errors respectively. If `parse` is not able to turn the string into a number, it will return an `Err` value that contains more information about the error. Also, if you forget the `Err` part or even the whole block, the compiler can issue a warning that you have potentially unhandled edge cases.
 
 ### Unit Testing and Debugging
 
