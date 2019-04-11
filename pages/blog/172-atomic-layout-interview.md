@@ -164,7 +164,7 @@ const areasTablet = `
 
 const Header = () => (
   <Composition areas={areasMobile} areasMd={areasTablet} gutter={10}>
-    {({ Logo, Humburger, Menu, Actions }) => (
+    {({ Logo, Hamburger, Menu, Actions }) => (
       <>
         {/**
          * "Logo" is present in both area definitions,
@@ -172,11 +172,11 @@ const Header = () => (
          */}
         <Logo />
         {/**
-         * "Humburger" is present in "areas", but missing
+         * "Hamburger" is present in "areas", but missing
          * in "areasMd". It's automatically rendered only
          * on "xs" and "sm" breakpoints.
          */}
-        <Humburger />
+        <Hamburger />
         {/**
          * "Menu" and "Actions" are present in "areasMd",
          * and are automatically rendered on "md" breakpoint
