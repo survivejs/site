@@ -119,7 +119,8 @@ module.exports = {
   },
   foreword: {
     author: "MarkoGrothe",
-    source: "https://pixabay.com/en/back-light-dandelion-sun-nature-1701549/",
+    source:
+      "https://pixabay.com/photos/backlighting-dandelion-sun-nature-1701549/",
     license: "Public Domain",
     image: "dandelion.jpg",
   },
