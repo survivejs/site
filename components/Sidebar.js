@@ -32,6 +32,7 @@ const Body = styled.div`
   input[type="checkbox"]:checked + & {
     transform: translateY(0);
     transition: transform ${theme.transition.easing} 0.4s;
+    overflow: auto;
   }
 
   @media (min-width: ${theme.breakpoint.m}) {
