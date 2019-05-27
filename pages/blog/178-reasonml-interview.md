@@ -148,7 +148,7 @@ I have a bunch of names in my head of great developers I know:
 * [Sibelius Seraphini](https://github.com/sibelius) - Relay advocate and contributor to the React Native community
 * [Bruno Lemos](https://github.com/brunolemos) - Creator of devhub
 * [Heliton Nordt](https://github.com/hnordt) - Advocate.
-* [Khoa Nguyen](https://github.com/thangngoc89) - The creator of sketch.sh
+* [Khoa Nguyen](https://github.com/thangngoc89) - The creator of [sketch.sh](https://sketch.sh)
 * [Alex Fedoseev](https://github.com/alexfedoseev) - The creator of re-formality and other libs from ReasonML
 
 ## Any last remarks?
