@@ -157,7 +157,7 @@ I have a bunch of names in my head of great developers I know:
 
 If you are more interested in all these I highly [recommend reading the v2 of Real World OCaml](http://dev.realworldocaml.org/), [watch this talk from Cheng Lou](https://www.youtube.com/watch?v=mVVNJKv9esE), and the [ReasonConf 2019 playlist](https://www.youtube.com/watch?v=ocBUpGC_Nbo&list=PLDLhOs9UV9w8ieADzBeUvv5LGD78r6yTH).
 
-T> Also, we are always looking for talented people at Astrocoders, if you would like to know us more send as an [email](contact <at> astrocoders.com)
+T> Also, we are always looking for talented people at [Astrocoders](https://astrocoders.com/), if you would like to know us more send as an [email](contact <at> astrocoders.com)
 
 ## Conclusion
 
