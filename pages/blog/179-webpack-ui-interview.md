@@ -102,3 +102,5 @@ Sure! The early preview version will be available in August 2019 and the aim is 
 ## Conclusion
 
 Thanks for the interview, Even! It will be exciting to try out _Webpack UI_ once there's a preview version to play with so I can't await for a public release. The UI combined with the goodies included in webpack 5 should bring bundling to a new level.
+
+T> [You can check out the initial UI and provide feedback on it already.](https://github.com/rishabh3112/webpack-ui)
