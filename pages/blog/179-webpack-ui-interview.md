@@ -1,5 +1,5 @@
 ---
-title: 'Webpack UI - Configure webpack with an UI - Interview with Even Stensberg'
+title: 'Webpack UI - Configure webpack with a UI - Interview with Even Stensberg'
 date: 2019-05-31
 headerImage: 'assets/img/wpui/newproject.jpg'
 keywords: ['interview', 'webpack']
