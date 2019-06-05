@@ -6,20 +6,19 @@
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "scripts": {
     "start": "node ./antwar.bootstrap.js develop",
-    "build": "rimraf build && npm run fetch:books && node ./antwar.bootstrap.js build && npm run sitemap && npm run copy:all",
+    "build":
+      "rimraf build && npm run fetch:books && node ./antwar.bootstrap.js build && npm run sitemap",
     "deploy": "gh-pages -d build && npm run purge_cf",
     "fetch:books": "scripts/fetch-books.sh",
     "bootstrap": "scripts/bootstrap.sh",
-    "sitemap": "cd build && sitemap-static --prefix=https://survivejs.com/ > sitemap.xml",
+    "sitemap":
+      "cd build && sitemap-static --prefix=https://survivejs.com/ > sitemap.xml",
     "lint": "eslint . --ext js --ext jsx --ignore-path .gitignore --cache",
     "format": "prettier --write 'styles/**/*.scss'",
     "purge_cf": "node ./utils/purge_cf.js",
     "test": "npm run lint && npm run format",
     "check:links": "hyperlink build/index.html -r",
-    "prepush": "npm test",
-    "copy:all": "npm run copy:extra",
-    "copy:demos": "cp -rf ../react/project_source/builds/ build/demos/",
-    "copy:extra": "cp -rf assets/extra/ build/"
+    "prepush": "npm test"
   },
   "dependencies": {
     "@survivejs/components": "^0.2.0",
@@ -51,6 +50,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "cloudflare4": "^0.2.5",
+    "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.14.0",
     "eslint-config-prettier": "^2.9.0",
@@ -86,9 +86,6 @@
   "bugs": {
     "url": "https://github.com/survivejs/site/issues"
   },
-  "keywords": [
-    "site",
-    "antwar"
-  ],
+  "keywords": ["site", "antwar"],
   "licenses": "MIT"
 }
