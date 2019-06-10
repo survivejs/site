@@ -2,7 +2,7 @@
 title: "Reakit - Build accessible rich web apps with React - Interview with Diego Haz"
 date: 2019-06-10
 headerImage: "assets/img/reakit.png"
-keywords: ["interview", "reactjs"]
+keywords: ["interview", "reactjs", "ui"]
 ---
 
 When building web applications and sites using React, you have to think carefully about the user interface. You might either go with an established user interface library, develop your own, or try a bit of both.
