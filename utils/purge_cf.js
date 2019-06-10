@@ -23,9 +23,9 @@ function main() {
             "https://survivejs.com/webpack_react/*",
             "https://survivejs.com/webpack/*",
             "https://survivejs.com/react/*",
-            "https://survivejs.com/assets/img/favicon.png",
+            "https://survivejs.com/favicon.png",
             "https://survivejs.com/favicon.ico",
-            "https://survivejs.com/",
+            // "https://survivejs.com/",
           ],
         })
         .then(function(ok) {
