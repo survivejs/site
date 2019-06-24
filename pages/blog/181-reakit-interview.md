@@ -62,7 +62,7 @@ T> [You can play with the example on CodeSandbox](https://codesandbox.io/s/m4n32
 
 You can install _Reakit_ through `npm`:
 
-```sh
+```bash
 npm install reakit
 ```
 
