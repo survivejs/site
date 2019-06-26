@@ -1,7 +1,11 @@
 import _ from "lodash";
 import React from "react";
 
-import { Moment, Author, RelatedPosts } from "@survivejs/components";
+import {
+  Moment,
+  Author,
+  RelatedPosts,
+} from "@survivejs/components";
 import { PrevNext, SocialLinks } from "../components";
 import getRelatedPosts from "../utils/get-related-posts";
 import Page from "./Page";
@@ -9,7 +13,13 @@ import Page from "./Page";
 const BlogPage = ({
   page: {
     file: {
-      attributes: { author, date, headerExtra, headerImage },
+      attributes: {
+        author,
+        date,
+        updateDate,
+        headerExtra,
+        headerImage,
+      },
       body,
       keywords,
       title,
@@ -20,8 +30,13 @@ const BlogPage = ({
   section,
   config,
 }) => {
-  let postAuthor = author || (config.blog && config.blog.author);
-  const relatedPosts = getRelatedPosts(keywords, section.pages(), 10);
+  let postAuthor =
+    author || (config.blog && config.blog.author);
+  const relatedPosts = getRelatedPosts(
+    keywords,
+    section.pages(),
+    10
+  );
   const relatedHeaders = {
     interview: "Interviews",
     opinion: "Opinions",
@@ -67,12 +82,39 @@ const BlogPage = ({
       footer={footer}
       page={{ next, previous }}
     >
-      {date && <Moment className="post__moment" datetime={date} />}
+      <Dates date={date} updateDate={updateDate} />
       <div dangerouslySetInnerHTML={{ __html: body }} />
-      {date && <Moment className="post__moment" datetime={date} />}
+      <Dates date={date} updateDate={updateDate} />
       {postAuthor && <Author author={postAuthor} />}
     </Page>
   );
 };
+
+function Dates({ date, updateDate }) {
+  return (
+    <div className="post__dates">
+      {date && (
+        <div className="post__publish-date">
+          <span className="post__date-text">
+            Published:
+          </span>{" "}
+          <Moment
+            className="post__moment"
+            datetime={date}
+          />
+        </div>
+      )}
+      {updateDate && (
+        <div className="post__update-date">
+          <span className="post__date-text">Updated:</span>{" "}
+          <Moment
+            className="post__moment"
+            datetime={updateDate}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default BlogPage;
