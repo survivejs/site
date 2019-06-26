@@ -129,7 +129,7 @@ export const search = pipe(
   debounce(200),
   mutate(async ({ state, effects }) => {
     state.isSearching = true;
-    state.searchResult = await http://effects.api.search (
+    state.searchResult = await effects.api.search(
       state.query
     );
     state.isSearching = false;
