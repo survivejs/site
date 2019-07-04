@@ -120,7 +120,7 @@ There are a lot more on the list, but I needed to stop at some point, right?
 
 If you find **minima** interesting, there are few places, where I’ll be happy to answer questions or help with the problems:
 
-* [Slack](https://join.slack.com/t/minimahq/shared_invite/enQtNjM2OTMzNDI3MjM2LWVjNzY4ZjNjNzNlMDJlM2FiOWQ5NWIyYTkxZmFlNjg1NzA3MGIzZTc3ODc3MmU1ODExN2FhOWMwZTgwY2IzMDI)
+* [Slack](https://join.slack.com/t/minimahq/shared_invite/enQtNjM2OTMzNDI3MjM2LTkzOGU2M2M4NDMyZmIzZWFmNDg2OTNkNWFmMzMyNmU4ZDRhNDlhZTk5ZjYzY2U5MzJlZDI3ZmNkNTJhMzRiZTE)
 * [Twitter](https://twitter.com/minima_app)
 * [Github](https://github.com/minima-app/minima.app)
 * [Facebook](https://www.facebook.com/minima.app.page)
