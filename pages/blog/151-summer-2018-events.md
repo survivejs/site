@@ -17,7 +17,7 @@ I will be going to Hamburg on 28th of June to participate in [JIMDO Dev Talks](h
 
 ## JSCamp Barcelona - 18-20.07.2018
 
-I will go to [JSCamp Barcelona](https://jscamp.tech/) in July. You can [get -10% off if you use my promocode](https://ti.to/jscamp/jscamp-barcelona-2018/discount/SURVIVEJS). I might give a talk at the event but it's not certain yet.
+I will go to [JSCamp Barcelona](https://jscamp.tech/) in July. You can [get -10% off if you use my promocode](https://ti.to/jscamp/jscamp-barcelona-2018/discount/SURVIVEJS).
 
 ## Conclusion
 
