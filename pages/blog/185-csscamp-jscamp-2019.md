@@ -23,8 +23,6 @@ In total, the events attract roughly 600 developers, and especially the conferen
 
 The event was held at Auditorio AXA, the same venue as last year. Although not the most spacious, it's one of the more attractive conference venues I've seen, and it fits the purpose quite well. Capacity-wise the conference cannot grow from this within the same space, but that said, the scale seems fine even now. Sometimes events become too big, and as a result, the atmosphere suffers.
 
-![There could have been more outlets](assets/img/jscamp2019/outlet.jpg)
-
 ### The Workshop Days - 15-16.07
 
 ![Coffee at the workshops](assets/img/jscamp2019/coffee.jpg)
