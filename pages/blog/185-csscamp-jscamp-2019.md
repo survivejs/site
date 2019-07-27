@@ -27,11 +27,7 @@ The event was held at Auditorio AXA, the same venue as last year. Although not t
 
 ![Coffee at the workshops](assets/img/jscamp2019/coffee.jpg)
 
-The conference began on Monday with a workshop by Kyle Simpson. He held another one on Tuesday, and that's when I joined the event. On Tuesday, Sean Larkin and Harry Roberts held theirs in addition to a second workshop by Kyle.
-
-The workshops were held in a full-day format. For me, that seems like the minimum conferences should do as half-day isn't enough to dive into the topic. As mentioned before, this time around the workshops didn't attract as many people as you might expect. Especially considering the level of the instructors, the conference will likely do better next year.
-
-I cannot comment on the quality of the workshops as I didn't attend any this time.
+The conference began on Monday with a workshop by Kyle Simpson. He held another one on Tuesday, and that's when I joined the event. On Tuesday, Sean Larkin and Harry Roberts held theirs in addition to a second workshop by Kyle. The workshops were held in a full-day format. I cannot comment on the quality of the workshops as I didn't attend any this time.
 
 ![Learning hard at a workshop](assets/img/jscamp2019/workshop.jpg)
 
