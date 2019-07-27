@@ -133,4 +133,4 @@ For me, both CSSCamp and JSCamp are reliable conferences. They seem to pull the 
 
 If you want to experience Barcelona in Summer, it's not the worst idea to visit the conferences. The content is good, and the city is fantastic. I can't wait to see what David has in mind for the next year.
 
-T> [You can find my conference photos online](https://www.icloud.com/sharedalbum/#B0pG6XBubLzvzF)
+T> [You can find my conference photos online.](https://www.icloud.com/sharedalbum/#B0pG6XBubLzvzF)
