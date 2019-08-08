@@ -51,7 +51,7 @@ One of these communities is [the secure developer](https://www.thesecuredevelope
 
 ## Who should I interview next?
 
-[@BenedekGagyi](https://twitter.com/BenedekGagyi) or [@Alyssa*Herrera*](https://twitter.com/Alyssa_Herrera_) are going to have interesting stories which I’m eager to read about!
+[@BenedekGagyi](https://twitter.com/BenedekGagyi) or [@Alyssa_Herrera\_](https://twitter.com/Alyssa_Herrera_) are going to have interesting stories which I’m eager to read about!
 
 ## Any last remarks?
 
