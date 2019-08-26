@@ -7,7 +7,7 @@ keywords: ["interview"]
 
 If there's one thing that transformed my life, it's the adoption of the Getting Things Done (GTD) methodology. The key part for me was to begin what's to be done and then committing on doing it. I use OmniFocus and Google Keep for this and while it requires some discipline, it has definitely been worth it for me.
 
-[Alex Fedoseev](https://twitter.com/alexfedoseev) has been developing a service, **minima**, that achieves this online while aiming to provide functionality beyond personal usage. In this interview, we'll learn more about the solution and his technical approach for it.
+[Alex Fedoseev](https://twitter.com/alexfedoseev) has been developing a service, **Minima**, that achieves this online while aiming to provide functionality beyond personal usage. In this interview, we'll learn more about the solution and his technical approach for it.
 
 ## Can you tell a bit about yourself?
 
@@ -15,17 +15,17 @@ If there's one thing that transformed my life, it's the adoption of the Getting 
 
 I got into development pretty late, when I was 30 or 31. My original background has nothing in common with neither Computer Science (CS) nor User Experience (UX), but the latter hooked me up somehow, and it's still my main point of interest.
 
-For the past three years, I've been a frontend engineer at [ShakaCode](https://www.shakacode.com/), and for the past seven years, I've been working on [minima](https://minima.app).
+For the past three years, I've been a frontend engineer at [ShakaCode](https://www.shakacode.com/), and for the past seven years, I've been working on [Minima](https://minima.app).
 
 My current tools of the trade are ReasonML and Rust.
 
-## How would you describe mMinima\_ to someone who has never heard of it?
+## How would you describe Minima to someone who has never heard of it?
 
-**minima** is a combination of personal task manager and project management solution for teams. But it’s not quite there yet. I kicked off MVP with the Personal Workspace only for now.
+Minima is a combination of personal task manager and project management solution for teams. But it’s not quite there yet. I kicked off MVP with the Personal Workspace only for now.
 
-## How does _minima_ work?
+## How does Minima work?
 
-For the users, **minima** starts in the Personal Workspace—the place where they can manage their tasks: work, life, everything. In the future, they will be able to join Teams—one or many-to collaborate on projects.
+For the users, Minima starts in the Personal Workspace—the place where they can manage their tasks: work, life, everything. In the future, they will be able to join Teams—one or many-to collaborate on projects.
 
 App follows GTD principles, so if you are familiar with it, you should feel like home.
 
@@ -33,11 +33,11 @@ Here is the screenshot of the Project screen to give you a better idea:
 
 ![Minima project screen](assets/img/minima.png)
 
-## How does _minima_ differ from other solutions?
+## How does Minima differ from other solutions?
 
 Lacking personal space was my main concern for years with many solutions on the market. So one of the main goals is to provide private space for each team member, to make it genuine first-class part of the project management solution for teams.
 
-## Why did you develop _minima_?
+## Why did you develop Minima?
 
 I was passionate about the whole project management thing but had zero experience in development (at that time, I was a project manager at marketing space). I was heavily inspired by **Things**—native personal task manager for macOS. It’s the best GTD implementation in software, in my opinion. And I would love to have something like this built into the team project management tool.
 
@@ -49,7 +49,7 @@ Take the car industry, there are dozen of vendors out there, and they co-exist j
 
 Anyway, my only goal is to build a great product, not to win the race.
 
-## What kind of technical challenges have you encountered during the development of _minima_ so far?
+## What kind of technical challenges have you encountered during the development of Minima so far?
 
 The hardest part of developing a side project is that you can’t do this full time. I spent few years in the loop: after the pause, I come back to the app, don’t remember where I am at, spending few hours per day try to continue with a complex feature, things get randomly broken here and there because I’m hardly in context, depression, pause, repeat.
 
@@ -59,7 +59,7 @@ I can’t stress enough about how types are helpful here. Even after weeks, it t
 
 ### The Platform™
 
-The second pain point was The Platform™. One of my goals with **minima** is to make the user experience as close as possible to the desktop apps. Neither platform nor npm didn’t help much here. Packages I tried either over-abstracted, or hard to bind to, or doesn’t do what I need in the way I need.
+The second pain point was The Platform™. One of my goals with Minima is to make the user experience as close as possible to the desktop apps. Neither platform nor npm didn’t help much here. Packages I tried either over-abstracted, or hard to bind to, or doesn’t do what I need in the way I need.
 
 At some point, I stopped spending time on bindings and invested it in my solutions. At the time of writing, `quill` is the only UI related dependency used in production. Everything else—primitives, dialogs, focus/selection management—all internal implementations. It took time, but I mostly satisfied with the result, and owning your UI is a pleasure for many reasons.
 
@@ -83,7 +83,7 @@ In the background, I’m prototyping Team Workspaces; its implementation is goin
 
 There is a [Roadmap](https://minima.app/roadmap) section on the site with a more detailed list.
 
-## What does the future look like for _minima_ and web development in general? Can you see any particular trends?
+## What does the future look like for Minima and web development in general? Can you see any particular trends?
 
 Oh man, it’s all in flux. I was living on the bleeding edge for years, and I’m afraid of guessing what’s next.
 
@@ -118,15 +118,15 @@ There are a lot more on the list, but I needed to stop at some point, right?
 
 ## Any last remarks?
 
-If you find **minima** interesting, there are few places, where I’ll be happy to answer questions or help with the problems:
+If you find Minima interesting, there are few places, where I’ll be happy to answer questions or help with the problems:
 
-* [Slack](https://join.slack.com/t/minimahq/shared_invite/enQtNjM2OTMzNDI3MjM2LTkzOGU2M2M4NDMyZmIzZWFmNDg2OTNkNWFmMzMyNmU4ZDRhNDlhZTk5ZjYzY2U5MzJlZDI3ZmNkNTJhMzRiZTE)
-* [Twitter](https://twitter.com/minima_app)
-* [Github](https://github.com/minima-app/minima.app)
-* [Facebook](https://www.facebook.com/minima.app.page)
+* [Slack](https://join.slack.com/t/MinimaHQ/shared_invite/enQtNjM2OTMzNDI3MjM2LTkzOGU2M2M4NDMyZmIzZWFmNDg2OTNkNWFmMzMyNmU4ZDRhNDlhZTk5ZjYzY2U5MzJlZDI3ZmNkNTJhMzRiZTE)
+* [Twitter](https://twitter.com/MinimaHQ)
+* [Github](https://github.com/MinimaHQ/minima.app)
+* [Facebook](https://facebook.com/MinimaHQ)
 
 ## Conclusion
 
-Thanks for the interview, Alex! It's great to see when someone decides to push for their idea even if it means working a lot and expanding your set of skills. For me, **minima** is a project to keep an eye on. If you want to get into GTD flow on the web, it's definitely worth a look!
+Thanks for the interview, Alex! It's great to see when someone decides to push for their idea even if it means working a lot and expanding your set of skills. For me, Minima is a project to keep an eye on. If you want to get into GTD flow on the web, it's definitely worth a look!
 
-T> To get started, [check minima online](https://minima.app) you can also [find parts of the project on Github](https://github.com/minima-app).
+T> To get started, [check Minima online](https://minima.app) you can also [find parts of the project on Github](https://github.com/MinimaHQ).
