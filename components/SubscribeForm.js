@@ -3,7 +3,7 @@ import styled, { cx, css } from "react-emotion";
 import theme from "../styles/theme";
 
 const ACTION_URL =
-  "//jster.us7.list-manage.com/subscribe/post?u=ed40c0084a0c5ba31b3365d65&id=b853b8e786";
+  "https://buttondown.email/api/emails/embed-subscribe/SurviveJS";
 
 const Pocket = ({ children }) => (
   <div
@@ -34,7 +34,6 @@ const baseStyle = css`
   background-color: ${theme.color.background};
   border: ${theme.border.width} solid ${theme.color.action};
   border-radius: ${theme.form.size};
-  text-transform: uppercase;
   font-size: ${theme.fontSize.delta};
   outline: none;
 
@@ -68,7 +67,8 @@ const buttonStyle = css`
   color: ${theme.color.actionDark};
   transition: background-color ${theme.transition.easing}
       ${theme.transition.speed},
-    color ${theme.transition.easing} ${theme.transition.speed};
+    color ${theme.transition.easing}
+      ${theme.transition.speed};
 
   @media (min-width: ${theme.breakpoint.s}) {
     border-radius: 0 ${theme.form.size} ${theme.form.size} 0;
@@ -81,7 +81,11 @@ const buttonStyle = css`
 `;
 
 const Button = props => (
-  <input type="submit" className={cx(baseStyle, buttonStyle)} {...props} />
+  <input
+    type="submit"
+    className={cx(baseStyle, buttonStyle)}
+    {...props}
+  />
 );
 
 const SubscribeForm = () => {
@@ -90,17 +94,12 @@ const SubscribeForm = () => {
       <Input
         type="email"
         placeholder="Email"
-        name="EMAIL"
-        id="mce-EMAIL"
+        name="email"
+        id="bd-email"
         required
       />
       <Pocket>
-        <input
-          type="text"
-          name="b_ed40c0084a0c5ba31b3365d65_b853b8e786"
-          tabIndex="-1"
-          value=""
-        />
+        <input type="hidden" name="embed" value="1" />
       </Pocket>
       <Button value="Subscribe" name="subscribe" />
     </Form>
