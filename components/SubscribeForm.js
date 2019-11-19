@@ -5,18 +5,6 @@ import theme from "../styles/theme";
 const ACTION_URL =
   "https://buttondown.email/api/emails/embed-subscribe/SurviveJS";
 
-const Pocket = ({ children }) => (
-  <div
-    style={{
-      display: "none",
-      position: "absolute",
-      left: "-5000px",
-    }}
-  >
-    {children}
-  </div>
-);
-
 const Form = styled.form`
   @media (min-width: ${theme.breakpoint.s}) {
     display: flex;
@@ -98,9 +86,7 @@ const SubscribeForm = () => {
         id="bd-email"
         required
       />
-      <Pocket>
-        <input type="hidden" name="embed" value="1" />
-      </Pocket>
+      <input type="hidden" name="embed" value="1" />
       <Button value="Subscribe" name="subscribe" />
     </Form>
   );
