@@ -13,6 +13,8 @@ To understand the topic better, I am interviewing Olivia Scott from [VPNpro](htt
 
 ## Can you tell a bit about yourself?
 
+![Olivia Scott|100|100|author](https://www.gravatar.com/avatar/b56ba101bd33d1e94d8ba1144a8e6fb3?s=200")
+
 My name is Olivia Scott, and I work for VPNpro. The world of cybersecurity is my passion - I am well-versed on the general topic of data safety and WordPress vulnerabilities in particular. I used to test privacy tools, including VPNs, so I am intimately familiar with the industry.
 
 ## How would you describe VPNs to someone who has never heard of them?
