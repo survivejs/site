@@ -17,7 +17,7 @@ I'm interviewing Maksim Kozhukh from [Webix](https://webix.com/) to learn more a
 
 I am Maksim Kozhukh, the head of Webix and a software architect with 20+ years of experience and extensive expertise in web technologies. I started my career in Netscape age and came through all web industry trends, disasters, and inventions. Webix is one of the many projects I am managing right now.
 
-My substantial experience in the development of full software products as well as single web components led to Webix UI Library. I embodied my ideas and web development approaches in this project.
+My substantial experience in the development of full software products as well as single web components led to [Webix UI Library](https://webix.com/). I embodied my ideas and web development approaches in this project.
 
 ## How would you describe Webix to someone who has never heard of it?
 
