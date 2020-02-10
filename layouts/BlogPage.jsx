@@ -50,12 +50,12 @@ const BlogPage = ({
 
   const toc = (
     <div className="toc-nav__wrapper">
+      <div id="codefund" />
       <RelatedPosts
         title={title}
         posts={relatedPosts}
         headers={relatedHeaders}
       />
-      <div id="codefund" />
     </div>
   );
 

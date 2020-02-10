@@ -79,8 +79,8 @@ const Sidebar = ({ children }) => (
     </Toggle>
     <Checkbox type="checkbox" id="sidebar-toggle" />
     <Body>
-      {children}
       <div id="codefund" />
+      {children}
     </Body>
   </Container>
 );
