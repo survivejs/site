@@ -74,9 +74,14 @@ const Checkbox = styled.input`
 
 const Sidebar = ({ children }) => (
   <Container>
-    <Toggle htmlFor="sidebar-toggle">Table of contents</Toggle>
+    <Toggle htmlFor="sidebar-toggle">
+      Table of contents
+    </Toggle>
     <Checkbox type="checkbox" id="sidebar-toggle" />
-    <Body>{children}</Body>
+    <Body>
+      {children}
+      <div id="codefund" />
+    </Body>
   </Container>
 );
 

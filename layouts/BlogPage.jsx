@@ -55,6 +55,7 @@ const BlogPage = ({
         posts={relatedPosts}
         headers={relatedHeaders}
       />
+      <div id="codefund" />
     </div>
   );
 
