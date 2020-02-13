@@ -1,8 +1,8 @@
 ---
-title: 'react-styleguidist - Style guide generator for React - Interview with Artem Sapegin'
+title: "react-styleguidist - Style guide generator for React - Interview with Artem Sapegin"
 date: 2016-02-22
-headerImage: 'assets/img/styleguidist.jpg'
-keywords: ['interview', 'react']
+headerImage: "assets/img/styleguidist.jpg"
+keywords: ["interview", "react", "styleguide"]
 ---
 
 People have been developing style guides for their sites and applications for quite a while. They define basic building blocks and aesthetics. This is valuable as it helps you to keep your design consistent and communicate it to your developers better. Style guides can also help to bridge designers with developers.
@@ -21,13 +21,13 @@ I’m a front-end developer at [Here](http://here.com/) in Berlin where I’m tr
 
 I like to spend my spare time making photographs, traveling, reading, drinking coffee and stroking my dogs.
 
-## How would you describe *react-styleguidist* to someone who has never heard of it?
+## How would you describe _react-styleguidist_ to someone who has never heard of it?
 
 It’s a style guide generator for your React components. Each component has a props table and documentation section that renders from Markdown file where every code sample transformed into a playground with rendered code and a code editor where you can change its code and see how component behave with different props.
 
 You can also use react-styleguidist as a workbench to develop new components: it has a dev-server and hot-reloads any changes in components’ code and Markdown documentation.
 
-## Why did you develop *react-styleguidist*?
+## Why did you develop _react-styleguidist_?
 
 Because I couldn’t find any good tool to make a style guide for my project at work.
 
