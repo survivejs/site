@@ -97,7 +97,7 @@ We are actively gathering feedback, and we try to anticipate the wishes of our u
 
 In addition to that, we have started to develop templates catalog and design presets. These are small but nice perks, which will allow our users to save additional time for the development and prototyping of their applications.
 
-Alongside we are developing WYSIWYG editor, which will allow UX designers to use Webix without programming. Besides, we have finished working on the tight integration with Salesforce, so we are going to offer our clients highly productive components for custom salesforce solutions creation.
+Alongside we are developing WYSIWYG editor, which will allow UX designers to use Webix without programming. Besides, we have finished working on the tight integration with [Salesforce](https://www.salesforce.com/products/commerce-cloud/resources/what-is-ecommerce/), so we are going to offer our clients highly productive components for custom Salesforce solutions creation.
 
 And of course, the library itself will be further developed and improved. It will become more productive, compact, and convenient with every new version.
 
