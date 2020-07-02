@@ -50,7 +50,12 @@ const BlogPage = ({
 
   const toc = (
     <div className="toc-nav__wrapper">
-      <div id="codefund" />
+      <script
+        async
+        type="text/javascript"
+        src="//cdn.carbonads.com/carbon.js?serve=CE7I5KQJ&placement=survivejscom"
+        id="_carbonads_js"
+      ></script>
       <RelatedPosts
         title={title}
         posts={relatedPosts}
@@ -68,7 +73,7 @@ const BlogPage = ({
         next={next}
         previousText="Previous post"
         nextText="Next post"
-        getTitle={page => page.file.title}
+        getTitle={(page) => page.file.title}
       />
     </React.Fragment>
   );

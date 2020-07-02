@@ -79,7 +79,12 @@ const Sidebar = ({ children }) => (
     </Toggle>
     <Checkbox type="checkbox" id="sidebar-toggle" />
     <Body>
-      <div id="codefund" />
+      <script
+        async
+        type="text/javascript"
+        src="//cdn.carbonads.com/carbon.js?serve=CE7I5KQJ&placement=survivejscom"
+        id="_carbonads_js"
+      ></script>
       {children}
     </Body>
   </Container>
