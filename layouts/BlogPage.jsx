@@ -50,11 +50,13 @@ const BlogPage = ({
 
   const toc = (
     <div className="toc-nav__wrapper">
-      <RelatedPosts
-        title={title}
-        posts={relatedPosts}
-        headers={relatedHeaders}
-      />
+      <div className="toc-nav__section">
+        <RelatedPosts
+          title={title}
+          posts={relatedPosts}
+          headers={relatedHeaders}
+        />
+      </div>
     </div>
   );
 
