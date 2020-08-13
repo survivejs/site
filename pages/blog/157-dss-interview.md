@@ -1,8 +1,8 @@
 ---
-title: 'DSS - Deterministic Style Sheets - Interview with Giuseppe Gurgone'
+title: "DSS - Deterministic Style Sheets - Interview with Giuseppe Gurgone"
 date: 2018-09-05
-headerImage: 'assets/img/dss.png'
-keywords: ['interview', 'styling', 'cssinjs']
+headerImage: "assets/img/dss.png"
+keywords: ["interview", "styling", "cssinjs"]
 ---
 
 CSS is perhaps one of the most controversial parts of web development. For some, it's the favorite, for some the least pleasant part. As a result, many solutions have appeared around it to make it more palatable to web developers.
@@ -13,7 +13,7 @@ To learn more about one, this time we'll learn about [DSS](https://dss-lang.com/
 
 ![Giuseppe Gurgone|100|100|author](assets/img/interviews/giuseppe.jpg)
 
-My name is Giuseppe, and I am a front-end engineer from Sicily, Italy. In the past I worked for Yelp on their frontend core team, I am a core team member of SUIT CSS and co-author of a CSS-in-JS library called styled-jsx. If it wasn't clear, I like to build front-end infrastructure and CSS libraries 😅
+My name is Giuseppe, and I am a front-end engineer from Sicily, Italy. In the past I worked for Yelp on their frontend core team, I am a core team member of SUIT CSS and co-author of a CSS-in-JS library called styled-jsx. If it wasn't clear, I like to build front-end infrastructure and CSS libraries. 😅
 
 ## How would you describe _DSS_ to someone who has never heard of it?
 
@@ -57,7 +57,11 @@ Like CSS Modules, for each CSS file, the DSS compiler produces a JSON file (or J
 
 ```json
 {
-  "foo": ["dss_marginTop-30px", "dss_color-black", "dss_fontSize-10px"],
+  "foo": [
+    "dss_marginTop-30px",
+    "dss_color-black",
+    "dss_fontSize-10px"
+  ],
   "bar": ["dss_color-green", "dss_fontSize-345px"]
 }
 ```
@@ -78,7 +82,11 @@ document.body.innerHTML = `<div class="${classNames(
 Above produces:
 
 ```html
-<div class="dss_marginTop-30px dss_color-green dss_fontSize-345px">hi</div>
+<div
+  class="dss_marginTop-30px dss_color-green dss_fontSize-345px"
+>
+  hi
+</div>
 ```
 
 Merging is done (right to left) using the first occurrence of a property, e.g., `dss_color` and ignoring the others.
@@ -93,13 +101,13 @@ DSS is just proper old static CSS compiled to atomic CSS classes. Many love atom
 
 By compiling CSS to atomic classes, DSS allows me to write as many declarations as I want without penalizing the size of the final bundle. So I get to write the CSS I already know, e.g., `margin-top: 25px` and a compiler makes sure that it is compiled to atomic CSS and deduped if there are multiple occurrences of that declaration. It is a win-win situation.
 
-Ah, and you also get deterministic styles resolution. 🕶
+Ah, and you also get deterministic style resolution. 🕶
 
 ## Why did you develop _DSS_?
 
-Mainly because I use CSS Modules at work and I am a bit frustrated about the fact that you can still write overly specific CSS selectors and if you import the CSS files in the wrong order you can easily screw up your application (👋 cascade).
+Mainly because I use CSS Modules at work and I am a bit frustrated about the fact that you can still write overly specific CSS selectors. If you import the CSS files in the wrong order, you can easily screw up your application (👋 cascade).
 
-In addition to that with atomic CSS your application bundle size grows, i.e., at some point, you can keep adding CSS, but the file size of your CSS bundle won't change (increase).
+In addition to that with atomic CSS your application bundle size grows logarithmically, i.e., at some point, you can keep adding CSS, but the file size of your CSS bundle won't change (increase).
 
 In the end, I wanted to bring some of the good ideas from CSS-in-JS to static CSS land (and make Alex Russell happy).
 
@@ -133,8 +141,8 @@ Nicolas Gallagher about React Native for Web, @electrobabe and @evatrostlos beca
 
 ## Any last remarks?
 
-* If you use React and any `className` helper I made an awesome Babel plugin for you: [babel-plugin-classnames](https://github.com/giuseppeg/babel-plugin-classnames).
-* I also developed a little tool to check the file size of your CSS bundle and what it would be like if styles were compiled to atomic CSS classes. Check out [atomic-css-stats](https://www.npmjs.com/package/atomic-css-stats).
+- If you use React and any `className` helper I made an awesome Babel plugin for you: [babel-plugin-classnames](https://github.com/giuseppeg/babel-plugin-classnames).
+- I also developed a little tool to check the file size of your CSS bundle and what it would be like if styles were compiled to atomic CSS classes. Check out [atomic-css-stats](https://www.npmjs.com/package/atomic-css-stats).
 
 ## Conclusion
 
