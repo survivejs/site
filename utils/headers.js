@@ -1,19 +1,22 @@
 module.exports = {
   "change-log": {
     author: "TheUjulala",
-    source: "https://pixabay.com/en/heart-wood-logs-1288420/",
+    source:
+      "https://pixabay.com/en/heart-wood-logs-1288420/",
     license: "Public Domain",
     image: "logs.jpg",
   },
   monorepos: {
     author: "Pexels",
-    source: "https://pixabay.com/en/brand-data-mono-music-1851576/",
+    source:
+      "https://pixabay.com/en/brand-data-mono-music-1851576/",
     license: "Public Domain",
     image: "vinyl.jpg",
   },
   marketing: {
     author: "StartupStockPhotos",
-    source: "https://pixabay.com/en/student-typing-keyboard-text-woman-849825/",
+    source:
+      "https://pixabay.com/en/student-typing-keyboard-text-woman-849825/",
     license: "Public Domain",
     image: "student.jpg",
   },
@@ -33,25 +36,29 @@ module.exports = {
   },
   automation: {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/robot-arm-technology-robot-arm-2791670/",
+    source:
+      "https://pixabay.com/en/robot-arm-technology-robot-arm-2791670/",
     license: "Public Domain",
     image: "robot.jpg",
   },
   "continuous-integration": {
     author: "Magnascan",
-    source: "https://pixabay.com/en/mother-board-electronics-computer-581597/",
+    source:
+      "https://pixabay.com/en/mother-board-electronics-computer-581597/",
     license: "Public Domain",
     image: "motherboard.jpg",
   },
   processes: {
     author: "blickpixel",
-    source: "https://pixabay.com/en/board-electronics-computer-453758/",
+    source:
+      "https://pixabay.com/en/board-electronics-computer-453758/",
     license: "Public Domain",
     image: "board.jpg",
   },
   "css-modules": {
     author: "distel2610",
-    source: "https://pixabay.com/en/lego-duplo-build-module-macro-1762442/",
+    source:
+      "https://pixabay.com/en/lego-duplo-build-module-macro-1762442/",
     license: "CC0",
     image: "legos.jpg",
   },
@@ -71,49 +78,57 @@ module.exports = {
   },
   dependencies: {
     author: "blickpixel",
-    source: "https://pixabay.com/en/python-snake-green-tree-python-564817/",
+    source:
+      "https://pixabay.com/en/python-snake-green-tree-python-564817/",
     license: "Public Domain",
     image: "snakes.jpg",
   },
   "managing-dependencies": {
     author: "blickpixel",
-    source: "https://pixabay.com/en/python-snake-green-tree-python-564817/",
+    source:
+      "https://pixabay.com/en/python-snake-green-tree-python-564817/",
     license: "Public Domain",
     image: "snakes.jpg",
   },
   "code-formatting": {
     author: "Bluesnap",
-    source: "https://pixabay.com/en/air-show-aircraft-formation-389965/",
+    source:
+      "https://pixabay.com/en/air-show-aircraft-formation-389965/",
     license: "Public Domain",
     image: "formation.jpg",
   },
   "code-quality": {
     author: "PatternPictures",
-    source: "https://pixabay.com/en/stars-rating-travel-four-hotel-1128772/",
+    source:
+      "https://pixabay.com/en/stars-rating-travel-four-hotel-1128772/",
     license: "Public Domain",
     image: "hotel-stars.jpg",
   },
   "standalone-builds": {
     author: "SplitShire",
-    source: "https://pixabay.com/en/motorbike-garage-repairs-hobby-407186/",
+    source:
+      "https://pixabay.com/en/motorbike-garage-repairs-hobby-407186/",
     license: "Public Domain",
     image: "build.jpg",
   },
   typing: {
     author: "rawpixel",
-    source: "https://pixabay.com/en/alphabets-ancient-author-data-2365812/",
+    source:
+      "https://pixabay.com/en/alphabets-ancient-author-data-2365812/",
     license: "Public Domain",
     image: "typewriter.jpg",
   },
   publishing: {
     author: "rawpixel",
-    source: "https://pixabay.com/en/alphabets-ancient-author-data-2365812/",
+    source:
+      "https://pixabay.com/en/alphabets-ancient-author-data-2365812/",
     license: "Public Domain",
     image: "typewriter.jpg",
   },
   anatomy: {
     author: "Mimzy",
-    source: "https://pixabay.com/en/family-artist-s-mannequin-figure-2755604/",
+    source:
+      "https://pixabay.com/en/family-artist-s-mannequin-figure-2755604/",
     license: "Public Domain",
     image: "anatomy.jpg",
   },
@@ -126,19 +141,22 @@ module.exports = {
   },
   preface: {
     author: "geralt",
-    source: "https://pixabay.com/en/road-start-beginning-intention-1668916/",
+    source:
+      "https://pixabay.com/en/road-start-beginning-intention-1668916/",
     license: "Public Domain",
     image: "road.jpg",
   },
   introduction: {
     author: "James Jordan",
-    source: "https://www.flickr.com/photos/69826987@N00/1501451576",
+    source:
+      "https://www.flickr.com/photos/69826987@N00/1501451576",
     license: "CC BY-ND",
     image: "journey.jpg",
   },
   "what-is-webpack": {
     author: "epicantus",
-    source: "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
+    source:
+      "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
     license: "Public Domain",
     image: "structure.jpg",
   },
@@ -148,116 +166,135 @@ module.exports = {
   },
   styling: {
     author: "Philip Brown",
-    source: "https://www.flickr.com/photos/67478016@N00/379064899",
+    source:
+      "https://www.flickr.com/photos/67478016@N00/379064899",
     license: "CC BY-NC-ND",
     image: "apples_oranges.jpg",
   },
   loading: {
     author: "condesign",
-    source: "https://pixabay.com/en/camera-photos-photograph-514992/",
+    source:
+      "https://pixabay.com/en/camera-photos-photograph-514992/",
     license: "Public Domain",
     image: "photos.jpg",
   },
   building: {
     author: "werner22brigitte",
-    source: "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    source:
+      "https://pixabay.com/en/rusty-metal-old-machine-185531/",
     license: "Public Domain",
     image: "machine.jpg",
     type: "part",
   },
   optimizing: {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/electric-electricity-building-1080584/",
+    source:
+      "https://pixabay.com/en/electric-electricity-building-1080584/",
     license: "Public Domain",
     image: "production.jpg",
   },
   output: {
     author: "ugorgonzola",
-    source: "https://pixabay.com/en/output-light-neon-660017/",
+    source:
+      "https://pixabay.com/en/output-light-neon-660017/",
     license: "Public Domain",
     image: "exit.jpg",
   },
   techniques: {
     author: "Ana_J",
-    source: "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
+    source:
+      "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
     license: "Public Domain",
     image: "decorators.jpg",
   },
   misc: {
     author: "NASA",
-    source: "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+    source:
+      "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
     license: "Public Domain",
     image: "skydiving.jpg",
   },
   packaging: {
     author: "NASA",
-    source: "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+    source:
+      "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
     license: "Public Domain",
     image: "skydiving.jpg",
   },
   packages: {
     author: "NASA",
-    source: "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
+    source:
+      "https://pixabay.com/en/skydiving-indoors-training-navy-665034/",
     license: "Public Domain",
     image: "skydiving.jpg",
   },
   extending: {
     author: "stevepb",
-    source: "https://pixabay.com/en/lens-extender-teleconverter-469798/",
+    source:
+      "https://pixabay.com/en/lens-extender-teleconverter-469798/",
     license: "Public Domain",
     image: "lens.jpg",
   },
   conclusion: {
     author: "Noel_Bauza",
-    source: "https://pixabay.com/en/snow-sunset-hiking-cold-1185474/",
+    source:
+      "https://pixabay.com/en/snow-sunset-hiking-cold-1185474/",
     license: "Public Domain",
     image: "hike.jpg",
   },
   appendices: {
     author: "forwimuwi73",
-    source: "https://pixabay.com/en/food-peanut-nuts-624600/",
+    source:
+      "https://pixabay.com/en/food-peanut-nuts-624600/",
     license: "Public Domain",
     image: "peanuts.jpg",
   },
   comparison: {
     author: "Unsplash",
-    source: "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
+    source:
+      "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
     license: "Public Domain",
     image: "hoodie.jpg",
   },
   hmr: {
     author: "DanielBrachlow",
-    source: "https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/",
+    source:
+      "https://pixabay.com/en/flame-fire-inferno-orange-burn-1761916/",
     license: "Public Domain",
     image: "inferno.jpg",
   },
   "hmr-with-react": {
     author: "Marko Heinrich",
-    source: "https://pixabay.com/en/event-technology-light-panel-644537/",
+    source:
+      "https://pixabay.com/en/event-technology-light-panel-644537/",
     license: "Public Domain",
     image: "panel.jpg",
   },
   "customizing-eslint": {
     author: "wilhei",
-    source: "https://pixabay.com/en/font-lead-set-book-printing-705667/",
+    source:
+      "https://pixabay.com/en/font-lead-set-book-printing-705667/",
     license: "Public Domain",
     image: "language.jpg",
   },
   "searching-with-react": {
     author: "Pexels",
-    source: "https://pixabay.com/en/adventure-compass-hand-macro-1850673/",
+    source:
+      "https://pixabay.com/en/adventure-compass-hand-macro-1850673/",
     license: "Public Domain",
     image: "compass.jpg",
   },
   troubleshooting: {
     author: "Edvard Munch",
-    source: "https://www.artsy.net/artwork/edvard-munch-the-scream",
+    source:
+      "https://www.artsy.net/artwork/edvard-munch-the-scream",
     license: "Public Domain",
     image: "scream.jpg",
   },
   glossary: {
     author: "diannehope14",
-    source: "https://pixabay.com/en/collaboration-collaborator-book-1106196/",
+    source:
+      "https://pixabay.com/en/collaboration-collaborator-book-1106196/",
     license: "Public Domain",
     image: "glossary.jpg",
   },
@@ -271,55 +308,64 @@ module.exports = {
   },
   "automatic-browser-refresh": {
     author: "PublicDomainPictures",
-    source: "https://pixabay.com/en/splashing-splash-aqua-water-rain-165192/",
+    source:
+      "https://pixabay.com/en/splashing-splash-aqua-water-rain-165192/",
     license: "Public Domain",
     image: "splash.jpg",
   },
-  "webpack-dev-server": {
+  "development-server": {
     author: "PublicDomainPictures",
-    source: "https://pixabay.com/en/splashing-splash-aqua-water-rain-165192/",
+    source:
+      "https://pixabay.com/en/splashing-splash-aqua-water-rain-165192/",
     license: "Public Domain",
     image: "splash.jpg",
   },
   linting: {
     author: "Eva the Weaver",
-    source: "https://www.flickr.com/photos/16324044@N00/10833734686",
+    source:
+      "https://www.flickr.com/photos/16324044@N00/10833734686",
     license: "CC BY-NC-SA",
     image: "lint.jpg",
   },
   "composing-configuration": {
     author: "stevepb",
-    source: "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
+    source:
+      "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
     license: "Public Domain",
     image: "axe.jpg",
   },
   loaders: {
     author: "jannebjo",
-    source: "https://pixabay.com/en/volvo-wheel-loaders-machine-906771/",
+    source:
+      "https://pixabay.com/en/volvo-wheel-loaders-machine-906771/",
     license: "Public Domain",
     image: "loader.jpg",
   },
   plugins: {
     author: "qimono",
-    source: "https://pixabay.com/en/plug-connection-technology-1859827/",
+    source:
+      "https://pixabay.com/en/plug-connection-technology-1859827/",
     license: "Public Domain",
     image: "plug.jpg",
   },
   "loader-definitions": {
     author: "jpj2000nl",
-    source: "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
+    source:
+      "https://pixabay.com/en/tools-technique-open-end-wrench-1093117/",
     license: "Public Domain",
     image: "wrench.jpg",
   },
   images: {
     author: "PublicDomainPictures",
-    source: "https://pixabay.com/en/photo-camera-photography-old-retro-219958/",
+    source:
+      "https://pixabay.com/en/photo-camera-photography-old-retro-219958/",
     license: "Public Domain",
     image: "old_camera.jpg",
   },
   fonts: {
     author: "Markus Mayer",
-    source: "https://www.flickr.com/photos/10832246@N06/2925254789/",
+    source:
+      "https://www.flickr.com/photos/10832246@N06/2925254789/",
     license: "CC BY-NC-ND",
     image: "typing.jpg",
   },
@@ -332,7 +378,8 @@ module.exports = {
   },
   minifying: {
     author: "BreaLeaDesigns",
-    source: "https://pixabay.com/en/austin-tx-sign-texas-downtown-713746/",
+    source:
+      "https://pixabay.com/en/austin-tx-sign-texas-downtown-713746/",
     license: "Public Domain",
     image: "skinny.jpg",
   },
@@ -345,7 +392,8 @@ module.exports = {
   },
   "environment-variables": {
     author: "cocoparisienne",
-    source: "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
+    source:
+      "https://pixabay.com/en/firewood-combs-thread-cutting-1157304/",
     license: "Public Domain",
     image: "firewood.jpg",
   },
@@ -365,109 +413,127 @@ module.exports = {
   },
   "analyzing-build-statistics": {
     author: "jpj2000nl",
-    source: "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    source:
+      "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
     license: "Public Domain",
     image: "caliper.jpg",
   },
   "build-analysis": {
     author: "jpj2000nl",
-    source: "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    source:
+      "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
     license: "Public Domain",
     image: "caliper.jpg",
   },
   performance: {
     author: "smarko",
-    source: "https://pixabay.com/en/car-supercar-gt-ford-speed-power-1376190/",
+    source:
+      "https://pixabay.com/en/car-supercar-gt-ford-speed-power-1376190/",
     license: "Public Domain",
     image: "car.jpg",
   },
   targets: {
     author: "DS-Foto",
-    source: "https://pixabay.com/en/darts-target-bull-s-eye-delivering-673229/",
+    source:
+      "https://pixabay.com/en/darts-target-bull-s-eye-delivering-673229/",
     license: "Public Domain",
     image: "darts.jpg",
   },
   api: {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/old-books-book-old-library-436498/",
+    source:
+      "https://pixabay.com/en/old-books-book-old-library-436498/",
     license: "Public Domain",
     image: "books.jpg",
   },
   documentation: {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/old-books-book-old-library-436498/",
+    source:
+      "https://pixabay.com/en/old-books-book-old-library-436498/",
     license: "Public Domain",
     image: "books.jpg",
   },
   "bundling-libraries": {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/old-books-book-old-library-436498/",
+    source:
+      "https://pixabay.com/en/old-books-book-old-library-436498/",
     license: "Public Domain",
     image: "books.jpg",
   },
   readme: {
     author: "Duke University Archives",
-    source: "https://www.flickr.com/photos/19219926@N04/3707001321",
+    source:
+      "https://www.flickr.com/photos/19219926@N04/3707001321",
     license: "CC BY-NC-SA",
     image: "library.jpg",
   },
   "library-output": {
     author: "Duke University Archives",
-    source: "https://www.flickr.com/photos/19219926@N04/3707001321",
+    source:
+      "https://www.flickr.com/photos/19219926@N04/3707001321",
     license: "CC BY-NC-SA",
     image: "library.jpg",
   },
   "multiple-pages": {
     author: "stevepb",
-    source: "https://pixabay.com/en/newspaper-news-media-spectacles-412452/",
+    source:
+      "https://pixabay.com/en/newspaper-news-media-spectacles-412452/",
     license: "Public Domain",
     image: "newspaper.jpg",
   },
   "server-side-rendering": {
     author: "heladodementa",
-    source: "https://pixabay.com/en/technology-servers-server-1587673/",
+    source:
+      "https://pixabay.com/en/technology-servers-server-1587673/",
     license: "Public Domain",
     image: "server.jpg",
   },
   "source-maps": {
     author: "Efraimstochter",
-    source: "https://pixabay.com/en/wheels-machine-installation-art-784865/",
+    source:
+      "https://pixabay.com/en/wheels-machine-installation-art-784865/",
     license: "Public Domain",
     image: "wheels.jpg",
   },
   "bundle-splitting": {
     author: "stevepb",
-    source: "https://pixabay.com/en/books-student-study-education-1012088/",
+    source:
+      "https://pixabay.com/en/books-student-study-education-1012088/",
     license: "Public Domain",
     image: "bundle.jpg",
   },
   "code-splitting": {
     author: "Arcaion",
-    source: "https://pixabay.com/en/walnut-italian-cane-shell-hard-1776466/",
+    source:
+      "https://pixabay.com/en/walnut-italian-cane-shell-hard-1776466/",
     license: "Public Domain",
     image: "nuts.jpg",
   },
   "tidying-up": {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
+    source:
+      "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
     license: "Public Domain",
     image: "cleaning.jpg",
   },
   consuming: {
     author: "caja",
-    source: "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
+    source:
+      "https://pixabay.com/en/white-chocolate-chocolate-sweet-380702/",
     license: "Public Domain",
     image: "chunks.jpg",
   },
   "consuming-techniques": {
     author: "Foundry",
-    source: "https://pixabay.com/en/food-waffle-dessert-honey-863484/",
+    source:
+      "https://pixabay.com/en/food-waffle-dessert-honey-863484/",
     license: "Public Domain",
     image: "food.jpg",
   },
   authoring: {
     author: "Duke University Archives",
-    source: "https://www.flickr.com/photos/19219926@N04/3707001321",
+    source:
+      "https://www.flickr.com/photos/19219926@N04/3707001321",
     license: "CC BY-NC-SA",
     image: "library.jpg",
   },
@@ -480,67 +546,78 @@ module.exports = {
   },
   "separating-css": {
     author: "Andrea Williams",
-    source: "https://www.flickr.com/photos/82405581@N00/3173065446",
+    source:
+      "https://www.flickr.com/photos/82405581@N00/3173065446",
     license: "CC BY-NC-ND",
     image: "taxi.jpg",
   },
   autoprefixing: {
     author: "blickpixel",
-    source: "https://pixabay.com/en/cube-game-cube-instantaneous-speed-568191/",
+    source:
+      "https://pixabay.com/en/cube-game-cube-instantaneous-speed-568191/",
     license: "Public Domain",
     image: "cubes.jpg",
   },
   "eliminating-unused-css": {
     author: "heikografie",
-    source: "https://pixabay.com/en/analog-photography-dusty-old-1048928/",
+    source:
+      "https://pixabay.com/en/analog-photography-dusty-old-1048928/",
     license: "Public Domain",
     image: "unused.jpg",
   },
   "dynamic-loading": {
     author: "wongpear",
-    source: "https://pixabay.com/en/microphone-mic-dynamic-audio-398738/",
+    source:
+      "https://pixabay.com/en/microphone-mic-dynamic-audio-398738/",
     license: "Public Domain",
     image: "microphone.jpg",
   },
   "web-workers": {
     author: "PollyDot",
-    source: "https://pixabay.com/en/honey-bees-bees-hive-bee-hive-401238/",
+    source:
+      "https://pixabay.com/en/honey-bees-bees-hive-bee-hive-401238/",
     license: "Public Domain",
     image: "workers.jpg",
   },
   i18n: {
     author: "geralt",
-    source: "https://pixabay.com/en/globe-earth-world-globalization-895580/",
+    source:
+      "https://pixabay.com/en/globe-earth-world-globalization-895580/",
     license: "Public Domain",
     image: "globe.jpg",
   },
   testing: {
     author: "skeeze",
-    source: "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
+    source:
+      "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
     license: "Public Domain",
     image: "testing.jpg",
   },
   deploying: {
     author: "Acid Pix",
-    source: "https://www.flickr.com/photos/7870246@N03/481256246",
+    source:
+      "https://www.flickr.com/photos/7870246@N03/481256246",
     license: "CC BY",
     image: "boots.jpg",
   },
   "implementing-kanban": {
     author: "Radek Orszewski",
-    source: "https://www.flickr.com/photos/61745819@N00/10588140955",
+    source:
+      "https://www.flickr.com/photos/61745819@N00/10588140955",
     license: "CC BY-NC-ND",
     image: "kanban_photo.jpg",
   },
   "advanced-techniques": {
     author: "Jairus Khan",
-    source: "https://www.flickr.com/photos/10282509@N00/4674249352",
+    source:
+      "https://www.flickr.com/photos/10282509@N00/4674249352",
     license: "CC BY-NC-SA",
     image: "mainframe.jpg",
   },
   "testing-react": {
     author: "skeeze",
-    source: "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
+    source:
+      "https://pixabay.com/en/eyeglasses-exam-optometry-vision-679696/",
     license: "Public Domain",
     image: "testing.jpg",
     bonus: true,
@@ -548,7 +625,8 @@ module.exports = {
   },
   "typing-with-react": {
     author: "Markus Mayer",
-    source: "https://www.flickr.com/photos/10832246@N06/2925254789/",
+    source:
+      "https://www.flickr.com/photos/10832246@N06/2925254789/",
     license: "CC BY-NC-ND",
     image: "typing.jpg",
     bonus: true,
@@ -556,38 +634,44 @@ module.exports = {
   },
   "styling-react": {
     author: "Andrea Williams",
-    source: "https://www.flickr.com/photos/82405581@N00/3173065446",
+    source:
+      "https://www.flickr.com/photos/82405581@N00/3173065446",
     license: "CC BY-NC-ND",
     image: "taxi.jpg",
   },
   "structuring-react-projects": {
     author: "epicantus",
-    source: "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
+    source:
+      "https://pixabay.com/en/clock-time-hour-minute-watch-272483/",
     license: "Public Domain",
     image: "structure.jpg",
   },
   "language-features": {
     author: "wilhei",
-    source: "https://pixabay.com/en/font-lead-set-book-printing-705667/",
+    source:
+      "https://pixabay.com/en/font-lead-set-book-printing-705667/",
     license: "Public Domain",
     image: "language.jpg",
   },
   "understanding-decorators": {
     author: "Ana_J",
-    source: "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
+    source:
+      "https://pixabay.com/en/toy-car-bus-toy-red-tin-car-431356/",
     license: "Public Domain",
     image: "decorators.jpg",
     type: "chapter",
   },
   "introduction-to-react": {
     author: "Marko Heinrich",
-    source: "https://pixabay.com/en/event-technology-light-panel-644537/",
+    source:
+      "https://pixabay.com/en/event-technology-light-panel-644537/",
     license: "Public Domain",
     image: "panel.jpg",
   },
   "setting-up-the-project": {
     author: "Efraimstochter",
-    source: "https://pixabay.com/en/wheels-machine-installation-art-784865/",
+    source:
+      "https://pixabay.com/en/wheels-machine-installation-art-784865/",
     license: "Public Domain",
     image: "wheels.jpg",
     demo: "getting-started/setting-up-the-project",
@@ -595,7 +679,8 @@ module.exports = {
   },
   "implementing-notes": {
     author: "Angela",
-    source: "https://www.flickr.com/photos/73635318@N00/2663422833",
+    source:
+      "https://www.flickr.com/photos/73635318@N00/2663422833",
     license: "CC BY-NC-SA",
     image: "notes.jpg",
     demo: "getting-started/implementing-notes",
@@ -603,7 +688,8 @@ module.exports = {
   },
   "deleting-notes": {
     author: "jarmoluk",
-    source: "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
+    source:
+      "https://pixabay.com/en/cleaning-washing-cleanup-the-ilo-268126/",
     license: "Public Domain",
     image: "cleaning.jpg",
     demo: "getting-started/deleting-notes",
@@ -611,13 +697,15 @@ module.exports = {
   },
   "understanding-react-components": {
     author: "werner22brigitte",
-    source: "https://pixabay.com/en/rusty-metal-old-machine-185531/",
+    source:
+      "https://pixabay.com/en/rusty-metal-old-machine-185531/",
     license: "Public Domain",
     image: "machine.jpg",
   },
   "editing-notes": {
     author: "jpj2000nl",
-    source: "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
+    source:
+      "https://pixabay.com/en/tools-technique-vernier-caliper-1093119/",
     license: "Public Domain",
     image: "caliper.jpg",
     demo: "getting-started/editing-notes",
@@ -625,7 +713,8 @@ module.exports = {
   },
   "styling-notes": {
     author: "Philip Brown",
-    source: "https://www.flickr.com/photos/67478016@N00/379064899",
+    source:
+      "https://www.flickr.com/photos/67478016@N00/379064899",
     license: "CC BY-NC-ND",
     image: "apples_oranges.jpg",
     demo: "getting-started/styling-notes",
@@ -633,7 +722,8 @@ module.exports = {
   },
   "react-and-flux": {
     author: "jeremyg3030",
-    source: "https://www.flickr.com/photos/126433814@N04/16298563416",
+    source:
+      "https://www.flickr.com/photos/126433814@N04/16298563416",
     license: "CC BY",
     image: "delorean.jpg",
     demo: "implementing-kanban/react-and-flux",
@@ -642,28 +732,35 @@ module.exports = {
   "implementing-store-and-actions": {
     license: "Public Domain",
     image: "jumper.jpg",
-    demo: "implementing-kanban/implementing-store-and-actions",
-    endSource: "implementing_kanban/02_implementing_store_and_actions",
+    demo:
+      "implementing-kanban/implementing-store-and-actions",
+    endSource:
+      "implementing_kanban/02_implementing_store_and_actions",
   },
   "implementing-persistency": {
     author: "Unsplash",
-    source: "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
+    source:
+      "https://pixabay.com/en/hitchhiker-thumb-hoodie-backpack-691581/",
     license: "Public Domain",
     image: "hoodie.jpg",
     demo: "implementing-kanban/implementing-persistency",
-    endSource: "implementing_kanban/03_implementing_persistency",
+    endSource:
+      "implementing_kanban/03_implementing_persistency",
   },
   "handling-data-dependencies": {
     author: "Radek Orszewski",
-    source: "https://www.flickr.com/photos/61745819@N00/10588140955",
+    source:
+      "https://www.flickr.com/photos/61745819@N00/10588140955",
     license: "CC BY-NC-SA",
     image: "kanban_photo.jpg",
     demo: "implementing-kanban/handling-data-dependencies",
-    endSource: "implementing_kanban/04_handling_data_dependencies",
+    endSource:
+      "implementing_kanban/04_handling_data_dependencies",
   },
   "editing-lanes": {
     author: "stevepb",
-    source: "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
+    source:
+      "https://pixabay.com/en/axe-chopper-cut-split-hatchet-674841/",
     license: "Public Domain",
     image: "axe.jpg",
     demo: "implementing-kanban/editing-lanes",
@@ -671,7 +768,8 @@ module.exports = {
   },
   "drag-and-drop": {
     author: "Emma Story",
-    source: "https://www.flickr.com/photos/15146367@N00/4083260446",
+    source:
+      "https://www.flickr.com/photos/15146367@N00/4083260446",
     license: "CC BY-NC",
     image: "dnd.jpg",
     demo: "implementing-kanban/drag-and-drop",
