@@ -5,7 +5,7 @@ const clean = require("./clean");
 const headers = require("./headers");
 
 function parseQuotes(data) {
-  const tokens = marked.lexer(data).map(t => {
+  const tokens = marked.lexer(data).map((t) => {
     if (t.type === "paragraph") {
       return (
         parseCustomQuote(t, "T>", "tip") ||
@@ -28,7 +28,9 @@ function parseCustomQuote(token, match, className) {
 
     if (text.indexOf(match) === 0) {
       const icon =
-        className === "tip" ? "icon-attention-circled" : "icon-attention";
+        className === "tip"
+          ? "icon-attention-circled"
+          : "icon-attention";
 
       return {
         type: "html",
@@ -73,9 +75,7 @@ function parseHeader(resourcePath) {
 
   if (header) {
     if (header.source && header.author && header.license) {
-      ret.headerExtra = `<a href="${header.source}">${header.author} (${
-        header.license
-      })</a>`;
+      ret.headerExtra = `<a href="${header.source}">${header.author} (${header.license})</a>`;
     } else if (header.license) {
       ret.headerExtra = header.license;
     }
