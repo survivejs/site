@@ -411,7 +411,7 @@ module.exports = {
     license: "Public Domain",
     image: "hash.jpg",
   },
-  "separating-manifest": {
+  "separating-runtime": {
     author: "cocoparisienne",
     source:
       "https://pixabay.com/en/texture-handwriting-s%C3%BCtterlin-1362879/",

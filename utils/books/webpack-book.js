@@ -2,7 +2,8 @@
 // useful for linking
 const parseChapters = require("./parse-chapters");
 
-const webpackUrl = require("../../antwar.config.js").paths.webpack.url;
+const webpackUrl = require("../../antwar.config.js").paths
+  .webpack.url;
 
 let cache = {};
 

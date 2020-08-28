@@ -1,8 +1,8 @@
 ---
-title: '"SurviveJS - Webpack" Updated to webpack 4'
+title: '"SurviveJS - Webpack" book updated to webpack 4'
 date: 2018-03-19
-headerImage: 'assets/img/strange.jpg'
-keywords: ['release-notes', 'webpack']
+headerImage: "assets/img/strange.jpg"
+keywords: ["release-notes", "webpack"]
 ---
 
 Quite a bit has happened in the world of webpack. Most notably, the [webpack reached version 4](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4) recently. The purpose of this release of the book is to update it to support webpack 4 while preparing towards the next paper edition.
@@ -25,29 +25,29 @@ I released a series of silent releases as before. The chapter structure is intac
 
 I've listed the main changes next:
 
-* *Eliminating Unused CSS* chapter is before *Autoprefixing* now as this way it felt like it flows better.
-* The *Comparison of Build Tools* appendix has been largely rewritten to reflect the current situation.
-* The *Source Maps* chapter has been tuned to take webpack 4 into account leading to simplifications.
-* The *Bundle Splitting* chapter has been rewritten to take advantage of webpack 4 syntax. Much simpler now.
-* The *Code Splitting* chapter doesn't contain the old syntax anymore. It's better to refer to webpack documentation for that.
-* The *Getting Started* chapter has been rewritten so it's easier for people to go through.
-* The *Loader Definitions* chapter has been expanded to contain more ideas.
-* The *Loading Fonts* chapter doesn't contain Font Awesome example anymore. Their documentation seems to cover usage well enough now. The change also simplified the remaining book.
-* `webpack.NamedModulesPlugin` gets less attention now that webpack has `mode` and module ids are set in a better way without the user having to tune them.
-* The *Build Analysis* chapter has been expanded to contain more ideas.
+- _Eliminating Unused CSS_ chapter is before _Autoprefixing_ now as this way it felt like it flows better.
+- The _Comparison of Build Tools_ appendix has been largely rewritten to reflect the current situation.
+- The _Source Maps_ chapter has been tuned to take webpack 4 into account leading to simplifications.
+- The _Bundle Splitting_ chapter has been rewritten to take advantage of webpack 4 syntax. Much simpler now.
+- The _Code Splitting_ chapter doesn't contain the old syntax anymore. It's better to refer to webpack documentation for that.
+- The _Getting Started_ chapter has been rewritten so it's easier for people to go through.
+- The _Loader Definitions_ chapter has been expanded to contain more ideas.
+- The _Loading Fonts_ chapter doesn't contain Font Awesome example anymore. Their documentation seems to cover usage well enough now. The change also simplified the remaining book.
+- `webpack.NamedModulesPlugin` gets less attention now that webpack has `mode` and module ids are set in a better way without the user having to tune them.
+- The _Build Analysis_ chapter has been expanded to contain more ideas.
 
 In total 242 commits went to the book since the last public release. You can find the [changes at GitHub](https://github.com/survivejs/webpack-book/compare/v2.1.7...v2.3.0). Remember especially the "Files changed" tab as it gives you a good overview of what's happening with the book.
 
 You can find the book below:
 
-* [“SurviveJS — Webpack” - Free online edition](/webpack/preface/)
-* [“SurviveJS — Webpack” - Leanpub edition (digital)](https://leanpub.com/survivejs-webpack/)
+- [“SurviveJS — Webpack” - Free online edition](/webpack/preface/)
+- [“SurviveJS — Webpack” - Leanpub edition (digital)](https://leanpub.com/survivejs-webpack/)
 
-T> A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. I support his work this way given mine builds on top of his. Literally, most of the income goes to webpack developers now!
+T> A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. I support his work this way given mine builds on top of his.
 
 ## What Next?
 
-Even though I have a list of improvements planned for the webpack book, it doesn't make sense to push it to paper until [mini-css-extract-plugin](https://www.npmjs.com/package/mini-css-extract-plugin) and [Babel 7](https://www.npmjs.com/package/@babel/core) have reached stable status. *mini-css-extract-plugin* replaces *extract-text-webpack-plugin* for majority of users but it still requires more work. It will simplify CSS configuration somewhat.
+Even though I have a list of improvements planned for the webpack book, it doesn't make sense to push it to paper until [mini-css-extract-plugin](https://www.npmjs.com/package/mini-css-extract-plugin) and [Babel 7](https://www.npmjs.com/package/@babel/core) have reached stable status. _mini-css-extract-plugin_ replaces _extract-text-webpack-plugin_ for majority of users but it still requires more work. It will simplify CSS configuration somewhat.
 
 Most likely the next book release has to do with the [maintenance book](/maintenance/). There are those last bits of content that require work and the book needs structural editing as well. That said, it's already a useful one even its current state.
 
