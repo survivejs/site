@@ -2,7 +2,7 @@
 title: "Algolia with Netlify - Easy search for static sites - Interview with Samuel Bodin"
 date: 2020-10-19
 headerImage: "assets/img/jamstack.jpg"
-keywords: ["interview"]
+keywords: ["interview", "static-site-generation"]
 ---
 
 Setting up and maintaining a search on a static site is often a chore. You could handle indexing yourself using a solution like [Lunr](https://lunrjs.com/) but even with that you'll encounter limitations as the size of the index grows.
