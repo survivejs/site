@@ -31,7 +31,7 @@ Even with CRA, you may find yourself extending the setup using unofficial ways a
 
 ## Book Improvements - `2.6`
 
-I've release multiple silent releases since the previous public release to improve the book. The past month during which I've been renovating the book has been intense and I feel it's in a much better shape than before.
+I've released multiple silent releases since the previous public version to improve the book. The past month during which I've been renovating the book has been intense and I feel it's in a much better shape than before.
 
 I still use it as my personal main reference for webpack related things and I've tried to develop the book so that you have strong secondary material with more information available should you want to dig deeper. For me, that's the sweet spot for the book.
 
