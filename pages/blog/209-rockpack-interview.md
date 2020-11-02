@@ -31,7 +31,7 @@ You get a project with server-side rendering support, CSS (SCSS, LESS) Modules, 
 
 ![Rockpack](assets/img/rockpack.png)
 
-There are several cases where Rockpack will be useful:
+There are several cases where Rockpack is useful:
 
 - **Beginners** - With the help of Rockpack, any newbie to React can deploy a project of any complexity in a few minutes. Applications can be either regular single page or with a project structure, [server-side rendering](https://www.rockpack.io/ssr-1-creating-simple-ssr-application), etc.
 - **Large projects from scratch** - Rockpack supports most of the webpack best practices and scales to big projects.
