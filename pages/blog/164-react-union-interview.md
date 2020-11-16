@@ -1,8 +1,8 @@
 ---
-title: 'React Union - React for CMSs and Portals - Interview with Tomáš Konrády'
+title: "React Union - React for CMSs and Portals - Interview with Tomáš Konrády"
 date: 2018-12-02
-headerImage: 'assets/img/react-union.jpg'
-keywords: ['interview', 'reactjs']
+headerImage: "assets/img/react-union.jpg"
+keywords: ["interview", "react"]
 ---
 
 React has uses beyond application development. One of the perhaps surprising use cases is to integrate it within a Content Management System (CMS) such as WordPress.
@@ -30,9 +30,9 @@ Purpose of the React Union project is to help with developing React applications
 
 React Union project consists of three parts:
 
-* `<Union />` component - `Union` component is responsible for assembling one logical virtual DOM from physically distributed HTML fragments.
-* react-union-scripts is our SDK for developing large applications.
-* Boilerplates provide starting points for projects and they also show how to use the component and the scripts together.
+- `<Union />` component - `Union` component is responsible for assembling one logical virtual DOM from physically distributed HTML fragments.
+- react-union-scripts is our SDK for developing large applications.
+- Boilerplates provide starting points for projects and they also show how to use the component and the scripts together.
 
 ## How does _React Union_ work?
 
@@ -44,7 +44,10 @@ Assume, that code below is the output of your server:
     Generated content by CMS.
 
     <div id="news-feed"></div>
-    <script data-union-widget="news-feed" data-union-container="news-feed"></script>
+    <script
+      data-union-widget="news-feed"
+      data-union-container="news-feed"
+    ></script>
 
     Generated content by CMS with nonpredictable markup...
 
@@ -52,7 +55,8 @@ Assume, that code below is the output of your server:
       <div id="customers-chat"></div>
       <script
         data-union-widget="customers-chat"
-        data-union-container="customers-chat"></script>
+        data-union-container="customers-chat"
+      ></script>
     </div>
 
     <script src="js/app.bundle.js"></script>
@@ -142,9 +146,9 @@ I would recommend them to dig into basics. It is essential to genuinely know HTM
 
 ## Who should I interview next?
 
-* [Scott Sauyet aka CrossEye](https://github.com/CrossEye) - One of the core members of Ramda. What are the plans according to the Ramda library? :)
-* [Brent Jackson aka jxnblk](https://github.com/jxnblk) - Creator of my most favorite css-in-js libraries - styled-system and rebass - I would like to know what new project is going to release.
-* [Rich Hickey](https://twitter.com/richhickey) - Creator of Clojure - I am interested what would he say about TypeScript or [FantasyLand](https://github.com/fantasyland/fantasy-land).
+- [Scott Sauyet aka CrossEye](https://github.com/CrossEye) - One of the core members of Ramda. What are the plans according to the Ramda library? :)
+- [Brent Jackson aka jxnblk](https://github.com/jxnblk) - Creator of my most favorite css-in-js libraries - styled-system and rebass - I would like to know what new project is going to release.
+- [Rich Hickey](https://twitter.com/richhickey) - Creator of Clojure - I am interested what would he say about TypeScript or [FantasyLand](https://github.com/fantasyland/fantasy-land).
 
 ## Any last remarks?
 

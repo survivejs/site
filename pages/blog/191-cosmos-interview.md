@@ -2,7 +2,7 @@
 title: "React Cosmos - A development environment for ambitious developers - Interview with Ovidiu Cherecheş"
 date: 2020-02-13
 headerImage: "assets/img/cosmos.jpg"
-keywords: ["interview", "react", "styleguide"]
+keywords: ["interview", "react", "styleguide", "ui"]
 ---
 
 Developing user interfaces can be complex as you have to think about different ways it's going to be used and you have to design patterns and components to use for defining it. That's where tools like style guides come in.

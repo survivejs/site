@@ -1,9 +1,9 @@
 ---
-title: 'a-plus-forms - A+ forms. Would use again - Interview with Nikolay Nemshilov'
+title: "a-plus-forms - A+ forms. Would use again - Interview with Nikolay Nemshilov"
 date: 2017-11-20
-headerImage: 'assets/img/crystal.jpg'
-keywords: ['forms', 'interview', 'reactjs']
-editors: ['bebraw', 'karlhorky']
+headerImage: "assets/img/crystal.jpg"
+keywords: ["forms", "interview", "react"]
+editors: ["bebraw", "karlhorky"]
 ---
 
 If you think about it, a lot of web development has something to do with forms. Every time you capture information, you most likely require a form. It's one of the basic skills for a front-end developer.
@@ -20,6 +20,7 @@ T> I met Nikolay over the internet roughly a decade ago while I was writing my f
 </span>
 
 Well, over the years of trying to answer this question, I narrowed it down to the following: Hi, I'm Nikolay, I'm here to help.
+
 </p>
 
 That's usually enough to start. But, I suppose you want something more tangible in this case. Well, I'm a software engineer, I think. And I've been doing this long enough to start feeling a bit awkward about it. I guess my "career" as a software engineer began when IE4 was the tip of the spear and I still had my hands on the keyboard every single day.
@@ -28,11 +29,11 @@ Recently, however, I've been more focused on building teams of software engineer
 
 Ok, I admit, this was a bit vague. Don't get me wrong; I am not trying to dodge the question. But I feel like a personal story of a Siberian born, working-class nerd who lives in Australia is going to be a bit confusing and besides the point.
 
-## How would you describe *a-plus-forms* to someone who has never heard of it?
+## How would you describe _a-plus-forms_ to someone who has never heard of it?
 
 A+ forms is a React forms library that helps you not cry yourself to sleep every time your boss asks you to build a twelve-field form. It solves tedious problems like state management, validation, and data transformation in a predictable manner with minimal configuration.
 
-## How do *a-plus-forms* work?
+## How do _a-plus-forms_ work?
 
 I think this question can be answered from multiple perspectives: how it works internally, what it exposes externally, and how it works in the context of an engineering team.
 
@@ -58,7 +59,7 @@ The above is just a simple example that doesn't do justice to the level of compl
 
 This mentality is shared by engineers and teams. It's a universal truth of forms if you will. All you want is data.
 
-## How do *a-plus-forms* differ from other solutions?
+## How do _a-plus-forms_ differ from other solutions?
 
 Ok, let's get this straight. I'm not going to say anything negative about other solutions - I'm not here to bash other people's work. Besides, given enough determination, most problems can be solved with any tool available. Instead, I'll explain what's important to me.
 
@@ -66,7 +67,7 @@ As the technology matures, we humans try to use it to solve increasingly complex
 
 Most solutions on the market address the complexity of the task with increased complexity. Over time this inevitably becomes taxing. A+ forms differ here by attempting to keeping the task of creating and maintaining complex forms simple.
 
-## Why did you develop *a-plus-forms*?
+## Why did you develop _a-plus-forms_?
 
 To become rich and famous and achieve world domination, naturally. But seriously, I think I have little patience for wasting time in my work. I don't know about you, but I'm easily distracted and discouraged when things are not going smoothly. There are so many awesome things waiting to be built in the world, and spending time dealing with mundane problems that have already been solved is unproductive.
 
@@ -96,7 +97,7 @@ At my day job, we're using JSON Schema as a way to validate forms, but it's a bi
 
 The goal is to make A+ forms into a sort of "Barbie doll", where the community can build extensions and extra accessories for it and share their solutions with each other.
 
-## What does the future look like for *a-plus-forms* and web development in general? Can you see any particular trends?
+## What does the future look like for _a-plus-forms_ and web development in general? Can you see any particular trends?
 
 If you ask my opinion, I think we should stop calling it "web development" and instead just use the term "development". From first-hand experience since almost the beginning of widespread adoption of the web, I can say one thing: engineers tend to be overprotective of their reputation, to the point of being real jerks.
 

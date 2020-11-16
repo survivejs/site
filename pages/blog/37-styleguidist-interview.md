@@ -2,7 +2,7 @@
 title: "react-styleguidist - Style guide generator for React - Interview with Artem Sapegin"
 date: 2016-02-22
 headerImage: "assets/img/styleguidist.jpg"
-keywords: ["interview", "react", "styleguide"]
+keywords: ["interview", "react", "styleguide", "ui"]
 ---
 
 People have been developing style guides for their sites and applications for quite a while. They define basic building blocks and aesthetics. This is valuable as it helps you to keep your design consistent and communicate it to your developers better. Style guides can also help to bridge designers with developers.

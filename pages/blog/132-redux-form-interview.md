@@ -1,8 +1,8 @@
 ---
-title: 'Redux Form - The best way to manage your form state in Redux - Interview with Erik Rasmussen'
+title: "Redux Form - The best way to manage your form state in Redux - Interview with Erik Rasmussen"
 date: 2017-12-11
-headerImage: 'assets/img/crystal.jpg'
-keywords: ['forms', 'interview', 'reactjs', 'redux']
+headerImage: "assets/img/crystal.jpg"
+keywords: ["forms", "interview", "react", "redux"]
 ---
 
 Forms are a frequent topic in web development as we saw in [the earlier interview about a-plus-forms](/blog/a-plus-interview). This time around, I'm interviewing [Erik Rasmussen](https://twitter.com/erikras) about a popular option, Redux Form.
@@ -17,11 +17,12 @@ T> Erik has published a library agnostic successor to Redux Form. See [Final For
 </span>
 
 I'm originally from North Carolina, but I hadn't lived in the US since late 2001, when I moved to Birmingham, England. I was there for four and a half years, and now I live in northern Spain with my Spanish wife and two bilingual kids. I'm a transatlantic telecommuter, working from home in Spain for my employer in the US.
+
 </p>
 
 I began using React immediately after it was open sourced in 2013, building side projects and ran into all of the state management problems that Flux was introduced to solve. I was active on the Reactiflux Slack channel as Redux was taking shape before its announcement in 2015, back when what is now called _reducers_ were still called _stores_.
 
-## How would you describe *Redux Form* to someone who has never heard of it?
+## How would you describe _Redux Form_ to someone who has never heard of it?
 
 Web forms have a _lot_ of state involved with them. It might seem like all you have to keep track of is the value of each field, but there is _so_ much more. For example:
 
@@ -33,35 +34,35 @@ Web forms have a _lot_ of state involved with them. It might seem like all you h
 - Which fields has the user _visited_ (focused on)?
 - Which fields has the user _touched_ (focused on and then left)?
 
-*Redux Form* manages _all_ of that state for you, providing each field with what it needs to render: its `value` and `onChange`, `onBlur`, `onFocus`, etc. props.
+_Redux Form_ manages _all_ of that state for you, providing each field with what it needs to render: its `value` and `onChange`, `onBlur`, `onFocus`, etc. props.
 
-## How does *Redux Form* work?
+## How does _Redux Form_ work?
 
-React prefers unidirectional data flow where a container component holds state and passes down the state and callbacks for its children to modify the state. Redux fits this model like a glove, keeping state globally and allowing mutations through dispatched actions. *Redux Form* dispatches actions for every event in your form, and updates the global state accordingly, rerendering _only_ the components that need to be rerendered.
+React prefers unidirectional data flow where a container component holds state and passes down the state and callbacks for its children to modify the state. Redux fits this model like a glove, keeping state globally and allowing mutations through dispatched actions. _Redux Form_ dispatches actions for every event in your form, and updates the global state accordingly, rerendering _only_ the components that need to be rerendered.
 
-## How does *Redux Form* differ from other solutions?
+## How does _Redux Form_ differ from other solutions?
 
 The most significant difference is that it uses Redux. Some other solutions also use Redux, but many do not. Like everything in engineering, this has its pros and cons. The main two benefits are: you can watch all of your state mutations go by in Redux Dev Tools and that you can listen to Redux Form actions in other reducers of your application, e.g., potentially updating some canonical local record when your form submission has succeeded.
 
-The primary drawback is that you might not be using Redux at all in your application, but to use *Redux Form* as your form solution, you will be forced to use it. However, Redux is so prevalent in the React community, the chance that you are already using it to manage state is pretty good.
+The primary drawback is that you might not be using Redux at all in your application, but to use _Redux Form_ as your form solution, you will be forced to use it. However, Redux is so prevalent in the React community, the chance that you are already using it to manage state is pretty good.
 
-## Why did you develop *Redux Form*?
+## Why did you develop _Redux Form_?
 
-Well, I was building an app that had several long forms. I asked Dan Abramov in the Reactiflux Slack channel, "Redux isn't fast enough so that I could dispatch an action on _every single keypress_ in a form, right?" He responded something along the lines of, "I don't see why not? Try it!" And *Redux Form* was born.
+Well, I was building an app that had several long forms. I asked Dan Abramov in the Reactiflux Slack channel, "Redux isn't fast enough so that I could dispatch an action on _every single keypress_ in a form, right?" He responded something along the lines of, "I don't see why not? Try it!" And _Redux Form_ was born.
 
-I had published a few tiny niche libraries before but had never been The Maintainer of an open source project. The community was very supportive, and I worked hard with them to sculpt *Redux Form* into what it is today. It has been a lot of work, but also fun and rewarding.
+I had published a few tiny niche libraries before but had never been The Maintainer of an open source project. The community was very supportive, and I worked hard with them to sculpt _Redux Form_ into what it is today. It has been a lot of work, but also fun and rewarding.
 
 ## What next?
 
-Taking into account all that I have learned in maintaining *Redux Form*, I have recently created and released what I think might be the next generation of form state management. The solution does not depend on Redux or even React. It is a library that could potentially also be used by our brethren in the Angular, Ember, Preact, and Vue communities.
+Taking into account all that I have learned in maintaining _Redux Form_, I have recently created and released what I think might be the next generation of form state management. The solution does not depend on Redux or even React. It is a library that could potentially also be used by our brethren in the Angular, Ember, Preact, and Vue communities.
 
 The library is called [🏁 Final Form](https://github.com/erikras/final-form#-final-form), and it's based on the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), where different form elements on the page _subscribe_ to different parts of the form state, and only update themselves when they need to. I would encourage your readers to check it out.
 
-## What does the future look like for *Redux Form* and web development in general? Can you see any particular trends?
+## What does the future look like for _Redux Form_ and web development in general? Can you see any particular trends?
 
-The npm download charts for React, Redux, and *Redux Form* look very similar: **GROWTH**. 📈
+The npm download charts for React, Redux, and _Redux Form_ look very similar: **GROWTH**. 📈
 
-According to the npm download stats for October 2017, 46% of projects using React are using *react-redux*, and 24% of those are using Redux Form. That's **11.2% of React projects that are using *Redux Form***. There are [**_1.6 million_** projects](https://www.npmjs.com/browse/depended/redux-form) on npm that depend on *Redux Form*. *Redux Form* is here to stay.
+According to the npm download stats for October 2017, 46% of projects using React are using _react-redux_, and 24% of those are using Redux Form. That's **11.2% of React projects that are using _Redux Form_**. There are [**_1.6 million_** projects](https://www.npmjs.com/browse/depended/redux-form) on npm that depend on _Redux Form_. _Redux Form_ is here to stay.
 
 As for web development in general, I think the declarative "UI as a function of State" paradigm that React has popularized is here to stay. From what I can tell, most of the frontline battles being fought today are attempting to drive a stake into the heart of CSS once and for all. Web Components and WebAssembly seem like promising future tech but aren't worth learning yet unless you lust for the bleeding edge.
 

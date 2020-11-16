@@ -1,8 +1,8 @@
 ---
-title: 'Redux Zero - Single Store, No Reducers - Interview with Matheus Lima'
+title: "Redux Zero - Single Store, No Reducers - Interview with Matheus Lima"
 date: 2017-12-04
-headerImage: 'assets/img/calculator.jpg'
-keywords: ['interview', 'redux', 'reactjs']
+headerImage: "assets/img/calculator.jpg"
+keywords: ["interview", "redux", "react"]
 ---
 
 Although using Redux is straight-forward once you understand the approach and its nuances, after a while it gets repetitive. It's easy to end up with a lot of "boilerplate" code that wires all the logic together. For this reason, multiple solutions addressing the issue have appeared.
@@ -28,7 +28,7 @@ It's simple.
 First, create a store. The application state will live here:
 
 ```javascript
-import { createStore } from 'redux-zero';
+import { createStore } from "redux-zero";
 
 const initialState = { count: 1 };
 const store = createStore(initialState);
@@ -39,9 +39,9 @@ export default store;
 Then, create some actions to change the state of your store:
 
 ```javascript
-const actions = store => ({
-  increment: state => ({ count: state.count + 1 }),
-  decrement: state => ({ count: state.count - 1 }),
+const actions = (store) => ({
+  increment: (state) => ({ count: state.count + 1 }),
+  decrement: (state) => ({ count: state.count - 1 }),
 });
 ```
 
@@ -50,36 +50,37 @@ Since the actions are bound to the store, they are just pure functions.
 Now create your component. With _Redux Zero_ your component can focus 100% on the UI and just call the actions to update the state:
 
 ```jsx
-import React from 'react';
-import { connect } from 'redux-zero/react';
+import React from "react";
+import { connect } from "redux-zero/react";
 
-import actions from './actions';
+import actions from "./actions";
 
 const mapToProps = ({ count }) => ({ count });
 
-export default connect(mapToProps, actions)(
-  ({ count, increment, decrement }) => (
+export default connect(
+  mapToProps,
+  actions
+)(({ count, increment, decrement }) => (
+  <div>
+    <h1>{count}</h1>
     <div>
-      <h1>{count}</h1>
-      <div>
-        <button onClick={decrement}>decrement</button>
-        <button onClick={increment}>increment</button>
-      </div>
+      <button onClick={decrement}>decrement</button>
+      <button onClick={increment}>increment</button>
     </div>
-  )
-);
+  </div>
+));
 ```
 
 Last but not least, plug the whole thing in your index file:
 
 ```jsx
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'redux-zero/react';
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "redux-zero/react";
 
-import store from './store';
+import store from "./store";
 
-import Counter from './Counter';
+import Counter from "./Counter";
 
 const App = () => (
   <Provider store={store}>
@@ -87,7 +88,7 @@ const App = () => (
   </Provider>
 );
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));
 ```
 
 ## How does _Redux Zero_ differ from other solutions?
@@ -108,9 +109,9 @@ What I did not expect was this huge success in less than a month.
 
 Right now we have three things in mind:
 
-* Improve the documentation
-* Add a middleware
-* Add Angular and Vue.js bindings ([we need your help](https://github.com/concretesolutions/redux-zero/issues)).
+- Improve the documentation
+- Add a middleware
+- Add Angular and Vue.js bindings ([we need your help](https://github.com/concretesolutions/redux-zero/issues)).
 
 ## What does the future look like for _Redux Zero_ and web development in general? Can you see any particular trends?
 

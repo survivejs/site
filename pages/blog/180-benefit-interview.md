@@ -1,10 +1,10 @@
 ---
-title: 'Benefit - utility CSS library - Interview with Chad Donohue'
+title: "Benefit - utility CSS library - Interview with Chad Donohue"
 date: 2019-06-03
-headerImage: 'assets/img/road.jpg'
-headerAuthor: 'Patrick Tomasso'
+headerImage: "assets/img/road.jpg"
+headerAuthor: "Patrick Tomasso"
 headerSource: https://unsplash.com/photos/5hvn-2WW6rY
-keywords: ['interview', 'styling', 'reactjs']
+keywords: ["interview", "styling", "react"]
 ---
 
 One of the developments that has began to change the way we style our applications and sites is the introduction of utility classes. [Tailwind](https://tailwindcss.com) is an example of a popular framework that has adopted the approach.
@@ -41,7 +41,8 @@ import { jsx } from "benefit/react";
 
 export default function Button() {
   return (
-    <button className="
+    <button
+      className="
         px-8
         py-2
         bg-blue-600
@@ -52,7 +53,8 @@ export default function Button() {
         rounded-full
         border-2
         border-blue-700
-        shadow-lg">
+        shadow-lg"
+    >
       Click Me
     </button>
   );
@@ -61,8 +63,8 @@ export default function Button() {
 
 By adding two lines and some additional class names, we have accomplished two things:
 
-* We now have the power to style with all available utility classes (`~10,000`) at just a `5kB` inclusion cost
-* Only the styles associated with those class names were added, **which happens only to be `~350 bytes`**
+- We now have the power to style with all available utility classes (`~10,000`) at just a `5kB` inclusion cost
+- Only the styles associated with those class names were added, **which happens only to be `~350 bytes`**
 
 T> Check out this [CodeSandbox](https://codesandbox.io/s/small-wildflower-ckbhj) to explore this example more.
 
@@ -82,10 +84,10 @@ Also, being framework agnostic, _benefit_ can be used alongside any JS framework
 
 I help build and ship 3rd party components. It is for sure an edge-case, but it brought on problems to solve for:
 
-* [x] **Style isolation** - We needed the ability to normalize values (`margin`, `padding`, etc.) and sandbox the elements that made up our shipped components and not have to duplicate those normalized styles with every new component.
-* [x] **Dynamic branding** - When our components are requested, we need to support different branding colors and typefaces, which means we are responsible for generating design system rules based on several incoming variables.
-* [x] **Rapid prototyping** - Once these design system rules are decided, we need them to be reused throughout our component library.
-* [x] **No extra build step to generate styles** - Since every request is different, we need to ship a runtime that is small and can handle dynamic style injection. Also, we need only to inject what we use.
+- [x] **Style isolation** - We needed the ability to normalize values (`margin`, `padding`, etc.) and sandbox the elements that made up our shipped components and not have to duplicate those normalized styles with every new component.
+- [x] **Dynamic branding** - When our components are requested, we need to support different branding colors and typefaces, which means we are responsible for generating design system rules based on several incoming variables.
+- [x] **Rapid prototyping** - Once these design system rules are decided, we need them to be reused throughout our component library.
+- [x] **No extra build step to generate styles** - Since every request is different, we need to ship a runtime that is small and can handle dynamic style injection. Also, we need only to inject what we use.
 
 _benefit_ started as an internal idea to solve these issues and has been through a few iterations. As it matured a bit more, we began to see how this could be a solution for both isolated components and full-blown sites alike.
 
@@ -111,9 +113,9 @@ It is a gratifying profession that allows you to produce your best work while si
 
 ## Who should I interview next?
 
-* [Andy Bell](https://twitter.com/andybelldesign) creates excellent experiences with simple, solid foundations. I'm always impressed with his work and his fondness for progressive enhancement.
-* [Sarah Drasner](https://twitter.com/sarah_edo) can always find an untapped topic and find a way to share it with everyone while also making it easier to understand. Her contributions to open source and teaching make this community so special.
-* [Eric Clemmons](https://twitter.com/@ericclemmons) has been a mentor to me for some time now. I think people could learn tremendously from the viewpoints that he provides around developer experiences and building remote teams.
+- [Andy Bell](https://twitter.com/andybelldesign) creates excellent experiences with simple, solid foundations. I'm always impressed with his work and his fondness for progressive enhancement.
+- [Sarah Drasner](https://twitter.com/sarah_edo) can always find an untapped topic and find a way to share it with everyone while also making it easier to understand. Her contributions to open source and teaching make this community so special.
+- [Eric Clemmons](https://twitter.com/@ericclemmons) has been a mentor to me for some time now. I think people could learn tremendously from the viewpoints that he provides around developer experiences and building remote teams.
 
 ## Any last remarks?
 

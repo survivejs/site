@@ -2,7 +2,7 @@
 title: "atomic-layout - Layout composition as a React component - Interview with Artem Zakharchenko"
 date: 2019-03-15
 headerImage: "assets/img/atom.jpg"
-keywords: ["interview", "reactjs", "styling"]
+keywords: ["interview", "react", "styling"]
 ---
 
 Often layouting a web page is an afterthought. Put a `div` here and there, sprinkle some CSS, and call it done. Perhaps you are more advanced and use CSS Grids to figure out exact positioning.
@@ -101,7 +101,9 @@ import { Only } from "atomic-layout";
 
 const Disclaimer = () => (
   <Only from="sm" to="lg">
-    <p>Content displayed between small and large breakpoints.</p>
+    <p>
+      Content displayed between small and large breakpoints.
+    </p>
   </Only>
 );
 ```
@@ -145,9 +147,9 @@ const Header = () => (
 
 Responsive props respect overrides, which means that would be applied as follows:
 
-* `gutter={10}` on the `xs` breakpoint and up;
-* `gutterMd={20}` on the `md` breakpoint and up;
-* `gutterLg={30}` on the `lg` breakpoint and up.
+- `gutter={10}` on the `xs` breakpoint and up;
+- `gutterMd={20}` on the `md` breakpoint and up;
+- `gutterLg={30}` on the `lg` breakpoint and up.
 
 > You can [define custom breakpoints](https://redd.gitbook.io/atomic-layout/api/layout/configure#breakpoints) and use them as the suffixes of your responsive props (i.e. `paddingRetina` or `alignItemsDesktop`).
 
@@ -163,7 +165,11 @@ const areasTablet = `
 `;
 
 const Header = () => (
-  <Composition areas={areasMobile} areasMd={areasTablet} gutter={10}>
+  <Composition
+    areas={areasMobile}
+    areasMd={areasTablet}
+    gutter={10}
+  >
     {({ Logo, Hamburger, Menu, Actions }) => (
       <>
         {/**
@@ -211,7 +217,10 @@ Instead of deciding what CSS properties I need to create a layout, I started ask
 We try to make an experience of working with Atomic layout a fun way to learn CSS Grid and gain the knowledge you could apply without any libraries whatsoever. To do so, we minimize the amount of library-specific transformations of the options you provide to your composition.
 
 ```jsx
-<Composition areas="header footer" templateCols="1fr auto" />
+<Composition
+  areas="header footer"
+  templateCols="1fr auto"
+/>
 ```
 
 ```css

@@ -2,7 +2,7 @@
 title: "Managing css-in-js Components with Namespaces"
 date: 2019-03-19
 headerImage: "assets/img/headers/car.jpg"
-keywords: ["cssinjs", "reactjs", "styling"]
+keywords: ["cssinjs", "react", "styling"]
 ---
 
 I've settled on using [Emotion](https://emotion.sh/) for styling my React applications. The API is close to [styled-components](https://www.styled-components.com/) and especially Emotion 10 is filled with functionality. I use only a small part of it in my daily work.
@@ -34,7 +34,13 @@ const Badge = {
 I use `layout` and `with` to separate components by purpose. To turn this into a layout, you'll likely have something like below:
 
 ```javascript
-function StyledBadge({ logoUrl, company, name, twitter, type }) {
+function StyledBadge({
+  logoUrl,
+  company,
+  name,
+  twitter,
+  type,
+}) {
   return (
     <Badge.layout.Base>
       <Badge.layout.Header>
@@ -102,10 +108,14 @@ function AnotherStyledBadge({ logoUrl, name, type }) {
         <AnotherBadge.with.Logo src={logoUrl} />
       </AnotherBadge.layout.Header>
       <AnotherBadge.layout.Content>
-        <AnotherBadge.with.Name>{name}</AnotherBadge.with.Name>
+        <AnotherBadge.with.Name>
+          {name}
+        </AnotherBadge.with.Name>
       </AnotherBadge.layout.Content>
       <AnotherBadge.layout.Footer>
-        <AnotherBadge.with.Type>{type}</AnotherBadge.with.Type>
+        <AnotherBadge.with.Type>
+          {type}
+        </AnotherBadge.with.Type>
       </AnotherBadge.layout.Footer>
     </AnotherBadge.layout.Base>
   );

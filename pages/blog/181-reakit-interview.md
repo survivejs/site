@@ -2,7 +2,7 @@
 title: "Reakit - Build accessible rich web apps with React - Interview with Diego Haz"
 date: 2019-06-10
 headerImage: "assets/img/reakit.png"
-keywords: ["interview", "reactjs", "ui"]
+keywords: ["interview", "react", "ui"]
 ---
 
 When building web applications and sites using React, you have to think carefully about the user interface. You might either go with an established user interface library, develop your own, or try a bit of both.
@@ -196,7 +196,7 @@ function Tooltip({ children, title, ...props }) {
   return (
     <>
       <TooltipReference {...tooltip}>
-        {referenceProps =>
+        {(referenceProps) =>
           React.cloneElement(
             React.Children.only(children),
             referenceProps
@@ -239,8 +239,8 @@ Learn to learn. Web development and front-end development specifically are evolv
 
 ## Who should I interview next?
 
-* [Pedro Nauck](https://twitter.com/pedronauck) - Creator of [Docz](https://www.docz.site/)
-* [Bruno Lemos](https://twitter.com/brunolemos) - Creator of [DevHub](https://devhubapp.com/)
+- [Pedro Nauck](https://twitter.com/pedronauck) - Creator of [Docz](https://www.docz.site/)
+- [Bruno Lemos](https://twitter.com/brunolemos) - Creator of [DevHub](https://devhubapp.com/)
 
 ## Any last remarks?
 

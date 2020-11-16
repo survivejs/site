@@ -1,8 +1,8 @@
 ---
-title: 'substyle - Build Styling Agnostic Components for React - Interview with Jan-Felix Schwarz'
+title: "substyle - Build Styling Agnostic Components for React - Interview with Jan-Felix Schwarz"
 date: 2018-02-08
-headerImage: 'assets/img/headers/taxi.jpg'
-keywords: ['interview', 'reactjs', 'styling', 'cssinjs']
+headerImage: "assets/img/headers/taxi.jpg"
+keywords: ["interview", "react", "styling", "cssinjs"]
 ---
 
 One of the tricky things about writing React components meant for public consumption is making them compatible with [various styling approaches](react/advanced-techniques/styling-react/) used by the community. The problem exists because application styling isn't considered as a first-class citizen by React and it doesn't provide a strong opinion on how to solve it. As a result, the amount of available approaches has exploded.
@@ -46,12 +46,15 @@ Now, users of the `<Popover />` component can pass their custom `className`, whi
 ```javascript
 // JSX                        // Rendered HTML
 
-<Popover className="popover"> // <div class="popover">
-  <span>Hello world!</span>   //   <button class="popover__close">
-</Popover>                    //     x
-                              //   </button>
-                              //   <span>Hello world!</span>
-                              // </div>
+<Popover className="popover">
+  {" "}
+  // <div class="popover">
+    <span>Hello world!</span> //{" "}
+    <button class="popover__close"></Popover> // x //{" "}
+  </button>
+  // <span>Hello world!</span>
+  //{" "}
+</div>
 ```
 
 If they want to pass some custom inline styles, they can do so by supplying a nested `style` object:
@@ -84,9 +87,9 @@ If they use css modules or some css-in-js lib, they will want to pass the unique
 
 I know of one other solution addressing the same problem called [react-themeable](https://github.com/markdalgleish/react-themeable). The general idea behind both, _react-themeable_ and _substyle_, is the same. However, during the development of a component library at Signavio I had to solve some additional practical challenges:
 
-* How to define default styles for components?
-* How to build composite components so that also all leaf elements of nested components can be styled by the user?
-* If, depending on the passed props, there are different variants of a component, how to allow the user to define custom styles specifically for a particular variant?
+- How to define default styles for components?
+- How to build composite components so that also all leaf elements of nested components can be styled by the user?
+- If, depending on the passed props, there are different variants of a component, how to allow the user to define custom styles specifically for a particular variant?
 
 Exploring solutions to these problems I finally ended up writing my utility.
 

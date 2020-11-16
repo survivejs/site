@@ -1,8 +1,9 @@
 ---
-title: 'Kea - High level abstraction between React and Redux - Interview with Marius Andra'
+title: "Kea - High level abstraction between React and Redux - Interview with Marius Andra"
 date: 2017-09-18
-headerImage: 'assets/img/kea.jpg'
-keywords: ['interview', 'reactjs', 'redux', 'state-management']
+headerImage: "assets/img/kea.jpg"
+keywords:
+  ["interview", "react", "redux", "state-management"]
 ---
 
 Redux took the React world by a storm when it was introduced. The simple idea provided a guideline for the community and "solved" state management for a lot of different kinds of applications.
@@ -21,6 +22,7 @@ T> To learn more about Redux, [read the interview of Dan Abramov](/blog/redux-in
 </span>
 
 Sure! I'm Marius. I was born in Estonia and now live in Belgium. I work as the CTO of [Apprentus](https://www.apprentus.com), a private lessons marketplace which I co-founded. I sometimes write about life on [my blog](https://mariusandra.com/blog/) and about coding on [Medium](https://medium.com/@mariusandra).
+
 </p>
 
 I started programming in QBASIC at the ripe old age of 8 and have been hooked ever since. From BASIC I moved to C and C++ (for [2D and 3D game development](https://web.archive.org/web/20110727142308/http://cone3d.gamedev.net:80/cgi-bin/index.pl)), Perl ([cgi-bin](http://amzn.to/2xlJzTS) web development) and Java (when I had to build a client-server chat applet). In high school, I wrote a lot of PHP, in university a lot of Java/JSP. Eventually, I moved to Ruby, and it was my language of choice... until ES6 came out.
@@ -29,15 +31,15 @@ During my PHP years, I wrote vanilla JavaScript (AJAX!). Later I went with Proto
 
 In November of 2015, after a month-long vacation in New Zealand, I started learning React as part of a freelance gig. That's where the story of Kea begins.
 
-## How would you describe *Kea* to someone who has never heard of it?
+## How would you describe _Kea_ to someone who has never heard of it?
 
 Kea is an [extremely smart mountain parrot](https://www.youtube.com/results?search_query=kea+parrot) from New Zealand.
 
-Kea is also an extremely smart abstraction between [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/), [Redux-Saga](https://redux-saga.js.org/) and [Reselect](https://github.com/reactjs/reselect). You may think of it either as *redux without the boilerplate* or *the ease of `setState` with the connectivity of Redux*.
+Kea is also an extremely smart abstraction between [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/), [Redux-Saga](https://redux-saga.js.org/) and [Reselect](https://github.com/reactjs/reselect). You may think of it either as _redux without the boilerplate_ or _the ease of `setState` with the connectivity of Redux_.
 
 In a nutshell, React handles your views, Kea handles your logic.
 
-## How does *Kea* work?
+## How does _Kea_ work?
 
 Almost everything you do in Kea is done with the `kea` function. You use it to:
 
@@ -52,74 +54,80 @@ It's built in the "inline kea" style, where we create a logic store and immediat
 I will assume you're familiar with the concepts in Redux. If not, please check out [the interview with Dan Abramov](/blog/redux-interview/) for some much-needed context... although you'll surely understand the code without it:
 
 ```javascript
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { kea } from 'kea';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { kea } from "kea";
 
 @kea({
   actions: () => ({
     increment: (amount) => ({ amount }),
-    decrement: (amount) => ({ amount })
+    decrement: (amount) => ({ amount }),
   }),
 
   reducers: ({ actions }) => ({
-    counter: [0, PropTypes.number, {
-      [actions.increment]: (state, payload) => (
-        state + payload.amount
-      ),
-      [actions.decrement]: (state, payload) => (
-        state - payload.amount
-      )
-    }]
-  })
+    counter: [
+      0,
+      PropTypes.number,
+      {
+        [actions.increment]: (state, payload) =>
+          state + payload.amount,
+        [actions.decrement]: (state, payload) =>
+          state - payload.amount,
+      },
+    ],
+  }),
 })
 export default class Counter extends Component {
-  render () {
+  render() {
     const { counter } = this.props;
     const { increment, decrement } = this.actions;
 
     return (
-      <div className='kea-counter'>
+      <div className="kea-counter">
         <p>Count: {counter}</p>
-        <button onClick={() => increment(1)}>Increment</button>
-        <button onClick={() => decrement(1)}>Decrement</button>
+        <button onClick={() => increment(1)}>
+          Increment
+        </button>
+        <button onClick={() => decrement(1)}>
+          Decrement
+        </button>
       </div>
     );
   }
 }
 ```
 
-It's all very *Reduxy*. You have actions and reducers. Both are pure functions. The code is very readable, and there's a clear separation of concerns.
+It's all very _Reduxy_. You have actions and reducers. Both are pure functions. The code is very readable, and there's a clear separation of concerns.
 
 Compare this to a standard Redux-based approach:
 
 **constants/counter.js**
 
 ```javascript
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
 ```
 
 **actions/counter.js**
 
 ```javascript
-import { INCREMENT, DECREMENT } from '../constants/counter';
+import { INCREMENT, DECREMENT } from "../constants/counter";
 
-export function increment (amount = 1) {
+export function increment(amount = 1) {
   return {
     type: INCREMENT,
     payload: {
-      amount: amount
-    }
+      amount: amount,
+    },
   };
 }
 
-export function decrement (amount = 1) {
+export function decrement(amount = 1) {
   return {
     type: DECREMENT,
     payload: {
-      amount: amount
-    }
+      amount: amount,
+    },
   };
 }
 ```
@@ -127,9 +135,9 @@ export function decrement (amount = 1) {
 **reducers/counter.js**
 
 ```javascript
-import { INCREMENT, DECREMENT } from '../constants/counter';
+import { INCREMENT, DECREMENT } from "../constants/counter";
 
-export default function counter (state = 0, action) {
+export default function counter(state = 0, action) {
   switch (action.type) {
     case INCREMENT:
       return state + action.payload.amount;
@@ -144,25 +152,25 @@ export default function counter (state = 0, action) {
 **containers/counter.js**
 
 ```javascript
-import { connect } from 'react-redux';
-import { increment, decrement } from '../actions/counter';
+import { connect } from "react-redux";
+import { increment, decrement } from "../actions/counter";
 
-import Counter from '../components/counter';
+import Counter from "../components/counter";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    counter: state.counter
+    counter: state.counter,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    increment: amount => {
-      dispatch(increment(amount))
+    increment: (amount) => {
+      dispatch(increment(amount));
     },
-    decrement: amount => {
-      dispatch(decrement(amount))
-    }
+    decrement: (amount) => {
+      dispatch(decrement(amount));
+    },
   };
 };
 
@@ -175,17 +183,21 @@ export default connect(
 **components/counter.js**
 
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Counter extends Component {
-  render () {
+  render() {
     const { counter, increment, decrement } = this.props;
 
     return (
-      <div className='kea-counter'>
+      <div className="kea-counter">
         <p>Count: {counter}</p>
-        <button onClick={() => increment(1)}>Increment</button>
-        <button onClick={() => decrement(1)}>Decrement</button>
+        <button onClick={() => increment(1)}>
+          Increment
+        </button>
+        <button onClick={() => decrement(1)}>
+          Decrement
+        </button>
       </div>
     );
   }
@@ -207,62 +219,59 @@ With Kea, assuming you also need to display the value of `counter` in your heade
 **logic.js**
 
 ```javascript
-import PropTypes from 'prop-types';
-import { kea } from 'kea';
+import PropTypes from "prop-types";
+import { kea } from "kea";
 
 // no change to the code below
 export default kea({
   actions: () => ({
     increment: (amount) => ({ amount }),
-    decrement: (amount) => ({ amount })
+    decrement: (amount) => ({ amount }),
   }),
 
   reducers: ({ actions }) => ({
-    counter: [0, PropTypes.number, {
-      [actions.increment]: (state, payload) => (
-        state + payload.amount
-      ),
-      [actions.decrement]: (state, payload) => (
-        state - payload.amount
-      )
-    }]
-  })
-})
+    counter: [
+      0,
+      PropTypes.number,
+      {
+        [actions.increment]: (state, payload) =>
+          state + payload.amount,
+        [actions.decrement]: (state, payload) =>
+          state - payload.amount,
+      },
+    ],
+  }),
+});
 ```
 
 **index.js**
 
 ```javascript
-import React, { Component } from 'react';
-import { connect } from 'kea';
+import React, { Component } from "react";
+import { connect } from "kea";
 
-import counterLogic from './logic';
+import counterLogic from "./logic";
 
 // pull in actions and props from logic stores
 @connect({
-  actions: [
-    counterLogic, [
-      'increment',
-      'decrement'
-    ]
-  ],
-  props: [
-    counterLogic, [
-      'counter'
-    ]
-  ]
+  actions: [counterLogic, ["increment", "decrement"]],
+  props: [counterLogic, ["counter"]],
 })
 export default class Counter extends Component {
   // nothing changes here
-  render () {
+  render() {
     const { counter } = this.props;
     const { increment, decrement } = this.actions;
 
     return (
-      <div className='kea-counter'>
+      <div className="kea-counter">
         <p>Count: {counter}</p>
-        <button onClick={() => increment(1)}>Increment</button>
-        <button onClick={() => decrement(1)}>Decrement</button>
+        <button onClick={() => increment(1)}>
+          Increment
+        </button>
+        <button onClick={() => decrement(1)}>
+          Decrement
+        </button>
       </div>
     );
   }
@@ -272,20 +281,16 @@ export default class Counter extends Component {
 **header.js**
 
 ```javascript
-import React, { Component } from 'react';
-import { connect } from 'kea';
+import React, { Component } from "react";
+import { connect } from "kea";
 
-import counterLogic from './logic';
+import counterLogic from "./logic";
 
 @connect({
-  props: [
-    counterLogic, [
-      'counter'
-    ]
-  ]
+  props: [counterLogic, ["counter"]],
 })
 export default class Counter extends Component {
-  render () {
+  render() {
     const { counter } = this.props;
 
     return (
@@ -304,8 +309,8 @@ This magical `@connect(options)` helper is actually just a shorthand for `@kea({
 
 Kea has two other notable features:
 
-* First, you may use selectors (through Reselect) to re-calculate values only when the input changes.
-* Second, you may use sagas for side-effects. Please read the documentation for [redux-saga](https://redux-saga.js.org) to learn more.
+- First, you may use selectors (through Reselect) to re-calculate values only when the input changes.
+- Second, you may use sagas for side-effects. Please read the documentation for [redux-saga](https://redux-saga.js.org) to learn more.
 
 The [Github API](https://kea.js.org/guide/github) example is a good demonstration of both features:
 
@@ -317,38 +322,45 @@ const githubLogic = kea({
   }),
 
   reducers: ({ actions }) => ({
-    username: ['keajs', PropTypes.string, {
-      [actions.setUsername]: (_, payload) => (
-        payload.username
-      )
-    }],
-    repositories: [[], PropTypes.array, {
-      [actions.setUsername]: () => [],
-      [actions.setRepositories]: (_, payload) => (
-        payload.repositories
-      )
-    }]
+    username: [
+      "keajs",
+      PropTypes.string,
+      {
+        [actions.setUsername]: (_, payload) =>
+          payload.username,
+      },
+    ],
+    repositories: [
+      [],
+      PropTypes.array,
+      {
+        [actions.setUsername]: () => [],
+        [actions.setRepositories]: (_, payload) =>
+          payload.repositories,
+      },
+    ],
   }),
 
   selectors: ({ selectors }) => ({
     // this will only be updated if "repositories" change.
     sortedRepositories: [
       () => [selectors.repositories],
-      (repositories) => repositories.sort(
-        (a, b) => b.stargazers_count - a.stargazers_count
-      ),
-      PropTypes.array
-    ]
+      (repositories) =>
+        repositories.sort(
+          (a, b) => b.stargazers_count - a.stargazers_count
+        ),
+      PropTypes.array,
+    ],
   }),
 
   // every time a "setUsername" action is called,
   // run the "fetchRepositories" worker
   takeLatest: ({ actions, workers }) => ({
-    [actions.setUsername]: workers.fetchRepositories
+    [actions.setUsername]: workers.fetchRepositories,
   }),
 
   workers: {
-    * fetchRepositories (action) {
+    *fetchRepositories(action) {
       const { setRepositories } = this.actions;
       const { username } = action.payload;
 
@@ -359,18 +371,18 @@ const githubLogic = kea({
       const json = yield response.json();
 
       yield put(setRepositories(json));
-    }
-  }
-})
+    },
+  },
+});
 ```
 
 T> Please dive into the [Kea documentation](https://kea.js.org) to learn more!
 
-## How does *Kea* differ from other solutions?
+## How does _Kea_ differ from other solutions?
 
 I wrote an [article on Medium describing how Kea differs from Redux](https://medium.com/@mariusandra/kea-vs-setstate-redux-mobx-dva-jumpstate-apollo-etc-4aa26ea11d02), MobX, DVA and other state management solutions. Please check it out for details! :)
 
-## Why did you develop *Kea*?
+## Why did you develop _Kea_?
 
 In late 2015 I got a freelance gig, where my job was to code part of a fleet tracking solution. I was told to use React and Redux and given free reign over what other libraries I would use, how I would structure the code, etc. My employer tasked me with finding the best combination of React and Redux. The solution needed to be extremely verbose and maintainable since I would not stay on the project forever.
 
@@ -392,7 +404,7 @@ The ultimate goal is to stabilize the API for a 1.0 release. For this, we need a
 
 For myself, once Kea hits a stable 1.0, I plan to shift my open source efforts to [Insights](https://github.com/mariusandra/insights), a "Desktop and Self-Hosted SQL-not-required data analytics and visualization tool". I have big plans for it but had to neglect it for a few months in favor of Kea.
 
-## What does the future look like for *Kea* and web development in general? Can you see any particular trends?
+## What does the future look like for _Kea_ and web development in general? Can you see any particular trends?
 
 I've been wrong before with my technological predictions (JSP and Makumba are the new Ruby on Rails! Ember 4 ever!), so I'm hesitant to make bold claims.
 
@@ -402,7 +414,7 @@ Functional programming has been around for a very long time, but it was never as
 
 The difference between functional and imperative in frontend development is analogous to what [Paul Graham said about Lisp](http://www.paulgraham.com/avg.html):
 
-> *"During the years we worked on Viaweb, I read a lot of job descriptions. A new competitor seemed to emerge out of the woodwork every month or so. The first thing I would do, after checking to see if they had a live online demo, was look at their job listings. After a couple of years of this, I could tell which companies to worry about and which not to. The more of an IT flavor the job descriptions had, the less dangerous the company was. The safest kind were the ones that wanted Oracle experience. You never had to worry about those. You were also safe if they said they wanted C++ or Java developers. If they wanted Perl or Python programmers, that would be a bit frightening - that's starting to sound like a company where the technical side, at least, is run by real hackers. If I had ever seen a job posting looking for Lisp hackers, I would have been really worried."*
+> _"During the years we worked on Viaweb, I read a lot of job descriptions. A new competitor seemed to emerge out of the woodwork every month or so. The first thing I would do, after checking to see if they had a live online demo, was look at their job listings. After a couple of years of this, I could tell which companies to worry about and which not to. The more of an IT flavor the job descriptions had, the less dangerous the company was. The safest kind were the ones that wanted Oracle experience. You never had to worry about those. You were also safe if they said they wanted C++ or Java developers. If they wanted Perl or Python programmers, that would be a bit frightening - that's starting to sound like a company where the technical side, at least, is run by real hackers. If I had ever seen a job posting looking for Lisp hackers, I would have been really worried."_
 
 Writing frontend code with React and Kea feels like writing Lisp when all of your competitors are stuck with Java.
 

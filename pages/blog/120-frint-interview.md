@@ -1,8 +1,8 @@
 ---
-title: 'FrintJS - Build reactive applications with React and RxJS - Interview with Fahad Ibnay Heylaal'
+title: "FrintJS - Build reactive applications with React and RxJS - Interview with Fahad Ibnay Heylaal"
 date: 2017-09-06
-headerImage: 'assets/img/frint.png'
-keywords: ['interview', 'reactjs', 'rxjs']
+headerImage: "assets/img/frint.png"
+keywords: ["interview", "react", "rxjs"]
 ---
 
 React gives a lot of freedom by default. You can choose which libraries to use to complement it. Freedom comes with responsibility, though. Now you are responsible for your decisions.
@@ -17,15 +17,16 @@ React gives a lot of freedom by default. You can choose which libraries to use t
 </span>
 
 Currently living in Amsterdam and working as a software engineer at [Travix](https://www.travix.com/). For the last few years, I have been focusing on JavaScript a lot. And never felt bored for a single day since!
+
 </p>
 
 I enjoy being involved with Open Source activities. Not just the coding part, but all the other opportunities it brings along with it too. I feel a lot of good things have happened in my life because of the people I got to know through Open Source. And whenever I can, I try to contribute meaningfully back to the community that's giving us all so much on a regular basis.
 
-## How would you describe *Frint* to someone who has never heard of it?
+## How would you describe _Frint_ to someone who has never heard of it?
 
 [FrintJS](https://frint.js.org) is ultimately a collection of packages that help you build reactive applications in a scalable way. It is modular by nature and helps provide your application structure. If you look at our [monorepo](https://github.com/Travix-International/frint), everything is broken down into small packages. You use only the packages you need to build your application - either in the [browser](https://frint.js.org/docs/packages/frint-react/), [server](https://frint.js.org/docs/packages/frint-react-server/) or [CLI](https://frint.js.org/docs/packages/frint-cli/).
 
-## How does *Frint* work?
+## How does _Frint_ work?
 
 FrintJS has this concept of [Apps](https://frint.js.org/guides/apps/). Everything is contained within an App. And Apps can contain various things in the form of [Providers](https://frint.js.org/guides/providers/), which is backed by a dependency injection system.
 
@@ -51,13 +52,13 @@ If you are working with components, then FrintJS encourages you to keep the logi
 
 T> [You can read a blog series about RxJS and React to learn more.](https://medium.com/@fahad19/using-rxjs-with-react-js-part-i-introduction-4d027ef55aa6).
 
-## How does *Frint* differ from the other solutions?
+## How does _Frint_ differ from the other solutions?
 
 It's hard to compare with any other solutions since FrintJS takes a simple and unique approach. It is not a full featured framework like AngularJS or EmberJS, but rather gives you a set of solid building blocks that you can grow your application up on. FrintJS provides tools that help you break your large applications into smaller apps, that you can assemble on demand.
 
 You can say that it differs mainly from other frameworks, by not locking itself into any specific rendering or templating library. And also by not targeting any specific platform: browser, server or CLI. It just works everywhere.
 
-## Why did you develop *Frint*?
+## Why did you develop _Frint_?
 
 At Travix, we already have our front-end application built with React. We were one of the early adopters of React, and things have grown big over the years.
 
@@ -81,7 +82,7 @@ Besides that, we feel that it could do better if others find out about it too, a
 
 We always try to communicate what's coming next on our [Roadmap](https://github.com/Travix-International/frint/wiki/Roadmap) publicly.
 
-## What does the future look like for *Frint* and web development in general? Can you see any particular trends?
+## What does the future look like for _Frint_ and web development in general? Can you see any particular trends?
 
 FrintJS is young, and so far it has mostly been guided forward by the production needs of Travix. But I feel as more people find out about it, it will continue to grow even stronger and build a community alongside the current group of [contributors](https://github.com/Travix-International/frint/graphs/contributors) too. Then things will happen that may even surprise us, positively :)
 

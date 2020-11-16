@@ -1,9 +1,9 @@
 ---
-title: 'Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala'
+title: "Next.js - Framework for server-rendered React apps - Interview with Arunoda Susiripala"
 date: 2017-08-15
-headerImage: 'assets/img/next.jpg'
-keywords: ['interview', 'reactjs', 'webpack']
-editors: ['bebraw', 'karlhorky']
+headerImage: "assets/img/next.jpg"
+keywords: ["interview", "react", "webpack"]
+editors: ["bebraw", "karlhorky"]
 ---
 
 Building universal web applications combining server side rendering with front-end is popular these days. The approach is not without its problems, though. Now you have the extra challenge of managing code so that it works on the both sides. Due to the differences between them, you will run into a series of problems.
@@ -18,13 +18,14 @@ Building universal web applications combining server side rendering with front-e
 </span>
 
 I started working with JavaScript while I was studying at university. After this I had my first introduction to open source - I got involved with Joomla and Status.net as a part of Google Summer of Code.
+
 </p>
 
 My work started to turn towards Meteor-related projects next, and I founded kadira.io, a performance monitoring solution for Meteor. At Kadira, I started React Storybook with my colleagues, but eventually, we needed to shut down Kadira.
 
 In late 2016, I discovered Next.js and started contributing to it. After Kadira's shutdown, I joined ZEIT to maintain Next.js and take it further.
 
-## How would you describe *Next.js* to someone who has never heard of it?
+## How would you describe _Next.js_ to someone who has never heard of it?
 
 I think everyone is familiar with the concept of JavaScript fatigue. Creating a web app with JavaScript is often hard with all of the packages and options that we have today. React, webpack, Redux, React Router and many more libraries and tools are often used and require effort to learn.
 
@@ -34,7 +35,7 @@ With Next.js we enable developers to build JavaScript web apps with more straigh
 
 Next.js also does server side rendering by default, among many other performance optimizations.
 
-## How does *Next.js* work?
+## How does _Next.js_ work?
 
 Let me show you with an example.
 
@@ -46,7 +47,7 @@ cd hello-next
 npm init -y
 ```
 
-Then we install *Next.js* and the React dependencies and create a `pages` directory:
+Then we install _Next.js_ and the React dependencies and create a `pages` directory:
 
 ```bash
 npm install --save next react react-dom
@@ -56,22 +57,22 @@ mkdir pages
 In the pages directory, we create a file at `pages/index.js` with the following content:
 
 ```jsx
-import Link from 'next/link'
+import Link from "next/link";
 
 export default () => (
   <div>
     <p>Welcome, this is the home page.</p>
-    <Link href="/about"><a>About Page</a></Link>
+    <Link href="/about">
+      <a>About Page</a>
+    </Link>
   </div>
-)
+);
 ```
 
 We also make a file called `pages/about.js` containing this code:
 
 ```javascript
-export default () => (
-  <div>This is the about page.</div>
-)
+export default () => <div>This is the about page.</div>;
 ```
 
 We add a script for the development server to the `package.json`:
@@ -92,13 +93,13 @@ npm run dev
 
 The app will be started on `https://localhost:3000`. Any changes to pages and content will be updated instantly in the browser by webpack's Hot Module Replacement (HMR).
 
-Above is just the beginning. You can do a lot with *Next.js*. You can even customize the base webpack and Babel configuration too.
+Above is just the beginning. You can do a lot with _Next.js_. You can even customize the base webpack and Babel configuration too.
 
 T> I suggest visiting the [Next.js repo](https://github.com/zeit/next.js) for more info.
 
-## How does *Next.js* differ from other solutions?
+## How does _Next.js_ differ from other solutions?
 
-Here I'll focus on comparing *Next.js* with two other solutions for building React apps.
+Here I'll focus on comparing _Next.js_ with two other solutions for building React apps.
 
 **1. Custom webpack and Babel setup**
 
@@ -116,13 +117,13 @@ With Next.js, you'll get server side rendering for free and no need to worry abo
 
 Since the routing is built into the framework, we can do very cool things like:
 
-* Server side rendering by default
-* Automatic code splitting
-* Simple data fetching solution for pages
+- Server side rendering by default
+- Automatic code splitting
+- Simple data fetching solution for pages
 
 You can build a decent web app without worrying about configuration, routing and state management.
 
-## Why did you develop *Next.js*?
+## Why did you develop _Next.js_?
 
 I didn't work at ZEIT at the time it was built - it was primarily developed by [@nkzawa](https://twitter.com/nkzawa) to develop [ZEIT's web app](https://zeit.co). Because it was a success, ZEIT released it as an open source project.
 
@@ -130,11 +131,11 @@ Since then, features are developed when they are needed to continue building htt
 
 ## What next?
 
-We try to keep *Next.js* as simple and lean as possible. We avoid implementing too many features. Instead, we aim to build a robust infrastructure and encourage reuse of existing libraries and frameworks on top of Next.js.
+We try to keep _Next.js_ as simple and lean as possible. We avoid implementing too many features. Instead, we aim to build a robust infrastructure and encourage reuse of existing libraries and frameworks on top of Next.js.
 
-We just released *Next.js* 3.0 with dynamic imports and static HTML exporting support. The next topics we will focus on are improving overall stability and reducing the dev and production build time of the app.
+We just released _Next.js_ 3.0 with dynamic imports and static HTML exporting support. The next topics we will focus on are improving overall stability and reducing the dev and production build time of the app.
 
-## What does the future look like for *Next.js* and web development in general? Can you see any particular trends?
+## What does the future look like for _Next.js_ and web development in general? Can you see any particular trends?
 
 I think we'll see more rich web apps in the future thanks to recent performance improvements in browsers. Web Assembly will have an enormous impact on the industry. Solid tooling will allow development of web apps available for both desktops and servers. Effects like these will lead to web apps to completely obsoleting desktop apps.
 
