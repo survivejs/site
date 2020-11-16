@@ -153,4 +153,4 @@ To learn more about Plasmic, see the [React Finland](https://react-finland.fi/) 
 
 <iframe width="100%" height="300px" src="https://www.youtube.com/embed/E0OBAmt8k6k" frameborder="0" allowfullscreen></iframe>
 
-You can also [find Plasmic online](https://plasmic.app) and [follow Plasmic on Twitter](https://twitter.com/plasmicapp).
+T> You can also [find Plasmic online](https://plasmic.app) and [follow Plasmic on Twitter](https://twitter.com/plasmicapp).
