@@ -27,21 +27,23 @@ module.exports = {
       baseUrl: "https://survivejs.com/",
       sections: ["blog"],
       get: {
-        content: page => page.file.body,
-        date: page =>
+        content: (page) => page.file.body,
+        date: (page) =>
           moment(page.file.attributes.date)
             .utcOffset(0)
             .format(),
-        title: page => page.file.attributes.title,
+        title: (page) => page.file.attributes.title,
       },
     }),
   ],
   layout: () => require("./layouts/SiteBody").default,
   paths: {
     "/": {
-      content: () => require.context("./pages", false, /^\.\/.*\.md$/),
+      content: () =>
+        require.context("./pages", false, /^\.\/.*\.md$/),
       index: () => {
-        const index = require("./layouts/SiteIndex").default;
+        const index = require("./layouts/SiteIndex")
+          .default;
 
         index.title = "SurviveJS";
         index.description =
@@ -51,9 +53,15 @@ module.exports = {
       },
     },
     blog: {
-      content: () => require.context("./pages/blog", false, /^\.\/.*\.md$/),
+      content: () =>
+        require.context(
+          "./pages/blog",
+          false,
+          /^\.\/.*\.md$/
+        ),
       index: () => {
-        const index = require("./layouts/BlogIndex").default;
+        const index = require("./layouts/BlogIndex")
+          .default;
 
         index.title = "Blog";
         index.description = "";
@@ -61,8 +69,10 @@ module.exports = {
         return index;
       },
       layout: () => require("./layouts/BlogPage").default,
-      transform: pages =>
-        generateAdjacent(_.sortBy(pages, "file.attributes.date")).reverse(),
+      transform: (pages) =>
+        generateAdjacent(
+          _.sortBy(pages, "file.attributes.date")
+        ).reverse(),
       url: ({ sectionName, fileName }) =>
         `/${sectionName}/${clean.chapterName(fileName)}/`,
       redirects: require("./redirects/blog"),
@@ -88,7 +98,8 @@ module.exports = {
           /^\.\/.*\.md$/
         ),
       index: () => {
-        const index = require("./layouts/MaintenanceIndex").default;
+        const index = require("./layouts/MaintenanceIndex")
+          .default;
 
         index.title = "SurviveJS - Maintenance";
         index.description =
@@ -97,16 +108,20 @@ module.exports = {
         return index;
       },
       layout: () => require("./layouts/BookPage").default,
-      transform: pages =>
+      transform: (pages) =>
         generateAdjacent(
           require("./books/maintenance-book/manuscript/Book.txt")
             .split("\n")
-            .filter(name => path.extname(name) === ".md")
-            .map(fileName => {
+            .filter((name) => path.extname(name) === ".md")
+            .map((fileName) => {
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                throw new Error("Failed to find", fileName, pages);
+                throw new Error(
+                  "Failed to find",
+                  fileName,
+                  pages
+                );
               }
 
               return result;
@@ -118,9 +133,14 @@ module.exports = {
     },
     react: {
       content: () =>
-        require.context("./books/react-book/manuscript", true, /^\.\/.*\.md$/),
+        require.context(
+          "./books/react-book/manuscript",
+          true,
+          /^\.\/.*\.md$/
+        ),
       index: () => {
-        const index = require("./layouts/ReactIndex").default;
+        const index = require("./layouts/ReactIndex")
+          .default;
 
         index.title = "SurviveJS - React";
         index.description =
@@ -129,16 +149,20 @@ module.exports = {
         return index;
       },
       layout: () => require("./layouts/BookPage").default,
-      transform: pages =>
+      transform: (pages) =>
         generateAdjacent(
           require("./books/react-book/manuscript/Book.txt")
             .split("\n")
-            .filter(name => path.extname(name) === ".md")
-            .map(fileName => {
+            .filter((name) => path.extname(name) === ".md")
+            .map((fileName) => {
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                throw new Error("Failed to find", fileName, pages);
+                throw new Error(
+                  "Failed to find",
+                  fileName,
+                  pages
+                );
               }
 
               return result;
@@ -155,25 +179,30 @@ module.exports = {
           /^\.\/.*\.md$/
         ),
       index: () => {
-        const index = require("./layouts/WebpackIndex").default;
+        const index = require("./layouts/WebpackIndex")
+          .default;
 
-        index.title = "SurviveJS - Webpack";
+        index.title = "SurviveJS – Webpack";
         index.description =
           "Want to learn webpack? Get started for free and build webpack configuration.";
 
         return index;
       },
       layout: () => require("./layouts/BookPage").default,
-      transform: pages =>
+      transform: (pages) =>
         generateAdjacent(
           require("./books/webpack-book/manuscript/Book.txt")
             .split("\n")
-            .filter(name => path.extname(name) === ".md")
-            .map(fileName => {
+            .filter((name) => path.extname(name) === ".md")
+            .map((fileName) => {
               const result = _.find(pages, { fileName });
 
               if (!result) {
-                throw new Error("Failed to find", fileName, pages);
+                throw new Error(
+                  "Failed to find",
+                  fileName,
+                  pages
+                );
               }
 
               return result;

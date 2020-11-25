@@ -42,7 +42,8 @@ const SiteIndex = ({ section }) => (
           />
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/maintenance.md").body,
+              __html: require("../content/descriptions/maintenance.md")
+                .body,
             }}
           />
           <SubHeading>What Will You Learn</SubHeading>
@@ -55,7 +56,8 @@ const SiteIndex = ({ section }) => (
           <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/gets/maintenance.md").body,
+              __html: require("../content/gets/maintenance.md")
+                .body,
             }}
           />
         </Book>
@@ -63,7 +65,8 @@ const SiteIndex = ({ section }) => (
           <Heading>SurviveJS — React</Heading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/react.md").body,
+              __html: require("../content/descriptions/react.md")
+                .body,
             }}
           />
           <Cover
@@ -72,37 +75,42 @@ const SiteIndex = ({ section }) => (
           />
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/react-learn.md").body,
+              __html: require("../content/descriptions/react-learn.md")
+                .body,
             }}
           />
           <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/gets/react.md").body,
+              __html: require("../content/gets/react.md")
+                .body,
             }}
           />
         </Book>
         <Book>
-          <Heading>SurviveJS — Webpack</Heading>
+          <Heading>SurviveJS — Webpack 5</Heading>
           <Cover
             src={require("../assets/img/covers/webpack-cover.svg")}
             alt="Webpack book cover"
           />
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/webpack.md").body,
+              __html: require("../content/descriptions/webpack.md")
+                .body,
             }}
           />
           <SubHeading>What Will You Learn</SubHeading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/webpack-learn.md").body,
+              __html: require("../content/descriptions/webpack-learn.md")
+                .body,
             }}
           />
           <SubHeading>Getting the Book</SubHeading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/gets/webpack.md").body,
+              __html: require("../content/gets/webpack.md")
+                .body,
             }}
           />
         </Book>
@@ -112,7 +120,8 @@ const SiteIndex = ({ section }) => (
           <Heading>About the Author</Heading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/authors/juho.md").body,
+              __html: require("../content/authors/juho.md")
+                .body,
             }}
           />
         </Column>
@@ -120,7 +129,8 @@ const SiteIndex = ({ section }) => (
           <Heading>Getting the Books</Heading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/gettingbooks.md").body,
+              __html: require("../content/descriptions/gettingbooks.md")
+                .body,
             }}
           />
         </Column>
@@ -128,13 +138,15 @@ const SiteIndex = ({ section }) => (
           <Heading>Training</Heading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/training.md").body,
+              __html: require("../content/descriptions/training.md")
+                .body,
             }}
           />
           <Heading>Translations</Heading>
           <div
             dangerouslySetInnerHTML={{
-              __html: require("../content/descriptions/translations.md").body,
+              __html: require("../content/descriptions/translations.md")
+                .body,
             }}
           />
         </Column>
