@@ -25,7 +25,10 @@ const button = css`
 `;
 
 const Button = ({ href, children }) => (
-  <a className={cx("btn", "btn--normal", button)} href={href}>
+  <a
+    className={cx("btn", "btn--normal", button)}
+    href={href}
+  >
     {children}
   </a>
 );
@@ -43,7 +46,10 @@ const Buy = () => {
 const BuyMaintenance = () => (
   <Book>
     <a href="/maintenance/introduction">
-      <Title>SurviveJS - Maintenance: Streamline JavaScript Workflow</Title>
+      <Title>
+        SurviveJS - Maintenance: Streamline JavaScript
+        Workflow
+      </Title>
       <Cover
         alt="Maintenance book cover"
         src={require("assets/img/covers/maintenance-cover.svg")}
@@ -60,7 +66,9 @@ const BuyMaintenance = () => (
 const BuyReact = () => (
   <Book>
     <a href="/react/introduction">
-      <Title>SurviveJS - React: From apprentice to master</Title>
+      <Title>
+        SurviveJS - React: From apprentice to master
+      </Title>
       <Cover
         alt="React book cover"
         src={require("assets/img/covers/react-cover.svg")}
@@ -68,14 +76,18 @@ const BuyReact = () => (
         height="329"
       />
     </a>
-    <Button href="https://leanpub.com/survivejs-react">Buy at Leanpub</Button>
+    <Button href="https://leanpub.com/survivejs-react">
+      Buy at Leanpub
+    </Button>
   </Book>
 );
 
 const BuyWebpack = () => (
   <Book>
     <a href="/webpack/foreword">
-      <Title>SurviveJS - Webpack: From apprentice to master</Title>
+      <Title>
+        SurviveJS - Webpack 5: From apprentice to master
+      </Title>
       <Cover
         alt="Webpack book cover"
         src={require("assets/img/covers/webpack-cover.svg")}
@@ -83,9 +95,15 @@ const BuyWebpack = () => (
         height="329"
       />
     </a>
-    <Button href="https://leanpub.com/survivejs-webpack">Buy at Leanpub</Button>
-    <Button href="https://www.amazon.com/dp/9526868803/">Buy at Amazon</Button>
-    <Button href="https://www.amazon.com/dp/B06XWZZGBS">Buy for Kindle</Button>
+    <Button href="https://leanpub.com/survivejs-webpack">
+      Buy at Leanpub
+    </Button>
+    <Button href="https://www.amazon.com/dp/B08P2C69PR">
+      Buy at Amazon
+    </Button>
+    <Button href="https://www.amazon.com/dp/B08P3S2G66">
+      Buy for Kindle
+    </Button>
   </Book>
 );
 

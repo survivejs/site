@@ -71,11 +71,11 @@ const BookPage = ({
               Leanpub (digital)
             </a>
             ,{" "}
-            <a href="https://www.amazon.com/dp/9526868803">
+            <a href="https://www.amazon.com/dp/B08P2C69PR">
               Amazon (paperback)
             </a>
             , and{" "}
-            <a href="https://www.amazon.com/dp/B06XWZZGBS">
+            <a href="https://www.amazon.com/dp/B08P3S2G66">
               Kindle (digital)
             </a>
             . By purchasing the book you support the

@@ -1,5 +1,5 @@
 ---
-title: '"SurviveJS - Webpack" - Further webpack 5 updates'
+title: '"SurviveJS - Webpack 5" - Further webpack 5 updates'
 date: 2020-10-30
 headerImage: "assets/img/mandelbulb.jpg"
 keywords: ["release-notes", "webpack"]
@@ -31,8 +31,10 @@ The book has received [numerous changes](https://github.com/survivejs/webpack-bo
 
 You can find the book below:
 
-- [“SurviveJS — Webpack” - Free online edition](/webpack/preface/)
-- [“SurviveJS — Webpack” - Leanpub edition (digital)](https://leanpub.com/survivejs-webpack/)
+- [“SurviveJS — Webpack 5” - Free online edition](/webpack/preface/)
+- [“SurviveJS — Webpack 5” - Leanpub edition (digital)](https://leanpub.com/survivejs-webpack/)
+- [“SurviveJS — Webpack 5” - Amazon (paperback)](https://www.amazon.com/dp/B08P2C69PR)
+- [“SurviveJS — Webpack 5” - Kindle (digital)](https://www.amazon.com/dp/B08P3S2G66)
 
 T> A part of the income (around ~30%) goes to Tobias Koppers, the author of webpack. I support his work this way given mine builds on top of his.
 
