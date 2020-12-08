@@ -2,7 +2,7 @@
 title: "Preloading Web Assets"
 date: 2020-12-08
 headerImage: "assets/img/fractal.jpg"
-keywords: ["techniques"]
+keywords: ["performance", "techniques"]
 ---
 
 Preloading data is useful yet perhaps underused web development technique. When it comes to performance, the best work is the one you don't have to do. The second best is the one you can do ahead of time.
