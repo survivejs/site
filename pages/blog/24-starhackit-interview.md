@@ -1,34 +1,35 @@
 ---
-title: 'StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem'
+title: "StarHackIt - A Full Stack ES6/ES7 Starter Kit based on React and Node - Interview with Frederic Heem"
 date: 2015-11-24
-headerImage: 'assets/img/starhackit/puntatrettu.jpg'
-keywords: ['interview', 'react']
+headerImage: "assets/img/starhackit/puntatrettu.jpg"
+keywords: ["interview", "react"]
 ---
 
-I discussed my [React component boilerplate](https://survivejs.github.io/react-component-boilerplate/) earlier on. It is focused and deals only with the frontend. Often you need more than just a frontend, though. This is where Frederic Heem's [StarHackIt](http://starhack.it/) fits. It is a full stack boilerplate. Read on to learn more.
+I discussed my [React component boilerplate](https://survivejs.github.io/react-component-boilerplate/) earlier on. It is focused and deals only with the frontend. Often you need more than just a frontend, though. This is where Frederic Heem's [StarHackIt](https://github.com/FredericHeem/starhackit) fits. It is a full stack boilerplate. Read on to learn more.
 
 ## Can you tell a bit about yourself?
 
 <p>
   ![Frederic Heem|100|100|author](assets/img/starhackit/hf.jpg)
 
-  I studied industrial engineering in France but ended up being a software engineer for the last the last 15 years mostly in the UK and Italy. Right now, I am working on blockchain and distributed ledger technology in the city of London. During my spare time and when the wind blows, I am hooked on my kitesurf.
+I studied industrial engineering in France but ended up being a software engineer for the last the last 15 years mostly in the UK and Italy. Right now, I am working on blockchain and distributed ledger technology in the city of London. During my spare time and when the wind blows, I am hooked on my kitesurf.
+
 </p>
 
 ![dunkerque-malo](assets/img/starhackit/dunkerque-malo.jpg)
 
-## How would you describe *StarHackIt* to someone who has never heard of it?
+## How would you describe _StarHackIt_ to someone who has never heard of it?
 
-*StarHackIt* is a full stack web application boilerplate. The aim is to provide a code base to quickly create a new web application. It is a foundation on which software developers can build on top of it.
+_StarHackIt_ is a full stack web application boilerplate. The aim is to provide a code base to quickly create a new web application. It is a foundation on which software developers can build on top of it.
 
 This starter kit is written in JavaScript **ES6**/**ES7**, it is composed of a frontend based on React/Reflux, a Node.js backend, the data is backed by **SQL** thanks to the Sequelize ORM, automatic deployment is done with Ansible. The code is built with Gulp, analyzed by ESLint, tested with Mocha, covered by Istanbul.
 
-One of the main benefits is that StarHackIt comes with *authentication*:
+One of the main benefits is that StarHackIt comes with _authentication_:
 
-* Users can register and login with username and password, reset the password via email.
-* Social login with Facebook, Google, GitHub etc.
+- Users can register and login with username and password, reset the password via email.
+- Social login with Facebook, Google, GitHub etc.
 
-A fine-grained **authorization** system based on groups, permissions and resources is also provided. This allows to create users belonging to groups with a different set of permissions to the API. A simple example is to grant special access to users belonging to the *Admin* group.
+A fine-grained **authorization** system based on groups, permissions and resources is also provided. This allows to create users belonging to groups with a different set of permissions to the API. A simple example is to grant special access to users belonging to the _Admin_ group.
 
 ## Why did you develop StarHackIt?
 
@@ -52,26 +53,26 @@ The JavaScript ecosystem is vibrant with a record number of packages that have o
 
 The challenge is mostly about making choice between these huge numbers of packages to build upon:
 
-* React/Angular/Angular2/Ember/Backbone
-* Reflux/Flux/Redux/Alt
-* Bootstrap/Material/Foundation
-* Eslint/Jscs/Jshint
-* Stylus/Saas/Less/CSS
-* Express/Koa/Hapi/Strongloop/Sails/Meteor
-* SQL/NoSql
-* Sequelize/Bookshelf
-* Webpack/Browserify/RequiresJs
-* Gulp/Grunt
-* Ansible/Chef/Puppet
-* Mocha/QUnit
+- React/Angular/Angular2/Ember/Backbone
+- Reflux/Flux/Redux/Alt
+- Bootstrap/Material/Foundation
+- Eslint/Jscs/Jshint
+- Stylus/Saas/Less/CSS
+- Express/Koa/Hapi/Strongloop/Sails/Meteor
+- SQL/NoSql
+- Sequelize/Bookshelf
+- Webpack/Browserify/RequiresJs
+- Gulp/Grunt
+- Ansible/Chef/Puppet
+- Mocha/QUnit
 
 It is about selecting the best tools at a given time and integrating them. Over time, new libraries will emerge, other libraries will be unmaintained. Keeping the code up to date with the new version will require some kind of maintenance.
 
 ![Red pill or blue pill?](assets/img/starhackit/choosepillsmatrix.jpg)
 
-Writing code in *ES6* and *ES7* adds another layer of complexity on the build system since files need to be transpiled to plain old JavaScript. This also makes setting up code coverage and testing trickier, however, it's definitely worth it.
+Writing code in _ES6_ and _ES7_ adds another layer of complexity on the build system since files need to be transpiled to plain old JavaScript. This also makes setting up code coverage and testing trickier, however, it's definitely worth it.
 
-The most amazing feature of *ES7* is **async/await**, forget about callbacks and Promises, async/await is an enlightenment and the way to go, it makes writing asynchronous code similar to writing synchronous code, it significantly changes the way JavaScript is written, especially on the node side.
+The most amazing feature of _ES7_ is **async/await**, forget about callbacks and Promises, async/await is an enlightenment and the way to go, it makes writing asynchronous code similar to writing synchronous code, it significantly changes the way JavaScript is written, especially on the node side.
 
 > Twenty years ago JavaScript was a joke, now it's the future. [jster.net september-2015 ](http://jster.net/blog/monthly-jster-september-2015-part-2#.VkPBH2SKH-k)
 
@@ -93,4 +94,4 @@ What about an interview of Juho Vepsäläinen? The mind behind [jster.net](http:
 
 Thanks a lot for the interview Frederic! I'll consider interviewing myself in the near future for sure as I might have a little announcement to make.
 
-Best of luck to [StarHackIt](http://starhack.it/)! Let's hope people find it and help you to push it further. Beyond the project site, consider checking [the source code on GitHub](https://github.com/FredericHeem/starhackit).
+Best of luck to StarHackIt! Let's hope people find it and help you to push it further. Beyond the project site, consider checking [the source code on GitHub](https://github.com/FredericHeem/starhackit).
