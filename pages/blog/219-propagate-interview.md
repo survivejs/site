@@ -91,7 +91,7 @@ Your aim at the beginner stage should mainly be that, after 1-2 years, you could
 
 ## Who should I interview next?
 
-[Digvijay Singh Rathore](https://twitter.com/novadigvijay) He is multi-talented, better than me at everything.
+[Digvijay Singh Rathore](https://twitter.com/novadigvijay). He is multi-talented, better than me at everything.
 
 ## Any last remarks?
 
