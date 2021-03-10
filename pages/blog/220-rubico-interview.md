@@ -209,7 +209,7 @@ If you feel like you are struggling, keep at it for as long as you can, then get
 
 ## Who should I interview next?
 
-[Thomas Wang](https://twitter.com/ThomasWang), the co-founder of @Napkin.
+[Thomas Wang](https://twitter.com/ThomasWang), the co-founder of [@Napkin](https://twitter.com/napkin).
 
 ## Any last remarks?
 
