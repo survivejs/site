@@ -69,3 +69,7 @@ To get started with Blitz, consider the following resources:
 - [Blitz Discord](https://discord.gg/blitzjs)
 - [@blitz_js](https://twitter.com/blitz_js)
 - [Blitz on GitHub](https://github.com/blitz-js/blitz)
+
+**React Finland Vodcast #3 - Full Stack React (featuring Blitz.js)**
+
+<iframe width="100%" height="300px" src="https://www.youtube.com/embed/ee3riQ0aVbs" frameborder="0" allowfullscreen></iframe>
