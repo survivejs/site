@@ -4,7 +4,7 @@ date: 2020-08-06
 headerImage: "assets/img/detox.jpg"
 headerAuthor: "congerdesign"
 headerSource: https://pixabay.com/photos/water-drink-detox-detox-water-1487304/
-keywords: ["interview", "testing"]
+keywords: ["interview", "testing", "react", "react native"]
 ---
 
 Testing mobile applications is a tough topic as you have to worry about different devices, and the interaction model is challenging.
