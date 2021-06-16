@@ -75,7 +75,7 @@ So, To all budding developers, keep enjoying those tricky debugging nights and c
 
 ## Who should I interview next?
 
-I always want to hear the story of Hitesh Choudhary and how he built Learn Code Online, and why he built it. Not sure whether he wants to give an interview, but I would love to give his name.
+I always want to hear the story of [Hitesh Choudhary](https://www.youtube.com/channel/UCXgGY0wkgOzynnHvSEVmE3A) and how he built [Learn Code Online](https://web.learncodeonline.in/), and why he built it. Not sure whether he wants to give an interview, but I would love to give his name.
 
 ## Any last remarks?
 
