@@ -6,6 +6,11 @@ const Container = styled.div`
   position: relative;
   height: calc(22vh + 6vw);
   min-height: 260px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 `;
 
 const Image = styled.div`
@@ -18,7 +23,7 @@ const Image = styled.div`
   background-color: ${theme.color.brandDark};
   background-size: cover;
   background-position: 50% 50%;
-  filter: brightness(0.4);
+  //filter: brightness(0.4);
 `;
 
 const Heading = styled.h1`
@@ -60,7 +65,10 @@ const PageHeading = ({ image, extra, children }) => (
     )}
     <Heading>{children}</Heading>
     {extra && (
-      <Extra aria-hidden="true" dangerouslySetInnerHTML={{ __html: extra }} />
+      <Extra
+        aria-hidden="true"
+        dangerouslySetInnerHTML={{ __html: extra }}
+      />
     )}
   </Container>
 );
