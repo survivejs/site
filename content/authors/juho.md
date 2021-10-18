@@ -3,7 +3,7 @@
 Juho Vepsäläinen is behind the SurviveJS effort. He has been active in the open source scene since the early 2000s and participated in projects like Blender and webpack as a core team member.
 </p>
 
-Juho lives in Rautalampi, Finland, and was chosen as the Finnish Code Ambassador of 2017 by [Blue Arrow Awards](https://www.bluearrowawards.com/). He is the directory of [React Finland](https://react-finland.fi).
+Juho lives in Rautalampi, Finland, and was chosen as the Finnish Code Ambassador of 2017 by [Blue Arrow Awards](https://www.bluearrowawards.com/). He is the director of [React Finland](https://react-finland.fi).
 
 * [@bebraw](https://twitter.com/bebraw)
 * [Juho on GitHub](https://github.com/bebraw)
