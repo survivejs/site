@@ -14,14 +14,18 @@ const Search = ({ sectionName }) => {
     apiKey = "4b3ffdbff33831aa87c5b1f39889f2af";
     indexName = "survivejs_maintenance";
   } else if (sectionName === "webpack") {
-    apiKey = "1182e3806d62e921613b8dc9c7a22ef3";
+    apiKey = "c233f26a1e0b4b0c54edbb2f06d85864";
     indexName = "survivejs_webpack";
   } else {
     return null;
   }
 
   return (
-    <Algolia apiKey={apiKey} indexName={indexName} inputSelector="#search" />
+    <Algolia
+      apiKey={apiKey}
+      indexName={indexName}
+      inputSelector="#search"
+    />
   );
 };
 
