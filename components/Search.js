@@ -10,7 +10,8 @@ const Search = ({ sectionName }) => {
     apiKey = "7a7d80ba370ebaf7a9afa96ad380a1e1";
     indexName = "survivejs_react";
   } else if (sectionName === "maintenance") {
-    apiKey = "4b3ffdbff33831aa87c5b1f39889f2af";
+    appId = "QD8ZTJ41U9";
+    apiKey = "f420895920e526e0cb84df1ce0a27f90";
     indexName = "survivejs_maintenance";
   } else if (sectionName === "webpack") {
     appId = "BE4LKLLAJZ";
