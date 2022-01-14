@@ -1,8 +1,8 @@
 {
   "/": {
     "meta": {
-      "title": "Deno Deploy demo",
-      "description": "Gustwind on Deno Deploy"
+      "title": "SurviveJS",
+      "description": "Want to learn how to manage your JavaScript projects? Get started for free."
     },
     "layout": "siteIndex",
     "dataSources": [
@@ -11,6 +11,54 @@
         "operation": "file",
         "input": "./README.md",
         "transformWith": ["markdown"]
+      }
+    ]
+  },
+  "blog": {
+    "layout": "blogIndex",
+    "meta": {
+      "title": "Blog",
+      "description": "A blog about JavaScript interviews and techniques."
+    },
+    "dataSources": [
+      {
+        "id": "blogPosts",
+        "operation": "indexMarkdown",
+        "input": "./pages/blog"
+      }
+    ],
+    "expand": {
+      "dataSources": [
+        {
+          "id": "blogPosts",
+          "operation": "indexMarkdown",
+          "input": "./pages/blog"
+        }
+      ],
+      "matchBy": {
+        "dataSource": "blogPosts",
+        "collection": "content",
+        "slug": "data.slug"
+      },
+      "layout": "blogPage",
+      "meta": {
+        "__title": "match.name",
+        "__description": "match.description"
+      }
+    }
+  },
+  "atom.xml": {
+    "layout": "rssPage",
+    "type": "xml",
+    "meta": {
+      "title": "SurviveJS",
+      "description": "SurviveJS blog"
+    },
+    "dataSources": [
+      {
+        "id": "blogPosts",
+        "operation": "indexMarkdown",
+        "input": "./pages/blog"
       }
     ]
   }
