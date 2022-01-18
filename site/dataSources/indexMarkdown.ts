@@ -15,6 +15,9 @@ type MarkdownWithFrontmatter = {
 async function indexMarkdown(directory: string) {
   const files = await dir(directory, ".md");
 
+  // TODO: Attach adjacency info
+  files.sort((a, b) => getIndex(b.name) - getIndex(a.name));
+
   return Promise.all(
     files.map(({ path }) =>
       Deno.readTextFile(path).then(
@@ -33,6 +36,10 @@ async function indexMarkdown(directory: string) {
       )
     ),
   );
+}
+
+function getIndex(str: string) {
+  return parseInt(str.split("-")[0], 10);
 }
 
 async function dir(p: string, extension?: string) {
