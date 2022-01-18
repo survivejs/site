@@ -91,16 +91,6 @@ function generateAdjacent(pages: unknown[]) {
   });
 }
 
-function generateDescription(file) {
-  if (file.data) {
-    return (
-      file.data.description || file.data.preview || file.preview
-    );
-  }
-
-  return file.preview;
-}
-
 function generatePreview(content: string, amount: number) {
   return `${removeMarkdown(content).slice(0, amount)}…`;
 }
