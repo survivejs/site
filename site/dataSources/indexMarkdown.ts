@@ -2,6 +2,7 @@ import * as path from "https://deno.land/std@0.113.0/path/mod.ts";
 import { parse } from "https://deno.land/x/frontmatter/mod.ts";
 import cloneDeep from "https://deno.land/x/lodash@4.17.15-es/cloneDeep.js";
 import trimStart from "https://deno.land/x/lodash@4.17.15-es/trimStart.js";
+import removeMarkdown from "https://esm.sh/remove-markdown@0.3.0";
 
 type MarkdownWithFrontmatter = {
   data: {
@@ -30,6 +31,7 @@ async function indexMarkdown(directory: string) {
               // @ts-ignore data is there
               ...p.data,
               slug: cleanSlug(path),
+              preview: generatePreview(p.content, 100),
             },
           } as MarkdownWithFrontmatter;
         },
@@ -79,6 +81,10 @@ function generateAdjacent(pages: unknown[]) {
 
     return ret;
   });
+}
+
+function generatePreview(content: string, amount: number) {
+  return `${removeMarkdown(content).slice(0, amount)}…`;
 }
 
 export default indexMarkdown;
