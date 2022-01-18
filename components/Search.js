@@ -7,7 +7,8 @@ const Search = ({ sectionName }) => {
   let indexName = null;
 
   if (sectionName === "react") {
-    apiKey = "7a7d80ba370ebaf7a9afa96ad380a1e1";
+    appId = "1A2L5TW6MQ";
+    apiKey = "90734373e2b9273836fb9054fac308cf";
     indexName = "survivejs_react";
   } else if (sectionName === "maintenance") {
     appId = "QD8ZTJ41U9";
