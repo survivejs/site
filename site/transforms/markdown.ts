@@ -113,7 +113,53 @@ function transformMarkdown(input: string) {
     },
   });
 
-  return { content: marked(input), tableOfContents };
+  return { content: marked.parser(parseQuotes(input)), tableOfContents };
+}
+
+function parseQuotes(data: string) {
+  const tokens = marked.lexer(data).map((t) => {
+    if (t.type === "paragraph") {
+      return (
+        parseCustomQuote(t, "T>", "tip") ||
+        parseCustomQuote(t, "W>", "warning") ||
+        t
+      );
+    }
+
+    return t;
+  });
+  // @ts-ignore Skip
+  tokens.links = [];
+
+  return tokens;
+}
+
+// @ts-ignore Skip
+function parseCustomQuote(token, match, className) {
+  if (token.type === "paragraph") {
+    const text = token.text;
+
+    if (text.indexOf(match) === 0) {
+      const icon = className === "tip"
+        ? "icon-attention-circled"
+        : "icon-attention";
+
+      return {
+        type: "html",
+        text: `<blockquote class="${
+          className === "tip" ? "bg-teal-50" : "bg-red-50"
+        }"><i class="${icon}"></i>${
+          marked.parseInline(
+            text
+              .slice(2)
+              .trim(),
+          )
+        }</blockquote>`,
+      };
+    }
+  }
+
+  return null;
 }
 
 export default transformMarkdown;
