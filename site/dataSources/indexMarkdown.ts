@@ -1,5 +1,6 @@
 import * as path from "https://deno.land/std@0.113.0/path/mod.ts";
 import { parse } from "https://deno.land/x/frontmatter/mod.ts";
+import cloneDeep from "https://deno.land/x/lodash@4.17.15-es/cloneDeep.js";
 import trimStart from "https://deno.land/x/lodash@4.17.15-es/trimStart.js";
 
 type MarkdownWithFrontmatter = {
@@ -15,10 +16,9 @@ type MarkdownWithFrontmatter = {
 async function indexMarkdown(directory: string) {
   const files = await dir(directory, ".md");
 
-  // TODO: Attach adjacency info
   files.sort((a, b) => getIndex(b.name) - getIndex(a.name));
 
-  return Promise.all(
+  const ret = await Promise.all(
     files.map(({ path }) =>
       Deno.readTextFile(path).then(
         (d) => {
@@ -36,6 +36,8 @@ async function indexMarkdown(directory: string) {
       )
     ),
   );
+
+  return generateAdjacent(ret);
 }
 
 function getIndex(str: string) {
@@ -66,6 +68,17 @@ function cleanSlug(resourcePath: string) {
   return end.toLowerCase()
     .replace(/ /g, "-")
     .replace(/_/g, "-");
+}
+
+function generateAdjacent(pages: unknown[]) {
+  return pages.map((page, i) => {
+    const ret = cloneDeep(page); // Avoid mutation
+
+    ret.previous = i > 0 && pages[i - 1];
+    ret.next = i < pages.length - 1 && pages[i + 1];
+
+    return ret;
+  });
 }
 
 export default indexMarkdown;
