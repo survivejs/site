@@ -10,21 +10,42 @@
     },
     {
       "element": "div",
-      "class": "md:mx-auto my-8 px-4 md:px-0 w-full lg:max-w-3xl prose lg:prose-xl",
+      "class": "md:mx-auto my-8 px-4 md:px-0 w-full lg:max-w-3xl",
       "__bind": "blogPosts.content",
       "children": [
         {
           "element": "ul",
+          "class": "flex flex-col gap-8",
           "__children": [
             {
               "element": "li",
+              "class": "text-gray-800 rounded bg-gradient-to-b from-teal-100 to-white p-4 flex flex-col gap-2",
               "children": [
                 {
                   "element": "Link",
-                  "__children": "data.title",
+                  "children": [
+                    {
+                      "element": "h2",
+                      "class": "text-3xl",
+                      "__children": "data.title"
+                    }
+                  ],
                   "attributes": {
                     "==href": "data.slug + '/'"
                   }
+                },
+                {
+                  "element": "time",
+                  "class": "font-thin text-base text-gray-600",
+                  "==children": "new Date(data.date).toLocaleDateString('en-US')",
+                  "attributes": {
+                    "__datetime": "data.date"
+                  }
+                },
+                {
+                  "element": "p",
+                  "class": "text-md",
+                  "__children": "data.preview"
                 }
               ]
             }

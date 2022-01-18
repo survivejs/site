@@ -29,7 +29,7 @@ async function indexMarkdown(directory: string) {
             content: string;
             data: Record<string, unknown>;
           };
-          const preview = generatePreview(p.content, 100);
+          const preview = generatePreview(p.content, 150);
 
           return {
             ...p,
