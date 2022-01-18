@@ -95,5 +95,27 @@
       "rel": "stylesheet",
       "href": "/assets/style/fontello-embedded.css"
     }
+  },
+  {
+    "_reference": "https://web.dev/defer-non-critical-css/",
+    "element": "link",
+    "attributes": {
+      "rel": "preload",
+      "href": "https://cdn.jsdelivr.net/gh/highlightjs/highlight.js@11.3.1/src/styles/github.min.css",
+      "as": "style",
+      "onload": "this.onload=null;this.rel='stylesheet'"
+    }
+  },
+  {
+    "element": "noscript",
+    "children": [
+      {
+        "element": "link",
+        "attributes": {
+          "rel": "stylesheet",
+          "href": "https://cdn.jsdelivr.net/gh/highlightjs/highlight.js@11.3.1/src/styles/github.min.css"
+        }
+      }
+    ]
   }
 ]
