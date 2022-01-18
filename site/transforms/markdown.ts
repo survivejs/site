@@ -23,7 +23,7 @@ marked.setOptions({
   smartLists: true,
   smartypants: true,
   highlight: (code: string, language: string) => {
-    return highlight.highlight(code, { language }).value;
+    return language ? highlight.highlight(code, { language }).value : code;
   },
 });
 
