@@ -5,13 +5,15 @@ import trimStart from "https://deno.land/x/lodash@4.17.15-es/trimStart.js";
 import removeMarkdown from "https://esm.sh/remove-markdown@0.3.0";
 
 type MarkdownWithFrontmatter = {
+  content: string;
   data: {
+    description: string;
+    preview: string;
     slug: string;
     title: string;
     date: Date;
     keywords: string[];
   };
-  content: string;
 };
 
 async function indexMarkdown(directory: string) {
@@ -23,21 +25,27 @@ async function indexMarkdown(directory: string) {
     files.map(({ path }) =>
       Deno.readTextFile(path).then(
         (d) => {
-          const p = parse(d);
+          const p = parse(d) as {
+            content: string;
+            data: Record<string, unknown>;
+          };
+          const preview = generatePreview(p.content, 100);
 
           return {
             ...p,
             data: {
-              // @ts-ignore data is there
               ...p.data,
+              description: p.data?.description || p.data?.preview || preview,
               slug: cleanSlug(path),
-              preview: generatePreview(p.content, 100),
+              preview,
             },
           } as MarkdownWithFrontmatter;
         },
       )
     ),
   );
+
+  console.log(ret);
 
   return generateAdjacent(ret);
 }
@@ -81,6 +89,16 @@ function generateAdjacent(pages: unknown[]) {
 
     return ret;
   });
+}
+
+function generateDescription(file) {
+  if (file.data) {
+    return (
+      file.data.description || file.data.preview || file.preview
+    );
+  }
+
+  return file.preview;
 }
 
 function generatePreview(content: string, amount: number) {
