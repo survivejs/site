@@ -9,13 +9,23 @@
       "element": "MainNavigation"
     },
     {
-      "element": "div",
-      "class": "md:mx-auto my-8 px-4 md:px-0 w-full lg:max-w-3xl prose lg:prose-xl",
+      "element": "header",
+      "class": "w-full h-64",
       "children": [
         {
           "element": "h1",
+          "class": "flex justify-center items-center text-white h-full text-5xl font-bold",
           "__children": "match.data.title"
-        },
+        }
+      ],
+      "attributes": {
+        "==style": "'background-image:url(' + match.data.headerImage + ')'"
+      }
+    },
+    {
+      "element": "div",
+      "class": "md:mx-auto my-8 px-4 md:px-0 w-full lg:max-w-3xl prose lg:prose-xl",
+      "children": [
         {
           "element": "p",
           "inputProperty": "match.content",

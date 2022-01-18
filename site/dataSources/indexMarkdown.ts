@@ -9,6 +9,7 @@ type MarkdownWithFrontmatter = {
   data: {
     description: string;
     preview: string;
+    headerImage: string;
     slug: string;
     title: string;
     date: Date;
@@ -36,6 +37,7 @@ async function indexMarkdown(directory: string) {
             data: {
               ...p.data,
               description: p.data?.description || p.data?.preview || preview,
+              headerImage: p.data?.headerImage ? "/" + p.data?.headerImage : "",
               slug: cleanSlug(path),
               preview,
             },
