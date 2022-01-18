@@ -45,8 +45,6 @@ async function indexMarkdown(directory: string) {
     ),
   );
 
-  console.log(ret);
-
   return generateAdjacent(ret);
 }
 
