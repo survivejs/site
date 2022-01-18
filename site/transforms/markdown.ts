@@ -4,8 +4,14 @@ import highlight from "https://unpkg.com/@highlightjs/cdn-assets@11.3.1/es/core.
 import highlightBash from "https://unpkg.com/highlight.js@11.3.1/es/languages/bash";
 import highlightJS from "https://unpkg.com/highlight.js@11.3.1/es/languages/javascript";
 import highlightJSON from "https://unpkg.com/highlight.js@11.3.1/es/languages/json";
+import highlightXML from "https://unpkg.com/highlight.js@11.3.1/es/languages/xml";
 import highlightTS from "https://unpkg.com/highlight.js@11.3.1/es/languages/typescript";
 import highlightYAML from "https://unpkg.com/highlight.js@11.3.1/es/languages/yaml";
+import highlightHaskell from "https://unpkg.com/highlight.js@11.3.1/es/languages/haskell";
+import highlightMarkdown from "https://unpkg.com/highlight.js@11.3.1/es/languages/markdown";
+import highlightCSS from "https://unpkg.com/highlight.js@11.3.1/es/languages/css";
+import highlightSQL from "https://unpkg.com/highlight.js@11.3.1/es/languages/sql";
+import highlightC from "https://unpkg.com/highlight.js@11.3.1/es/languages/c";
 
 highlight.registerLanguage("bash", highlightBash);
 highlight.registerLanguage("javascript", highlightJS);
@@ -14,6 +20,14 @@ highlight.registerLanguage("json", highlightJSON);
 highlight.registerLanguage("typescript", highlightTS);
 highlight.registerLanguage("ts", highlightTS);
 highlight.registerLanguage("yaml", highlightYAML);
+highlight.registerLanguage("html", highlightXML);
+highlight.registerLanguage("xml", highlightXML);
+highlight.registerLanguage("haskell", highlightHaskell);
+highlight.registerLanguage("markdown", highlightMarkdown);
+highlight.registerLanguage("css", highlightCSS);
+highlight.registerLanguage("sql", highlightSQL);
+highlight.registerLanguage("c", highlightC);
+highlight.registerLanguage("clike", highlightC);
 
 marked.setOptions({
   gfm: true,
