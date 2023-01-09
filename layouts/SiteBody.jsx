@@ -38,8 +38,8 @@ const navigationPages = [
     url: "https://twitter.com/survivejs",
   },
   {
-    title: "React Finland",
-    url: "https://react-finland.fi/",
+    title: "Future Frontend",
+    url: "https://futurefrontend.com/",
   },
 ];
 
