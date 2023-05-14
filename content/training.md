@@ -13,22 +13,9 @@ Consider the following examples of cases that went through:
 
 These are just a few examples of the training and consulting cases I've done. I have used webpack for a few years and I am a part of webpack core team. I wrote [a 337 page book](https://www.amazon.com/dp/B08P2C69PR) about the tool and spent months touring with the book in 2017.
 
-I'm based in Vienna and I can reach most of Europe conveniently. I am available up to two weeks although I can be around just a day or two. A week is a good compromise and often it's a good idea to arrange a meetup to get most out of the time.
+I'm based in Rautalampi, Finland and I am available up to two weeks although I can be around just a day or two. A week is a good compromise and often it's a good idea to arrange a meetup to get most out of the time.
 
 T> [Read more about the workshop offering](/workshop/) - Workshops can take anything from half a day to multiple days.
-
-## Pricing
-
-I'm flexible when it comes to pricing. In case you prefer something fixed, consider the following examples that apply to Europe:
-
-- One day workshop - 1500 € (VAT 0)
-- Two day workshop - 2500 € (VAT 0)
-
-T> If you are based in Vienna, you'll get a 500 € discount.
-
-The prices include accommodation and travel costs so you don't have to worry about those separately. Although workshops rely mainly on the material I have already, I develop it based on client needs. For webpack workshops, I arrange a QA session with Tobias Koppers, the creator of the tool, and more is possible based on demand.
-
-Bigger commitments than this are negotiated per case.
 
 ## References
 
