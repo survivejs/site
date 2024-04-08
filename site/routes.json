@@ -8,10 +8,51 @@
     "dataSources": [
       {
         "operation": "processMarkdown",
-        "parameters": ["./README.md"],
+        "parameters": [{ "path": "./README.md" }, { "skipFirstLine": true }],
         "name": "readme"
       }
     ],
     "scripts": [{ "name": "hello" }]
+  },
+  "blog": {
+    "layout": "blogIndex",
+    "meta": {
+      "title": "Blog",
+      "description": "Read blog interviews to learn more about JavaScript and related technologies"
+    },
+    "dataSources": [
+      {
+        "operation": "indexMarkdown",
+        "parameters": ["./pages/blog"],
+        "name": "blogPosts"
+      }
+    ],
+    "expand": {
+      "matchBy": {
+        "indexer": {
+          "operation": "indexMarkdown",
+          "parameters": ["./pages/blog"]
+        },
+        "dataSources": [{
+          "operation": "processMarkdown",
+          "parameters": [
+            { "parseHeadmatter": true }
+          ],
+          "name": "document"
+        }],
+        "slug": "data.slug"
+      },
+      "layout": "documentationPage",
+      "meta": {
+        "title": {
+          "utility": "get",
+          "parameters": ["context", "document.data.title"]
+        },
+        "description": {
+          "utility": "get",
+          "parameters": ["context", "document.data.description"]
+        }
+      }
+    }
   }
 }
