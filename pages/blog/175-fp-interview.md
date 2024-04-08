@@ -164,13 +164,13 @@ In any case, here are the concrete benefits of writing programs in a functional 
 
 We often have to deal with `null` in our programs. It is often done via option types. The following Rust code takes a `guess` numeric string and parses it to actual integers:
 
-```
+```javascript
 let guess: u32 = match guess.trim().parse()
 ```
 
 What happens when we get a string such as `"12a"`? Most languages will either return `null` (or equivalent) or throw an exception. We can check for the nullness in an `if` condition or wrap the line in a `try-catch`. However, we can forget to do that. Also, the compiler is not enforcing that check. In Rust, here's how we do it:
 
-```
+```javascript
 let guess: u32 = match guess.trim().parse() {
     Ok(num) => num,
     Err(_) => println!("String is not a number.");,

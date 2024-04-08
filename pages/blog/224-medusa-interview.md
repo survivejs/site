@@ -31,7 +31,7 @@ Once installed in the Node project, you can add custom functionality and extensi
 
 To get going with Medusa fast, try the following:
 
-```
+```bash
 npm install -g @medusajs/medusa-cli
 medusa new my-medusa-store --seed
 medusa develop

@@ -34,7 +34,7 @@ When you are about to develop an API, you usually start with an idea of how it s
 
 While a plain text file would be enough for collaboration, if you describe your API in a popular, structured format like [API Blueprint](https://apiblueprint.org/) or [OpenAPI](https://www.openapis.org/) you get the benefit of having a machine-readable source of truth for your API, which can be then used by various tools. For instance, you can automatically generate documentation from such a file.
 
-```
+```markdown
 FORMAT: 1A
 
 # My API
@@ -58,7 +58,7 @@ Below is one of the most straightforward APIs written in the **API Blueprint**. 
 
 When it comes to developing the API server implementation, Dredd can read the API description document, learn about the expected behavior of the API, then make requests to that API and confirm that it has returned the expected responses:
 
-```
+```bash
 dredd api-description.yaml http://127.0.0.1:8000
 ```
 

@@ -5,6 +5,7 @@ import {
 import { parse } from "https://deno.land/std@0.207.0/yaml/parse.ts";
 import getMarkdown from "./transforms/markdown.ts";
 import { getMemo } from "https://deno.land/x/gustwind@v0.66.3/utilities/getMemo.ts";
+import trimStart from "https://deno.land/x/lodash@4.17.15-es/trimStart.js";
 import type { LoadApi } from "https://deno.land/x/gustwind@v0.66.3/types.ts";
 
 type MarkdownWithFrontmatter = {
@@ -42,11 +43,10 @@ function init({ load }: { load: LoadApi }) {
     if (o?.parseHeadmatter) {
       const headmatter = await parseHeadmatter(path);
 
-      // TODO: Parse slug here from the path
-      // const clean = require("./utils/clean");
-      // `/${sectionName}/${clean.chapterName(fileName)}/`,
-
-      return { ...headmatter, ...(await parseMarkdown(headmatter.content)) };
+      return {
+        ...headmatter,
+        ...(await parseMarkdown(headmatter.content)),
+      };
     }
 
     // Markdown also parses toc but it's not needed for now
@@ -60,10 +60,14 @@ function init({ load }: { load: LoadApi }) {
 
     if (test(file)) {
       const { frontMatter, body: content } = extract(file);
+      const slug = cleanSlug(path);
 
       return {
         // TODO: It would be better to handle this with Zod or some other runtime checker
-        data: parse(frontMatter) as MarkdownWithFrontmatter["data"],
+        data: {
+          ...parse(frontMatter) as MarkdownWithFrontmatter["data"],
+          slug,
+        },
         content,
       };
     }
@@ -84,6 +88,16 @@ function init({ load }: { load: LoadApi }) {
   }
 
   return { indexMarkdown, processMarkdown };
+}
+
+function cleanSlug(resourcePath: string) {
+  const parts = resourcePath.split("/");
+  const end =
+    trimStart(parts.slice(-1)[0], "0123456789-_", undefined).split(".")[0];
+
+  return end.toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/_/g, "-");
 }
 
 export { init };

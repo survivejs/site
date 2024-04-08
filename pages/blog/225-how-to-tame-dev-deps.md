@@ -91,7 +91,7 @@ Also make sure that **.prettierrc.json** is included to the files to publish so 
 
 The question is, how to test that our code works? To keep things simple, we can use `npm link` to link our configuration project locally and then refer to it another project that we want to patch. Try the following from the project directory:
 
-```
+```bash
 npm link
 cd..
 mkdir module-config-demo

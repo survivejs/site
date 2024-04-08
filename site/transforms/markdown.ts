@@ -2,19 +2,33 @@ import { install, tw } from "https://esm.sh/@twind/core@1.1.1";
 import { marked } from "https://unpkg.com/marked@9.1.5/lib/marked.esm.js";
 import highlight from "https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/core.min.js";
 import highlightBash from "https://unpkg.com/highlight.js@11.9.0/es/languages/bash";
+import highlightC from "https://unpkg.com/highlight.js@11.9.0/es/languages/c";
+import highlightCSS from "https://unpkg.com/highlight.js@11.9.0/es/languages/css";
+import highlightHaskell from "https://unpkg.com/highlight.js@11.9.0/es/languages/haskell";
 import highlightJS from "https://unpkg.com/highlight.js@11.9.0/es/languages/javascript";
 import highlightJSON from "https://unpkg.com/highlight.js@11.9.0/es/languages/json";
+import highlightMarkdown from "https://unpkg.com/highlight.js@11.9.0/es/languages/markdown";
+import highlightSQL from "https://unpkg.com/highlight.js@11.9.0/es/languages/sql";
 import highlightTS from "https://unpkg.com/highlight.js@11.9.0/es/languages/typescript";
+import highlightXML from "https://unpkg.com/highlight.js@11.9.0/es/languages/xml";
 import highlightYAML from "https://unpkg.com/highlight.js@11.9.0/es/languages/yaml";
 import type { LoadApi } from "https://deno.land/x/gustwind@v0.66.2/types.ts";
 import twindSetup from "../twindSetup.ts";
 
 highlight.registerLanguage("bash", highlightBash);
+highlight.registerLanguage("c", highlightC);
+highlight.registerLanguage("clike", highlightC);
+highlight.registerLanguage("css", highlightCSS);
+highlight.registerLanguage("haskell", highlightHaskell);
+highlight.registerLanguage("html", highlightXML);
 highlight.registerLanguage("javascript", highlightJS);
 highlight.registerLanguage("js", highlightJS);
 highlight.registerLanguage("json", highlightJSON);
+highlight.registerLanguage("markdown", highlightMarkdown);
+highlight.registerLanguage("sql", highlightSQL);
 highlight.registerLanguage("typescript", highlightTS);
 highlight.registerLanguage("ts", highlightTS);
+highlight.registerLanguage("xml", highlightXML);
 highlight.registerLanguage("yaml", highlightYAML);
 
 marked.setOptions({

@@ -66,7 +66,7 @@ In the first step, planning, the tool performs the following steps:
 2. Compares to what should be installed according to the code
 3. Produces a plan of what needs to be deployed or removed
 
-```
+```bash
  $ gc apply
 Querying resources on 1 provider: google
 ✓ google
@@ -146,7 +146,7 @@ Querying resources on 1 provider: google
 
 In the second step, performing the deployment, the tool calls the cloud providers' API to create, updates or deletes resources according to the plan produced in the previous step:
 
-```
+```bash
 Deploying resources on 1 provider: google
 ✓ google
   ✓ Initialising
@@ -163,13 +163,13 @@ At this stage, the server should be up and running.
 
 To check the state of the deployment, you can use the **list** command.
 
-```
+```bash
 gc list
 ```
 
 To reduce your cloud provider bills, destroy the infrastructure:
 
-```
+```bash
 gc destroy
 ```
 
