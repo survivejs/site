@@ -6,6 +6,10 @@ function init({ routes }: { routes: Routes }) {
       return;
     }
 
+    return url;
+
+    // TODO: Restore url checks
+    /*
     const [urlRoot, anchor] = url.split("#");
 
     if (Object.keys(routes).includes(urlRoot)) {
@@ -26,6 +30,7 @@ function init({ routes }: { routes: Routes }) {
         Object.keys(routes).join(", ")
       }`,
     );
+    */
   }
 
   return { validateUrl };
