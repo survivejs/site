@@ -75,7 +75,7 @@ function getTransformMarkdown(load: LoadApi) {
             tw`overflow-auto -mx-4 md:mx-0 bg-gray-100` +
             '"><code class="' +
             // @ts-ignore How to type this?
-            this.options.langPrefix +
+            (this.options.langPrefix || '') +
             lang +
             '">' +
             code +
