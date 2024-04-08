@@ -14,7 +14,7 @@ const socialLinks = [
   },
   {
     caption: "Mailing List",
-    href: "http://eepurl.com/bth1v5",
+    href: "https://buttondown.email/SurviveJS",
   },
   {
     caption: "Gitter Chat",

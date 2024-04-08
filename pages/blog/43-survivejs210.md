@@ -127,7 +127,7 @@ I still have improvements planned. I've listed these based on priority:
 
 Currently I'm in authoring/consulting/training mode. Even though consulting and training take time out of authoring, they feed back in terms of experience. I'm particularly excited about the upcoming training case. It will force me to simplify and focus.
 
-Possible service model is possible still. If you would be interested in becoming a supporter and gaining early access to content, and even one-on-one time with me, [sign up to the supporter mailing list](http://eepurl.com/bQAeuH). Signing up doesn't bind you to anything and it's more of a signal for me to do something about it.
+Possible service model is possible still. If you would be interested in becoming a supporter and gaining early access to content, and even one-on-one time with me, [sign up to the supporter mailing list](https://buttondown.email/SurviveJS). Signing up doesn't bind you to anything and it's more of a signal for me to do something about it.
 
 ## Conclusion
 

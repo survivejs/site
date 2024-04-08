@@ -81,7 +81,7 @@ In order to keep the effort sustainable I've been forced to think about financia
 
 As a result I've been thinking about an alternative model that would support the current setup. I would love to build an "inner circle" of supporters. You would gain access to a private Slack at least and gain early access to new content. You would literally help me guide the effort. You would get all this against a monthly fee (say $20) and you could opt-out any time you want.
 
-If you want to participate in a supporter scheme like this, [sign up to the supporter mailing list](http://eepurl.com/bQAeuH). Signing up doesn't bind you to anything. This is more of an experiment to see if there are people interested. Provided there are enough, it will make sense to go ahead with the scheme and build a real business around this.
+If you want to participate in a supporter scheme like this, [sign up to the supporter mailing list](https://buttondown.email/SurviveJS). Signing up doesn't bind you to anything. This is more of an experiment to see if there are people interested. Provided there are enough, it will make sense to go ahead with the scheme and build a real business around this.
 
 ## Conclusion
 

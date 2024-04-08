@@ -52,7 +52,7 @@ There's [an early draft of the Webpack book](/webpack/preface/) online. It is ba
 
 The model will remain the same. A part of the content will remain closed to motivate people to pay for it. Obviously I cannot force anyone to buy it, but for now this seems like a good way to go.
 
-Over longer term I want to provide something subscription based. This supporter scheme would give you early access to new content and private Slack. It would start at $20 per month. If this is something you would like to participate in, [sign up to the supporter mailing list](http://eepurl.com/bQAeuH). Signing up doesn't bind you to anything. It's more about measuring potential interest.
+Over longer term I want to provide something subscription based. This supporter scheme would give you early access to new content and private Slack. It would start at $20 per month. If this is something you would like to participate in, [sign up to the supporter mailing list](https://buttondown.email/SurviveJS). Signing up doesn't bind you to anything. It's more about measuring potential interest.
 
 ## What does the future look like for React and front-end in general? Can you see any particular trends?
 

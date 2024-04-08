@@ -70,4 +70,4 @@ A lot of technical development has gone into the conference. Check out [the site
 
 I have a feeling React Finland will be a good conference. That said, it's important we'll attract the right people there, and this is where you come in! Going to the event might be one of the better excuses to visit Finland.
 
-You can [learn more about the event](https://react-finland.fi/) at its site. [Subscribe to the mailing list](http://eepurl.com/dfbVAX) or [follow @ReactFinland](https://twitter.com/ReactFinland) on Twitter to stay in the loop.
+You can [learn more about the event](https://react-finland.fi/) at its site. [Subscribe to the mailing list](https://buttondown.email/SurviveJS) or [follow @ReactFinland](https://twitter.com/ReactFinland) on Twitter to stay in the loop.
