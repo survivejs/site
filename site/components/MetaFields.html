@@ -1,0 +1,31 @@
+<meta
+  charset="UTF-8"
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+/>
+<meta name="description" &content="(get context meta.description)" />
+<meta property="built" &content="(get context meta.built)" />
+<meta property="url" &content="(get context url)" />
+
+<meta
+  property="og:url"
+  &content="(urlJoin (get context meta.url) (trim (get context url) /))"
+/>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" &content="(get context meta.siteName)" />
+<meta property="og:title" &content="(get context meta.title)" />
+<meta property="og:description" &content="(get context meta.description)" />
+<meta
+  property="og:image"
+  &content="(urlJoin (get context meta.url) (trim (get context url) /) og.png)"
+/>
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" &content="(get context meta.siteName)" />
+<meta property="twitter:title" &content="(get context meta.title)" />
+<meta
+  property="twitter:description"
+  &content="(get context meta.description)"
+/>
+
+<title &children="(get context meta.title)"></title>

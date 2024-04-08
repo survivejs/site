@@ -1,0 +1,6 @@
+<a
+  &visibleIf="(get props href)"
+  &class="(concat underline ' ' (pick (equals (trim (get props href) /) (trim (get context url) /)) font-bold))"
+  &href="(validateUrl (get props href))"
+  &children="(render (get props children))"
+/>
