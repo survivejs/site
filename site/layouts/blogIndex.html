@@ -1,8 +1,15 @@
 <BaseLayout>
   <slot name="content">
-    <div class="md:mx-auto px-4 md:px-0 w-full lg:max-w-3xl">
-      <Heading class="text-4xl" level="2">Blog posts</Heading>
-      <ul &foreach="(get context blogPosts)" class="flex flex-col gap-8">
+    <div
+      class="md:mx-auto px-4 md:px-0 w-full lg:max-w-3xl"
+    >
+      <Heading class="text-4xl" level="2"
+        >Blog posts</Heading
+      >
+      <ul
+        &foreach="(get context blogPosts)"
+        class="flex flex-col gap-8"
+      >
         <li
           class="rounded bg-cover bg-center bg-blend-hue"
           x-state="{ image: '' }"
@@ -11,8 +18,12 @@
           '{ options: { once: true }, state: { image:'
           (get props data.images.thumbnail)
           '} }'
-          )" @style="'background-image:url(' + state.image + ')'">
-          <div class="rounded flex flex-col gap-2 p-8 bg-gradient-to-b from-transparent to-gray-800">
+          )"
+          @style="'background-image:url(' + state.image + ')'"
+        >
+          <div
+            class="rounded flex flex-col gap-2 p-8 bg-gradient-to-b from-transparent to-gray-800"
+          >
             <SiteLink
               &children="(get props data.title)"
               &href="(urlJoin blog (get props data.slug))"
