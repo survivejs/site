@@ -17,9 +17,10 @@ npm install
 node build_all.js
 cd -
 
-echo
-echo "Installing dependencies..."
-npm install
+# Not needed with Deno
+# echo
+# echo "Installing dependencies..."
+# npm install
 
 echo
 echo "Done!"
