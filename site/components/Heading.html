@@ -1,0 +1,18 @@
+<noop
+  &visibleIf="(get props children)"
+  &type="(concat h (get props level))"
+  &id="(getUniqueAnchorId (get props children))"
+  &class="(concat
+    (get props class)
+    ' '
+    'scroll-mt-16'
+  )"
+>
+  <span &children="(render (get props children))" />
+  <a
+    &visibleIf="(invert (get props hideAnchor))"
+    class="ml-2 no-underline text-md md:text-sm align-middle mask-text-gray hover:mask-text-black"
+    &href="(concat # (get props id))"
+    >🔗</a
+  >
+</noop>
