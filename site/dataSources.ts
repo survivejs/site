@@ -3,6 +3,7 @@ import {
   test,
 } from "https://deno.land/std@0.207.0/front_matter/yaml.ts";
 import { parse } from "https://deno.land/std@0.207.0/yaml/parse.ts";
+import removeMarkdown from "https://esm.sh/remove-markdown@0.3.0";
 import getMarkdown from "./transforms/markdown.ts";
 import { getMemo } from "https://deno.land/x/gustwind@v0.66.3/utilities/getMemo.ts";
 import trimStart from "https://deno.land/x/lodash@4.17.15-es/trimStart.js";
@@ -14,27 +15,69 @@ type MarkdownWithFrontmatter = {
     slug: string;
     title: string;
     date: Date;
+    author?: { name: string; twitter: string };
+    description?: string;
+    preview?: string;
     keywords: string[];
   };
   content: string;
 };
 
+type Topic = {
+  title: string;
+  posts: MarkdownWithFrontmatter[];
+  slug: string;
+};
+
+// TODO: Check if resolveBlogPost needs to be applied for individual blog posts separately
 function init({ load }: { load: LoadApi }) {
   const markdown = getMarkdown(load);
 
-  async function indexBlog(
-    directory: string,
-  ) {
-    const blogFiles = await indexMarkdown(directory);
+  async function indexBlog(directory: string) {
+    const blogFiles = (await indexMarkdown(directory)).map((p) => ({
+      ...p,
+      data: resolveBlogPost(p.path, p),
+    }));
 
     blogFiles.sort((a, b) => getIndex(b.name) - getIndex(a.name));
 
     return generateAdjacent(blogFiles);
   }
 
-  async function indexMarkdown(
-    directory: string,
-  ) {
+  async function indexTopics(directory: string): Promise<Topic[]> {
+    const blogFiles = await indexMarkdown(directory);
+    const keywords: Record<string, MarkdownWithFrontmatter[]> = {};
+
+    await Promise.all(blogFiles.map(async ({ path }) => {
+      const p = await parseHeadmatter(path);
+
+      p.data.keywords?.forEach((keyword: string) => {
+        if (keywords[keyword]) {
+          keywords[keyword].push({ ...p, data: resolveBlogPost(path, p) });
+        } else {
+          keywords[keyword] = [{ ...p, data: resolveBlogPost(path, p) }];
+        }
+      });
+    }));
+
+    const keywordsArray = Object.keys(keywords);
+
+    keywordsArray.sort();
+
+    return keywordsArray.map((topic) => {
+      return {
+        title: resolveKeywordToTitle(topic),
+        posts: keywords[topic],
+        slug: cleanSlug(topic),
+      };
+    });
+  }
+
+  function processTopic(t: Topic) {
+    return t;
+  }
+
+  async function indexMarkdown(directory: string) {
     const files = await load.dir({
       path: directory,
       extension: ".md",
@@ -119,7 +162,13 @@ function init({ load }: { load: LoadApi }) {
     return memo(markdown, input);
   }
 
-  return { indexBlog, indexMarkdown, processMarkdown };
+  return {
+    indexBlog,
+    indexMarkdown,
+    indexTopics,
+    processMarkdown,
+    processTopic,
+  };
 }
 
 function cleanSlug(resourcePath: string) {
@@ -130,6 +179,91 @@ function cleanSlug(resourcePath: string) {
   return end.toLowerCase()
     .replace(/ /g, "-")
     .replace(/_/g, "-");
+}
+
+function resolveKeywordToTitle(keyword: string) {
+  switch (keyword) {
+    case "ajax":
+      return "AJAX";
+    case "api":
+      return "API";
+    case "baas":
+      return "BaaS";
+    case "cssinjs":
+      return "css-in-js";
+    case "ecommerce":
+      return "E-commerce";
+    case "json":
+      return "JSON";
+    case "react native":
+      return "React Native";
+    case "javascript":
+      return "JavaScript";
+    case "typescript":
+      return "TypeScript";
+    case "graphql":
+      return "GraphQL";
+    case "npm":
+      return "npm";
+    case "survivejs":
+      return "SurviveJS";
+    case "nodejs":
+      return "NodeJS";
+    case "rxjs":
+      return "RxJS";
+    case "reasonml":
+      return "ReasonML";
+    default:
+      return (keyword[0].toUpperCase() + keyword.slice(1)).replace(/-/g, " ");
+  }
+}
+
+function resolveBlogPost(path: string, p: MarkdownWithFrontmatter) {
+  const preview = generatePreview(p.content, 150);
+
+  return {
+    ...p.data,
+    description: p.data?.description || p.data?.preview || preview,
+    // TODO
+    images: {}, // resolveImages(p.data?.headerImage),
+    slug: cleanSlug(path),
+    preview,
+    author: p.data?.author || {
+      name: "Juho Vepsäläinen",
+      twitter: "https://twitter.com/bebraw",
+    },
+    topics: p.data?.keywords?.map((keyword: string) => {
+      return {
+        title: resolveKeywordToTitle(keyword),
+        slug: keyword,
+      };
+    }) || [],
+  };
+}
+
+// TODO
+/*
+function resolveImages(headerImage?: string) {
+  if (!headerImage) {
+    return { header: "", thumbnail: "" };
+  }
+
+  // @ts-expect-error Error is expected as headerImage isn't strict enough and
+  // we validate it in runtime.
+  const image = images[headerImage];
+  if (!image) {
+    throw new Error("Failed to find a matching image for " + headerImage);
+  }
+
+  return {
+    header: config.meta.imagesEndpoint + `?image=${image}&type=public`,
+    thumbnail: config.meta.imagesEndpoint + `?image=${image}&type=thumb`,
+  };
+}
+*/
+
+function generatePreview(content: string, amount: number) {
+  return `${removeMarkdown(content).slice(0, amount)}…`;
 }
 
 export { init };

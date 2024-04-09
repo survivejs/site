@@ -54,5 +54,34 @@
         }
       }
     }
+  },
+  "topics": {
+    "layout": "topicIndex",
+    "meta": {
+      "title": "Topics",
+      "description": "Blog topics"
+    },
+    "dataSources": [
+      {
+        "operation": "indexTopics",
+        "parameters": ["./pages/blog"],
+        "name": "topics"
+      }
+    ],
+    "expand": {
+      "matchBy": {
+        "indexer": {
+          "operation": "indexTopics",
+          "parameters": ["./pages/blog"]
+        },
+        "dataSources": [{
+          "operation": "processTopic",
+          "name": "topicPosts"
+        }],
+        "slug": "slug"
+      },
+      "layout": "topicPage",
+      "meta": {}
+    }
   }
 }
