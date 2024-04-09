@@ -22,6 +22,16 @@ type MarkdownWithFrontmatter = {
 function init({ load }: { load: LoadApi }) {
   const markdown = getMarkdown(load);
 
+  async function indexBlog(
+    directory: string,
+  ) {
+    const blogFiles = await indexMarkdown(directory);
+
+    blogFiles.sort((a, b) => getIndex(b.name) - getIndex(a.name));
+
+    return generateAdjacent(blogFiles);
+  }
+
   async function indexMarkdown(
     directory: string,
   ) {
@@ -32,8 +42,30 @@ function init({ load }: { load: LoadApi }) {
     });
 
     return Promise.all(
-      files.map(async ({ path }) => ({ ...await parseHeadmatter(path), path })),
+      files.map(async ({ path, name }) => ({
+        ...await parseHeadmatter(path),
+        path,
+        name,
+      })),
     );
+  }
+
+  function getIndex(str: string) {
+    return parseInt(str.split("-")[0], 10);
+  }
+
+  function generateAdjacent(pages: unknown[]) {
+    return pages.map((page, i) => {
+      // Avoid mutation
+      const ret = structuredClone(page);
+
+      // @ts-expect-error This is fine
+      ret.next = i > 0 && pages[i - 1];
+      // @ts-expect-error This is fine
+      ret.previous = i < pages.length - 1 && pages[i + 1];
+
+      return ret;
+    });
   }
 
   async function processMarkdown(
@@ -87,7 +119,7 @@ function init({ load }: { load: LoadApi }) {
     return memo(markdown, input);
   }
 
-  return { indexMarkdown, processMarkdown };
+  return { indexBlog, indexMarkdown, processMarkdown };
 }
 
 function cleanSlug(resourcePath: string) {
