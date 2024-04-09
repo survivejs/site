@@ -83,5 +83,128 @@
       "layout": "topicPage",
       "meta": {}
     }
+  },
+  "webpack": {
+    "layout": "blogIndex",
+    "meta": {
+      "title": "TODO",
+      "description": "TODO"
+    },
+    "dataSources": [
+      {
+        "operation": "indexBook",
+        "parameters": ["./books/webpack-book/manuscript"],
+        "name": "chapters"
+      }
+    ],
+    "expand": {
+      "matchBy": {
+        "indexer": {
+          "operation": "indexBook",
+          "parameters": ["./books/webpack-book/manuscript"]
+        },
+        "dataSources": [{
+          "operation": "processMarkdown",
+          "parameters": [
+            { "parseHeadmatter": false }
+          ],
+          "name": "document"
+        }],
+        "slug": "slug"
+      },
+      "layout": "documentationPage",
+      "meta": {
+        "title": {
+          "utility": "get",
+          "parameters": ["context", "document.title"]
+        },
+        "description": {
+          "utility": "get",
+          "parameters": ["context", "document.description"]
+        }
+      }
+    }
+  },
+  "react": {
+    "layout": "blogIndex",
+    "meta": {
+      "title": "TODO",
+      "description": "TODO"
+    },
+    "dataSources": [
+      {
+        "operation": "indexBook",
+        "parameters": ["./books/react-book/manuscript"],
+        "name": "chapters"
+      }
+    ],
+    "expand": {
+      "matchBy": {
+        "indexer": {
+          "operation": "indexBook",
+          "parameters": ["./books/react-book/manuscript"]
+        },
+        "dataSources": [{
+          "operation": "processMarkdown",
+          "parameters": [
+            { "parseHeadmatter": false }
+          ],
+          "name": "document"
+        }],
+        "slug": "slug"
+      },
+      "layout": "documentationPage",
+      "meta": {
+        "title": {
+          "utility": "get",
+          "parameters": ["context", "document.title"]
+        },
+        "description": {
+          "utility": "get",
+          "parameters": ["context", "document.description"]
+        }
+      }
+    }
+  },
+  "maintenance": {
+    "layout": "blogIndex",
+    "meta": {
+      "title": "TODO",
+      "description": "TODO"
+    },
+    "dataSources": [
+      {
+        "operation": "indexBook",
+        "parameters": ["./books/maintenance-book/manuscript"],
+        "name": "chapters"
+      }
+    ],
+    "expand": {
+      "matchBy": {
+        "indexer": {
+          "operation": "indexBook",
+          "parameters": ["./books/maintenance-book/manuscript"]
+        },
+        "dataSources": [{
+          "operation": "processMarkdown",
+          "parameters": [
+            { "parseHeadmatter": false }
+          ],
+          "name": "document"
+        }],
+        "slug": "slug"
+      },
+      "layout": "documentationPage",
+      "meta": {
+        "title": {
+          "utility": "get",
+          "parameters": ["context", "document.title"]
+        },
+        "description": {
+          "utility": "get",
+          "parameters": ["context", "document.description"]
+        }
+      }
+    }
   }
 }

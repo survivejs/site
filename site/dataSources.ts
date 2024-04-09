@@ -33,19 +33,35 @@ type Topic = {
 function init({ load }: { load: LoadApi }) {
   const markdown = getMarkdown(load);
 
-  async function indexBlog(directory: string) {
-    const blogFiles = (await indexMarkdown(directory)).map((p) => ({
-      ...p,
-      data: resolveBlogPost(p.path, p),
-    }));
+  async function indexBook(directory: string) {
+    const chapters =
+      (await indexMarkdown(directory, { parseHeadmatter: false })).map((c) => ({
+        ...c,
+        slug: cleanChapterName(c.path),
+      }));
 
-    blogFiles.sort((a, b) => getIndex(b.name) - getIndex(a.name));
+    chapters.sort((a, b) => getIndex(a.name) - getIndex(b.name));
+
+    // TODO: attach descriptions + attach keywords
+    // TODO: fix image paths when rendering markdown files
+
+    return generateAdjacent(chapters);
+  }
+
+  async function indexBlog(directory: string) {
+    const blogFiles =
+      (await indexMarkdown(directory, { parseHeadmatter: true })).map((p) => ({
+        ...p,
+        data: resolveBlogPost(p.path, p),
+      }));
+
+    blogFiles.sort((a, b) => getIndex(a.name) - getIndex(b.name));
 
     return generateAdjacent(blogFiles);
   }
 
   async function indexTopics(directory: string): Promise<Topic[]> {
-    const blogFiles = await indexMarkdown(directory);
+    const blogFiles = await indexMarkdown(directory, { parseHeadmatter: true });
     const keywords: Record<string, MarkdownWithFrontmatter[]> = {};
 
     await Promise.all(blogFiles.map(async ({ path }) => {
@@ -77,7 +93,10 @@ function init({ load }: { load: LoadApi }) {
     return t;
   }
 
-  async function indexMarkdown(directory: string) {
+  async function indexMarkdown(
+    directory: string,
+    o: { parseHeadmatter: boolean },
+  ) {
     const files = await load.dir({
       path: directory,
       extension: ".md",
@@ -86,7 +105,7 @@ function init({ load }: { load: LoadApi }) {
 
     return Promise.all(
       files.map(async ({ path, name }) => ({
-        ...await parseHeadmatter(path),
+        ...(o.parseHeadmatter ? await parseHeadmatter(path) : {}),
         path,
         name,
       })),
@@ -164,6 +183,7 @@ function init({ load }: { load: LoadApi }) {
 
   return {
     indexBlog,
+    indexBook,
     indexMarkdown,
     indexTopics,
     processMarkdown,
@@ -264,6 +284,19 @@ function resolveImages(headerImage?: string) {
 
 function generatePreview(content: string, amount: number) {
   return `${removeMarkdown(content).slice(0, amount)}…`;
+}
+
+function cleanChapterName(path: string) {
+  const parts = path.split("/");
+  const beginning = parts.slice(0, -1);
+  const end = trimStart(parts.slice(-1)[0], "0123456789-_", undefined);
+
+  return beginning
+    .concat(end)
+    .join("/")
+    .toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/_/g, "-");
 }
 
 export { init };

@@ -40,7 +40,8 @@ marked.setOptions({
   smartypants: true,
   highlight: (code: string, language: string) => {
     try {
-      return highlight.highlight(code, { language }).value;
+      // TODO: Is it a good idea to highlight as bash by default?
+      return highlight.highlight(code, { language: language || "bash" }).value;
     } catch (error) {
       console.error("Missing a known language for", code);
       console.error(error);
