@@ -2,7 +2,7 @@
 title: 'Functional Programming - Interview with Arfat Salman'
 date: 2019-04-05
 headerImage: 'assets/img/function.jpg'
-keywords: ['interview', 'functional-programming']
+keywords: ['interview', 'functional programming']
 ---
 
 If there's one programming style I like a lot, it's **functional programming**. Although it's not the best fit for all problems, often having means to decompose a problem into smaller parts to be solved separately through composition has proven to be useful.

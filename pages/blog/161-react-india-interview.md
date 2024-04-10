@@ -2,7 +2,7 @@
 title: 'React India 2019 - The international React.js conference in Goa, India - Interview with Manjula Dube'
 date: 2018-11-11
 headerImage: 'assets/img/react-india-header.jpg'
-keywords: [conference', 'react', 'interview']
+keywords: ['conference', 'react', 'interview']
 ---
 
 It is exciting to organize a conference, especially when it's the first of its kind in a region. To learn more about one such event, I'm interviewing [Manjula Dube](https://twitter.com/manjula_dube) from the React India (22-24.08.2019) team.

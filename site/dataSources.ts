@@ -80,13 +80,11 @@ function init({ load }: { load: LoadApi }) {
 
     keywordsArray.sort();
 
-    return keywordsArray.map((topic) => {
-      return {
-        title: resolveKeywordToTitle(topic),
-        posts: keywords[topic],
-        slug: cleanSlug(topic),
-      };
-    });
+    return keywordsArray.map((topic) => ({
+      title: resolveKeywordToTitle(topic),
+      posts: keywords[topic],
+      slug: cleanSlug(topic),
+    }));
   }
 
   function processTopic(t: Topic) {
@@ -191,16 +189,6 @@ function init({ load }: { load: LoadApi }) {
   };
 }
 
-function cleanSlug(resourcePath: string) {
-  const parts = resourcePath.split("/");
-  const end =
-    trimStart(parts.slice(-1)[0], "0123456789-_", undefined).split(".")[0];
-
-  return end.toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/_/g, "-");
-}
-
 function resolveKeywordToTitle(keyword: string) {
   switch (keyword) {
     case "ajax":
@@ -209,6 +197,10 @@ function resolveKeywordToTitle(keyword: string) {
       return "API";
     case "baas":
       return "BaaS";
+    case "ci":
+      return "Continuous Integration";
+    case "cli":
+      return "Command Line Interface";
     case "cssinjs":
       return "css-in-js";
     case "ecommerce":
@@ -259,6 +251,16 @@ function resolveBlogPost(path: string, p: MarkdownWithFrontmatter) {
       };
     }) || [],
   };
+}
+
+function cleanSlug(resourcePath: string) {
+  const parts = resourcePath.split("/");
+  const end =
+    trimStart(parts.slice(-1)[0], "0123456789-_", undefined).split(".")[0];
+
+  return end.toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/_/g, "-");
 }
 
 // TODO
