@@ -1,19 +1,16 @@
 <BaseLayout>
   <slot name="content">
     <div
-      class="md:mx-auto px-4 md:px-0 w-full lg:max-w-3xl"
+      class="md:mx-auto px-4 md:px-0 w-full lg:max-w-3xl prose"
     >
       <Heading class="text-4xl" level="2"
         >Blog topics</Heading
       >
-      <ul
-        &foreach="(get context topics)"
-        class="flex flex-col gap-2"
-      >
+      <ul &foreach="(get context topics)">
         <li>
           <SiteLink
-            &children="(get props title)"
-            &href="(get props slug)"
+            &children="(concat (get props title) ' ' '(' (length (get props posts)) ')')"
+            &href="(urlJoin (get props slug) /)"
           />
         </li>
       </ul>

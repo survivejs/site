@@ -1,1 +1,22 @@
-TODO
+<BaseLayout>
+  <slot name="content">
+    <div
+      class="md:mx-auto px-4 md:px-0 w-full lg:max-w-3xl prose"
+    >
+      <Heading
+        class="text-4xl"
+        level="2"
+        &children="(get context topic.title)"
+      ></Heading>
+      <ul &foreach="(get context topic.posts)">
+        <li>
+          <SiteLink
+            &children="(get props data.title)"
+            &href="(urlJoin ../.. (get props data.slug) /)"
+          />
+        </li>
+      </ul>
+      <SiteLink href="../">Back to topics</SiteLink>
+    </div>
+  </slot>
+</BaseLayout>
